@@ -1,0 +1,77 @@
+---
+title: "Hemispheric Lateralization and Outcomes After ICH: A Pooled Analysis of Clinical Trials"
+subtitle: "Study Protocol and Statistical Analysis Plan"
+author: "Nikhil Patel, MD"
+format: docx
+editor: visual
+---
+
+## Introduction
+
+Patients with neurological injury experience different symptoms between the left and right hemispheres, and this may have.
+
+## Methods
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tableone)
+library(data.table)
+```
+
+### Pooling RCTs
+
+Randomized trials and observational studies included in the analysis:
+
+- ATACH2
+- ERICH
+- MISTIE
+- MISTIE III
+- CLEAR-IVH
+
+```{r setup, include=FALSE}
+
+# ATACH2
+
+# Create function to paste together string of FORMxx.txt
+atach.import <- function(y) {
+  dataset <- paste0("atach2",".",y)
+  filepath <- paste0("./ATACH2/FORM",y,".txt")
+  dataset <- read.table(filepath, sep = "\t", header = TRUE)
+}
+
+atach00 <- atach.import("00")
+atach01 <- atach.import("01")
+atach02 <- atach.import("02")
+atach03 <- atach.import("03")
+atach04 <- atach.import("04")
+atach05 <- atach.import("05")
+# atach05c <- atach.import("05c") Detailed Blood Pressure Data, Unsure if Needed
+atach06 <- atach.import("06")
+atach07 <- atach.import("07")
+atach08 <- atach.import("08")
+atach09 <- atach.import("09")
+atach10 <- atach.import("10")
+atach11 <- atach.import("11")
+atach13 <- atach.import("13")
+atach14 <- atach.import("14")
+atach15 <- atach.import("15")
+atach16 <- atach.import("16")
+atach17 <- atach.import("17")
+atach18 <- atach.import("18")
+atach20 <- atach.import("20")
+atach21 <- atach.import("21")
+atach23 <- atach.import("23")
+atach33 <- atach.import("33")
+
+# Merging all tidy data
+atach.tidy <- list(atach00, atach01, atach02, atach03, atach04, atach05, atach07, atach08, atach11, atach16, atach17, atach33)
+
+atach.whole <- reduce(atach.tidy, full_join, by = "SUBJECT_ID")
+
+# To Do's: write function to quickly import separate files, merge all datasets into one, and extract variables to describe how WLST was done and how often
+
+# https://www.statology.org/merge-multiple-data-frames-in-r/
+
+```
+

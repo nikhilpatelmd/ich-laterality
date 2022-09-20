@@ -1,0 +1,18 @@
+---
+title: "Hemispheric Lateralization and Outcomes After ICH: A Pooled Analysis of Clinical Trials"
+author: "Nikhil Patel, MD"
+format: docx
+editor: visual
+---
+
+## Introduction
+
+Intracerebral hemorrhage encompassess 10-15% of all strokes but is associated with a disproportionate level of death and disability. While recent attention has been paid to avoiding a self-fulfilling prophecy when prognosticating functional outcomes, there is a lingering fear that injuries in certain locations and hemispheres may portend a poorer prognosis.
+
+There is limited research on the outcomes in these situations.
+
+We aimed to conduct a pooled analysis of randomized trials in ICH to examine the following:
+
+-   Is there a difference in functional outcome or HRQOL in patients with left vs. right hemispheric injuries?
+
+## Methods
