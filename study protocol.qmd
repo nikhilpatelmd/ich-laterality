@@ -3,7 +3,6 @@ title: "Hemispheric Lateralization and Outcomes After ICH: A Pooled Analysis of 
 subtitle: "Study Protocol and Statistical Analysis Plan"
 author: "Nikhil Patel, MD"
 format: docx
-editor: visual
 ---
 
 ## Introduction
@@ -23,11 +22,11 @@ library(data.table)
 
 Randomized trials and observational studies included in the analysis:
 
-- ATACH2
-- ERICH
-- MISTIE
-- MISTIE III
-- CLEAR-IVH
+-   ATACH2
+-   ERICH
+-   MISTIE
+-   MISTIE III
+-   CLEAR-IVH
 
 ```{r setup, include=FALSE}
 
@@ -63,15 +62,142 @@ atach20 <- atach.import("20")
 atach21 <- atach.import("21")
 atach23 <- atach.import("23")
 atach33 <- atach.import("33")
+atachct <- read.table("./ATACH2/CTCR.txt", sep = "\t", header = TRUE)
 
 # Merging all tidy data
-atach.tidy <- list(atach00, atach01, atach02, atach03, atach04, atach05, atach07, atach08, atach11, atach16, atach17, atach33)
-
+atach.tidy <- list(atach00, atach01, atach02, atach03, atach04, atach05, atach07, atach08, atach11, atach16, atach17, atach21, atach33)
 atach.whole <- reduce(atach.tidy, full_join, by = "SUBJECT_ID")
+atach.whole <-atach.whole %>% mutate(study = "ATACH2")
 
-# To Do's: write function to quickly import separate files, merge all datasets into one, and extract variables to describe how WLST was done and how often
+# Importing CT Data
+atachct <- atachct %>%
+  mutate(ctnumber = case_when(
+    CTCRMIN < 0 ~ "baseline",
+    CTCRMIN > 0 ~ "24hourpost"
+  ))
 
-# https://www.statology.org/merge-multiple-data-frames-in-r/
+# Extracting First CT Data
+atachctbaseline <- atachct %>% 
+  filter(ctnumber == "baseline") %>%
+  select(SUBJECT_ID, CTCRMIN, CTCRQ05, CTCRQ07, CTCRQ08, CTCRQ09, CTCRQ12, CTCRQ13, CTCRQ11, CTCRQ14) %>%
+  rename(CTCRMIN.baseline = CTCRMIN) %>%
+  rename(ich.location.baseline = CTCRQ05) %>%
+  rename(ivh.baseline = CTCRQ07) %>%
+  rename(hydrocephalus.baseline = CTCRQ08) %>%
+  rename(pineal.shift.baseline = CTCRQ09) %>%
+  rename(ich.volume.baseline = CTCRQ12) %>%
+  rename(ivh.volume.baseline = CTCRQ13) %>%
+  rename(phe.volume.baseline = CTCRQ11) %>%
+  rename(sp.shift.baseline = CTCRQ14)
+
+
+atachct24hrpost <- atachct %>% # Extracting Second CT Data
+  filter(ctnumber == "24hourpost") %>%
+    select(SUBJECT_ID, CTCRMIN, CTCRQ05, CTCRQ07, CTCRQ08, CTCRQ09, CTCRQ12, CTCRQ13, CTCRQ11, CTCRQ14) %>%
+  rename(CTCRMIN.24hourpost = CTCRMIN) %>%
+  rename(ich.location.24hourpost = CTCRQ05) %>%
+  rename(ivh.24hourpost = CTCRQ07) %>%
+  rename(hydrocephalus.24hourpost = CTCRQ08) %>%
+  rename(pineal.shift.24hourpost = CTCRQ09) %>%
+  rename(ich.volume.24hourpost = CTCRQ12) %>%
+  rename(ivh.volume.24hourpost = CTCRQ13) %>%
+  rename(phe.volume.24hourpost = CTCRQ11) %>%
+  rename(sp.shift.24hourpost = CTCRQ14)
+
+atach.whole <- left_join(atach.whole, atachctbaseline, by = "SUBJECT_ID")
+atach.whole <- left_join(atach.whole, atachct24hrpost, by = "SUBJECT_ID")
+
+
+# Importing mRS Data
+
+atachmrs30 <- atach09 %>%
+  filter(mrsday == 30) %>%
+  select(SUBJECT_ID, F09Q01) %>%
+  rename(mrs30 = F09Q01)
+
+atachmrs90 <- atach09 %>%
+  filter(mrsday == 90) %>%
+  select(SUBJECT_ID, F09Q01) %>%
+  rename(mrs90 = F09Q01)
+
+atach.whole <-left_join(atach.whole, atachmrs30, by = "SUBJECT_ID")
+atach.whole <-left_join(atach.whole, atachmrs90, by = "SUBJECT_ID")
+
+
+# Table 1
+
+atachVarsTableOne <- c("F33O02", "F01Q01", "F01Q02", "F01Q03M1", "F01Q03M2", "F01Q03M3", "F01Q03M5", "F01Q03M6", "F01Q03M7", "SITE_ID", "COUNTRY", "F03Q01", "F03Q04", "F03Q05", "F03Q06", "F03Q07", "F03Q09", "F03Q12", "F03Q13", "F04Q01", "F04Q03", "F00Q02MIN", "F05Q07a", "F05Q07b", "F33Q04", "F10Q22", "F15Q11", "F15Q04", "F15Q07", "F15Q09", "F15Q12", "F15Q17", "CTCRQ05", "CTCRQ07
+", "CTCRQ08", "CTCRQ12", "CTCRQ13", "CTCRQ11", "CTCRQ14", "F07Q01", "F07Q02", "F07Q11", "F07Q04DAY", "F07Q05", "F07Q07", "F07Q08", "F07Q09DAY")
+
 
 ```
 
+Variables included:
+
+-   Age
+
+-   Gender
+
+-   Country Randomized
+
+-   RCT enrolled in
+
+-   Intracerebral hemorrhage
+
+-   Ischemic stroke
+
+-   Coronary artery disease
+
+-   Congestive heart failure
+
+-   Chronic kidney disease
+
+-   Obesity
+
+-   Hypertension
+
+-   Diabetes
+
+-   Antihypertensive therapy
+
+-   Anticoagluation therapy
+
+-   Antiplatelet therapy
+
+-   Lipid lowering therapy
+
+-   Time from onset to presentation
+
+-   Systolic BP
+
+-   Diastolic BP
+
+-   Median GCS
+
+-   Median NIHSS
+
+-   Glucose
+
+-   Hematoma volume
+
+-   Hematoma location
+
+-   IVH
+
+-   ICH Score
+
+-   Extraventricular drain
+
+-   Craniotomy
+
+-   WLST
+
+-   Median time to WLST
+
+-   mRS
+
+-   EuroQOL
+
+-   BI
+
+-   Living at home
