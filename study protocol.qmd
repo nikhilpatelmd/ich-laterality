@@ -16,21 +16,13 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tableone)
 library(data.table)
+library(haven) # Importing SAS Files
+
 ```
 
-### Pooling RCTs
 
-Randomized trials and observational studies included in the analysis:
 
--   ATACH2
--   ERICH
--   MISTIE
--   MISTIE III
--   CLEAR-IVH
-
-```{r setup, include=FALSE}
-
-# ATACH2
+```{r ATACH2, include=FALSE}
 
 # Create function to paste together string of FORMxx.txt
 atach.import <- function(y) {
@@ -113,91 +105,668 @@ atach.whole <- left_join(atach.whole, atachct24hrpost, by = "SUBJECT_ID")
 atachmrs30 <- atach09 %>%
   filter(mrsday == 30) %>%
   select(SUBJECT_ID, F09Q01) %>%
-  rename(mrs30 = F09Q01)
+  rename(mrs.30 = F09Q01)
 
 atachmrs90 <- atach09 %>%
   filter(mrsday == 90) %>%
   select(SUBJECT_ID, F09Q01) %>%
-  rename(mrs90 = F09Q01)
+  rename(mrs.90 = F09Q01)
 
 atach.whole <-left_join(atach.whole, atachmrs30, by = "SUBJECT_ID")
 atach.whole <-left_join(atach.whole, atachmrs90, by = "SUBJECT_ID")
 
+# Categorizing and Recoding Variables
+
+# Race
+atach.whole <- atach.whole %>%
+  mutate(race = case_when(
+    F01Q03M1 == 1 ~ "American Indian or Alaskan Native",
+    F01Q03M2 == 1 ~ "Asian",
+    F01Q03M3 == 1 ~ "Black or African-American",
+    F01Q03M5 == 1 ~ "White",
+    F01Q03M6 == 1 ~ "Other/Not Reported",
+    F01Q03M7 == 1 ~ "Other/Not Reported"
+  ))
+
+# Ethnicity
+atach.whole <- atach.whole %>% 
+  mutate(ethnicity = recode(F01Q02,
+                             "1" = "Hispanic or Latino",
+                             "2" = "Not Hispanic or Latino",
+                             .default = "Unknown/Not Reported"
+                             ))
+
+# Sex
+atach.whole <- atach.whole %>% 
+  mutate(sex = dplyr::recode(F01Q01,
+                      "1" = "Male",
+                      "2" = "Female"))
+
+# Country of Enrolling Site
+atach.whole <- atach.whole %>% 
+  mutate(enrolling.country = recode(COUNTRY,
+                                    "1" = "United States",
+                                    "2" = "Japan",
+                                    "3" = "China",
+                                    "4" = "South Korea",
+                                    "5" = "Taiwan",
+                                    "6" = "Germany"))
+
+# Past Medical History
+atach.whole <- atach.whole %>%
+  mutate(stroke = recode(F03Q01,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(chf = recode(F03Q03,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(afib = recode(F03Q04,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(cad = case_when(
+    F03Q05 == 0 ~ "No",
+    F03Q05 == 1 ~ "Yes",
+    F03Q05 == 98 ~ "NA",
+    F03Q06 == 0 ~ "No",
+    F03Q06 == 1 ~ "Yes",
+    F03Q06 == 98 ~ "NA"
+  ))
+
+atach.whole <- atach.whole %>%
+  mutate(htn = recode(F03Q07,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(pvd = recode(F03Q08,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(hld = recode(F03Q09,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(dm2 = recode(F03Q12,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(tobacco = recode(F03Q13,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+# ICH Laterality
+atach.whole <- atach.whole %>%
+  mutate(ich.laterality = recode(ich.location.baseline,
+                                 "1" = "Right",
+                                 "2" = "Right",
+                                 "3" = "Right",
+                                 "4" = "Left",
+                                 "5" = "Left",
+                                 "6" = "Left",
+                                 .default = "NA"))
+
+# ICH Location
+atach.whole <- atach.whole %>%
+  mutate(ich.location.baseline = recode(ich.location.baseline,
+                                        "1" = "Thalamus",
+                                        "2" = "Basal Ganglia",
+                                        "3" = "Lobar",
+                                        "4" = "Thalamus",
+                                        "5" = "Basal Ganglia",
+                                        "6" = "Lobar",
+                                        "7" = "Pons",
+                                        "8" = "Cerebellum"))
+
+atach.whole <- atach.whole %>%
+  mutate(ivh = recode(ivh.baseline,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(hydrocephalus = recode(hydrocephalus.baseline,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(hydrocephalus = recode(hydrocephalus.baseline,
+                         "0" = "No",
+                         "1" = "Yes",
+                         "98" = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(ich.volume.cc = ich.volume.baseline/1000)
+
+atach.whole <- atach.whole %>%
+  mutate(phe.volume.cc = phe.volume.baseline/1000)
+
+atach.whole <- atach.whole %>%
+  mutate(ivh.volume.cc = ivh.volume.baseline/1000)
+
+atach.whole <- atach.whole %>%
+  mutate(mech.ventilation = recode(F07Q01,
+                                   "0" = "No",
+                                   "1" = "Yes",
+                                   .default = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(evd = recode(F07Q05,
+                                   "0" = "No",
+                                   "1" = "Yes",
+                                   .default = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(nsgy.evacuation = recode(F07Q08,
+                                   "0" = "No",
+                                   "1" = "Yes",
+                                   .default = "NA"))
+
+atach.whole <- atach.whole %>%
+  mutate(trach = recode(F07Q11,
+                                   "0" = "No",
+                                   "1" = "Yes",
+                                   .default = "NA"))
+
+# NIHSS
+atach.nihss.baseline <- atach10 %>%
+  filter(nihss.assessment == "baseline") %>%
+  select(SUBJECT_ID, F10Q22) %>%
+  rename(nihss.baseline = F10Q22)
+
+atach.nihss.24hourpost <- atach10 %>%
+  filter(nihss.assessment == "24hourpost") %>%
+  select(SUBJECT_ID, F10Q22) %>%
+  rename(nihss.24hourpost = F10Q22)
+  
+
+atach.whole <-left_join(atach.whole, atach.nihss.baseline, by = "SUBJECT_ID")
+atach.whole <-left_join(atach.whole, atach.nihss.24hourpost, by = "SUBJECT_ID")
+
+
+# EuroQol
+
+atach.whole <- atach.whole %>%
+  mutate(euro.mobility.90 = factor(F16Q02,
+                                labels = c("No Problems", "Some Problems", "Confined to Bed")))
+
+atach.whole <- atach.whole %>%
+  mutate(euro.selfcare.90 = factor(F16Q03,
+                                labels = c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")))
+
+atach.whole <- atach.whole %>%
+  mutate(euro.usual.90 = factor(F16Q04,
+                                labels = c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")))
+
+atach.whole <- atach.whole %>%
+  mutate(euro.pain.90 = factor(F16Q05,
+                                labels = c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")))
+
+atach.whole <- atach.whole %>%
+  mutate(euro.anxiety.90 = factor(F16Q06,
+                                labels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")))
+
+# Filtering out cases without ICH laterality
+atach.whole <- atach.whole %>%
+  filter(ich.laterality != "NA")
 
 # Table 1
 
-atachVarsTableOne <- c("F33O02", "F01Q01", "F01Q02", "F01Q03M1", "F01Q03M2", "F01Q03M3", "F01Q03M5", "F01Q03M6", "F01Q03M7", "SITE_ID", "COUNTRY", "F03Q01", "F03Q04", "F03Q05", "F03Q06", "F03Q07", "F03Q09", "F03Q12", "F03Q13", "F04Q01", "F04Q03", "F00Q02MIN", "F05Q07a", "F05Q07b", "F33Q04", "F10Q22", "F15Q11", "F15Q04", "F15Q07", "F15Q09", "F15Q12", "F15Q17", "CTCRQ05", "CTCRQ07
-", "CTCRQ08", "CTCRQ12", "CTCRQ13", "CTCRQ11", "CTCRQ14", "F07Q01", "F07Q02", "F07Q11", "F07Q04DAY", "F07Q05", "F07Q07", "F07Q08", "F07Q09DAY")
+atach.whole <- atach.whole %>%
+  rename(age = F33Q02) %>%
+  rename(symptom.onset = F00Q02MIN) %>%
+  rename(sbp.initial = F05Q07A) %>%
+  rename(dbp.initial = F05Q07B) %>%
+  rename(gcs.baseline = F33Q04) %>%
+  rename(intubation.days = F07Q02) %>%
+  rename(extubation.date = F07Q03DAY) %>%
+  rename(trach.date = F07Q04DAY) %>%
+  rename(evd.days = F07Q07) %>%
+  rename(nsgy.evacuation.date = F07Q09DAY) %>%
+  rename(euro.vas.90 = F16Q07) %>%
+  rename(EQ_INDEX.90 = EQ_INDEX)
+
+VarsTableOne <- c("study",
+                  "age", # Age
+                       "sex", # Sex
+                       "ethnicity", # Ethnicity
+                       "race", # Race
+                       "enrolling.country", # Country of Enrolling Site
+                       "stroke", 
+                       "cad", 
+                       "chf", 
+                       "afib", 
+                       "pvd",
+                       "hld",
+                       "dm2",
+                       "tobacco",
+                       #"symptom.onset", # Time of symptom onset
+                       "sbp.initial", # Initial SBP
+                       "dbp.initial", # Initial DBP
+                       "gcs.baseline", # Baseline GCS
+                       #"nihss.baseline", # NIHSS
+                       "ich.location.baseline", 
+                       "ivh",
+                      # "hydrocephalus",
+                       "ich.volume.cc",
+                       "ivh.volume.cc",
+                       "phe.volume.cc",
+                       "sp.shift.baseline",
+                       "mech.ventilation",
+                       "intubation.days", 
+                       "extubation.date", # Date of extubation
+                       "trach",
+                       "trach.date", # Date of Tracheostomy
+                       "evd",
+                       "evd.days", # Total EVD days
+                       "nsgy.evacuation",
+                       "nsgy.evacuation.date",  # Date of Evacuation
+                       "mrs.30",
+                       "mrs.90",
+                      "mrs.180",
+                      "mrs.365",
+                      "euro.mobility.90",
+                      "euro.mobility.180",
+                      "euro.mobility.365",
+                       "euro.selfcare.90",
+                      "euro.selfcare.180",
+                      "euro.selfcare.365",
+                       "euro.usual.90",
+                      "euro.usual.180",
+                      "euro.usual.365",
+                       "euro.pain.90",
+                      "euro.pain.180",
+                      "euro.pain.365",
+                       "euro.anxiety.90",
+                      "euro.anxiety.180",
+                      "euro.anxiety.365",
+                       "euro.vas.90", # EuroQOL VAS
+                       "euro.vas.180",
+                       "euro.vas.365",
+                       "EQ_INDEX.90", # EQ-5D Utility Index,,
+                      "current.location.90",
+                      "current.location.180",
+                      "current.location.365",
+                       "ich.laterality"
+                  )
+
+# Maybe import lab data, but this may be superfluous
+
+```
+
+## Table 1 ATACH-2
+
+```{r ATACH table1, echo=FALSE}
+
+atach.table1.data <- atach.whole %>%
+  select(atachVarsTableOne)
+
+CreateTableOne(vars = atachVarsTableOne,
+               data = atach.whole,
+               strata = "ich.laterality")
+
+```
+
+```{r ERICH, include=FALSE}
+
+erich.case <- read_sas("ERICH/erich_case_100217.sas7bdat")
+
+erich.whole <- erich.case %>%
+  select(ID, age, gender, Race, Ethnicity, D6, D7, D7A, D21, D21A, D22, D25, PHY4, PHY6, PHY6A, PHY9, 1510, 1511, 1512, ED7, ED8, ED36, ED37, ED38, ED39, ED44, ED47_SYS, ED47_DIAS, SH1, SH8, SH9, SH10, SMK1A, MHX1, MHX3, MHX3A, MHX6, MHX8, MHX9, MHX11, MHX12, MHX13, MHX13A, MHX14, MHX16, MHX18, MHX20, MHX21, MHX22, MHX27C, MHX28, SA1, SA4, SA5A, SA6, SE1, SE2, SE3, SE15, LAB5, LAB6, IT5D, detail, ICH_Loc_CT1, ICH_Vol_CT1, IVH_Vol_CT1, ICH_Vol_CT2, ICH_Vol_CT3, ICH_Vol_CT4, IVH_Present, IT5D_DATE, IT5D_TIME, IT5H, IT5H_DATE, IT5H_TIME, IT5I, IT5I_DATE, IT5I_TIME, IT5F, IT5F_SPEC, IT5F_DATE, IT5F_TIME, IT7, IT8, IT8A, IT8B, IT13, IT13A, IT24, IT24A_DATE, IT24A_TIME, IT24A_UNITS, IT29, IT29A, IT29B, IT21, IT22, IT25, IT23, IT28, CC16, CC16_DATE, CC16_TIME, CC17, CC17_DATE, CC17_TIME, CC18, CC18_DATE, CC18_TIME, CX15, CX27, CX30, O3, O3A, O5, O20, AU8, AU8_OTH, RANKIN_FU1, RANKIN_FU2, RANKIN_FU3, MOBILITY_FU1, MOBILITY_FU2, MOBILITY_FU3, SELFCARE_FU1, SELFCARE_FU2, SELFCARE_FU3, USUALACT_FU1, USUALACT_FU2, USUALACT_FU3, PAIN_FU1, PAIN_FU2, PAIN_FU3, ANXIETY_FU1, ANXIETY_FU2, ANXIETY_FU3, HLTHSTAT_FU1, HLTHSTAT_FU2, HLTHSTAT_FU3, FEED_FU1, FEED_FU2, FEED_FU3, BATHE_FU1, BATHE_FU2, BATHE_FU3, GROOM_FU1, GROOM_FU2, GROOM_FU3, DRESS_FU1, DRESS_FU2, DRESS_FU3, BOWELS_FU1, BOWELS_FU2, BOWELS_FU3, BLADDER_FU1, BLADDER_FU2, BLADDER_FU3, TOILET_FU1, TOILET_FU2, TOILET_FU3, TRANSFER_FU1, TRANSFER_FU2, TRANSFER_FU3, MOBLEVEL_FU1, MOBLEVEL_FU2, MOBLEVEL_FU3, STAIRS_FU1, STAIRS_FU2, STAIRS_FU3, BART_TOT_FU1, BART_TOT_FU2, BART_TOT_FU3, EMS33, ED44, CURR_LOC_FU1, CURR_LOC_FU2, CURR_LOC_FU3)
+
+erich.whole <- erich.whole %>%
+  mutate(study = "ERICH")
+
+erich.whole <- erich.whole %>%
+  mutate(enrolling.country = "United States")
+
+# Renaming and Recoding Variables
+
+erich.whole <- erich.whole %>%
+  mutate(gender = recode(gender,
+                         "F" = "Female",
+                         "M" = "Male")) %>%
+  rename(sex = gender)
+
+erich.whole <- erich.whole %>%
+  mutate(Race = case_when(
+    D21 == "W" ~ "White",
+    D21 == "B" ~ "Black or African-American",
+    D21 == "A" ~ "Asian",
+    D21 == "N" ~ "Native Hawaiian/Pacific Islander",
+    D21 == "I" ~ "American Indian or Alaskan Native",
+    D21 == "O" ~ "Other/Not Reported",
+    D21 == "U" ~ "Other/Not Reported"
+    )) %>%
+  rename(race = Race)
+
+erich.whole <- erich.whole %>%
+  mutate(Ethnicity = case_when(
+    D21A == "H" ~ "Hispanic or Latino",
+    D21A == "N" ~ "Not Hispanic or Latino",
+    D21A == "U" ~ "Not Hispanic or Latino"
+  ))
+
+erich.whole <- erich.whole %>%
+  mutate(stroke = recode(SH1,
+                         "2" = "No",
+                         "1" = "Yes",
+                         "8" = "NA"))
+
+erich.whole <- erich.whole %>%
+  mutate(cad = recode(MHX8,
+                         "2" = "No",
+                         "1" = "Yes",
+                         "8" = "NA"))
+
+erich.whole <- erich.whole %>%
+  mutate(chf = recode(MHX13,
+                         "2" = "No",
+                         "1" = "Yes",
+                         "8" = "NA"))
+
+erich.whole <- erich.whole %>%
+  mutate(afib = recode(MHX11,
+                         "2" = "No",
+                         "1" = "Yes",
+                         "8" = "NA"))
+
+erich.whole <- erich.whole %>%
+  mutate(pvd = recode(MHX27C,
+                         "2" = "No",
+                         "1" = "Yes",
+                         "8" = "NA"))
+
+erich.whole <- erich.whole %>%
+  mutate(hld = recode(MHX6,
+                         "2" = "No",
+                         "1" = "Yes",
+                         "8" = "NA"))
+
+erich.whole <- erich.whole %>%
+  mutate(dm2 = case_when(
+    MHX3 == "2" ~ "No",
+    MHX3 == "8" ~ "NA",
+    MHX3A == "1" ~ "No",
+    MHX3A == "2" ~ "Yes",
+    MHX3A == "8" ~ "NA"))
+
+erich.whole <- erich.whole %>%
+  mutate(tobacco = recode(SMK1A,
+                         "2" = "No",
+                         "1" = "Yes",
+                         "5" = "NA",
+                         "8" = "NA"))
+
+erich.whole <- erich.whole %>%
+  rename(sbp.initial = ED47_SYS)
+
+erich.whole <- erich.whole %>%
+  rename(dbp.initial = ED47_DIAS)
+
+erich.whole <- erich.whole %>%
+  rename(gcs.baseline = ED39)
+
+erich.whole <- erich.whole %>%
+  mutate(ich.laterality = recode(PHY6A,
+                                 "L" = "Left",
+                                 "R" = "Right",
+                                 "M" = "NA",
+                                 .default = "NA"))
+
+erich.whole <- erich.whole %>%
+  mutate(ich.location.baseline = recode(erich.case$detail,
+                                        "L Thalamic" = "Thalamus",
+                                        "R Thalamic" = "Thalamus",
+                                        "L Caudate Nucleus" = "Basal Ganglia",
+                                        "L Cerebellar" = "Cerebellum",
+                                        "L Corona Radiata" = "Lobar",
+                                        "L Frontal" = "Lobar",
+                                        "L Frontal Temporal" = "Lobar",
+                                        "L Frontoparietal" = "Lobar",
+                                        "L Occipital" = "Lobar",
+                                        "L Parietal" = "Lobar",
+                                        "L Parieto-Occipital" = "Lobar",
+                                        "L Periventricular" = "Basal Ganglia",
+                                        "L Putaminal" = "Basal Ganglia",
+                                        "L Temporal" = "Lobar",
+                                        "L Temporal-Parietal-Occipital (L Hemisphere)" = "Lobar",
+                                        "L Temporal Occipital" = "Lobar",
+                                        "L Temporal parietal" = "Lobar",
+                                        "Multiple Hemorrhages - Deep" = "Basal Ganglia",
+                                        "Multiple Hemorrhages - Lobar" = "Lobar",
+                                        "Not applicable" = "NA",
+                                        "Primary IVH" = "Primary IVH",
+                                        "R Basal Ganglia" = "Basal Ganglia",
+                                        "R Caudate Nucleus" = "Basal Ganglia",
+                                        "R Cerebellar" = "Cerebellum",
+                                        "R Frontal" = "Lobar",
+                                        "R Frontal Temporal" = "Lobar",
+                                        "R Frontoparietal" = "Lobar",
+                                        "R Occipital" = "Lobar",
+                                        "R Parietal" = "Lobar",
+                                        "R Parieto-Occipital" = "Lobar",
+                                        "R Periventricular" = "Basal Ganglia",
+                                        "R Putaminal" = "Basal Ganglia",
+                                        "R Temporal" = "Lobar",
+                                        "R Temporal-Parietal-Occipital (R Hemisphere)" = "Lobar",
+                                        "R Temporal Occipital" = "Lobar",
+                                        "R Temporal Perietal" = "Lobar",
+                                        "Unknown" = "NA",
+                                        "Brainstem" = "Brainstem",
+                                        "Cerebellar" = "Cerebellum",
+                                        "R Temporal parietal" = "Lobar",
+                                        "L Basal Ganglia" = "Basal Ganglia",                                        ))
+
+erich.whole <- erich.whole %>%
+  mutate(ivh = case_when(erich.case$IVH_Vol_CT1 > 0 ~ "Yes",
+                         erich.case$IVH_Vol_CT1 < 0.1 ~ "No"))
+
+erich.whole <- erich.whole %>%
+  rename(ich.volume.cc = ICH_Vol_CT1)
+
+erich.whole <- erich.whole %>%
+  rename(ivh.volume.cc = IVH_Vol_CT1)
+
+erich.whole <- erich.whole %>%
+  mutate(mech.ventilation = case_when(
+    EMS33 == "1" ~ "Yes",
+    EMS33 == "2" ~ "No",
+    ED44 == "1" ~ "Yes",
+    ED44 == "2" ~ "No",
+    IT7 == "1" ~ "Yes",
+    IT7 == "2" ~ "No"))
+
+erich.whole <- erich.whole %>%
+  mutate(evd = case_when(
+    IT8 == "1" ~ "Yes",
+    IT8 == "2" ~ "No",
+  ))
+
+erich.whole <- erich.whole %>%
+  mutate(nsgy.evacuation = case_when(
+    IT5D == "1" ~ "Yes",
+    IT5D == "2" ~ "No",
+    IT5H == "1" ~ "Yes",
+    IT5H == "2" ~ "No"
+  ))
+
+erich.whole <- erich.whole %>%
+  rename(mrs.90 = RANKIN_FU1) %>%
+  rename(mrs.180 = RANKIN_FU2) %>%
+  rename(mrs.365 = RANKIN_FU3) %>%
+  rename(euro.vas.90 = HLTHSTAT_FU1) %>%
+  rename(euro.vas.180 = HLTHSTAT_FU2) %>%
+  rename(euro.vas.365 = HLTHSTAT_FU3) %>%
+  rename(barthel.feeding.90 = FEED_FU1) %>%
+  rename(barthel.bathing.90 = BATHE_FU1) %>%
+  rename(barthel.grooming.90 = GROOM_FU1) %>%
+  rename(barthel.dressing.90 = DRESS_FU1) %>%
+  rename(barthel.bowels.90 = BOWELS_FU1) %>%
+  rename(barthel.bladder.90 = BLADDER_FU1) %>%
+  rename(barthel.toilet.90 = TOILET_FU1) %>%
+  rename(barthel.transfer.90 = TRANSFER_FU1) %>%
+  rename(barthel.mobility.90 = MOBLEVEL_FU1) %>%
+  rename(barthel.stairs.90 = STAIRS_FU1) %>%
+  rename(barthel.total.90 = BART_TOT_FU1) %>%
+  rename(barthel.feeding.180 = FEED_FU2) %>%
+  rename(barthel.bathing.180 = BATHE_FU2) %>%
+  rename(barthel.grooming.180 = GROOM_FU2) %>%
+  rename(barthel.dressing.180 = DRESS_FU2) %>%
+  rename(barthel.bowels.180 = BOWELS_FU2) %>%
+  rename(barthel.bladder.180 = BLADDER_FU2) %>%
+  rename(barthel.toilet.180 = TOILET_FU2) %>%
+  rename(barthel.transfer.180 = TRANSFER_FU2) %>%
+  rename(barthel.mobility.180 = MOBLEVEL_FU2) %>%
+  rename(barthel.stairs.180 = STAIRS_FU2) %>%
+  rename(barthel.total.180 = BART_TOT_FU2) %>%
+  rename(barthel.feeding.365 = FEED_FU3) %>%
+  rename(barthel.bathing.365 = BATHE_FU3) %>%
+  rename(barthel.grooming.365 = GROOM_FU3) %>%
+  rename(barthel.dressing.365 = DRESS_FU3) %>%
+  rename(barthel.bowels.365 = BOWELS_FU3) %>%
+  rename(barthel.bladder.365 = BLADDER_FU3) %>%
+  rename(barthel.toilet.365 = TOILET_FU3) %>%
+  rename(barthel.transfer.365 = TRANSFER_FU3) %>%
+  rename(barthel.mobility.365 = MOBLEVEL_FU3) %>%
+  rename(barthel.stairs.365 = STAIRS_FU3) %>%
+  rename(barthel.total.365 = BART_TOT_FU3)
+
+erich.whole <- erich.whole %>%
+  mutate(current.location.90 = recode(CURR_LOC_FU1,
+                      "1" = "Home",
+                      "2" = "Rehabilitation",
+                      "3" = "Skilled Nursing Facility",
+                      "4" = "Hospital",
+                      "7" = "Other"
+                      )) %>%
+  mutate(current.location.180 = recode(CURR_LOC_FU1,
+                      "1" = "Home",
+                      "2" = "Rehabilitation",
+                      "3" = "Skilled Nursing Facility",
+                      "4" = "Hospital",
+                      "7" = "Other"
+                      )) %>%
+  mutate(current.location.365 = recode(CURR_LOC_FU1,
+                      "1" = "Home",
+                      "2" = "Rehabilitation",
+                      "3" = "Skilled Nursing Facility",
+                      "4" = "Hospital",
+                      "7" = "Other"
+                      ))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.mobility.90 = factor(MOBILITY_FU1,
+                                labels = c("No Problems", "Some Problems", "Confined to Bed", "NA")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.selfcare.90 = factor(SELFCARE_FU1,
+                                labels = c("No Problems", "Some Problems", "Unable to Wash or Dress Myself", "NA")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.usual.90 = factor(USUALACT_FU1,
+                                labels = c("No Problems", "Some Problems", "Unable to Perform My Usual Activities", "NA")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.pain.90 = factor(PAIN_FU1,
+                                labels = c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort", "NA")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.anxiety.90 = factor(ANXIETY_FU1,
+                                labels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed", "NA")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.mobility.180 = factor(MOBILITY_FU2,
+                                labels = c("No Problems", "Some Problems", "Confined to Bed")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.selfcare.180 = factor(SELFCARE_FU2,
+                                labels = c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.usual.180 = factor(USUALACT_FU2,
+                                labels = c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.pain.180 = factor(PAIN_FU2,
+                                labels = c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.anxiety.180 = factor(ANXIETY_FU2,
+                                labels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.mobility.365 = factor(MOBILITY_FU3,
+                                labels = c("No Problems", "Some Problems", "Confined to Bed")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.selfcare.365 = factor(SELFCARE_FU3,
+                                labels = c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.usual.365 = factor(USUALACT_FU3,
+                                labels = c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.pain.365 = factor(PAIN_FU3,
+                                labels = c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")))
+
+erich.whole <- erich.whole %>%
+  mutate(euro.anxiety.365 = factor(ANXIETY_FU3,
+                                labels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")))
+
+# Variables left: symptom.onset
+
+# Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days, tracheostomy, nsgy.evacuation.date, 
+
+# Filtering out ICH Laterality and Infratentorial Location
+erich.whole <- erich.whole %>%
+  filter(ich.laterality != "NA") %>%
+  filter(ich.location.baseline == "Basal Ganglia" |
+           ich.location.baseline == "Thalamus" |
+           ich.location.baseline == "Lobar")
 
 
 ```
 
-Variables included:
+```{r combining ATACH2 and ERICH, include=FALSE}
 
--   Age
+atach.erich <- union_all(atach.whole, erich.whole)
 
--   Gender
+atach.erich <- atach.erich %>%
+  select(VarsTableOne) %>%
+  mutate(ich.score.age = case_when(
+    age < 80 ~ 0,
+    age >= 80 ~ 1
+  )) %>%
+  mutate(ich.score.gcs = case_when(
+    gcs.baseline >= 13 ~ 0,
+    gcs.baseline <= 4 ~ 2,
+    TRUE ~ 1)) %>%
+  mutate(ich.score.volume = if_else(ich.volume.cc >= 30,1,0)) %>%
+  mutate(ich.score.ivh = if_else(ivh == "Yes",1,0)) %>%
+  mutate(ich.score.total = ich.score.age + 
+                           ich.score.gcs + 
+                           ich.score.volume +
+                           ich.score.ivh)
+  
 
--   Country Randomized
+```
 
--   RCT enrolled in
-
--   Intracerebral hemorrhage
-
--   Ischemic stroke
-
--   Coronary artery disease
-
--   Congestive heart failure
-
--   Chronic kidney disease
-
--   Obesity
-
--   Hypertension
-
--   Diabetes
-
--   Antihypertensive therapy
-
--   Anticoagluation therapy
-
--   Antiplatelet therapy
-
--   Lipid lowering therapy
-
--   Time from onset to presentation
-
--   Systolic BP
-
--   Diastolic BP
-
--   Median GCS
-
--   Median NIHSS
-
--   Glucose
-
--   Hematoma volume
-
--   Hematoma location
-
--   IVH
-
--   ICH Score
-
--   Extraventricular drain
-
--   Craniotomy
-
--   WLST
-
--   Median time to WLST
-
--   mRS
-
--   EuroQOL
-
--   BI
-
--   Living at home
