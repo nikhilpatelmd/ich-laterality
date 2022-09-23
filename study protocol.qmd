@@ -17,6 +17,7 @@ library(tidyverse)
 library(tableone)
 library(data.table)
 library(haven) # Importing SAS Files
+library(janitor)
 
 ```
 
@@ -411,18 +412,7 @@ VarsTableOne <- c("study",
 
 ```
 
-## Table 1 ATACH-2
 
-```{r ATACH table1, echo=FALSE}
-
-atach.table1.data <- atach.whole %>%
-  select(atachVarsTableOne)
-
-CreateTableOne(vars = atachVarsTableOne,
-               data = atach.whole,
-               strata = "ich.laterality")
-
-```
 
 ```{r ERICH, include=FALSE}
 
@@ -767,6 +757,8 @@ atach.erich <- atach.erich %>%
                            ich.score.volume +
                            ich.score.ivh)
   
+atach.erich %>%
+  as_tibble()
 
 ```
 
