@@ -18,6 +18,7 @@ library(tableone)
 library(data.table)
 library(haven) # Importing SAS Files
 library(janitor)
+library(lubridate)
 
 ```
 
@@ -419,7 +420,7 @@ VarsTableOne <- c("study",
 erich.case <- read_sas("ERICH/erich_case_100217.sas7bdat")
 
 erich.whole <- erich.case %>%
-  select(ID, age, gender, Race, Ethnicity, D6, D7, D7A, D21, D21A, D22, D25, PHY4, PHY6, PHY6A, PHY9, 1510, 1511, 1512, ED7, ED8, ED36, ED37, ED38, ED39, ED44, ED47_SYS, ED47_DIAS, SH1, SH8, SH9, SH10, SMK1A, MHX1, MHX3, MHX3A, MHX6, MHX8, MHX9, MHX11, MHX12, MHX13, MHX13A, MHX14, MHX16, MHX18, MHX20, MHX21, MHX22, MHX27C, MHX28, SA1, SA4, SA5A, SA6, SE1, SE2, SE3, SE15, LAB5, LAB6, IT5D, detail, ICH_Loc_CT1, ICH_Vol_CT1, IVH_Vol_CT1, ICH_Vol_CT2, ICH_Vol_CT3, ICH_Vol_CT4, IVH_Present, IT5D_DATE, IT5D_TIME, IT5H, IT5H_DATE, IT5H_TIME, IT5I, IT5I_DATE, IT5I_TIME, IT5F, IT5F_SPEC, IT5F_DATE, IT5F_TIME, IT7, IT8, IT8A, IT8B, IT13, IT13A, IT24, IT24A_DATE, IT24A_TIME, IT24A_UNITS, IT29, IT29A, IT29B, IT21, IT22, IT25, IT23, IT28, CC16, CC16_DATE, CC16_TIME, CC17, CC17_DATE, CC17_TIME, CC18, CC18_DATE, CC18_TIME, CX15, CX27, CX30, O3, O3A, O5, O20, AU8, AU8_OTH, RANKIN_FU1, RANKIN_FU2, RANKIN_FU3, MOBILITY_FU1, MOBILITY_FU2, MOBILITY_FU3, SELFCARE_FU1, SELFCARE_FU2, SELFCARE_FU3, USUALACT_FU1, USUALACT_FU2, USUALACT_FU3, PAIN_FU1, PAIN_FU2, PAIN_FU3, ANXIETY_FU1, ANXIETY_FU2, ANXIETY_FU3, HLTHSTAT_FU1, HLTHSTAT_FU2, HLTHSTAT_FU3, FEED_FU1, FEED_FU2, FEED_FU3, BATHE_FU1, BATHE_FU2, BATHE_FU3, GROOM_FU1, GROOM_FU2, GROOM_FU3, DRESS_FU1, DRESS_FU2, DRESS_FU3, BOWELS_FU1, BOWELS_FU2, BOWELS_FU3, BLADDER_FU1, BLADDER_FU2, BLADDER_FU3, TOILET_FU1, TOILET_FU2, TOILET_FU3, TRANSFER_FU1, TRANSFER_FU2, TRANSFER_FU3, MOBLEVEL_FU1, MOBLEVEL_FU2, MOBLEVEL_FU3, STAIRS_FU1, STAIRS_FU2, STAIRS_FU3, BART_TOT_FU1, BART_TOT_FU2, BART_TOT_FU3, EMS33, ED44, CURR_LOC_FU1, CURR_LOC_FU2, CURR_LOC_FU3)
+  select(ID, age, gender, Race, Ethnicity, D6, D7, D7A, D21, D21A, D22, D25, PHY4, PHY6, PHY6A, PHY9, 1510, 1511, 1512, ED7, ED8, ED36, ED37, ED38, ED39, ED44, ED47_SYS, ED47_DIAS, SH1, SH8, SH9, SH10, SMK1A, MHX1, MHX3, MHX3A, MHX6, MHX8, MHX9, MHX11, MHX12, MHX13, MHX13A, MHX14, MHX16, MHX18, MHX20, MHX21, MHX22, MHX27C, MHX28, SA1, SA4, SA5A, SA6, SE1, SE2, SE3, SE15, LAB5, LAB6, IT5D, detail, ICH_Loc_CT1, ICH_Vol_CT1, IVH_Vol_CT1, ICH_Vol_CT2, ICH_Vol_CT3, ICH_Vol_CT4, IVH_Present, IT5D_DATE, IT5D_TIME, IT5H, IT5H_DATE, IT5H_TIME, IT5I, IT5I_DATE, IT5I_TIME, IT5F, IT5F_SPEC, IT5F_DATE, IT5F_TIME, IT7, IT8, IT8A, IT8B, IT13, IT13A, IT24, IT24A_DATE, IT24A_TIME, IT24A_UNITS, IT29, IT29A, IT29B, IT21, IT22, IT25, IT23, IT28, CC16, CC16_DATE, CC16_TIME, CC17, CC17_DATE, CC17_TIME, CC18, CC18_DATE, CC18_TIME, CX15, CX27, CX30, O3, O3A, O5, O20, AU8, AU8_OTH, RANKIN_FU1, RANKIN_FU2, RANKIN_FU3, MOBILITY_FU1, MOBILITY_FU2, MOBILITY_FU3, SELFCARE_FU1, SELFCARE_FU2, SELFCARE_FU3, USUALACT_FU1, USUALACT_FU2, USUALACT_FU3, PAIN_FU1, PAIN_FU2, PAIN_FU3, ANXIETY_FU1, ANXIETY_FU2, ANXIETY_FU3, HLTHSTAT_FU1, HLTHSTAT_FU2, HLTHSTAT_FU3, FEED_FU1, FEED_FU2, FEED_FU3, BATHE_FU1, BATHE_FU2, BATHE_FU3, GROOM_FU1, GROOM_FU2, GROOM_FU3, DRESS_FU1, DRESS_FU2, DRESS_FU3, BOWELS_FU1, BOWELS_FU2, BOWELS_FU3, BLADDER_FU1, BLADDER_FU2, BLADDER_FU3, TOILET_FU1, TOILET_FU2, TOILET_FU3, TRANSFER_FU1, TRANSFER_FU2, TRANSFER_FU3, MOBLEVEL_FU1, MOBLEVEL_FU2, MOBLEVEL_FU3, STAIRS_FU1, STAIRS_FU2, STAIRS_FU3, BART_TOT_FU1, BART_TOT_FU2, BART_TOT_FU3, EMS33, ED44, CURR_LOC_FU1, CURR_LOC_FU2, CURR_LOC_FU3, IT2, O1, O2_DATE, O2_TIME, O3, O3_OTH, DOD)
 
 erich.whole <- erich.whole %>%
   mutate(study = "ERICH")
@@ -593,10 +594,9 @@ erich.whole <- erich.whole %>%
 erich.whole <- erich.whole %>%
   mutate(nsgy.evacuation = case_when(
     IT5D == "1" ~ "Yes",
-    IT5D == "2" ~ "No",
     IT5H == "1" ~ "Yes",
-    IT5H == "2" ~ "No"
-  ))
+    TRUE ~ "No"
+      ))
 
 erich.whole <- erich.whole %>%
   rename(mrs.90 = RANKIN_FU1) %>%
@@ -722,9 +722,105 @@ erich.whole <- erich.whole %>%
   mutate(euro.anxiety.365 = factor(ANXIETY_FU3,
                                 labels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")))
 
-# Variables left: symptom.onset
 
-# Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days, tracheostomy, nsgy.evacuation.date, 
+# Parsing Dates and Times in ERICH
+
+# symptom.onset
+
+erich.whole <- erich.whole %>%
+  mutate(symptom.onset.date.time = ymd_hms(paste(erich.whole$SE1, erich.whole$SE2)))
+
+erich.whole <- erich.whole %>%
+  mutate(symptom.onset.estimated.time = case_when( # Converting estimated times to numbers
+    SE3 == "1" ~ "06:00:00",
+    SE3 == "2" ~ "NA",
+    SE3 == "3" ~ "03:00:00",
+    SE3 == "4" ~ "09:00:00",
+    SE3 == "5" ~ "15:00:00",
+    SE3 == "6" ~ "21:00:00"
+  ))
+
+erich.whole$symptom.onset.estimated.time <- hms(erich.whole$symptom.onset.estimated.time)
+
+erich.whole <- erich.whole %>%
+  mutate(symptom.onset.estimated.date.time = ymd_hms(paste(erich.whole$SE1, erich.whole$symptom.onset.estimated.time)))
+
+erich.whole <- erich.whole %>%
+  mutate(symptom.onset = case_when(
+    is.na(symptom.onset.date.time) ~ symptom.onset.estimated.date.time,
+    TRUE ~ symptom.onset.date.time
+  ))
+
+# Time of ED presentation
+
+erich.whole <- erich.whole %>%
+  mutate(ed.presentation.date.time = ymd_hms(paste(erich.whole$ED7, erich.whole$ED8)))
+
+# Neurosurgery Dates
+
+erich.whole <- erich.whole %>%
+  mutate(nsgy.evacuation.date = case_when(
+    IT5D == "1" ~ ymd_hms(paste(IT5D_DATE, IT5D_TIME)),
+    IT5H == "1" ~ ymd_hms(paste(IT5H_DATE, IT5H_TIME)),
+    IT5F == "1" ~ ymd_hms(paste(IT5F_DATE, IT5F_TIME))
+  ))
+
+# DNR and WLST Status
+
+erich.whole <- erich.whole %>%
+  mutate(dnr.binary = case_when(
+    CC16 == "1" ~ "Yes",
+    CC16 == "2" ~ "No",
+    TRUE ~ "NA"
+  ))
+
+erich.whole <- erich.whole %>%
+  mutate(dni.binary = case_when(
+    CC17 == "1" ~ "Yes",
+    CC17 == "2" ~ "No",
+    TRUE ~ "NA"
+  ))
+
+erich.whole <- erich.whole %>%
+  mutate(comfort.binary = case_when(
+    CC18 == "1" ~ "Yes",
+    CC18 == "2" ~ "No",
+    TRUE ~ "NA"
+  ))
+
+erich.whole <- erich.whole %>%
+  mutate(dnr.date.time = case_when(
+    CC16 == "1" ~ ymd_hms(paste(CC16_DATE, CC16_TIME))
+  ))
+
+erich.whole <- erich.whole %>%
+  mutate(dni.date.time = case_when(
+    CC17 == "1" ~ ymd_hms(paste(CC17_DATE, CC17_TIME))
+  ))
+
+erich.whole <- erich.whole %>%
+  mutate(comfort.date.time = case_when(
+    CC18 == "1" ~ ymd_hms(paste(CC18_DATE, CC18_TIME))
+  ))
+
+# Mortality Status
+
+erich.whole$death.date <- ymd(erich.whole$DOD)
+
+erich.whole <- erich.whole %>%
+  mutate(death.interval = as_date(death.date) - as_date(symptom.onset)) %>%
+  as.duration(death.interval)
+
+erich.whole$death.interval <- parse_integer(erich.whole$death.interval)
+
+erich.whole <- erich.whole %>%
+  mutate(mrs.90 = case_when(
+    death.interval > 90 ~ "6",
+    TRUE ~ mrs.90
+  ))
+  
+
+# Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days, tracheostomy
 
 # Filtering out ICH Laterality and Infratentorial Location
 erich.whole <- erich.whole %>%
@@ -761,4 +857,3 @@ atach.erich %>%
   as_tibble()
 
 ```
-
