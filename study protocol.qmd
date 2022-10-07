@@ -449,7 +449,7 @@ erich.whole <- erich.whole %>%
   rename(race = Race)
 
 erich.whole <- erich.whole %>%
-  mutate(Ethnicity = case_when(
+  mutate(ethnicity = case_when(
     D21A == "H" ~ "Hispanic or Latino",
     D21A == "N" ~ "Not Hispanic or Latino",
     D21A == "U" ~ "Not Hispanic or Latino"
@@ -746,7 +746,7 @@ erich.whole <- erich.whole %>%
   mutate(symptom.onset.estimated.date.time = ymd_hms(paste(erich.whole$SE1, erich.whole$symptom.onset.estimated.time)))
 
 erich.whole <- erich.whole %>%
-  mutate(symptom.onset = case_when(
+  mutate(symptom.onset.combined = case_when(
     is.na(symptom.onset.date.time) ~ symptom.onset.estimated.date.time,
     TRUE ~ symptom.onset.date.time
   ))
@@ -759,11 +759,16 @@ erich.whole <- erich.whole %>%
 # Neurosurgery Dates
 
 erich.whole <- erich.whole %>%
-  mutate(nsgy.evacuation.date = case_when(
+  mutate(nsgy.evacuation.date.erich = case_when(
     IT5D == "1" ~ ymd_hms(paste(IT5D_DATE, IT5D_TIME)),
     IT5H == "1" ~ ymd_hms(paste(IT5H_DATE, IT5H_TIME)),
     IT5F == "1" ~ ymd_hms(paste(IT5F_DATE, IT5F_TIME))
   ))
+
+erich.whole$nsgy.interval <- as.period(erich.whole$symptom.onset.combined %--% erich.whole$nsgy.evacuation.date.erich)
+erich.whole$nsgy.interval <- time_length(erich.whole$nsgy.interval, unit = "days")
+erich.whole$nsgy.evacuation.date <- round(erich.whole$nsgy.interval, digits = 0) # Makes it compatabible to merge with ATACH
+
 
 # DNR and WLST Status
 
@@ -803,22 +808,33 @@ erich.whole <- erich.whole %>%
     CC18 == "1" ~ ymd_hms(paste(CC18_DATE, CC18_TIME))
   ))
 
-# Mortality Status
+# Mortality Status and Adding mRS 6
 
 erich.whole$death.date <- ymd(erich.whole$DOD)
 
-erich.whole <- erich.whole %>%
-  mutate(death.interval = as_date(death.date) - as_date(symptom.onset)) %>%
-  as.duration(death.interval)
-
-erich.whole$death.interval <- parse_integer(erich.whole$death.interval)
+erich.whole$death.interval <- erich.whole$symptom.onset.combined %--% erich.whole$death.date
+erich.whole$death.interval <- as.period(erich.whole$death.interval)
+erich.whole$death.interval <- time_length(erich.whole$death.interval, unit = "days")
 
 erich.whole <- erich.whole %>%
   mutate(mrs.90 = case_when(
-    death.interval > 90 ~ "6",
+    death.interval < 90 ~ 6,
     TRUE ~ mrs.90
-  ))
-  
+    ))
+
+erich.whole$mrs.90 <- na_if(erich.whole$mrs.90, 8)
+
+erich.whole <- erich.whole %>%
+  mutate(mrs.180 = case_when(
+    death.interval < 180 ~ 6,
+    TRUE ~ mrs.180
+    ))
+
+erich.whole <- erich.whole %>%
+  mutate(mrs.365 = case_when(
+    death.interval < 365 ~ 6,
+    TRUE ~ mrs.365
+    ))
 
 # Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days, tracheostomy
 
@@ -855,5 +871,7 @@ atach.erich <- atach.erich %>%
   
 atach.erich %>%
   as_tibble()
+
+
 
 ```
