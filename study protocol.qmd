@@ -1,18 +1,31 @@
 ---
 title: "Hemispheric Lateralization and Outcomes After ICH: A Pooled Analysis of Clinical Trials"
-subtitle: "Study Protocol and Statistical Analysis Plan"
+subtitle: "Study Protocol"
 author: "Nikhil Patel, MD"
-format: docx
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-title: ""
+    css: styles.css
+    anchor-sections: true
+    code-fold: true
+    code-overflow: wrap
+    code-summary: "Show the code"
+    output: false
 ---
 
 ## Introduction
 
-Patients with neurological injury experience different symptoms between the left and right hemispheres, and this may have.
+Patients with neurological injury experience different symptoms between the left and right hemispheres. This may affect prognostic estimates, and how frequently patients are offered aggressive care. In this study, we aimed to investigate any differential treatment patterns based on hemispheric lateralization, as well as differences in outcome with a pooled analysis of NINDS randomized trials enrolling patients with ICH.
+
 
 ## Methods
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+**Loading packages and data and define helper functions**
+
+```{r Initial Setup}
+
 library(tidyverse)
 library(tableone)
 library(data.table)
@@ -22,9 +35,9 @@ library(lubridate)
 
 ```
 
+**Importing and wrangling ATACH2 data 
 
-
-```{r ATACH2, include=FALSE}
+```{r ATACH2}
 
 # Create function to paste together string of FORMxx.txt
 atach.import <- function(y) {
@@ -413,9 +426,9 @@ VarsTableOne <- c("study",
 
 ```
 
+Importing and wrangling ERICH data
 
-
-```{r ERICH, include=FALSE}
+```{r ERICH}
 
 erich.case <- read_sas("ERICH/erich_case_100217.sas7bdat")
 
@@ -848,7 +861,9 @@ erich.whole <- erich.whole %>%
 
 ```
 
-```{r combining ATACH2 and ERICH, include=FALSE}
+Combining Datasets
+
+```{r combining ATACH2 and ERICH}
 
 atach.erich <- union_all(atach.whole, erich.whole)
 
@@ -872,6 +887,12 @@ atach.erich <- atach.erich %>%
 atach.erich %>%
   as_tibble()
 
+table1 <- CreateTableOne(data = atach.erich,
+                         strata = "ich.laterality",)
+
+print(table1, showAllLevels = FALSE)
 
 
 ```
+
+
