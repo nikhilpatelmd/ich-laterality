@@ -35,7 +35,7 @@ library(lubridate)
 
 ```
 
-**Importing and wrangling ATACH2 data 
+**Importing and wrangling ATACH2 data**
 
 ```{r ATACH2}
 
@@ -849,7 +849,14 @@ erich.whole <- erich.whole %>%
     TRUE ~ mrs.365
     ))
 
+# Adding tracheostomy information
+
+erich.whole <- erich.whole %>%
+  mutate(
+    tracheostomy = str_detect(erich.whole$IT5F_SPEC, "TRACH"))
+
 # Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days, tracheostomy
+
 
 # Filtering out ICH Laterality and Infratentorial Location
 erich.whole <- erich.whole %>%
