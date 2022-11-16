@@ -339,15 +339,18 @@ atach.whole <- atach.whole %>%
   mutate(euro.anxiety.90 = factor(F16Q06,
                                 labels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")))
 
+
 # Filtering out cases without ICH laterality
 atach.whole <- atach.whole %>%
   filter(ich.laterality != "NA")
 
-# Table 1
+# Renaming variables
 
 atach.whole <- atach.whole %>%
   rename(age = F33Q02) %>%
-  rename(symptom.onset = F00Q02MIN) %>%
+  rename(symptom.onset = F00Q02MIN) %>% # All times in ATACH2 dataset are expressed as minutes from randomization
+  rename(arrivaltime.initial = F02Q03MIN) %>% 
+  rename(arrivaltime.strokecenter = F02Q05MIN) %>%
   rename(sbp.initial = F05Q07A) %>%
   rename(dbp.initial = F05Q07B) %>%
   rename(gcs.baseline = F33Q04) %>%
@@ -359,69 +362,34 @@ atach.whole <- atach.whole %>%
   rename(euro.vas.90 = F16Q07) %>%
   rename(EQ_INDEX.90 = EQ_INDEX)
 
-VarsTableOne <- c("study",
-                  "age", # Age
-                       "sex", # Sex
-                       "ethnicity", # Ethnicity
-                       "race", # Race
-                       "enrolling.country", # Country of Enrolling Site
-                       "stroke", 
-                       "cad", 
-                       "chf", 
-                       "afib", 
-                       "pvd",
-                       "hld",
-                       "dm2",
-                       "tobacco",
-                       #"symptom.onset", # Time of symptom onset
-                       "sbp.initial", # Initial SBP
-                       "dbp.initial", # Initial DBP
-                       "gcs.baseline", # Baseline GCS
-                       #"nihss.baseline", # NIHSS
-                       "ich.location.baseline", 
-                       "ivh",
-                      # "hydrocephalus",
-                       "ich.volume.cc",
-                       "ivh.volume.cc",
-                       "phe.volume.cc",
-                       "sp.shift.baseline",
-                       "mech.ventilation",
-                       "intubation.days", 
-                       "extubation.date", # Date of extubation
-                       "tracheostomy",
-                       "trach.date", # Date of Tracheostomy
-                       "evd",
-                       "evd.days", # Total EVD days
-                       "nsgy.evacuation",
-                       "nsgy.evacuation.date",  # Date of Evacuation
-                       "mrs.30",
-                       "mrs.90",
-                      "mrs.180",
-                      "mrs.365",
-                      "euro.mobility.90",
-                      "euro.mobility.180",
-                      "euro.mobility.365",
-                       "euro.selfcare.90",
-                      "euro.selfcare.180",
-                      "euro.selfcare.365",
-                       "euro.usual.90",
-                      "euro.usual.180",
-                      "euro.usual.365",
-                       "euro.pain.90",
-                      "euro.pain.180",
-                      "euro.pain.365",
-                       "euro.anxiety.90",
-                      "euro.anxiety.180",
-                      "euro.anxiety.365",
-                       "euro.vas.90", # EuroQOL VAS
-                       "euro.vas.180",
-                       "euro.vas.365",
-                       "EQ_INDEX.90", # EQ-5D Utility Index,,
-                      "current.location.90",
-                      "current.location.180",
-                      "current.location.365",
-                       "ich.laterality"
-                  )
+# Calculating Time to ED Presentation as expressed by minutes and hours from symptom onset
+
+atach.whole <- atach.whole %>%
+  mutate(time.to.ed.minutes = abs(arrivaltime.strokecenter - symptom.onset)) %>%
+  mutate(time.to.ed.hours = time.to.ed.minutes / 60)
+
+atach.whole$time.to.ed.hours <- round(atach.whole$time.to.ed.hours, digits = 2)
+
+atach.times <- atach.whole %>%
+  select(c(symptom.onset, arrivaltime.initial, arrivaltime.strokecenter, time.to.ed.minutes, time.to.ed.hours))
+
+# DNR and WLST status
+
+atach.whole <- atach.whole %>%
+  mutate(dnr.binary = case_when(
+    F21Q08 == "0" ~ "No",
+    F21Q08 == "1" ~ "Yes"
+  ))
+
+atach.whole <- atach.whole %>%
+  mutate(comfort.binary = case_when(
+    F21Q06 == "0" ~ "No",
+    F21Q06 == "1" ~ "Yes"
+  ))
+
+atach.whole <- atach.whole %>%
+  rename(comfort.day = F21Q07DAY) %>%
+  rename(dnr.day = F21Q09DAY)
 
 
 ```
@@ -535,49 +503,29 @@ erich.whole <- erich.whole %>%
                                  "M" = "NA",
                                  .default = "NA"))
 
+# ICH Location
 erich.whole <- erich.whole %>%
-  mutate(ich.location.baseline = recode(erich.case$detail,
-                                        "L Thalamic" = "Thalamus",
-                                        "R Thalamic" = "Thalamus",
-                                        "L Caudate Nucleus" = "Basal Ganglia",
-                                        "L Cerebellar" = "Cerebellum",
-                                        "L Corona Radiata" = "Lobar",
-                                        "L Frontal" = "Lobar",
-                                        "L Frontal Temporal" = "Lobar",
-                                        "L Frontoparietal" = "Lobar",
-                                        "L Occipital" = "Lobar",
-                                        "L Parietal" = "Lobar",
-                                        "L Parieto-Occipital" = "Lobar",
-                                        "L Periventricular" = "Basal Ganglia",
-                                        "L Putaminal" = "Basal Ganglia",
-                                        "L Temporal" = "Lobar",
-                                        "L Temporal-Parietal-Occipital (L Hemisphere)" = "Lobar",
-                                        "L Temporal Occipital" = "Lobar",
-                                        "L Temporal parietal" = "Lobar",
-                                        "Multiple Hemorrhages - Deep" = "Basal Ganglia",
-                                        "Multiple Hemorrhages - Lobar" = "Lobar",
-                                        "Not applicable" = "NA",
-                                        "Primary IVH" = "Primary IVH",
-                                        "R Basal Ganglia" = "Basal Ganglia",
-                                        "R Caudate Nucleus" = "Basal Ganglia",
-                                        "R Cerebellar" = "Cerebellum",
-                                        "R Frontal" = "Lobar",
-                                        "R Frontal Temporal" = "Lobar",
-                                        "R Frontoparietal" = "Lobar",
-                                        "R Occipital" = "Lobar",
-                                        "R Parietal" = "Lobar",
-                                        "R Parieto-Occipital" = "Lobar",
-                                        "R Periventricular" = "Basal Ganglia",
-                                        "R Putaminal" = "Basal Ganglia",
-                                        "R Temporal" = "Lobar",
-                                        "R Temporal-Parietal-Occipital (R Hemisphere)" = "Lobar",
-                                        "R Temporal Occipital" = "Lobar",
-                                        "R Temporal Perietal" = "Lobar",
-                                        "Unknown" = "NA",
-                                        "Brainstem" = "Brainstem",
-                                        "Cerebellar" = "Cerebellum",
-                                        "R Temporal parietal" = "Lobar",
-                                        "L Basal Ganglia" = "Basal Ganglia",                                        ))
+  mutate(
+    ich.location.baseline = case_when(
+      str_detect(erich.whole$detail, "Ganglia") ~ "Basal Ganglia",
+      str_detect(erich.whole$detail, "Brainstem") ~ "Brainstem",
+      str_detect(erich.whole$detail, "Cerebell") ~ "Cerebellum",
+      str_detect(erich.whole$detail, "Front") ~ "Lobar",
+      str_detect(erich.whole$detail, "Tempor") ~ "Lobar",
+      str_detect(erich.whole$detail, "Occi") ~ "Lobar",
+      str_detect(erich.whole$detail, "Perivent") ~ "Basal Ganglia",
+      str_detect(erich.whole$detail, "Caudate") ~ "Basal Ganglia",
+      str_detect(erich.whole$detail, "Putam") ~ "Basal Ganglia",
+      str_detect(erich.whole$detail, "Deep") ~ "Basal Ganglia",
+      str_detect(erich.whole$detail, "Lobar") ~ "Lobar",
+      str_detect(erich.whole$detail, "IVH") ~ "Primary IVH",
+      str_detect(erich.whole$detail, "Hemis") ~ "Lobar",
+      str_detect(erich.whole$detail, "Thal") ~ "Thalamus",
+      str_detect(erich.whole$detail, "Ganglia") ~ "Basal Ganglia",
+      str_detect(erich.whole$detail, "Corona") ~ "Lobar",
+      str_detect(erich.whole$detail, "applic") ~ "NA",
+      detail == "Unknown" ~ "NA"
+      ))
 
 erich.whole <- erich.whole %>%
   mutate(ivh = case_when(erich.case$IVH_Vol_CT1 > 0 ~ "Yes",
@@ -772,6 +720,16 @@ erich.whole <- erich.whole %>%
 erich.whole <- erich.whole %>%
   mutate(ed.presentation.date.time = ymd_hms(paste(erich.whole$ED7, erich.whole$ED8)))
 
+# Calculating Time to ED Presentation as expressed by minutes and hours from symptom onset
+
+erich.whole$symptom.onset.interval <- as.period(erich.whole$symptom.onset.combined %--% erich.whole$ed.presentation.date.time)
+erich.whole$time.to.ed.minutes <- time_length(erich.whole$symptom.onset.interval, unit = "minutes")
+erich.whole$time.to.ed.hours <- time_length(erich.whole$symptom.onset.interval, unit = "hours")
+
+erich.whole$time.to.ed.minutes[erich.whole$time.to.ed.minutes < 0] = NA
+erich.whole$time.to.ed.hours[erich.whole$time.to.ed.hours < 0] = NA
+
+
 # Neurosurgery Dates
 
 erich.whole <- erich.whole %>%
@@ -783,7 +741,7 @@ erich.whole <- erich.whole %>%
 
 erich.whole$nsgy.interval <- as.period(erich.whole$symptom.onset.combined %--% erich.whole$nsgy.evacuation.date.erich)
 erich.whole$nsgy.interval <- time_length(erich.whole$nsgy.interval, unit = "days")
-erich.whole$nsgy.evacuation.date <- round(erich.whole$nsgy.interval, digits = 0) # Makes it compatabible to merge with ATACH
+erich.whole$nsgy.evacuation.date <- round(erich.whole$nsgy.interval, digits = 0) # Makes it compatible to merge with ATACH
 
 
 # DNR and WLST Status
@@ -814,15 +772,27 @@ erich.whole <- erich.whole %>%
     CC16 == "1" ~ ymd_hms(paste(CC16_DATE, CC16_TIME))
   ))
 
+erich.whole$dnr.interval <- as.period(erich.whole$symptom.onset.combined %--% erich.whole$dnr.date.time)
+erich.whole$dnr.interval <- time_length(erich.whole$dnr.interval, unit = "days")
+erich.whole$dnr.day <- round(erich.whole$dnr.interval, digits = 0)
+
 erich.whole <- erich.whole %>%
   mutate(dni.date.time = case_when(
     CC17 == "1" ~ ymd_hms(paste(CC17_DATE, CC17_TIME))
   ))
 
+erich.whole$dni.interval <- as.period(erich.whole$symptom.onset.combined %--% erich.whole$dni.date.time)
+erich.whole$dni.interval <- time_length(erich.whole$dni.interval, unit = "days")
+erich.whole$dni.day <- round(erich.whole$dni.interval, digits = 0)
+
 erich.whole <- erich.whole %>%
   mutate(comfort.date.time = case_when(
     CC18 == "1" ~ ymd_hms(paste(CC18_DATE, CC18_TIME))
   ))
+
+erich.whole$comfort.interval <- as.period(erich.whole$symptom.onset.combined %--% erich.whole$comfort.date.time)
+erich.whole$comfort.interval <- time_length(erich.whole$comfort.interval, unit = "days")
+erich.whole$comfort.day <- round(erich.whole$comfort.interval, digits = 0)
 
 # Mortality Status and Adding mRS 6
 
@@ -861,14 +831,6 @@ erich.whole <- erich.whole %>%
       ))
 
 # Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days
-
-# Filtering out ICH Laterality and Infratentorial Location
-erich.whole <- erich.whole %>%
-  filter(ich.laterality != "NA") %>%
-  filter(ich.location.baseline == "Basal Ganglia" |
-           ich.location.baseline == "Thalamus" |
-           ich.location.baseline == "Lobar")
-
 
 ```
 
@@ -931,7 +893,38 @@ clear3.whole <- left_join(clear3.whole, clear3.180outcomes)
 # Adding category to indicate study identity
 clear3.whole <- clear3.whole %>% mutate(study = "CLEAR III")
 
+# Renaming Variables
+
+clear3.whole <- clear3.whole %>%
+  rename(age = age_at_registration) %>%
+  rename(sbp.initial = er_present_systolic) %>%
+  rename(dbp.initial = er_present_diastolic) %>%
+  rename(ich.location.baseline = adjudicated_ich_location) %>%
+  rename(gcs.baseline = er_present_gcs_total) %>%
+  rename(nihss.baseline = er_present_nihss_total) %>%
+  rename(ich.volume.cc = dct_ich_volume_rc) %>%
+  rename(ivh.volume.cc = dct_ivh_volume_rc) %>%
+  rename(mrs.30 = glasgow_rankin_30) %>%
+  rename(mrs.180 = glasgow_rankin_180) %>%
+  rename(gose.30 = gose_30) %>%
+  rename(gose.180 = gose_180) %>%
+  rename(comfort.day = ictus_to_withdrawal_days)
+
+
 # Categorizing and Recoding Variables
+
+clear3.whole <- clear3.whole %>%
+  mutate(ich.location.baseline = case_when(
+    ich.location.baseline == "Caudate" ~ "Basal Ganglia",
+    ich.location.baseline == "Frontal" ~ "Lobar",
+    ich.location.baseline == "Globus Pallidus" ~ "Basal Ganglia",
+    ich.location.baseline == "Occipital" ~ "Lobar",
+    ich.location.baseline == "Other" ~ "NA",
+    ich.location.baseline == "Probable Primary IVH" ~ "Primary IVH",
+    ich.location.baseline == "Putamen" ~ "Basal Ganglia",
+    ich.location.baseline == "Temporal" ~ "Lobar",
+    ich.location.baseline == "Thalamus" ~ "Thalamus"
+  ))
 
 clear3.whole <- clear3.whole %>%
   mutate(race = case_when(
@@ -961,26 +954,29 @@ clear3.whole <- clear3.whole %>%
                                  "right" = "Right",
                                  "unknown/missing" = "NA" ))
 
+clear3.whole <- clear3.whole %>%
+  mutate(tobacco = recode(tobacco_use,
+                          "1" = "Yes",
+                          "NA" = "No"))
+
+
 clear3.whole <- clear3.whole %>% mutate(ivh = "Yes")
 
 clear3.whole <- clear3.whole %>%
-  rename(age = age_at_registration) %>%
-  rename(tobacco = tobacco_use) %>%
-  rename(sbp.initial = er_present_systolic) %>%
-  rename(dbp.initial = er_present_diastolic) %>%
-  rename(ich.location.baseline = adjudicated_ich_location) %>%
-  rename(gcs.baseline = er_present_gcs_total) %>%
-  rename(nihss.baseline = er_present_nihss_total) %>%
-  rename(ich.volume.cc = dct_ich_volume_rc) %>%
-  rename(ivh.volume.cc = dct_ivh_volume_rc) %>%
-  rename(mrs.30 = glasgow_rankin_30) %>%
-  rename(mrs.180 = glasgow_rankin_180) %>%
-  rename(gose.30 = gose_30) %>%
-  rename(gose.180 = gose_180) %>%
-  rename(comfort.binary = withdrawal_contribution) %>%
-  rename(comfort.date.time = ictus_to_withdrawal_days) %>%
-  rename(symptom.onset.to.presentation = ictus_to_presentation)
-  
+  mutate(comfort.binary = case_when(
+    withdrawal_contribution == "on" ~ "Yes",
+    TRUE ~ "No"
+  ))
+
+# Recalculating Time to ED Presentation
+
+clear3.whole <- clear3.whole %>%
+  mutate(time.to.ed.minutes = ictus_to_presentation*24*60) %>%
+  mutate(time.to.ed.hours = ictus_to_presentation*24)
+
+clear3.whole$time.to.ed.minutes <- round(clear3.whole$time.to.ed.minutes, digits = 0)
+clear3.whole$time.to.ed.hours <- round(clear3.whole$time.to.ed.hours, digits = 2)
+
 
 ```
 
@@ -998,8 +994,8 @@ mistie2.results <- readxl::read_excel("./MISTIE2/MISTIE II and ICES_ctgov result
 
 mistie2.demographics3 <- readxl::read_excel("./MISTIE2/ICES_Publication results_2015.12.23_RT_RD updates 2017.10.16.xlsx", sheet = 1)
 
-mistie2.combined.demographics <- full_join(mistie2.demographics, mistie2.demographics3)
-mistie2.combined.demographics <- full_join(mistie2.combined.demographics, mistie2.demographics2)
+mistie2.combined.demographics <- left_join(mistie2.demographics3, mistie2.demographics)
+mistie2.combined.demographics <- left_join(mistie2.demographics2, mistie2.combined.demographics)
 
 mistie2.wide.results <- mistie2.results %>%
   pivot_wider(names_from = Follow_up_Visit, values_from = c(GOS, eGOS_Score, rankin_score, SIS_Total, SIS_16_Total))
@@ -1021,12 +1017,29 @@ mistie2.whole <- mistie2.whole %>%
 
 mistie2.whole <- mistie2.whole %>%
   mutate(race = recode(Race,
-                       "African American not Hispanic" = "Black or African American",
+                       "African American not Hispanic" = "Black or African-American",
                        "Asian or Pacific Islander" = "Asian",
                        "Caucasian not Hispanic" = "White",
                        "Hispanic" = "Other/Not Reported",
                        "Other or unknown" = "Other/Not Reported"
   ))
+
+mistie2.whole <- mistie2.whole %>%
+  mutate(ich.location.baseline = case_when(
+    clot_location_rc == "Globus Palidus" ~ "Basal Ganglia",
+    clot_location_rc == "Lobar" ~ "Lobar",
+    clot_location_rc == "Putamen" ~ "Basal Ganglia",
+    clot_location_rc == "Thalamus" ~ "Thalamus"
+  ))
+
+mistie2.whole <- mistie2.whole %>%
+  mutate(ivh = recode(any_ivh_prerand,
+                      "1" = "Yes",
+                      "0" = "No",
+                      .default = "NA"
+  ))
+
+
 
 mistie2.whole <- mistie2.whole %>%
   rename(sbp.initial = er_sbp) %>%
@@ -1035,6 +1048,11 @@ mistie2.whole <- mistie2.whole %>%
   rename(nihss.baseline = enrollment_nihss_total) %>%
   rename(ich.volume.cc = pre_rand_ichvol) %>%
   rename(ivh.volume.cc = pre_rand_ivhvol) %>%
+  rename(htn = Hypertension) %>%
+  rename(hld = Hyperlipidemia) %>%
+  rename(dm2 = Diabetes) %>%
+  rename(tobacco = Tobacco_Use) %>%
+  rename(cad = Other_CV) %>%
   rename(gos.365 = GOS_365) %>%
   rename(gos.270 = GOS_270) %>%
   rename(gos.180 = GOS_180) %>%
@@ -1049,15 +1067,8 @@ mistie2.whole <- mistie2.whole %>%
   rename(mrs.270 = rankin_score_270) %>%
   rename(mrs.180 = rankin_score_180) %>%
   rename(mrs.90 = rankin_score_90) %>%
-  rename(mrs.30 = rankin_score_30)
-
-
-mistie2.whole <- mistie2.whole %>%
-  mutate(ivh = recode(any_ivh_prerand,
-                      "0" = "No",
-                      "1" = "Yes"
-  ))
-
+  rename(mrs.30 = rankin_score_30) %>%
+  rename(ich.laterality = hemisphere)
 
 ```
 
@@ -1085,11 +1096,15 @@ mistie3 <- mistie3 %>%
   rename(mrs.365 = glasgow_rankin_365) %>%
   rename(barthel.total.365 = barthel_index_365) %>%
   rename(eq.vas.365 = eq_vas_365) %>%
-  rename(time.to.presentation = ictus_to_site_arrival_hours)
+  rename(time.to.ed.hours = ictus_to_diagct_hours)
+
+mistie3$time.to.ed.hours = round(mistie3$time.to.ed.hours, digits = 2)
+mistie3$time.to.ed.minutes = mistie3$time.to.ed.hours * 60
+mistie3$time.to.ed.minutes = round(mistie3$time.to.ed.minutes, digits = 0)
 
 mistie3 <- mistie3 %>%
   mutate(race = case_when(
-    race == "African-American" ~ "Black of African-American",
+    race == "African-American" ~ "Black or African-American",
     race == "Asian Hawaiian or Pacific" ~ "Asian",
     race == "Indian or Alaskan" ~ "American Indian or Alaskan Native",
     race == "More than one race" ~ "Other/Not Reported",
@@ -1133,10 +1148,22 @@ mistie3 <- mistie3 %>%
   ))
 
 mistie3 <- mistie3 %>%
-  mutate(comfort = case_when(
+  mutate(ich.location.baseline = case_when(
+    ich_location_specify == "BG" ~ "Basal Ganglia",
+    ich_location_specify == "Frontal" ~ "Lobar",
+    ich_location_specify == "Occipital" ~ "Lobar",
+    ich_location_specify == "Parietal" ~ "Lobar",
+    ich_location_specify == "Temporal" ~ "Lobar",
+    ich_location_specify == "Thalamus" ~ "Thalamus",
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(comfort.binary = case_when(
     withdrawal_contribution == "0" ~ "No",
     withdrawal_contribution == "1" ~ "Yes"
   ))
+
+mistie3 <- subset(mistie3, select = -withdrawal_contribution)
 
 mistie3 <- mistie3 %>%
   mutate(euro.mobility.365 = case_when(
@@ -1206,17 +1233,102 @@ mistie3 <- mistie3 %>%
     location_d365 == "Hospice" ~ "Hospice",
   ))
 
+# Calculating WLST Day
+
+mistie3 <- mistie3 %>%
+  mutate(symptom.onset.date = mdy(ninds_symptom_onset_date)) %>%
+  mutate(withdrawal.date = mdy(ninds_withdrawal_date))
+
+mistie3$withdrawal.interval <- as.period(mistie3$symptom.onset.date %--% mistie3$withdrawal.date)
+mistie3$withdrawal.interval <- time_length(mistie3$withdrawal.interval, unit = "days")
+mistie3$comfort.day <- round(mistie3$withdrawal.interval, digits = 0)
+
+
+
 ```
 
 
 **Combining Datasets**
 
-```{r combining ATACH2 and ERICH}
+```{r Combining Everything}
 
-atach.erich <- union_all(atach.whole, erich.whole)
+# Combining Data from All Studies
+combined.dataset.list <- list(atach.whole, erich.whole, clear3.whole, mistie2.whole, mistie3)
 
-atach.erich <- atach.erich %>%
-  select(VarsTableOne) %>%
+atach.erich <- full_join(atach.whole, erich.whole)
+atach.erich.clear <- full_join(atach.erich, clear3.whole)
+atach.erich.clear.mistie2 <- full_join(atach.erich.clear, mistie2.whole)
+atach.erich.clear.mistie2.mistie3 <- full_join(atach.erich.clear.mistie2, mistie3)
+
+VarsTableOne <- c("study","age", "sex", "ethnicity", # Ethnicity
+                       "race", # Race
+                       "enrolling.country", # Country of Enrolling Site
+                       "stroke", 
+                       "cad", 
+                       "chf", 
+                       "afib", 
+                       "pvd",
+                       "hld",
+                       "dm2",
+                       "tobacco",
+                       "time.to.ed.minutes", # Time from symptom onset to Ed presentation
+                       "sbp.initial", # Initial SBP
+                       "dbp.initial", # Initial DBP
+                       "gcs.baseline", # Baseline GCS
+                       "nihss.baseline", # NIHSS
+                       "ich.location.baseline", 
+                       "ivh",
+                      # "hydrocephalus",
+                       "ich.volume.cc",
+                       "ivh.volume.cc",
+                       "phe.volume.cc",
+                       "sp.shift.baseline",
+                       "mech.ventilation",
+                       "intubation.days", 
+                       "extubation.date", # Date of extubation
+                       "tracheostomy",
+                       "trach.date", # Date of Tracheostomy
+                       "evd",
+                       "evd.days", # Total EVD days
+                       "nsgy.evacuation",
+                       "nsgy.evacuation.date",  # Date of Evacuation
+                       "mrs.30",
+                       "mrs.90",
+                      "mrs.180",
+                      "mrs.365",
+                      "euro.mobility.90",
+                      "euro.mobility.180",
+                      "euro.mobility.365",
+                       "euro.selfcare.90",
+                      "euro.selfcare.180",
+                      "euro.selfcare.365",
+                       "euro.usual.90",
+                      "euro.usual.180",
+                      "euro.usual.365",
+                       "euro.pain.90",
+                      "euro.pain.180",
+                      "euro.pain.365",
+                       "euro.anxiety.90",
+                      "euro.anxiety.180",
+                      "euro.anxiety.365",
+                       "euro.vas.90", # EuroQOL VAS
+                       "euro.vas.180",
+                       "euro.vas.365",
+                       "EQ_INDEX.90", # EQ-5D Utility Index,,
+                      "current.location.90",
+                      "current.location.180",
+                      "current.location.365",
+                       "ich.laterality",
+                  "dnr.binary",
+                  "comfort.binary",
+                  "dnr.day",
+                  "comfort.day"
+                  )
+
+ninds.combined <- atach.erich.clear.mistie2.mistie3 %>%
+  select(VarsTableOne)
+
+ninds.combined <- ninds.combined %>%
   mutate(ich.score.age = case_when(
     age < 80 ~ 0,
     age >= 80 ~ 1
@@ -1231,14 +1343,49 @@ atach.erich <- atach.erich %>%
                            ich.score.gcs + 
                            ich.score.volume +
                            ich.score.ivh)
-  
-atach.erich %>%
-  as_tibble()
 
-table1 <- CreateTableOne(data = atach.erich,
-                         strata = "ich.laterality",)
+# Cleaning up combined dataset
+ninds.combined <- ninds.combined %>%
+  mutate(sex = case_when(
+    sex == "Man" ~ "Male",
+    sex == "Male" ~ "Male",
+    sex == "Woman" ~ "Female",
+    sex == "Female" ~ "Female")) %>%
+  mutate(ethnicity = case_when(
+    ethnicity == "Hispanic or Latino" ~ "Hispanic or Latino",
+    ethnicity == "Not Hispanic or Latino" ~ "Not Hispanic or Latino",
+    ethnicity == "Unknown/Not Reported" ~ "NA")) %>%
+  mutate(ich.location.baseline = case_when(
+    ich.location.baseline == "Basal Ganglia" ~ "Basal Ganglia",
+    ich.location.baseline == "Brainstem" ~ "Brainstem",
+    ich.location.baseline == "Caudate" ~ "Basal Ganglia",
+    ich.location.baseline == "Cerebellum" ~ "Cerebellum",
+    ich.location.baseline == "Frontal" ~ "Lobar",
+    ich.location.baseline == "Globus Pallidus" ~ "Basal Ganglia",
+    ich.location.baseline == "Lobar" ~ "Lobar",
+    ich.location.baseline == "Occipital" ~ "Lobar",
+    ich.location.baseline == "Other" ~ "Other",
+    ich.location.baseline == "Parietal" ~ "Lobar",
+    ich.location.baseline == "Primary IVH" ~ "Primary IVH",
+    ich.location.baseline == "Probable Primary IVH" ~ "Primary IVH",
+    ich.location.baseline == "Putamen" ~ "Basal Ganglia",
+    ich.location.baseline == "Temporal" ~ "Lobar",
+    ich.location.baseline == "Thalamus" ~ "Thalamus"
+  ))
 
-print(table1, showAllLevels = FALSE)
+ninds.combined <- ninds.combined %>%
+  filter(ich.location.baseline == "Lobar" | 
+           ich.location.baseline == "Thalamus" |
+           ich.location.baseline == "Basal Ganglia") %>%
+  filter(!is.na(ich.laterality))
 
+table1 <- CreateTableOne(data = ninds.combined,
+                         strata = "ich.laterality")
 
 ```
+
+```{r output = TRUE}
+print(table1, showAllLevels = FALSE)
+
+```
+
