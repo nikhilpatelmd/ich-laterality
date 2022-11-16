@@ -157,10 +157,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven) <span class="co"># Importing SAS Files</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>**Importing and wrangling ATACH2 data</p>
+<p><strong>Importing and wrangling ATACH2 data</strong></p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -420,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">.default =</span> <span class="st">"NA"</span>))</span>
 <span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a>atach.whole <span class="ot">&lt;-</span> atach.whole <span class="sc">%&gt;%</span></span>
-<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trach =</span> <span class="fu">recode</span>(F07Q11,</span>
+<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tracheostomy =</span> <span class="fu">recode</span>(F07Q11,</span>
 <span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"0"</span> <span class="ot">=</span> <span class="st">"No"</span>,</span>
 <span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Yes"</span>,</span>
 <span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">.default =</span> <span class="st">"NA"</span>))</span>
@@ -512,7 +513,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"mech.ventilation"</span>,</span>
 <span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"intubation.days"</span>, </span>
 <span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"extubation.date"</span>, <span class="co"># Date of extubation</span></span>
-<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"trach"</span>,</span>
+<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"tracheostomy"</span>,</span>
 <span id="cb2-350"><a href="#cb2-350" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"trach.date"</span>, <span class="co"># Date of Tracheostomy</span></span>
 <span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"evd"</span>,</span>
 <span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"evd.days"</span>, <span class="co"># Total EVD days</span></span>
@@ -545,12 +546,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-379"><a href="#cb2-379" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"current.location.180"</span>,</span>
 <span id="cb2-380"><a href="#cb2-380" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"current.location.365"</span>,</span>
 <span id="cb2-381"><a href="#cb2-381" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"ich.laterality"</span></span>
-<span id="cb2-382"><a href="#cb2-382" aria-hidden="true" tabindex="-1"></a>                  )</span>
-<span id="cb2-383"><a href="#cb2-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-384"><a href="#cb2-384" aria-hidden="true" tabindex="-1"></a><span class="co"># Maybe import lab data, but this may be superfluous</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-382"><a href="#cb2-382" aria-hidden="true" tabindex="-1"></a>                  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Importing and wrangling ERICH data</p>
+<p><strong>Importing and wrangling ERICH data</strong></p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -726,293 +725,633 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">evd =</span> <span class="fu">case_when</span>(</span>
 <span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>    IT8 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
 <span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>    IT8 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nsgy.evacuation =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>    IT5D <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>    IT5H <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"No"</span></span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>      ))</span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.90 =</span> RANKIN_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.180 =</span> RANKIN_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.365 =</span> RANKIN_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">euro.vas.90 =</span> HLTHSTAT_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">euro.vas.180 =</span> HLTHSTAT_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">euro.vas.365 =</span> HLTHSTAT_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.feeding.90 =</span> FEED_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bathing.90 =</span> BATHE_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.grooming.90 =</span> GROOM_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.dressing.90 =</span> DRESS_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bowels.90 =</span> BOWELS_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bladder.90 =</span> BLADDER_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.toilet.90 =</span> TOILET_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.transfer.90 =</span> TRANSFER_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.mobility.90 =</span> MOBLEVEL_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.stairs.90 =</span> STAIRS_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.total.90 =</span> BART_TOT_FU1) <span class="sc">%&gt;%</span></span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.feeding.180 =</span> FEED_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bathing.180 =</span> BATHE_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.grooming.180 =</span> GROOM_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.dressing.180 =</span> DRESS_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bowels.180 =</span> BOWELS_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bladder.180 =</span> BLADDER_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.toilet.180 =</span> TOILET_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.transfer.180 =</span> TRANSFER_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.mobility.180 =</span> MOBLEVEL_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.stairs.180 =</span> STAIRS_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.total.180 =</span> BART_TOT_FU2) <span class="sc">%&gt;%</span></span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.feeding.365 =</span> FEED_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bathing.365 =</span> BATHE_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.grooming.365 =</span> GROOM_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.dressing.365 =</span> DRESS_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bowels.365 =</span> BOWELS_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bladder.365 =</span> BLADDER_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.toilet.365 =</span> TOILET_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.transfer.365 =</span> TRANSFER_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.mobility.365 =</span> MOBLEVEL_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.stairs.365 =</span> STAIRS_FU3) <span class="sc">%&gt;%</span></span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.total.365 =</span> BART_TOT_FU3)</span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.90 =</span> <span class="fu">recode</span>(CURR_LOC_FU1,</span>
-<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Home"</span>,</span>
-<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Rehabilitation"</span>,</span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Hospital"</span>,</span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"Other"</span></span>
-<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>                      )) <span class="sc">%&gt;%</span></span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.180 =</span> <span class="fu">recode</span>(CURR_LOC_FU1,</span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Home"</span>,</span>
-<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Rehabilitation"</span>,</span>
-<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
-<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Hospital"</span>,</span>
-<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"Other"</span></span>
-<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>                      )) <span class="sc">%&gt;%</span></span>
-<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.365 =</span> <span class="fu">recode</span>(CURR_LOC_FU1,</span>
-<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Home"</span>,</span>
-<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Rehabilitation"</span>,</span>
-<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
-<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Hospital"</span>,</span>
-<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"Other"</span></span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>                      ))</span>
-<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.mobility.90 =</span> <span class="fu">factor</span>(MOBILITY_FU1,</span>
-<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Confined to Bed"</span>, <span class="st">"NA"</span>)))</span>
-<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.selfcare.90 =</span> <span class="fu">factor</span>(SELFCARE_FU1,</span>
-<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Wash or Dress Myself"</span>, <span class="st">"NA"</span>)))</span>
-<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.usual.90 =</span> <span class="fu">factor</span>(USUALACT_FU1,</span>
-<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Perform My Usual Activities"</span>, <span class="st">"NA"</span>)))</span>
-<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.pain.90 =</span> <span class="fu">factor</span>(PAIN_FU1,</span>
-<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Pain/Discomfort"</span>, <span class="st">"Some Moderate Pain/Discomfort"</span>, <span class="st">"Extreme Pain/Discomfort"</span>, <span class="st">"NA"</span>)))</span>
-<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.anxiety.90 =</span> <span class="fu">factor</span>(ANXIETY_FU1,</span>
-<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not Anxious/Depressed"</span>, <span class="st">"Moderately Anxious/Depressed"</span>, <span class="st">"Extremely Anxious/Depressed"</span>, <span class="st">"NA"</span>)))</span>
-<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.mobility.180 =</span> <span class="fu">factor</span>(MOBILITY_FU2,</span>
-<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Confined to Bed"</span>)))</span>
-<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.selfcare.180 =</span> <span class="fu">factor</span>(SELFCARE_FU2,</span>
-<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Wash or Dress Myself"</span>)))</span>
-<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.usual.180 =</span> <span class="fu">factor</span>(USUALACT_FU2,</span>
-<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Perform My Usual Activities"</span>)))</span>
-<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.pain.180 =</span> <span class="fu">factor</span>(PAIN_FU2,</span>
-<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Pain/Discomfort"</span>, <span class="st">"Some Moderate Pain/Discomfort"</span>, <span class="st">"Extreme Pain/Discomfort"</span>)))</span>
-<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.anxiety.180 =</span> <span class="fu">factor</span>(ANXIETY_FU2,</span>
-<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not Anxious/Depressed"</span>, <span class="st">"Moderately Anxious/Depressed"</span>, <span class="st">"Extremely Anxious/Depressed"</span>)))</span>
-<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.mobility.365 =</span> <span class="fu">factor</span>(MOBILITY_FU3,</span>
-<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Confined to Bed"</span>)))</span>
-<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.selfcare.365 =</span> <span class="fu">factor</span>(SELFCARE_FU3,</span>
-<span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Wash or Dress Myself"</span>)))</span>
-<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.usual.365 =</span> <span class="fu">factor</span>(USUALACT_FU3,</span>
-<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Perform My Usual Activities"</span>)))</span>
-<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.pain.365 =</span> <span class="fu">factor</span>(PAIN_FU3,</span>
-<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Pain/Discomfort"</span>, <span class="st">"Some Moderate Pain/Discomfort"</span>, <span class="st">"Extreme Pain/Discomfort"</span>)))</span>
-<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.anxiety.365 =</span> <span class="fu">factor</span>(ANXIETY_FU3,</span>
-<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not Anxious/Depressed"</span>, <span class="st">"Moderately Anxious/Depressed"</span>, <span class="st">"Extremely Anxious/Depressed"</span>)))</span>
-<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a><span class="co"># Parsing Dates and Times in ERICH</span></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(erich.whole<span class="sc">$</span>IT5F_SPEC, <span class="st">"VENTR"</span>) <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nsgy.evacuation =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>    IT5D <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>    IT5H <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(erich.whole<span class="sc">$</span>IT5F_SPEC, <span class="st">"CRANI"</span>) <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(erich.whole<span class="sc">$</span>IT5F_SPEC, <span class="st">"EVAC"</span>) <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"No"</span></span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>      ))</span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.90 =</span> RANKIN_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.180 =</span> RANKIN_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.365 =</span> RANKIN_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">euro.vas.90 =</span> HLTHSTAT_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">euro.vas.180 =</span> HLTHSTAT_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">euro.vas.365 =</span> HLTHSTAT_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.feeding.90 =</span> FEED_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bathing.90 =</span> BATHE_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.grooming.90 =</span> GROOM_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.dressing.90 =</span> DRESS_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bowels.90 =</span> BOWELS_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bladder.90 =</span> BLADDER_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.toilet.90 =</span> TOILET_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.transfer.90 =</span> TRANSFER_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.mobility.90 =</span> MOBLEVEL_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.stairs.90 =</span> STAIRS_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.total.90 =</span> BART_TOT_FU1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.feeding.180 =</span> FEED_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bathing.180 =</span> BATHE_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.grooming.180 =</span> GROOM_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.dressing.180 =</span> DRESS_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bowels.180 =</span> BOWELS_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bladder.180 =</span> BLADDER_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.toilet.180 =</span> TOILET_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.transfer.180 =</span> TRANSFER_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.mobility.180 =</span> MOBLEVEL_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.stairs.180 =</span> STAIRS_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.total.180 =</span> BART_TOT_FU2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.feeding.365 =</span> FEED_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bathing.365 =</span> BATHE_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.grooming.365 =</span> GROOM_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.dressing.365 =</span> DRESS_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bowels.365 =</span> BOWELS_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.bladder.365 =</span> BLADDER_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.toilet.365 =</span> TOILET_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.transfer.365 =</span> TRANSFER_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.mobility.365 =</span> MOBLEVEL_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.stairs.365 =</span> STAIRS_FU3) <span class="sc">%&gt;%</span></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.total.365 =</span> BART_TOT_FU3)</span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.90 =</span> <span class="fu">recode</span>(CURR_LOC_FU1,</span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Home"</span>,</span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Rehabilitation"</span>,</span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"Other"</span></span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a>                      )) <span class="sc">%&gt;%</span></span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.180 =</span> <span class="fu">recode</span>(CURR_LOC_FU1,</span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Home"</span>,</span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Rehabilitation"</span>,</span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"Other"</span></span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>                      )) <span class="sc">%&gt;%</span></span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.365 =</span> <span class="fu">recode</span>(CURR_LOC_FU1,</span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Home"</span>,</span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Rehabilitation"</span>,</span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"4"</span> <span class="ot">=</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"7"</span> <span class="ot">=</span> <span class="st">"Other"</span></span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a>                      ))</span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.mobility.90 =</span> <span class="fu">factor</span>(MOBILITY_FU1,</span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Confined to Bed"</span>, <span class="st">"NA"</span>)))</span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.selfcare.90 =</span> <span class="fu">factor</span>(SELFCARE_FU1,</span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Wash or Dress Myself"</span>, <span class="st">"NA"</span>)))</span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.usual.90 =</span> <span class="fu">factor</span>(USUALACT_FU1,</span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Perform My Usual Activities"</span>, <span class="st">"NA"</span>)))</span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.pain.90 =</span> <span class="fu">factor</span>(PAIN_FU1,</span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Pain/Discomfort"</span>, <span class="st">"Some Moderate Pain/Discomfort"</span>, <span class="st">"Extreme Pain/Discomfort"</span>, <span class="st">"NA"</span>)))</span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.anxiety.90 =</span> <span class="fu">factor</span>(ANXIETY_FU1,</span>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not Anxious/Depressed"</span>, <span class="st">"Moderately Anxious/Depressed"</span>, <span class="st">"Extremely Anxious/Depressed"</span>, <span class="st">"NA"</span>)))</span>
+<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.mobility.180 =</span> <span class="fu">factor</span>(MOBILITY_FU2,</span>
+<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Confined to Bed"</span>)))</span>
+<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.selfcare.180 =</span> <span class="fu">factor</span>(SELFCARE_FU2,</span>
+<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Wash or Dress Myself"</span>)))</span>
+<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.usual.180 =</span> <span class="fu">factor</span>(USUALACT_FU2,</span>
+<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Perform My Usual Activities"</span>)))</span>
+<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.pain.180 =</span> <span class="fu">factor</span>(PAIN_FU2,</span>
+<span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Pain/Discomfort"</span>, <span class="st">"Some Moderate Pain/Discomfort"</span>, <span class="st">"Extreme Pain/Discomfort"</span>)))</span>
+<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.anxiety.180 =</span> <span class="fu">factor</span>(ANXIETY_FU2,</span>
+<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not Anxious/Depressed"</span>, <span class="st">"Moderately Anxious/Depressed"</span>, <span class="st">"Extremely Anxious/Depressed"</span>)))</span>
+<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.mobility.365 =</span> <span class="fu">factor</span>(MOBILITY_FU3,</span>
+<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Confined to Bed"</span>)))</span>
+<span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.selfcare.365 =</span> <span class="fu">factor</span>(SELFCARE_FU3,</span>
+<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Wash or Dress Myself"</span>)))</span>
+<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.usual.365 =</span> <span class="fu">factor</span>(USUALACT_FU3,</span>
+<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Problems"</span>, <span class="st">"Some Problems"</span>, <span class="st">"Unable to Perform My Usual Activities"</span>)))</span>
+<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.pain.365 =</span> <span class="fu">factor</span>(PAIN_FU3,</span>
+<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No Pain/Discomfort"</span>, <span class="st">"Some Moderate Pain/Discomfort"</span>, <span class="st">"Extreme Pain/Discomfort"</span>)))</span>
+<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.anxiety.365 =</span> <span class="fu">factor</span>(ANXIETY_FU3,</span>
+<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a>                                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not Anxious/Depressed"</span>, <span class="st">"Moderately Anxious/Depressed"</span>, <span class="st">"Extremely Anxious/Depressed"</span>)))</span>
 <span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a><span class="co"># symptom.onset</span></span>
-<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">symptom.onset.date.time =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(erich.whole<span class="sc">$</span>SE1, erich.whole<span class="sc">$</span>SE2)))</span>
+<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a><span class="co"># Parsing Dates and Times in ERICH</span></span>
+<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a><span class="co"># symptom.onset</span></span>
 <span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-315"><a href="#cb3-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">symptom.onset.estimated.time =</span> <span class="fu">case_when</span>( <span class="co"># Converting estimated times to numbers</span></span>
-<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"06:00:00"</span>,</span>
-<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"NA"</span>,</span>
-<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"03:00:00"</span>,</span>
-<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"4"</span> <span class="sc">~</span> <span class="st">"09:00:00"</span>,</span>
-<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"5"</span> <span class="sc">~</span> <span class="st">"15:00:00"</span>,</span>
-<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"6"</span> <span class="sc">~</span> <span class="st">"21:00:00"</span></span>
-<span id="cb3-322"><a href="#cb3-322" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-323"><a href="#cb3-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>symptom.onset.estimated.time <span class="ot">&lt;-</span> <span class="fu">hms</span>(erich.whole<span class="sc">$</span>symptom.onset.estimated.time)</span>
-<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">symptom.onset.estimated.date.time =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(erich.whole<span class="sc">$</span>SE1, erich.whole<span class="sc">$</span>symptom.onset.estimated.time)))</span>
+<span id="cb3-315"><a href="#cb3-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">symptom.onset.date.time =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(erich.whole<span class="sc">$</span>SE1, erich.whole<span class="sc">$</span>SE2)))</span>
+<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">symptom.onset.estimated.time =</span> <span class="fu">case_when</span>( <span class="co"># Converting estimated times to numbers</span></span>
+<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"06:00:00"</span>,</span>
+<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"NA"</span>,</span>
+<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"03:00:00"</span>,</span>
+<span id="cb3-322"><a href="#cb3-322" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"4"</span> <span class="sc">~</span> <span class="st">"09:00:00"</span>,</span>
+<span id="cb3-323"><a href="#cb3-323" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"5"</span> <span class="sc">~</span> <span class="st">"15:00:00"</span>,</span>
+<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a>    SE3 <span class="sc">==</span> <span class="st">"6"</span> <span class="sc">~</span> <span class="st">"21:00:00"</span></span>
+<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>symptom.onset.estimated.time <span class="ot">&lt;-</span> <span class="fu">hms</span>(erich.whole<span class="sc">$</span>symptom.onset.estimated.time)</span>
 <span id="cb3-328"><a href="#cb3-328" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-330"><a href="#cb3-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">symptom.onset.combined =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-331"><a href="#cb3-331" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.na</span>(symptom.onset.date.time) <span class="sc">~</span> symptom.onset.estimated.date.time,</span>
-<span id="cb3-332"><a href="#cb3-332" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> symptom.onset.date.time</span>
-<span id="cb3-333"><a href="#cb3-333" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-334"><a href="#cb3-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-335"><a href="#cb3-335" aria-hidden="true" tabindex="-1"></a><span class="co"># Time of ED presentation</span></span>
-<span id="cb3-336"><a href="#cb3-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-338"><a href="#cb3-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ed.presentation.date.time =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(erich.whole<span class="sc">$</span>ED7, erich.whole<span class="sc">$</span>ED8)))</span>
+<span id="cb3-330"><a href="#cb3-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">symptom.onset.estimated.date.time =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(erich.whole<span class="sc">$</span>SE1, erich.whole<span class="sc">$</span>symptom.onset.estimated.time)))</span>
+<span id="cb3-331"><a href="#cb3-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-332"><a href="#cb3-332" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-333"><a href="#cb3-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">symptom.onset.combined =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-334"><a href="#cb3-334" aria-hidden="true" tabindex="-1"></a>    <span class="fu">is.na</span>(symptom.onset.date.time) <span class="sc">~</span> symptom.onset.estimated.date.time,</span>
+<span id="cb3-335"><a href="#cb3-335" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> symptom.onset.date.time</span>
+<span id="cb3-336"><a href="#cb3-336" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-338"><a href="#cb3-338" aria-hidden="true" tabindex="-1"></a><span class="co"># Time of ED presentation</span></span>
 <span id="cb3-339"><a href="#cb3-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a><span class="co"># Neurosurgery Dates</span></span>
-<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nsgy.evacuation.date.erich =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a>    IT5D <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(IT5D_DATE, IT5D_TIME)),</span>
-<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a>    IT5H <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(IT5H_DATE, IT5H_TIME)),</span>
-<span id="cb3-346"><a href="#cb3-346" aria-hidden="true" tabindex="-1"></a>    IT5F <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(IT5F_DATE, IT5F_TIME))</span>
-<span id="cb3-347"><a href="#cb3-347" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-348"><a href="#cb3-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-349"><a href="#cb3-349" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>nsgy.interval <span class="ot">&lt;-</span> <span class="fu">as.period</span>(erich.whole<span class="sc">$</span>symptom.onset.combined <span class="sc">%--%</span> erich.whole<span class="sc">$</span>nsgy.evacuation.date.erich)</span>
-<span id="cb3-350"><a href="#cb3-350" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>nsgy.interval <span class="ot">&lt;-</span> <span class="fu">time_length</span>(erich.whole<span class="sc">$</span>nsgy.interval, <span class="at">unit =</span> <span class="st">"days"</span>)</span>
-<span id="cb3-351"><a href="#cb3-351" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>nsgy.evacuation.date <span class="ot">&lt;-</span> <span class="fu">round</span>(erich.whole<span class="sc">$</span>nsgy.interval, <span class="at">digits =</span> <span class="dv">0</span>) <span class="co"># Makes it compatabible to merge with ATACH</span></span>
-<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a><span class="co"># DNR and WLST Status</span></span>
+<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ed.presentation.date.time =</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(erich.whole<span class="sc">$</span>ED7, erich.whole<span class="sc">$</span>ED8)))</span>
+<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a><span class="co"># Neurosurgery Dates</span></span>
+<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-346"><a href="#cb3-346" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nsgy.evacuation.date.erich =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-347"><a href="#cb3-347" aria-hidden="true" tabindex="-1"></a>    IT5D <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(IT5D_DATE, IT5D_TIME)),</span>
+<span id="cb3-348"><a href="#cb3-348" aria-hidden="true" tabindex="-1"></a>    IT5H <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(IT5H_DATE, IT5H_TIME)),</span>
+<span id="cb3-349"><a href="#cb3-349" aria-hidden="true" tabindex="-1"></a>    IT5F <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(IT5F_DATE, IT5F_TIME))</span>
+<span id="cb3-350"><a href="#cb3-350" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-351"><a href="#cb3-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>nsgy.interval <span class="ot">&lt;-</span> <span class="fu">as.period</span>(erich.whole<span class="sc">$</span>symptom.onset.combined <span class="sc">%--%</span> erich.whole<span class="sc">$</span>nsgy.evacuation.date.erich)</span>
+<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>nsgy.interval <span class="ot">&lt;-</span> <span class="fu">time_length</span>(erich.whole<span class="sc">$</span>nsgy.interval, <span class="at">unit =</span> <span class="st">"days"</span>)</span>
+<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>nsgy.evacuation.date <span class="ot">&lt;-</span> <span class="fu">round</span>(erich.whole<span class="sc">$</span>nsgy.interval, <span class="at">digits =</span> <span class="dv">0</span>) <span class="co"># Makes it compatabible to merge with ATACH</span></span>
 <span id="cb3-355"><a href="#cb3-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-356"><a href="#cb3-356" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-357"><a href="#cb3-357" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dnr.binary =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-358"><a href="#cb3-358" aria-hidden="true" tabindex="-1"></a>    CC16 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
-<span id="cb3-359"><a href="#cb3-359" aria-hidden="true" tabindex="-1"></a>    CC16 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
-<span id="cb3-360"><a href="#cb3-360" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"NA"</span></span>
-<span id="cb3-361"><a href="#cb3-361" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-362"><a href="#cb3-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-363"><a href="#cb3-363" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-364"><a href="#cb3-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dni.binary =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-365"><a href="#cb3-365" aria-hidden="true" tabindex="-1"></a>    CC17 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
-<span id="cb3-366"><a href="#cb3-366" aria-hidden="true" tabindex="-1"></a>    CC17 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
-<span id="cb3-367"><a href="#cb3-367" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"NA"</span></span>
-<span id="cb3-368"><a href="#cb3-368" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-369"><a href="#cb3-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-370"><a href="#cb3-370" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-371"><a href="#cb3-371" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comfort.binary =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-372"><a href="#cb3-372" aria-hidden="true" tabindex="-1"></a>    CC18 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
-<span id="cb3-373"><a href="#cb3-373" aria-hidden="true" tabindex="-1"></a>    CC18 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
-<span id="cb3-374"><a href="#cb3-374" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"NA"</span></span>
-<span id="cb3-375"><a href="#cb3-375" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-376"><a href="#cb3-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-377"><a href="#cb3-377" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-378"><a href="#cb3-378" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dnr.date.time =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-379"><a href="#cb3-379" aria-hidden="true" tabindex="-1"></a>    CC16 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(CC16_DATE, CC16_TIME))</span>
-<span id="cb3-380"><a href="#cb3-380" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-381"><a href="#cb3-381" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-382"><a href="#cb3-382" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-383"><a href="#cb3-383" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dni.date.time =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-384"><a href="#cb3-384" aria-hidden="true" tabindex="-1"></a>    CC17 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(CC17_DATE, CC17_TIME))</span>
-<span id="cb3-385"><a href="#cb3-385" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-386"><a href="#cb3-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-387"><a href="#cb3-387" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-388"><a href="#cb3-388" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comfort.date.time =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-389"><a href="#cb3-389" aria-hidden="true" tabindex="-1"></a>    CC18 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(CC18_DATE, CC18_TIME))</span>
-<span id="cb3-390"><a href="#cb3-390" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb3-391"><a href="#cb3-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-392"><a href="#cb3-392" aria-hidden="true" tabindex="-1"></a><span class="co"># Mortality Status and Adding mRS 6</span></span>
-<span id="cb3-393"><a href="#cb3-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-394"><a href="#cb3-394" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>death.date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(erich.whole<span class="sc">$</span>DOD)</span>
-<span id="cb3-395"><a href="#cb3-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-396"><a href="#cb3-396" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>death.interval <span class="ot">&lt;-</span> erich.whole<span class="sc">$</span>symptom.onset.combined <span class="sc">%--%</span> erich.whole<span class="sc">$</span>death.date</span>
-<span id="cb3-397"><a href="#cb3-397" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>death.interval <span class="ot">&lt;-</span> <span class="fu">as.period</span>(erich.whole<span class="sc">$</span>death.interval)</span>
-<span id="cb3-398"><a href="#cb3-398" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>death.interval <span class="ot">&lt;-</span> <span class="fu">time_length</span>(erich.whole<span class="sc">$</span>death.interval, <span class="at">unit =</span> <span class="st">"days"</span>)</span>
-<span id="cb3-399"><a href="#cb3-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-400"><a href="#cb3-400" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-401"><a href="#cb3-401" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mrs.90 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-402"><a href="#cb3-402" aria-hidden="true" tabindex="-1"></a>    death.interval <span class="sc">&lt;</span> <span class="dv">90</span> <span class="sc">~</span> <span class="dv">6</span>,</span>
-<span id="cb3-403"><a href="#cb3-403" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> mrs<span class="fl">.90</span></span>
-<span id="cb3-404"><a href="#cb3-404" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb3-405"><a href="#cb3-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-406"><a href="#cb3-406" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>mrs<span class="fl">.90</span> <span class="ot">&lt;-</span> <span class="fu">na_if</span>(erich.whole<span class="sc">$</span>mrs<span class="fl">.90</span>, <span class="dv">8</span>)</span>
-<span id="cb3-407"><a href="#cb3-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-408"><a href="#cb3-408" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-409"><a href="#cb3-409" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mrs.180 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-410"><a href="#cb3-410" aria-hidden="true" tabindex="-1"></a>    death.interval <span class="sc">&lt;</span> <span class="dv">180</span> <span class="sc">~</span> <span class="dv">6</span>,</span>
-<span id="cb3-411"><a href="#cb3-411" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> mrs<span class="fl">.180</span></span>
-<span id="cb3-412"><a href="#cb3-412" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb3-413"><a href="#cb3-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-414"><a href="#cb3-414" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-415"><a href="#cb3-415" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mrs.365 =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-416"><a href="#cb3-416" aria-hidden="true" tabindex="-1"></a>    death.interval <span class="sc">&lt;</span> <span class="dv">365</span> <span class="sc">~</span> <span class="dv">6</span>,</span>
-<span id="cb3-417"><a href="#cb3-417" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> mrs<span class="fl">.365</span></span>
-<span id="cb3-418"><a href="#cb3-418" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb3-419"><a href="#cb3-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-420"><a href="#cb3-420" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days, tracheostomy</span></span>
-<span id="cb3-421"><a href="#cb3-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-422"><a href="#cb3-422" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering out ICH Laterality and Infratentorial Location</span></span>
-<span id="cb3-423"><a href="#cb3-423" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
-<span id="cb3-424"><a href="#cb3-424" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich.laterality <span class="sc">!=</span> <span class="st">"NA"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-425"><a href="#cb3-425" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich.location.baseline <span class="sc">==</span> <span class="st">"Basal Ganglia"</span> <span class="sc">|</span></span>
-<span id="cb3-426"><a href="#cb3-426" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span></span>
-<span id="cb3-427"><a href="#cb3-427" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Lobar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-356"><a href="#cb3-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-357"><a href="#cb3-357" aria-hidden="true" tabindex="-1"></a><span class="co"># DNR and WLST Status</span></span>
+<span id="cb3-358"><a href="#cb3-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-359"><a href="#cb3-359" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-360"><a href="#cb3-360" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dnr.binary =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-361"><a href="#cb3-361" aria-hidden="true" tabindex="-1"></a>    CC16 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-362"><a href="#cb3-362" aria-hidden="true" tabindex="-1"></a>    CC16 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb3-363"><a href="#cb3-363" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"NA"</span></span>
+<span id="cb3-364"><a href="#cb3-364" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-365"><a href="#cb3-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-366"><a href="#cb3-366" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-367"><a href="#cb3-367" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dni.binary =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-368"><a href="#cb3-368" aria-hidden="true" tabindex="-1"></a>    CC17 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-369"><a href="#cb3-369" aria-hidden="true" tabindex="-1"></a>    CC17 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb3-370"><a href="#cb3-370" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"NA"</span></span>
+<span id="cb3-371"><a href="#cb3-371" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-372"><a href="#cb3-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-373"><a href="#cb3-373" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-374"><a href="#cb3-374" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comfort.binary =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-375"><a href="#cb3-375" aria-hidden="true" tabindex="-1"></a>    CC18 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-376"><a href="#cb3-376" aria-hidden="true" tabindex="-1"></a>    CC18 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb3-377"><a href="#cb3-377" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"NA"</span></span>
+<span id="cb3-378"><a href="#cb3-378" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-379"><a href="#cb3-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-380"><a href="#cb3-380" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-381"><a href="#cb3-381" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dnr.date.time =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-382"><a href="#cb3-382" aria-hidden="true" tabindex="-1"></a>    CC16 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(CC16_DATE, CC16_TIME))</span>
+<span id="cb3-383"><a href="#cb3-383" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-384"><a href="#cb3-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-385"><a href="#cb3-385" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-386"><a href="#cb3-386" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dni.date.time =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-387"><a href="#cb3-387" aria-hidden="true" tabindex="-1"></a>    CC17 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(CC17_DATE, CC17_TIME))</span>
+<span id="cb3-388"><a href="#cb3-388" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-389"><a href="#cb3-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-390"><a href="#cb3-390" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-391"><a href="#cb3-391" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comfort.date.time =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-392"><a href="#cb3-392" aria-hidden="true" tabindex="-1"></a>    CC18 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="fu">ymd_hms</span>(<span class="fu">paste</span>(CC18_DATE, CC18_TIME))</span>
+<span id="cb3-393"><a href="#cb3-393" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb3-394"><a href="#cb3-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-395"><a href="#cb3-395" aria-hidden="true" tabindex="-1"></a><span class="co"># Mortality Status and Adding mRS 6</span></span>
+<span id="cb3-396"><a href="#cb3-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-397"><a href="#cb3-397" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>death.date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(erich.whole<span class="sc">$</span>DOD)</span>
+<span id="cb3-398"><a href="#cb3-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-399"><a href="#cb3-399" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>death.interval <span class="ot">&lt;-</span> erich.whole<span class="sc">$</span>symptom.onset.combined <span class="sc">%--%</span> erich.whole<span class="sc">$</span>death.date</span>
+<span id="cb3-400"><a href="#cb3-400" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>death.interval <span class="ot">&lt;-</span> <span class="fu">as.period</span>(erich.whole<span class="sc">$</span>death.interval)</span>
+<span id="cb3-401"><a href="#cb3-401" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>death.interval <span class="ot">&lt;-</span> <span class="fu">time_length</span>(erich.whole<span class="sc">$</span>death.interval, <span class="at">unit =</span> <span class="st">"days"</span>)</span>
+<span id="cb3-402"><a href="#cb3-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-403"><a href="#cb3-403" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-404"><a href="#cb3-404" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mrs.90 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-405"><a href="#cb3-405" aria-hidden="true" tabindex="-1"></a>    death.interval <span class="sc">&lt;</span> <span class="dv">90</span> <span class="sc">~</span> <span class="dv">6</span>,</span>
+<span id="cb3-406"><a href="#cb3-406" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> mrs<span class="fl">.90</span></span>
+<span id="cb3-407"><a href="#cb3-407" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb3-408"><a href="#cb3-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-409"><a href="#cb3-409" aria-hidden="true" tabindex="-1"></a>erich.whole<span class="sc">$</span>mrs<span class="fl">.90</span> <span class="ot">&lt;-</span> <span class="fu">na_if</span>(erich.whole<span class="sc">$</span>mrs<span class="fl">.90</span>, <span class="dv">8</span>)</span>
+<span id="cb3-410"><a href="#cb3-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-411"><a href="#cb3-411" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-412"><a href="#cb3-412" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mrs.180 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-413"><a href="#cb3-413" aria-hidden="true" tabindex="-1"></a>    death.interval <span class="sc">&lt;</span> <span class="dv">180</span> <span class="sc">~</span> <span class="dv">6</span>,</span>
+<span id="cb3-414"><a href="#cb3-414" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> mrs<span class="fl">.180</span></span>
+<span id="cb3-415"><a href="#cb3-415" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb3-416"><a href="#cb3-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-417"><a href="#cb3-417" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-418"><a href="#cb3-418" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mrs.365 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-419"><a href="#cb3-419" aria-hidden="true" tabindex="-1"></a>    death.interval <span class="sc">&lt;</span> <span class="dv">365</span> <span class="sc">~</span> <span class="dv">6</span>,</span>
+<span id="cb3-420"><a href="#cb3-420" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> mrs<span class="fl">.365</span></span>
+<span id="cb3-421"><a href="#cb3-421" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb3-422"><a href="#cb3-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-423"><a href="#cb3-423" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding tracheostomy information</span></span>
+<span id="cb3-424"><a href="#cb3-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-425"><a href="#cb3-425" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-426"><a href="#cb3-426" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-427"><a href="#cb3-427" aria-hidden="true" tabindex="-1"></a>    <span class="at">tracheostomy =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-428"><a href="#cb3-428" aria-hidden="true" tabindex="-1"></a>      <span class="fu">str_detect</span>(erich.whole<span class="sc">$</span>IT5F_SPEC, <span class="st">"TRACHEO"</span>) <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb3-429"><a href="#cb3-429" aria-hidden="true" tabindex="-1"></a>      ))</span>
+<span id="cb3-430"><a href="#cb3-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-431"><a href="#cb3-431" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days</span></span>
+<span id="cb3-432"><a href="#cb3-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-433"><a href="#cb3-433" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering out ICH Laterality and Infratentorial Location</span></span>
+<span id="cb3-434"><a href="#cb3-434" aria-hidden="true" tabindex="-1"></a>erich.whole <span class="ot">&lt;-</span> erich.whole <span class="sc">%&gt;%</span></span>
+<span id="cb3-435"><a href="#cb3-435" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich.laterality <span class="sc">!=</span> <span class="st">"NA"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-436"><a href="#cb3-436" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich.location.baseline <span class="sc">==</span> <span class="st">"Basal Ganglia"</span> <span class="sc">|</span></span>
+<span id="cb3-437"><a href="#cb3-437" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span></span>
+<span id="cb3-438"><a href="#cb3-438" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Lobar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Combining Datasets</p>
+<p><strong>Importing and wrangling iDEF data</strong></p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>atach.erich <span class="ot">&lt;-</span> <span class="fu">union_all</span>(atach.whole, erich.whole)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>atach.erich <span class="ot">&lt;-</span> atach.erich <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(VarsTableOne) <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.age =</span> <span class="fu">case_when</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&lt;</span> <span class="dv">80</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="dv">1</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.gcs =</span> <span class="fu">case_when</span>(</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    gcs.baseline <span class="sc">&gt;=</span> <span class="dv">13</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    gcs.baseline <span class="sc">&lt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.volume =</span> <span class="fu">if_else</span>(ich.volume.cc <span class="sc">&gt;=</span> <span class="dv">30</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.ivh =</span> <span class="fu">if_else</span>(ivh <span class="sc">==</span> <span class="st">"Yes"</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.total =</span> ich.score.age <span class="sc">+</span> </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                           ich.score.gcs <span class="sc">+</span> </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                           ich.score.volume <span class="sc">+</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                           ich.score.ivh)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>atach.erich <span class="sc">%&gt;%</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> atach.erich,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata =</span> <span class="st">"ich.laterality"</span>,)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(table1, <span class="at">showAllLevels =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to paste together string of formXX.sas7bdat</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>idef.import <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  dataset <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"idef"</span>,<span class="st">"."</span>,y)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  filepath <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"./iDEF/form"</span>,y,<span class="st">".sas7bdat"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  dataset <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(filepath)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>idefdictionary <span class="ot">&lt;-</span> <span class="fu">read_sas</span>(<span class="st">"iDEF/datadictionary.sas7bdat"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>idef01 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"01"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>idef02 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"02"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>idef03 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"03"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>idef03c <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"03c"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>idef04 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"04"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>idef05 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"05"</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>idef06 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"06"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>idef07 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"07"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>idef08 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"08"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>idef10c <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"10c"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>idef11 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"11"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>idef15 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"15"</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>idef18 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"18"</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>idef19 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"19"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>idef19c <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"19c"</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>idef22 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"22"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>idef23 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"23"</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>idef24 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"24"</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>idef25 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"25"</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>idef25c <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"25c"</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>idef26 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"26"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>idef27 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"27"</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>idef29 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"29"</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>idef30 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"30"</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>idef32 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"32"</span>)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>idef32c <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"32c"</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>idef43 <span class="ot">&lt;-</span> <span class="fu">idef.import</span>(<span class="st">"43"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>Importing and wrangling CLEAR-III data</strong></p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing Excel files</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>clear3.demographics <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"./CLEAR3/CLEAR III_Publication data_2018.1.30.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>clear3.outcomes <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"./CLEAR3/CLEAR III_Publication data_2018.1.30.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">2</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>clear3<span class="fl">.180</span>outcomes <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"./CLEAR3/CLEAR III_clinicaltrials.gov results_2018.1.30.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Combining all dataframes into one</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> <span class="fu">left_join</span>(clear3.demographics, clear3.outcomes)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> <span class="fu">left_join</span>(clear3.whole, clear3<span class="fl">.180</span>outcomes)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding category to indicate study identity</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> clear3.whole <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">study =</span> <span class="st">"CLEAR III"</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorizing and Recoding Variables</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> clear3.whole <span class="sc">%&gt;%</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"African-American"</span> <span class="sc">~</span> <span class="st">"Black or African-American"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"Asian"</span> <span class="sc">~</span> <span class="st">"Asian"</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"Hawaiian or Pacific"</span> <span class="sc">~</span> <span class="st">"Native Hawaiian/Pacific Islander"</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"Indian or Alaskan"</span> <span class="sc">~</span> <span class="st">"American Indian or Alaskan Native"</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"Indian or Alaskan;White"</span> <span class="sc">~</span> <span class="st">"American Indian or Alaskan Native"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"unknown/missing"</span> <span class="sc">~</span> <span class="st">"Other/Not Reported"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"White"</span> <span class="sc">~</span> <span class="st">"White"</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> clear3.whole <span class="sc">%&gt;%</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ethnicity =</span> <span class="fu">recode</span>(hispanic_latino,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"0"</span> <span class="ot">=</span> <span class="st">"Not Hispanic or Latino"</span>,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Hispanic or Latino"</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> clear3.whole <span class="sc">%&gt;%</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">recode</span>(gender,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"female"</span> <span class="ot">=</span> <span class="st">"Female"</span>,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"male"</span> <span class="ot">=</span> <span class="st">"Male"</span>))</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> clear3.whole <span class="sc">%&gt;%</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.laterality =</span> <span class="fu">recode</span>(hemisphere,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"left"</span> <span class="ot">=</span> <span class="st">"Left"</span>,</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"right"</span> <span class="ot">=</span> <span class="st">"Right"</span>,</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"unknown/missing"</span> <span class="ot">=</span> <span class="st">"NA"</span> ))</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> clear3.whole <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ivh =</span> <span class="st">"Yes"</span>)</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>clear3.whole <span class="ot">&lt;-</span> clear3.whole <span class="sc">%&gt;%</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">age =</span> age_at_registration) <span class="sc">%&gt;%</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">tobacco =</span> tobacco_use) <span class="sc">%&gt;%</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sbp.initial =</span> er_present_systolic) <span class="sc">%&gt;%</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dbp.initial =</span> er_present_diastolic) <span class="sc">%&gt;%</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ich.location.baseline =</span> adjudicated_ich_location) <span class="sc">%&gt;%</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gcs.baseline =</span> er_present_gcs_total) <span class="sc">%&gt;%</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">nihss.baseline =</span> er_present_nihss_total) <span class="sc">%&gt;%</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ich.volume.cc =</span> dct_ich_volume_rc) <span class="sc">%&gt;%</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ivh.volume.cc =</span> dct_ivh_volume_rc) <span class="sc">%&gt;%</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.30 =</span> glasgow_rankin_30) <span class="sc">%&gt;%</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.180 =</span> glasgow_rankin_180) <span class="sc">%&gt;%</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gose.30 =</span> gose_30) <span class="sc">%&gt;%</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gose.180 =</span> gose_180) <span class="sc">%&gt;%</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">comfort.binary =</span> withdrawal_contribution) <span class="sc">%&gt;%</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">comfort.date.time =</span> ictus_to_withdrawal_days) <span class="sc">%&gt;%</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">symptom.onset.to.presentation =</span> ictus_to_presentation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>Importing and Wrangling MISTIE-II data</strong></p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing MISTIE II data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mistie2.demographics <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"./MISTIE2/MISTIE II_Publication results_2016.4.14_RT_RD updates 2017.10.2.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>mistie2.demographics2 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"./MISTIE2/MISTIE II and ICES_Demographics data_2017.10.16.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>mistie2.results <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"./MISTIE2/MISTIE II and ICES_ctgov results_2017.10.17.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">3</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>mistie2.demographics3 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"./MISTIE2/ICES_Publication results_2015.12.23_RT_RD updates 2017.10.16.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>mistie2.combined.demographics <span class="ot">&lt;-</span> <span class="fu">full_join</span>(mistie2.demographics, mistie2.demographics3)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>mistie2.combined.demographics <span class="ot">&lt;-</span> <span class="fu">full_join</span>(mistie2.combined.demographics, mistie2.demographics2)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>mistie2.wide.results <span class="ot">&lt;-</span> mistie2.results <span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Follow_up_Visit, <span class="at">values_from =</span> <span class="fu">c</span>(GOS, eGOS_Score, rankin_score, SIS_Total, SIS_16_Total))</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>mistie2.whole <span class="ot">&lt;-</span> <span class="fu">full_join</span>(mistie2.wide.results, mistie2.combined.demographics)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>mistie2.whole <span class="ot">&lt;-</span> mistie2.whole <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">study =</span> <span class="st">"MISTIE II"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Renaming and Recoding Variables</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>mistie2.whole <span class="ot">&lt;-</span> mistie2.whole <span class="sc">%&gt;%</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ethnicity =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    Race <span class="sc">==</span> <span class="st">"African American not Hispanic"</span> <span class="sc">~</span> <span class="st">"Not Hispanic or Latino"</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    Race <span class="sc">==</span> <span class="st">"Hispanic"</span> <span class="sc">~</span> <span class="st">"Hispanic or Latino"</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    Race <span class="sc">==</span> <span class="st">"Asian or Pacific Islander"</span> <span class="sc">~</span> <span class="st">"Not Hispanic or Latino"</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    Race <span class="sc">==</span> <span class="st">"Caucasian not Hispanic"</span> <span class="sc">~</span> <span class="st">"Not Hispanic or Latino"</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    Race <span class="sc">==</span> <span class="st">"Other or unknown"</span> <span class="sc">~</span> <span class="st">"Not Hispanic or Latino"</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>mistie2.whole <span class="ot">&lt;-</span> mistie2.whole <span class="sc">%&gt;%</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">recode</span>(Race,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"African American not Hispanic"</span> <span class="ot">=</span> <span class="st">"Black or African American"</span>,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Asian or Pacific Islander"</span> <span class="ot">=</span> <span class="st">"Asian"</span>,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Caucasian not Hispanic"</span> <span class="ot">=</span> <span class="st">"White"</span>,</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Hispanic"</span> <span class="ot">=</span> <span class="st">"Other/Not Reported"</span>,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Other or unknown"</span> <span class="ot">=</span> <span class="st">"Other/Not Reported"</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>mistie2.whole <span class="ot">&lt;-</span> mistie2.whole <span class="sc">%&gt;%</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sbp.initial =</span> er_sbp) <span class="sc">%&gt;%</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dbp.initial =</span> er_dbp) <span class="sc">%&gt;%</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gcs.baseline =</span> enrollment_gcs) <span class="sc">%&gt;%</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">nihss.baseline =</span> enrollment_nihss_total) <span class="sc">%&gt;%</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ich.volume.cc =</span> pre_rand_ichvol) <span class="sc">%&gt;%</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ivh.volume.cc =</span> pre_rand_ivhvol) <span class="sc">%&gt;%</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gos.365 =</span> GOS_365) <span class="sc">%&gt;%</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gos.270 =</span> GOS_270) <span class="sc">%&gt;%</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gos.180 =</span> GOS_180) <span class="sc">%&gt;%</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gos.90 =</span> GOS_90) <span class="sc">%&gt;%</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gos.30 =</span> GOS_30) <span class="sc">%&gt;%</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">egos.365 =</span> eGOS_Score_365) <span class="sc">%&gt;%</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">egos.270 =</span> eGOS_Score_270) <span class="sc">%&gt;%</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">egos.180 =</span> eGOS_Score_180) <span class="sc">%&gt;%</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">egos.90 =</span> eGOS_Score_90) <span class="sc">%&gt;%</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">egos.30 =</span> eGOS_Score_30) <span class="sc">%&gt;%</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.365 =</span> rankin_score_365) <span class="sc">%&gt;%</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.270 =</span> rankin_score_270) <span class="sc">%&gt;%</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.180 =</span> rankin_score_180) <span class="sc">%&gt;%</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.90 =</span> rankin_score_90) <span class="sc">%&gt;%</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.30 =</span> rankin_score_30)</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>mistie2.whole <span class="ot">&lt;-</span> mistie2.whole <span class="sc">%&gt;%</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ivh =</span> <span class="fu">recode</span>(any_ivh_prerand,</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"0"</span> <span class="ot">=</span> <span class="st">"No"</span>,</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Yes"</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>Importing and Wrangling MISTIE-III data</strong></p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importing MISTIE III data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"./MISTIE3/Deidentified_Mistie_III_Wide_Analytic_2019_07_11 (1).csv"</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">study =</span> <span class="st">"MISTIE III"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">age =</span> age_at_consent) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">race =</span> race_ninds) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sbp.initial =</span> er_present_systolic) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dbp.initial =</span> er_present_diastolic) <span class="sc">%&gt;%</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">gcs.baseline =</span> gcs_total) <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">nihss.baseline =</span> nihss_total) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ich.volume.cc =</span> diagct_ich_volume) <span class="sc">%&gt;%</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ivh.volume.cc =</span> diagct_ivh_volume) <span class="sc">%&gt;%</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ich.laterality =</span> ich_hemisphere_adj) <span class="sc">%&gt;%</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.30 =</span> glasgow_rankin_30) <span class="sc">%&gt;%</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.180 =</span> glasgow_rankin_180) <span class="sc">%&gt;%</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.365 =</span> glasgow_rankin_365) <span class="sc">%&gt;%</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">barthel.total.365 =</span> barthel_index_365) <span class="sc">%&gt;%</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">eq.vas.365 =</span> eq_vas_365) <span class="sc">%&gt;%</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">time.to.presentation =</span> ictus_to_site_arrival_hours)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">race =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"African-American"</span> <span class="sc">~</span> <span class="st">"Black of African-American"</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"Asian Hawaiian or Pacific"</span> <span class="sc">~</span> <span class="st">"Asian"</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"Indian or Alaskan"</span> <span class="sc">~</span> <span class="st">"American Indian or Alaskan Native"</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"More than one race"</span> <span class="sc">~</span> <span class="st">"Other/Not Reported"</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    race <span class="sc">==</span> <span class="st">"White"</span> <span class="sc">~</span> <span class="st">"White"</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ethnicity =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>         hispanic <span class="sc">==</span> <span class="st">"0"</span> <span class="sc">~</span> <span class="st">"Not Hispanic or Latino"</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>         hispanic <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Hispanic or Latino"</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    male_gender <span class="sc">==</span> <span class="st">"0"</span> <span class="sc">~</span> <span class="st">"Woman"</span>,</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    male_gender <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Man"</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tobacco =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    current_smoker <span class="sc">==</span> <span class="st">"0"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>    current_smoker <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dm2 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    diabetes_pmh <span class="sc">==</span> <span class="st">"0"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>    diabetes_pmh <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">htn =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    htn_pmh <span class="sc">==</span> <span class="st">"0"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    htn_pmh <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cad =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>    cvd_pmh <span class="sc">==</span> <span class="st">"0"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    cvd_pmh <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comfort =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>    withdrawal_contribution <span class="sc">==</span> <span class="st">"0"</span> <span class="sc">~</span> <span class="st">"No"</span>,</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>    withdrawal_contribution <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"Yes"</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.mobility.365 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>    eq5d_mobility_365 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"No Problems"</span>,</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>    eq5d_mobility_365 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"Some Problems"</span>,</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>    eq5d_mobility_365 <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"Extreme Problems"</span></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.selfcare.365 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>    eq5d_selfcare_365 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"No Problems"</span>,</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>    eq5d_selfcare_365 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"Some Problems"</span>,</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>    eq5d_selfcare_365 <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"Extreme Problems"</span></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.usual.365 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>    eq5d_activities_365 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"No Problems"</span>,</span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>    eq5d_activities_365 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"Some Problems"</span>,</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>    eq5d_activities_365 <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"Extreme Problems"</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.pain.365 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>    eq5d_pain_365 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"No Problems"</span>,</span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>    eq5d_pain_365 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"Some Problems"</span>,</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>    eq5d_pain_365 <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"Extreme Problems"</span></span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.anxiety.365 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>    eq5d_anxiety_365 <span class="sc">==</span> <span class="st">"1"</span> <span class="sc">~</span> <span class="st">"No Problems"</span>,</span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>    eq5d_anxiety_365 <span class="sc">==</span> <span class="st">"2"</span> <span class="sc">~</span> <span class="st">"Some Problems"</span>,</span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>    eq5d_anxiety_365 <span class="sc">==</span> <span class="st">"3"</span> <span class="sc">~</span> <span class="st">"Extreme Problems"</span></span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.30 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>    location_d30 <span class="sc">==</span> <span class="st">"Acute - Hospital"</span> <span class="sc">~</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>    location_d30 <span class="sc">==</span> <span class="st">"Acute - ICU"</span> <span class="sc">~</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a>    location_d30 <span class="sc">==</span> <span class="st">"Dead"</span> <span class="sc">~</span> <span class="st">"Dead"</span>,</span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a>    location_d30 <span class="sc">==</span> <span class="st">"Home"</span> <span class="sc">~</span> <span class="st">"Home"</span>,</span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a>    location_d30 <span class="sc">==</span> <span class="st">"Rehab"</span> <span class="sc">~</span> <span class="st">"Rehabilitation"</span>,</span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>    location_d30 <span class="sc">==</span> <span class="st">"LTCF"</span> <span class="sc">~</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a>    location_d30 <span class="sc">==</span> <span class="st">"Hospice"</span> <span class="sc">~</span> <span class="st">"Hospice"</span>,</span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.180 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a>    location_d180 <span class="sc">==</span> <span class="st">"Acute - Hospital"</span> <span class="sc">~</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a>    location_d180 <span class="sc">==</span> <span class="st">"Acute - ICU"</span> <span class="sc">~</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a>    location_d180 <span class="sc">==</span> <span class="st">"Dead"</span> <span class="sc">~</span> <span class="st">"Dead"</span>,</span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a>    location_d180 <span class="sc">==</span> <span class="st">"Home"</span> <span class="sc">~</span> <span class="st">"Home"</span>,</span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a>    location_d180 <span class="sc">==</span> <span class="st">"Rehab"</span> <span class="sc">~</span> <span class="st">"Rehabilitation"</span>,</span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a>    location_d180 <span class="sc">==</span> <span class="st">"LTCF"</span> <span class="sc">~</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
+<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a>    location_d180 <span class="sc">==</span> <span class="st">"Hospice"</span> <span class="sc">~</span> <span class="st">"Hospice"</span>,</span>
+<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a>mistie3 <span class="ot">&lt;-</span> mistie3 <span class="sc">%&gt;%</span></span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">current.location.365 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a>    location_d365 <span class="sc">==</span> <span class="st">"Acute - Hospital"</span> <span class="sc">~</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a>    location_d365 <span class="sc">==</span> <span class="st">"Acute - ICU"</span> <span class="sc">~</span> <span class="st">"Hospital"</span>,</span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a>    location_d365 <span class="sc">==</span> <span class="st">"Dead"</span> <span class="sc">~</span> <span class="st">"Dead"</span>,</span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a>    location_d365 <span class="sc">==</span> <span class="st">"Home"</span> <span class="sc">~</span> <span class="st">"Home"</span>,</span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a>    location_d365 <span class="sc">==</span> <span class="st">"Rehab"</span> <span class="sc">~</span> <span class="st">"Rehabilitation"</span>,</span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a>    location_d365 <span class="sc">==</span> <span class="st">"LTCF"</span> <span class="sc">~</span> <span class="st">"Skilled Nursing Facility"</span>,</span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a>    location_d365 <span class="sc">==</span> <span class="st">"Hospice"</span> <span class="sc">~</span> <span class="st">"Hospice"</span>,</span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><strong>Combining Datasets</strong></p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>atach.erich <span class="ot">&lt;-</span> <span class="fu">union_all</span>(atach.whole, erich.whole)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>atach.erich <span class="ot">&lt;-</span> atach.erich <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(VarsTableOne) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.age =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&lt;</span> <span class="dv">80</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    age <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.gcs =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    gcs.baseline <span class="sc">&gt;=</span> <span class="dv">13</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    gcs.baseline <span class="sc">&lt;=</span> <span class="dv">4</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.volume =</span> <span class="fu">if_else</span>(ich.volume.cc <span class="sc">&gt;=</span> <span class="dv">30</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.ivh =</span> <span class="fu">if_else</span>(ivh <span class="sc">==</span> <span class="st">"Yes"</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.score.total =</span> ich.score.age <span class="sc">+</span> </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                           ich.score.gcs <span class="sc">+</span> </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                           ich.score.volume <span class="sc">+</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                           ich.score.ivh)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>atach.erich <span class="sc">%&gt;%</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> atach.erich,</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata =</span> <span class="st">"ich.laterality"</span>,)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(table1, <span class="at">showAllLevels =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>

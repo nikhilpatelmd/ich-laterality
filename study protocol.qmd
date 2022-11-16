@@ -32,6 +32,7 @@ library(data.table)
 library(haven) # Importing SAS Files
 library(janitor)
 library(lubridate)
+library(readxl)
 
 ```
 
@@ -295,7 +296,7 @@ atach.whole <- atach.whole %>%
                                    .default = "NA"))
 
 atach.whole <- atach.whole %>%
-  mutate(trach = recode(F07Q11,
+  mutate(tracheostomy = recode(F07Q11,
                                    "0" = "No",
                                    "1" = "Yes",
                                    .default = "NA"))
@@ -387,7 +388,7 @@ VarsTableOne <- c("study",
                        "mech.ventilation",
                        "intubation.days", 
                        "extubation.date", # Date of extubation
-                       "trach",
+                       "tracheostomy",
                        "trach.date", # Date of Tracheostomy
                        "evd",
                        "evd.days", # Total EVD days
@@ -422,11 +423,10 @@ VarsTableOne <- c("study",
                        "ich.laterality"
                   )
 
-# Maybe import lab data, but this may be superfluous
 
 ```
 
-Importing and wrangling ERICH data
+**Importing and wrangling ERICH data**
 
 ```{r ERICH}
 
@@ -602,12 +602,15 @@ erich.whole <- erich.whole %>%
   mutate(evd = case_when(
     IT8 == "1" ~ "Yes",
     IT8 == "2" ~ "No",
+    str_detect(erich.whole$IT5F_SPEC, "VENTR") ~ "Yes",
   ))
 
 erich.whole <- erich.whole %>%
   mutate(nsgy.evacuation = case_when(
     IT5D == "1" ~ "Yes",
     IT5H == "1" ~ "Yes",
+    str_detect(erich.whole$IT5F_SPEC, "CRANI") ~ "Yes",
+    str_detect(erich.whole$IT5F_SPEC, "EVAC") ~ "Yes",
     TRUE ~ "No"
       ))
 
@@ -853,10 +856,11 @@ erich.whole <- erich.whole %>%
 
 erich.whole <- erich.whole %>%
   mutate(
-    tracheostomy = str_detect(erich.whole$IT5F_SPEC, "TRACH"))
+    tracheostomy = case_when(
+      str_detect(erich.whole$IT5F_SPEC, "TRACHEO") ~ "Yes",
+      ))
 
-# Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days, tracheostomy
-
+# Variables missing: nihss.baseline, hydrocephalus, phe.volume.cc, sp.shift.baseline, intubation.days
 
 # Filtering out ICH Laterality and Infratentorial Location
 erich.whole <- erich.whole %>%
@@ -868,7 +872,344 @@ erich.whole <- erich.whole %>%
 
 ```
 
-Combining Datasets
+**Importing and wrangling iDEF data**
+
+```{r iDEF}
+
+# Create function to paste together string of formXX.sas7bdat
+idef.import <- function(y) {
+  dataset <- paste0("idef",".",y)
+  filepath <- paste0("./iDEF/form",y,".sas7bdat")
+  dataset <- read_sas(filepath)
+}
+
+idefdictionary <- read_sas("iDEF/datadictionary.sas7bdat")
+idef01 <- idef.import("01")
+idef02 <- idef.import("02")
+idef03 <- idef.import("03")
+idef03c <- idef.import("03c")
+idef04 <- idef.import("04")
+idef05 <- idef.import("05")
+idef06 <- idef.import("06")
+idef07 <- idef.import("07")
+idef08 <- idef.import("08")
+idef10c <- idef.import("10c")
+idef11 <- idef.import("11")
+idef15 <- idef.import("15")
+idef18 <- idef.import("18")
+idef19 <- idef.import("19")
+idef19c <- idef.import("19c")
+idef22 <- idef.import("22")
+idef23 <- idef.import("23")
+idef24 <- idef.import("24")
+idef25 <- idef.import("25")
+idef25c <- idef.import("25c")
+idef26 <- idef.import("26")
+idef27 <- idef.import("27")
+idef29 <- idef.import("29")
+idef30 <- idef.import("30")
+idef32 <- idef.import("32")
+idef32c <- idef.import("32c")
+idef43 <- idef.import("43")
+
+
+```
+
+**Importing and wrangling CLEAR-III data**
+
+```{r CLEAR III}
+
+# Importing Excel files
+clear3.demographics <- readxl::read_excel("./CLEAR3/CLEAR III_Publication data_2018.1.30.xlsx", sheet = 1)
+clear3.outcomes <- readxl::read_excel("./CLEAR3/CLEAR III_Publication data_2018.1.30.xlsx", sheet = 2)
+clear3.180outcomes <- readxl::read_excel("./CLEAR3/CLEAR III_clinicaltrials.gov results_2018.1.30.xlsx", sheet = 1)
+
+# Combining all dataframes into one
+clear3.whole <- left_join(clear3.demographics, clear3.outcomes)
+clear3.whole <- left_join(clear3.whole, clear3.180outcomes)
+
+# Adding category to indicate study identity
+clear3.whole <- clear3.whole %>% mutate(study = "CLEAR III")
+
+# Categorizing and Recoding Variables
+
+clear3.whole <- clear3.whole %>%
+  mutate(race = case_when(
+    race == "African-American" ~ "Black or African-American",
+    race == "Asian" ~ "Asian",
+    race == "Hawaiian or Pacific" ~ "Native Hawaiian/Pacific Islander",
+    race == "Indian or Alaskan" ~ "American Indian or Alaskan Native",
+    race == "Indian or Alaskan;White" ~ "American Indian or Alaskan Native",
+    race == "unknown/missing" ~ "Other/Not Reported",
+    race == "White" ~ "White"
+  ))
+
+clear3.whole <- clear3.whole %>%
+  mutate(ethnicity = recode(hispanic_latino,
+                            "0" = "Not Hispanic or Latino",
+                            "1" = "Hispanic or Latino"
+  ))
+
+clear3.whole <- clear3.whole %>%
+  mutate(sex = recode(gender,
+                         "female" = "Female",
+                         "male" = "Male"))
+
+clear3.whole <- clear3.whole %>%
+  mutate(ich.laterality = recode(hemisphere,
+                                 "left" = "Left",
+                                 "right" = "Right",
+                                 "unknown/missing" = "NA" ))
+
+clear3.whole <- clear3.whole %>% mutate(ivh = "Yes")
+
+clear3.whole <- clear3.whole %>%
+  rename(age = age_at_registration) %>%
+  rename(tobacco = tobacco_use) %>%
+  rename(sbp.initial = er_present_systolic) %>%
+  rename(dbp.initial = er_present_diastolic) %>%
+  rename(ich.location.baseline = adjudicated_ich_location) %>%
+  rename(gcs.baseline = er_present_gcs_total) %>%
+  rename(nihss.baseline = er_present_nihss_total) %>%
+  rename(ich.volume.cc = dct_ich_volume_rc) %>%
+  rename(ivh.volume.cc = dct_ivh_volume_rc) %>%
+  rename(mrs.30 = glasgow_rankin_30) %>%
+  rename(mrs.180 = glasgow_rankin_180) %>%
+  rename(gose.30 = gose_30) %>%
+  rename(gose.180 = gose_180) %>%
+  rename(comfort.binary = withdrawal_contribution) %>%
+  rename(comfort.date.time = ictus_to_withdrawal_days) %>%
+  rename(symptom.onset.to.presentation = ictus_to_presentation)
+  
+
+```
+
+**Importing and Wrangling MISTIE-II data**
+
+```{r MISTIE II}
+
+# Importing MISTIE II data
+
+mistie2.demographics <- readxl::read_excel("./MISTIE2/MISTIE II_Publication results_2016.4.14_RT_RD updates 2017.10.2.xlsx", sheet = 1)
+
+mistie2.demographics2 <- readxl::read_excel("./MISTIE2/MISTIE II and ICES_Demographics data_2017.10.16.xlsx", sheet = 1)
+
+mistie2.results <- readxl::read_excel("./MISTIE2/MISTIE II and ICES_ctgov results_2017.10.17.xlsx", sheet = 3)
+
+mistie2.demographics3 <- readxl::read_excel("./MISTIE2/ICES_Publication results_2015.12.23_RT_RD updates 2017.10.16.xlsx", sheet = 1)
+
+mistie2.combined.demographics <- full_join(mistie2.demographics, mistie2.demographics3)
+mistie2.combined.demographics <- full_join(mistie2.combined.demographics, mistie2.demographics2)
+
+mistie2.wide.results <- mistie2.results %>%
+  pivot_wider(names_from = Follow_up_Visit, values_from = c(GOS, eGOS_Score, rankin_score, SIS_Total, SIS_16_Total))
+
+mistie2.whole <- full_join(mistie2.wide.results, mistie2.combined.demographics)
+
+mistie2.whole <- mistie2.whole %>% mutate(study = "MISTIE II")
+
+# Renaming and Recoding Variables
+
+mistie2.whole <- mistie2.whole %>%
+  mutate(ethnicity = case_when(
+    Race == "African American not Hispanic" ~ "Not Hispanic or Latino",
+    Race == "Hispanic" ~ "Hispanic or Latino",
+    Race == "Asian or Pacific Islander" ~ "Not Hispanic or Latino",
+    Race == "Caucasian not Hispanic" ~ "Not Hispanic or Latino",
+    Race == "Other or unknown" ~ "Not Hispanic or Latino"
+  ))
+
+mistie2.whole <- mistie2.whole %>%
+  mutate(race = recode(Race,
+                       "African American not Hispanic" = "Black or African American",
+                       "Asian or Pacific Islander" = "Asian",
+                       "Caucasian not Hispanic" = "White",
+                       "Hispanic" = "Other/Not Reported",
+                       "Other or unknown" = "Other/Not Reported"
+  ))
+
+mistie2.whole <- mistie2.whole %>%
+  rename(sbp.initial = er_sbp) %>%
+  rename(dbp.initial = er_dbp) %>%
+  rename(gcs.baseline = enrollment_gcs) %>%
+  rename(nihss.baseline = enrollment_nihss_total) %>%
+  rename(ich.volume.cc = pre_rand_ichvol) %>%
+  rename(ivh.volume.cc = pre_rand_ivhvol) %>%
+  rename(gos.365 = GOS_365) %>%
+  rename(gos.270 = GOS_270) %>%
+  rename(gos.180 = GOS_180) %>%
+  rename(gos.90 = GOS_90) %>%
+  rename(gos.30 = GOS_30) %>%
+  rename(egos.365 = eGOS_Score_365) %>%
+  rename(egos.270 = eGOS_Score_270) %>%
+  rename(egos.180 = eGOS_Score_180) %>%
+  rename(egos.90 = eGOS_Score_90) %>%
+  rename(egos.30 = eGOS_Score_30) %>%
+  rename(mrs.365 = rankin_score_365) %>%
+  rename(mrs.270 = rankin_score_270) %>%
+  rename(mrs.180 = rankin_score_180) %>%
+  rename(mrs.90 = rankin_score_90) %>%
+  rename(mrs.30 = rankin_score_30)
+
+
+mistie2.whole <- mistie2.whole %>%
+  mutate(ivh = recode(any_ivh_prerand,
+                      "0" = "No",
+                      "1" = "Yes"
+  ))
+
+
+```
+
+**Importing and Wrangling MISTIE-III data**
+
+```{r MISTIE-III}
+
+# Importing MISTIE III data
+mistie3 <- read.table("./MISTIE3/Deidentified_Mistie_III_Wide_Analytic_2019_07_11 (1).csv", sep = ",", header = TRUE)
+
+mistie3 <- mistie3 %>% mutate(study = "MISTIE III")
+
+mistie3 <- mistie3 %>%
+  rename(age = age_at_consent) %>%
+  rename(race = race_ninds) %>%
+  rename(sbp.initial = er_present_systolic) %>%
+  rename(dbp.initial = er_present_diastolic) %>%
+  rename(gcs.baseline = gcs_total) %>%
+  rename(nihss.baseline = nihss_total) %>%
+  rename(ich.volume.cc = diagct_ich_volume) %>%
+  rename(ivh.volume.cc = diagct_ivh_volume) %>%
+  rename(ich.laterality = ich_hemisphere_adj) %>%
+  rename(mrs.30 = glasgow_rankin_30) %>%
+  rename(mrs.180 = glasgow_rankin_180) %>%
+  rename(mrs.365 = glasgow_rankin_365) %>%
+  rename(barthel.total.365 = barthel_index_365) %>%
+  rename(eq.vas.365 = eq_vas_365) %>%
+  rename(time.to.presentation = ictus_to_site_arrival_hours)
+
+mistie3 <- mistie3 %>%
+  mutate(race = case_when(
+    race == "African-American" ~ "Black of African-American",
+    race == "Asian Hawaiian or Pacific" ~ "Asian",
+    race == "Indian or Alaskan" ~ "American Indian or Alaskan Native",
+    race == "More than one race" ~ "Other/Not Reported",
+    race == "White" ~ "White"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(ethnicity = case_when(
+         hispanic == "0" ~ "Not Hispanic or Latino",
+         hispanic == "1" ~ "Hispanic or Latino"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(sex = case_when(
+    male_gender == "0" ~ "Woman",
+    male_gender == "1" ~ "Man"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(tobacco = case_when(
+    current_smoker == "0" ~ "No",
+    current_smoker == "1" ~ "Yes"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(dm2 = case_when(
+    diabetes_pmh == "0" ~ "No",
+    diabetes_pmh == "1" ~ "Yes"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(htn = case_when(
+    htn_pmh == "0" ~ "No",
+    htn_pmh == "1" ~ "Yes"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(cad = case_when(
+    cvd_pmh == "0" ~ "No",
+    cvd_pmh == "1" ~ "Yes"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(comfort = case_when(
+    withdrawal_contribution == "0" ~ "No",
+    withdrawal_contribution == "1" ~ "Yes"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(euro.mobility.365 = case_when(
+    eq5d_mobility_365 == "1" ~ "No Problems",
+    eq5d_mobility_365 == "2" ~ "Some Problems",
+    eq5d_mobility_365 == "3" ~ "Extreme Problems"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(euro.selfcare.365 = case_when(
+    eq5d_selfcare_365 == "1" ~ "No Problems",
+    eq5d_selfcare_365 == "2" ~ "Some Problems",
+    eq5d_selfcare_365 == "3" ~ "Extreme Problems"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(euro.usual.365 = case_when(
+    eq5d_activities_365 == "1" ~ "No Problems",
+    eq5d_activities_365 == "2" ~ "Some Problems",
+    eq5d_activities_365 == "3" ~ "Extreme Problems"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(euro.pain.365 = case_when(
+    eq5d_pain_365 == "1" ~ "No Problems",
+    eq5d_pain_365 == "2" ~ "Some Problems",
+    eq5d_pain_365 == "3" ~ "Extreme Problems"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(euro.anxiety.365 = case_when(
+    eq5d_anxiety_365 == "1" ~ "No Problems",
+    eq5d_anxiety_365 == "2" ~ "Some Problems",
+    eq5d_anxiety_365 == "3" ~ "Extreme Problems"
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(current.location.30 = case_when(
+    location_d30 == "Acute - Hospital" ~ "Hospital",
+    location_d30 == "Acute - ICU" ~ "Hospital",
+    location_d30 == "Dead" ~ "Dead",
+    location_d30 == "Home" ~ "Home",
+    location_d30 == "Rehab" ~ "Rehabilitation",
+    location_d30 == "LTCF" ~ "Skilled Nursing Facility",
+    location_d30 == "Hospice" ~ "Hospice",
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(current.location.180 = case_when(
+    location_d180 == "Acute - Hospital" ~ "Hospital",
+    location_d180 == "Acute - ICU" ~ "Hospital",
+    location_d180 == "Dead" ~ "Dead",
+    location_d180 == "Home" ~ "Home",
+    location_d180 == "Rehab" ~ "Rehabilitation",
+    location_d180 == "LTCF" ~ "Skilled Nursing Facility",
+    location_d180 == "Hospice" ~ "Hospice",
+  ))
+
+mistie3 <- mistie3 %>%
+  mutate(current.location.365 = case_when(
+    location_d365 == "Acute - Hospital" ~ "Hospital",
+    location_d365 == "Acute - ICU" ~ "Hospital",
+    location_d365 == "Dead" ~ "Dead",
+    location_d365 == "Home" ~ "Home",
+    location_d365 == "Rehab" ~ "Rehabilitation",
+    location_d365 == "LTCF" ~ "Skilled Nursing Facility",
+    location_d365 == "Hospice" ~ "Hospice",
+  ))
+
+```
+
+
+**Combining Datasets**
 
 ```{r combining ATACH2 and ERICH}
 
@@ -901,5 +1242,3 @@ print(table1, showAllLevels = FALSE)
 
 
 ```
-
-
