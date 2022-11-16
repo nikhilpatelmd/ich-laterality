@@ -994,8 +994,8 @@ mistie2.results <- readxl::read_excel("./MISTIE2/MISTIE II and ICES_ctgov result
 
 mistie2.demographics3 <- readxl::read_excel("./MISTIE2/ICES_Publication results_2015.12.23_RT_RD updates 2017.10.16.xlsx", sheet = 1)
 
-mistie2.combined.demographics <- left_join(mistie2.demographics3, mistie2.demographics)
-mistie2.combined.demographics <- left_join(mistie2.demographics2, mistie2.combined.demographics)
+mistie2.combined.demographics <- left_join(mistie2.demographics, mistie2.demographics3)
+mistie2.combined.demographics <- left_join(mistie2.combined.demographics, mistie2.demographics2)
 
 mistie2.wide.results <- mistie2.results %>%
   pivot_wider(names_from = Follow_up_Visit, values_from = c(GOS, eGOS_Score, rankin_score, SIS_Total, SIS_16_Total))
@@ -1069,6 +1069,13 @@ mistie2.whole <- mistie2.whole %>%
   rename(mrs.90 = rankin_score_90) %>%
   rename(mrs.30 = rankin_score_30) %>%
   rename(ich.laterality = hemisphere)
+
+mistie2.whole <- mistie2.whole %>%
+  mutate(ich.laterality = case_when(
+    ich.laterality == "Discrepancy" ~ "NA",
+    ich.laterality == "Left" ~ "Left",
+    ich.laterality == "Right" ~ "Right",
+  ))
 
 ```
 
@@ -1267,7 +1274,7 @@ VarsTableOne <- c("study","age", "sex", "ethnicity", # Ethnicity
                        "cad", 
                        "chf", 
                        "afib", 
-                       "pvd",
+                       "htn",
                        "hld",
                        "dm2",
                        "tobacco",
@@ -1354,29 +1361,28 @@ ninds.combined <- ninds.combined %>%
   mutate(ethnicity = case_when(
     ethnicity == "Hispanic or Latino" ~ "Hispanic or Latino",
     ethnicity == "Not Hispanic or Latino" ~ "Not Hispanic or Latino",
-    ethnicity == "Unknown/Not Reported" ~ "NA")) %>%
-  mutate(ich.location.baseline = case_when(
-    ich.location.baseline == "Basal Ganglia" ~ "Basal Ganglia",
-    ich.location.baseline == "Brainstem" ~ "Brainstem",
-    ich.location.baseline == "Caudate" ~ "Basal Ganglia",
-    ich.location.baseline == "Cerebellum" ~ "Cerebellum",
-    ich.location.baseline == "Frontal" ~ "Lobar",
-    ich.location.baseline == "Globus Pallidus" ~ "Basal Ganglia",
-    ich.location.baseline == "Lobar" ~ "Lobar",
-    ich.location.baseline == "Occipital" ~ "Lobar",
-    ich.location.baseline == "Other" ~ "Other",
-    ich.location.baseline == "Parietal" ~ "Lobar",
-    ich.location.baseline == "Primary IVH" ~ "Primary IVH",
-    ich.location.baseline == "Probable Primary IVH" ~ "Primary IVH",
-    ich.location.baseline == "Putamen" ~ "Basal Ganglia",
-    ich.location.baseline == "Temporal" ~ "Lobar",
-    ich.location.baseline == "Thalamus" ~ "Thalamus"
-  ))
-
+    ethnicity == "Unknown/Not Reported" ~ "NA")) 
 ninds.combined <- ninds.combined %>%
   filter(ich.location.baseline == "Lobar" | 
            ich.location.baseline == "Thalamus" |
            ich.location.baseline == "Basal Ganglia") %>%
+  mutate(ich.laterality = na_if(ich.laterality, "NA")) %>%
+  mutate(ethnicity = na_if(ethnicity, "NA")) %>%
+  mutate(stroke = na_if(stroke, "NA")) %>%
+  mutate(cad = na_if(cad, "NA")) %>%
+  mutate(chf = na_if(chf, "NA")) %>%
+  mutate(afib = na_if(afib, "NA")) %>%
+  mutate(htn = na_if(htn, "NA")) %>%
+  mutate(hld = na_if(hld, "NA")) %>%
+  mutate(dm2 = na_if(dm2, "NA")) %>%
+  mutate(tobacco = na_if(tobacco, "NA")) %>%
+  mutate(euro.mobility.90 = na_if(euro.mobility.90, "NA")) %>%
+  mutate(euro.selfcare.90 = na_if(euro.selfcare.90, "NA")) %>%
+  mutate(euro.usual.90 = na_if(euro.usual.90, "NA")) %>%
+  mutate(euro.pain.90 = na_if(euro.pain.90, "NA")) %>%
+  mutate(euro.anxiety.90 = na_if(euro.anxiety.90, "NA")) %>%
+  mutate(dnr.binary = na_if(dnr.binary, "NA")) %>%
+  mutate(comfort.binary = na_if(comfort.binary, "NA")) %>%
   filter(!is.na(ich.laterality))
 
 table1 <- CreateTableOne(data = ninds.combined,

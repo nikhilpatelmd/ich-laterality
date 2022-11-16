@@ -1112,8 +1112,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>mistie2.demographics3 <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"./MISTIE2/ICES_Publication results_2015.12.23_RT_RD updates 2017.10.16.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>mistie2.combined.demographics <span class="ot">&lt;-</span> <span class="fu">left_join</span>(mistie2.demographics3, mistie2.demographics)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>mistie2.combined.demographics <span class="ot">&lt;-</span> <span class="fu">left_join</span>(mistie2.demographics2, mistie2.combined.demographics)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>mistie2.combined.demographics <span class="ot">&lt;-</span> <span class="fu">left_join</span>(mistie2.demographics, mistie2.demographics3)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>mistie2.combined.demographics <span class="ot">&lt;-</span> <span class="fu">left_join</span>(mistie2.combined.demographics, mistie2.demographics2)</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>mistie2.wide.results <span class="ot">&lt;-</span> mistie2.results <span class="sc">%&gt;%</span></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Follow_up_Visit, <span class="at">values_from =</span> <span class="fu">c</span>(GOS, eGOS_Score, rankin_score, SIS_Total, SIS_16_Total))</span>
@@ -1186,7 +1186,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.180 =</span> rankin_score_180) <span class="sc">%&gt;%</span></span>
 <span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.90 =</span> rankin_score_90) <span class="sc">%&gt;%</span></span>
 <span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">mrs.30 =</span> rankin_score_30) <span class="sc">%&gt;%</span></span>
-<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ich.laterality =</span> hemisphere)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ich.laterality =</span> hemisphere)</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>mistie2.whole <span class="ot">&lt;-</span> mistie2.whole <span class="sc">%&gt;%</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.laterality =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    ich.laterality <span class="sc">==</span> <span class="st">"Discrepancy"</span> <span class="sc">~</span> <span class="st">"NA"</span>,</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    ich.laterality <span class="sc">==</span> <span class="st">"Left"</span> <span class="sc">~</span> <span class="st">"Left"</span>,</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    ich.laterality <span class="sc">==</span> <span class="st">"Right"</span> <span class="sc">~</span> <span class="st">"Right"</span>,</span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Importing and Wrangling MISTIE-III data</strong></p>
@@ -1467,33 +1474,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ethnicity =</span> <span class="fu">case_when</span>(</span>
 <span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>    ethnicity <span class="sc">==</span> <span class="st">"Hispanic or Latino"</span> <span class="sc">~</span> <span class="st">"Hispanic or Latino"</span>,</span>
 <span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>    ethnicity <span class="sc">==</span> <span class="st">"Not Hispanic or Latino"</span> <span class="sc">~</span> <span class="st">"Not Hispanic or Latino"</span>,</span>
-<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>    ethnicity <span class="sc">==</span> <span class="st">"Unknown/Not Reported"</span> <span class="sc">~</span> <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.location.baseline =</span> <span class="fu">case_when</span>(</span>
-<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Basal Ganglia"</span> <span class="sc">~</span> <span class="st">"Basal Ganglia"</span>,</span>
-<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Brainstem"</span> <span class="sc">~</span> <span class="st">"Brainstem"</span>,</span>
-<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Caudate"</span> <span class="sc">~</span> <span class="st">"Basal Ganglia"</span>,</span>
-<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Cerebellum"</span> <span class="sc">~</span> <span class="st">"Cerebellum"</span>,</span>
-<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Frontal"</span> <span class="sc">~</span> <span class="st">"Lobar"</span>,</span>
-<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Globus Pallidus"</span> <span class="sc">~</span> <span class="st">"Basal Ganglia"</span>,</span>
-<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Lobar"</span> <span class="sc">~</span> <span class="st">"Lobar"</span>,</span>
-<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Occipital"</span> <span class="sc">~</span> <span class="st">"Lobar"</span>,</span>
-<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Other"</span> <span class="sc">~</span> <span class="st">"Other"</span>,</span>
-<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Parietal"</span> <span class="sc">~</span> <span class="st">"Lobar"</span>,</span>
-<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Primary IVH"</span> <span class="sc">~</span> <span class="st">"Primary IVH"</span>,</span>
-<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Probable Primary IVH"</span> <span class="sc">~</span> <span class="st">"Primary IVH"</span>,</span>
-<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Putamen"</span> <span class="sc">~</span> <span class="st">"Basal Ganglia"</span>,</span>
-<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Temporal"</span> <span class="sc">~</span> <span class="st">"Lobar"</span>,</span>
-<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>    ich.location.baseline <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">~</span> <span class="st">"Thalamus"</span></span>
-<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>ninds.combined <span class="ot">&lt;-</span> ninds.combined <span class="sc">%&gt;%</span></span>
-<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich.location.baseline <span class="sc">==</span> <span class="st">"Lobar"</span> <span class="sc">|</span> </span>
-<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span></span>
-<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Basal Ganglia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ich.laterality))</span>
-<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> ninds.combined,</span>
-<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata =</span> <span class="st">"ich.laterality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>    ethnicity <span class="sc">==</span> <span class="st">"Unknown/Not Reported"</span> <span class="sc">~</span> <span class="st">"NA"</span>)) </span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>ninds.combined <span class="ot">&lt;-</span> ninds.combined <span class="sc">%&gt;%</span></span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich.location.baseline <span class="sc">==</span> <span class="st">"Lobar"</span> <span class="sc">|</span> </span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span></span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Basal Ganglia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.laterality =</span> <span class="fu">na_if</span>(ich.laterality, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ich.laterality))</span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> ninds.combined,</span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata =</span> <span class="st">"ich.laterality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -1503,395 +1493,391 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                          Stratified by ich.laterality
-                                           Left            NA             
-  n                                          2120              21         
-  study (%)                                                               
-     ATACH2                                   475 ( 22.4)       0 (  0.0) 
-     CLEAR III                                200 (  9.4)       6 ( 28.6) 
-     ERICH                                   1187 ( 56.0)      15 ( 71.4) 
-     MISTIE III                               258 ( 12.2)       0 (  0.0) 
-  age (mean (SD))                           61.34 (13.15)   65.29 (12.21) 
-  sex = Male (%)                             1243 ( 58.6)      10 ( 47.6) 
-  ethnicity (%)                                                           
-     Hispanic or Latino                       481 ( 22.7)       5 ( 23.8) 
-     NA                                         9 (  0.4)       0 (  0.0) 
-     Not Hispanic or Latino                  1630 ( 76.9)      16 ( 76.2) 
-  race (%)                                                                
-     American Indian or Alaskan Native          6 (  0.3)       0 (  0.0) 
-     Asian                                    270 ( 12.9)       0 (  0.0) 
-     Black or African-American                601 ( 28.6)       8 ( 38.1) 
-     Native Hawaiian/Pacific Islander           2 (  0.1)       0 (  0.0) 
-     Other/Not Reported                        32 (  1.5)       0 (  0.0) 
-     White                                   1188 ( 56.6)      13 ( 61.9) 
-  enrolling.country (%)                                                   
-     China                                     56 (  3.4)       0 (  0.0) 
-     Germany                                   20 (  1.2)       0 (  0.0) 
-     Japan                                    148 (  8.9)       0 (  0.0) 
-     South Korea                               10 (  0.6)       0 (  0.0) 
-     Taiwan                                    38 (  2.3)       0 (  0.0) 
-     United States                           1390 ( 83.6)      15 (100.0) 
-  stroke (%)                                                              
-     NA                                        24 (  1.4)       0 (  0.0) 
-     No                                      1363 ( 82.0)      13 ( 86.7) 
-     Yes                                      275 ( 16.5)       2 ( 13.3) 
-  cad (%)                                                                 
-     NA                                        52 (  2.7)       1 (  6.7) 
-     No                                      1683 ( 87.7)      11 ( 73.3) 
-     Yes                                      185 (  9.6)       3 ( 20.0) 
-  chf (%)                                                                 
-     NA                                        54 (  3.2)       2 ( 13.3) 
-     No                                      1516 ( 91.2)      10 ( 66.7) 
-     Yes                                       92 (  5.5)       3 ( 20.0) 
-  afib (%)                                                                
-     NA                                        50 (  3.0)       2 ( 13.3) 
-     No                                      1509 ( 90.8)      10 ( 66.7) 
-     Yes                                      103 (  6.2)       3 ( 20.0) 
-  pvd (%)                                                                 
-     NA                                        49 (  2.9)       1 (  6.7) 
-     No                                      1568 ( 94.3)      13 ( 86.7) 
-     Yes                                       45 (  2.7)       1 (  6.7) 
-  hld (%)                                                                 
-     NA                                        99 (  6.0)       1 (  6.7) 
-     No                                      1080 ( 65.0)      10 ( 66.7) 
-     Yes                                      482 ( 29.0)       4 ( 26.7) 
-  dm2 (%)                                                                 
-     NA                                        92 (  4.8)       1 (  6.7) 
-     No                                      1425 ( 74.2)      12 ( 80.0) 
-     Yes                                      403 ( 21.0)       2 ( 13.3) 
-  tobacco (%)                                                             
-     NA                                         6 (  0.4)       1 (  5.6) 
-     No                                       851 ( 52.7)      10 ( 55.6) 
-     Yes                                      757 ( 46.9)       7 ( 38.9) 
-  time.to.ed.minutes (mean (SD))           263.11 (843.99) 300.31 (462.59)
-  sbp.initial (mean (SD))                  190.49 (41.99)  200.62 (36.12) 
-  dbp.initial (mean (SD))                  106.93 (42.93)  103.71 (27.95) 
-  gcs.baseline (mean (SD))                  11.82 (3.54)    12.00 (3.43)  
-  nihss.baseline (mean (SD))                16.58 (9.43)    23.60 (14.62) 
-  ich.location.baseline (%)                                               
-     Basal Ganglia                            892 ( 42.1)       9 ( 42.9) 
-     Lobar                                    545 ( 25.7)       5 ( 23.8) 
-     Thalamus                                 683 ( 32.2)       7 ( 33.3) 
-  ivh = Yes (%)                               812 ( 43.8)      17 ( 81.0) 
-  ich.volume.cc (mean (SD))                 21.02 (23.12)   20.90 (22.65) 
-  ivh.volume.cc (mean (SD))                  7.22 (15.94)   28.29 (31.57) 
-  phe.volume.cc (mean (SD))                  2.10 (2.36)      NaN (NA)    
-  sp.shift.baseline (mean (SD))              1.06 (1.77)      NaN (NA)    
-  mech.ventilation = Yes (%)                  272 ( 16.4)       4 ( 26.7) 
-  intubation.days (mean (SD))                8.46 (7.27)      NaN (NA)    
-  extubation.date (mean (SD))                9.35 (7.69)      NaN (NA)    
-  tracheostomy = Yes (%)                       40 ( 50.0)       1 (100.0) 
-  trach.date (mean (SD))                    12.21 (5.85)      NaN (NA)    
-  evd = Yes (%)                               229 ( 13.8)       4 ( 26.7) 
-  evd.days (mean (SD))                      11.61 (12.28)     NaN (NA)    
-  nsgy.evacuation = Yes (%)                    90 (  5.4)       3 ( 20.0) 
-  nsgy.evacuation.date (mean (SD))           7.39 (34.70)    6.80 (5.54)  
-  mrs.30 (mean (SD))                         3.84 (1.44)     4.50 (0.55)  
-  mrs.90 (mean (SD))                         3.02 (1.74)     3.93 (2.20)  
-  mrs.180 (mean (SD))                        3.45 (1.84)     4.20 (2.02)  
-  mrs.365 (mean (SD))                        3.35 (1.93)     4.46 (1.94)  
-  euro.mobility.90 (%)                                                    
-     No Problems                              433 ( 35.5)       4 ( 57.1) 
-     Some Problems                            653 ( 53.5)       3 ( 42.9) 
-     Confined to Bed                          135 ( 11.1)       0 (  0.0) 
-     NA                                         0 (  0.0)       0 (  0.0) 
-  euro.mobility.180 (%)                                                   
-     No Problems                              307 ( 39.9)       4 ( 57.1) 
-     Some Problems                            389 ( 50.6)       2 ( 28.6) 
-     Confined to Bed                           73 (  9.5)       1 ( 14.3) 
-  euro.mobility.365 (%)                                                   
-     Confined to Bed                           64 (  9.1)       1 ( 16.7) 
-     No Problems                              290 ( 41.3)       2 ( 33.3) 
-     Some Problems                            348 ( 49.6)       3 ( 50.0) 
-  euro.selfcare.90 (%)                                                    
-     No Problems                              619 ( 50.7)       6 ( 85.7) 
-     Some Problems                            400 ( 32.8)       1 ( 14.3) 
-     Unable to Wash or Dress Myself           202 ( 16.5)       0 (  0.0) 
-     NA                                         0 (  0.0)       0 (  0.0) 
-  euro.selfcare.180 (%)                                                   
-     No Problems                              438 ( 57.0)       2 ( 28.6) 
-     Some Problems                            219 ( 28.5)       4 ( 57.1) 
-     Unable to Wash or Dress Myself           112 ( 14.6)       1 ( 14.3) 
-  euro.selfcare.365 (%)                                                   
-     No Problems                              419 ( 59.7)       4 ( 66.7) 
-     Some Problems                            202 ( 28.8)       1 ( 16.7) 
-     Unable to Wash or Dress Myself            81 ( 11.5)       1 ( 16.7) 
-  euro.usual.90 (%)                                                       
-     No Problems                              326 ( 26.7)       2 ( 28.6) 
-     Some Problems                            557 ( 45.6)       5 ( 71.4) 
-     Unable to Perform My Usual Activities    338 ( 27.7)       0 (  0.0) 
-     NA                                         0 (  0.0)       0 (  0.0) 
-  euro.usual.180 (%)                                                      
-     No Problems                              253 ( 32.9)       1 ( 14.3) 
-     Some Problems                            323 ( 42.0)       4 ( 57.1) 
-     Unable to Perform My Usual Activities    193 ( 25.1)       2 ( 28.6) 
-  euro.usual.365 (%)                                                      
-     No Problems                              243 ( 34.6)       1 ( 16.7) 
-     Some Problems                            305 ( 43.4)       4 ( 66.7) 
-     Unable to Perform My Usual Activities    154 ( 21.9)       1 ( 16.7) 
-  euro.pain.90 (%)                                                        
-     No Pain/Discomfort                       606 ( 49.9)       3 ( 42.9) 
-     Some Moderate Pain/Discomfort            550 ( 45.3)       4 ( 57.1) 
-     Extreme Pain/Discomfort                   58 (  4.8)       0 (  0.0) 
-     NA                                         0 (  0.0)       0 (  0.0) 
-  euro.pain.180 (%)                                                       
-     No Pain/Discomfort                       362 ( 47.8)       5 ( 71.4) 
-     Some Moderate Pain/Discomfort            348 ( 45.9)       2 ( 28.6) 
-     Extreme Pain/Discomfort                   48 (  6.3)       0 (  0.0) 
-  euro.pain.365 (%)                                                       
-     Extreme Pain/Discomfort                   40 (  5.7)       0 (  0.0) 
-     No Pain/Discomfort                       366 ( 52.5)       1 ( 16.7) 
-     Some Moderate Pain/Discomfort            291 ( 41.8)       5 ( 83.3) 
-  euro.anxiety.90 (%)                                                     
-     Not Anxious/Depressed                    695 ( 57.6)       4 ( 57.1) 
-     Moderately Anxious/Depressed             447 ( 37.0)       3 ( 42.9) 
-     Extremely Anxious/Depressed               65 (  5.4)       0 (  0.0) 
-     NA                                         0 (  0.0)       0 (  0.0) 
-  euro.anxiety.180 (%)                                                    
-     Not Anxious/Depressed                    403 ( 53.1)       3 ( 42.9) 
-     Moderately Anxious/Depressed             303 ( 39.9)       4 ( 57.1) 
-     Extremely Anxious/Depressed               53 (  7.0)       0 (  0.0) 
-  euro.anxiety.365 (%)                                                    
-     Extremely Anxious/Depressed               35 (  5.0)       1 ( 16.7) 
-     Moderately Anxious/Depressed             249 ( 35.7)       3 ( 50.0) 
-     Not Anxious/Depressed                    414 ( 59.3)       2 ( 33.3) 
-  euro.vas.90 (mean (SD))                   65.44 (21.73)   60.71 (20.09) 
-  euro.vas.180 (mean (SD))                  67.98 (21.16)   56.43 (33.51) 
-  euro.vas.365 (mean (SD))                  70.52 (20.71)   60.00 (30.33) 
-  EQ_INDEX.90 (mean (SD))                    0.69 (0.24)      NaN (NA)    
-  current.location.90 (%)                                                 
-     Home                                     601 ( 75.1)       5 ( 62.5) 
-     Hospital                                  22 (  2.8)       0 (  0.0) 
-     Other                                     18 (  2.2)       1 ( 12.5) 
-     Rehabilitation                            73 (  9.1)       1 ( 12.5) 
-     Skilled Nursing Facility                  86 ( 10.8)       1 ( 12.5) 
-  current.location.180 (%)                                                
-     Dead                                      55 (  5.2)       0 (  0.0) 
-     Home                                     747 ( 70.9)       5 ( 62.5) 
-     Hospital                                  23 (  2.2)       0 (  0.0) 
-     Other                                     18 (  1.7)       1 ( 12.5) 
-     Rehabilitation                            87 (  8.3)       1 ( 12.5) 
-     Skilled Nursing Facility                 124 ( 11.8)       1 ( 12.5) 
-  current.location.365 (%)                                                
-     Dead                                      62 (  5.9)       0 (  0.0) 
-     Home                                     754 ( 71.7)       5 ( 62.5) 
-     Hospital                                  22 (  2.1)       0 (  0.0) 
-     Other                                     18 (  1.7)       1 ( 12.5) 
-     Rehabilitation                            80 (  7.6)       1 ( 12.5) 
-     Skilled Nursing Facility                 115 ( 10.9)       1 ( 12.5) 
-  ich.laterality (%)                                                      
-     Left                                    2120 (100.0)       0 (  0.0) 
-     NA                                         0 (  0.0)      21 (100.0) 
-     Right                                      0 (  0.0)       0 (  0.0) 
-  dnr.binary (%)                                                          
-     NA                                        15 (  1.2)       0 (  0.0) 
-     No                                      1012 ( 83.3)       9 ( 60.0) 
-     Yes                                      188 ( 15.5)       6 ( 40.0) 
-  comfort.binary (%)                                                      
-     NA                                        12 (  0.7)       0 (  0.0) 
-     No                                      1457 ( 87.1)      17 ( 81.0) 
-     Yes                                      204 ( 12.2)       4 ( 19.0) 
-  dnr.day (mean (SD))                        4.71 (29.74)   15.00 (8.49)  
-  comfort.day (mean (SD))                   22.42 (52.70)   16.33 (11.02) 
-  ich.score.age (mean (SD))                  0.10 (0.31)     0.14 (0.36)  
-  ich.score.gcs (mean (SD))                  0.51 (0.60)     0.33 (0.48)  
-  ich.score.volume (mean (SD))               0.24 (0.43)     0.19 (0.40)  
-  ich.score.ivh (mean (SD))                  0.44 (0.50)     0.81 (0.40)  
-  ich.score.total (mean (SD))                1.18 (1.10)     1.48 (0.75)  
+                                           Left            Right           
+  n                                          2168            2188          
+  study (%)                                                                
+     ATACH2                                   475 (21.9)      519 ( 23.7)  
+     CLEAR III                                200 ( 9.2)      193 (  8.8)  
+     ERICH                                   1187 (54.8)     1183 ( 54.1)  
+     MISTIE II                                 48 ( 2.2)       45 (  2.1)  
+     MISTIE III                               258 (11.9)      248 ( 11.3)  
+  age (mean (SD))                           61.29 (13.11)   61.48 (13.53)  
+  sex = Male (%)                             1275 (58.8)     1345 ( 61.5)  
+  ethnicity (%)                                                            
+     Hispanic or Latino                       481 (22.7)      490 ( 22.9)  
+     NA                                         9 ( 0.4)       20 (  0.9)  
+     Not Hispanic or Latino                  1630 (76.9)     1631 ( 76.2)  
+  race (%)                                                                 
+     American Indian or Alaskan Native          6 ( 0.3)        3 (  0.1)  
+     Asian                                    270 (12.9)      299 ( 14.0)  
+     Black or African-American                601 (28.6)      605 ( 28.4)  
+     Native Hawaiian/Pacific Islander           2 ( 0.1)        1 (  0.0)  
+     Other/Not Reported                        32 ( 1.5)       40 (  1.9)  
+     White                                   1188 (56.6)     1181 ( 55.5)  
+  enrolling.country (%)                                                    
+     China                                     56 ( 3.4)       79 (  4.6)  
+     Germany                                   20 ( 1.2)       19 (  1.1)  
+     Japan                                    148 ( 8.9)      141 (  8.3)  
+     South Korea                               10 ( 0.6)        7 (  0.4)  
+     Taiwan                                    38 ( 2.3)       56 (  3.3)  
+     United States                           1390 (83.6)     1400 ( 82.3)  
+  stroke (%)                                                               
+     NA                                        24 ( 1.4)       16 (  0.9)  
+     No                                      1363 (82.0)     1399 ( 82.2)  
+     Yes                                      275 (16.5)      286 ( 16.8)  
+  cad (%)                                                                  
+     NA                                        52 ( 2.7)       43 (  2.2)  
+     No                                      1683 (87.7)     1721 ( 88.3)  
+     Yes                                      185 ( 9.6)      186 (  9.5)  
+  chf (%)                                                                  
+     NA                                        54 ( 3.2)       32 (  1.9)  
+     No                                      1516 (91.2)     1563 ( 91.8)  
+     Yes                                       92 ( 5.5)      107 (  6.3)  
+  afib (%)                                                                 
+     NA                                        50 ( 3.0)       44 (  2.6)  
+     No                                      1509 (90.8)     1526 ( 89.7)  
+     Yes                                      103 ( 6.2)      132 (  7.8)  
+  pvd (%)                                                                  
+     NA                                        49 ( 2.9)       36 (  2.1)  
+     No                                      1568 (94.3)     1634 ( 96.0)  
+     Yes                                       45 ( 2.7)       32 (  1.9)  
+  hld (%)                                                                  
+     NA                                        99 ( 6.0)      119 (  7.0)  
+     No                                      1080 (65.0)     1099 ( 64.6)  
+     Yes                                      482 (29.0)      483 ( 28.4)  
+  dm2 (%)                                                                  
+     NA                                        92 ( 4.8)       95 (  4.9)  
+     No                                      1425 (74.2)     1436 ( 73.7)  
+     Yes                                      403 (21.0)      418 ( 21.4)  
+  tobacco (%)                                                              
+     NA                                         6 ( 0.4)        5 (  0.3)  
+     No                                       851 (52.7)      799 ( 49.5)  
+     Yes                                      757 (46.9)      811 ( 50.2)  
+  time.to.ed.minutes (mean (SD))           263.11 (843.99) 312.73 (1377.46)
+  sbp.initial (mean (SD))                  190.54 (41.79)  189.84 (41.56)  
+  dbp.initial (mean (SD))                  106.96 (42.57)  107.95 (54.16)  
+  gcs.baseline (mean (SD))                  11.77 (3.53)    12.81 (3.32)   
+  nihss.baseline (mean (SD))                16.87 (9.45)    14.58 (8.39)   
+  ich.location.baseline (%)                                                
+     Basal Ganglia                            925 (42.7)      831 ( 38.0)  
+     Lobar                                    557 (25.7)      574 ( 26.2)  
+     Thalamus                                 686 (31.6)      783 ( 35.8)  
+  ivh = Yes (%)                               841 (44.3)      890 ( 46.1)  
+  ich.volume.cc (mean (SD))                 21.53 (23.23)   22.79 (24.13)  
+  ivh.volume.cc (mean (SD))                  7.14 (15.80)    7.15 (15.34)  
+  phe.volume.cc (mean (SD))                  2.10 (2.36)     2.05 (2.74)   
+  sp.shift.baseline (mean (SD))              1.06 (1.77)     1.35 (1.83)   
+  mech.ventilation = Yes (%)                  272 (16.4)      299 ( 17.6)  
+  intubation.days (mean (SD))                8.46 (7.27)     6.68 (4.73)   
+  extubation.date (mean (SD))                9.35 (7.69)     7.40 (5.31)   
+  tracheostomy = Yes (%)                       40 (50.0)       43 ( 43.0)  
+  trach.date (mean (SD))                    12.21 (5.85)     6.79 (4.53)   
+  evd = Yes (%)                               229 (13.8)      268 ( 15.8)  
+  evd.days (mean (SD))                      11.61 (12.28)    8.87 (5.82)   
+  nsgy.evacuation = Yes (%)                    90 ( 5.4)      146 (  8.6)  
+  nsgy.evacuation.date (mean (SD))           7.39 (34.70)    4.24 (6.91)   
+  mrs.30 (mean (SD))                         3.87 (1.43)     3.85 (1.40)   
+  mrs.90 (mean (SD))                         3.07 (1.74)     3.11 (1.71)   
+  mrs.180 (mean (SD))                        3.48 (1.84)     3.45 (1.81)   
+  mrs.365 (mean (SD))                        3.37 (1.94)     3.36 (1.95)   
+  euro.mobility.90 (%)                                                     
+     No Problems                              433 (35.5)      398 ( 31.5)  
+     Some Problems                            653 (53.5)      653 ( 51.7)  
+     Confined to Bed                          135 (11.1)      212 ( 16.8)  
+     NA                                         0 ( 0.0)        1 (  0.1)  
+  euro.mobility.180 (%)                                                    
+     No Problems                              307 (39.9)      276 ( 36.3)  
+     Some Problems                            389 (50.6)      379 ( 49.8)  
+     Confined to Bed                           73 ( 9.5)      106 ( 13.9)  
+  euro.mobility.365 (%)                                                    
+     Confined to Bed                           64 ( 9.1)       93 ( 13.0)  
+     No Problems                              290 (41.3)      296 ( 41.3)  
+     Some Problems                            348 (49.6)      327 ( 45.7)  
+  euro.selfcare.90 (%)                                                     
+     No Problems                              619 (50.7)      580 ( 45.9)  
+     Some Problems                            400 (32.8)      415 ( 32.8)  
+     Unable to Wash or Dress Myself           202 (16.5)      268 ( 21.2)  
+     NA                                         0 ( 0.0)        1 (  0.1)  
+  euro.selfcare.180 (%)                                                    
+     No Problems                              438 (57.0)      394 ( 51.8)  
+     Some Problems                            219 (28.5)      238 ( 31.3)  
+     Unable to Wash or Dress Myself           112 (14.6)      129 ( 17.0)  
+  euro.selfcare.365 (%)                                                    
+     No Problems                              419 (59.7)      414 ( 57.8)  
+     Some Problems                            202 (28.8)      190 ( 26.5)  
+     Unable to Wash or Dress Myself            81 (11.5)      112 ( 15.6)  
+  euro.usual.90 (%)                                                        
+     No Problems                              326 (26.7)      322 ( 25.5)  
+     Some Problems                            557 (45.6)      547 ( 43.3)  
+     Unable to Perform My Usual Activities    338 (27.7)      394 ( 31.2)  
+     NA                                         0 ( 0.0)        1 (  0.1)  
+  euro.usual.180 (%)                                                       
+     No Problems                              253 (32.9)      218 ( 28.6)  
+     Some Problems                            323 (42.0)      324 ( 42.6)  
+     Unable to Perform My Usual Activities    193 (25.1)      219 ( 28.8)  
+  euro.usual.365 (%)                                                       
+     No Problems                              243 (34.6)      240 ( 33.5)  
+     Some Problems                            305 (43.4)      286 ( 39.9)  
+     Unable to Perform My Usual Activities    154 (21.9)      190 ( 26.5)  
+  euro.pain.90 (%)                                                         
+     No Pain/Discomfort                       606 (49.9)      563 ( 44.9)  
+     Some Moderate Pain/Discomfort            550 (45.3)      610 ( 48.6)  
+     Extreme Pain/Discomfort                   58 ( 4.8)       80 (  6.4)  
+     NA                                         0 ( 0.0)        1 (  0.1)  
+  euro.pain.180 (%)                                                        
+     No Pain/Discomfort                       362 (47.8)      324 ( 43.0)  
+     Some Moderate Pain/Discomfort            348 (45.9)      374 ( 49.6)  
+     Extreme Pain/Discomfort                   48 ( 6.3)       56 (  7.4)  
+  euro.pain.365 (%)                                                        
+     Extreme Pain/Discomfort                   40 ( 5.7)       55 (  7.8)  
+     No Pain/Discomfort                       366 (52.5)      328 ( 46.3)  
+     Some Moderate Pain/Discomfort            291 (41.8)      326 ( 46.0)  
+  euro.anxiety.90 (%)                                                      
+     Not Anxious/Depressed                    695 (57.6)      685 ( 54.7)  
+     Moderately Anxious/Depressed             447 (37.0)      503 ( 40.2)  
+     Extremely Anxious/Depressed               65 ( 5.4)       63 (  5.0)  
+     NA                                         0 ( 0.0)        1 (  0.1)  
+  euro.anxiety.180 (%)                                                     
+     Not Anxious/Depressed                    403 (53.1)      386 ( 51.2)  
+     Moderately Anxious/Depressed             303 (39.9)      319 ( 42.3)  
+     Extremely Anxious/Depressed               53 ( 7.0)       49 (  6.5)  
+  euro.anxiety.365 (%)                                                     
+     Extremely Anxious/Depressed               35 ( 5.0)       55 (  7.7)  
+     Moderately Anxious/Depressed             249 (35.7)      261 ( 36.8)  
+     Not Anxious/Depressed                    414 (59.3)      394 ( 55.5)  
+  euro.vas.90 (mean (SD))                   65.44 (21.73)   63.53 (22.17)  
+  euro.vas.180 (mean (SD))                  67.98 (21.16)   66.08 (21.78)  
+  euro.vas.365 (mean (SD))                  70.52 (20.71)   69.40 (21.90)  
+  EQ_INDEX.90 (mean (SD))                    0.69 (0.24)     0.65 (0.28)   
+  current.location.90 (%)                                                  
+     Home                                     601 (75.1)      586 ( 71.5)  
+     Hospital                                  22 ( 2.8)       33 (  4.0)  
+     Other                                     18 ( 2.2)       23 (  2.8)  
+     Rehabilitation                            73 ( 9.1)       60 (  7.3)  
+     Skilled Nursing Facility                  86 (10.8)      118 ( 14.4)  
+  current.location.180 (%)                                                 
+     Dead                                      55 ( 5.2)       41 (  3.9)  
+     Home                                     747 (70.9)      727 ( 68.3)  
+     Hospital                                  23 ( 2.2)       34 (  3.2)  
+     Other                                     18 ( 1.7)       23 (  2.2)  
+     Rehabilitation                            87 ( 8.3)       78 (  7.3)  
+     Skilled Nursing Facility                 124 (11.8)      161 ( 15.1)  
+  current.location.365 (%)                                                 
+     Dead                                      62 ( 5.9)       49 (  4.6)  
+     Home                                     754 (71.7)      736 ( 69.2)  
+     Hospital                                  22 ( 2.1)       34 (  3.2)  
+     Other                                     18 ( 1.7)       23 (  2.2)  
+     Rehabilitation                            80 ( 7.6)       68 (  6.4)  
+     Skilled Nursing Facility                 115 (10.9)      153 ( 14.4)  
+  ich.laterality = Right (%)                    0 ( 0.0)     2188 (100.0)  
+  dnr.binary (%)                                                           
+     NA                                        15 ( 1.2)       19 (  1.6)  
+     No                                      1012 (83.3)     1008 ( 82.6)  
+     Yes                                      188 (15.5)      194 ( 15.9)  
+  comfort.binary (%)                                                       
+     NA                                        12 ( 0.7)       19 (  1.1)  
+     No                                      1457 (87.1)     1457 ( 87.7)  
+     Yes                                      204 (12.2)      186 ( 11.2)  
+  dnr.day (mean (SD))                        4.71 (29.74)    8.11 (13.22)  
+  comfort.day (mean (SD))                   22.42 (52.70)   24.01 (51.95)  
+  ich.score.age (mean (SD))                  0.10 (0.30)     0.11 (0.32)   
+  ich.score.gcs (mean (SD))                  0.52 (0.59)     0.33 (0.56)   
+  ich.score.volume (mean (SD))               0.25 (0.43)     0.27 (0.45)   
+  ich.score.ivh (mean (SD))                  0.44 (0.50)     0.46 (0.50)   
+  ich.score.total (mean (SD))                1.21 (1.11)     1.09 (1.07)   
                                           Stratified by ich.laterality
-                                           Right            p      test
-  n                                          2143                      
-  study (%)                                                  0.004     
-     ATACH2                                   519 ( 24.2)              
-     CLEAR III                                193 (  9.0)              
-     ERICH                                   1183 ( 55.2)              
-     MISTIE III                               248 ( 11.6)              
-  age (mean (SD))                           61.43 (13.57)    0.402     
-  sex = Male (%)                             1316 ( 61.4)    0.092     
-  ethnicity (%)                                              0.364     
-     Hispanic or Latino                       490 ( 22.9)              
-     NA                                        20 (  0.9)              
-     Not Hispanic or Latino                  1631 ( 76.2)              
-  race (%)                                                   0.670     
-     American Indian or Alaskan Native          3 (  0.1)              
-     Asian                                    299 ( 14.0)              
-     Black or African-American                605 ( 28.4)              
-     Native Hawaiian/Pacific Islander           1 (  0.0)              
-     Other/Not Reported                        40 (  1.9)              
-     White                                   1181 ( 55.5)              
-  enrolling.country (%)                                      0.376     
-     China                                     79 (  4.6)              
-     Germany                                   19 (  1.1)              
-     Japan                                    141 (  8.3)              
-     South Korea                                7 (  0.4)              
-     Taiwan                                    56 (  3.3)              
-     United States                           1400 ( 82.3)              
-  stroke (%)                                                 0.707     
-     NA                                        16 (  0.9)              
-     No                                      1399 ( 82.2)              
-     Yes                                      286 ( 16.8)              
-  cad (%)                                                    0.385     
-     NA                                        43 (  2.2)              
-     No                                      1721 ( 88.3)              
-     Yes                                      186 (  9.5)              
-  chf (%)                                                    0.001     
-     NA                                        32 (  1.9)              
-     No                                      1563 ( 91.8)              
-     Yes                                      107 (  6.3)              
-  afib (%)                                                   0.008     
-     NA                                        44 (  2.6)              
-     No                                      1526 ( 89.7)              
-     Yes                                      132 (  7.8)              
-  pvd (%)                                                    0.117     
-     NA                                        36 (  2.1)              
-     No                                      1634 ( 96.0)              
-     Yes                                       32 (  1.9)              
-  hld (%)                                                    0.817     
-     NA                                       119 (  7.0)              
-     No                                      1099 ( 64.6)              
-     Yes                                      483 ( 28.4)              
-  dm2 (%)                                                    0.943     
-     NA                                        95 (  4.9)              
-     No                                      1436 ( 73.7)              
-     Yes                                      418 ( 21.4)              
-  tobacco (%)                                                0.002     
-     NA                                         5 (  0.3)              
-     No                                       799 ( 49.5)              
-     Yes                                      811 ( 50.2)              
-  time.to.ed.minutes (mean (SD))           312.73 (1377.46)  0.436     
-  sbp.initial (mean (SD))                  190.06 (41.69)    0.500     
-  dbp.initial (mean (SD))                  108.11 (54.60)    0.703     
-  gcs.baseline (mean (SD))                  12.84 (3.30)    &lt;0.001     
-  nihss.baseline (mean (SD))                14.23 (8.22)    &lt;0.001     
-  ich.location.baseline (%)                                  0.026     
-     Basal Ganglia                            807 ( 37.7)              
-     Lobar                                    553 ( 25.8)              
-     Thalamus                                 783 ( 36.5)              
-  ivh = Yes (%)                               861 ( 45.6)    0.002     
-  ich.volume.cc (mean (SD))                 22.25 (23.92)    0.236     
-  ivh.volume.cc (mean (SD))                  7.23 (15.47)   &lt;0.001     
-  phe.volume.cc (mean (SD))                  2.05 (2.74)     0.732     
-  sp.shift.baseline (mean (SD))              1.35 (1.83)     0.010     
-  mech.ventilation = Yes (%)                  299 ( 17.6)    0.398     
-  intubation.days (mean (SD))                6.68 (4.73)     0.089     
-  extubation.date (mean (SD))                7.40 (5.31)     0.087     
-  tracheostomy = Yes (%)                       43 ( 43.0)    0.361     
-  trach.date (mean (SD))                     6.79 (4.53)     0.003     
-  evd = Yes (%)                               268 ( 15.8)    0.120     
-  evd.days (mean (SD))                       8.87 (5.82)     0.226     
-  nsgy.evacuation = Yes (%)                   146 (  8.6)   &lt;0.001     
-  nsgy.evacuation.date (mean (SD))           4.24 (6.91)     0.516     
-  mrs.30 (mean (SD))                         3.82 (1.42)     0.507     
-  mrs.90 (mean (SD))                         3.08 (1.71)     0.113     
-  mrs.180 (mean (SD))                        3.43 (1.81)     0.170     
-  mrs.365 (mean (SD))                        3.35 (1.95)     0.120     
-  euro.mobility.90 (%)                                       0.002     
-     No Problems                              398 ( 31.5)              
-     Some Problems                            653 ( 51.7)              
-     Confined to Bed                          212 ( 16.8)              
-     NA                                         1 (  0.1)              
-  euro.mobility.180 (%)                                      0.057     
-     No Problems                              276 ( 36.3)              
-     Some Problems                            379 ( 49.8)              
-     Confined to Bed                          106 ( 13.9)              
-  euro.mobility.365 (%)                                      0.185     
-     Confined to Bed                           93 ( 13.0)              
-     No Problems                              296 ( 41.3)              
-     Some Problems                            327 ( 45.7)              
-  euro.selfcare.90 (%)                                       0.019     
-     No Problems                              580 ( 45.9)              
-     Some Problems                            415 ( 32.8)              
-     Unable to Wash or Dress Myself           268 ( 21.2)              
-     NA                                         1 (  0.1)              
-  euro.selfcare.180 (%)                                      0.143     
-     No Problems                              394 ( 51.8)              
-     Some Problems                            238 ( 31.3)              
-     Unable to Wash or Dress Myself           129 ( 17.0)              
-  euro.selfcare.365 (%)                                      0.231     
-     No Problems                              414 ( 57.8)              
-     Some Problems                            190 ( 26.5)              
-     Unable to Wash or Dress Myself           112 ( 15.6)              
-  euro.usual.90 (%)                                          0.246     
-     No Problems                              322 ( 25.5)              
-     Some Problems                            547 ( 43.3)              
-     Unable to Perform My Usual Activities    394 ( 31.2)              
-     NA                                         1 (  0.1)              
-  euro.usual.180 (%)                                         0.268     
-     No Problems                              218 ( 28.6)              
-     Some Problems                            324 ( 42.6)              
-     Unable to Perform My Usual Activities    219 ( 28.8)              
-  euro.usual.365 (%)                                         0.212     
-     No Problems                              240 ( 33.5)              
-     Some Problems                            286 ( 39.9)              
-     Unable to Perform My Usual Activities    190 ( 26.5)              
-  euro.pain.90 (%)                                           0.166     
-     No Pain/Discomfort                       563 ( 44.9)              
-     Some Moderate Pain/Discomfort            610 ( 48.6)              
-     Extreme Pain/Discomfort                   80 (  6.4)              
-     NA                                         1 (  0.1)              
-  euro.pain.180 (%)                                          0.222     
-     No Pain/Discomfort                       324 ( 43.0)              
-     Some Moderate Pain/Discomfort            374 ( 49.6)              
-     Extreme Pain/Discomfort                   56 (  7.4)              
-  euro.pain.365 (%)                                          0.038     
-     Extreme Pain/Discomfort                   55 (  7.8)              
-     No Pain/Discomfort                       328 ( 46.3)              
-     Some Moderate Pain/Discomfort            326 ( 46.0)              
-  euro.anxiety.90 (%)                                        0.679     
-     Not Anxious/Depressed                    685 ( 54.7)              
-     Moderately Anxious/Depressed             503 ( 40.2)              
-     Extremely Anxious/Depressed               63 (  5.0)              
-     NA                                         1 (  0.1)              
-  euro.anxiety.180 (%)                                       0.747     
-     Not Anxious/Depressed                    386 ( 51.2)              
-     Moderately Anxious/Depressed             319 ( 42.3)              
-     Extremely Anxious/Depressed               49 (  6.5)              
-  euro.anxiety.365 (%)                                       0.136     
-     Extremely Anxious/Depressed               55 (  7.7)              
-     Moderately Anxious/Depressed             261 ( 36.8)              
-     Not Anxious/Depressed                    394 ( 55.5)              
-  euro.vas.90 (mean (SD))                   63.53 (22.17)    0.112     
-  euro.vas.180 (mean (SD))                  66.08 (21.78)    0.103     
-  euro.vas.365 (mean (SD))                  69.40 (21.90)    0.325     
-  EQ_INDEX.90 (mean (SD))                    0.65 (0.28)     0.011     
-  current.location.90 (%)                                    0.123     
-     Home                                     586 ( 71.5)              
-     Hospital                                  33 (  4.0)              
-     Other                                     23 (  2.8)              
-     Rehabilitation                            60 (  7.3)              
-     Skilled Nursing Facility                 118 ( 14.4)              
-  current.location.180 (%)                                   0.110     
-     Dead                                      41 (  3.9)              
-     Home                                     727 ( 68.3)              
-     Hospital                                  34 (  3.2)              
-     Other                                     23 (  2.2)              
-     Rehabilitation                            78 (  7.3)              
-     Skilled Nursing Facility                 161 ( 15.1)              
-  current.location.365 (%)                                   0.080     
-     Dead                                      49 (  4.6)              
-     Home                                     736 ( 69.2)              
-     Hospital                                  34 (  3.2)              
-     Other                                     23 (  2.2)              
-     Rehabilitation                            68 (  6.4)              
-     Skilled Nursing Facility                 153 ( 14.4)              
-  ich.laterality (%)                                        &lt;0.001     
-     Left                                       0 (  0.0)              
-     NA                                         0 (  0.0)              
-     Right                                   2143 (100.0)              
-  dnr.binary (%)                                             0.122     
-     NA                                        19 (  1.6)              
-     No                                      1008 ( 82.6)              
-     Yes                                      194 ( 15.9)              
-  comfort.binary (%)                                         0.457     
-     NA                                        19 (  1.1)              
-     No                                      1457 ( 87.7)              
-     Yes                                      186 ( 11.2)              
-  dnr.day (mean (SD))                        8.11 (13.22)    0.352     
-  comfort.day (mean (SD))                   24.01 (51.95)    0.941     
-  ich.score.age (mean (SD))                  0.12 (0.32)     0.415     
-  ich.score.gcs (mean (SD))                  0.32 (0.55)    &lt;0.001     
-  ich.score.volume (mean (SD))               0.26 (0.44)     0.212     
-  ich.score.ivh (mean (SD))                  0.46 (0.50)     0.002     
-  ich.score.total (mean (SD))                1.07 (1.06)     0.001     </code></pre>
+                                           p      test
+  n                                                   
+  study (%)                                 0.684     
+     ATACH2                                           
+     CLEAR III                                        
+     ERICH                                            
+     MISTIE II                                        
+     MISTIE III                                       
+  age (mean (SD))                           0.640     
+  sex = Male (%)                            0.078     
+  ethnicity (%)                             0.125     
+     Hispanic or Latino                               
+     NA                                               
+     Not Hispanic or Latino                           
+  race (%)                                  0.620     
+     American Indian or Alaskan Native                
+     Asian                                            
+     Black or African-American                        
+     Native Hawaiian/Pacific Islander                 
+     Other/Not Reported                               
+     White                                            
+  enrolling.country (%)                     0.177     
+     China                                            
+     Germany                                          
+     Japan                                            
+     South Korea                                      
+     Taiwan                                           
+     United States                                    
+  stroke (%)                                0.400     
+     NA                                               
+     No                                               
+     Yes                                              
+  cad (%)                                   0.592     
+     NA                                               
+     No                                               
+     Yes                                              
+  chf (%)                                   0.030     
+     NA                                               
+     No                                               
+     Yes                                              
+  afib (%)                                  0.167     
+     NA                                               
+     No                                               
+     Yes                                              
+  pvd (%)                                   0.079     
+     NA                                               
+     No                                               
+     Yes                                              
+  hld (%)                                   0.466     
+     NA                                               
+     No                                               
+     Yes                                              
+  dm2 (%)                                   0.929     
+     NA                                               
+     No                                               
+     Yes                                              
+  tobacco (%)                               0.166     
+     NA                                               
+     No                                               
+     Yes                                              
+  time.to.ed.minutes (mean (SD))            0.198     
+  sbp.initial (mean (SD))                   0.591     
+  dbp.initial (mean (SD))                   0.516     
+  gcs.baseline (mean (SD))                 &lt;0.001     
+  nihss.baseline (mean (SD))               &lt;0.001     
+  ich.location.baseline (%)                 0.003     
+     Basal Ganglia                                    
+     Lobar                                            
+     Thalamus                                         
+  ivh = Yes (%)                             0.276     
+  ich.volume.cc (mean (SD))                 0.082     
+  ivh.volume.cc (mean (SD))                 0.993     
+  phe.volume.cc (mean (SD))                 0.732     
+  sp.shift.baseline (mean (SD))             0.010     
+  mech.ventilation = Yes (%)                0.378     
+  intubation.days (mean (SD))               0.089     
+  extubation.date (mean (SD))               0.087     
+  tracheostomy = Yes (%)                    0.432     
+  trach.date (mean (SD))                    0.003     
+  evd = Yes (%)                             0.119     
+  evd.days (mean (SD))                      0.226     
+  nsgy.evacuation = Yes (%)                &lt;0.001     
+  nsgy.evacuation.date (mean (SD))          0.257     
+  mrs.30 (mean (SD))                        0.725     
+  mrs.90 (mean (SD))                        0.465     
+  mrs.180 (mean (SD))                       0.709     
+  mrs.365 (mean (SD))                       0.907     
+  euro.mobility.90 (%)                     &lt;0.001     
+     No Problems                                      
+     Some Problems                                    
+     Confined to Bed                                  
+     NA                                               
+  euro.mobility.180 (%)                     0.020     
+     No Problems                                      
+     Some Problems                                    
+     Confined to Bed                                  
+  euro.mobility.365 (%)                     0.051     
+     Confined to Bed                                  
+     No Problems                                      
+     Some Problems                                    
+  euro.selfcare.90 (%)                      0.011     
+     No Problems                                      
+     Some Problems                                    
+     Unable to Wash or Dress Myself                   
+     NA                                               
+  euro.selfcare.180 (%)                     0.118     
+     No Problems                                      
+     Some Problems                                    
+     Unable to Wash or Dress Myself                   
+  euro.selfcare.365 (%)                     0.073     
+     No Problems                                      
+     Some Problems                                    
+     Unable to Wash or Dress Myself                   
+  euro.usual.90 (%)                         0.199     
+     No Problems                                      
+     Some Problems                                    
+     Unable to Perform My Usual Activities            
+     NA                                               
+  euro.usual.180 (%)                        0.122     
+     No Problems                                      
+     Some Problems                                    
+     Unable to Perform My Usual Activities            
+  euro.usual.365 (%)                        0.119     
+     No Problems                                      
+     Some Problems                                    
+     Unable to Perform My Usual Activities            
+  euro.pain.90 (%)                          0.036     
+     No Pain/Discomfort                               
+     Some Moderate Pain/Discomfort                    
+     Extreme Pain/Discomfort                          
+     NA                                               
+  euro.pain.180 (%)                         0.162     
+     No Pain/Discomfort                               
+     Some Moderate Pain/Discomfort                    
+     Extreme Pain/Discomfort                          
+  euro.pain.365 (%)                         0.042     
+     Extreme Pain/Discomfort                          
+     No Pain/Discomfort                               
+     Some Moderate Pain/Discomfort                    
+  euro.anxiety.90 (%)                       0.310     
+     Not Anxious/Depressed                            
+     Moderately Anxious/Depressed                     
+     Extremely Anxious/Depressed                      
+     NA                                               
+  euro.anxiety.180 (%)                      0.632     
+     Not Anxious/Depressed                            
+     Moderately Anxious/Depressed                     
+     Extremely Anxious/Depressed                      
+  euro.anxiety.365 (%)                      0.077     
+     Extremely Anxious/Depressed                      
+     Moderately Anxious/Depressed                     
+     Not Anxious/Depressed                            
+  euro.vas.90 (mean (SD))                   0.041     
+  euro.vas.180 (mean (SD))                  0.090     
+  euro.vas.365 (mean (SD))                  0.328     
+  EQ_INDEX.90 (mean (SD))                   0.011     
+  current.location.90 (%)                   0.060     
+     Home                                             
+     Hospital                                         
+     Other                                            
+     Rehabilitation                                   
+     Skilled Nursing Facility                         
+  current.location.180 (%)                  0.067     
+     Dead                                             
+     Home                                             
+     Hospital                                         
+     Other                                            
+     Rehabilitation                                   
+     Skilled Nursing Facility                         
+  current.location.365 (%)                  0.047     
+     Dead                                             
+     Home                                             
+     Hospital                                         
+     Other                                            
+     Rehabilitation                                   
+     Skilled Nursing Facility                         
+  ich.laterality = Right (%)               &lt;0.001     
+  dnr.binary (%)                            0.757     
+     NA                                               
+     No                                               
+     Yes                                              
+  comfort.binary (%)                        0.305     
+     NA                                               
+     No                                               
+     Yes                                              
+  dnr.day (mean (SD))                       0.240     
+  comfort.day (mean (SD))                   0.791     
+  ich.score.age (mean (SD))                 0.208     
+  ich.score.gcs (mean (SD))                &lt;0.001     
+  ich.score.volume (mean (SD))              0.114     
+  ich.score.ivh (mean (SD))                 0.262     
+  ich.score.total (mean (SD))               0.001     </code></pre>
 </div>
 </div>
 </section>
