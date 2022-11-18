@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -136,6 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
   </div>
     
+  
     
   </div>
   
@@ -1387,7 +1388,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"cad"</span>, </span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"chf"</span>, </span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"afib"</span>, </span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"pvd"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"htn"</span>,</span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"hld"</span>,</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"dm2"</span>,</span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"tobacco"</span>,</span>
@@ -1480,10 +1481,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span></span>
 <span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>           ich.location.baseline <span class="sc">==</span> <span class="st">"Basal Ganglia"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich.laterality =</span> <span class="fu">na_if</span>(ich.laterality, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ich.laterality))</span>
-<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> ninds.combined,</span>
-<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata =</span> <span class="st">"ich.laterality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ethnicity =</span> <span class="fu">na_if</span>(ethnicity, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">stroke =</span> <span class="fu">na_if</span>(stroke, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cad =</span> <span class="fu">na_if</span>(cad, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chf =</span> <span class="fu">na_if</span>(chf, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">afib =</span> <span class="fu">na_if</span>(afib, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">htn =</span> <span class="fu">na_if</span>(htn, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hld =</span> <span class="fu">na_if</span>(hld, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dm2 =</span> <span class="fu">na_if</span>(dm2, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tobacco =</span> <span class="fu">na_if</span>(tobacco, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.mobility.90 =</span> <span class="fu">na_if</span>(euro.mobility<span class="fl">.90</span>, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.selfcare.90 =</span> <span class="fu">na_if</span>(euro.selfcare<span class="fl">.90</span>, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.usual.90 =</span> <span class="fu">na_if</span>(euro.usual<span class="fl">.90</span>, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.pain.90 =</span> <span class="fu">na_if</span>(euro.pain<span class="fl">.90</span>, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">euro.anxiety.90 =</span> <span class="fu">na_if</span>(euro.anxiety<span class="fl">.90</span>, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dnr.binary =</span> <span class="fu">na_if</span>(dnr.binary, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">comfort.binary =</span> <span class="fu">na_if</span>(comfort.binary, <span class="st">"NA"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ich.laterality))</span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">data =</span> ninds.combined,</span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata =</span> <span class="st">"ich.laterality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
@@ -1503,10 +1520,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      MISTIE III                               258 (11.9)      248 ( 11.3)  
   age (mean (SD))                           61.29 (13.11)   61.48 (13.53)  
   sex = Male (%)                             1275 (58.8)     1345 ( 61.5)  
-  ethnicity (%)                                                            
-     Hispanic or Latino                       481 (22.7)      490 ( 22.9)  
-     NA                                         9 ( 0.4)       20 (  0.9)  
-     Not Hispanic or Latino                  1630 (76.9)     1631 ( 76.2)  
+  ethnicity = Not Hispanic or Latino (%)     1630 (77.2)     1631 ( 76.9)  
   race (%)                                                                 
      American Indian or Alaskan Native          6 ( 0.3)        3 (  0.1)  
      Asian                                    270 (12.9)      299 ( 14.0)  
@@ -1521,38 +1535,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      South Korea                               10 ( 0.6)        7 (  0.4)  
      Taiwan                                    38 ( 2.3)       56 (  3.3)  
      United States                           1390 (83.6)     1400 ( 82.3)  
-  stroke (%)                                                               
-     NA                                        24 ( 1.4)       16 (  0.9)  
-     No                                      1363 (82.0)     1399 ( 82.2)  
-     Yes                                      275 (16.5)      286 ( 16.8)  
-  cad (%)                                                                  
-     NA                                        52 ( 2.7)       43 (  2.2)  
-     No                                      1683 (87.7)     1721 ( 88.3)  
-     Yes                                      185 ( 9.6)      186 (  9.5)  
-  chf (%)                                                                  
-     NA                                        54 ( 3.2)       32 (  1.9)  
-     No                                      1516 (91.2)     1563 ( 91.8)  
-     Yes                                       92 ( 5.5)      107 (  6.3)  
-  afib (%)                                                                 
-     NA                                        50 ( 3.0)       44 (  2.6)  
-     No                                      1509 (90.8)     1526 ( 89.7)  
-     Yes                                      103 ( 6.2)      132 (  7.8)  
-  pvd (%)                                                                  
-     NA                                        49 ( 2.9)       36 (  2.1)  
-     No                                      1568 (94.3)     1634 ( 96.0)  
-     Yes                                       45 ( 2.7)       32 (  1.9)  
-  hld (%)                                                                  
-     NA                                        99 ( 6.0)      119 (  7.0)  
-     No                                      1080 (65.0)     1099 ( 64.6)  
-     Yes                                      482 (29.0)      483 ( 28.4)  
-  dm2 (%)                                                                  
-     NA                                        92 ( 4.8)       95 (  4.9)  
-     No                                      1425 (74.2)     1436 ( 73.7)  
-     Yes                                      403 (21.0)      418 ( 21.4)  
-  tobacco (%)                                                              
-     NA                                         6 ( 0.4)        5 (  0.3)  
-     No                                       851 (52.7)      799 ( 49.5)  
-     Yes                                      757 (46.9)      811 ( 50.2)  
+  stroke = Yes (%)                            275 (16.8)      286 ( 17.0)  
+  cad = Yes (%)                               185 ( 9.9)      186 (  9.8)  
+  chf = Yes (%)                                92 ( 5.7)      107 (  6.4)  
+  afib = Yes (%)                              103 ( 6.4)      132 (  8.0)  
+  htn = Yes (%)                               617 (85.9)      659 ( 87.3)  
+  hld = Yes (%)                               482 (30.9)      483 ( 30.5)  
+  dm2 = Yes (%)                               403 (22.0)      418 ( 22.5)  
+  tobacco = Yes (%)                           757 (47.1)      811 ( 50.4)  
   time.to.ed.minutes (mean (SD))           263.11 (843.99) 312.73 (1377.46)
   sbp.initial (mean (SD))                  190.54 (41.79)  189.84 (41.56)  
   dbp.initial (mean (SD))                  106.96 (42.57)  107.95 (54.16)  
@@ -1584,7 +1574,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      No Problems                              433 (35.5)      398 ( 31.5)  
      Some Problems                            653 (53.5)      653 ( 51.7)  
      Confined to Bed                          135 (11.1)      212 ( 16.8)  
-     NA                                         0 ( 0.0)        1 (  0.1)  
+     NA                                         0 ( 0.0)        0 (  0.0)  
   euro.mobility.180 (%)                                                    
      No Problems                              307 (39.9)      276 ( 36.3)  
      Some Problems                            389 (50.6)      379 ( 49.8)  
@@ -1595,9 +1585,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      Some Problems                            348 (49.6)      327 ( 45.7)  
   euro.selfcare.90 (%)                                                     
      No Problems                              619 (50.7)      580 ( 45.9)  
-     Some Problems                            400 (32.8)      415 ( 32.8)  
+     Some Problems                            400 (32.8)      415 ( 32.9)  
      Unable to Wash or Dress Myself           202 (16.5)      268 ( 21.2)  
-     NA                                         0 ( 0.0)        1 (  0.1)  
+     NA                                         0 ( 0.0)        0 (  0.0)  
   euro.selfcare.180 (%)                                                    
      No Problems                              438 (57.0)      394 ( 51.8)  
      Some Problems                            219 (28.5)      238 ( 31.3)  
@@ -1610,7 +1600,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      No Problems                              326 (26.7)      322 ( 25.5)  
      Some Problems                            557 (45.6)      547 ( 43.3)  
      Unable to Perform My Usual Activities    338 (27.7)      394 ( 31.2)  
-     NA                                         0 ( 0.0)        1 (  0.1)  
+     NA                                         0 ( 0.0)        0 (  0.0)  
   euro.usual.180 (%)                                                       
      No Problems                              253 (32.9)      218 ( 28.6)  
      Some Problems                            323 (42.0)      324 ( 42.6)  
@@ -1621,9 +1611,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      Unable to Perform My Usual Activities    154 (21.9)      190 ( 26.5)  
   euro.pain.90 (%)                                                         
      No Pain/Discomfort                       606 (49.9)      563 ( 44.9)  
-     Some Moderate Pain/Discomfort            550 (45.3)      610 ( 48.6)  
+     Some Moderate Pain/Discomfort            550 (45.3)      610 ( 48.7)  
      Extreme Pain/Discomfort                   58 ( 4.8)       80 (  6.4)  
-     NA                                         0 ( 0.0)        1 (  0.1)  
+     NA                                         0 ( 0.0)        0 (  0.0)  
   euro.pain.180 (%)                                                        
      No Pain/Discomfort                       362 (47.8)      324 ( 43.0)  
      Some Moderate Pain/Discomfort            348 (45.9)      374 ( 49.6)  
@@ -1633,10 +1623,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      No Pain/Discomfort                       366 (52.5)      328 ( 46.3)  
      Some Moderate Pain/Discomfort            291 (41.8)      326 ( 46.0)  
   euro.anxiety.90 (%)                                                      
-     Not Anxious/Depressed                    695 (57.6)      685 ( 54.7)  
+     Not Anxious/Depressed                    695 (57.6)      685 ( 54.8)  
      Moderately Anxious/Depressed             447 (37.0)      503 ( 40.2)  
      Extremely Anxious/Depressed               65 ( 5.4)       63 (  5.0)  
-     NA                                         0 ( 0.0)        1 (  0.1)  
+     NA                                         0 ( 0.0)        0 (  0.0)  
   euro.anxiety.180 (%)                                                     
      Not Anxious/Depressed                    403 (53.1)      386 ( 51.2)  
      Moderately Anxious/Depressed             303 (39.9)      319 ( 42.3)  
@@ -1670,14 +1660,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      Rehabilitation                            80 ( 7.6)       68 (  6.4)  
      Skilled Nursing Facility                 115 (10.9)      153 ( 14.4)  
   ich.laterality = Right (%)                    0 ( 0.0)     2188 (100.0)  
-  dnr.binary (%)                                                           
-     NA                                        15 ( 1.2)       19 (  1.6)  
-     No                                      1012 (83.3)     1008 ( 82.6)  
-     Yes                                      188 (15.5)      194 ( 15.9)  
-  comfort.binary (%)                                                       
-     NA                                        12 ( 0.7)       19 (  1.1)  
-     No                                      1457 (87.1)     1457 ( 87.7)  
-     Yes                                      204 (12.2)      186 ( 11.2)  
+  dnr.binary = Yes (%)                        188 (15.7)      194 ( 16.1)  
+  comfort.binary = Yes (%)                    204 (12.3)      186 ( 11.3)  
   dnr.day (mean (SD))                        4.71 (29.74)    8.11 (13.22)  
   comfort.day (mean (SD))                   22.42 (52.70)   24.01 (51.95)  
   ich.score.age (mean (SD))                  0.10 (0.30)     0.11 (0.32)   
@@ -1696,10 +1680,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      MISTIE III                                       
   age (mean (SD))                           0.640     
   sex = Male (%)                            0.078     
-  ethnicity (%)                             0.125     
-     Hispanic or Latino                               
-     NA                                               
-     Not Hispanic or Latino                           
+  ethnicity = Not Hispanic or Latino (%)    0.835     
   race (%)                                  0.620     
      American Indian or Alaskan Native                
      Asian                                            
@@ -1714,38 +1695,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      South Korea                                      
      Taiwan                                           
      United States                                    
-  stroke (%)                                0.400     
-     NA                                               
-     No                                               
-     Yes                                              
-  cad (%)                                   0.592     
-     NA                                               
-     No                                               
-     Yes                                              
-  chf (%)                                   0.030     
-     NA                                               
-     No                                               
-     Yes                                              
-  afib (%)                                  0.167     
-     NA                                               
-     No                                               
-     Yes                                              
-  pvd (%)                                   0.079     
-     NA                                               
-     No                                               
-     Yes                                              
-  hld (%)                                   0.466     
-     NA                                               
-     No                                               
-     Yes                                              
-  dm2 (%)                                   0.929     
-     NA                                               
-     No                                               
-     Yes                                              
-  tobacco (%)                               0.166     
-     NA                                               
-     No                                               
-     Yes                                              
+  stroke = Yes (%)                          0.924     
+  cad = Yes (%)                             0.920     
+  chf = Yes (%)                             0.454     
+  afib = Yes (%)                            0.094     
+  htn = Yes (%)                             0.493     
+  hld = Yes (%)                             0.873     
+  dm2 = Yes (%)                             0.745     
+  tobacco = Yes (%)                         0.067     
   time.to.ed.minutes (mean (SD))            0.198     
   sbp.initial (mean (SD))                   0.591     
   dbp.initial (mean (SD))                   0.516     
@@ -1773,7 +1730,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   mrs.90 (mean (SD))                        0.465     
   mrs.180 (mean (SD))                       0.709     
   mrs.365 (mean (SD))                       0.907     
-  euro.mobility.90 (%)                     &lt;0.001     
+  euro.mobility.90 (%)                        NaN     
      No Problems                                      
      Some Problems                                    
      Confined to Bed                                  
@@ -1786,7 +1743,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      Confined to Bed                                  
      No Problems                                      
      Some Problems                                    
-  euro.selfcare.90 (%)                      0.011     
+  euro.selfcare.90 (%)                        NaN     
      No Problems                                      
      Some Problems                                    
      Unable to Wash or Dress Myself                   
@@ -1799,7 +1756,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      No Problems                                      
      Some Problems                                    
      Unable to Wash or Dress Myself                   
-  euro.usual.90 (%)                         0.199     
+  euro.usual.90 (%)                           NaN     
      No Problems                                      
      Some Problems                                    
      Unable to Perform My Usual Activities            
@@ -1812,7 +1769,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      No Problems                                      
      Some Problems                                    
      Unable to Perform My Usual Activities            
-  euro.pain.90 (%)                          0.036     
+  euro.pain.90 (%)                            NaN     
      No Pain/Discomfort                               
      Some Moderate Pain/Discomfort                    
      Extreme Pain/Discomfort                          
@@ -1825,7 +1782,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      Extreme Pain/Discomfort                          
      No Pain/Discomfort                               
      Some Moderate Pain/Discomfort                    
-  euro.anxiety.90 (%)                       0.310     
+  euro.anxiety.90 (%)                         NaN     
      Not Anxious/Depressed                            
      Moderately Anxious/Depressed                     
      Extremely Anxious/Depressed                      
@@ -1863,14 +1820,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      Rehabilitation                                   
      Skilled Nursing Facility                         
   ich.laterality = Right (%)               &lt;0.001     
-  dnr.binary (%)                            0.757     
-     NA                                               
-     No                                               
-     Yes                                              
-  comfort.binary (%)                        0.305     
-     NA                                               
-     No                                               
-     Yes                                              
+  dnr.binary = Yes (%)                      0.794     
+  comfort.binary = Yes (%)                  0.423     
   dnr.day (mean (SD))                       0.240     
   comfort.day (mean (SD))                   0.791     
   ich.score.age (mean (SD))                 0.208     
@@ -1925,7 +1876,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1961,24 +1929,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
