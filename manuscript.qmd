@@ -1,0 +1,35 @@
+---
+title: "Hemispheric Lateralization and Outcomes After ICH"
+subtitle: "A Pooled Analysis of NINDS Studies"
+author: "Nikhil Patel, MD"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-title: ""
+    css: styles.css
+    anchor-sections: true
+    code-fold: true
+    code-overflow: wrap
+    code-summary: "Show the code"
+    output: false
+---
+
+# Introduction
+
+Brain injured patients may have different symptoms based on the lesion's laterality
+
+This may affect patient's quality of life or disability down the road
+
+This may also affect clinicians' attitude toward the need for aggressive treatment
+
+We sought to figure out if there was differences in processes among clinicians with left hemispheric versus right hemispheric lesions
+
+We also sought to determine if there are differences in functional outcomes and health-related quality of life 
+
+This has never been done in ICH
+
+# Methods
+
+We used data from NINDS clinical trials and 1 observational study: ATACH2, MISTIEII, MISTIEIII, CLEARIII, and ERICH.
+
