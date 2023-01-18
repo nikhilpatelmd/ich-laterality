@@ -1395,3 +1395,7 @@ print(table1, showAllLevels = FALSE)
 
 ```
 
+```{r output = TRUE}
+
+write.csv()
+```
