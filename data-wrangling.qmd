@@ -33,6 +33,7 @@ library(haven) # Importing SAS Files
 library(janitor)
 library(lubridate)
 library(readxl)
+library(Hmisc)
 
 ```
 
@@ -1385,6 +1386,8 @@ ninds.combined <- ninds.combined %>%
   mutate(comfort.binary = na_if(comfort.binary, "NA")) %>%
   filter(!is.na(ich.laterality))
 
+ninds.combined$comfort.day <- round(ninds.combined$comfort.day)
+
 table1 <- CreateTableOne(data = ninds.combined,
                          strata = "ich.laterality")
 
@@ -1397,6 +1400,6 @@ print(table1, showAllLevels = FALSE)
 
 ```{r output = TRUE}
 
-write.csv(ninds.combined, file = ninds.combined.csv, row.names=TRUE)
+write.csv(ninds.combined, file = "nindsCombined.csv")
 
 ```
