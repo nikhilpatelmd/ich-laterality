@@ -1397,5 +1397,6 @@ print(table1, showAllLevels = FALSE)
 
 ```{r output = TRUE}
 
-write.csv()
+write.csv(ninds.combined, file = ninds.combined.csv, row.names=TRUE)
+
 ```
