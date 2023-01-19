@@ -1,0 +1,63 @@
+VarsTableOne <- c("study",
+                  "age", # Age
+                       "sex", # Sex
+                       "ethnicity", # Ethnicity
+                       "race", # Race
+                       "enrolling.country", # Country of Enrolling Site
+                       "stroke", 
+                       "cad", 
+                       "chf", 
+                       "afib", 
+                       "pvd",
+                       "hld",
+                       "dm2",
+                       "tobacco",
+                       #"symptom.onset", # Time of symptom onset
+                       "sbp.initial", # Initial SBP
+                       "dbp.initial", # Initial DBP
+                       "gcs.baseline", # Baseline GCS
+                       #"nihss.baseline", # NIHSS
+                       "ich.location.baseline", 
+                       "ivh",
+                      # "hydrocephalus",
+                       "ich.volume.cc",
+                       "ivh.volume.cc",
+                       "phe.volume.cc",
+                       "sp.shift.baseline",
+                       "mech.ventilation",
+                       "intubation.days", 
+                       "extubation.date", # Date of extubation
+                       "tracheostomy",
+                       "trach.date", # Date of Tracheostomy
+                       "evd",
+                       "evd.days", # Total EVD days
+                       "nsgy.evacuation",
+                       "nsgy.evacuation.date",  # Date of Evacuation
+                       "mrs.30",
+                       "mrs.90",
+                      "mrs.180",
+                      "mrs.365",
+                      "euro.mobility.90",
+                      "euro.mobility.180",
+                      "euro.mobility.365",
+                       "euro.selfcare.90",
+                      "euro.selfcare.180",
+                      "euro.selfcare.365",
+                       "euro.usual.90",
+                      "euro.usual.180",
+                      "euro.usual.365",
+                       "euro.pain.90",
+                      "euro.pain.180",
+                      "euro.pain.365",
+                       "euro.anxiety.90",
+                      "euro.anxiety.180",
+                      "euro.anxiety.365",
+                       "euro.vas.90", # EuroQOL VAS
+                       "euro.vas.180",
+                       "euro.vas.365",
+                       "EQ_INDEX.90", # EQ-5D Utility Index,,
+                      "current.location.90",
+                      "current.location.180",
+                      "current.location.365",
+                       "ich.laterality"
+                  )
