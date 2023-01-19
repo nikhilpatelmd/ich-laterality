@@ -1402,4 +1402,5 @@ print(table1, showAllLevels = FALSE)
 
 write.csv(ninds.combined, file = "nindsCombined.csv")
 
+
 ```
