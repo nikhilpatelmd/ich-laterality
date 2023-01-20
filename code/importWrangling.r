@@ -168,6 +168,4 @@ atachWhole[, cad := factor(fcase(
 ))]
 
 ### imaging data-----
-
-
 atachCT <- as.data.table(read.table("./data/ATACH2/CTCR.txt", sep = "\t", header = TRUE)) # nolint: line_length_linter.
