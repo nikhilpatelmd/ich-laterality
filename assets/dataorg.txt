@@ -5,5 +5,5 @@
 # presentation features: symptom onset, SBP/DBP,GCS, NIHSS
 # presentation features: intubated
 # imaging: ICH volume, location, IVH, midline shift?
-# processes: EVD, neurosurgery, trach, PEG, WLST
+# processes: EVD, neurosurgery, trach, PEG, WLST, LOS
 # outcomes: mRS, euroQOL

@@ -8,6 +8,7 @@ library(janitor)
 library(lubridate)
 library(readxl)
 library(Hmisc)
+library(stringr)
 
 # loading raw data----
 
@@ -249,7 +250,7 @@ atachCT[, ichLocation := factor(fcase(
   CTCRQ05 == 4, "Thalamus",
   CTCRQ05 == 5, "Basal Ganglia",
   CTCRQ05 == 6, "Lobar",
-  CTCRQ05 == 7, "Pons",
+  CTCRQ05 == 7, "Brainstem",
   CTCRQ05 == 8, "Cerebellum"
 ))]
 
@@ -293,7 +294,7 @@ atachWhole[, evd := factor(fcase(
   F07Q05 == 0, "No"
 ))]
 
-atachWhole[, evd := factor(fcase(
+atachWhole[, nsgyEvac := factor(fcase(
   F07Q08 == 1, "Yes",
   F07Q08 == 0, "No"
 ))]
@@ -367,6 +368,8 @@ atachWhole <- atachWhole[, grep("^SITE", colnames(atachWhole)) := NULL]
 atachWhole <- atachWhole[, grep("^RANDO", colnames(atachWhole)) := NULL]
 atachWhole <- atachWhole[, grep("^COUN", colnames(atachWhole)) := NULL]
 
+atachVariableList <- names(atachWhole[, ])
+
 # erich-----
 
 ## import raw data -----
@@ -428,7 +431,9 @@ renameFunc(
     TRANSFER_FU3 = barthelTransfer365,
     MOBLEVEL_FU3 = barthelMobility365,
     STAIRS_FU3 = barthelStairs365,
-    BART_TOT_FU3 = barthelTotal365
+    BART_TOT_FU3 = barthelTotal365,
+    ICH_Vol_CT1 = baselineICHVolume,
+    IVH_Vol_CT1 = baselineIVHVolume
   )
 )
 
@@ -480,42 +485,86 @@ erichWhole[, tobacco := factor(fcase(
 #### parsing dates and times in ERICH
 
 # symptom onset
-erichWhole[, symptomOnsetDateTime := ymd_hms(paste(erichWhole$SE1, erichWhole$SE2))]
+f <- "%Y-%m-%d %H:%M:%S"
+g <- "%H:%M:%S"
 
-erichWhole[, symptomOnsetEstimatedTime := hms(fcase(
+erichWhole[, symptomOnsetDateTime := as.POSIXct(paste(erichWhole$SE1, erichWhole$SE2), format = f, tz = "EST")]
+
+# converting estimated symptom onset to actual date-times
+erichWhole[, symptomOnsetEstimatedTime := as.POSIXct(paste(erichWhole$SE1, fcase(
   SE3 == "1", "06:00:00",
   SE3 == "2", "NA",
   SE3 == "3", "03:00:00",
   SE3 == "4", "09:00:00",
   SE3 == "5", "15:00:00",
-  SE3 == "6", "21:00:00"
+  default = "NA"
+)), format = f, tz = "EST")]
+
+# combining symptom onset date-time and symptom onset estimated time
+erichWhole[, symptomOnsetCombined := as.POSIXct(ifelse(is.na(symptomOnsetDateTime), symptomOnsetEstimatedTime, symptomOnsetDateTime), origin = "1970-01-01")]
+
+# time to ED presentation
+erichWhole[, edDateTime := as.POSIXct(paste(ED7, ED8), format = f, tz = "EST")]
+
+erichWhole[, symptomsToED := abs(difftime(edDateTime, symptomOnsetCombined, units = "hours"))]
+
+erichWhole[, symptomsToED := ifelse(symptomsToED == 0, NA, symptomsToED * 60)]
+
+# No NIHSS
+
+# mechanical ventilation
+erichWhole[, mechVentilation := factor(fcase(
+  EMS33 == "1", "Yes",
+  EMS33 == "2", "No",
+  ED44 == "1", "Yes",
+  ED44 == "2", "No",
+  IT7 == "1", "Yes",
+  IT7 == "2", "Yes",
+  default = NA
 ))]
 
-erichWhole[, symptomOnsetEstimatedDateTime := ymd_hms(
-  paste(SE1, symptomOnsetEstimatedTime)
-)]
+### imaging -----
+erichWhole[, ichLocation := factor(fcase(
+  grepl("Ganglia", detail, ignore.case = TRUE), "Basal Ganglia",
+  grepl("Brainstem", detail, ignore.case = TRUE), "Brainstem",
+  grepl("Cerebell", detail, ignore.case = TRUE), "Cerebellum",
+  grepl("Front", detail, ignore.case = TRUE), "Lobar",
+  grepl("Tempor", detail, ignore.case = TRUE), "Lobar",
+  grepl("Occi", detail, ignore.case = TRUE), "Lobar",
+  grepl("Perivent", detail, ignore.case = TRUE), "Basal Ganglia",
+  grepl("Caudate", detail, ignore.case = TRUE), "Basal Ganglia",
+  grepl("Putam", detail, ignore.case = TRUE), "Basal Ganglia",
+  grepl("Deep", detail, ignore.case = TRUE), "Basal Ganglia",
+  grepl("Lobar", detail, ignore.case = TRUE), "Lobar",
+  grepl("IVH", detail, ignore.case = TRUE), "Primary IVH",
+  grepl("Hemis", detail, ignore.case = TRUE), "Lobar",
+  grepl("Thal", detail, ignore.case = TRUE), "Thalamus",
+  grepl("Corona", detail, ignore.case = TRUE), "Basal Ganglia",
+  grepl("applic", detail, ignore.case = TRUE), "NA",
+  default = NA
+))]
 
-erichWhole[, symptomOnsetCombined := fcase(
-  is.na(symptomOnsetDateTime), ymd_hms(symptomOnsetEstimatedDateTime),
-  default = ymd_hms(symptomOnsetDateTime)
-)]
+erichWhole[, ivh := factor(ifelse(baselineIVHVolume == 0.00, "No", "Yes"))]
 
-# Time of ED presentation
+erichWhole[, ichLaterality := factor(fcase(
+  PHY6A == "L", "Left",
+  PHY6A == "R", "Right",
+  PHY6A == "M", "NA",
+  default = NA
+))]
 
-erichWhole[, edPresentationDateTime := ymd_hms(
-  paste(ED7, ED8)
-)]
+### process variables -----
 
-# Calculating Time to ED Presentation as expressed by minutes and hours from symptom onset
+erichWhole[, evd := factor(fcase(
+  IT8 == "1", "Yes",
+  IT8 == "2", "No",
+  default = NA
+))]
 
-erichWhole[, symptomOnsetInterval := as.period(
-  symptomOnsetCombined %--% edPresentationDateTime
-)]
-
-erichWhole[, symptomsToED := time_length(symptomOnsetInterval, unit = "minutes")]
-
-erichWhole$symptomOnsetEstimatedDateTime
-
-# No NIHSS!!
-
-### imaging features-----
+erichWhole[, nsgyEvac := factor(fcase(
+  IT5D == "1", "Yes",
+  IT5H == "1", "Yes",
+  grepl("crani", IT5F_SPEC, ignore.case = TRUE), "Yes",
+  grepl("evac", IT5F_SPEC, ignore.case = TRUE), "Yes",
+  default = "No"
+))]
