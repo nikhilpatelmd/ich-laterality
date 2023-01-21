@@ -354,10 +354,7 @@ atachWhole[, hospDischargeDisp := factor(fcase(
   default = "NA"
 ))]
 
-
-
-## filtering only variables need in final analysis-----
-
+## filtering only variables need in final analysis------
 atachWhole <- atachWhole[, grep("^F0", colnames(atachWhole)) := NULL]
 atachWhole <- atachWhole[, grep("^F1", colnames(atachWhole)) := NULL]
 atachWhole <- atachWhole[, grep("^F21", colnames(atachWhole)) := NULL]
@@ -376,6 +373,11 @@ atachWhole <- atachWhole[, grep("^COUN", colnames(atachWhole)) := NULL]
 
 erichWhole <- as.data.table(read_sas("./data/ERICH/erich_case_100217.sas7bdat"))
 
+erichWhole <- erichWhole[, .(ID, age, gender, Race, Ethnicity, D6, D7, D7A, D21, D21A, D22, D25, PHY4, PHY6, PHY6A, PHY9, 1510, 1511, 1512, ED7, ED8, ED36, ED37, ED38, ED39, ED44, ED47_SYS, ED47_DIAS, SH1, SH8, SH9, SH10, SMK1A, MHX1, MHX3, MHX3A, MHX6, MHX8, MHX9, MHX11, MHX12, MHX13, MHX13A, MHX14, MHX16, MHX18, MHX20, MHX21, MHX22, MHX27C, MHX28, SA1, SA4, SA5A, SA6, SE1, SE2, SE3, SE15, LAB5, LAB6, IT5D, detail, ICH_Loc_CT1, ICH_Vol_CT1, IVH_Vol_CT1, ICH_Vol_CT2, ICH_Vol_CT3, ICH_Vol_CT4, IVH_Present, IT5D_DATE, IT5D_TIME, IT5H, IT5H_DATE, IT5H_TIME, IT5I, IT5I_DATE, IT5I_TIME, IT5F, IT5F_SPEC, IT5F_DATE, IT5F_TIME, IT7, IT8, IT8A, IT8B, IT13, IT13A, IT24, IT24A_DATE, IT24A_TIME, IT24A_UNITS, IT29, IT29A, IT29B, IT21, IT22, IT25, IT23, IT28, CC16, CC16_DATE, CC16_TIME, CC17, CC17_DATE, CC17_TIME, CC18, CC18_DATE, CC18_TIME, CX15, CX27, CX30, O3, O3A, O5, O20, AU8, AU8_OTH, RANKIN_FU1, RANKIN_FU2, RANKIN_FU3, MOBILITY_FU1, MOBILITY_FU2, MOBILITY_FU3, SELFCARE_FU1, SELFCARE_FU2, SELFCARE_FU3, USUALACT_FU1, USUALACT_FU2, USUALACT_FU3, PAIN_FU1, PAIN_FU2, PAIN_FU3, ANXIETY_FU1, ANXIETY_FU2, ANXIETY_FU3, HLTHSTAT_FU1, HLTHSTAT_FU2, HLTHSTAT_FU3, FEED_FU1, FEED_FU2, FEED_FU3, BATHE_FU1, BATHE_FU2, BATHE_FU3, GROOM_FU1, GROOM_FU2, GROOM_FU3, DRESS_FU1, DRESS_FU2, DRESS_FU3, BOWELS_FU1, BOWELS_FU2, BOWELS_FU3, BLADDER_FU1, BLADDER_FU2, BLADDER_FU3, TOILET_FU1, TOILET_FU2, TOILET_FU3, TRANSFER_FU1, TRANSFER_FU2, TRANSFER_FU3, MOBLEVEL_FU1, MOBLEVEL_FU2, MOBLEVEL_FU3, STAIRS_FU1, STAIRS_FU2, STAIRS_FU3, BART_TOT_FU1, BART_TOT_FU2, BART_TOT_FU3, EMS33, ED44, CURR_LOC_FU1, CURR_LOC_FU2, CURR_LOC_FU3, IT2, O1, O2_DATE, O2_TIME, O3, O3_OTH, DOD)]
+
+erichWhole[, enrollingCountry := "United States"]
+erichWhole[, study := "ERICH"]
+
 ## renaming variables-----
 
 renameFunc(
@@ -385,44 +387,135 @@ renameFunc(
     gender = sex,
     Race = race,
     Ethnicity = ethnicity,
-    RANKIN_FU1 = mrs90
-    mrs180 = RANKIN_FU2,
-    mrs365 = RANKIN_FU3,
-    euroVAS90 = HLTHSTAT_FU1,
-    euroVAS180 = HLTHSTAT_FU2,
-    euroVAS365 = HLTHSTAT_FU3,
-    barthelFeeding90 = FEED_FU1,
-    barthelBathing90 = BATHE_FU1,
-    barthelGrooming90 = GROOM_FU1,
-    barthelDressing90 = DRESS_FU1,
-    barthelBowels90 = BOWELS_FU1,
-    barthelBladder90 = BLADDER_FU1,
-    barthelToilet90 = TOILET_FU1,
-    barthelTransfer90 = TRANSFER_FU1,
-    barthelMobility90 = MOBLEVEL_FU1,
-    barthelStairs90 = STAIRS_FU1,
-    barthelTotal90 = BART_TOT_FU1,
-    barthelFeeding180 = FEED_FU2,
-    barthelBathing180 = BATHE_FU2,
-    barthelGrooming180 = GROOM_FU2,
-    barthelDressing180 = DRESS_FU2,
-    barthelBowels180 = BOWELS_FU2,
-    barthelBladder180 = BLADDER_FU2,
-    barthelToilet180 = TOILET_FU2,
-    barthelTransfer180 = TRANSFER_FU2,
-    barthelMobility180 = MOBLEVEL_FU2,
-    barthelStairs180 = STAIRS_FU2,
-    barthelTotal180 = BART_TOT_FU2,
-    barthelFeeding365 = FEED_FU3,
-    barthelBathing365 = BATHE_FU3,
-    barthelGrooming365 = GROOM_FU3,
-    barthelDressing365 = DRESS_FU3,
-    barthelBowels365 = BOWELS_FU3,
-    barthelBladder365 = BLADDER_FU3,
-    barthelToilet365 = TOILET_FU3,
-    barthelTransfer365 = TRANSFER_FU3,
-    barthelMobility365 = MOBLEVEL_FU3,
-    barthelStairs365 = STAIRS_FU3,
-    barthelTotal365 = BART_TOT_FU3
+    ED47_SYS = sbpInitial,
+    ED47_DIAS = dbpInitial,
+    ED39 = gcsBaseline,
+    RANKIN_FU1 = mrs90,
+    RANKIN_FU2 = mrs180,
+    RANKIN_FU3 = mrs365,
+    HLTHSTAT_FU1 = euroVAS90,
+    HLTHSTAT_FU2 = euroVAS180,
+    HLTHSTAT_FU3 = euroVAS365,
+    FEED_FU1 = barthelFeeding90,
+    BATHE_FU1 = barthelBathing90,
+    GROOM_FU1 = barthelGrooming90,
+    DRESS_FU1 = barthelDressing90,
+    BOWELS_FU1 = barthelBowels90,
+    BLADDER_FU1 = barthelBladder90,
+    TOILET_FU1 = barthelToilet90,
+    TRANSFER_FU1 = barthelTransfer90,
+    MOBLEVEL_FU1 = barthelMobility90,
+    STAIRS_FU1 = barthelStairs90,
+    BART_TOT_FU1 = barthelTotal90,
+    FEED_FU2 = barthelFeeding180,
+    BATHE_FU2 = barthelBathing180,
+    GROOM_FU2 = barthelGrooming180,
+    DRESS_FU2 = barthelDressing180,
+    BOWELS_FU2 = barthelBowels180,
+    BLADDER_FU2 = barthelBladder180,
+    TOILET_FU2 = barthelToilet180,
+    TRANSFER_FU2 = barthelTransfer180,
+    MOBLEVEL_FU2 = barthelMobility180,
+    STAIRS_FU2 = barthelStairs180,
+    BART_TOT_FU2 = barthelTotal180,
+    FEED_FU3 = barthelFeeding365,
+    BATHE_FU3 = barthelBathing365,
+    GROOM_FU3 = barthelGrooming365,
+    DRESS_FU3 = barthelDressing365,
+    BOWELS_FU3 = barthelBowels365,
+    BLADDER_FU3 = barthelBladder365,
+    TOILET_FU3 = barthelToilet365,
+    TRANSFER_FU3 = barthelTransfer365,
+    MOBLEVEL_FU3 = barthelMobility365,
+    STAIRS_FU3 = barthelStairs365,
+    BART_TOT_FU3 = barthelTotal365
   )
 )
+
+## categorizing and recoding Variables----
+
+### demographics----
+
+erichWhole[, sex := c("Male", "Female")[match(sex, c("M", "F"))]]
+
+erichWhole[, race := c("White", "Black or African-American", "Asian", "Native Hawaiian/Pacific Islander", "American Indian or Alaskan Native", "Other/Not Reported", "Other/Not Reported")[match(race, c("W", "B", "A", "N", "I", "O", "U"))]]
+
+erichWhole[, ethnicity := c("Hispanic or Latino", "Not Hispanic or Latino", "Not Hispanic or Latino")[match(ethnicity, c("H", "N", "U"))]]
+
+### past medical history-----
+
+erichWhole[, stroke := c("No", "Yes", "NA")[match(SH1, c("2", "1", "8"))]]
+
+erichWhole[, cad := c("No", "Yes", "NA")[match(MHX8, c("2", "1", "8"))]]
+
+erichWhole[, chf := c("No", "Yes", "NA")[match(MHX13, c("2", "1", "8"))]]
+
+erichWhole[, afib := c("No", "Yes", "NA")[match(MHX11, c("2", "1", "8"))]]
+
+erichWhole[, pvd := c("No", "Yes", "NA")[match(MHX27C, c("2", "1", "8"))]]
+
+erichWhole[, hld := c("No", "Yes", "NA")[match(MHX6, c("2", "1", "8"))]]
+
+erichWhole[, dm2 := factor(fcase(
+  MHX3 == "2", "No",
+  MHX3 == "8", "NA",
+  MHX3A == "1", "No",
+  MHX3A == "2", "Yes",
+  MHX3A == "8", "NA",
+  default = "NA"
+))]
+
+erichWhole[, tobacco := factor(fcase(
+  SMK1A == "2", "No",
+  SMK1A == "1", "Yes",
+  SMK1A == "5", "NA",
+  SMK1A == "8", "NA",
+  default = "NA"
+))]
+
+### medications-----
+
+### presentation features-----
+
+#### parsing dates and times in ERICH
+
+# symptom onset
+erichWhole[, symptomOnsetDateTime := ymd_hms(paste(erichWhole$SE1, erichWhole$SE2))]
+
+erichWhole[, symptomOnsetEstimatedTime := hms(fcase(
+  SE3 == "1", "06:00:00",
+  SE3 == "2", "NA",
+  SE3 == "3", "03:00:00",
+  SE3 == "4", "09:00:00",
+  SE3 == "5", "15:00:00",
+  SE3 == "6", "21:00:00"
+))]
+
+erichWhole[, symptomOnsetEstimatedDateTime := ymd_hms(
+  paste(SE1, symptomOnsetEstimatedTime)
+)]
+
+erichWhole[, symptomOnsetCombined := fcase(
+  is.na(symptomOnsetDateTime), ymd_hms(symptomOnsetEstimatedDateTime),
+  default = ymd_hms(symptomOnsetDateTime)
+)]
+
+# Time of ED presentation
+
+erichWhole[, edPresentationDateTime := ymd_hms(
+  paste(ED7, ED8)
+)]
+
+# Calculating Time to ED Presentation as expressed by minutes and hours from symptom onset
+
+erichWhole[, symptomOnsetInterval := as.period(
+  symptomOnsetCombined %--% edPresentationDateTime
+)]
+
+erichWhole[, symptomsToED := time_length(symptomOnsetInterval, unit = "minutes")]
+
+erichWhole$symptomOnsetEstimatedDateTime
+
+# No NIHSS!!
+
+### imaging features-----

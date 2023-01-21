@@ -734,7 +734,9 @@ erich.whole <- erich.whole %>%
 # Calculating Time to ED Presentation as expressed by minutes and hours from symptom onset
 
 erich.whole$symptom.onset.interval <- as.period(erich.whole$symptom.onset.combined %--% erich.whole$ed.presentation.date.time)
+
 erich.whole$time.to.ed.minutes <- time_length(erich.whole$symptom.onset.interval, unit = "minutes")
+
 erich.whole$time.to.ed.hours <- time_length(erich.whole$symptom.onset.interval, unit = "hours")
 
 erich.whole$time.to.ed.minutes[erich.whole$time.to.ed.minutes < 0] = NA
