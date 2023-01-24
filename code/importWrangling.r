@@ -58,10 +58,10 @@ renameFunc(
     F33Q04 = gcsBaseline,
     F07Q02 = daysVentilated,
     F07Q03DAY = extubationDay,
-    F07Q04DAY = trachDate,
-    F07Q06DAY = evdDate,
+    F07Q04DAY = trachDay,
+    F07Q06DAY = evdDay,
     F07Q07 = evdDays,
-    F07Q09DAY = nsgyEvacDate,
+    F07Q09DAY = nsgyEvacDay,
     F16Q07 = euroVAS90,
     EQ_INDEX = eqIndex90,
     F16Q02 = euroMobility90,
@@ -69,8 +69,8 @@ renameFunc(
     F16Q04 = euroUsual90,
     F16Q05 = euroPain90,
     F16Q06 = euroAnxiety90,
-    F21Q07DAY = comfortCareDate,
-    F21Q09DAY = dnrDate,
+    F21Q07DAY = comfortCareDay,
+    F21Q09DAY = dnrDay,
     F11Q02 = icuLOS,
     F11Q01DAY = hospitalLOS
   )
@@ -288,7 +288,6 @@ atachWhole <- atachCT[atachWhole, on = .(id)]
 ### process variables-----
 
 # EVD and neurosurgery
-
 atachWhole[, evd := factor(fcase(
   F07Q05 == 1, "Yes",
   F07Q05 == 0, "No"
@@ -300,7 +299,6 @@ atachWhole[, nsgyEvac := factor(fcase(
 ))]
 
 # DNR and WLST status
-
 atachWhole[, dnr := factor(fcase(
   F21Q08 == 1, "Yes",
   F21Q08 == 0, "No"
@@ -309,6 +307,13 @@ atachWhole[, dnr := factor(fcase(
 atachWhole[, comfortCare := factor(fcase(
   F21Q06 == 1, "Yes",
   F21Q06 == 0, "No"
+))]
+
+# trachesotomy
+atachWhole[, tracheostomy := factor(fcase(
+  is.na(trachDay), "No",
+  !is.na(trachDay), "Yes",
+  default = "NA"
 ))]
 
 ### outcome variables-----
@@ -376,7 +381,7 @@ atachVariableList <- names(atachWhole[, ])
 
 erichWhole <- as.data.table(read_sas("./data/ERICH/erich_case_100217.sas7bdat"))
 
-erichWhole <- erichWhole[, .(ID, age, gender, Race, Ethnicity, D6, D7, D7A, D21, D21A, D22, D25, PHY4, PHY6, PHY6A, PHY9, 1510, 1511, 1512, ED7, ED8, ED36, ED37, ED38, ED39, ED44, ED47_SYS, ED47_DIAS, SH1, SH8, SH9, SH10, SMK1A, MHX1, MHX3, MHX3A, MHX6, MHX8, MHX9, MHX11, MHX12, MHX13, MHX13A, MHX14, MHX16, MHX18, MHX20, MHX21, MHX22, MHX27C, MHX28, SA1, SA4, SA5A, SA6, SE1, SE2, SE3, SE15, LAB5, LAB6, IT5D, detail, ICH_Loc_CT1, ICH_Vol_CT1, IVH_Vol_CT1, ICH_Vol_CT2, ICH_Vol_CT3, ICH_Vol_CT4, IVH_Present, IT5D_DATE, IT5D_TIME, IT5H, IT5H_DATE, IT5H_TIME, IT5I, IT5I_DATE, IT5I_TIME, IT5F, IT5F_SPEC, IT5F_DATE, IT5F_TIME, IT7, IT8, IT8A, IT8B, IT13, IT13A, IT24, IT24A_DATE, IT24A_TIME, IT24A_UNITS, IT29, IT29A, IT29B, IT21, IT22, IT25, IT23, IT28, CC16, CC16_DATE, CC16_TIME, CC17, CC17_DATE, CC17_TIME, CC18, CC18_DATE, CC18_TIME, CX15, CX27, CX30, O3, O3A, O5, O20, AU8, AU8_OTH, RANKIN_FU1, RANKIN_FU2, RANKIN_FU3, MOBILITY_FU1, MOBILITY_FU2, MOBILITY_FU3, SELFCARE_FU1, SELFCARE_FU2, SELFCARE_FU3, USUALACT_FU1, USUALACT_FU2, USUALACT_FU3, PAIN_FU1, PAIN_FU2, PAIN_FU3, ANXIETY_FU1, ANXIETY_FU2, ANXIETY_FU3, HLTHSTAT_FU1, HLTHSTAT_FU2, HLTHSTAT_FU3, FEED_FU1, FEED_FU2, FEED_FU3, BATHE_FU1, BATHE_FU2, BATHE_FU3, GROOM_FU1, GROOM_FU2, GROOM_FU3, DRESS_FU1, DRESS_FU2, DRESS_FU3, BOWELS_FU1, BOWELS_FU2, BOWELS_FU3, BLADDER_FU1, BLADDER_FU2, BLADDER_FU3, TOILET_FU1, TOILET_FU2, TOILET_FU3, TRANSFER_FU1, TRANSFER_FU2, TRANSFER_FU3, MOBLEVEL_FU1, MOBLEVEL_FU2, MOBLEVEL_FU3, STAIRS_FU1, STAIRS_FU2, STAIRS_FU3, BART_TOT_FU1, BART_TOT_FU2, BART_TOT_FU3, EMS33, ED44, CURR_LOC_FU1, CURR_LOC_FU2, CURR_LOC_FU3, IT2, O1, O2_DATE, O2_TIME, O3, O3_OTH, DOD)]
+erichWhole <- erichWhole[, .(ID, age, gender, Race, Ethnicity, D6, D7, D7A, D21, D21A, D22, D25, PHY4, PHY6, PHY6A, PHY9, 1510, 1511, 1512, ED7, ED8, ED36, ED37, ED38, ED39, ED44, ED47_SYS, ED47_DIAS, SH1, SH8, SH9, SH10, SMK1A, MHX1, MHX3, MHX3A, MHX6, MHX8, MHX9, MHX11, MHX12, MHX13, MHX13A, MHX14, MHX16, MHX18, MHX20, MHX21, MHX22, MHX27C, MHX28, SA1, SA4, SA5A, SA6, SE1, SE2, SE3, SE15, LAB5, LAB6, IT5D, detail, ICH_Loc_CT1, ICH_Vol_CT1, IVH_Vol_CT1, ICH_Vol_CT2, ICH_Vol_CT3, ICH_Vol_CT4, IVH_Present, IT5D_DATE, IT5D_TIME, IT5H, IT5H_DATE, IT5H_TIME, IT5I, IT5I_DATE, IT5I_TIME, IT5F, IT5F_SPEC, IT5F_DATE, IT5F_TIME, IT7, IT8, IT8A, IT8B, IT8A_OLD, IT13, IT13A, IT24, IT24A_DATE, IT24A_TIME, IT24A_UNITS, IT29, IT29A, IT29B, IT21, IT22, IT25, IT23, IT28, CC16, CC16_DATE, CC16_TIME, CC17, CC17_DATE, CC17_TIME, CC18, CC18_DATE, CC18_TIME, CX15, CX27, CX30, O3, O3A, O5, O20, AU8, AU8_OTH, RANKIN_FU1, RANKIN_FU2, RANKIN_FU3, MOBILITY_FU1, MOBILITY_FU2, MOBILITY_FU3, SELFCARE_FU1, SELFCARE_FU2, SELFCARE_FU3, USUALACT_FU1, USUALACT_FU2, USUALACT_FU3, PAIN_FU1, PAIN_FU2, PAIN_FU3, ANXIETY_FU1, ANXIETY_FU2, ANXIETY_FU3, HLTHSTAT_FU1, HLTHSTAT_FU2, HLTHSTAT_FU3, FEED_FU1, FEED_FU2, FEED_FU3, BATHE_FU1, BATHE_FU2, BATHE_FU3, GROOM_FU1, GROOM_FU2, GROOM_FU3, DRESS_FU1, DRESS_FU2, DRESS_FU3, BOWELS_FU1, BOWELS_FU2, BOWELS_FU3, BLADDER_FU1, BLADDER_FU2, BLADDER_FU3, TOILET_FU1, TOILET_FU2, TOILET_FU3, TRANSFER_FU1, TRANSFER_FU2, TRANSFER_FU3, MOBLEVEL_FU1, MOBLEVEL_FU2, MOBLEVEL_FU3, STAIRS_FU1, STAIRS_FU2, STAIRS_FU3, BART_TOT_FU1, BART_TOT_FU2, BART_TOT_FU3, EMS33, ED44, CURR_LOC_FU1, CURR_LOC_FU2, CURR_LOC_FU3, IT2, O1, O2_DATE, O2_TIME, O3, O3_OTH, DOD)]
 
 erichWhole[, enrollingCountry := "United States"]
 erichWhole[, study := "ERICH"]
@@ -433,7 +438,8 @@ renameFunc(
     STAIRS_FU3 = barthelStairs365,
     BART_TOT_FU3 = barthelTotal365,
     ICH_Vol_CT1 = baselineICHVolume,
-    IVH_Vol_CT1 = baselineIVHVolume
+    IVH_Vol_CT1 = baselineIVHVolume,
+    IT8A_OLD = evdDay
   )
 )
 
@@ -491,7 +497,7 @@ g <- "%H:%M:%S"
 erichWhole[, symptomOnsetDateTime := as.POSIXct(paste(erichWhole$SE1, erichWhole$SE2), format = f, tz = "EST")]
 
 # converting estimated symptom onset to actual date-times
-erichWhole[, symptomOnsetEstimatedTime := as.POSIXct(paste(erichWhole$SE1, fcase(
+erichWhole[, symptomOnsetEstimatedDateTime := as.POSIXct(paste(erichWhole$SE1, fcase(
   SE3 == "1", "06:00:00",
   SE3 == "2", "NA",
   SE3 == "3", "03:00:00",
@@ -501,7 +507,7 @@ erichWhole[, symptomOnsetEstimatedTime := as.POSIXct(paste(erichWhole$SE1, fcase
 )), format = f, tz = "EST")]
 
 # combining symptom onset date-time and symptom onset estimated time
-erichWhole[, symptomOnsetCombined := as.POSIXct(ifelse(is.na(symptomOnsetDateTime), symptomOnsetEstimatedTime, symptomOnsetDateTime), origin = "1970-01-01")]
+erichWhole[, symptomOnsetCombined := as.POSIXct(ifelse(is.na(symptomOnsetDateTime), symptomOnsetEstimatedDateTime, symptomOnsetDateTime), origin = "1970-01-01")]
 
 # time to ED presentation
 erichWhole[, edDateTime := as.POSIXct(paste(ED7, ED8), format = f, tz = "EST")]
@@ -568,3 +574,38 @@ erichWhole[, nsgyEvac := factor(fcase(
   grepl("evac", IT5F_SPEC, ignore.case = TRUE), "Yes",
   default = "No"
 ))]
+
+# neurosurgery dates
+
+erichWhole[, nsgyEvacDateTime := as.POSIXct(fcase(
+  IT5D == "1", paste(IT5D_DATE, IT5D_TIME),
+  IT5H == "1", paste(IT5H_DATE, IT5H_TIME),
+  nsgyEvac == "Yes", paste(IT5F_DATE, IT5F_TIME)
+), format = f, tz = "EST")]
+
+erichWhole[, nsgyEvacHour := abs(difftime(edDateTime, nsgyEvacDateTime, units = "hours"))]
+
+erichWhole[, nsgyEvacDay := ceiling(nsgyEvacHour / 24)]
+
+# trach
+erichWhole[, tracheostomy := factor(fcase(
+  grepl("trach", IT5F_SPEC, ignore.case = TRUE), "Yes",
+  default = "No"
+))]
+
+# PEG
+erichWhole[, peg := factor(fcase(
+  grepl("gastro", IT5F_SPEC, ignore.case = TRUE), "Yes",
+  default = "No"
+))]
+
+# WLST
+erichWhole[, dnr := c("No", "Yes", "NA")[match(CC16, c("2", "1", "8"))]]
+
+erichWhole[, dni := c("No", "Yes", "NA")[match(CC17, c("2", "1", "8"))]]
+
+erichWhole[, comfortCare := c("No", "Yes", "NA")[match(CC18, c("2", "1", "8"))]]
+
+erichWhole[, dniDateTime := as.POSIXct(paste(CC17_DATE, CC17_TIME), format = f, tz = "EST")]
+
+erichWhole[, comfortDateTime := as.POSIXct(paste(CC18_DATE, CC18_TIME), format = f, tz = "EST")]
