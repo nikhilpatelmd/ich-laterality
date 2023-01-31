@@ -9,6 +9,7 @@ library(lubridate)
 library(readxl)
 library(Hmisc)
 library(stringr)
+getRs("reptools.r") # Loads reptools.r from Github
 
 # loading raw data----
 
@@ -105,7 +106,7 @@ atachWhole[, enrollingCountry := factor(fcase(
   COUNTRY == 4, "South Korea",
   COUNTRY == 5, "Taiwan",
   COUNTRY == 6, "Germany",
-  default = "NA"
+  default = NA
 ))]
 
 ### past medical history-----
@@ -262,7 +263,7 @@ atachCT[, ichLaterality := factor(fcase(
   CTCRQ05 == 4, "Left",
   CTCRQ05 == 5, "Left",
   CTCRQ05 == 6, "Left",
-  default = "NA"
+  default = NA
 ))]
 
 # IVH
@@ -306,19 +307,20 @@ atachWhole[, dnr := factor(fcase(
 
 atachWhole[, comfortCare := factor(fcase(
   F21Q06 == 1, "Yes",
-  F21Q06 == 0, "No"
+  F21Q06 == 0, "No",
+  default = NA
 ))]
 
 # trachesotomy
 atachWhole[, tracheostomy := factor(fcase(
   is.na(trachDay), "No",
   !is.na(trachDay), "Yes",
-  default = "NA"
+  default = NA
 ))]
 
 ### outcome variables-----
 
-#### mRs-----
+#### mRS-----
 
 atachMRS <- as.data.table(atachImportFunc("09"))
 atachMRS <- setnames(atachMRS, "SUBJECT_ID", "id")
@@ -357,7 +359,7 @@ atachWhole[, hospDischargeDisp := factor(fcase(
   F11Q03 == 6, "Assisted Living",
   F11Q03 == 7, "Nursing Home Care",
   F11Q03 == 8, "Dead",
-  default = "NA"
+  default = NA
 ))]
 
 ## filtering only variables need in final analysis------
@@ -372,6 +374,7 @@ atachWhole <- atachWhole[, grep("^TREAT", colnames(atachWhole)) := NULL]
 atachWhole <- atachWhole[, grep("^SITE", colnames(atachWhole)) := NULL]
 atachWhole <- atachWhole[, grep("^RANDO", colnames(atachWhole)) := NULL]
 atachWhole <- atachWhole[, grep("^COUN", colnames(atachWhole)) := NULL]
+atachWhole <- atachWhole[, .q(symptomOnset) := NULL]
 
 atachVariableList <- names(atachWhole[, ])
 
@@ -439,7 +442,25 @@ renameFunc(
     BART_TOT_FU3 = barthelTotal365,
     ICH_Vol_CT1 = baselineICHVolume,
     IVH_Vol_CT1 = baselineIVHVolume,
-    IT8A_OLD = evdDay
+    IT8A_OLD = evdDay,
+    MOBILITY_FU1 = euroMobility90,
+    MOBILITY_FU2 = euroMobility180,
+    MOBILITY_FU3 = euroMobility365,
+    SELFCARE_FU1 = euroSelfCare90,
+    SELFCARE_FU2 = euroSelfCare180,
+    SELFCARE_FU3 = euroSelfCare365,
+    USUALACT_FU1 = euroUsual90,
+    USUALACT_FU2 = euroUsual180,
+    USUALACT_FU3 = euroUsual365,
+    PAIN_FU1 = euroPain90,
+    PAIN_FU2 = euroPain180,
+    PAIN_FU3 = euroPain365,
+    ANXIETY_FU1 = euroAnxiety90,
+    ANXIETY_FU2 = euroAnxiety180,
+    ANXIETY_FU3 = euroAnxiety365,
+    CURR_LOC_FU1 = location90,
+    CURR_LOC_FU2 = location180,
+    CURR_LOC_FU3 = location365
   )
 )
 
@@ -473,7 +494,7 @@ erichWhole[, dm2 := factor(fcase(
   MHX3A == "1", "No",
   MHX3A == "2", "Yes",
   MHX3A == "8", "NA",
-  default = "NA"
+  default = NA
 ))]
 
 erichWhole[, tobacco := factor(fcase(
@@ -481,7 +502,7 @@ erichWhole[, tobacco := factor(fcase(
   SMK1A == "1", "Yes",
   SMK1A == "5", "NA",
   SMK1A == "8", "NA",
-  default = "NA"
+  default = NA
 ))]
 
 ### medications-----
@@ -493,6 +514,7 @@ erichWhole[, tobacco := factor(fcase(
 # symptom onset
 f <- "%Y-%m-%d %H:%M:%S"
 g <- "%H:%M:%S"
+h <- "%d/%m/%Y"
 
 erichWhole[, symptomOnsetDateTime := as.POSIXct(paste(erichWhole$SE1, erichWhole$SE2), format = f, tz = "EST")]
 
@@ -503,7 +525,7 @@ erichWhole[, symptomOnsetEstimatedDateTime := as.POSIXct(paste(erichWhole$SE1, f
   SE3 == "3", "03:00:00",
   SE3 == "4", "09:00:00",
   SE3 == "5", "15:00:00",
-  default = "NA"
+  default = NA
 )), format = f, tz = "EST")]
 
 # combining symptom onset date-time and symptom onset estimated time
@@ -585,7 +607,7 @@ erichWhole[, nsgyEvacDateTime := as.POSIXct(fcase(
 
 erichWhole[, nsgyEvacHour := abs(difftime(edDateTime, nsgyEvacDateTime, units = "hours"))]
 
-erichWhole[, nsgyEvacDay := ceiling(nsgyEvacHour / 24)]
+erichWhole[, nsgyEvacDay := as.numeric(ceiling(nsgyEvacHour / 24))]
 
 # trach
 erichWhole[, tracheostomy := factor(fcase(
@@ -606,6 +628,519 @@ erichWhole[, dni := c("No", "Yes", "NA")[match(CC17, c("2", "1", "8"))]]
 
 erichWhole[, comfortCare := c("No", "Yes", "NA")[match(CC18, c("2", "1", "8"))]]
 
+erichWhole[, dnrDateTime := as.POSIXct(paste(CC16_DATE, CC16_TIME), format = f, tz = "EST")]
+
 erichWhole[, dniDateTime := as.POSIXct(paste(CC17_DATE, CC17_TIME), format = f, tz = "EST")]
 
 erichWhole[, comfortDateTime := as.POSIXct(paste(CC18_DATE, CC18_TIME), format = f, tz = "EST")]
+
+erichWhole[, dnrHour := abs(difftime(edDateTime, dnrDateTime, units = "hours"))]
+
+erichWhole[, dnrDay := as.numeric(ceiling(dnrHour / 24))]
+
+erichWhole[, dniHour := abs(difftime(edDateTime, dniDateTime, units = "hours"))]
+
+erichWhole[, dniDay := ceiling(dniHour / 24)]
+
+erichWhole[, comfortCareHour := abs(difftime(edDateTime, comfortDateTime, units = "hours"))]
+
+erichWhole[, comfortCareDay := as.numeric(ceiling(comfortCareHour / 24))]
+
+### outcome variables -----
+
+# adding mRS 6 to data
+erichWhole[, deathDate := ymd(DOD)]
+
+erichWhole[, deathDay := abs(difftime(as.Date(edDateTime), deathDate, units = "days"))]
+
+erichWhole[deathDay < 90, mrs90 := 6]
+erichWhole$mrs90 <- na_if(erichWhole$mrs90, 8)
+
+erichWhole[deathDay < 180, mrs180 := 6]
+erichWhole[deathDay < 365, mrs365 := 6]
+
+# EuroQOL
+erichWhole$euroMobility90 <- na_if(erichWhole$euroMobility90, 8)
+erichWhole$euroSelfCare90 <- na_if(erichWhole$euroSelfCare90, 8)
+erichWhole$euroUsual90 <- na_if(erichWhole$euroUsual90, 8)
+erichWhole$euroPain90 <- na_if(erichWhole$euroPain90, 8)
+erichWhole$euroAnxiety90 <- na_if(erichWhole$euroAnxiety90, 8)
+
+levels(erichWhole$euroMobility90) <- c("No Problems", "Some Problems", "Confined to Bed")
+
+levels(erichWhole$euroSelfCare90) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+
+levels(erichWhole$euroUsual90) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+
+levels(erichWhole$euroPain90) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+
+levels(erichWhole$euroAnxiety90) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+
+levels(erichWhole$euroMobility180) <- c("No Problems", "Some Problems", "Confined to Bed")
+
+levels(erichWhole$euroSelfCare180) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+
+levels(erichWhole$euroUsual180) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+
+levels(erichWhole$euroPain180) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+
+levels(erichWhole$euroAnxiety180) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+
+levels(erichWhole$euroMobility365) <- c("No Problems", "Some Problems", "Confined to Bed")
+
+levels(erichWhole$euroSelfCare365) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+
+levels(erichWhole$euroUsual365) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+
+levels(erichWhole$euroPain365) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+
+levels(erichWhole$euroAnxiety365) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+
+# location during follow-up
+
+erichWhole[, location90 := factor(fcase(
+  location90 == "1", "Home",
+  location90 == "2", "Rehab Facility",
+  location90 == "3", "Long-Term Care Facility",
+  location90 == "4", "Hospital",
+  location90 == "5", "Other",
+  mrs90 == "6", "Dead",
+  default = NA
+))]
+
+erichWhole[, location180 := factor(fcase(
+  location180 == "1", "Home",
+  location180 == "2", "Rehab Facility",
+  location180 == "3", "Long-Term Care Facility",
+  location180 == "4", "Hospital",
+  location180 == "5", "Other",
+  mrs180 == "6", "Dead",
+  default = NA
+))]
+
+erichWhole[, location365 := factor(fcase(
+  location365 == "1", "Home",
+  location365 == "2", "Rehab Facility",
+  location365 == "3", "Long-Term Care Facility",
+  location365 == "4", "Hospital",
+  location365 == "5", "Other",
+  mrs365 == "6", "Dead",
+  default = NA
+))]
+
+### filtering only variables need in final analysis------
+erichWhole <- erichWhole[, grep("^O", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^I", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^E", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^C", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^A", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^deta", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^LA", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^S", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^M", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^V", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^P", colnames(erichWhole)) := NULL]
+erichWhole <- erichWhole[, grep("^D", colnames(erichWhole)) := NULL]
+
+### exporting variable list-----
+erichVariableList <- names(erichWhole[, ])
+
+# clear iii -----
+
+## import raw data -----
+clear3Demographics <- fread("./data/CLEAR3/demographics.csv")
+clear3Outcomes <- fread("./data/CLEAR3/outcomes.csv")
+
+clear3Whole <- clear3Demographics[clear3Outcomes, on = .(new_patient_number)]
+
+clear3Whole <- cleanup.import(clear3Whole)
+
+## renaming variables-----
+renameFunc(
+  clear3Whole,
+  .q(
+    studyname = study,
+    new_patient_number = id,
+    age_at_registration = age,
+    gender = sex,
+    hispanic_latino = ethnicity,
+    tobacco_use = tobacco,
+    cocaine_use = cocaine,
+    anticoagulated_at_registration = anticoagulated,
+    adjudicated_ich_location = ichLocation,
+    hemisphere = ichLaterality,
+    er_present_systolic = sbpInitial,
+    er_present_diastolic = dbpInitial,
+    er_present_gcs_total = gcsBaseline,
+    er_present_nihss_total = nihssBaseline,
+    dct_ich_volume_rc = baselineICHVolume,
+    dct_ivh_volume_rc = baselineIVHVolume,
+    ictus_to_presentation = symptomsToED,
+    glasgow_rankin_30 = mrs30,
+    glasgow_rankin_180 = mrs180,
+    gose_30 = gose30,
+    gose_180 = gose180,
+    withdrawal_contribution = comfortCare,
+    ictus_to_withdrawal_days = comfortCareDay
+  )
+)
+
+## categorizing and recoding Variables----
+
+### demographics----
+clear3Whole[, race := factor(fcase(
+  race == "African-American", "Black or African-American",
+  race == "Asian", "Asian",
+  race == "Hawaiian or Pacific", "Native Hawaiian/Pacific Islander",
+  race == "Indian or Alaskan", "American Indian or Alaskan Native",
+  race == "Indian or Alaskan;White", "American Indian or Alaskan Native",
+  race == "unknown/missing", "Other/Not Reported",
+  race == "White", "White"
+))]
+
+clear3Whole[, ethnicity := factor(fcase(
+  ethnicity == "0", "Not Hispanic or Latino",
+  ethnicity == "1", "Hispanic or Latino",
+  default = NA
+))]
+
+clear3Whole[, sex := factor(fcase(
+  sex == "male", "Male",
+  sex == "female", "Female",
+  default = NA
+))]
+
+### past medical history-----
+clear3Whole[, tobacco := factor(fcase(
+  tobacco == "1", "Yes",
+  tobacco == "NA", "No"
+))]
+
+### presentation features -----
+clear3Whole[, symptomsToED := round(symptomsToED * 24 * 60, digits = 0)]
+
+### imaging -----
+clear3Whole[, ichLocation := factor(fcase(
+  ichLocation == "Caudate", "Basal Ganglia",
+  ichLocation == "Frontal", "Lobar",
+  ichLocation == "Globus Pallidus", "Basal Ganglia",
+  ichLocation == "Occipital", "Lobar",
+  ichLocation == "Other", "NA",
+  ichLocation == "Parietal", "Lobar",
+  ichLocation == "Probable Primary IVH", "Primary IVH",
+  ichLocation == "Putamen", "Basal Ganglia",
+  ichLocation == "Temporal", "Lobar",
+  ichLocation == "Thalamus", "Thalamus",
+  default = NA
+))]
+
+clear3Whole[, ivh := "Yes"]
+
+clear3Whole[, ichLaterality := factor(fcase(
+  ichLaterality == "left", "Left",
+  ichLaterality == "right", "Right",
+  ichLaterality == "unknown/missing", "NA",
+  default = NA
+))]
+
+### process variables -----
+clear3Whole[, comfortCareDay := as.numeric(round(comfortCareDay, digits = 0))]
+
+clear3Whole[, comfortCare := ifelse(comfortCare == "on", "Yes", "No")]
+
+### filtering only variables need in final analysis------
+clear3Whole <- clear3Whole[, .(study, id, age, sex, race, ethnicity, tobacco, cocaine, anticoagulated, ichLaterality, ichLocation, sbpInitial, dbpInitial, gcsBaseline, nihssBaseline, baselineIVHVolume, baselineICHVolume, symptomsToED, mrs30, mrs180, comfortCare, comfortCareDay, ivh)]
+
+### exporting variable list-----
+clear3VariableList <- names(clear3Whole[, ])
+
+# mistie ii-----
+
+## import raw data -----
+mistie2Demographics <- data.table(fread("./data/MISTIE2/demographics.csv"))
+mistie2Imaging <- data.table(fread("./data/MISTIE2/imaging.csv"))
+mistie2Outcomes <- data.table(fread("./data/MISTIE2/outcomes.csv"))
+mistie2publication1 <- data.table(fread("./data/MISTIE2/publicationResults.csv"))
+mistie2publication2 <- data.table(fread("./data/MISTIE2/publicationResults2.csv"))
+
+# converting outcomes from long to wide format
+mistie2OutcomesWide <- dcast(mistie2Outcomes, id ~ Follow_up_Visit, value.var = "rankin_score")
+
+mistie2Whole <- Merge(mistie2Demographics, mistie2Imaging, mistie2OutcomesWide, mistie2publication1, mistie2publication2, id = ~id)
+
+mistie2Whole <- as.data.table(mistie2Whole)
+
+mistie2Whole[, study := "MISTIE II"]
+
+## renaming variables-----
+renameFunc(
+  mistie2Whole,
+  .q(
+    symptom_onset_age = age,
+    Gender = sex,
+    Hispanic_Latino = ethnicity,
+    Tobacco_Use = tobacco,
+    Cocaine_Use = cocaine,
+    Hypertension = htn,
+    Hyperlipidemia = hld,
+    Diabetes = dm2,
+    Other_CV = cad,
+    clot_location_rc = ichLocation,
+    subject_has_ivh = ivh,
+    hemisphere = ichLaterality,
+    ER_Present_Systolic = sbpInitial,
+    ER_Present_Diastolic = dbpInitial,
+    ER_Present_GCS_Total = gcsBaseline,
+    enrollment_nihss_total.x = nihssBaseline,
+    Diagnostic_CT_ICH_Volume = baselineICHVolume,
+    Diagnostic_CT_IVH_Volume = baselineIVHVolume,
+    Ictus_to_Randomization = symptomsToED,
+    "30" = mrs30,
+    "90" = mrs90,
+    "180" = mrs180,
+    "270" = mrs270,
+    "365" = mrs365
+  )
+)
+
+## categorizing and recoding Variables----
+
+## demographics----
+
+mistie2Whole[, race := factor(fcase(
+  Race == "African American not Hispanic", "Black or American-American",
+  Race == "Asian or Pacific Islander", "Asian",
+  Race == "Caucasian not Hispanic", "White",
+  Race == "Hispanic", "Other/Not Reported",
+  Race == "Other or unknown", "Other/Not Reported",
+  default = NA
+))]
+
+mistie2Whole[, ethnicity := factor(fcase(
+  Race == "African American not Hispanic", "Not Hispanic or Latino",
+  Race == "Hispanic", "Hispanic or Latino",
+  Race == "Asian or Pacific Islander", "Not Hispanic or Latino",
+  Race == "Caucasian not Hispanic", "Not Hispanic or Latino",
+  Race == "Other or unknown", "Not Hispanic or Latino",
+  default = NA
+))]
+
+## imaging----
+
+mistie2Whole[, ichLocation := factor(fcase(
+  ichLocation == "Globus Palidus", "Basal Ganglia",
+  ichLocation == "Lobar", "Lobar",
+  ichLocation == "Putamen", "Basal Ganglia",
+  ichLocation == "Thalamus", "Thalamus",
+  default = NA
+))]
+
+mistie2Whole$ichLaterality <- na_if(mistie2Whole$ichLaterality, "Discrepancy")
+
+mistie2Whole[, symptomsToED := round(symptomsToED * 60, digits = 0)]
+
+## filtering only variables need in final analysis------
+
+mistie2Whole <- mistie2Whole[, .(id, gcsBaseline, sbpInitial, dbpInitial, sex, race, ethnicity, htn, hld, dm2, tobacco, cocaine, ivh, baselineICHVolume, baselineIVHVolume, symptomsToED, mrs30, mrs90, mrs180, mrs270, mrs365, age, nihssBaseline, ichLocation, ichLaterality)]
+
+## exporting variable list-----
+mistie2VariableList <- names(mistie2Whole[, ])
+
+# mistie iii------
+
+## import raw data -----
+mistie3Whole <- data.table(fread("./data/MISTIE3/data.csv"))
+mistie3Whole[, study := "MISTIE III"]
+
+## renaming variables-----
+
+renameFunc(
+  mistie3Whole,
+  .q(
+    age_at_consent = age,
+    patientid_ninds = id,
+    er_present_systolic = sbpInitial,
+    er_present_diastolic = dbpInitial,
+    gcs_total = gcsBaseline,
+    nihss_total = nihssBaseline,
+    diagct_ich_volume = baselineICHVolume,
+    diagct_ivh_volume = baselineIVHVolume,
+    ich_hemisphere_adj = ichLaterality,
+    glasgow_rankin_30 = mrs30,
+    glasgow_rankin_180 = mrs180,
+    glasgow_rankin_365 = mrs365,
+    barthel_index_365 = barthelTotal365,
+    eq_vas_365 = euroVAS365,
+    ictus_to_diagct_hours = symptomsToED,
+    eq5d_mobility_365 = euroMobility365,
+    eq5d_selfcare_365 = euroSelfCare365,
+    eq5d_activities_365 = euroUsual365,
+    eq5d_pain_365 = euroPain365,
+    eq5d_anxiety_365 = euroAnxiety365,
+    location_d30 = location30,
+    location_d180 = location180,
+    location_d365 = location365
+  )
+)
+
+## categorizing and recoding Variables----
+
+### demographics----
+mistie3Whole[, race := factor(fcase(
+  race_ninds == "African-American", "Black or African-American",
+  race_ninds == "Asian Hawaiian or Pacific", "Asian",
+  race_ninds == "Indian or Alaskan", "American Indian or Alaskan Native",
+  race_ninds == "More than one race", "Other/Not Reported",
+  race_ninds == "White", "White",
+  default = NA
+))]
+
+mistie3Whole[, ethnicity := factor(fcase(
+  hispanic == "0", "Not Hispanic or Latino",
+  hispanic == "1", "Hispanic or Latino"
+))]
+
+mistie3Whole[, sex := factor(fcase(
+  male_gender == "0", "Female",
+  male_gender == "1", "Male"
+))]
+
+mistie3Whole[, tobacco := factor(fcase(
+  current_smoker == "0", "No",
+  current_smoker == "1", "Yes"
+))]
+
+mistie3Whole[, dm2 := factor(fcase(
+  diabetes_pmh == "0", "No",
+  diabetes_pmh == "1", "Yes"
+))]
+
+mistie3Whole[, htn := factor(fcase(
+  htn_pmh == "0", "No",
+  htn_pmh == "1", "Yes"
+))]
+
+mistie3Whole[, cad := factor(fcase(
+  cvd_pmh == "0", "No",
+  cvd_pmh == "1", "Yes"
+))]
+
+mistie3Whole[, hld := factor(fcase(
+  hyperlipidemia == "0", "No",
+  hyperlipidemia == "1", "Yes"
+))]
+
+### presentation features -----
+mistie3Whole[, symptomsToED := round(symptomsToED * 60, digits = 0)]
+
+### imaging -----
+mistie3Whole[, ichLocation := factor(fcase(
+  ich_location_specify == "BG", "Basal Ganglia",
+  ich_location_specify == "Frontal", "Lobar",
+  ich_location_specify == "Occipital", "Lobar",
+  ich_location_specify == "Parietal", "Lobar",
+  ich_location_specify == "Temporal", "Lobar",
+  ich_location_specify == "Thalamus", "Thalamus",
+  default = NA
+))]
+
+mistie3Whole[, ivh := factor(ifelse(baselineIVHVolume == 0.00, "No", "Yes"))]
+
+### process variables -----
+
+mistie3Whole[, comfortCare := factor(fcase(
+  withdrawal_contribution == "0", "No",
+  withdrawal_contribution == "1", "Yes",
+  default = NA
+))]
+
+# comfort care day
+
+mistie3Whole[, symptomOnset := as.POSIXct(mistie3Whole$ninds_symptom_onset_date, format = h, tz = "EST")]
+
+mistie3Whole[, comfortDateTime := as.POSIXct(mistie3Whole$ninds_withdrawal_date, format = h, tz = "EST")]
+
+mistie3Whole[, comfortCareDay := as.numeric(abs(difftime(symptomOnset, comfortDateTime, units = "days")))]
+
+### outcome variables -----
+
+# EuroQOL
+
+levels(mistie3Whole$euroMobility365) <- c("No Problems", "Some Problems", "Confined to Bed")
+
+levels(mistie3Whole$euroSelfCare365) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+
+levels(mistie3Whole$euroUsual365) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+
+levels(mistie3Whole$euroPain365) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+
+levels(mistie3Whole$euroAnxiety365) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+
+# location after discharge
+mistie3Whole[, location30 := factor(fcase(
+  location30 == "Acute - Hospital", "Hospital",
+  location30 == "Dead", "Dead",
+  location30 == "Home", "Home",
+  location30 == "LTCF", "Long-Term Care Facility",
+  location30 == "LTFU", "Long-Term Care Facility",
+  location30 == "Rehab", "Rehab Facility",
+  location30 == "Withdrawn", "Other",
+  default = NA
+))]
+
+mistie3Whole[, location180 := factor(fcase(
+  location180 == "Acute - Hospital", "Hospital",
+  location180 == "Dead", "Dead",
+  location180 == "Home", "Home",
+  location180 == "LTCF", "Long-Term Care Facility",
+  location180 == "LTFU", "Long-Term Care Facility",
+  location180 == "Rehab", "Rehab Facility",
+  location180 == "Withdrawn", "Other",
+  default = NA
+))]
+
+mistie3Whole[, location365 := factor(fcase(
+  location365 == "Acute - Hospital", "Hospital",
+  location365 == "Dead", "Dead",
+  location365 == "Home", "Home",
+  location365 == "LTCF", "Long-Term Care Facility",
+  location365 == "LTFU", "Long-Term Care Facility",
+  location365 == "Rehab", "Rehab Facility",
+  location365 == "Withdrawn", "Other",
+  default = NA
+))]
+
+## filtering only variables need in final analysis------
+
+mistie3Whole <- mistie3Whole[, .(id, age, tobacco, hld, cocaine, dm2, htn, cad, sbpInitial, dbpInitial, gcsBaseline, nihssBaseline, baselineICHVolume, baselineIVHVolume, mrs30, mrs180, mrs365, barthelTotal365, euroVAS365, euroMobility365, euroSelfCare365, euroUsual365, euroPain365, euroAnxiety365, location30, location180, location365, symptomsToED, ichLaterality, ichLocation, study, race, ethnicity, sex, ivh, comfortCare, comfortCareDay)]
+
+
+## exporting variable list-----
+mistie3VariableList <- names(mistie3Whole[, ])
+
+# combing all datasets
+a <- list(atachWhole, erichWhole, clear3Whole, mistie2Whole, mistie3Whole)
+
+nindsCombined <- rbindlist(a, fill = TRUE)
+
+# cleaning up master dataset
+setcolorder(nindsCombined, .q(id, study, age, sex, race, ethnicity, gcsBaseline, ichLaterality, ichLocation))
+
+nindsCombined[, .q(arrivalTimeInitial, arrivalTimeStrokeCenter, enrollingCountry, mechVentilation, symptomOnsetDateTime, symptomOnsetEstimatedDateTime, symptomOnsetCombined, edDateTime, nsgyEvacDateTime, nsgyEvacHour, peg, deathDate, anticoagulated, comfortDateTime, comfortCareHour, dniDateTime, dnrDateTime, dnrHour, dniHour, dniDay) := NULL]
+
+nindsCombined[, baselineICHVolume := ceiling(baselineICHVolume)]
+nindsCombined[, baselineIVHVolume := ceiling(baselineIVHVolume)]
+nindsCombined[, baselinePHEVolume := ceiling(baselinePHEVolume)]
+nindsCombined[, hour24ICHVolume := ceiling(hour24ICHVolume)]
+nindsCombined[, hour24IVHVolume := ceiling(hour24IVHVolume)]
+nindsCombined[, hour24PHEVolume := ceiling(hour24PHEVolume)]
+
+nindsCombined$ichLaterality <- na_if(nindsCombined$ichLaterality, "NA")
+nindsCombined$ichLaterality <- na_if(nindsCombined$ichLaterality, "NA")
+
+nindsCombined <- nindsCombined %>%
+  mutate(across(.q(ichLocation, stroke, chf, afib, htn, pvd, cad, hld, tobacco, dnr, comfortCare), na_if, "NA"))
+
+contents(nindsCombined)
+
+table(nindsCombined$comfortCare)

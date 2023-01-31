@@ -1238,14 +1238,7 @@ mistie3 <- mistie3 %>%
     location_d180 == "Dead" ~ "Dead",
     location_d180 == "Home" ~ "Home",
     location_d180 == "Rehab" ~ "Rehabilitation",
-    location_d180 == "LTCF" ~ "Skilled Nursing Facility",library(tidyverse)
-library(tableone)
-library(data.table)
-library(haven) # Importing SAS Files
-library(janitor)
-library(lubridate)
-library(readxl)
-library(Hmisc)
+    location_d180 == "LTCF" ~ "Skilled Nursing Facility",
     location_d180 == "Hospice" ~ "Hospice",
   ))
 

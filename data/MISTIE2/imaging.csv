@@ -1,0 +1,111 @@
+id,Randomized_Grp_Assigned_Tier,Diag_ICHVolume,EOT_RC_IVHVolume,EOT_RC_ICHVolume,pctresolved_stab_EOT,pctresolved_postsurg_EOT
+101-1001,Randomized+Medical,42.04,0.58,43.54,10.17,
+101-1002,Randomized+Surgery (Stage 2),67.44,0.44,32.52,53.07,51.79
+102-1005,Randomized+Surgery (Tier 2),27.04,0,6.75,74.25,65.54
+102-1006,Randomized+Medical,35.23,4.51,48.14,0.64,
+102-1007,Randomized+Medical,20.12,0,24.41,-12.23,
+102-1008,Randomized+Surgery (Tier 1),48.12,0.9,7.06,80.73,73.22
+102-1009,Randomized+Medical,25.87,0,28.84,9.42,
+102-1010,Randomized+Surgery (Stage 2),24.49,2.58,14.52,69.95,60.94
+102-1011,Randomized+Surgery (Stage 2),9.73,3.12,27.1,65.65,52.64
+102-1012,Randomized+Surgery (Tier 2),74.9,5.19,56.68,19.83,23.64
+102-1013,Randomized+Medical,58.91,2.94,50.44,19.04,
+102-1014,Randomized+Medical,19.71,0,18.43,3.25,
+102-1015,Randomized+Medical,27.63,0,35.78,0.28,
+102-1016,Randomized+Surgery (Stage 2),32.92,1.01,14.48,66.79,56.32
+102-1017,Randomized+Medical,49.78,0,47.72,-1.79,
+102-1018,Randomized+Surgery (Stage 2),67.85,14.36,67.38,1.82,-9.54
+102-1019,Randomized+Surgery (Tier 2),49.74,1.07,10.18,76.47,71.19
+103-1021,Randomized+Medical,57.53,4.83,71.51,-0.06,
+103-1022,Randomized+Medical,17.85,2.17,53.23,11.28,
+106-1027,Randomized+Medical,43.99,0.38,41.62,15.75,
+107-1029,Randomized+Medical,33.16,0.24,33.85,4.43,
+108-1030,Randomized+Medical,51.69,11.39,50.11,0.3,
+108-1031,Randomized+Medical,52.26,0,46.67,12.14,
+108-1032,Randomized+Surgery (Tier 3),34.86,0,20.73,66.75,1.66
+108-1033,Randomized+Medical,24.51,0.68,27.42,-2.93,
+108-1034,Randomized+Surgery (Tier 3),56.2,6.68,5.42,87.98,19.94
+108-1035,Randomized+Surgery (Tier 3),31.37,14.39,3.7,85.96,-255.77
+108-1036,Randomized+Surgery (Tier 3),56.9,12.35,51.81,6.78,-5.37
+108-1037,Randomized+Medical,19.73,0,19.35,1.93,
+108-1038,Randomized+Surgery (Tier 3),23,12.63,3.14,86.35,-26.1
+108-1039,Randomized+Surgery (Tier 3),36.56,6.69,9.58,72.26,-40.26
+108-1040,Randomized+Medical,40.41,0.85,49.82,-10.37,
+108-1041,Randomized+Surgery (Tier 3),60.69,2.36,11.68,80.7,-9.26
+109-1042,Randomized+Surgery (Tier 2),50.73,7.81,59.62,-4.5,-10.63
+109-1043,Randomized+Surgery (Tier 2),47.45,0,19.18,55.55,56.91
+109-1044,Randomized+Surgery (Stage 2),7.51,0,24.28,13.93,-0.58
+109-1045,Randomized+Medical,51.65,1.8,52.02,9.5,
+109-1046,Randomized+Surgery (Tier 2),28.85,3.58,24.37,-0.62,-17.9
+109-1047,Randomized+Surgery (Stage 2),17.43,0,3.9,85.99,80.76
+109-1048,Randomized+Medical,18.11,0,18.74,-11.55,
+109-1050,Randomized+Surgery (Stage 2),18.44,0,9.25,66.27,58.78
+110-1051,Randomized+Surgery (Tier 2),62.43,7.79,26.94,53.73,30.71
+110-1052,Randomized+Medical,37.34,1.07,36,8.33,
+110-1054,Randomized+Surgery (Tier 1),27.03,0,42.72,24.3,22.83
+111-1055,Randomized+Medical,54.65,1.66,59.69,-1,
+111-1056,Randomized+Surgery (Stage 2),48.06,16.8,37.85,36.54,23.58
+111-1057,Randomized+Medical,11.67,4.79,70.97,-26.48,
+111-1058,Randomized+Surgery (Stage 2),28.19,0.6,15.18,43.27,30.21
+111-1059,Randomized+Medical,41.02,2.17,43.94,9.1,
+111-1060,Randomized+Medical,0,13.55,80.51,7.51,
+111-1062,Randomized+Medical,29.6,3.84,32.73,2.27,
+112-1063,Randomized+Medical,40.28,0,37.3,-3.1,
+112-1064,Randomized+Medical,35.51,0,27.41,26.48,
+113-1066,Randomized+Surgery (Tier 1),13.05,0,14.66,80.25,68.18
+113-1067,Randomized+Medical,36.81,2.46,29.35,18.47,
+113-1068,Randomized+Surgery (Tier 1),37.25,3.57,28.91,26.19,4.56
+113-1069,Randomized+Surgery (Stage 2),53.99,0,21.92,60.79,-3.01
+113-1070,Randomized+Surgery (Tier 1),41.38,0,20.78,50.99,32.82
+113-1071,Randomized+Surgery (Tier 2),35.69,3.78,15.97,51.44,31.66
+113-1072,Randomized+Surgery (Tier 1),20.37,1.68,14.95,45.72,26.97
+113-1073,Randomized+Surgery (Tier 1),134.29,0,44.46,62.92,61.35
+113-1074,Randomized+Medical,14.06,0.16,26.62,-7.3,
+113-1075,Randomized+Medical,32.62,0,35.89,2.34,
+113-1077,Randomized+Surgery (Tier 1),29.76,1.2,13.14,68.93,60.5
+114-1079,Randomized+Surgery (Stage 2),39.21,0,3.43,92.87,92.83
+116-1082,Randomized+Medical,41.48,2.78,47.8,0,
+117-1085,Randomized+Surgery (Tier 3),7.71,0,14.01,57.94,4.04
+117-1086,Randomized+Surgery (Tier 3),14.22,0.77,5.02,86.74,-21.26
+118-1087,Randomized+Medical,12.53,0,39.47,-1.44,
+119-1089,Randomized+Surgery (Tier 1),67.2,0,23.52,39.24,14.35
+119-1090,Randomized+Medical,29.33,2.37,31.15,5.41,
+119-1091,Randomized+Surgery (Stage 2),54.13,0.26,3.95,92.55,92.36
+119-1093,Randomized+Surgery (Stage 2),34.63,4.64,30.06,21.49,9.68
+119-1094,Randomized+Medical,32.22,0,30.1,8.37,
+119-1095,Randomized+Surgery (Stage 2),23.95,0,7.73,72.77,-34.67
+119-1096,Randomized+Surgery (Tier 2),26.16,0.1,12.19,47.25,14.64
+119-1097,Randomized+Medical,44.5,0.29,36.86,17.17,
+119-1098,Randomized+Surgery (Stage 2),26.29,0,8.18,74.11,71.58
+119-1099,Randomized+Surgery (Tier 1),23.34,0.59,14.17,34.46,57.57
+121-1102,Randomized+Surgery (Tier 1),37.6,3.93,18.72,41.06,30.85
+121-1103,Randomized+Surgery (Tier 1),66.98,13.3,18.84,66.11,56.51
+122-1105,Randomized+Medical,8.45,0,39.61,10.24,
+123-1106,Randomized+Surgery (Stage 2),10.95,0,4.88,80.26,79.74
+123-1107,Randomized+Surgery (Tier 2),29.11,0,9.41,73.93,59.63
+123-1108,Randomized+Surgery (Stage 2),62.74,1.29,15.78,74.15,70.9
+123-1109,Randomized+Medical,30.03,0.97,38.57,3.43,
+123-1110,Randomized+Surgery (Tier 2),33.29,0,27.63,26.26,7.96
+123-1112,Randomized+Surgery (Stage 2),27.3,5.49,10.3,66.97,65.3
+124-1113,Randomized+Surgery (Tier 2),39.12,0,9.83,85.24,83.49
+124-1114,Randomized+Medical,52.42,0.65,53.24,2.86,
+124-1115,Randomized+Surgery (Tier 1),58.81,0.51,17.15,80.53,80
+124-1116,Randomized+Surgery (Stage 2),57.46,6.32,16.11,72.06,68.4
+124-1117,Randomized+Medical,73.26,8.77,64.45,15.71,
+124-1118,Randomized+Medical,37.79,0.8,35.16,18,
+124-1119,Randomized+Surgery (Stage 2),67.29,0.5,19.29,68.43,70.16
+124-1120,Randomized+Surgery (Stage 2),61.49,6.05,26.77,60.83,40.66
+124-1121,Randomized+Medical,29.14,0,25.91,7.76,
+124-1122,Randomized+Surgery (Tier 1),71.27,7.44,29.94,62.59,68.13
+124-1123,Randomized+Surgery (Stage 2),50.9,0.04,7.37,86.33,86.06
+124-1124,Randomized+Surgery (Stage 2),48.98,0,2.7,95.13,94.55
+124-1126,Randomized+Surgery (Stage 2),30.52,0.48,10.48,71.14,64.34
+124-1127,Randomized+Surgery (Tier 2),61.79,5.17,30.67,49.56,48.6
+124-1128,Randomized+Surgery (Tier 2),32.77,3.71,8.53,72.89,65.84
+126-1132,Randomized+Medical,12.06,0,27.77,16.2,
+126-1133,Randomized+Surgery (Tier 2),65.23,11.41,26.94,47.38,42.42
+129-1136,Randomized+Surgery (Tier 3),11.27,0,7.71,63.04,-7.38
+129-1137,Randomized+Surgery (Tier 3),21.75,1.73,20.66,58.99,17.98
+129-1138,Randomized+Surgery (Tier 3),29.76,1.36,12.54,49.15,-8.76
+129-1139,Randomized+Surgery (Tier 3),11.82,1.55,7.44,75.21,18.6
+129-1140,Randomized+Surgery (Tier 3),43.54,0.24,21.33,61.12,2.2
