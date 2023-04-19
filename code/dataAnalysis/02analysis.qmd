@@ -1,0 +1,35 @@
+---
+title: "ICH Laterality Analysis"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+    html-math-method: katex
+    css: "styles.css"
+---
+
+
+```{r setup and data import}
+#| output: false
+
+library(tidyverse)
+library(tableone)
+library(data.table)
+library(haven) # Importing SAS Files
+library(janitor)
+library(lubridate)
+library(readxl)
+library(Hmisc)
+library(stringr)
+library(qs)
+getRs("reptools.r") # Loads reptools.r from Github
+
+d <- qread("./nindsCombined.qs")
+```
+
+**Causal question**: does the hemispheric location of an intracerebral hemorrhage (ICH) influence death or major disabilty?
+
+```{r}
+
+d ```

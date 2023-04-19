@@ -9,6 +9,7 @@ library(lubridate)
 library(readxl)
 library(Hmisc)
 library(stringr)
+library(qs)
 getRs("reptools.r") # Loads reptools.r from Github
 
 # loading raw data----
@@ -1118,12 +1119,12 @@ mistie3Whole <- mistie3Whole[, .(id, age, tobacco, hld, cocaine, dm2, htn, cad, 
 ## exporting variable list-----
 mistie3VariableList <- names(mistie3Whole[, ])
 
-# combing all datasets
+# combing all datasets-----
 a <- list(atachWhole, erichWhole, clear3Whole, mistie2Whole, mistie3Whole)
 
 nindsCombined <- rbindlist(a, fill = TRUE)
 
-# cleaning up master dataset
+## cleaning up master dataset-----
 setcolorder(nindsCombined, .q(id, study, age, sex, race, ethnicity, gcsBaseline, ichLaterality, ichLocation))
 
 nindsCombined[, .q(arrivalTimeInitial, arrivalTimeStrokeCenter, enrollingCountry, mechVentilation, symptomOnsetDateTime, symptomOnsetEstimatedDateTime, symptomOnsetCombined, edDateTime, nsgyEvacDateTime, nsgyEvacHour, peg, deathDate, anticoagulated, comfortDateTime, comfortCareHour, dniDateTime, dnrDateTime, dnrHour, dniHour, dniDay) := NULL]
@@ -1136,11 +1137,47 @@ nindsCombined[, hour24IVHVolume := ceiling(hour24IVHVolume)]
 nindsCombined[, hour24PHEVolume := ceiling(hour24PHEVolume)]
 
 nindsCombined$ichLaterality <- na_if(nindsCombined$ichLaterality, "NA")
-nindsCombined$ichLaterality <- na_if(nindsCombined$ichLaterality, "NA")
 
 nindsCombined <- nindsCombined %>%
   mutate(across(.q(ichLocation, stroke, chf, afib, htn, pvd, cad, hld, tobacco, dnr, comfortCare), na_if, "NA"))
 
-contents(nindsCombined)
+## Computing ICH Score-----
 
-table(nindsCombined$comfortCare)
+nindsCombined[, ichScoreVolume := fcase(
+  baselineICHVolume >= 30, 1,
+  baselineICHVolume < 30, 0,
+  default = 0
+)]
+
+nindsCombined[, ichScoreGCS := fcase(
+  gcsBaseline >= 13, 0,
+  gcsBaseline <= 4, 2,
+  default = 1
+)]
+
+nindsCombined[, ichScoreIVH := fcase(
+  ivh == "Yes", 1,
+  ivh == "No", 0
+)]
+
+nindsCombined[, ichScoreAge := fcase(
+  age >= 80, 1,
+  age < 80, 0
+)]
+
+nindsCombined[, ichScoreLocation := fcase(
+  ichLocation == "Cerebellum", 1,
+  ichLocation == "Brainstem", 1,
+  default = 0
+)]
+
+nindsCombined[, ichScoreTotal := ichScoreVolume + ichScoreGCS + ichScoreIVH + ichScoreAge + ichScoreLocation]
+
+table(nindsCombined$)
+
+## Exporting Data-----
+
+qsave(nindsCombined, "./code/dataAnalysis/nindsCombined.qs")
+
+## Visualizing Data-----
+
