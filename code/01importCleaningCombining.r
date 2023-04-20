@@ -77,6 +77,9 @@ renameFunc(
     F11Q01DAY = hospitalLOS
   )
 )
+
+as.numeric(atachWhole$comfortCareDay)
+
 ## categorizing and recoding Variables----
 
 ### demographics----
@@ -849,6 +852,10 @@ clear3Whole[, comfortCareDay := as.numeric(round(comfortCareDay, digits = 0))]
 
 clear3Whole[, comfortCare := ifelse(comfortCare == "on", "Yes", "No")]
 
+clear3Whole[, evd := "Yes"]
+
+clear3Whole[, nsgyEvac := "No"]
+
 ### filtering only variables need in final analysis------
 clear3Whole <- clear3Whole[, .(study, id, age, sex, race, ethnicity, tobacco, cocaine, anticoagulated, ichLaterality, ichLocation, sbpInitial, dbpInitial, gcsBaseline, nihssBaseline, baselineIVHVolume, baselineICHVolume, symptomsToED, mrs30, mrs180, comfortCare, comfortCareDay, ivh)]
 
@@ -940,9 +947,18 @@ mistie2Whole$ichLaterality <- na_if(mistie2Whole$ichLaterality, "Discrepancy")
 
 mistie2Whole[, symptomsToED := round(symptomsToED * 60, digits = 0)]
 
+## process variables------
+
+mistie2Whole[, nsgyEvac := factor(fcase(
+  mistie2Demographics$Group_Assigned == "Medical", "No",
+  mistie2Demographics$Group_Assigned == "Surgical", "Yes"
+))]
+
+mistie2Whole[, evd := as.factor("No")]
+
 ## filtering only variables need in final analysis------
 
-mistie2Whole <- mistie2Whole[, .(id, gcsBaseline, sbpInitial, dbpInitial, sex, race, ethnicity, htn, hld, dm2, tobacco, cocaine, ivh, baselineICHVolume, baselineIVHVolume, symptomsToED, mrs30, mrs90, mrs180, mrs270, mrs365, age, nihssBaseline, ichLocation, ichLaterality)]
+mistie2Whole <- mistie2Whole[, .(id, study, gcsBaseline, sbpInitial, dbpInitial, sex, race, ethnicity, htn, hld, dm2, tobacco, cocaine, ivh, baselineICHVolume, baselineIVHVolume, symptomsToED, nsgyEvac, evd, mrs30, mrs90, mrs180, mrs270, mrs365, age, nihssBaseline, ichLocation, ichLaterality)]
 
 ## exporting variable list-----
 mistie2VariableList <- names(mistie2Whole[, ])
@@ -958,6 +974,7 @@ mistie3Whole[, study := "MISTIE III"]
 renameFunc(
   mistie3Whole,
   .q(
+    treatment_group = nsgyEvac,
     age_at_consent = age,
     patientid_ninds = id,
     er_present_systolic = sbpInitial,
@@ -984,6 +1001,7 @@ renameFunc(
   )
 )
 
+mistie3Whole$nsgy
 ## categorizing and recoding Variables----
 
 ### demographics----
@@ -1055,11 +1073,18 @@ mistie3Whole[, comfortCare := factor(fcase(
   default = NA
 ))]
 
+mistie3Whole[, nsgyEvac := factor(fcase(
+  nsgyEvac == "medical", "No",
+  nsgyEvac == "surgical", "Yes"
+))]
+
+mistie3Whole[, evd := as.factor("No")]
+
 # comfort care day
 
-mistie3Whole[, symptomOnset := as.POSIXct(mistie3Whole$ninds_symptom_onset_date, format = h, tz = "EST")]
+mistie3Whole[, symptomOnset := as.Date(ninds_symptom_onset_date, format = "%m/%d/%Y")]
 
-mistie3Whole[, comfortDateTime := as.POSIXct(mistie3Whole$ninds_withdrawal_date, format = h, tz = "EST")]
+mistie3Whole[, comfortDateTime := as.Date(mistie3Whole$ninds_withdrawal_date, format = "%m/%d/%Y")]
 
 mistie3Whole[, comfortCareDay := as.numeric(abs(difftime(symptomOnset, comfortDateTime, units = "days")))]
 
@@ -1113,7 +1138,7 @@ mistie3Whole[, location365 := factor(fcase(
 
 ## filtering only variables need in final analysis------
 
-mistie3Whole <- mistie3Whole[, .(id, age, tobacco, hld, cocaine, dm2, htn, cad, sbpInitial, dbpInitial, gcsBaseline, nihssBaseline, baselineICHVolume, baselineIVHVolume, mrs30, mrs180, mrs365, barthelTotal365, euroVAS365, euroMobility365, euroSelfCare365, euroUsual365, euroPain365, euroAnxiety365, location30, location180, location365, symptomsToED, ichLaterality, ichLocation, study, race, ethnicity, sex, ivh, comfortCare, comfortCareDay)]
+mistie3Whole <- mistie3Whole[, .(id, age, tobacco, hld, cocaine, dm2, htn, cad, sbpInitial, dbpInitial, gcsBaseline, nihssBaseline, baselineICHVolume, baselineIVHVolume, mrs30, mrs180, mrs365, barthelTotal365, euroVAS365, euroMobility365, euroSelfCare365, euroUsual365, euroPain365, euroAnxiety365, location30, location180, location365, symptomsToED, ichLaterality, ichLocation, study, race, ethnicity, sex, ivh, comfortCare, comfortCareDay, nsgyEvac, evd)]
 
 
 ## exporting variable list-----
@@ -1157,7 +1182,8 @@ nindsCombined[, ichScoreGCS := fcase(
 
 nindsCombined[, ichScoreIVH := fcase(
   ivh == "Yes", 1,
-  ivh == "No", 0
+  ivh == "No", 0,
+  default = 0
 )]
 
 nindsCombined[, ichScoreAge := fcase(
@@ -1173,11 +1199,10 @@ nindsCombined[, ichScoreLocation := fcase(
 
 nindsCombined[, ichScoreTotal := ichScoreVolume + ichScoreGCS + ichScoreIVH + ichScoreAge + ichScoreLocation]
 
-table(nindsCombined$)
-
 ## Exporting Data-----
 
 qsave(nindsCombined, "./code/dataAnalysis/nindsCombined.qs")
 
 ## Visualizing Data-----
 
+table(nindsCombined$study)
