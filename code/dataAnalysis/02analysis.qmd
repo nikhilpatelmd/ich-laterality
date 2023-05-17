@@ -1,5 +1,9 @@
 ---
-title: "ICH Laterality Analysis"
+title: "Hemispheric Lateralization in ICH"
+subtitle: "Analysis"
+author: "Nikhil Patel"
+project:
+  type: default
 format:
   html:
     code-fold: true
@@ -14,6 +18,7 @@ format:
 #| output: false
 
 library(tidyverse)
+# library(gt) # Fancy tables
 library(tableone)
 library(data.table)
 library(haven) # Importing SAS Files
@@ -23,13 +28,110 @@ library(readxl)
 library(Hmisc)
 library(stringr)
 library(qs)
-getRs("reptools.r") # Loads reptools.r from Github
+library(glue)
+library(scales) # Nicer labeling functions
+library(ggmosaic) # Mosaic plots with ggplot
+library(ggplot2)
+library(ggpattern) # Pattern fills in ggplot
+library(patchwork) # Combine plots nicely
+library(systemfonts) ## use custom fonts (need to be installed on your OS)
+library(scico) ## scico color palettes(http://www.fabiocrameri.ch/colourmaps.php) in R
+library(ggtext) ## add improved text rendering to ggplot2
+library(ggforce) ## add missing functionality to ggplot2
+library(ggdist) ## add uncertainity visualizations to ggplot2
 
-d <- qread("./nindsCombined.qs")
+d <- qread("../../data/nindsCombined.qs")
+
 ```
 
-**Causal question**: does the hemispheric location of an intracerebral hemorrhage (ICH) influence death or major disabilty?
+## Causal Question
+**Does the hemispheric location of an intracerebral hemorrhage (ICH) influence outcomes such as death, disability, or health-related quality of life?**
+
+Clinical manifestations of brain injury differ between left and right hemispheric lesions because of differences in function, in particular language and spatial awareness.
+
+It is unclear if these clinical differences result in differences in functional disability or health-related quality of life. Previous studies have demonstrated conflicting results, with some demonstrating worse levels of disability for patients with left hemispheric lesions as well as the opposite.
+
+We aim to evaluate the question of if patients with left-hemispheric lesions have worse levels of disability or health-related quality of life.
+
+### Data Source
+
+We used individual patient data from 5 NINDS multicenter prospective studies enrolling patients with intracerebral hemorrhage (4 randomized trials: ATACH2, CLEAR3, MISTIE-II, and MISTIE-III and 1 observational study: ERICH).
+
+### Visualizing the Data
 
 ```{r}
 
-d ```
+mrsCounts <- d |>
+  filter(!is.na(mrs90)) |>
+  group_by(ichLaterality, mrs90) |>
+  tally(name = "patients") |>
+  group_by(ichLaterality) |>
+  mutate(percentPatients = patients / sum(patients)) |>
+  ungroup() |>
+  mutate(percentPatientsLabel = percent(percentPatients, accuracy = 1))
+
+theme_set(theme_minimal(base_size = 10, base_family = "Figtree"))
+
+myColors <- c("#ffbe63", "#f39264", "#d76c6a", "#ae4f6e", "#7c3c6b", "#462d5d", "#0a1e45") # https://learnui.design/tools/data-color-picker.html#palette
+
+ggplot(
+  data = mrsCounts,
+  aes(x = ichLaterality, y = percentPatients, fill = forcats::fct_rev(mrs90))
+) +
+  geom_bar(stat = "identity", position = "fill", width = 0.5) +
+  geom_text(aes(label = percentPatientsLabel),
+    position = position_stack(vjust = 0.5),
+    color = "white",
+    size = 5,
+    family = "FigTree"
+  ) +
+  coord_flip() +
+  scale_y_continuous(
+    name = "Patients (%)",
+    labels = scales::percent_format(accuracy = 1),
+    breaks = c(seq(0, 1, 0.2))
+  ) +
+  scale_fill_manual(values = myColors) +
+  theme(
+    plot.title = element_text(face = "bold", size = 100, lineheight = 0.1),
+    plot.subtitle = element_text(size = 72, lineheight = 0.1),
+    plot.caption = element_text(size = 22),
+    plot.title.position = "plot",
+    plot.caption.position = "plot",
+    legend.title = element_blank(),
+    legend.position = "bottom",
+    legend.text = element_text(size = 20),
+    legend.margin = margin(r = 75),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    axis.text.y = element_text(size = 20, lineheight = 0.5, margin = margin(r = -10)),
+    axis.title.x = element_text(size = 20, lineheight = 0.5),
+    axis.title.y = element_text(family = "outfit")
+  )
+
+```
+
+## Draw Assumptions using a Causal Diagram
+
+
+
+## Model Assumptions
+
+## Diagnose Models
+
+## Estimate the Causal Effect
+
+## Conduct Sensitivity Analysis on the Effect Estimate
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#

@@ -1,6 +1,7 @@
 # loading libraries----
 
 library(tidyverse)
+library(dtplyr)
 library(tableone)
 library(data.table)
 library(haven) # Importing SAS Files
@@ -256,7 +257,8 @@ atachCT[, ichLocation := factor(fcase(
   CTCRQ05 == 5, "Basal Ganglia",
   CTCRQ05 == 6, "Lobar",
   CTCRQ05 == 7, "Brainstem",
-  CTCRQ05 == 8, "Cerebellum"
+  CTCRQ05 == 8, "Cerebellum",
+  default = NA
 ))]
 
 # ICH Laterality
@@ -572,7 +574,6 @@ erichWhole[, ichLocation := factor(fcase(
   grepl("Hemis", detail, ignore.case = TRUE), "Lobar",
   grepl("Thal", detail, ignore.case = TRUE), "Thalamus",
   grepl("Corona", detail, ignore.case = TRUE), "Basal Ganglia",
-  grepl("applic", detail, ignore.case = TRUE), "NA",
   default = NA
 ))]
 
@@ -581,7 +582,6 @@ erichWhole[, ivh := factor(ifelse(baselineIVHVolume == 0.00, "No", "Yes"))]
 erichWhole[, ichLaterality := factor(fcase(
   PHY6A == "L", "Left",
   PHY6A == "R", "Right",
-  PHY6A == "M", "NA",
   default = NA
 ))]
 
@@ -829,7 +829,6 @@ clear3Whole[, ichLocation := factor(fcase(
   ichLocation == "Frontal", "Lobar",
   ichLocation == "Globus Pallidus", "Basal Ganglia",
   ichLocation == "Occipital", "Lobar",
-  ichLocation == "Other", "NA",
   ichLocation == "Parietal", "Lobar",
   ichLocation == "Probable Primary IVH", "Primary IVH",
   ichLocation == "Putamen", "Basal Ganglia",
@@ -843,7 +842,6 @@ clear3Whole[, ivh := "Yes"]
 clear3Whole[, ichLaterality := factor(fcase(
   ichLaterality == "left", "Left",
   ichLaterality == "right", "Right",
-  ichLaterality == "unknown/missing", "NA",
   default = NA
 ))]
 
@@ -1161,10 +1159,9 @@ nindsCombined[, hour24ICHVolume := ceiling(hour24ICHVolume)]
 nindsCombined[, hour24IVHVolume := ceiling(hour24IVHVolume)]
 nindsCombined[, hour24PHEVolume := ceiling(hour24PHEVolume)]
 
-nindsCombined$ichLaterality <- na_if(nindsCombined$ichLaterality, "NA")
 
 nindsCombined <- nindsCombined %>%
-  mutate(across(.q(ichLocation, stroke, chf, afib, htn, pvd, cad, hld, tobacco, dnr, comfortCare), na_if, "NA"))
+  mutate(across(.q(stroke, chf, afib, htn, pvd, cad, hld, tobacco, dnr, comfortCare), na_if, "NA"))
 
 ## Computing ICH Score-----
 
@@ -1199,9 +1196,29 @@ nindsCombined[, ichScoreLocation := fcase(
 
 nindsCombined[, ichScoreTotal := ichScoreVolume + ichScoreGCS + ichScoreIVH + ichScoreAge + ichScoreLocation]
 
+## Filtering out NAs in ICH Location and ICH Laterality, and filtering out brainstem, cerebellar, and primary IVH
+
+nindsCombined <- nindsCombined[ichLaterality != "NA", ]
+
+nindsCombined <- nindsCombined |>
+  filter(ichLocation != "Cerebellum") |>
+  filter(ichLocation != "Brainstem") |>
+  filter(ichLocation != "Primary IVH") |>
+  droplevels()
+
+table(nindsCombined$ichLaterality)
+
+## mRS as factors and dropping unused levels
+
+nindsCombined$mrs30 <- as.factor(nindsCombined$mrs30)
+nindsCombined$mrs90 <- as.factor(nindsCombined$mrs90)
+nindsCombined$mrs180 <- as.factor(nindsCombined$mrs180)
+nindsCombined$mrs270 <- as.factor(nindsCombined$mrs270)
+nindsCombined$mrs365 <- as.factor(nindsCombined$mrs365)
+
 ## Exporting Data-----
 
-qsave(nindsCombined, "./code/dataAnalysis/nindsCombined.qs")
+qsave(nindsCombined, "./data/nindsCombined.qs")
 
 ## Visualizing Data-----
 
