@@ -41,6 +41,7 @@ library(ggtext) ## add improved text rendering to ggplot2
 library(ggforce) ## add missing functionality to ggplot2
 library(ggdist) ## add uncertainity visualizations to ggplot2
 library(viridis)
+library(dagitty)
 
 d <- qread("../../data/nindsCombined.qs")
 
@@ -290,7 +291,37 @@ ggplot(
 
 ## Draw Assumptions using a Causal Diagram
 
+```{r}
 
+dag {
+bb="0,0,1,1"
+"Disease Severity" [adjusted,pos="0.152,0.791"]
+"Early WLST" [adjusted,pos="0.326,0.215"]
+"Functional Outcome" [outcome,pos="0.916,0.455"]
+"ICH Laterality" [exposure,pos="0.070,0.455"]
+Age [adjusted,pos="0.253,0.858"]
+Comorbidities [adjusted,pos="0.380,0.903"]
+Neurosurgery [adjusted,pos="0.736,0.148"]
+Rehabilitation [latent,pos="0.849,0.703"]
+"Disease Severity" -> "Early WLST"
+"Disease Severity" -> "Functional Outcome"
+"Disease Severity" -> Neurosurgery
+"Disease Severity" -> Rehabilitation
+"Early WLST" -> "Functional Outcome"
+"ICH Laterality" -> "Early WLST"
+"ICH Laterality" -> "Functional Outcome"
+"ICH Laterality" -> Neurosurgery
+Age -> "Functional Outcome"
+Age -> Neurosurgery
+Age -> Rehabilitation
+Comorbidities -> "Functional Outcome"
+Comorbidities -> Neurosurgery
+Comorbidities -> Rehabilitation
+Neurosurgery -> "Functional Outcome"
+Rehabilitation -> "Functional Outcome"
+}
+
+```
 
 ## Model Assumptions
 
