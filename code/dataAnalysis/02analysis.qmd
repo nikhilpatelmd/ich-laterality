@@ -11,12 +11,12 @@ format:
     toc: true
     html-math-method: katex
     css: "styles.css"
-    fig-width: 12
 ---
 
 
 ```{r setup and data import}
 #| output: false
+#| echo: false
 
 library(tidyverse)
 # library(gt) # Fancy tables
@@ -27,6 +27,7 @@ library(janitor)
 library(lubridate)
 library(readxl)
 library(Hmisc)
+library(qreport)
 library(stringr)
 library(qs)
 library(glue)
@@ -42,8 +43,15 @@ library(ggforce) ## add missing functionality to ggplot2
 library(ggdist) ## add uncertainity visualizations to ggplot2
 library(viridis)
 library(dagitty)
+library(rlang)
+library(ggokabeito)
 
 d <- qread("../../data/nindsCombined.qs")
+
+# ggplot themes and settings
+theme_set(theme_minimal(base_size = 20, base_family = "Figtree"))
+
+myColors <- c("#ffbe63", "#f39264", "#d76c6a", "#ae4f6e", "#7c3c6b", "#462d5d", "#0a1e45") # https://learnui.design/tools/data-color-picker.html#palette
 
 ```
 
@@ -62,10 +70,16 @@ We used individual patient data from 5 NINDS multicenter prospective studies enr
 
 ### Visualizing the Data
 
-Comparing outcomes between left and right hemisphere location overall. There does not appear to be a big difference.
+#### modified Rankin Scale
+
+Overall, there does not appear to be a big difference in disability as measured by modified Rankin Scale. This is true at any of the time points used.
 
 ```{r}
+#| echo: false
+#| fig.width: 12
+#| fig.height: 15
 
+# mRs 90
 mrsCounts <- d |>
   filter(!is.na(mrs90)) |>
   group_by(ichLaterality, mrs90) |>
@@ -75,11 +89,7 @@ mrsCounts <- d |>
   ungroup() |>
   mutate(percentPatientsLabel = percent(percentPatients, accuracy = 1))
 
-theme_set(theme_minimal(base_size = 20, base_family = "Figtree"))
-
-myColors <- c("#ffbe63", "#f39264", "#d76c6a", "#ae4f6e", "#7c3c6b", "#462d5d", "#0a1e45") # https://learnui.design/tools/data-color-picker.html#palette
-
-ggplot(
+gmrs90 <- ggplot(
   data = mrsCounts,
   aes(x = ichLaterality, y = percentPatients, fill = forcats::fct_rev(mrs90))
 ) +
@@ -99,11 +109,9 @@ ggplot(
   scale_x_discrete(name = NULL) +
   scale_fill_manual(values = myColors, breaks = c(0, 1, 2, 3, 4, 5, 6)) +
   labs(
-    title = "Hemispheric Laterality",
-    subtitle = "modified Rankin score at 90 days"
-  ) +
+    title = "90 days") +
   theme(
-    plot.title = element_text(face = "bold", size = 30, lineheight = 0.1),
+    plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
     plot.subtitle = element_text(size = 20, lineheight = 0.1),
     plot.caption = element_text(size = 20),
     plot.title.position = "plot",
@@ -118,10 +126,7 @@ ggplot(
     axis.title.x = element_text(size = 20, lineheight = 0.5)
   )
 
-```
-
-```{r}
-
+# mRs 180
 mrsCounts <- d |>
   filter(!is.na(mrs180)) |>
   group_by(ichLaterality, mrs180) |>
@@ -131,11 +136,7 @@ mrsCounts <- d |>
   ungroup() |>
   mutate(percentPatientsLabel = percent(percentPatients, accuracy = 1))
 
-theme_set(theme_minimal(base_size = 20, base_family = "Figtree"))
-
-myColors <- c("#ffbe63", "#f39264", "#d76c6a", "#ae4f6e", "#7c3c6b", "#462d5d", "#0a1e45") # https://learnui.design/tools/data-color-picker.html#palette
-
-ggplot(
+gmrs180 <- ggplot(
   data = mrsCounts,
   aes(x = ichLaterality, y = percentPatients, fill = forcats::fct_rev(mrs180))
 ) +
@@ -155,11 +156,9 @@ ggplot(
   scale_x_discrete(name = NULL) +
   scale_fill_manual(values = myColors, breaks = c(0, 1, 2, 3, 4, 5, 6)) +
   labs(
-    title = "Hemispheric Laterality",
-    subtitle = "modified Rankin score at 180 days"
-  ) +
+    title = "180 days") +
   theme(
-    plot.title = element_text(face = "bold", size = 30, lineheight = 0.1),
+    plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
     plot.subtitle = element_text(size = 20, lineheight = 0.1),
     plot.caption = element_text(size = 20),
     plot.title.position = "plot",
@@ -174,10 +173,7 @@ ggplot(
     axis.title.x = element_text(size = 20, lineheight = 0.5)
   )
 
-```
-
-```{r}
-
+# mRs 365
 mrsCounts <- d |>
   filter(!is.na(mrs365)) |>
   group_by(ichLaterality, mrs365) |>
@@ -187,11 +183,7 @@ mrsCounts <- d |>
   ungroup() |>
   mutate(percentPatientsLabel = percent(percentPatients, accuracy = 1))
 
-theme_set(theme_minimal(base_size = 20, base_family = "Figtree"))
-
-myColors <- c("#ffbe63", "#f39264", "#d76c6a", "#ae4f6e", "#7c3c6b", "#462d5d", "#0a1e45") # https://learnui.design/tools/data-color-picker.html#palette
-
-ggplot(
+gmrs365 <- ggplot(
   data = mrsCounts,
   aes(x = ichLaterality, y = percentPatients, fill = forcats::fct_rev(mrs365))
 ) +
@@ -211,11 +203,9 @@ ggplot(
   scale_x_discrete(name = NULL) +
   scale_fill_manual(values = myColors, breaks = c(0, 1, 2, 3, 4, 5, 6)) +
   labs(
-    title = "Hemispheric Laterality",
-    subtitle = "modified Rankin score at 365 days"
-  ) +
+    title = "365 days") +
   theme(
-    plot.title = element_text(face = "bold", size = 30, lineheight = 0.1),
+    plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
     plot.subtitle = element_text(size = 20, lineheight = 0.1),
     plot.caption = element_text(size = 20),
     plot.title.position = "plot",
@@ -223,41 +213,53 @@ ggplot(
     legend.title = element_blank(),
     legend.position = "right",
     legend.text = element_text(size = 15, lineheight = 0.5),
-    # legend.margin = margin(r = 50),
     panel.grid.minor.x = element_blank(),
     panel.grid.major.y = element_blank(),
     axis.text.y = element_text(size = 20, lineheight = 0.5, margin = margin(r = -10)),
     axis.title.x = element_text(size = 20, lineheight = 0.5)
   )
 
+mrsCombined <- 
+(gmrs90 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (gmrs180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (gmrs365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
+  plot_annotation(title = 'ICH Laterality and modified Rankin Scale',
+                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1))) +
+  plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
+
+
+mrsCombined
 ```
 
-```{r}
+#### Health-Related Quality of Life
 
-euroQOLCounts <- d |>
-  filter(!is.na(euroMobility90)) |>
-  group_by(ichLaterality, euroMobility90) |>
+Overall, there appears to be a small differences in health related quality of life, especially with mobility and self-care. This is true at any of the time points used.
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig.width: 12
+#| fig.height: 30
+
+myColors <- c("#d76c6a", "#ae4f6e", "#7c3c6b") # https://learnui.design/tools/data-color-picker.html#palette
+
+euroQolPlot <- function(euroSelfCare365, legendLabels, plotTitle) {
+  euroQOLCounts <- d |>
+  filter(!is.na({{ euroSelfCare365 }})) |>
+  group_by(ichLaterality, {{ euroSelfCare365 }}) |>
   tally(name = "patients") |>
   group_by(ichLaterality) |>
   mutate(percentPatients = patients / sum(patients)) |>
   ungroup() |>
   mutate(percentPatientsLabel = percent(percentPatients, accuracy = 1))
 
-theme_set(theme_minimal(base_size = 20, base_family = "Figtree"))
-
-myColors <- c("#ffbe63", "#f39264", "#d76c6a", "#ae4f6e", "#7c3c6b", "#462d5d", "#0a1e45") # https://learnui.design/tools/data-color-picker.html#palette
-
 ggplot(
   data = euroQOLCounts,
-  aes(x = ichLaterality, y = percentPatients, fill = euroMobility90)
+  aes(x = ichLaterality, y = percentPatients, fill = fct_rev({{ euroSelfCare365 }}))
 ) +
   geom_bar(stat = "identity", position = "fill", width = 0.5) +
-  geom_text(aes(label = patients),
+  geom_text(aes(label = percentPatientsLabel),
     position = position_stack(vjust = 0.5),
     color = "white",
-    size = 5,
-    family = "FigTree"
-  ) +
+    size = 5) +
   coord_flip() +
   scale_y_continuous(
     name = NULL,
@@ -265,42 +267,156 @@ ggplot(
     breaks = c(seq(0, 1, 0.2))
   ) +
   scale_x_discrete(name = NULL) +
-  # scale_fill_viridus_c() +
+  scale_fill_manual(values = myColors, breaks = legendLabels) +
   labs(
-    title = "Hemispheric Laterality",
-    subtitle = "euroMobility90"
-  ) +
+    title = plotTitle) +
   theme(
-    plot.title = element_text(face = "bold", size = 30, lineheight = 0.1),
+    plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
     plot.subtitle = element_text(size = 20, lineheight = 0.1),
     plot.caption = element_text(size = 20),
     plot.title.position = "plot",
     plot.caption.position = "plot",
     legend.title = element_blank(),
-    legend.position = "right",
+    legend.position = "bottom",
     legend.text = element_text(size = 15, lineheight = 0.5),
-    # legend.margin = margin(r = 50),
     panel.grid.minor.x = element_blank(),
     panel.grid.major.y = element_blank(),
     axis.text.y = element_text(size = 20, lineheight = 0.5, margin = margin(r = -10)),
     axis.title.x = element_text(size = 20, lineheight = 0.5)
   )
+}
+legendLabels <- c("No Problems", "Some Problems", "Confined to Bed")
+ggeuroMobility90 <- euroQolPlot(euroMobility90, legendLabels, "EuroQOL Mobility")
 
+legendLabels <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+ggeuroSelfCare90 <- euroQolPlot(euroSelfCare90, legendLabels, "EuroQOL Self-Care")
+
+legendLabels <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+ggeuroUsual90 <- euroQolPlot(euroUsual90, legendLabels, "EuroQOL Usual Activities")
+
+legendLabels <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+ggeuroPain90 <- euroQolPlot(euroPain90, legendLabels, "EuroQOL Pain")
+
+legendLabels <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+ggeuroAnxiety90 <- euroQolPlot(euroAnxiety90, legendLabels, "EuroQOL Anxiety")
+
+legendLabels <- c("No Problems", "Some Problems", "Confined to Bed")
+ggeuroMobility180 <- euroQolPlot(euroMobility180, legendLabels, "EuroQOL Mobility")
+
+legendLabels <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+ggeuroSelfCare180 <- euroQolPlot(euroSelfCare180, legendLabels, "EuroQOL Self-Care")
+
+legendLabels <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+ggeuroUsual180 <- euroQolPlot(euroUsual180, legendLabels, "EuroQOL Usual Activities")
+
+legendLabels <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+ggeuroPain180 <- euroQolPlot(euroPain180, legendLabels, "EuroQOL Pain")
+
+legendLabels <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+ggeuroAnxiety180 <- euroQolPlot(euroAnxiety180, legendLabels, "EuroQOL Anxiety")
+
+legendLabels <- c("No Problems", "Some Problems", "Confined to Bed")
+ggeuroMobility365 <- euroQolPlot(euroMobility365, legendLabels, "EuroQOL Mobility")
+
+legendLabels <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+ggeuroSelfCare365 <- euroQolPlot(euroSelfCare365, legendLabels, "EuroQOL Self-Care")
+
+legendLabels <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+ggeuroUsual365 <- euroQolPlot(euroUsual365, legendLabels, "EuroQOL Usual Activities")
+
+legendLabels <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+ggeuroPain365 <- euroQolPlot(euroPain365, legendLabels, "EuroQOL Pain")
+
+legendLabels <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+ggeuroAnxiety365 <- euroQolPlot(euroAnxiety365, legendLabels, "EuroQOL Anxiety")
+
+euroQolCombined90 <- 
+(ggeuroMobility90 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (ggeuroSelfCare90 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (ggeuroUsual90 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) /
+(ggeuroPain90 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / 
+(ggeuroAnxiety90 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
+  plot_annotation(title = 'ICH Laterality and HRQOL at 90 days',
+                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1)))
+  # plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
+
+euroQolCombined180 <- 
+(ggeuroMobility180 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (ggeuroSelfCare180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (ggeuroUsual180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) /
+(ggeuroPain180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / 
+(ggeuroAnxiety180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
+  plot_annotation(title = 'ICH Laterality and HRQOL at 180 days',
+                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1)))
+  # plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
+
+euroQolCombined365 <- 
+(ggeuroMobility365 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (ggeuroSelfCare365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (ggeuroUsual365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) /
+(ggeuroPain365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / 
+(ggeuroAnxiety365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
+  plot_annotation(title = 'ICH Laterality and HRQOL at 365 days',
+                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1)))
+  # plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
+
+euroQolCombined90
+euroQolCombined180
+euroQolCombined365
+
+```
+
+#### Health-Related Quality of Life - Visual Analog Scale
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 15
+#| fig-height: 25
+
+euroVASplot <- function(x, title) {
+  d |>
+  ggplot(aes({{x}}, fill = ichLaterality)) +
+  geom_density(color = NA, alpha = 0.8) +
+  labs(title = {{ title }},
+        x = NULL,
+        y = NULL) +
+  theme(
+  plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
+  plot.subtitle = element_text(size = 20, lineheight = 0.1),
+  plot.caption = element_text(size = 20),
+  plot.title.position = "plot",
+  plot.caption.position = "plot",
+  legend.title = element_blank(),
+  legend.position = "bottom",
+  legend.text = element_text(size = 15, lineheight = 0.5),
+  panel.grid.minor.x = element_blank(),
+  panel.grid.major.y = element_blank(),
+  axis.text.y = element_text(size = 20, lineheight = 0.5, margin = margin(r = -10)),
+  axis.title.x = element_text(size = 20, lineheight = 0.5)
+  )
+}
+
+ggeurovas90 <- euroVASplot(euroVAS90, "90 Days")
+ggeurovas180 <- euroVASplot(euroVAS180, "180 Days")
+ggeurovas365 <- euroVASplot(euroVAS365, "365 Days")
+
+ggeuroVASCombined <- 
+(ggeurovas90 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (ggeurovas180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (ggeurovas365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
+  plot_annotation(title = 'ICH Laterality EuroQOL VAS',
+                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1)))
+
+ggeuroVASCombined  
 
 ```
 
 ## Draw Assumptions using a Causal Diagram
 
 ```{r}
+#| echo: false
 
-dag {
+dag <- dagitty('dag {
 bb="0,0,1,1"
 "Disease Severity" [adjusted,pos="0.152,0.791"]
 "Early WLST" [adjusted,pos="0.326,0.215"]
 "Functional Outcome" [outcome,pos="0.916,0.455"]
 "ICH Laterality" [exposure,pos="0.070,0.455"]
-Age [adjusted,pos="0.253,0.858"]
-Comorbidities [adjusted,pos="0.380,0.903"]
+Age [adjusted,pos="0.153,0.958"]
+Comorbidities [adjusted,pos="0.380,0.950"]
 Neurosurgery [adjusted,pos="0.736,0.148"]
 Rehabilitation [latent,pos="0.849,0.703"]
 "Disease Severity" -> "Early WLST"
@@ -314,14 +430,19 @@ Rehabilitation [latent,pos="0.849,0.703"]
 Age -> "Functional Outcome"
 Age -> Neurosurgery
 Age -> Rehabilitation
+Age -> Comorbidities
 Comorbidities -> "Functional Outcome"
 Comorbidities -> Neurosurgery
 Comorbidities -> Rehabilitation
+Comorbidities -> "Disease Severity"
 Neurosurgery -> "Functional Outcome"
 Rehabilitation -> "Functional Outcome"
-}
+}')
 
+plot(dag)
 ```
+
+**Add Deaths to ATACH data!**
 
 ## Model Assumptions
 
@@ -330,20 +451,3 @@ Rehabilitation -> "Functional Outcome"
 ## Estimate the Causal Effect
 
 ## Conduct Sensitivity Analysis on the Effect Estimate
-
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#

@@ -344,15 +344,41 @@ atachMRS <- unique(atachMRS) # removing duplicate NIHSS rows
 atachWhole <- atachMRS[atachWhole, on = .(id)]
 
 #### euroQOL-----
-levels(atachWhole$euroMobility90) <- c("No Problems", "Some Problems", "Confined to Bed")
 
-levels(atachWhole$euroSelfCare90) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+atachWhole[, euroMobility90 := factor(fcase(
+  euroMobility90 == "1", "No Problems",
+  euroMobility90 == "2", "Some Problems",
+  euroMobility90 == "3", "Confined to Bed",
+  default = NA
+))]
 
-levels(atachWhole$euroUsual90) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+atachWhole[, euroSelfCare90 := factor(fcase(
+  euroSelfCare90 == "1", "No Problems",
+  euroSelfCare90 == "2", "Some Problems",
+  euroSelfCare90 == "3", "Unable to Wash or Dress Myself",
+  default = NA
+))]
 
-levels(atachWhole$euroPain90) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+atachWhole[, euroUsual90 := factor(fcase(
+  euroUsual90 == "1", "No Problems",
+  euroUsual90 == "2", "Some Problems",
+  euroUsual90 == "3", "Unable to Perform My Usual Activities",
+  default = NA
+))]
 
-levels(atachWhole$euroAnxiety90) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+atachWhole[, euroPain90 := factor(fcase(
+  euroPain90 == "1", "No Pain/Discomfort",
+  euroPain90 == "2", "Some Moderate Pain/Discomfort",
+  euroPain90 == "3", "Extreme Pain/Discomfort",
+  default = NA
+))]
+
+atachWhole[, euroAnxiety90 := factor(fcase(
+  euroAnxiety90 == "1", "Not Anxious/Depressed",
+  euroAnxiety90 == "2", "Moderately Anxious/Depressed",
+  euroAnxiety90 == "3", "Extremely Anxious/Depressed",
+  default = NA
+))]
 
 #### hospital discharge disposition
 
@@ -664,41 +690,110 @@ erichWhole[deathDay < 180, mrs180 := 6]
 erichWhole[deathDay < 365, mrs365 := 6]
 
 # EuroQOL
-erichWhole$euroMobility90 <- na_if(erichWhole$euroMobility90, 8)
-erichWhole$euroSelfCare90 <- na_if(erichWhole$euroSelfCare90, 8)
-erichWhole$euroUsual90 <- na_if(erichWhole$euroUsual90, 8)
-erichWhole$euroPain90 <- na_if(erichWhole$euroPain90, 8)
-erichWhole$euroAnxiety90 <- na_if(erichWhole$euroAnxiety90, 8)
+erichWhole[, euroMobility90 := factor(fcase(
+  euroMobility90 == "1", "No Problems",
+  euroMobility90 == "2", "Some Problems",
+  euroMobility90 == "3", "Confined to Bed",
+  default = NA
+))]
 
-levels(erichWhole$euroMobility90) <- c("No Problems", "Some Problems", "Confined to Bed")
+erichWhole[, euroSelfCare90 := factor(fcase(
+  euroSelfCare90 == "1", "No Problems",
+  euroSelfCare90 == "2", "Some Problems",
+  euroSelfCare90 == "3", "Unable to Wash or Dress Myself",
+  default = NA
+))]
 
-levels(erichWhole$euroSelfCare90) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+erichWhole[, euroUsual90 := factor(fcase(
+  euroUsual90 == "1", "No Problems",
+  euroUsual90 == "2", "Some Problems",
+  euroUsual90 == "3", "Unable to Perform My Usual Activities",
+  default = NA
+))]
 
-levels(erichWhole$euroUsual90) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+erichWhole[, euroPain90 := factor(fcase(
+  euroPain90 == "1", "No Pain/Discomfort",
+  euroPain90 == "2", "Some Moderate Pain/Discomfort",
+  euroPain90 == "3", "Extreme Pain/Discomfort",
+  default = NA
+))]
 
-levels(erichWhole$euroPain90) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+erichWhole[, euroAnxiety90 := factor(fcase(
+  euroAnxiety90 == "1", "Not Anxious/Depressed",
+  euroAnxiety90 == "2", "Moderately Anxious/Depressed",
+  euroAnxiety90 == "3", "Extremely Anxious/Depressed",
+  default = NA
+))]
 
-levels(erichWhole$euroAnxiety90) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+erichWhole[, euroMobility180 := factor(fcase(
+  euroMobility180 == "1", "No Problems",
+  euroMobility180 == "2", "Some Problems",
+  euroMobility180 == "3", "Confined to Bed",
+  default = NA
+))]
 
-levels(erichWhole$euroMobility180) <- c("No Problems", "Some Problems", "Confined to Bed")
+erichWhole[, euroSelfCare180 := factor(fcase(
+  euroSelfCare180 == "1", "No Problems",
+  euroSelfCare180 == "2", "Some Problems",
+  euroSelfCare180 == "3", "Unable to Wash or Dress Myself",
+  default = NA
+))]
 
-levels(erichWhole$euroSelfCare180) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+erichWhole[, euroUsual180 := factor(fcase(
+  euroUsual180 == "1", "No Problems",
+  euroUsual180 == "2", "Some Problems",
+  euroUsual180 == "3", "Unable to Perform My Usual Activities",
+  default = NA
+))]
 
-levels(erichWhole$euroUsual180) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+erichWhole[, euroPain180 := factor(fcase(
+  euroPain180 == "1", "No Pain/Discomfort",
+  euroPain180 == "2", "Some Moderate Pain/Discomfort",
+  euroPain180 == "3", "Extreme Pain/Discomfort",
+  default = NA
+))]
 
-levels(erichWhole$euroPain180) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+erichWhole[, euroAnxiety180 := factor(fcase(
+  euroAnxiety180 == "1", "Not Anxious/Depressed",
+  euroAnxiety180 == "2", "Moderately Anxious/Depressed",
+  euroAnxiety180 == "3", "Extremely Anxious/Depressed",
+  default = NA
+))]
 
-levels(erichWhole$euroAnxiety180) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+erichWhole[, euroMobility365 := factor(fcase(
+  euroMobility365 == "1", "No Problems",
+  euroMobility365 == "2", "Some Problems",
+  euroMobility365 == "3", "Confined to Bed",
+  default = NA
+))]
 
-levels(erichWhole$euroMobility365) <- c("No Problems", "Some Problems", "Confined to Bed")
+erichWhole[, euroSelfCare365 := factor(fcase(
+  euroSelfCare365 == "1", "No Problems",
+  euroSelfCare365 == "2", "Some Problems",
+  euroSelfCare365 == "3", "Unable to Wash or Dress Myself",
+  default = NA
+))]
 
-levels(erichWhole$euroSelfCare365) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+erichWhole[, euroUsual365 := factor(fcase(
+  euroUsual365 == "1", "No Problems",
+  euroUsual365 == "2", "Some Problems",
+  euroUsual365 == "3", "Unable to Perform My Usual Activities",
+  default = NA
+))]
 
-levels(erichWhole$euroUsual365) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+erichWhole[, euroPain365 := factor(fcase(
+  euroPain365 == "1", "No Pain/Discomfort",
+  euroPain365 == "2", "Some Moderate Pain/Discomfort",
+  euroPain365 == "3", "Extreme Pain/Discomfort",
+  default = NA
+))]
 
-levels(erichWhole$euroPain365) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
-
-levels(erichWhole$euroAnxiety365) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+erichWhole[, euroAnxiety365 := factor(fcase(
+  euroAnxiety365 == "1", "Not Anxious/Depressed",
+  euroAnxiety365 == "2", "Moderately Anxious/Depressed",
+  euroAnxiety365 == "3", "Extremely Anxious/Depressed",
+  default = NA
+))]
 
 # location during follow-up
 
@@ -1090,15 +1185,41 @@ mistie3Whole[, comfortCareDay := as.numeric(abs(difftime(symptomOnset, comfortDa
 
 # EuroQOL
 
-levels(mistie3Whole$euroMobility365) <- c("No Problems", "Some Problems", "Confined to Bed")
+mistie3Whole[, euroMobility365 := factor(fcase(
+  euroMobility365 == "1", "No Problems",
+  euroMobility365 == "2", "Some Problems",
+  euroMobility365 == "3", "Confined to Bed",
+  default = NA
+))]
 
-levels(mistie3Whole$euroSelfCare365) <- c("No Problems", "Some Problems", "Unable to Wash or Dress Myself")
+mistie3Whole[, euroSelfCare365 := factor(fcase(
+  euroSelfCare365 == "1", "No Problems",
+  euroSelfCare365 == "2", "Some Problems",
+  euroSelfCare365 == "3", "Unable to Wash or Dress Myself",
+  default = NA
+))]
 
-levels(mistie3Whole$euroUsual365) <- c("No Problems", "Some Problems", "Unable to Perform My Usual Activities")
+mistie3Whole[, euroUsual365 := factor(fcase(
+  euroUsual365 == "1", "No Problems",
+  euroUsual365 == "2", "Some Problems",
+  euroUsual365 == "3", "Unable to Perform My Usual Activities",
+  default = NA
+))]
 
-levels(mistie3Whole$euroPain365) <- c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort")
+mistie3Whole[, euroPain365 := factor(fcase(
+  euroPain365 == "1", "No Pain/Discomfort",
+  euroPain365 == "2", "Some Moderate Pain/Discomfort",
+  euroPain365 == "3", "Extreme Pain/Discomfort",
+  default = NA
+))]
 
-levels(mistie3Whole$euroAnxiety365) <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
+mistie3Whole[, euroAnxiety365 := factor(fcase(
+  euroAnxiety365 == "1", "Not Anxious/Depressed",
+  euroAnxiety365 == "2", "Moderately Anxious/Depressed",
+  euroAnxiety365 == "3", "Extremely Anxious/Depressed",
+  default = NA
+))]
+
 
 # location after discharge
 mistie3Whole[, location30 := factor(fcase(
@@ -1216,10 +1337,50 @@ nindsCombined$mrs180 <- as.factor(nindsCombined$mrs180)
 nindsCombined$mrs270 <- as.factor(nindsCombined$mrs270)
 nindsCombined$mrs365 <- as.factor(nindsCombined$mrs365)
 
+## Re-ordered EuroQOL
+
+nindsCombined$euroMobility90 <- factor(nindsCombined$euroMobility90, levels = c("No Problems", "Some Problems", "Confined to Bed"))
+
+nindsCombined$euroMobility180 <- factor(nindsCombined$euroMobility180, levels = c("No Problems", "Some Problems", "Confined to Bed"))
+
+nindsCombined$euroMobility365 <- factor(nindsCombined$euroMobility365, levels = c("No Problems", "Some Problems", "Confined to Bed"))
+
+nindsCombined$euroSelfCare90 <- factor(nindsCombined$euroSelfCare90, levels = c("No Problems", "Some Problems", "Unable to Wash or Dress Myself"))
+
+nindsCombined$euroSelfCare180 <- factor(nindsCombined$euroSelfCare180, levels = c("No Problems", "Some Problems", "Unable to Wash or Dress Myself"))
+
+nindsCombined$euroSelfCare365 <- factor(nindsCombined$euroSelfCare365, levels = c("No Problems", "Some Problems", "Unable to Wash or Dress Myself"))
+
+nindsCombined$euroUsual90 <- factor(nindsCombined$euroUsual90, levels = c("No Problems", "Some Problems", "Unable to Perform My Usual Activities"))
+
+nindsCombined$euroUsual180 <- factor(nindsCombined$euroUsual180, levels = c("No Problems", "Some Problems", "Unable to Perform My Usual Activities"))
+
+nindsCombined$euroUsual365 <- factor(nindsCombined$euroUsual365, levels = c("No Problems", "Some Problems", "Unable to Perform My Usual Activities"))
+
+nindsCombined$euroPain90 <- factor(nindsCombined$euroPain90, levels = c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort"))
+
+nindsCombined$euroPain180 <- factor(nindsCombined$euroPain180, levels = c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort"))
+
+nindsCombined$euroPain365 <- factor(nindsCombined$euroPain365, levels = c("No Pain/Discomfort", "Some Moderate Pain/Discomfort", "Extreme Pain/Discomfort"))
+
+nindsCombined$euroAnxiety90 <- factor(nindsCombined$euroAnxiety90, levels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed"))
+
+nindsCombined$euroAnxiety180 <- factor(nindsCombined$euroAnxiety180, levels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed"))
+
+nindsCombined$euroAnxiety365 <- factor(nindsCombined$euroAnxiety365, levels = c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed"))
+
+## Coding Early WLST (as <= 3 days)
+
+nindsCombined[, earlyWLST := factor(fcase(
+  comfortCareDay <= 3, "Yes",
+  comfortCareDay > 3, "No",
+  default = NA
+))]
+
 ## Exporting Data-----
 
 qsave(nindsCombined, "./data/nindsCombined.qs")
 
 ## Visualizing Data-----
 
-table(nindsCombined$study)
+table(nindsCombined$study, nindsCombined$mrs180)
