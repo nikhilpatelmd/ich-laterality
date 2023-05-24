@@ -27,7 +27,7 @@ library(janitor)
 library(lubridate)
 library(readxl)
 library(Hmisc)
-library(qreport)
+# library(qreport)
 library(stringr)
 library(qs)
 library(glue)
@@ -44,7 +44,7 @@ library(ggdist) ## add uncertainity visualizations to ggplot2
 library(viridis)
 library(dagitty)
 library(rlang)
-library(ggokabeito)
+# library(ggokabeito)
 
 d <- qread("../../data/nindsCombined.qs")
 
