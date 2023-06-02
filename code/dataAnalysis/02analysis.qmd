@@ -109,7 +109,8 @@ gmrs90 <- ggplot(
   scale_x_discrete(name = NULL) +
   scale_fill_manual(values = myColors, breaks = c(0, 1, 2, 3, 4, 5, 6)) +
   labs(
-    title = "90 days") +
+    title = "90 days"
+  ) +
   theme(
     plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
     plot.subtitle = element_text(size = 20, lineheight = 0.1),
@@ -156,7 +157,8 @@ gmrs180 <- ggplot(
   scale_x_discrete(name = NULL) +
   scale_fill_manual(values = myColors, breaks = c(0, 1, 2, 3, 4, 5, 6)) +
   labs(
-    title = "180 days") +
+    title = "180 days"
+  ) +
   theme(
     plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
     plot.subtitle = element_text(size = 20, lineheight = 0.1),
@@ -203,7 +205,8 @@ gmrs365 <- ggplot(
   scale_x_discrete(name = NULL) +
   scale_fill_manual(values = myColors, breaks = c(0, 1, 2, 3, 4, 5, 6)) +
   labs(
-    title = "365 days") +
+    title = "365 days"
+  ) +
   theme(
     plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
     plot.subtitle = element_text(size = 20, lineheight = 0.1),
@@ -219,11 +222,13 @@ gmrs365 <- ggplot(
     axis.title.x = element_text(size = 20, lineheight = 0.5)
   )
 
-mrsCombined <- 
-(gmrs90 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (gmrs180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (gmrs365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
-  plot_annotation(title = 'ICH Laterality and modified Rankin Scale',
-                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1))) +
-  plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
+mrsCombined <-
+  (gmrs90 + theme(plot.margin = unit(c(50, 0, 75, 0), "pt"))) / (gmrs180 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) / (gmrs365 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) +
+    plot_annotation(
+      title = "ICH Laterality and modified Rankin Scale",
+      theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1))
+    ) +
+    plot_layout(guides = "collect") & theme(legend.position = "right", legend.direction = "vertical")
 
 
 mrsCombined
@@ -243,47 +248,49 @@ myColors <- c("#d76c6a", "#ae4f6e", "#7c3c6b") # https://learnui.design/tools/da
 
 euroQolPlot <- function(euroSelfCare365, legendLabels, plotTitle) {
   euroQOLCounts <- d |>
-  filter(!is.na({{ euroSelfCare365 }})) |>
-  group_by(ichLaterality, {{ euroSelfCare365 }}) |>
-  tally(name = "patients") |>
-  group_by(ichLaterality) |>
-  mutate(percentPatients = patients / sum(patients)) |>
-  ungroup() |>
-  mutate(percentPatientsLabel = percent(percentPatients, accuracy = 1))
+    filter(!is.na({{ euroSelfCare365 }})) |>
+    group_by(ichLaterality, {{ euroSelfCare365 }}) |>
+    tally(name = "patients") |>
+    group_by(ichLaterality) |>
+    mutate(percentPatients = patients / sum(patients)) |>
+    ungroup() |>
+    mutate(percentPatientsLabel = percent(percentPatients, accuracy = 1))
 
-ggplot(
-  data = euroQOLCounts,
-  aes(x = ichLaterality, y = percentPatients, fill = fct_rev({{ euroSelfCare365 }}))
-) +
-  geom_bar(stat = "identity", position = "fill", width = 0.5) +
-  geom_text(aes(label = percentPatientsLabel),
-    position = position_stack(vjust = 0.5),
-    color = "white",
-    size = 5) +
-  coord_flip() +
-  scale_y_continuous(
-    name = NULL,
-    labels = scales::percent_format(accuracy = 1),
-    breaks = c(seq(0, 1, 0.2))
+  ggplot(
+    data = euroQOLCounts,
+    aes(x = ichLaterality, y = percentPatients, fill = fct_rev({{ euroSelfCare365 }}))
   ) +
-  scale_x_discrete(name = NULL) +
-  scale_fill_manual(values = myColors, breaks = legendLabels) +
-  labs(
-    title = plotTitle) +
-  theme(
-    plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
-    plot.subtitle = element_text(size = 20, lineheight = 0.1),
-    plot.caption = element_text(size = 20),
-    plot.title.position = "plot",
-    plot.caption.position = "plot",
-    legend.title = element_blank(),
-    legend.position = "bottom",
-    legend.text = element_text(size = 15, lineheight = 0.5),
-    panel.grid.minor.x = element_blank(),
-    panel.grid.major.y = element_blank(),
-    axis.text.y = element_text(size = 20, lineheight = 0.5, margin = margin(r = -10)),
-    axis.title.x = element_text(size = 20, lineheight = 0.5)
-  )
+    geom_bar(stat = "identity", position = "fill", width = 0.5) +
+    geom_text(aes(label = percentPatientsLabel),
+      position = position_stack(vjust = 0.5),
+      color = "white",
+      size = 5
+    ) +
+    coord_flip() +
+    scale_y_continuous(
+      name = NULL,
+      labels = scales::percent_format(accuracy = 1),
+      breaks = c(seq(0, 1, 0.2))
+    ) +
+    scale_x_discrete(name = NULL) +
+    scale_fill_manual(values = myColors, breaks = legendLabels) +
+    labs(
+      title = plotTitle
+    ) +
+    theme(
+      plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
+      plot.subtitle = element_text(size = 20, lineheight = 0.1),
+      plot.caption = element_text(size = 20),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      legend.title = element_blank(),
+      legend.position = "bottom",
+      legend.text = element_text(size = 15, lineheight = 0.5),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.major.y = element_blank(),
+      axis.text.y = element_text(size = 20, lineheight = 0.5, margin = margin(r = -10)),
+      axis.title.x = element_text(size = 20, lineheight = 0.5)
+    )
 }
 legendLabels <- c("No Problems", "Some Problems", "Confined to Bed")
 ggeuroMobility90 <- euroQolPlot(euroMobility90, legendLabels, "EuroQOL Mobility")
@@ -330,29 +337,35 @@ ggeuroPain365 <- euroQolPlot(euroPain365, legendLabels, "EuroQOL Pain")
 legendLabels <- c("Not Anxious/Depressed", "Moderately Anxious/Depressed", "Extremely Anxious/Depressed")
 ggeuroAnxiety365 <- euroQolPlot(euroAnxiety365, legendLabels, "EuroQOL Anxiety")
 
-euroQolCombined90 <- 
-(ggeuroMobility90 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (ggeuroSelfCare90 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (ggeuroUsual90 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) /
-(ggeuroPain90 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / 
-(ggeuroAnxiety90 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
-  plot_annotation(title = 'ICH Laterality and HRQOL at 90 days',
-                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1)))
-  # plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
+euroQolCombined90 <-
+  (ggeuroMobility90 + theme(plot.margin = unit(c(50, 0, 75, 0), "pt"))) / (ggeuroSelfCare90 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) / (ggeuroUsual90 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) /
+  (ggeuroPain90 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) /
+  (ggeuroAnxiety90 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) +
+  plot_annotation(
+    title = "ICH Laterality and HRQOL at 90 days",
+    theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1))
+  )
+# plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
 
-euroQolCombined180 <- 
-(ggeuroMobility180 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (ggeuroSelfCare180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (ggeuroUsual180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) /
-(ggeuroPain180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / 
-(ggeuroAnxiety180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
-  plot_annotation(title = 'ICH Laterality and HRQOL at 180 days',
-                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1)))
-  # plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
+euroQolCombined180 <-
+  (ggeuroMobility180 + theme(plot.margin = unit(c(50, 0, 75, 0), "pt"))) / (ggeuroSelfCare180 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) / (ggeuroUsual180 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) /
+  (ggeuroPain180 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) /
+  (ggeuroAnxiety180 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) +
+  plot_annotation(
+    title = "ICH Laterality and HRQOL at 180 days",
+    theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1))
+  )
+# plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
 
-euroQolCombined365 <- 
-(ggeuroMobility365 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (ggeuroSelfCare365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (ggeuroUsual365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) /
-(ggeuroPain365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / 
-(ggeuroAnxiety365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
-  plot_annotation(title = 'ICH Laterality and HRQOL at 365 days',
-                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1)))
-  # plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
+euroQolCombined365 <-
+  (ggeuroMobility365 + theme(plot.margin = unit(c(50, 0, 75, 0), "pt"))) / (ggeuroSelfCare365 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) / (ggeuroUsual365 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) /
+  (ggeuroPain365 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) /
+  (ggeuroAnxiety365 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) +
+  plot_annotation(
+    title = "ICH Laterality and HRQOL at 365 days",
+    theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1))
+  )
+# plot_layout(guides = 'collect') & theme(legend.position='right', legend.direction="vertical")
 
 euroQolCombined90
 euroQolCombined180
@@ -370,37 +383,41 @@ euroQolCombined365
 
 euroVASplot <- function(x, title) {
   d |>
-  ggplot(aes({{x}}, fill = ichLaterality)) +
-  geom_density(color = NA, alpha = 0.8) +
-  labs(title = {{ title }},
-        x = NULL,
-        y = NULL) +
-  theme(
-  plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
-  plot.subtitle = element_text(size = 20, lineheight = 0.1),
-  plot.caption = element_text(size = 20),
-  plot.title.position = "plot",
-  plot.caption.position = "plot",
-  legend.title = element_blank(),
-  legend.position = "bottom",
-  legend.text = element_text(size = 15, lineheight = 0.5),
-  panel.grid.minor.x = element_blank(),
-  panel.grid.major.y = element_blank(),
-  axis.text.y = element_text(size = 20, lineheight = 0.5, margin = margin(r = -10)),
-  axis.title.x = element_text(size = 20, lineheight = 0.5)
-  )
+    ggplot(aes({{ x }}, fill = ichLaterality)) +
+    geom_density(color = NA, alpha = 0.8) +
+    labs(
+      title = {{ title }},
+      x = NULL,
+      y = NULL
+    ) +
+    theme(
+      plot.title = element_text(face = "bold", size = 20, lineheight = 0.1),
+      plot.subtitle = element_text(size = 20, lineheight = 0.1),
+      plot.caption = element_text(size = 20),
+      plot.title.position = "plot",
+      plot.caption.position = "plot",
+      legend.title = element_blank(),
+      legend.position = "bottom",
+      legend.text = element_text(size = 15, lineheight = 0.5),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.major.y = element_blank(),
+      axis.text.y = element_text(size = 20, lineheight = 0.5, margin = margin(r = -10)),
+      axis.title.x = element_text(size = 20, lineheight = 0.5)
+    )
 }
 
 ggeurovas90 <- euroVASplot(euroVAS90, "90 Days")
 ggeurovas180 <- euroVASplot(euroVAS180, "180 Days")
 ggeurovas365 <- euroVASplot(euroVAS365, "365 Days")
 
-ggeuroVASCombined <- 
-(ggeurovas90 + theme(plot.margin = unit(c(50,0,75,0), "pt"))) / (ggeurovas180 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) / (ggeurovas365 + theme(plot.margin = unit(c(0,0,75,0), "pt"))) +
-  plot_annotation(title = 'ICH Laterality EuroQOL VAS',
-                theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1)))
+ggeuroVASCombined <-
+  (ggeurovas90 + theme(plot.margin = unit(c(50, 0, 75, 0), "pt"))) / (ggeurovas180 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) / (ggeurovas365 + theme(plot.margin = unit(c(0, 0, 75, 0), "pt"))) +
+  plot_annotation(
+    title = "ICH Laterality EuroQOL VAS",
+    theme = theme(plot.title = element_text(face = "bold", size = 35, lineheight = 0.1))
+  )
 
-ggeuroVASCombined  
+ggeuroVASCombined
 
 ```
 
