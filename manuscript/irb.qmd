@@ -1,0 +1,55 @@
+---
+title: "Hemispheric Lateralization in ICH, Functional Disability, and Health-Related Quality of Life"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+---
+
+**Investigators**: Nikhil Patel, Rahul Karamchandani, Andrew Asimos
+
+**Background**: Intracerebral hemorrhage (ICH) is a devastating type of stroke that results from bleeding within the brain tissue. It is a significant cause of morbidity and mortality, with high rates of disability and death. Hemispheric lateralization, which refers to the specialization of the left and right hemispheres of the brain for specific functions, has been suggested to play a role in the functional outcomes of patients with ICH. The left hemisphere is generally associated with language, verbal memory, and logical reasoning, while the right hemisphere is associated with spatial processing, attention, and emotional regulation.
+
+Several studies have investigated the relationship between hemispheric lateralization and functional outcomes in patients with ICH, with conflicting results. Some studies have found that left hemisphere ICH is associated with worse functional outcomes than right hemisphere ICH, while others have found the opposite. 
+
+Understanding the relationship between hemispheric lateralization and functional outcomes in patients with ICH is essential for improving patient care and developing targeted rehabilitation strategies. Therefore, this paper aims to review the current literature on hemispheric lateralization and functional outcomes in patients with ICH. We will discuss the potential mechanisms underlying these relationships and highlight the implications for clinical practice.
+
+**Objectives**:
+
+- Hello 1
+- Hello 2
+
+**Study Type**: Retrospective analysis of anonymized individual patient data from NINDS observational studies and randomized clinical trials
+
+**Primary outcome**: 
+
+**Time period**: 
+
+**Variables to select**:
+
+- Age
+- Sex
+- Race
+- Ethnicity
+- Hypertension
+- Diabetes mellitus
+- Atrial fibrillation
+- Previous stroke or ICH
+- Chronic kidney disease
+- Coronary artery disease
+- Congestive heart failure
+- ICH location
+- ICH hemisphere
+- Admission Glasgow Coma Scale
+- Admission ICH volume
+- Admission IVH volume
+- modified Rankin score at 90, 180, and 365 days
+- EuroQOL at 90, 180, and 365 days
+- Withdrawal of life-sustaining therapy
+- Neurosurgery
+
+**Statistical Analysis**:
+
+**Data Security**:
+
+**Study Implications**:
