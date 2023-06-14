@@ -4,52 +4,103 @@ format:
   html:
     code-fold: true
     code-tools: true
+bibliography: bibliography.bib
+csl: jama.csl
 ---
+
+## Protocol Version 1.0
 
 **Investigators**: Nikhil Patel, Rahul Karamchandani, Andrew Asimos
 
-**Background**: Intracerebral hemorrhage (ICH) is a devastating type of stroke that results from bleeding within the brain tissue. It is a significant cause of morbidity and mortality, with high rates of disability and death. Hemispheric lateralization, which refers to the specialization of the left and right hemispheres of the brain for specific functions, has been suggested to play a role in the functional outcomes of patients with ICH. The left hemisphere is generally associated with language, verbal memory, and logical reasoning, while the right hemisphere is associated with spatial processing, attention, and emotional regulation.
+**Sponsor or funding source**: none
 
-Several studies have investigated the relationship between hemispheric lateralization and functional outcomes in patients with ICH, with conflicting results. Some studies have found that left hemisphere ICH is associated with worse functional outcomes than right hemisphere ICH, while others have found the opposite. 
+**Background, Rationale, and Context**: Intracerebral hemorrhage (ICH) is a devastating type of stroke that results from bleeding within the brain tissue. It is a significant cause of morbidity and mortality, with high rates of disability and death. Hemispheric lateralization, which refers to the specialization of the left and right hemispheres of the brain for specific functions, has been suggested to play a role in the functional outcomes of patients with brain injury. [@leggeNeglectingDifference2006; @finkDoesHemisphericLateralization2008a] The left hemisphere is generally associated with language, verbal memory, and logical reasoning, while the right hemisphere is associated with spatial processing, attention, and emotional regulation. [@liStrokeLateralizationLarge2021]
 
-Understanding the relationship between hemispheric lateralization and functional outcomes in patients with ICH is essential for improving patient care and developing targeted rehabilitation strategies. Therefore, this paper aims to review the current literature on hemispheric lateralization and functional outcomes in patients with ICH. We will discuss the potential mechanisms underlying these relationships and highlight the implications for clinical practice.
+Several studies have investigated the relationship between hemispheric lateralization and functional outcomes in patients with ICH, with conflicting results. Some studies have found that left hemisphere ICH is associated with worse functional outcomes than right hemisphere ICH, while others have found the opposite. [@sreekrishnanIntracerebralHemorrhageLocation2016; @satoHigherMortalityPatients2015]
 
-**Objectives**:
+Understanding the relationship between hemispheric lateralization and functional outcomes in patients with ICH is essential for improving patient care and developing targeted rehabilitation strategies. Therefore, this paper aims to pool individual patient data from several prospective studies funded by the National Institute of Neurological Disorders and Stroke (NINDS), a division of the National Institute of Health (NIH), to investigate the association of hemispheric lateralization on outcomes. This data is publicly available upon submitting on application to the NINDS and contains anonymized individual patient data.
 
-- Hello 1
-- Hello 2
+**Objectives**: The primary objective of this research project is to determine any association between hemispheric laterality and functional outcomes in patients with ICH. Secondary objectives are to investigate any association between hemispheric laterality and aggressiveness of care as well as any association between hemispheric laterality and health-related quality of life.
 
 **Study Type**: Retrospective analysis of anonymized individual patient data from NINDS observational studies and randomized clinical trials
 
-**Primary outcome**: 
+**Selection criteria**: 
 
-**Time period**: 
+- **Inclusion**:
 
-**Variables to select**:
+  - Enrolled in the following NINDS studies: ERICH, ATACH-2, iDEF, MISTIE, MISTIE-III, and CLEAR-III
+  - At least 18 years of age
+  - ICH location in the following areas: lobar, basal ganglia, or thalamus
 
-- Age
-- Sex
-- Race
-- Ethnicity
-- Hypertension
-- Diabetes mellitus
-- Atrial fibrillation
-- Previous stroke or ICH
-- Chronic kidney disease
-- Coronary artery disease
-- Congestive heart failure
-- ICH location
-- ICH hemisphere
-- Admission Glasgow Coma Scale
-- Admission ICH volume
-- Admission IVH volume
-- modified Rankin score at 90, 180, and 365 days
-- EuroQOL at 90, 180, and 365 days
-- Withdrawal of life-sustaining therapy
-- Neurosurgery
+- **Exclusion**:
 
-**Statistical Analysis**:
+  - ICH location in the brainstem or cerebellum
+  - Primary intraventricular hemorrhage (IVH)
+  - Midline location of hemorrhage
 
-**Data Security**:
 
-**Study Implications**:
+**Time period**: 2017 - 2013
+
+**Outcomes**: 
+
+- **Primary**: modified Rankin Scale at 90 days
+- **Secondary**: 
+  - Percentage of patients undergoing neurosurgical intervention
+  - Percentage of patients with early withdrawal of life-sustaining therapy
+  - Percentage of patients with tracheostomy
+  - EuroQOL Visual Analog Score (VAS) at 90 days
+  - Barthel Index at 90 days
+
+**Definitions**:
+
+- Neurosurgical intervention: any patient undergoing hematoma evacuation, external ventricular drain, or decompressive craniectomy
+- Early withdrawal of life-sustaining therapy: any patient with code status change to DNR or DNI as well as any patient transitioned to comfort-measures only within 72 hours of admission
+
+**Data collection**
+
+- **Baseline characteristics**:
+
+  - Age
+  - Gender
+  - Race
+  - Ethnicity
+  - Admission Glasgow Coma Score (GCS)
+  - ICH Volume (mL)
+  - Presence of IVH
+  - ICH Location
+  - Admission Systolic Blood Pressure
+  - Admission Diastolic Blood Pressure
+  - Comorbidities:
+    - Coronary artery disease
+    - Congestive heart failure
+    - Atrial fibrillation
+    - Chronic kidney disease
+    - Previous stroke
+    - Tobacco use
+    - Alcohol use
+    - Recreational drug use
+
+- **Inpatient care characteristics**:
+
+  - Neurosurgical intervention
+  - Early withdrawal of life-sustaining therapies
+  - Tracheostomy
+  - Gastric tube
+
+- **Outcomes**:
+
+  - modified Rankin scale at 90 days
+  - EuroQOL VAS at 90 days
+  - Barthel Index at 90 days
+
+
+
+**Analytical Plan**: Results will be analyzed initially using descriptive statistics with means and standard deviations or counts and percentages. Ordinal regression analysis will be utilized for the primary outcome and logistic regression for secondary outcomes. Other inferential statistical analysis will be conducted as appropriate. Alpha will be set at 0.05 to be considered statistically significant.
+
+**Human Subjects Protection**: 
+
+- **Informed Consent**: Written informed consent will not be obtained. The requested data is publicly available and contains anonymized patient data that cannot be traced back to the original patient.
+
+- **Confidentiality and Privacy**: Patient data is already anonymized and cannot be traced back to the original patient. All terms agreed upon by signing the NINDS Data Request Agreement will be followed.
+
+- **Data and Safety Monitoring**: The principal investigator will be responsible for the overall monitoring of the data and safety of study participants. The principal investigator will be assisted by other members of the study staff. All terms agreed upon by signing the NINDS Data Request Agreement will be followed.
