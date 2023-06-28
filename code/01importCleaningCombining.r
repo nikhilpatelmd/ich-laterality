@@ -75,7 +75,9 @@ renameFunc(
     F21Q07DAY = comfortCareDay,
     F21Q09DAY = dnrDay,
     F11Q02 = icuLOS,
-    F11Q01DAY = hospitalLOS
+    F11Q01DAY = hospitalLOS,
+    F21Q01 = studyEnd,
+    F21Q03DAY = studyEndDate
   )
 )
 
@@ -342,6 +344,24 @@ atachMRS <- unique(atachMRS) # removing duplicate NIHSS rows
 
 # Merge data into bigger dataset
 atachWhole <- atachMRS[atachWhole, on = .(id)]
+
+# Coding mrs 6 as mrsModified
+
+atachWhole <- atachWhole |>
+  mutate(patientDied = ifelse(studyEnd == 4, "Yes", "No")) |>
+  mutate(mrs30Modified = case_when(
+    patientDied == "No" ~ mrs30,
+    patientDied == "Yes" & studyEndDate < 30 ~ 6,
+    TRUE ~ mrs30
+  )) |>
+  mutate(mrs90Modified = case_when(
+    patientDied == "No" ~ mrs90,
+    patientDied == "Yes" & studyEndDate < 90 ~ 6,
+    TRUE ~ mrs90
+  )) |>
+  select(-c(mrs30, mrs90)) |>
+  rename(mrs30 = mrs30Modified) |>
+  rename(mrs90 = mrs90Modified)
 
 #### euroQOL-----
 
@@ -1383,4 +1403,4 @@ qsave(nindsCombined, "./data/nindsCombined.qs")
 
 ## Visualizing Data-----
 
-table(nindsCombined$study, nindsCombined$mrs180)
+table(nindsCombined$study, nindsCombined$mrs90)

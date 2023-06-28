@@ -44,6 +44,11 @@ library(ggdist) ## add uncertainity visualizations to ggplot2
 library(viridis)
 library(dagitty)
 library(rlang)
+library(bayesrules)
+library(rstanarm)
+library(bayesplot)
+library(broom.mixed)
+library(tidybayes)
 # library(ggokabeito)
 
 d <- qread("../../data/nindsCombined.qs")
@@ -459,9 +464,51 @@ Rehabilitation -> "Functional Outcome"
 plot(dag)
 ```
 
-**Add Deaths to ATACH data!**
-
 ## Model Assumptions
+
+### EuroQOL Visual Analog Scale
+
+Let's define functional outcome as EuroQOL VAS, an outcome measure from 0-100.
+
+```{r}
+d |>
+  ggplot(aes(x = euroVAS90, fill = ichLaterality)) +
+  geom_density(alpha = 0.5)
+
+eurovas90Model <- stan_glm(
+  euroVAS90 ~ ichLaterality,
+  data = d,
+  family = gaussian,
+  iter = 5000,
+  warmup = 2000,
+  thin = 10,
+  cores = 4,
+  seed = 1234
+)
+
+summary(eurovas90Model)
+
+tidy(eurovas90Model,
+  effects = c("fixed", "aux"),
+  conf.int = TRUE, conf.level = 0.89
+) |>
+  select(-std.error)
+
+# MCMC diagnostics
+
+mcmc_trace(eurovas90Model, size = 0.1)
+mcmc_dens_overlay(eurovas90Model)
+mcmc_acf(eurovas90Model)
+
+## Posterior predictive checks
+
+pp_check(eurovas90Model)
+
+## Posterior models
+
+head(as.data.frame(eurovas90Model))
+
+```
 
 ## Diagnose Models
 
