@@ -10,7 +10,11 @@ csl: jama.csl
 
 ## Protocol Version 1.0
 
-**Investigators**: Nikhil Patel, Rahul Karamchandani, Andrew Asimos
+**Primary Investigator**: Nikhil Patel, MD, MBA
+
+**Contact Information**: 1000 Blythe Blvd, Charlotte, NC 28203, 908-380-7380
+
+**Co-Investigators**: Rahul Karamchandani, Andrew Asimos
 
 **Sponsor or funding source**: none
 
