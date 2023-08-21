@@ -1,0 +1,20 @@
+---
+title: "Hemispheric Lateralization in ICH"
+subtitle: "Logistic Regression"
+author: "Nikhil Patel"
+project:
+  type: default
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+    html-math-method: katex
+    css: "styles.css"
+---
+
+
+```{r hemisphere only}
+priors <- c(prior())
+
+```
