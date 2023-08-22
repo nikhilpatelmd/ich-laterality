@@ -1,6 +1,6 @@
 ---
 title: "Hemispheric Lateralization in ICH"
-subtitle: "Logistic Regression"
+subtitle: "Ordinal Regression"
 author: "Nikhil Patel"
 project:
   type: default
@@ -14,6 +14,10 @@ format:
 ---
 
 
-```{r hemisphere only}
+```{r}
+
+library(brms)
+# call this once to distribute chains across cpu cores:
+options(mc.cores=parallel::detectCores())
 
 ```
