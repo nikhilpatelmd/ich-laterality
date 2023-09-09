@@ -6,7 +6,7 @@ project:
   type: default
 format:
   html:
-    code-fold: true
+    code-fold: false
     code-tools: true
     toc: true
     html-math-method: katex
@@ -14,10 +14,32 @@ format:
 ---
 
 
-```{r}
+```{r setup, warning=FALSE, message=FALSE}
 
+# import libraries
+library(bayesrules)
+library(tidyverse)
 library(brms)
+library(cmdstanr)
+library(rstanarm)
+library(marginaleffects)
+library(broom)
+library(broom.mixed)
+library(tidybayes)
+library(ggdist)
+library(patchwork)
+library(scales)
+library(qs)
+
 # call this once to distribute chains across cpu cores:
-options(mc.cores=parallel::detectCores())
+options(mc.cores = parallel::detectCores())
+
+# import data
+d <- qread("../../data/nindsCombined.qs")
+
+# plot themes
+colors <- MetBrewer::met.brewer("Derain", 6)
+theme_set(theme_bw())
 
 ```
+

@@ -6,14 +6,47 @@ project:
   type: default
 format:
   html:
-    code-fold: true
+    code-fold: false
     code-tools: true
     toc: true
     html-math-method: katex
     css: "styles.css"
 ---
 
+We are trying to see if there is an association between hemispheric laterality and outcomes. The outcomes we have are both functional disability as measured by the mRS and quality of life as measured by the EuroQOL.
 
-```{r hemisphere only}
+```{r setup, warning=FALSE, message=FALSE}
+
+# import libraries
+library(bayesrules)
+library(tidyverse)
+library(brms)
+library(cmdstanr)
+library(rstanarm)
+library(marginaleffects)
+library(broom)
+library(broom.mixed)
+library(tidybayes)
+library(ggdist)
+library(patchwork)
+library(scales)
+library(qs)
+
+# call this once to distribute chains across cpu cores:
+options(mc.cores = parallel::detectCores())
+
+# plot themes
+colors <- MetBrewer::met.brewer("Derain", 6)
+theme_set(theme_bw())
+
+# Tell bayesplot to use the viridis rocket palette for things like pp_check()
+viridisLite::viridis(6, option = "rocket", end = 0.85, direction = -1) |>
+  # Take off the trailing "FF" in the hex codes
+  map_chr(~ str_sub(., 1, 7)) |>
+  bayesplot::color_scheme_set()
+
+# import data
+d <- qread("../../data/nindsCombined.qs")
 
 ```
+
