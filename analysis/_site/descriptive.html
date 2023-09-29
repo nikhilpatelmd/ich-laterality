@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -131,6 +165,121 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MetBrewer)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tableone)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtExtras)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"all.csv"</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># converting some columns to factors</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sex"</span>, <span class="st">"race"</span>, <span class="st">"euro_mobility_90"</span>, <span class="st">"euro_mobility_180"</span>, <span class="st">"euro_mobility_365"</span>, <span class="st">"euro_selfcare_90"</span>, <span class="st">"euro_selfcare_180"</span>, <span class="st">"euro_selfcare_365"</span>, <span class="st">"euro_usual_90"</span>, <span class="st">"euro_usual_180"</span>, <span class="st">"euro_usual_365"</span>, <span class="st">"euro_pain_90"</span>, <span class="st">"euro_pain_180"</span>, <span class="st">"euro_pain_365"</span>, <span class="st">"euro_anxiety_90"</span>, <span class="st">"euro_anxiety_180"</span>, <span class="st">"euro_anxiety_365"</span>, <span class="st">"location_90"</span>, <span class="st">"location_180"</span>, <span class="st">"location_365"</span>, <span class="st">"ethnicity"</span>, <span class="st">"stroke"</span>, <span class="st">"cad"</span>, <span class="st">"chf"</span>, <span class="st">"afib"</span>, <span class="st">"pvd"</span>, <span class="st">"hld"</span>, <span class="st">"dm2"</span>, <span class="st">"tobacco"</span>, <span class="st">"htn_meds"</span>, <span class="st">"dm2_meds"</span>, <span class="st">"ich_location"</span>, <span class="st">"ich_laterality"</span>, <span class="st">"ivh"</span>, <span class="st">"evd"</span>, <span class="st">"neurosurgery_evac"</span>, <span class="st">"tracheostomy"</span>, <span class="st">"peg"</span>, <span class="st">"dnr_binary"</span>, <span class="st">"dni_binary"</span>, <span class="st">"comfort_care_binary"</span>, <span class="st">"mrs_90"</span>, <span class="st">"mrs_180"</span>, <span class="st">"mrs_365"</span>, <span class="st">"euroqol_90_assessment_source"</span>, <span class="st">"euroqol_180_assessment_source"</span>, <span class="st">"euroqol_365_assessment_source"</span>, <span class="st">"euro_mobility_365_binary"</span>, <span class="st">"euro_selfcare_365_binary"</span>, <span class="st">"euro_usual_365_binary"</span>, <span class="st">"euro_pain_365_binary"</span>, <span class="st">"euro_anxiety_365_binary"</span>, <span class="st">"study"</span>, <span class="st">"enrolling_country"</span>, <span class="st">"treatment_group"</span>, <span class="st">"euro_mobility_90_binary"</span>, <span class="st">"euro_selfcare_90_binary"</span>, <span class="st">"euro_usual_90_binary"</span>, <span class="st">"euro_pain_90_binary"</span>, <span class="st">"euro_anxiety_90_binary"</span>, <span class="st">"cocaine"</span>, <span class="st">"anticoagulated"</span>, <span class="st">"etoh"</span>, <span class="st">"mrs_270"</span>, <span class="st">"location_30"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(factors, factor)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich_location <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"Lobar"</span>, <span class="st">"Basal Ganglia"</span>, <span class="st">"Thalamus"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(ich_laterality))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># have to fix time from symptom onset to presentation in ED (units seems to be jacked up)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table1_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"sex"</span>, <span class="st">"race"</span>, <span class="st">"ethnicity"</span>, <span class="st">"htn"</span>, <span class="st">"dm2"</span>, <span class="st">"tobacco"</span>, <span class="st">"sbp_baseline"</span>, <span class="st">"gcs_baseline"</span>, <span class="st">"nihss_baseline"</span>, <span class="st">"ich_volume_baseline"</span>, <span class="st">"ivh"</span>, <span class="st">"ich_location"</span>, <span class="st">"neurosurgery_evac"</span>, <span class="st">"comfort_care_binary"</span>, <span class="st">"study"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">vars =</span> table1_vars, <span class="at">data =</span> data, <span class="at">strata =</span> <span class="st">"ich_laterality"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>table1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                      Stratified by ich_laterality
+                                       Left           Right          p     
+  n                                       777            769               
+  age (mean (SD))                       61.04 (13.59)  61.65 (13.50)  0.379
+  sex = Male (%)                          470 (60.5)     473 (61.5)   0.720
+  race (%)                                                            0.405
+     American Indian or Alaskan Native      4 ( 0.5)       1 ( 0.1)        
+     Asian                                 91 (11.7)      91 (11.8)        
+     Black or African-American            229 (29.5)     214 (27.8)        
+     Black or American-American            12 ( 1.5)       6 ( 0.8)        
+     Native Hawaiian/Pacific Islander       0 ( 0.0)       1 ( 0.1)        
+     Other/Not Reported                    55 ( 7.1)      49 ( 6.4)        
+     White                                386 (49.7)     407 (52.9)        
+  ethnicity (%)                                                       0.887
+     Hispanic or Latino                    53 ( 6.8)      48 ( 6.2)        
+     Not Hispanic or Latino               546 (70.3)     541 (70.4)        
+     Unknown/Not Reported                 178 (22.9)     180 (23.4)        
+  htn = Yes (%)                           226 (85.9)     243 (86.2)   1.000
+  dm2 = Yes (%)                           147 (21.7)     153 (22.9)   0.646
+  tobacco = Yes (%)                       277 (43.1)     268 (42.8)   0.949
+  sbp_baseline (mean (SD))             189.44 (43.86) 188.90 (44.32)  0.814
+  gcs_baseline (mean (SD))              11.88 (3.51)   12.83 (3.31)  &lt;0.001
+  nihss_baseline (mean (SD))            16.71 (9.36)   14.42 (8.35)   0.001
+  ich_volume_baseline (mean (SD))       21.05 (22.51)  22.35 (23.04)  0.265
+  ivh = Yes (%)                           316 (41.0)     317 (41.4)   0.915
+  ich_location (%)                                                      NaN
+     Basal Ganglia                        331 (42.6)     267 (34.7)        
+     Brainstem                              0 ( 0.0)       0 ( 0.0)        
+     Cerebellum                             0 ( 0.0)       0 ( 0.0)        
+     Lobar                                206 (26.5)     233 (30.3)        
+     Primary IVH                            0 ( 0.0)       0 ( 0.0)        
+     Thalamus                             240 (30.9)     269 (35.0)        
+  neurosurgery_evac = Yes (%)              95 (12.2)     112 (14.6)   0.195
+  comfort_care_binary = Yes (%)            69 (13.0)      68 (13.0)   1.000
+  study (%)                                                           0.508
+     ATACH-2                              162 (20.8)     172 (22.4)        
+     CLEAR III                             66 ( 8.5)      70 ( 9.1)        
+     ERICH                                446 (57.4)     416 (54.1)        
+     MISTIE-2                              31 ( 4.0)      25 ( 3.3)        
+     MISTIE-3                              72 ( 9.3)      86 (11.2)        
+                                      Stratified by ich_laterality
+                                       test
+  n                                        
+  age (mean (SD))                          
+  sex = Male (%)                           
+  race (%)                                 
+     American Indian or Alaskan Native     
+     Asian                                 
+     Black or African-American             
+     Black or American-American            
+     Native Hawaiian/Pacific Islander      
+     Other/Not Reported                    
+     White                                 
+  ethnicity (%)                            
+     Hispanic or Latino                    
+     Not Hispanic or Latino                
+     Unknown/Not Reported                  
+  htn = Yes (%)                            
+  dm2 = Yes (%)                            
+  tobacco = Yes (%)                        
+  sbp_baseline (mean (SD))                 
+  gcs_baseline (mean (SD))                 
+  nihss_baseline (mean (SD))               
+  ich_volume_baseline (mean (SD))          
+  ivh = Yes (%)                            
+  ich_location (%)                         
+     Basal Ganglia                         
+     Brainstem                             
+     Cerebellum                            
+     Lobar                                 
+     Primary IVH                           
+     Thalamus                              
+  neurosurgery_evac = Yes (%)              
+  comfort_care_binary = Yes (%)            
+  study (%)                                
+     ATACH-2                               
+     CLEAR III                             
+     ERICH                                 
+     MISTIE-2                              
+     MISTIE-3                              </code></pre>
+</div>
+</div>
 
 
 

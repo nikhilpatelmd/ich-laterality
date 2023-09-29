@@ -9,7 +9,9 @@ code-fold: true
 library(tidyverse)
 library(dagitty)
 library(ggdag)
+library(MetBrewer)
 library(here)
+
 
 ```
 
@@ -27,12 +29,6 @@ data <- read_csv(here("data", "all.csv"))
 data |>
   filter(ich_location == c("Lobar", "Basal Ganglia", "Thalamus")) |>
   filter(!is.na(ich_laterality)) |>
-  ggplot(aes(x = ich_laterality, y = mrs_90)) +
-  geom_bar()
-
-data |>
-  filter(ich_location == c("Lobar", "Basal Ganglia", "Thalamus")) |>
-  filter(!is.na(ich_laterality)) |>
   ggplot(aes(euro_vas_90, fill = ich_laterality)) +
   geom_density(color = NA, alpha = .8)
 
@@ -40,12 +36,62 @@ data |>
 
 ## Model Our Assumptions
 
-```{r dag}
-#| fig-width: 10
+```{r dag, warning=FALSE, message=FALSE}
+#| fig-width: 12
+#| fig-height: 8
 
-dag_laterality <- dagify(ich_laterality ~ functional_outcome)
+node_details <- tribble(
+  ~name, ~label, ~x, ~y,
+  "functional_disability", "Functional Disability", 6, 1,
+  "ich_laterality", "Hemispheric Laterality", 2, 1,
+  "age", "Age", 2, 2,
+  "ich_location", "ICH Location", 2.5, 3,
+  "ich_volume", "ICH Volume", 3, 1.5,
+  "ivh", "IVH", 3, 4,
+  "gcs_baseline", "Admission GCS", 4, 2.5,
+  "wlst", "WLST", 5, 2,
+  "neurosurgery", "Neurosurgery", 5, 3,
+  "rehab", "Access to Rehab", 4, 5
+)
 
-dag_laterality |>
-  ggdag()
+node_labels <- node_details$label
+names(node_labels) <- node_details$name
+
+dag_laterality <- dagify(
+  functional_disability ~ ich_laterality + age + ich_volume + ivh + ich_location + gcs_baseline + neurosurgery + wlst + rehab,
+  neurosurgery ~ age + ich_location + ich_volume + gcs_baseline,
+  wlst ~ age + ich_volume + ich_location + gcs_baseline,
+  gcs_baseline ~ ich_location + ich_volume + ivh + age,
+  ich_location ~ age,
+  rehab ~ ich_laterality + age + ich_location,
+  exposure = "ich_laterality",
+  outcome = "functional_disability",
+  latent = "rehab",
+  coords = node_details,
+  labels = node_labels
+)
+
+dag_laterality_tidy <- dag_laterality |>
+  tidy_dagitty() |>
+  node_status()
+
+colors <- met.brewer(name = "VanGogh1", n = 7, type = "discrete")
+status_colors <- c(exposure = colors[3], outcome = colors[7], latent = "grey50")
+
+# Fancy DAG
+ggplot(dag_laterality_tidy, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges() +
+  geom_dag_point(aes(color = status)) +
+  geom_dag_label_repel(aes(label = label, fill = status),
+    seed = 1234,
+    color = "white", fontface = "bold"
+  ) +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = FALSE, fill = FALSE) +
+  theme_dag()
+
+ggdag_paths(dag_laterality_tidy)
+ggdag_adjustment_set(dag_laterality_tidy)
 
 ```

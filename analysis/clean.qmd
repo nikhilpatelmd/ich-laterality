@@ -7,6 +7,10 @@ title: "Process and Clean Data"
 library(tidyverse)
 library(patchwork)
 library(here)
+library(tableone)
+library(gt)
+library(gtExtras)
+library(broom)
 
 ```
 
@@ -27,3 +31,5 @@ glimpse(data)
 
 
 ```
+
+

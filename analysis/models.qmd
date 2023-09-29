@@ -1,3 +1,29 @@
 ---
 title: "Models"
+code-fold: true
 ---
+
+```{r setup, warning=FALSE, message=FALSE}
+
+library(tidyverse)
+library(dagitty)
+library(ggdag)
+library(MetBrewer)
+library(here)
+library(brms)
+library(broom)
+library(tableone)
+
+data <- read_csv(here("data", "all.csv"))
+
+
+```
+
+First let's do a Table 1
+
+```{r interact2 analysis replication}
+
+CreateTableOne(data = data)
+
+
+```
