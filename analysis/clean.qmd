@@ -1,0 +1,25 @@
+---
+title: "Process and Clean Data"
+---
+
+```{r setup, warning=FALSE, message=FALSE}
+
+library(tidyverse)
+library(targets)
+library(scales)
+library(patchwork)
+library(DT)
+library(naniar)
+library(here)
+
+```
+
+*Data has been cleaned and merged elsewhere.*
+
+
+```{r description of data}
+
+data <- read_csv(here("data", "all.csv"))
+
+
+```

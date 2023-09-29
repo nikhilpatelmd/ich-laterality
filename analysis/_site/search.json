@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ICH Laterality Analysis Notebook",
+    "section": "",
+    "text": "This is a codebook containing all of the analysis used for the manuscript."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "clean.html",
+    "href": "clean.html",
+    "title": "Process and Clean Data",
+    "section": "",
+    "text": "Data has been cleaned and merged elsewhere.\n\ndata <- read_csv(here(\"data\", \"all.csv\"))\n\nRows: 5147 Columns: 165\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (73): patient_id, sex, race, euro_mobility_90, euro_mobility_180, euro_...\ndbl  (85): age, gcs_baseline, sbp_baseline, dbp_baseline, ich_volume_baselin...\ndttm  (6): symptom_onset_date_time, ed_date_time, neurosurgery_evac_date_tim...\ndate  (1): death_date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  }
+]
