@@ -11,13 +11,27 @@
     "href": "dag.html",
     "title": "Causal Assumptions - DAG",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\nlibrary(dagitty)\nlibrary(ggdag)"
+    "text": "Code\nlibrary(tidyverse)\nlibrary(dagitty)\nlibrary(ggdag)\nlibrary(here)"
   },
   {
     "objectID": "dag.html#specify-a-causal-question",
     "href": "dag.html#specify-a-causal-question",
     "title": "Causal Assumptions - DAG",
     "section": "Specify a Causal Question",
-    "text": "Specify a Causal Question\n\n\nCode\ndag_laterality &lt;- dagify(ich_laterality ~ functional_outcome)\n\ndag_laterality |&gt;\n  ggdag()"
+    "text": "Specify a Causal Question\nDo patients with left hemispheric injuries have worse otucomes as compared to patients with right hemispheric injuries?"
+  },
+  {
+    "objectID": "dag.html#exploratory-data-analysis",
+    "href": "dag.html#exploratory-data-analysis",
+    "title": "Causal Assumptions - DAG",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\n\n\nCode\ndata &lt;- read_csv(here(\"data\", \"all.csv\"))\n\ndata |&gt;\n  filter(ich_location == c(\"Lobar\", \"Basal Ganglia\", \"Thalamus\")) |&gt;\n  filter(!is.na(ich_laterality)) |&gt;\n  ggplot(aes(euro_vas_90, fill = ich_laterality)) +\n  geom_density(color = NA, alpha = .8)"
+  },
+  {
+    "objectID": "dag.html#model-our-assumptions",
+    "href": "dag.html#model-our-assumptions",
+    "title": "Causal Assumptions - DAG",
+    "section": "Model Our Assumptions",
+    "text": "Model Our Assumptions\n\n\nCode\ndag_laterality &lt;- dagify(ich_laterality ~ functional_outcome)\n\ndag_laterality |&gt;\n  ggdag()"
   }
 ]
