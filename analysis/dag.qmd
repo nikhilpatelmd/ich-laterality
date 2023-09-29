@@ -2,3 +2,21 @@
 title: "Causal Assumptions - DAG"
 ---
 
+
+```{r setup}
+
+library(tidyverse)
+library(dagitty)
+library(ggdag)
+
+```
+
+
+```{r dag}
+
+dag_laterality <- dagify(ich_laterality ~ functional_outcome)
+
+dag_laterality |>
+  ggdag()
+
+```
