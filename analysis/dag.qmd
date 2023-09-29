@@ -1,9 +1,10 @@
 ---
 title: "Causal Assumptions - DAG"
+code-fold: true
 ---
 
 
-```{r setup}
+```{r setup, warning=FALSE, message=FALSE}
 
 library(tidyverse)
 library(dagitty)
@@ -11,8 +12,10 @@ library(ggdag)
 
 ```
 
+## Specify a Causal Question
 
 ```{r dag}
+#| fig-width: 10
 
 dag_laterality <- dagify(ich_laterality ~ functional_outcome)
 
