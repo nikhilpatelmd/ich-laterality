@@ -24,18 +24,19 @@ First let's do a replication of the INTERACT re-analysis.
 
 ```{r interact2 analysis replication}
 
+
 priors <- c(prior(normal(0, 1.5), class = Intercept))
 
 inits <- list(Intercept = c(-2, -1, 0, 1, 2, 2.5))
 
-# mod <- brm(mrs_90 ~ 1,
-#   data = data,
-#   family = cumulative("logit"),
-#   prior = priors,
-#   init = rep(list(inits), 4),
-#   chains = 4, iter = 5000 * 2, seed = 28203, cores = 4,
-#   backend = "cmdstanr", refresh = 0
-# )
+mod <- brm(mrs_90 ~ 1,
+  data = data,
+  family = cumulative("logit"),
+  prior = priors,
+  init = rep(list(inits), 4),
+  chains = 4, iter = 5000 * 2, seed = 28203, cores = 4,
+  backend = "cmdstanr", refresh = 0
+)
 
 
 ```
