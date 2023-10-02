@@ -6,24 +6,46 @@ code-fold: true
 ```{r setup, warning=FALSE, message=FALSE}
 
 library(tidyverse)
-library(dagitty)
-library(ggdag)
-library(MetBrewer)
-library(here)
+library(marginaleffects)
 library(brms)
+library(ggplot2)
+library(ggdist)
 library(broom)
-library(tableone)
 
 data <- read_csv(here("data", "all.csv"))
 
+data <- data |>
+  mutate(mrs_90 = fct_relevel(
+    mrs_90,
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+  ))
+
+is.ordered(data$mrs_90)
 
 ```
 
-First let's do a Table 1
+First let's do a replication of the INTERACT re-analysis.
 
 ```{r interact2 analysis replication}
 
-CreateTableOne(data = data)
+priors <- c(prior(normal(0, 1.5), class = Intercept))
+
+inits <- list(Intercept = c(-2, -1, 0, 1, 2, 2.5))
+
+mod <- brm(mrs_90 ~ 1,
+  data = data,
+  family = cumulative("logit"),
+  prior = priors,
+  init = rep(list(inits), 4),
+  chains = 4, iter = 5000 * 2, seed = 28203, cores = 4,
+  backend = "cmdstanr", refresh = 0
+)
 
 
 ```

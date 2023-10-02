@@ -1,0 +1,14 @@
+{
+  "hash": "194ec707aeb4d88ae249130d4ffd1aaf",
+  "result": {
+    "markdown": "---\ntitle: \"Models\"\ncode-fold: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(dagitty)\nlibrary(ggdag)\nlibrary(MetBrewer)\nlibrary(here)\nlibrary(brms)\nlibrary(broom)\nlibrary(tableone)\n\ndata <- read_csv(here(\"data\", \"all.csv\"))\n```\n:::\n\n\nFirst let's do a replication of the INTERACT re-analysis.\n\n\n::: {.cell}\n\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
