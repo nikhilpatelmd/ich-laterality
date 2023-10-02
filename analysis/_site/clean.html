@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,10 +17,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,13 +46,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -89,8 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -109,31 +137,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">ICH Laterality Analysis Notebook</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./clean.html" rel="" target="" aria-current="page">
- <span class="menu-text">Process and Clean Data</span></a>
+    <a class="nav-link active" href="./clean.html" aria-current="page">Process and Clean Data</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dag.html" rel="" target="">
- <span class="menu-text">Causal Assumptions - DAG</span></a>
+    <a class="nav-link" href="./dag.html">Causal Assumptions - DAG</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./descriptive.html" rel="" target="">
- <span class="menu-text">Descriptive Analysis</span></a>
+    <a class="nav-link" href="./descriptive.html">| fig-width: 20</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./models.html" rel="" target="">
- <span class="menu-text">Models</span></a>
+    <a class="nav-link" href="./models.html">Models</a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -158,7 +180,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-  
     
   </div>
   
@@ -195,31 +216,21 @@ date  (1): death_date
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(factors, factor)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich_location <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"Lobar"</span>, <span class="st">"Basal Ganglia"</span>, <span class="st">"Thalamus"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There were 2 warnings in `filter()`.
-The first warning was:
-ℹ In argument: `ich_location == c("Lobar", "Basal Ganglia", "Thalamus")`.
-Caused by warning in `==.default`:
-! longer object length is not a multiple of shorter object length
-ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 1,549
+<pre><code>Rows: 5,147
 Columns: 165
-$ patient_id                    &lt;chr&gt; "00003536", "00008087", "00193327", "002…
-$ age                           &lt;dbl&gt; 85, 54, 51, 60, 49, 58, 71, 51, 72, 69, …
-$ sex                           &lt;fct&gt; Female, Male, Female, Male, Male, Female…
-$ race                          &lt;fct&gt; White, White, White, White, White, White…
-$ gcs_baseline                  &lt;dbl&gt; 15, 15, NA, 14, 6, 15, 15, 14, 15, 7, 15…
-$ sbp_baseline                  &lt;dbl&gt; 180, 220, NA, NA, 150, 95, NA, 224, 112,…
-$ dbp_baseline                  &lt;dbl&gt; 110, 155, NA, NA, 109, 46, NA, 136, 101,…
-$ ich_volume_baseline           &lt;dbl&gt; 42.066, 16.654, 18.338, 1.768, 57.330, 8…
-$ ivh_volume_baseline           &lt;dbl&gt; 7.427, 0.000, 0.000, 80.470, 0.000, 1.46…
+$ patient_id                    &lt;chr&gt; "00003536", "00008087", "00047804", "000…
+$ age                           &lt;dbl&gt; 85, 54, 71, 55, 68, 55, 51, 43, 60, 38, …
+$ sex                           &lt;fct&gt; Female, Male, Male, Female, Female, Male…
+$ race                          &lt;fct&gt; White, White, White, Black or African-Am…
+$ gcs_baseline                  &lt;dbl&gt; 15, 15, 15, 15, 15, 3, NA, 14, 14, 8, 3,…
+$ sbp_baseline                  &lt;dbl&gt; 180, 220, 163, 240, 149, 227, NA, 133, N…
+$ dbp_baseline                  &lt;dbl&gt; 110, 155, 102, 178, 65, 98, NA, 91, NA, …
+$ ich_volume_baseline           &lt;dbl&gt; 42.066, 16.654, 2.999, 9.690, 15.434, 1.…
+$ ivh_volume_baseline           &lt;dbl&gt; 7.427, 0.000, 0.000, 1.289, 0.000, 0.000…
 $ evd_day                       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ euro_mobility_90              &lt;fct&gt; NA, No Problems, No Problems, No Problem…
+$ euro_mobility_90              &lt;fct&gt; NA, No Problems, No Problems, Some Probl…
 $ euro_mobility_180             &lt;fct&gt; Some Problems, No Problems, No Problems,…
 $ euro_mobility_365             &lt;fct&gt; Some Problems, No Problems, No Problems,…
 $ euro_selfcare_90              &lt;fct&gt; NA, No Problems, No Problems, No Problem…
@@ -234,89 +245,89 @@ $ euro_pain_365                 &lt;fct&gt; Some Moderate Pain/Discomfort, Some 
 $ euro_anxiety_90               &lt;fct&gt; NA, Not Anxious/Depressed, Not Anxious/D…
 $ euro_anxiety_180              &lt;fct&gt; Moderately Anxious/Depressed, Not Anxiou…
 $ euro_anxiety_365              &lt;fct&gt; Moderately Anxious/Depressed, Not Anxiou…
-$ euro_vas_90                   &lt;dbl&gt; NA, 90, 95, 90, 10, 50, 50, 70, NA, NA, …
-$ euro_vas_180                  &lt;dbl&gt; 70, 95, 98, 65, 50, 60, NA, NA, NA, NA, …
-$ euro_vas_365                  &lt;dbl&gt; 70, 90, 100, NA, 10, NA, 60, NA, NA, NA,…
-$ barthel_feeding_90            &lt;dbl&gt; NA, 10, 10, 10, 5, 5, 5, 10, NA, NA, 5, …
-$ barthel_feeding_180           &lt;dbl&gt; 5, 10, 10, 10, 5, 10, NA, NA, NA, NA, NA…
-$ barthel_feeding_365           &lt;dbl&gt; 10, 10, 10, 10, 5, NA, 10, NA, NA, NA, 1…
-$ barthel_bathing_90            &lt;dbl&gt; NA, 5, 5, 5, 0, 0, 0, 5, NA, NA, 0, NA, …
-$ barthel_bathing_180           &lt;dbl&gt; 0, 5, 5, 5, 0, 0, NA, NA, NA, NA, NA, NA…
-$ barthel_bathing_365           &lt;dbl&gt; 0, 5, 5, 5, 0, NA, 5, NA, NA, NA, 0, NA,…
-$ barthel_grooming_90           &lt;dbl&gt; NA, 5, 5, 5, 0, 5, 0, 5, NA, NA, 0, NA, …
-$ barthel_grooming_180          &lt;dbl&gt; 5, 5, 5, 5, 5, 5, NA, NA, NA, NA, NA, NA…
-$ barthel_grooming_365          &lt;dbl&gt; 0, 5, 5, 5, 0, NA, 5, NA, NA, NA, 0, NA,…
-$ barthel_dressing_90           &lt;dbl&gt; NA, 10, 10, 10, 0, 0, 5, 10, NA, NA, 5, …
-$ barthel_dressing_180          &lt;dbl&gt; 5, 10, 10, 10, 0, 5, NA, NA, NA, NA, NA,…
-$ barthel_dressing_365          &lt;dbl&gt; 0, 10, 10, 10, 0, NA, 10, NA, NA, NA, 0,…
-$ barthel_bowels_90             &lt;dbl&gt; NA, 10, 10, 10, 0, 10, 10, 10, NA, NA, 0…
-$ barthel_bowels_180            &lt;dbl&gt; 5, 10, 10, 10, 0, 10, NA, NA, NA, NA, NA…
-$ barthel_bowels_365            &lt;dbl&gt; 5, 10, 10, 10, 0, NA, 10, NA, NA, NA, 5,…
-$ barthel_bladder_90            &lt;dbl&gt; NA, 10, 10, 10, 0, 10, 10, 10, NA, NA, 0…
-$ barthel_bladder_180           &lt;dbl&gt; 5, 10, 10, 10, 0, 10, NA, NA, NA, NA, NA…
-$ barthel_bladder_365           &lt;dbl&gt; 5, 10, 10, 10, 0, NA, 5, NA, NA, NA, 5, …
-$ barthel_toilet_90             &lt;dbl&gt; NA, 10, 10, 10, 0, 5, 5, 10, NA, NA, 0, …
-$ barthel_toilet_180            &lt;dbl&gt; 10, 10, 10, 10, 0, 5, NA, NA, NA, NA, NA…
-$ barthel_toilet_365            &lt;dbl&gt; 5, 10, 10, 10, 0, NA, 5, NA, NA, NA, 0, …
-$ barthel_transfer_90           &lt;dbl&gt; NA, 15, 15, 15, 5, 0, 5, 15, NA, NA, 5, …
-$ barthel_transfer_180          &lt;dbl&gt; 15, 15, 15, 15, 5, 10, NA, NA, NA, NA, N…
-$ barthel_transfer_365          &lt;dbl&gt; 10, 15, 15, 15, 5, NA, 15, NA, NA, NA, 1…
-$ barthel_mobility_90           &lt;dbl&gt; NA, 15, 15, 15, 0, 10, 0, 15, NA, NA, 0,…
-$ barthel_mobility_180          &lt;dbl&gt; 5, 15, 15, 15, 5, 10, NA, NA, NA, NA, NA…
-$ barthel_mobility_365          &lt;dbl&gt; 5, 15, 15, 15, 5, NA, 15, NA, NA, NA, 0,…
-$ barthel_stairs_90             &lt;dbl&gt; NA, 10, 10, 10, 0, 0, 0, 10, NA, NA, 0, …
-$ barthel_stairs_180            &lt;dbl&gt; 0, 10, 10, 0, 0, 5, NA, NA, NA, NA, NA, …
-$ barthel_stairs_365            &lt;dbl&gt; 5, 10, 10, 10, 0, NA, 5, NA, NA, NA, 0, …
-$ barthel_total_90              &lt;dbl&gt; NA, 100, 100, 100, 10, 45, 40, 100, NA, …
-$ barthel_total_180             &lt;dbl&gt; 55, 100, 100, 90, 20, 70, NA, NA, NA, NA…
-$ barthel_total_365             &lt;dbl&gt; 45, 100, 100, 100, 15, NA, 85, NA, NA, N…
-$ location_90                   &lt;fct&gt; NA, Home, Home, Home, Rehab Facility, Re…
+$ euro_vas_90                   &lt;dbl&gt; NA, 90, 95, 80, 5, 50, 95, 70, 90, 80, 7…
+$ euro_vas_180                  &lt;dbl&gt; 70, 95, 90, 95, 75, 75, 98, 80, 65, 90, …
+$ euro_vas_365                  &lt;dbl&gt; 70, 90, 90, NA, 20, 75, 100, 90, NA, 80,…
+$ barthel_feeding_90            &lt;dbl&gt; NA, 10, 10, 10, 5, 10, 10, 10, 10, 10, 1…
+$ barthel_feeding_180           &lt;dbl&gt; 5, 10, 10, 10, 5, 10, 10, 10, 10, 10, NA…
+$ barthel_feeding_365           &lt;dbl&gt; 10, 10, 10, NA, 5, 10, 10, 10, 10, 10, 5…
+$ barthel_bathing_90            &lt;dbl&gt; NA, 5, 5, 5, 0, 5, 5, 5, 5, 5, 0, 5, 0, …
+$ barthel_bathing_180           &lt;dbl&gt; 0, 5, 5, 5, 0, 5, 5, 5, 5, 5, NA, 5, 0, …
+$ barthel_bathing_365           &lt;dbl&gt; 0, 5, 5, NA, 0, 5, 5, 5, 5, 0, 0, 5, 5, …
+$ barthel_grooming_90           &lt;dbl&gt; NA, 5, 5, 5, 0, 5, 5, 5, 5, 5, 5, 5, 5, …
+$ barthel_grooming_180          &lt;dbl&gt; 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, NA, 5, 5, …
+$ barthel_grooming_365          &lt;dbl&gt; 0, 5, 5, NA, 5, 5, 5, 5, 5, 5, 0, 5, 5, …
+$ barthel_dressing_90           &lt;dbl&gt; NA, 10, 10, 10, 5, 10, 10, 10, 10, 5, 5,…
+$ barthel_dressing_180          &lt;dbl&gt; 5, 10, 10, 10, 5, 10, 10, 10, 10, 10, NA…
+$ barthel_dressing_365          &lt;dbl&gt; 0, 10, 10, NA, 5, 10, 10, 10, 10, 5, 0, …
+$ barthel_bowels_90             &lt;dbl&gt; NA, 10, 10, 10, 5, 10, 10, 10, 10, 10, 1…
+$ barthel_bowels_180            &lt;dbl&gt; 5, 10, 10, 10, 0, 10, 10, 10, 10, 10, NA…
+$ barthel_bowels_365            &lt;dbl&gt; 5, 10, 10, NA, 0, 10, 10, 10, 10, 10, 10…
+$ barthel_bladder_90            &lt;dbl&gt; NA, 10, 10, 10, 5, 10, 10, 10, 10, 10, 1…
+$ barthel_bladder_180           &lt;dbl&gt; 5, 10, 10, 10, 0, 10, 10, 10, 10, 10, NA…
+$ barthel_bladder_365           &lt;dbl&gt; 5, 10, 10, NA, 0, 10, 10, 10, 10, 10, 10…
+$ barthel_toilet_90             &lt;dbl&gt; NA, 10, 10, 10, 0, 10, 10, 10, 10, 10, 5…
+$ barthel_toilet_180            &lt;dbl&gt; 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, N…
+$ barthel_toilet_365            &lt;dbl&gt; 5, 10, 10, NA, 0, 10, 10, 10, 10, 5, 5, …
+$ barthel_transfer_90           &lt;dbl&gt; NA, 15, 15, 15, 5, 15, 15, 15, 15, 15, 5…
+$ barthel_transfer_180          &lt;dbl&gt; 15, 15, 15, 15, 5, 15, 15, 15, 15, 15, N…
+$ barthel_transfer_365          &lt;dbl&gt; 10, 15, 15, NA, 5, 15, 15, 15, 15, 10, 5…
+$ barthel_mobility_90           &lt;dbl&gt; NA, 15, 15, 15, 0, 15, 15, 15, 15, 10, 5…
+$ barthel_mobility_180          &lt;dbl&gt; 5, 15, 15, 15, 0, 15, 15, 15, 15, 15, NA…
+$ barthel_mobility_365          &lt;dbl&gt; 5, 15, 15, NA, 0, 15, 15, 15, 15, 5, 0, …
+$ barthel_stairs_90             &lt;dbl&gt; NA, 10, 10, 5, 0, 10, 10, 10, 10, 5, 0, …
+$ barthel_stairs_180            &lt;dbl&gt; 0, 10, 10, 5, 0, 10, 10, 10, 0, 5, NA, 1…
+$ barthel_stairs_365            &lt;dbl&gt; 5, 10, 10, NA, 0, 10, 10, 10, 10, 0, 0, …
+$ barthel_total_90              &lt;dbl&gt; NA, 100, 100, 95, 25, 100, 100, 100, 100…
+$ barthel_total_180             &lt;dbl&gt; 55, 100, 100, 95, 20, 100, 100, 100, 90,…
+$ barthel_total_365             &lt;dbl&gt; 45, 100, 100, NA, 20, 100, 100, 100, 100…
+$ location_90                   &lt;fct&gt; NA, Home, Home, Home, Rehab Facility, Ho…
 $ location_180                  &lt;fct&gt; Long-Term Care Facility, Home, Home, Hom…
-$ location_365                  &lt;fct&gt; NA, Home, Home, Home, Long-Term Care Fac…
+$ location_365                  &lt;fct&gt; NA, Home, Home, NA, Home, Home, Home, Ho…
 $ ethnicity                     &lt;fct&gt; Unknown/Not Reported, Not Hispanic or La…
-$ stroke                        &lt;fct&gt; No, No, No, No, No, No, No, No, Yes, NA,…
-$ cad                           &lt;fct&gt; No, No, No, Yes, No, No, No, No, No, NA,…
-$ chf                           &lt;fct&gt; Yes, No, No, Yes, No, No, No, No, No, NA…
-$ afib                          &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, NA,…
-$ pvd                           &lt;fct&gt; No, No, No, No, No, No, Yes, No, No, NA,…
-$ hld                           &lt;fct&gt; Yes, No, Yes, Yes, No, No, Yes, No, No, …
-$ dm2                           &lt;fct&gt; No, No, Yes, Yes, No, No, Yes, No, Yes, …
-$ tobacco                       &lt;fct&gt; No, No, Yes, No, No, No, No, No, Yes, Ye…
-$ htn_meds                      &lt;fct&gt; Yes, No, No, Yes, No, Yes, Yes, No, Yes,…
-$ dm2_meds                      &lt;fct&gt; No, No, Yes, Yes, No, No, Yes, No, Yes, …
+$ stroke                        &lt;fct&gt; No, No, Yes, No, Yes, No, No, Yes, No, N…
+$ cad                           &lt;fct&gt; No, No, No, No, No, No, No, No, Yes, No,…
+$ chf                           &lt;fct&gt; Yes, No, No, No, No, No, No, No, Yes, No…
+$ afib                          &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, No,…
+$ pvd                           &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, …
+$ hld                           &lt;fct&gt; Yes, No, Yes, No, Yes, No, Yes, No, Yes,…
+$ dm2                           &lt;fct&gt; No, No, No, No, Yes, No, Yes, Yes, Yes, …
+$ tobacco                       &lt;fct&gt; No, No, No, No, No, No, Yes, Yes, No, No…
+$ htn_meds                      &lt;fct&gt; Yes, No, No, Yes, Yes, Yes, No, Yes, Yes…
+$ dm2_meds                      &lt;fct&gt; No, No, No, No, Yes, No, Yes, Yes, Yes, …
 $ symptom_onset_date_time       &lt;dttm&gt; 2011-01-01 05:00:00, 2012-01-01 05:00:0…
-$ ed_date_time                  &lt;dttm&gt; 2011-01-02 15:00:00, NA, NA, NA, 2014-0…
-$ time_symptoms_to_ed           &lt;dbl&gt; 2040, NA, NA, NA, 1380, 960, NA, 60, 60,…
-$ ich_location                  &lt;fct&gt; Lobar, Basal Ganglia, Lobar, Thalamus, B…
-$ ich_laterality                &lt;fct&gt; Right, Right, Left, Left, Left, Right, L…
-$ ivh                           &lt;fct&gt; Yes, No, No, Yes, No, Yes, NA, Yes, NA, …
-$ evd                           &lt;fct&gt; No, No, No, No, Yes, No, Yes, Yes, No, Y…
-$ neurosurgery_evac             &lt;fct&gt; No, No, Yes, Yes, No, No, No, No, No, No…
-$ neurosurgery_evac_date_time   &lt;dttm&gt; NA, NA, 2014-01-03 02:00:00, 2011-01-14…
+$ ed_date_time                  &lt;dttm&gt; 2011-01-02 15:00:00, NA, 2013-01-01 15:…
+$ time_symptoms_to_ed           &lt;dbl&gt; 2040, NA, 600, 60, 60, NA, NA, 1260, NA,…
+$ ich_location                  &lt;fct&gt; Lobar, Basal Ganglia, Basal Ganglia, Tha…
+$ ich_laterality                &lt;fct&gt; Right, Right, Right, Right, Left, Left, …
+$ ivh                           &lt;fct&gt; Yes, No, No, Yes, No, No, No, Yes, Yes, …
+$ evd                           &lt;fct&gt; No, No, No, No, No, No, No, No, No, Yes,…
+$ neurosurgery_evac             &lt;fct&gt; No, No, No, No, No, No, Yes, No, Yes, Ye…
+$ neurosurgery_evac_date_time   &lt;dttm&gt; NA, NA, NA, NA, NA, NA, 2014-01-03 02:0…
 $ neurosurgery_evac_hour        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ neurosurgery_evac_day         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ tracheostomy                  &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, …
 $ peg                           &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, …
-$ dnr_binary                    &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, Yes…
-$ dni_binary                    &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, No,…
-$ comfort_care_binary           &lt;fct&gt; No, No, No, No, No, No, No, No, No, Yes,…
+$ dnr_binary                    &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, NA,…
+$ dni_binary                    &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, NA,…
+$ comfort_care_binary           &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, …
 $ dnr_date_time                 &lt;dttm&gt; 2011-01-13 17:00:00, NA, NA, NA, NA, NA…
 $ dni_date_time                 &lt;dttm&gt; 2011-01-13 17:00:00, NA, NA, NA, NA, NA…
-$ comfort_care_date_time        &lt;dttm&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 201…
-$ dnr_hour                      &lt;dbl&gt; 266, NA, NA, NA, NA, NA, NA, NA, NA, 90,…
-$ dnr_day                       &lt;dbl&gt; 12, NA, NA, NA, NA, NA, NA, NA, NA, 4, N…
+$ comfort_care_date_time        &lt;dttm&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dnr_hour                      &lt;dbl&gt; 266, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ dnr_day                       &lt;dbl&gt; 12, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ dni_hour                      &lt;dbl&gt; 266, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
 $ dni_day                       &lt;dbl&gt; 12, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ comfort_care_hour             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 256,…
-$ comfort_care_day              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 11, …
-$ death_date                    &lt;date&gt; NA, NA, NA, NA, NA, 2014-07-07, NA, 201…
-$ death_day                     &lt;dbl&gt; NA, NA, NA, NA, NA, 186, NA, 179, 35, 11…
-$ mrs_90                        &lt;fct&gt; NA, 2, 1, 3, 5, 4, 3, 2, 6, 6, 4, 6, NA,…
-$ mrs_180                       &lt;fct&gt; 3, 1, 1, 3, 4, 4, NA, 6, 6, 6, NA, 6, NA…
-$ mrs_365                       &lt;fct&gt; 4, 1, 1, 2, 5, 6, 3, 6, 6, 6, 4, 6, NA, …
-$ euroqol_90_assessment_source  &lt;fct&gt; NA, Other, Patient, Caregiver, NA, Other…
+$ comfort_care_hour             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ comfort_care_day              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ death_date                    &lt;date&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ death_day                     &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_90                        &lt;fct&gt; NA, 2, 1, 2, 4, 1, 1, 1, 3, 2, 4, 2, 2, …
+$ mrs_180                       &lt;fct&gt; 3, 1, 1, 2, 4, 1, 1, 0, 3, 3, NA, 2, 4, …
+$ mrs_365                       &lt;fct&gt; 4, 1, 1, NA, 4, 1, 1, 0, 2, 4, 4, 2, 2, …
+$ euroqol_90_assessment_source  &lt;fct&gt; NA, Other, Other, Caregiver, NA, Other, …
 $ euroqol_180_assessment_source &lt;fct&gt; Caregiver, Other, Other, Caregiver, NA, …
-$ euroqol_365_assessment_source &lt;fct&gt; Caregiver, Other, Other, Medical Record,…
+$ euroqol_365_assessment_source &lt;fct&gt; Caregiver, Other, Other, NA, NA, NA, Oth…
 $ euro_mobility_365_binary      &lt;fct&gt; Any Problems, No Problems, No Problems, …
 $ euro_selfcare_365_binary      &lt;fct&gt; Any Problems, No Problems, No Problems, …
 $ euro_usual_365_binary         &lt;fct&gt; Any Problems, No Problems, No Problems, …
@@ -376,97 +387,6 @@ $ mrs_270                       &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 $ location_30                   &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># have to fix time from symptom onset to presentation in ED (units seems to be jacked up)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>table1_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"sex"</span>, <span class="st">"race"</span>, <span class="st">"ethnicity"</span>, <span class="st">"htn"</span>, <span class="st">"dm2"</span>, <span class="st">"tobacco"</span>, <span class="st">"sbp_baseline"</span>, <span class="st">"gcs_baseline"</span>, <span class="st">"nihss_baseline"</span>, <span class="st">"ich_volume_baseline"</span>, <span class="st">"ivh"</span>, <span class="st">"ich_location"</span>, <span class="st">"neurosurgery_evac"</span>, <span class="st">"comfort_care_binary"</span>, <span class="st">"study"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">CreateTableOne</span>(<span class="at">vars =</span> table1_vars, <span class="at">data =</span> data, <span class="at">strata =</span> <span class="st">"ich_laterality"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>table1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                                      Stratified by ich_laterality
-                                       Left           Right          p     
-  n                                       777            769               
-  age (mean (SD))                       61.04 (13.59)  61.65 (13.50)  0.379
-  sex = Male (%)                          470 (60.5)     473 (61.5)   0.720
-  race (%)                                                            0.405
-     American Indian or Alaskan Native      4 ( 0.5)       1 ( 0.1)        
-     Asian                                 91 (11.7)      91 (11.8)        
-     Black or African-American            229 (29.5)     214 (27.8)        
-     Black or American-American            12 ( 1.5)       6 ( 0.8)        
-     Native Hawaiian/Pacific Islander       0 ( 0.0)       1 ( 0.1)        
-     Other/Not Reported                    55 ( 7.1)      49 ( 6.4)        
-     White                                386 (49.7)     407 (52.9)        
-  ethnicity (%)                                                       0.887
-     Hispanic or Latino                    53 ( 6.8)      48 ( 6.2)        
-     Not Hispanic or Latino               546 (70.3)     541 (70.4)        
-     Unknown/Not Reported                 178 (22.9)     180 (23.4)        
-  htn = Yes (%)                           226 (85.9)     243 (86.2)   1.000
-  dm2 = Yes (%)                           147 (21.7)     153 (22.9)   0.646
-  tobacco = Yes (%)                       277 (43.1)     268 (42.8)   0.949
-  sbp_baseline (mean (SD))             189.44 (43.86) 188.90 (44.32)  0.814
-  gcs_baseline (mean (SD))              11.88 (3.51)   12.83 (3.31)  &lt;0.001
-  nihss_baseline (mean (SD))            16.71 (9.36)   14.42 (8.35)   0.001
-  ich_volume_baseline (mean (SD))       21.05 (22.51)  22.35 (23.04)  0.265
-  ivh = Yes (%)                           316 (41.0)     317 (41.4)   0.915
-  ich_location (%)                                                      NaN
-     Basal Ganglia                        331 (42.6)     267 (34.7)        
-     Brainstem                              0 ( 0.0)       0 ( 0.0)        
-     Cerebellum                             0 ( 0.0)       0 ( 0.0)        
-     Lobar                                206 (26.5)     233 (30.3)        
-     Primary IVH                            0 ( 0.0)       0 ( 0.0)        
-     Thalamus                             240 (30.9)     269 (35.0)        
-  neurosurgery_evac = Yes (%)              95 (12.2)     112 (14.6)   0.195
-  comfort_care_binary = Yes (%)            69 (13.0)      68 (13.0)   1.000
-  study (%)                                                           0.508
-     ATACH-2                              162 (20.8)     172 (22.4)        
-     CLEAR III                             66 ( 8.5)      70 ( 9.1)        
-     ERICH                                446 (57.4)     416 (54.1)        
-     MISTIE-2                              31 ( 4.0)      25 ( 3.3)        
-     MISTIE-3                              72 ( 9.3)      86 (11.2)        
-                                      Stratified by ich_laterality
-                                       test
-  n                                        
-  age (mean (SD))                          
-  sex = Male (%)                           
-  race (%)                                 
-     American Indian or Alaskan Native     
-     Asian                                 
-     Black or African-American             
-     Black or American-American            
-     Native Hawaiian/Pacific Islander      
-     Other/Not Reported                    
-     White                                 
-  ethnicity (%)                            
-     Hispanic or Latino                    
-     Not Hispanic or Latino                
-     Unknown/Not Reported                  
-  htn = Yes (%)                            
-  dm2 = Yes (%)                            
-  tobacco = Yes (%)                        
-  sbp_baseline (mean (SD))                 
-  gcs_baseline (mean (SD))                 
-  nihss_baseline (mean (SD))               
-  ich_volume_baseline (mean (SD))          
-  ivh = Yes (%)                            
-  ich_location (%)                         
-     Basal Ganglia                         
-     Brainstem                             
-     Cerebellum                            
-     Lobar                                 
-     Primary IVH                           
-     Thalamus                              
-  neurosurgery_evac = Yes (%)              
-  comfort_care_binary = Yes (%)            
-  study (%)                                
-     ATACH-2                               
-     CLEAR III                             
-     ERICH                                 
-     MISTIE-2                              
-     MISTIE-3                              </code></pre>
-</div>
-</div>
 
 
 
@@ -498,23 +418,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -526,24 +432,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -579,128 +468,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

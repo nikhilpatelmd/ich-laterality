@@ -1,37 +1,4 @@
-#
-#
-#
-#
-#
-
-library(tidyverse)
-library(dagitty)
-library(ggdag)
-library(MetBrewer)
-library(here)
-library(tableone)
-library(gt)
-library(gtExtras)
-library(broom)
-
-
-data <- read_csv(here("data", "all.csv"))
-
-#
-#
-#
-#
-#
-#| fig-width: 20
-
-# have to fix time from symptom onset to presentation in ED (units seems to be jacked up)
-
-table1_vars <- c("age", "sex", "race", "ethnicity", "htn", "dm2", "tobacco", "sbp_baseline", "gcs_baseline", "nihss_baseline", "ich_volume_baseline", "ivh", "ich_location", "neurosurgery_evac", "comfort_care_binary", "study")
-
-table1 <- CreateTableOne(vars = table1_vars, data = data, strata = "ich_laterality")
-
-table1
-
-#
-#
-#
+---
+title: "Descriptive Statistics"
+code-fold: true
+---

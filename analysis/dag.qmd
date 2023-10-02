@@ -11,7 +11,10 @@ library(dagitty)
 library(ggdag)
 library(MetBrewer)
 library(here)
+library(broom) # For converting model output to data frames
 
+# set theme of all DAGs to `theme_dag()`
+theme_set(theme_dag(base_family = "Cantarell"))
 
 ```
 
@@ -37,61 +40,112 @@ data |>
 ## Model Our Assumptions
 
 ```{r dag, warning=FALSE, message=FALSE}
-#| fig-width: 12
-#| fig-height: 8
+#| fig-width: 10
+#| fig-height: 7
+
+# original DAG: dagitty.net/mcLgZ8X, pw: CDKM93kbXs
 
 node_details <- tribble(
   ~name, ~label, ~x, ~y,
-  "functional_disability", "Functional Disability", 6, 1,
-  "ich_laterality", "Hemispheric Laterality", 2, 1,
-  "age", "Age", 2, 2,
-  "ich_location", "ICH Location", 2.5, 3,
-  "ich_volume", "ICH Volume", 3, 1.5,
-  "ivh", "IVH", 3, 4,
-  "gcs_baseline", "Admission GCS", 4, 2.5,
-  "wlst", "WLST", 5, 2,
-  "neurosurgery", "Neurosurgery", 5, 3,
-  "rehab", "Access to Rehab", 4, 5
+  "functional_disability", "Functional Disability", 4, 1,
+  "ich_laterality", "Hemispheric Laterality", 1, 1,
+  "age", "Age", 2.75, 3,
+  "ich_location", "ICH Location", 2, 2.75,
+  "ich_volume", "ICH Volume", 1, 2.75,
+  "ivh", "IVH", 1.5, 2.25,
+  "gcs_baseline", "Admission GCS", 2, 3.25,
+  "wlst", "Early WLST", 3.75, 2.25,
+  "neurosurgery", "Neurosurgery", 2, 1.5,
 )
 
 node_labels <- node_details$label
 names(node_labels) <- node_details$name
 
-dag_laterality <- dagify(
-  functional_disability ~ ich_laterality + age + ich_volume + ivh + ich_location + gcs_baseline + neurosurgery + wlst + rehab,
-  neurosurgery ~ age + ich_location + ich_volume + gcs_baseline,
-  wlst ~ age + ich_volume + ich_location + gcs_baseline,
-  gcs_baseline ~ ich_location + ich_volume + ivh + age,
+ich_dag <- dagify(
+  functional_disability ~ ich_laterality + age + ich_location + ich_volume + ivh + gcs_baseline + wlst + neurosurgery,
+  neurosurgery ~ ich_laterality + age + ich_location + gcs_baseline,
+  wlst ~ age + ich_location + gcs_baseline + ich_volume + ivh,
+  gcs_baseline ~ age + ich_location + ich_volume + ivh,
   ich_location ~ age,
-  rehab ~ ich_laterality + age + ich_location,
+  ivh ~ ich_location,
   exposure = "ich_laterality",
   outcome = "functional_disability",
-  latent = "rehab",
   coords = node_details,
   labels = node_labels
 )
 
-dag_laterality_tidy <- dag_laterality |>
+ich_dag_tidy <- ich_dag |>
   tidy_dagitty() |>
   node_status()
 
 colors <- met.brewer(name = "VanGogh1", n = 7, type = "discrete")
-status_colors <- c(exposure = colors[3], outcome = colors[7], latent = "grey50")
+status_colors <- c(exposure = colors[3], outcome = colors[6], latent = "grey50")
 
 # Fancy DAG
-ggplot(dag_laterality_tidy, aes(x = x, y = y, xend = xend, yend = yend)) +
-  geom_dag_edges() +
-  geom_dag_point(aes(color = status)) +
+ggplot(ich_dag_tidy, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges(aes(color = "grey50")) +
+  geom_dag_point(aes(color = status), size = 20) +
   geom_dag_label_repel(aes(label = label, fill = status),
     seed = 1234,
-    color = "white", fontface = "bold"
+    color = "white", fontface = "bold", family = "Cantarell", size = 5
   ) +
   scale_color_manual(values = status_colors, na.value = "grey20") +
   scale_fill_manual(values = status_colors, na.value = "grey20") +
-  guides(color = FALSE, fill = FALSE) +
-  theme_dag()
+  guides(color = FALSE, fill = FALSE)
 
-ggdag_paths(dag_laterality_tidy)
-ggdag_adjustment_set(dag_laterality_tidy)
+ggdag_adjustment_set(ich_dag_tidy) +
+  geom_dag_edges(aes(color = "grey50")) +
+  geom_dag_point(aes(color = status), size = 20) +
+  geom_dag_label_repel(aes(label = label, fill = status),
+    seed = 1234,
+    color = "white", fontface = "bold", family = "Cantarell", size = 5
+  ) +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = FALSE, fill = FALSE)
+
+ggdag_paths(ich_dag_tidy) +
+  geom_dag_edges(aes(color = "grey50")) +
+  geom_dag_point(aes(color = status), size = 20) +
+  geom_dag_label_repel(aes(label = label, fill = status),
+    seed = 1234,
+    color = "white", fontface = "bold", family = "Cantarell", size = 5
+  ) +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = FALSE, fill = FALSE)
+
+adjustment_vars <- c("neurosurgery", "age", "ich_volume", "ivh", "gcs_baseline", "ich_location", "wlst")
+
+control_for(ich_dag_tidy, var = adjustment_vars)
+
+ggdag_adjust(ich_dag_tidy, var = adjustment_vars) +
+  geom_dag_edges(aes(color = "grey50")) +
+  geom_dag_point(aes(color = status), size = 20) +
+  geom_dag_label_repel(aes(label = label, fill = status),
+    seed = 1234,
+    color = "white", fontface = "bold", family = "Cantarell", size = 5
+  ) +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = FALSE, fill = FALSE)
+
+
+ggdag_dseparated(ich_dag_tidy, controlling_for = adjustment_vars) +
+  geom_dag_edges(aes(color = "grey50")) +
+  geom_dag_point(aes(color = status), size = 20) +
+  geom_dag_label_repel(aes(label = label, fill = status),
+    seed = 1234,
+    color = "white", fontface = "bold", family = "Cantarell", size = 5
+  ) +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = FALSE, fill = FALSE)
+
+```
+
+
+```{r}
+
 
 ```
