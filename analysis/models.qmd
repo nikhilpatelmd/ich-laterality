@@ -10,12 +10,16 @@ library(ordinal)
 library(marginaleffects)
 library(modelsummary)
 library(brms)
+library(cmdstanr)
 library(tidybayes)
 library(broom.mixed)
 library(ggplot2)
 library(ggdist)
 library(broom)
+library(gt)
 library(here)
+
+options(mc.cores = parallel::detectCores())
 
 data <- read_rds(here("data", "all.rds"), refhook = NULL)
 
@@ -34,6 +38,9 @@ data <- data |>
     mrs_365 = fct_inseq(as.character(mrs_365), ordered = TRUE),
   ) |>
   filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar")
+
+data$ich_location <- fct_drop(data$ich_location)
+table(data$ich_location)
 
 ```
 
@@ -74,58 +81,51 @@ mrs_prop |>
 
 ```{r frequentist ordinal}
 
-mrs_90_ich_lat <- clm(
-  mrs_90 ~ ich_laterality,
+fit_freq <- clm(
+  mrs_90 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac,
   data = data,
   link = "logit"
 )
 
-neurosurg_ich_lat <- clm(
-  neurosurgery_evac ~ ich_laterality,
-  data = data,
-  link = "logit"
-)
+summary(fit_freq)
 
-mrs_90_ich_lat_neurosurg <- clm(
-  mrs_90 ~ ich_laterality + neurosurgery_evac,
-  data = data,
-  link = "logit"
-)
+predictions(fit_freq, by = "ich_laterality", type = "cum.prob") |>
+  gt()
 
-summary(mrs_90_ich_lat)
-summary(neurosurg_ich_lat)
-summary(mrs_90_ich_lat_neurosurg)
+predictions(fit_freq, by = c("ich_location", "ich_laterality"), type = "cum.prob") |>
+  gt()
+
+plot_predictions(fit_freq, condition = c("ich_location", "ich_laterality"), type = "cum.prob")
+
+tidy(fit_freq)
 
 ```
 
 ## Bayesian Analysis
 
+```{r bayesian ordinal, warning=FALSE, message=FALSE}
 
-```{r bayesian ordinal}
-
-fit1 <- brm(
-  data = data,
-  family = cumulative(probit),
-  mrs_90 ~ 1,
-)
-
-fit2 <- brm(
+fit_brms <- brm(
+  mrs_90 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac,
   data = data,
   family = cumulative(logit),
-  mrs_90 ~ 1,
+  prior = set_prior("normal(0,5)"),
+  chains = 2,
+  cores = 6,
+  backend = "cmdstanr"
 )
 
-fit3 <- brm(
-  data = data,
-  family = cumulative(logit),
-  mrs_90 ~ ich_laterality,
-)
+print(fit_brms)
 
-print(fit1)
-print(fit2)
-print(fit3)
+tidy(fit_brms) |>
+  select(c(estimate, conf.low, conf.high))
 
-pred <- predictions(fit3)
+predictions(fit_brms, by = c("ich_location", "ich_laterality"), type = "response") |>
+  gt()
 
+plot_predictions(fit_brms, condition = c("ich_location", "ich_laterality"), type = "response")
+
+plot_predictions(fit_brms, condition = c("ich_location", "ich_laterality"), type = "prediction")
 
 ```
+
