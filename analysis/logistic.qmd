@@ -1,0 +1,85 @@
+---
+title: "Logistic Models"
+code-fold: true
+---
+
+These analyses are intended to build up intuition on using Bayesian logistic regression as a stepping stone to understanding and using Bayesian ordinal regression. We will work with dichotimized variables of the modified Rankin score as well as the EuroQOL.
+
+```{r setup}
+#| code-fold: true
+#| code-summary: "Setup"
+#| warning: false
+#| message: false
+
+library(bayesrules)
+library(tidyverse)
+library(janitor)
+library(brms)
+library(cmdstanr)
+library(rstanarm)
+library(marginaleffects)
+library(broom)
+library(broom.mixed)
+library(parameters)
+library(tidybayes)
+library(ggdist)
+library(patchwork)
+library(latex2exp)
+library(scales)
+library(here)
+
+# plot stuff
+colors <- MetBrewer::met.brewer("Cross", 6)
+theme_set(theme_bw(base_family = "Cantarell"))
+bayesplot::color_scheme_set(colors)
+
+# seeds
+set.seed(160)
+BAYES_SEED <- 160
+
+# data
+data <- read_rds(here("data", "all.rds"), refhook = NULL)
+
+data <- data |>
+  filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar") |>
+  filter(study == "ERICH" | study == "ATACH2") |>
+  select(study, age, ich_laterality, ich_location, ich_volume_baseline, gcs_baseline, ivh, neurosurgery_evac, mrs_90_01, mrs_90_02, mrs_90_03, mrs_90_04) |>
+  drop_na(ich_laterality)
+
+data$ich_location <- fct_drop(data$ich_location)
+
+```
+
+## General Setup
+
+We are interested in modeling the probability of a "good" outcome for patients with ICH at 90 days as defined by the **modified Rankin Scale**. For this session, we will work with a dichotimized version of the mRS at various cutpoints (0-1 vs 2-6, 0-2 vs 3-6, 0-3 vs 4-6, 0-45 vs 5-6). All of these cutpoints have been used in various randomized trials and observational studies.
+
+We will base our model on these predictors:
+
+- `age`
+- `ich_laterality`: the main "predictor" of interest for the main analysis
+- `ich_location`: only supratentorial locations are used (lobar, thalamus, basal ganglia)
+- `ich_volume_baseline`
+- `ivh`
+- `neurosurgery_evac`
+
+
+### Modeling poor outcome given age and ICH Volume
+
+We will use continuous variables first before jumping into categorical predictors. 
+
+```{r}
+#| fig-width: 10
+
+data |>
+  drop_na(mrs_90_03) |>
+  ggplot(aes(x = mrs_90_03)) +
+  geom_density(fill = colors[3], alpha = 0.2) +
+  facet_wrap(~ich_location)
+
+data |>
+  drop_na(mrs_90_02) |>
+  tabyl(ich_location, mrs_90_02) |>
+  adorn_percentages()
+
+```

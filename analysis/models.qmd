@@ -23,24 +23,14 @@ options(mc.cores = parallel::detectCores())
 
 data <- read_rds(here("data", "all.rds"), refhook = NULL)
 
-# plot stuff
-theme_set(theme_minimal(base_family = "Cantarell"))
-
-# convert mrs to ordered factors
-mrs_levels <- c("0", "1", "2", "3", "4", "5", "6")
-
 data <- data |>
-  mutate(
-    mrs_30 = fct_inseq(as.character(mrs_30), ordered = TRUE),
-    mrs_90 = fct_inseq(as.character(mrs_90), ordered = TRUE),
-    mrs_180 = fct_inseq(as.character(mrs_180), ordered = TRUE),
-    mrs_270 = fct_inseq(as.character(mrs_270), ordered = TRUE),
-    mrs_365 = fct_inseq(as.character(mrs_365), ordered = TRUE),
-  ) |>
   filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar")
 
 data$ich_location <- fct_drop(data$ich_location)
 table(data$ich_location)
+
+# plot stuff
+theme_set(theme_minimal(base_family = "Cantarell"))
 
 ```
 
@@ -117,15 +107,11 @@ fit_brms <- brm(
 
 print(fit_brms)
 
-tidy(fit_brms) |>
-  select(c(estimate, conf.low, conf.high))
-
 predictions(fit_brms, by = c("ich_location", "ich_laterality"), type = "response") |>
   gt()
 
 plot_predictions(fit_brms, condition = c("ich_location", "ich_laterality"), type = "response")
 
-plot_predictions(fit_brms, condition = c("ich_location", "ich_laterality"), type = "prediction")
 
 ```
 
