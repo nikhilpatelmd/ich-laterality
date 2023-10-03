@@ -6,40 +6,126 @@ code-fold: true
 ```{r setup, warning=FALSE, message=FALSE}
 
 library(tidyverse)
+library(ordinal)
 library(marginaleffects)
+library(modelsummary)
 library(brms)
+library(tidybayes)
+library(broom.mixed)
 library(ggplot2)
 library(ggdist)
 library(broom)
 library(here)
 
-data <- read_csv(here("data", "all.csv"))
+data <- read_rds(here("data", "all.rds"), refhook = NULL)
 
+# plot stuff
+theme_set(theme_minimal(base_family = "Cantarell"))
+
+# convert mrs to ordered factors
+mrs_levels <- c("0", "1", "2", "3", "4", "5", "6")
+
+data <- data |>
+  mutate(
+    mrs_30 = fct_inseq(as.character(mrs_30), ordered = TRUE),
+    mrs_90 = fct_inseq(as.character(mrs_90), ordered = TRUE),
+    mrs_180 = fct_inseq(as.character(mrs_180), ordered = TRUE),
+    mrs_270 = fct_inseq(as.character(mrs_270), ordered = TRUE),
+    mrs_365 = fct_inseq(as.character(mrs_365), ordered = TRUE),
+  ) |>
+  filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar")
 
 ```
 
-## Estimate the Causal Effect
+## Visualization
 
-First let's do a replication of the INTERACT re-analysis.
 
 ```{r interact2 analysis replication}
 
+mrs_prop <- data |>
+  count(mrs_90) |>
+  mutate(p = n / sum(n), cumsum_p = cumsum(p)) |>
+  na.omit()
 
-priors <- c(prior(normal(0, 1.5), class = Intercept))
+mrs_prop |>
+  ggplot(aes(x = mrs_90, y = p)) +
+  geom_col(fill = "coral") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "mRS 90", y = "Proportion")
 
-inits <- list(Intercept = c(-2, -1, 0, 1, 2, 2.5))
+mrs_prop |>
+  ggplot(aes(x = as.integer(mrs_90), y = cumsum_p)) +
+  geom_point(size = 2) +
+  geom_line(linewidth = 1) +
+  labs(x = "mRS 90", y = "Cumulative Proportion")
 
-mod <- brm(mrs_90 ~ 1,
-  data = data,
-  family = cumulative("logit"),
-  prior = priors,
-  init = rep(list(inits), 4),
-  chains = 4, iter = 5000 * 2, seed = 28203, cores = 4,
-  backend = "cmdstanr", refresh = 0
-)
+mrs_prop |>
+  ggplot(aes(x = as.integer(mrs_90), y = log(cumsum_p) - log(1 - cumsum_p))) +
+  geom_point(size = 2) +
+  geom_line(linewidth = 1) +
+  labs(x = "mRS 90", y = "Logit Cumulative Proportion")
 
 
 ```
 
-## Conduct Sensitivity Analyses
+## Frequentist Analysis
 
+### Mediation Analysis with Neurosurgery and ICH Laterality
+
+```{r frequentist ordinal}
+
+mrs_90_ich_lat <- clm(
+  mrs_90 ~ ich_laterality,
+  data = data,
+  link = "logit"
+)
+
+neurosurg_ich_lat <- clm(
+  neurosurgery_evac ~ ich_laterality,
+  data = data,
+  link = "logit"
+)
+
+mrs_90_ich_lat_neurosurg <- clm(
+  mrs_90 ~ ich_laterality + neurosurgery_evac,
+  data = data,
+  link = "logit"
+)
+
+summary(mrs_90_ich_lat)
+summary(neurosurg_ich_lat)
+summary(mrs_90_ich_lat_neurosurg)
+
+```
+
+## Bayesian Analysis
+
+
+```{r bayesian ordinal}
+
+fit1 <- brm(
+  data = data,
+  family = cumulative(probit),
+  mrs_90 ~ 1,
+)
+
+fit2 <- brm(
+  data = data,
+  family = cumulative(logit),
+  mrs_90 ~ 1,
+)
+
+fit3 <- brm(
+  data = data,
+  family = cumulative(logit),
+  mrs_90 ~ ich_laterality,
+)
+
+print(fit1)
+print(fit2)
+print(fit3)
+
+pred <- predictions(fit3)
+
+
+```
