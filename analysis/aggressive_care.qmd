@@ -1,0 +1,151 @@
+---
+title: "Aggressive Care and Hemispheric Laterality"
+---
+
+```{r setup}
+#| code-fold: true
+#| code-summary: "Setup"
+#| warning: false
+#| message: false
+
+library(tidyverse) # ggplot, dplyr, and friends
+library(janitor)
+library(glue) # Easier string interpolation
+library(gt) # Fancy tables
+library(scales) # Nicer labeling functions
+library(patchwork) # Combine plots nicely
+library(ggmosaic) # Mosaic plots with ggplot
+library(parameters) # Extract model parameters as data frames
+library(cmdstanr) # Run Stan code from R
+library(brms) # Nice frontend for Stan
+library(tidybayes) # Manipulate MCMC chains in a tidy way
+library(here)
+
+# Set some global Stan options
+CHAINS <- 4
+ITER <- 2000
+WARMUP <- 1000
+BAYES_SEED <- 160
+options(mc.cores = parallel::detectCores(), brms.backend = "cmdstanr")
+
+# ggplot theming
+theme_nice <- function() {
+  theme_minimal(base_family = "Cantarell") +
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(family = "Cantarell", face = "bold"),
+      axis.title = element_text(family = "Cantarell Medium"),
+      axis.title.x = element_text(hjust = 0),
+      axis.title.y = element_text(hjust = 1),
+      strip.text = element_text(
+        family = "Cantarell", face = "bold",
+        size = rel(1), hjust = 0
+      ),
+      strip.background = element_rect(fill = NA, color = NA)
+    )
+}
+
+```
+
+I am interested in seeing if hemispheric laterality affects the aggressiveness of care that a patient receives. This mostly includes neurosurgery, but also other processes such as days of mechanical ventilation, EVD placement, rates of tracheostomy/PEG, and if patients were transitioned to comfort care.
+
+I will be using observational data from the ERICH study, as well as the randomized trial data from ATACH-2 to answer these questions. 
+
+## Exploratory Data Analysis
+
+Loading the data from ATACH-2 and ERICH, and filtering out the variables needed for the analysis.
+
+```{r loading data}
+
+# load data
+data <- read_rds(here("data", "all.rds"), refhook = NULL)
+
+# filter out only ERICH and ATACH2 and keep relevant variables
+cleaned_data <- data |>
+  mutate(id = 1:n()) |>
+  filter(study == "ERICH" | study == "ATACH-2") |>
+  select(id, study, ich_laterality, age, sex, race, ethnicity, sbp_baseline, gcs_baseline, ich_volume_baseline, ivh, ich_location, neurosurgery_evac, evd, tracheostomy, peg, comfort_care_binary, comfort_care_day) |>
+  drop_na(ich_laterality, neurosurgery_evac)
+
+
+```
+
+Now we can summarize the preliminary data.
+
+
+```{r exploratory data analysis}
+
+counts <- cleaned_data |>
+  tabyl(ich_laterality, neurosurgery_evac, ich_location) |>
+  adorn_percentages("row") |>
+  adorn_pct_formatting(rounding = "half up", digits = 1)
+
+counts
+
+counts_tidy <- cleaned_data |>
+  group_by(ich_laterality, neurosurgery_evac) |>
+  summarize(n = n()) |>
+  mutate(
+    total = sum(n),
+    prop = n / sum(n)
+  ) |>
+  ungroup()
+
+
+counts_tidy
+
+ggplot(cleaned_data) +
+  geom_mosaic(
+    aes(
+      x = product(neurosurgery_evac, ich_laterality),
+      fill = ich_laterality, alpha = neurosurgery_evac
+    ),
+    divider = mosaic("v")
+  )
+
+```
+
+## The Question
+
+**Do patients with left hemispheric ICH receive neurosurgical evacuations less frequently as compared to patients with right hemispheric ICH?**
+
+We want to determine if there's a substantial difference in the proportion of patients who receive neurosurgical intervention in the right or left hemisphere.
+
+
+```{r color setup}
+
+# Left/Right hemisphere question colors
+clrs_saguaro <- NatParksPalettes::natparks.pals("Saguaro")
+clr_left <- clrs_saguaro[1]
+clr_right <- clrs_saguaro[6]
+clr_diff <- clrs_saguaro[4]
+
+```
+
+## Frequentist Way
+
+
+```{r frequentist}
+
+matrix <- counts_tidy |>
+  filter(neurosurgery_evac == "Yes") |>
+  mutate(n_no = total - n) |>
+  select(n_yes = n, n_no) |>
+  as.matrix()
+
+prop.test(matrix) |>
+  model_parameters()
+
+```
+
+
+```{r binomial}
+
+ggplot() +
+  stat_function(fun = ~ dbeta(., 2, 6), geom = "area", fill = "#AC3414") +
+  scale_x_continuous(labels = label_percent()) +
+  labs(x = "Possible values for π", y = NULL, fill = NULL) +
+  theme_nice() +
+  theme(axis.text.y = element_blank())
+
+```
