@@ -1,0 +1,531 @@
+---
+title: "Visualizing Posterior Distributions and Predictions"
+code-overflow: wrap
+---
+
+This is an attempt to teach myself some concepts about the visualizing the posterior distribution in Bayesian models by re-creating Andrew Heiss' blog post [about this](https://doi.org/10.59350/xge39-emt86).
+
+```{r setup}
+#| code-fold: true
+#| code-summary: "Setup"
+#| warning: false
+#| message: false
+
+library(tidyverse) # ggplot, dplyr, and friends
+library(patchwork) # Combine ggplot plots
+library(ggtext) # Fancier text in ggplot plots
+library(scales) # Labeling functions
+library(brms) # Bayesian modeling through Stan
+library(tidybayes) # Manipulate Stan objects in a tidy way
+library(marginaleffects) # Calculate marginal effects
+library(modelr) # For quick model grids
+library(extraDistr) # For dprop() beta distribution with mu/phi
+library(distributional) # For plotting distributions with ggdist
+library(palmerpenguins) # Penguins!
+library(kableExtra) # For nicer tables
+library(here)
+
+# plot stuff
+colors <- MetBrewer::met.brewer("Cross", 6)
+theme_set(theme_minimal(base_family = "Cantarell"))
+bayesplot::color_scheme_set(colors)
+
+# seeds
+set.seed(160)
+BAYES_SEED <- 160
+
+# Bayes
+options(
+  mc.cores = parallel::detectCores(),
+  brms.backend = "cmdstanr"
+)
+
+# Add a couple new variables to the penguins data:
+#  - is_gentoo: Indicator for whether or not the penguin is a Gentoo
+#  - bill_ratio: The ratio of a penguin's bill depth (height) to its bill length
+penguins <- penguins |>
+  drop_na(sex) |>
+  mutate(is_gentoo = species == "Gentoo") |>
+  mutate(bill_ratio = bill_depth_mm / bill_length_mm)
+
+# data
+data <- read_rds(here("data", "all.rds"), refhook = NULL)
+
+data <- data |>
+  filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar") |>
+  filter(study == "ERICH" | study == "ATACH2") |>
+  select(study, age, ich_laterality, ich_location, ich_volume_baseline, gcs_baseline, ivh, neurosurgery_evac, sbp_baseline, mrs_90_01, mrs_90_02, mrs_90_03, mrs_90_04) |>
+  drop_na(ich_laterality)
+
+data$ich_location <- fct_drop(data$ich_location)
+
+```
+
+## Normal Gaussian model
+
+### Palmer Penguins Example
+
+Andrew first uses the Palmer Penguins dataset to examine the relationship between penguin flipper length and body mass. 
+
+```{r eda penguins, warning=FALSE, message=FALSE}
+
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(size = 1, alpha = 0.7) +
+  geom_smooth(method = "lm", color = colors[5], se = FALSE) +
+  scale_y_continuous(labels = label_comma()) +
+  coord_cartesian(ylim = c(2000, 6000)) +
+  labs(x = "Flipper length (mm)", y = "Body mass (g)")
+
+```
+
+This can be written more formally as:
+
+$$
+\begin{aligned}
+\text{Body mass}_i &\sim \operatorname{Normal}(\mu_i, \sigma) \\
+\mu_i &= \alpha + \beta \ \text{Flipper length}_i
+\end{aligned}
+$$
+
+Or more generally:
+
+$$
+\begin{aligned}
+y_i &\sim \operatorname{Normal}(\mu_i, \sigma) \\
+\mu_i &= \alpha + \beta x_i
+\end{aligned}
+$$
+
+This states that body mass is normally distributed with an average that is conditional on flipper length. 
+
+
+```{r brms gaussian penguins, output=FALSE, warning=FALSE, message=FALSE}
+
+model_normal_penguins <- brm(
+  bf(body_mass_g ~ flipper_length_mm),
+  family = gaussian(),
+  data = penguins
+)
+
+```
+
+
+```{r brms gaussian penguins results}
+
+broom.mixed::tidy(model_normal_penguins, conf.level = 0.89) |>
+  bind_cols(parameter = c("α", "β", "σ")) |>
+  select(parameter, term, estimate, std.error, conf.low, conf.high)
+
+```
+
+The intercept (α) is huge and negative because flipper length is far away from 0, so it’s pretty uninterpretable. We could fix that by centering the data, so α would indicate the body mass for an average flipper length. 
+
+The coefficient β shows that a one-mm increase in flipper length is associated with a 50 gram increase in body mass. And the overall model standard deviation σ shows that there’s roughly 400 grams of deviation around the mean body mass.
+
+These are all the posterior means but remember that we have complete distributions for these parameters.
+
+However, here we want to examine the posterior distribution of body mass, which is the outcome we are ultimately interested in. Remember this is represented by "mu" and the overall posterior distribution of "y". Both of these represent body mass, but they are really different things. Mu represents the mean body mass, and y represents the total distribution including the standard deviation.
+
+There are three different `brms` functions that we can use, listed below along with their corresponding `tidybayes` wrappers:
+
+- `posterior_predict()`: `predicted_draws`
+- `posterior_epred()`: `epred_draws`
+- `posterior_linpred()` `linpred_draws`
+
+We have to feed the functions `newdata`, which is a data frame of values to make the predictions. If we feed the original dataset, it would plug each row of the data into the model and generate a bunch of posterior draws (4000). This would result in 333 * 4000 rows of data, which isn't super useful to visualize.
+
+We can first look at the predictions based on a single value of flipper lengths. Andrew uses the average, which is 200.967 mm. You can use the median or whatever number you want.
+
+```{r penguins single value prediction}
+
+# Make a little dataset of just the average flipper length
+penguins_avg_flipper <- penguins |>
+  summarize(flipper_length_mm = mean(flipper_length_mm))
+
+# Extract different types of posteriors
+normal_linpred <- model_normal_penguins |>
+  linpred_draws(newdata = penguins_avg_flipper)
+
+normal_epred <- model_normal_penguins |>
+  epred_draws(newdata = penguins_avg_flipper)
+
+normal_predicted <- model_normal_penguins |>
+  predicted_draws(
+    newdata = penguins_avg_flipper,
+    seed = 12345
+  ) # So that the manual results with rnorm() are the same later
+
+```
+
+Now we can look at each distribution's mean, median, standard deviation, and shapes.
+
+
+```{r penguins posterior predictions}
+
+summary_normal_linpred <- normal_linpred |>
+  ungroup() |>
+  summarize(across(.linpred, lst(mean, sd, median), .names = "{.fn}"))
+
+summary_normal_epred <- normal_epred |>
+  ungroup() |>
+  summarize(across(.epred, lst(mean, sd, median), .names = "{.fn}"))
+
+summary_normal_predicted <- normal_predicted |>
+  ungroup() |>
+  summarize(across(.prediction, lst(mean, sd, median), .names = "{.fn}"))
+
+tribble(
+  ~Function, ~`Model element`,
+  "<code>posterior_linpred()</code>", "\\(\\mu\\) in the model",
+  "<code>posterior_epred()</code>", "\\(\\operatorname{E(y)}\\) and \\(\\mu\\) in the model",
+  "<code>posterior_predict()</code>", "Random draws from posterior \\(\\operatorname{Normal}(\\mu_i, \\sigma)\\)"
+) |>
+  bind_cols(bind_rows(summary_normal_linpred, summary_normal_epred, summary_normal_predicted)) |>
+  kbl(escape = FALSE) |>
+  kable_styling()
+
+p1 <- ggplot(normal_linpred, aes(x = .linpred)) +
+  stat_halfeye(fill = colors[3]) +
+  scale_x_continuous(labels = label_comma()) +
+  coord_cartesian(xlim = c(4100, 4300)) +
+  labs(
+    x = "Body mass (g)", y = NULL,
+    title = "**Linear predictor** <span style='font-size: 14px;'>*µ* in the model</span>",
+    subtitle = "posterior_linpred(..., tibble(flipper_length_mm = 201))"
+  ) +
+  theme(plot.title = element_markdown())
+
+p2 <- ggplot(normal_epred, aes(x = .epred)) +
+  stat_halfeye(fill = colors[2]) +
+  scale_x_continuous(labels = label_comma()) +
+  coord_cartesian(xlim = c(4100, 4300)) +
+  labs(
+    x = "Body mass (g)", y = NULL,
+    title = "**Expectation of the posterior** <span style='font-size: 14px;'>E[*y*] and *µ* in the model</span>",
+    subtitle = "posterior_epred(..., tibble(flipper_length_mm = 201))"
+  )
+
+p3 <- ggplot(normal_predicted, aes(x = .prediction)) +
+  stat_halfeye(fill = colors[1]) +
+  scale_x_continuous(labels = label_comma()) +
+  coord_cartesian(xlim = c(2900, 5500)) +
+  labs(
+    x = "Body mass (g)", y = NULL,
+    title = "**Posterior predictions** <span style='font-size: 14px;'>Random draws from posterior Normal(*µ*, *σ*)</span>",
+    subtitle = "posterior_predict(..., tibble(flipper_length_mm = 201))"
+  )
+
+(p1 / plot_spacer() / p2 / plot_spacer() / p3) +
+  plot_layout(heights = c(0.3, 0.05, 0.3, 0.05, 0.3))
+
+```
+
+The range of predictions is the biggest difference among these. The `posterior_linpred()` and `posterior_epred()` have small spreads (standard errors) while `posterior_predict()` has a larger spread.
+
+This is due to `posterior_linpred()` and `posterior_epred()` corresponding to the "mu" part of the model and not incorporating any standard deviation. 
+
+We can re-recreate `posterior_linpred()` by remembering that this is the average body mass as predicted by the model, which is B0 + (B1 * `flipper_length`). So if we plug-in 201 into this, we get the same thing as `posterior_linpred()`.
+
+The results of `posterior_predict()` incorporate the standard deviation as well as the mean, thus resulting in more uncertainty.
+
+For `posterior_epred()`, the results in the **Gaussian regression** are the same as that of the linear predictor `posterior_linpred()`. 
+
+We can also look at these different types of posterior predictions across a range of possible flipper lengths. There’s a lot more uncertainty in the full posterior, since it incorporates the uncertainty of both and , while the uncertainty of the linear predictor/expected value of the posterior is much more narrow (and equivalent in this case):
+
+
+```{r penguins full posterior}
+
+p1 <- penguins |>
+  data_grid(flipper_length_mm = seq_range(flipper_length_mm, n = 100)) |>
+  add_linpred_draws(model_normal_penguins, ndraws = 100) |>
+  ggplot(aes(x = flipper_length_mm)) +
+  stat_lineribbon(aes(y = .linpred),
+    .width = 0.95,
+    alpha = 0.5, color = colors[3], fill = colors[3]
+  ) +
+  geom_point(data = penguins, aes(y = body_mass_g), size = 1, alpha = 0.7) +
+  scale_y_continuous(labels = label_comma()) +
+  coord_cartesian(ylim = c(2000, 6000)) +
+  labs(
+    x = "Flipper length (mm)", y = "Body mass (g)",
+    title = "**Linear predictor** <span style='font-size: 14px;'>*µ* in the model</span>",
+    subtitle = "posterior_linpred()"
+  )
+
+p2 <- penguins |>
+  data_grid(flipper_length_mm = seq_range(flipper_length_mm, n = 100)) |>
+  add_epred_draws(model_normal_penguins, ndraws = 100) |>
+  ggplot(aes(x = flipper_length_mm)) +
+  stat_lineribbon(aes(y = .epred),
+    .width = 0.95,
+    alpha = 0.5, color = colors[2], fill = colors[2]
+  ) +
+  geom_point(data = penguins, aes(y = body_mass_g), size = 1, alpha = 0.7) +
+  scale_y_continuous(labels = label_comma()) +
+  coord_cartesian(ylim = c(2000, 6000)) +
+  labs(
+    x = "Flipper length (mm)", y = "Body mass (g)",
+    title = "**Expectation of the posterior** <span style='font-size: 14px;'>E[*y*] and *µ* in the model</span>",
+    subtitle = "posterior_epred()"
+  )
+
+p3 <- penguins |>
+  data_grid(flipper_length_mm = seq_range(flipper_length_mm, n = 100)) |>
+  add_predicted_draws(model_normal_penguins, ndraws = 100) |>
+  ggplot(aes(x = flipper_length_mm)) +
+  stat_lineribbon(aes(y = .prediction),
+    .width = 0.95,
+    alpha = 0.5, color = colors[1], fill = colors[1]
+  ) +
+  geom_point(data = penguins, aes(y = body_mass_g), size = 1, alpha = 0.7) +
+  scale_y_continuous(labels = label_comma()) +
+  coord_cartesian(ylim = c(2000, 6000)) +
+  labs(
+    x = "Flipper length (mm)", y = "Body mass (g)",
+    title = "**Posterior predictions** <span style='font-size: 14px;'>Random draws from posterior Normal(*µ*, *σ*)</span>",
+    subtitle = "posterior_predict()"
+  )
+
+(p1 / plot_spacer() / p2 / plot_spacer() / p3) +
+  plot_layout(heights = c(0.3, 0.05, 0.3, 0.05, 0.3))
+
+```
+
+### ICH Example
+
+Here we will examine the relationship between age and ICH volume on admission. It is not as strong of a relationship, but we're not trying to publish anything here so it'll serve just fine.
+
+```{r eda ich, warning=FALSE, message=FALSE}
+
+ggplot(data, aes(x = age, y = ich_volume_baseline)) +
+  geom_point(size = 1, alpha = 0.7) +
+  geom_smooth(method = "lm", color = colors[5], se = FALSE) +
+  scale_y_continuous(labels = label_comma()) +
+  # coord_cartesian(ylim = c(2000, 6000)) +
+  labs(x = "Age (years)", y = "ICH Volume (mL)")
+
+```
+
+Again, his can be written more formally as:
+
+$$
+\begin{aligned}
+\text{ICH Volume}_i &\sim \operatorname{Normal}(\mu_i, \sigma) \\
+\mu_i &= \alpha + \beta \ \text{Age}_i
+\end{aligned}
+$$
+
+Or more generally:
+
+$$
+\begin{aligned}
+y_i &\sim \operatorname{Normal}(\mu_i, \sigma) \\
+\mu_i &= \alpha + \beta x_i
+\end{aligned}
+$$
+
+This states that ICH Volume is normally distributed with an average that is conditional on age.
+
+```{r brms gaussian ich, output=FALSE, warning=FALSE, message=FALSE}
+
+model_normal_ich <- brm(
+  ich_volume_baseline ~ age,
+  family = gaussian(),
+  data = data
+)
+
+```
+
+
+```{r brms gaussian ich results}
+
+broom.mixed::tidy(model_normal_ich, conf.level = 0.89) |>
+  bind_cols(parameter = c("α", "β", "σ")) |>
+  select(parameter, term, estimate, std.error, conf.low, conf.high)
+
+```
+
+The intercept (α) is not very big and because it's impossible for age to be 0, it’s pretty uninterpretable. We could fix that by centering the data, so α would indicate the ICH Volume for an average age.
+
+The coefficient β shows that a one year increase in age is associated with a 0.2 mL increase in ICH Volume. And the overall model standard deviation σ shows that there’s roughly 27 mL of deviation around the mean ICH volume.
+
+Now we will feed the average age and examine the distributions of ICH Volume.
+
+
+```{r ich single value prediction}
+
+# Make a little dataset of just the average flipper length
+ich_avg_age <- data |>
+  summarize(age = mean(age))
+
+# Extract different types of posteriors
+normal_linpred <- model_normal_ich |>
+  linpred_draws(newdata = ich_avg_age)
+
+normal_epred <- model_normal_ich |>
+  epred_draws(newdata = ich_avg_age)
+
+normal_predicted <- model_normal_ich |>
+  predicted_draws(
+    newdata = ich_avg_age,
+    seed = 12345
+  ) # So that the manual results with rnorm() are the same later
+
+```
+
+Now we can look at each distribution's mean, median, standard deviation, and shapes.
+
+```{r ich posterior predictions}
+
+summary_normal_linpred <- normal_linpred |>
+  ungroup() |>
+  summarize(across(.linpred, lst(mean, sd, median), .names = "{.fn}"))
+
+summary_normal_epred <- normal_epred |>
+  ungroup() |>
+  summarize(across(.epred, lst(mean, sd, median), .names = "{.fn}"))
+
+summary_normal_predicted <- normal_predicted |>
+  ungroup() |>
+  summarize(across(.prediction, lst(mean, sd, median), .names = "{.fn}"))
+
+tribble(
+  ~Function, ~`Model element`,
+  "<code>posterior_linpred()</code>", "\\(\\mu\\) in the model",
+  "<code>posterior_epred()</code>", "\\(\\operatorname{E(y)}\\) and \\(\\mu\\) in the model",
+  "<code>posterior_predict()</code>", "Random draws from posterior \\(\\operatorname{Normal}(\\mu_i, \\sigma)\\)"
+) |>
+  bind_cols(bind_rows(summary_normal_linpred, summary_normal_epred, summary_normal_predicted)) |>
+  kbl(escape = FALSE) |>
+  kable_styling()
+
+p1 <- ggplot(normal_linpred, aes(x = .linpred)) +
+  stat_halfeye(fill = colors[3]) +
+  scale_x_continuous(labels = label_comma()) +
+  # coord_cartesian(xlim = c(4100, 4300)) +
+  labs(
+    x = "ICH Volume (mL)", y = NULL,
+    title = "**Linear predictor** <span style='font-size: 14px;'>*µ* in the model</span>",
+    subtitle = "posterior_linpred(..., tibble(flipper_length_mm = 201))"
+  ) +
+  theme(plot.title = element_markdown())
+
+p2 <- ggplot(normal_epred, aes(x = .epred)) +
+  stat_halfeye(fill = colors[2]) +
+  scale_x_continuous(labels = label_comma()) +
+  # coord_cartesian(xlim = c(4100, 4300)) +
+  labs(
+    x = "ICH Volume (mL)", y = NULL,
+    title = "**Expectation of the posterior** <span style='font-size: 14px;'>E[*y*] and *µ* in the model</span>",
+    subtitle = "posterior_epred(..., tibble(flipper_length_mm = 201))"
+  )
+
+p3 <- ggplot(normal_predicted, aes(x = .prediction)) +
+  stat_halfeye(fill = colors[1]) +
+  scale_x_continuous(labels = label_comma()) +
+  # coord_cartesian(xlim = c(2900, 5500)) +
+  labs(
+    x = "ICH Volume (mL)", y = NULL,
+    title = "**Posterior predictions** <span style='font-size: 14px;'>Random draws from posterior Normal(*µ*, *σ*)</span>",
+    subtitle = "posterior_predict(..., tibble(flipper_length_mm = 201))"
+  )
+
+(p1 / plot_spacer() / p2 / plot_spacer() / p3) +
+  plot_layout(heights = c(0.3, 0.05, 0.3, 0.05, 0.3))
+
+```
+
+Now here is the full posterior:
+
+```{r ich full posterior}
+
+p1 <- data |>
+  data_grid(age = seq_range(age, n = 100)) |>
+  add_linpred_draws(model_normal_ich, ndraws = 100) |>
+  ggplot(aes(x = age)) +
+  stat_lineribbon(aes(y = .linpred),
+    .width = 0.95,
+    alpha = 0.5, color = colors[3], fill = colors[3]
+  ) +
+  geom_point(data = data, aes(y = ich_volume_baseline), size = 1, alpha = 0.7) +
+  scale_y_continuous(labels = label_comma()) +
+  # coord_cartesian(ylim = c(2000, 6000)) +
+  labs(
+    x = "Age (years)", y = "ICH Volume (mL)",
+    title = "**Linear predictor** <span style='font-size: 14px;'>*µ* in the model</span>",
+    subtitle = "posterior_linpred()"
+  )
+
+p2 <- data |>
+  data_grid(age = seq_range(age, n = 100)) |>
+  add_epred_draws(model_normal_ich, ndraws = 100) |>
+  ggplot(aes(x = age)) +
+  stat_lineribbon(aes(y = .epred),
+    .width = 0.95,
+    alpha = 0.5, color = colors[2], fill = colors[2]
+  ) +
+  geom_point(data = data, aes(y = ich_volume_baseline), size = 1, alpha = 0.7) +
+  scale_y_continuous(labels = label_comma()) +
+  # coord_cartesian(ylim = c(2000, 6000)) +
+  labs(
+    x = "Age (years)", y = "ICH Volume (mL)",
+    title = "**Expectation of the posterior** <span style='font-size: 14px;'>E[*y*] and *µ* in the model</span>",
+    subtitle = "posterior_epred()"
+  )
+
+p3 <- data |>
+  data_grid(age = seq_range(age, n = 100)) |>
+  add_predicted_draws(model_normal_ich, ndraws = 100) |>
+  ggplot(aes(x = age)) +
+  stat_lineribbon(aes(y = .prediction),
+    .width = 0.95,
+    alpha = 0.5, color = colors[1], fill = colors[1]
+  ) +
+  geom_point(data = data, aes(y = ich_volume_baseline), size = 1, alpha = 0.7) +
+  scale_y_continuous(labels = label_comma()) +
+  # coord_cartesian(ylim = c(2000, 6000)) +
+  labs(
+    x = "Age (years)", y = "ICH Volume (mL)",
+    title = "**Posterior predictions** <span style='font-size: 14px;'>Random draws from posterior Normal(*µ*, *σ*)</span>",
+    subtitle = "posterior_predict()"
+  )
+
+(p1 / plot_spacer() / p2 / plot_spacer() / p3) +
+  plot_layout(heights = c(0.3, 0.05, 0.3, 0.05, 0.3))
+
+```
+
+If we had set better priors, we would not be left with ranges of possible ICH volumes that are negative, but that is for another post.
+
+## Logistic Regression Example
+
+
+```{r logistic penguins eda}
+
+ggplot(penguins, aes(x = bill_length_mm, y = as.numeric(is_gentoo))) +
+  geom_dots(aes(side = ifelse(is_gentoo, "bottom", "top")),
+    pch = 19, color = "grey20", scale = 0.2
+  ) +
+  geom_smooth(
+    method = "glm", method.args = list(family = binomial(link = "logit")),
+    color = colors[5], se = FALSE
+  ) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(x = "Bill length (mm)", y = "Probability of being a Gentoo")
+
+```
+
+```{r logistic ich eda}
+
+ggplot(data, aes(x = ich_volume_baseline, y = as.numeric(mrs_90_04))) +
+  geom_dots(aes(side = ifelse(mrs_90_04, "bottom", "top")),
+    pch = 19, color = "grey20", scale = 0.2
+  ) +
+  geom_smooth(
+    method = "glm", method.args = list(family = binomial(link = "logit")),
+    color = colors[5], se = FALSE
+  ) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(x = "Bill length (mm)", y = "Probability of being a Gentoo")
+
+```
