@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -118,7 +89,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -137,25 +109,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">ICH Laterality Analysis Notebook</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./clean.html" aria-current="page">Process and Clean Data</a>
+    <a class="nav-link active" href="./clean.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Process and Clean Data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dag.html">Causal Assumptions - DAG</a>
+    <a class="nav-link" href="./dag.html" rel="" target="">
+ <span class="menu-text">Causal Assumptions - DAG</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./descriptive.html">| fig-width: 20</a>
+    <a class="nav-link" href="./descriptive.html" rel="" target="">
+ <span class="menu-text">Descriptive Statistics</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./models.html">Models</a>
+    <a class="nav-link" href="./models.html" rel="" target="">
+ <span class="menu-text">Models</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -180,6 +158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -199,13 +178,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"all.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 5147 Columns: 165
+<pre><code>Rows: 5147 Columns: 185
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr  (73): patient_id, sex, race, euro_mobility_90, euro_mobility_180, euro_...
-dbl  (85): age, gcs_baseline, sbp_baseline, dbp_baseline, ich_volume_baselin...
-dttm  (6): symptom_onset_date_time, ed_date_time, neurosurgery_evac_date_tim...
-date  (1): death_date
+chr   (48): patient_id, sex, race, location_90, location_180, location_365, ...
+dbl  (110): age, gcs_baseline, sbp_baseline, dbp_baseline, ich_volume_baseli...
+lgl   (20): mrs_30_01, mrs_30_02, mrs_30_03, mrs_30_04, mrs_90_01, mrs_90_02...
+dttm   (6): symptom_onset_date_time, ed_date_time, neurosurgery_evac_date_ti...
+date   (1): death_date
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -219,7 +199,7 @@ date  (1): death_date
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,147
-Columns: 165
+Columns: 185
 $ patient_id                    &lt;chr&gt; "00003536", "00008087", "00047804", "000…
 $ age                           &lt;dbl&gt; 85, 54, 71, 55, 68, 55, 51, 43, 60, 38, …
 $ sex                           &lt;fct&gt; Female, Male, Male, Female, Female, Male…
@@ -230,21 +210,21 @@ $ dbp_baseline                  &lt;dbl&gt; 110, 155, 102, 178, 65, 98, NA, 91, 
 $ ich_volume_baseline           &lt;dbl&gt; 42.066, 16.654, 2.999, 9.690, 15.434, 1.…
 $ ivh_volume_baseline           &lt;dbl&gt; 7.427, 0.000, 0.000, 1.289, 0.000, 0.000…
 $ evd_day                       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ euro_mobility_90              &lt;fct&gt; NA, No Problems, No Problems, Some Probl…
-$ euro_mobility_180             &lt;fct&gt; Some Problems, No Problems, No Problems,…
-$ euro_mobility_365             &lt;fct&gt; Some Problems, No Problems, No Problems,…
-$ euro_selfcare_90              &lt;fct&gt; NA, No Problems, No Problems, No Problem…
-$ euro_selfcare_180             &lt;fct&gt; Some Problems, No Problems, No Problems,…
-$ euro_selfcare_365             &lt;fct&gt; Some Problems, No Problems, No Problems,…
-$ euro_usual_90                 &lt;fct&gt; NA, Some Problems, No Problems, Some Pro…
-$ euro_usual_180                &lt;fct&gt; Some Problems, No Problems, No Problems,…
-$ euro_usual_365                &lt;fct&gt; Some Problems, No Problems, No Problems,…
-$ euro_pain_90                  &lt;fct&gt; NA, No Problems, No Problems, No Problem…
-$ euro_pain_180                 &lt;fct&gt; Some Moderate Pain/Discomfort, Some Mode…
-$ euro_pain_365                 &lt;fct&gt; Some Moderate Pain/Discomfort, Some Mode…
-$ euro_anxiety_90               &lt;fct&gt; NA, Not Anxious/Depressed, Not Anxious/D…
-$ euro_anxiety_180              &lt;fct&gt; Moderately Anxious/Depressed, Not Anxiou…
-$ euro_anxiety_365              &lt;fct&gt; Moderately Anxious/Depressed, Not Anxiou…
+$ euro_mobility_90              &lt;fct&gt; NA, 1, 1, 2, 3, 1, 1, 1, 1, 2, 2, 1, 1, …
+$ euro_mobility_180             &lt;fct&gt; 2, 1, 1, 2, 3, 1, 1, 1, 1, 2, NA, 1, 2, …
+$ euro_mobility_365             &lt;fct&gt; 2, 1, 1, NA, 3, 1, 1, 1, 1, 2, 3, 1, 2, …
+$ euro_selfcare_90              &lt;fct&gt; NA, 1, 1, 1, 3, 1, 1, 1, 1, 1, 2, 1, 1, …
+$ euro_selfcare_180             &lt;fct&gt; 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, NA, 1, 2, …
+$ euro_selfcare_365             &lt;fct&gt; 2, 1, 1, NA, 2, 1, 1, 1, 1, 2, 3, 1, 1, …
+$ euro_usual_90                 &lt;fct&gt; NA, 2, 1, 2, 3, 1, 1, 1, 2, 1, 2, 2, 2, …
+$ euro_usual_180                &lt;fct&gt; 2, 1, 1, 2, 3, 1, 1, 1, 2, 2, NA, 2, 3, …
+$ euro_usual_365                &lt;fct&gt; 2, 1, 1, NA, 3, 1, 1, 1, 2, 2, 3, 2, 2, …
+$ euro_pain_90                  &lt;fct&gt; NA, 1, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 2, …
+$ euro_pain_180                 &lt;fct&gt; 2, 2, 1, 1, 3, 2, 1, 1, 2, 2, NA, 1, 1, …
+$ euro_pain_365                 &lt;fct&gt; 2, 2, 1, NA, 2, 2, 1, 1, 1, 1, 3, 1, 1, …
+$ euro_anxiety_90               &lt;fct&gt; NA, 1, 1, 1, 3, 2, 1, 1, 2, 2, 1, 1, 1, …
+$ euro_anxiety_180              &lt;fct&gt; 2, 1, 1, 1, 2, 2, 1, 1, 3, 1, NA, 1, 2, …
+$ euro_anxiety_365              &lt;fct&gt; 2, 1, 1, NA, 2, 1, 1, 1, 2, 3, 1, 1, 1, …
 $ euro_vas_90                   &lt;dbl&gt; NA, 90, 95, 80, 5, 50, 95, 70, 90, 80, 7…
 $ euro_vas_180                  &lt;dbl&gt; 70, 95, 90, 95, 75, 75, 98, 80, 65, 90, …
 $ euro_vas_365                  &lt;dbl&gt; 70, 90, 90, NA, 20, 75, 100, 90, NA, 80,…
@@ -328,11 +308,11 @@ $ mrs_365                       &lt;fct&gt; 4, 1, 1, NA, 4, 1, 1, 0, 2, 4, 4, 2,
 $ euroqol_90_assessment_source  &lt;fct&gt; NA, Other, Other, Caregiver, NA, Other, …
 $ euroqol_180_assessment_source &lt;fct&gt; Caregiver, Other, Other, Caregiver, NA, …
 $ euroqol_365_assessment_source &lt;fct&gt; Caregiver, Other, Other, NA, NA, NA, Oth…
-$ euro_mobility_365_binary      &lt;fct&gt; Any Problems, No Problems, No Problems, …
-$ euro_selfcare_365_binary      &lt;fct&gt; Any Problems, No Problems, No Problems, …
-$ euro_usual_365_binary         &lt;fct&gt; Any Problems, No Problems, No Problems, …
-$ euro_pain_365_binary          &lt;fct&gt; Any Problems, Any Problems, No Problems,…
-$ euro_anxiety_365_binary       &lt;fct&gt; Any Problems, No Problems, No Problems, …
+$ euro_mobility_365_binary      &lt;fct&gt; 1, 0, 0, NA, 1, 0, 0, 0, 0, 1, 1, 0, 1, …
+$ euro_selfcare_365_binary      &lt;fct&gt; 1, 0, 0, NA, 1, 0, 0, 0, 0, 1, 1, 0, 0, …
+$ euro_usual_365_binary         &lt;fct&gt; 1, 0, 0, NA, 1, 0, 0, 0, 1, 1, 1, 1, 1, …
+$ euro_pain_365_binary          &lt;fct&gt; 1, 1, 0, NA, 1, 1, 0, 0, 0, 0, 1, 0, 0, …
+$ euro_anxiety_365_binary       &lt;fct&gt; 1, 0, 0, NA, 1, 0, 0, 0, 1, 1, 0, 0, 0, …
 $ study                         &lt;fct&gt; ERICH, ERICH, ERICH, ERICH, ERICH, ERICH…
 $ enrolling_country             &lt;fct&gt; United States, United States, United Sta…
 $ symptom_onset                 &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
@@ -384,7 +364,27 @@ $ gose_180                      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 $ etoh                          &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ hld_meds                      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ mrs_270                       &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ location_30                   &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
+$ location_30                   &lt;fct&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_30_01                     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_30_02                     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_30_03                     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_30_04                     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_90_01                     &lt;lgl&gt; NA, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …
+$ mrs_90_02                     &lt;lgl&gt; NA, TRUE, FALSE, TRUE, TRUE, FALSE, FALS…
+$ mrs_90_03                     &lt;lgl&gt; NA, FALSE, FALSE, FALSE, TRUE, FALSE, FA…
+$ mrs_90_04                     &lt;lgl&gt; NA, FALSE, FALSE, FALSE, TRUE, FALSE, FA…
+$ mrs_180_01                    &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE…
+$ mrs_180_02                    &lt;lgl&gt; TRUE, FALSE, FALSE, TRUE, TRUE, FALSE, F…
+$ mrs_180_03                    &lt;lgl&gt; TRUE, FALSE, FALSE, FALSE, TRUE, FALSE, …
+$ mrs_180_04                    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE,…
+$ mrs_270_01                    &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_270_02                    &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_270_03                    &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_270_04                    &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ mrs_365_01                    &lt;lgl&gt; TRUE, TRUE, TRUE, NA, TRUE, TRUE, TRUE, …
+$ mrs_365_02                    &lt;lgl&gt; TRUE, FALSE, FALSE, NA, TRUE, FALSE, FAL…
+$ mrs_365_03                    &lt;lgl&gt; TRUE, FALSE, FALSE, NA, TRUE, FALSE, FAL…
+$ mrs_365_04                    &lt;lgl&gt; TRUE, FALSE, FALSE, NA, TRUE, FALSE, FAL…</code></pre>
 </div>
 </div>
 
@@ -418,9 +418,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -432,7 +446,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -468,24 +499,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

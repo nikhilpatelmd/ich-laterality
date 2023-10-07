@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -118,7 +89,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -137,25 +109,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">ICH Laterality Analysis Notebook</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./clean.html">Process and Clean Data</a>
+    <a class="nav-link" href="./clean.html" rel="" target="">
+ <span class="menu-text">Process and Clean Data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dag.html">Causal Assumptions - DAG</a>
+    <a class="nav-link" href="./dag.html" rel="" target="">
+ <span class="menu-text">Causal Assumptions - DAG</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./descriptive.html">Descriptive Statistics</a>
+    <a class="nav-link" href="./descriptive.html" rel="" target="">
+ <span class="menu-text">Descriptive Statistics</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./models.html" aria-current="page">Models</a>
+    <a class="nav-link active" href="./models.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Models</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -169,12 +147,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#visualization" id="toc-visualization" class="nav-link active" data-scroll-target="#visualization">Visualization</a></li>
-  <li><a href="#frequentist-analysis" id="toc-frequentist-analysis" class="nav-link" data-scroll-target="#frequentist-analysis">Frequentist Analysis</a>
+  <li><a href="#dichotimized-mrs-0-3-vs.-4-6" id="toc-dichotimized-mrs-0-3-vs.-4-6" class="nav-link active" data-scroll-target="#dichotimized-mrs-0-3-vs.-4-6">Dichotimized mRS: 0-3 vs.&nbsp;4-6</a>
   <ul class="collapse">
-  <li><a href="#mediation-analysis-with-neurosurgery-and-ich-laterality" id="toc-mediation-analysis-with-neurosurgery-and-ich-laterality" class="nav-link" data-scroll-target="#mediation-analysis-with-neurosurgery-and-ich-laterality">Mediation Analysis with Neurosurgery and ICH Laterality</a></li>
+  <li><a href="#priors" id="toc-priors" class="nav-link" data-scroll-target="#priors">Priors</a></li>
   </ul></li>
-  <li><a href="#bayesian-analysis" id="toc-bayesian-analysis" class="nav-link" data-scroll-target="#bayesian-analysis">Bayesian Analysis</a></li>
   </ul>
 </nav>
     </div>
@@ -191,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -204,1703 +181,320 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ordinal)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cmdstanr)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidybayes)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom.mixed)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>())</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parameters)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brms)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cmdstanr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidybayes)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom.mixed)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"all.rds"</span>), <span class="at">refhook =</span> <span class="cn">NULL</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich_location <span class="sc">==</span> <span class="st">"Basal Ganglia"</span> <span class="sc">|</span> ich_location <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span> ich_location <span class="sc">==</span> <span class="st">"Lobar"</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ich_location <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(data<span class="sc">$</span>ich_location)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>ich_location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># seeds</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">160</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>BAYES_SEED <span class="ot">&lt;-</span> <span class="dv">160</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Bayes</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>(),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">brms.backend =</span> <span class="st">"cmdstanr"</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"all.rds"</span>), <span class="at">refhook =</span> <span class="cn">NULL</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich_location <span class="sc">==</span> <span class="st">"Basal Ganglia"</span> <span class="sc">|</span> ich_location <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span> ich_location <span class="sc">==</span> <span class="st">"Lobar"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, age, ich_laterality, ich_location, ich_volume_baseline, gcs_baseline, ivh, neurosurgery_evac, sbp_baseline, mrs_90_01, mrs_90_02, mrs_90_03, mrs_90_04, mrs_90) <span class="sc">|&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(ich_laterality)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ich_location <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(data<span class="sc">$</span>ich_location)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ich_laterality <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(data<span class="sc">$</span>ich_laterality)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>data_erich_atach <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study <span class="sc">==</span> <span class="st">"ERICH"</span> <span class="sc">|</span> study <span class="sc">==</span> <span class="st">"ATACH2"</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># plot stuff</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Cantarell"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Basal Ganglia         Lobar      Thalamus 
-         1800          1265          1475 </code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot stuff</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Cantarell"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<section id="visualization" class="level2">
-<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
+<section id="dichotimized-mrs-0-3-vs.-4-6" class="level2">
+<h2 class="anchored" data-anchor-id="dichotimized-mrs-0-3-vs.-4-6">Dichotimized mRS: 0-3 vs.&nbsp;4-6</h2>
+<section id="priors" class="level3">
+<h3 class="anchored" data-anchor-id="priors">Priors</h3>
+<p>Based on previous knowledge, we can say that on average, there is a 60% chance of a good outcome of mRS 0-3. On the log-odds scale, that would be <code>qlogis(0.6) = 0.41</code>. That can range a lot from 20% to 80%, so in log-odds we can say that is <code>qlogis(0.2) = -1.38</code> as the variance.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mrs_prop <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(mrs_90) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">cumsum_p =</span> <span class="fu">cumsum</span>(p)) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>mrs_prop <span class="sc">|&gt;</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mrs_90, <span class="at">y =</span> p)) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"coral"</span>) <span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"mRS 90"</span>, <span class="at">y =</span> <span class="st">"Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="models_files/figure-html/interact2%20analysis%20replication-1.png" class="img-fluid" width="672"></p>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mrs_prop <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(mrs_90), <span class="at">y =</span> cumsum_p)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"mRS 90"</span>, <span class="at">y =</span> <span class="st">"Cumulative Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="models_files/figure-html/interact2%20analysis%20replication-2.png" class="img-fluid" width="672"></p>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mrs_prop <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.integer</span>(mrs_90), <span class="at">y =</span> <span class="fu">log</span>(cumsum_p) <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> cumsum_p))) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"mRS 90"</span>, <span class="at">y =</span> <span class="st">"Logit Cumulative Proportion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="models_files/figure-html/interact2%20analysis%20replication-3.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="frequentist-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="frequentist-analysis">Frequentist Analysis</h2>
-<section id="mediation-analysis-with-neurosurgery-and-ich-laterality" class="level3">
-<h3 class="anchored" data-anchor-id="mediation-analysis-with-neurosurgery-and-ich-laterality">Mediation Analysis with Neurosurgery and ICH Laterality</h3>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit_freq <span class="ot">&lt;-</span> <span class="fu">clm</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">link =</span> <span class="st">"logit"</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>formula: 
-mrs_90 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac
-data:    data
-
- link  threshold nobs logLik   AIC      niter max.grad cond.H 
- logit flexible  3105 -5009.42 10044.84 6(0)  1.90e-11 1.3e+06
-
-Coefficients:
-                      Estimate Std. Error z value Pr(&gt;|z|)    
-ich_lateralityRight   0.175924   0.066688   2.638  0.00834 ** 
-age                   0.047218   0.002600  18.159  &lt; 2e-16 ***
-ich_locationLobar    -0.722721   0.088540  -8.163 3.28e-16 ***
-ich_locationThalamus  0.600833   0.079165   7.590 3.21e-14 ***
-ich_volume_baseline   0.048246   0.002375  20.312  &lt; 2e-16 ***
-gcs_baseline         -0.185189   0.012534 -14.775  &lt; 2e-16 ***
-neurosurgery_evacYes  0.257076   0.134916   1.905  0.05672 .  
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Threshold coefficients:
-    Estimate Std. Error z value
-0|1  -2.0359     0.2370  -8.591
-1|2  -0.1817     0.2287  -0.794
-2|3   0.8436     0.2295   3.675
-3|4   1.7358     0.2313   7.504
-4|5   3.2534     0.2352  13.831
-5|6   3.9700     0.2385  16.642
-(1435 observations deleted due to missingness)</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(fit_freq, <span class="at">by =</span> <span class="st">"ich_laterality"</span>, <span class="at">type =</span> <span class="st">"cum.prob"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-
-<div id="jotgpbheiv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jotgpbheiv table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#jotgpbheiv thead, #jotgpbheiv tbody, #jotgpbheiv tfoot, #jotgpbheiv tr, #jotgpbheiv td, #jotgpbheiv th {
-  border-style: none;
-}
-
-#jotgpbheiv p {
-  margin: 0;
-  padding: 0;
-}
-
-#jotgpbheiv .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#jotgpbheiv .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#jotgpbheiv .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#jotgpbheiv .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#jotgpbheiv .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#jotgpbheiv .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#jotgpbheiv .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#jotgpbheiv .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#jotgpbheiv .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#jotgpbheiv .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#jotgpbheiv .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#jotgpbheiv .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#jotgpbheiv .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#jotgpbheiv .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#jotgpbheiv .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jotgpbheiv .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#jotgpbheiv .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#jotgpbheiv .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#jotgpbheiv .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jotgpbheiv .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#jotgpbheiv .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jotgpbheiv .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#jotgpbheiv .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jotgpbheiv .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#jotgpbheiv .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jotgpbheiv .gt_left {
-  text-align: left;
-}
-
-#jotgpbheiv .gt_center {
-  text-align: center;
-}
-
-#jotgpbheiv .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#jotgpbheiv .gt_font_normal {
-  font-weight: normal;
-}
-
-#jotgpbheiv .gt_font_bold {
-  font-weight: bold;
-}
-
-#jotgpbheiv .gt_font_italic {
-  font-style: italic;
-}
-
-#jotgpbheiv .gt_super {
-  font-size: 65%;
-}
-
-#jotgpbheiv .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#jotgpbheiv .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#jotgpbheiv .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#jotgpbheiv .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#jotgpbheiv .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#jotgpbheiv .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#jotgpbheiv .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="group">group</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="ich_laterality">ich_laterality</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">std.error</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">statistic</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">p.value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="s.value">s.value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="conf.low">conf.low</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="conf.high">conf.high</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.05170063</td>
-<td headers="std.error" class="gt_row gt_right">0.004182767</td>
-<td headers="statistic" class="gt_row gt_right">12.36039</td>
-<td headers="p.value" class="gt_row gt_right">4.280705e-35</td>
-<td headers="s.value" class="gt_row gt_right">114.1696</td>
-<td headers="conf.low" class="gt_row gt_right">0.04350256</td>
-<td headers="conf.high" class="gt_row gt_right">0.05989870</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.04689133</td>
-<td headers="std.error" class="gt_row gt_right">0.003863670</td>
-<td headers="statistic" class="gt_row gt_right">12.13647</td>
-<td headers="p.value" class="gt_row gt_right">6.768054e-34</td>
-<td headers="s.value" class="gt_row gt_right">110.1868</td>
-<td headers="conf.low" class="gt_row gt_right">0.03931867</td>
-<td headers="conf.high" class="gt_row gt_right">0.05446398</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.21964692</td>
-<td headers="std.error" class="gt_row gt_right">0.008094430</td>
-<td headers="statistic" class="gt_row gt_right">27.13557</td>
-<td headers="p.value" class="gt_row gt_right">3.748449e-162</td>
-<td headers="s.value" class="gt_row gt_right">536.2461</td>
-<td headers="conf.low" class="gt_row gt_right">0.20378213</td>
-<td headers="conf.high" class="gt_row gt_right">0.23551171</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.20616439</td>
-<td headers="std.error" class="gt_row gt_right">0.007884370</td>
-<td headers="statistic" class="gt_row gt_right">26.14849</td>
-<td headers="p.value" class="gt_row gt_right">1.025194e-150</td>
-<td headers="s.value" class="gt_row gt_right">498.2533</td>
-<td headers="conf.low" class="gt_row gt_right">0.19071131</td>
-<td headers="conf.high" class="gt_row gt_right">0.22161747</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.38860356</td>
-<td headers="std.error" class="gt_row gt_right">0.009561093</td>
-<td headers="statistic" class="gt_row gt_right">40.64426</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.36986416</td>
-<td headers="conf.high" class="gt_row gt_right">0.40734296</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.37317285</td>
-<td headers="std.error" class="gt_row gt_right">0.009518685</td>
-<td headers="statistic" class="gt_row gt_right">39.20425</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.35451657</td>
-<td headers="conf.high" class="gt_row gt_right">0.39182913</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.55232940</td>
-<td headers="std.error" class="gt_row gt_right">0.009498554</td>
-<td headers="statistic" class="gt_row gt_right">58.14879</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.53371258</td>
-<td headers="conf.high" class="gt_row gt_right">0.57094622</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.53895835</td>
-<td headers="std.error" class="gt_row gt_right">0.009541802</td>
-<td headers="statistic" class="gt_row gt_right">56.48392</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.52025676</td>
-<td headers="conf.high" class="gt_row gt_right">0.55765994</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.78159627</td>
-<td headers="std.error" class="gt_row gt_right">0.007101016</td>
-<td headers="statistic" class="gt_row gt_right">110.06823</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.76767854</td>
-<td headers="conf.high" class="gt_row gt_right">0.79551401</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.77519113</td>
-<td headers="std.error" class="gt_row gt_right">0.007193416</td>
-<td headers="statistic" class="gt_row gt_right">107.76397</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.76109229</td>
-<td headers="conf.high" class="gt_row gt_right">0.78928996</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.85282445</td>
-<td headers="std.error" class="gt_row gt_right">0.005735993</td>
-<td headers="statistic" class="gt_row gt_right">148.67948</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.84158211</td>
-<td headers="conf.high" class="gt_row gt_right">0.86406679</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.84955782</td>
-<td headers="std.error" class="gt_row gt_right">0.005896570</td>
-<td headers="statistic" class="gt_row gt_right">144.07661</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.83800076</td>
-<td headers="conf.high" class="gt_row gt_right">0.86111489</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">1.00000000</td>
-<td headers="std.error" class="gt_row gt_right">NA</td>
-<td headers="statistic" class="gt_row gt_right">NA</td>
-<td headers="p.value" class="gt_row gt_right">NA</td>
-<td headers="s.value" class="gt_row gt_right">NA</td>
-<td headers="conf.low" class="gt_row gt_right">NA</td>
-<td headers="conf.high" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">1.00000000</td>
-<td headers="std.error" class="gt_row gt_right">NA</td>
-<td headers="statistic" class="gt_row gt_right">NA</td>
-<td headers="p.value" class="gt_row gt_right">NA</td>
-<td headers="s.value" class="gt_row gt_right">NA</td>
-<td headers="conf.low" class="gt_row gt_right">NA</td>
-<td headers="conf.high" class="gt_row gt_right">NA</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(fit_freq, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ich_location"</span>, <span class="st">"ich_laterality"</span>), <span class="at">type =</span> <span class="st">"cum.prob"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-
-<div id="dwdcujwfuz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dwdcujwfuz table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#dwdcujwfuz thead, #dwdcujwfuz tbody, #dwdcujwfuz tfoot, #dwdcujwfuz tr, #dwdcujwfuz td, #dwdcujwfuz th {
-  border-style: none;
-}
-
-#dwdcujwfuz p {
-  margin: 0;
-  padding: 0;
-}
-
-#dwdcujwfuz .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#dwdcujwfuz .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#dwdcujwfuz .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#dwdcujwfuz .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#dwdcujwfuz .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#dwdcujwfuz .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#dwdcujwfuz .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#dwdcujwfuz .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#dwdcujwfuz .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#dwdcujwfuz .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#dwdcujwfuz .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#dwdcujwfuz .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#dwdcujwfuz .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#dwdcujwfuz .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#dwdcujwfuz .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dwdcujwfuz .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#dwdcujwfuz .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#dwdcujwfuz .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#dwdcujwfuz .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dwdcujwfuz .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#dwdcujwfuz .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dwdcujwfuz .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#dwdcujwfuz .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dwdcujwfuz .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#dwdcujwfuz .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dwdcujwfuz .gt_left {
-  text-align: left;
-}
-
-#dwdcujwfuz .gt_center {
-  text-align: center;
-}
-
-#dwdcujwfuz .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#dwdcujwfuz .gt_font_normal {
-  font-weight: normal;
-}
-
-#dwdcujwfuz .gt_font_bold {
-  font-weight: bold;
-}
-
-#dwdcujwfuz .gt_font_italic {
-  font-style: italic;
-}
-
-#dwdcujwfuz .gt_super {
-  font-size: 65%;
-}
-
-#dwdcujwfuz .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#dwdcujwfuz .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#dwdcujwfuz .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#dwdcujwfuz .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#dwdcujwfuz .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#dwdcujwfuz .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#dwdcujwfuz .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="group">group</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="ich_location">ich_location</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="ich_laterality">ich_laterality</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">std.error</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">statistic</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">p.value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="s.value">s.value</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="conf.low">conf.low</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="conf.high">conf.high</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.05470263</td>
-<td headers="std.error" class="gt_row gt_right">0.004793131</td>
-<td headers="statistic" class="gt_row gt_right">11.41271</td>
-<td headers="p.value" class="gt_row gt_right">3.612749e-30</td>
-<td headers="s.value" class="gt_row gt_right">97.80475</td>
-<td headers="conf.low" class="gt_row gt_right">0.04530827</td>
-<td headers="conf.high" class="gt_row gt_right">0.06409700</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.05420352</td>
-<td headers="std.error" class="gt_row gt_right">0.004906071</td>
-<td headers="statistic" class="gt_row gt_right">11.04826</td>
-<td headers="p.value" class="gt_row gt_right">2.235170e-28</td>
-<td headers="s.value" class="gt_row gt_right">91.85360</td>
-<td headers="conf.low" class="gt_row gt_right">0.04458780</td>
-<td headers="conf.high" class="gt_row gt_right">0.06381925</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.06390128</td>
-<td headers="std.error" class="gt_row gt_right">0.005792187</td>
-<td headers="statistic" class="gt_row gt_right">11.03232</td>
-<td headers="p.value" class="gt_row gt_right">2.668784e-28</td>
-<td headers="s.value" class="gt_row gt_right">91.59780</td>
-<td headers="conf.low" class="gt_row gt_right">0.05254880</td>
-<td headers="conf.high" class="gt_row gt_right">0.07525376</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.05668614</td>
-<td headers="std.error" class="gt_row gt_right">0.005221576</td>
-<td headers="statistic" class="gt_row gt_right">10.85614</td>
-<td headers="p.value" class="gt_row gt_right">1.864736e-27</td>
-<td headers="s.value" class="gt_row gt_right">88.79309</td>
-<td headers="conf.low" class="gt_row gt_right">0.04645204</td>
-<td headers="conf.high" class="gt_row gt_right">0.06692024</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.03593127</td>
-<td headers="std.error" class="gt_row gt_right">0.003564679</td>
-<td headers="statistic" class="gt_row gt_right">10.07981</td>
-<td headers="p.value" class="gt_row gt_right">6.785973e-24</td>
-<td headers="s.value" class="gt_row gt_right">76.96372</td>
-<td headers="conf.low" class="gt_row gt_right">0.02894463</td>
-<td headers="conf.high" class="gt_row gt_right">0.04291791</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.03148284</td>
-<td headers="std.error" class="gt_row gt_right">0.003081832</td>
-<td headers="statistic" class="gt_row gt_right">10.21562</td>
-<td headers="p.value" class="gt_row gt_right">1.687906e-24</td>
-<td headers="s.value" class="gt_row gt_right">78.97104</td>
-<td headers="conf.low" class="gt_row gt_right">0.02544256</td>
-<td headers="conf.high" class="gt_row gt_right">0.03752312</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.23371147</td>
-<td headers="std.error" class="gt_row gt_right">0.010178104</td>
-<td headers="statistic" class="gt_row gt_right">22.96218</td>
-<td headers="p.value" class="gt_row gt_right">1.113441e-116</td>
-<td headers="s.value" class="gt_row gt_right">385.18863</td>
-<td headers="conf.low" class="gt_row gt_right">0.21376275</td>
-<td headers="conf.high" class="gt_row gt_right">0.25366018</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.23894462</td>
-<td headers="std.error" class="gt_row gt_right">0.011021952</td>
-<td headers="statistic" class="gt_row gt_right">21.67897</td>
-<td headers="p.value" class="gt_row gt_right">3.240189e-104</td>
-<td headers="s.value" class="gt_row gt_right">343.78444</td>
-<td headers="conf.low" class="gt_row gt_right">0.21734199</td>
-<td headers="conf.high" class="gt_row gt_right">0.26054725</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.24406204</td>
-<td headers="std.error" class="gt_row gt_right">0.011204071</td>
-<td headers="statistic" class="gt_row gt_right">21.78334</td>
-<td headers="p.value" class="gt_row gt_right">3.338556e-105</td>
-<td headers="s.value" class="gt_row gt_right">347.06323</td>
-<td headers="conf.low" class="gt_row gt_right">0.22210247</td>
-<td headers="conf.high" class="gt_row gt_right">0.26602162</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.22170785</td>
-<td headers="std.error" class="gt_row gt_right">0.010534091</td>
-<td headers="statistic" class="gt_row gt_right">21.04670</td>
-<td headers="p.value" class="gt_row gt_right">2.451711e-98</td>
-<td headers="s.value" class="gt_row gt_right">324.25516</td>
-<td headers="conf.low" class="gt_row gt_right">0.20106141</td>
-<td headers="conf.high" class="gt_row gt_right">0.24235429</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.17679627</td>
-<td headers="std.error" class="gt_row gt_right">0.010029001</td>
-<td headers="statistic" class="gt_row gt_right">17.62850</td>
-<td headers="p.value" class="gt_row gt_right">1.488568e-69</td>
-<td headers="s.value" class="gt_row gt_right">228.63911</td>
-<td headers="conf.low" class="gt_row gt_right">0.15713979</td>
-<td headers="conf.high" class="gt_row gt_right">0.19645275</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.15977160</td>
-<td headers="std.error" class="gt_row gt_right">0.008961803</td>
-<td headers="statistic" class="gt_row gt_right">17.82806</td>
-<td headers="p.value" class="gt_row gt_right">4.279883e-71</td>
-<td headers="s.value" class="gt_row gt_right">233.75932</td>
-<td headers="conf.low" class="gt_row gt_right">0.14220679</td>
-<td headers="conf.high" class="gt_row gt_right">0.17733641</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.40978950</td>
-<td headers="std.error" class="gt_row gt_right">0.012058082</td>
-<td headers="statistic" class="gt_row gt_right">33.98463</td>
-<td headers="p.value" class="gt_row gt_right">3.757641e-253</td>
-<td headers="s.value" class="gt_row gt_right">838.53798</td>
-<td headers="conf.low" class="gt_row gt_right">0.38615609</td>
-<td headers="conf.high" class="gt_row gt_right">0.43342290</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.42329574</td>
-<td headers="std.error" class="gt_row gt_right">0.012969929</td>
-<td headers="statistic" class="gt_row gt_right">32.63671</td>
-<td headers="p.value" class="gt_row gt_right">1.237238e-233</td>
-<td headers="s.value" class="gt_row gt_right">773.70212</td>
-<td headers="conf.low" class="gt_row gt_right">0.39787515</td>
-<td headers="conf.high" class="gt_row gt_right">0.44871633</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.40259603</td>
-<td headers="std.error" class="gt_row gt_right">0.012538766</td>
-<td headers="statistic" class="gt_row gt_right">32.10811</td>
-<td headers="p.value" class="gt_row gt_right">3.397642e-226</td>
-<td headers="s.value" class="gt_row gt_right">748.99122</td>
-<td headers="conf.low" class="gt_row gt_right">0.37802050</td>
-<td headers="conf.high" class="gt_row gt_right">0.42717156</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.37265045</td>
-<td headers="std.error" class="gt_row gt_right">0.012163719</td>
-<td headers="statistic" class="gt_row gt_right">30.63623</td>
-<td headers="p.value" class="gt_row gt_right">4.032142e-206</td>
-<td headers="s.value" class="gt_row gt_right">682.30564</td>
-<td headers="conf.low" class="gt_row gt_right">0.34881000</td>
-<td headers="conf.high" class="gt_row gt_right">0.39649090</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.34564699</td>
-<td headers="std.error" class="gt_row gt_right">0.013732893</td>
-<td headers="statistic" class="gt_row gt_right">25.16928</td>
-<td headers="p.value" class="gt_row gt_right">8.694202e-140</td>
-<td headers="s.value" class="gt_row gt_right">461.94988</td>
-<td headers="conf.low" class="gt_row gt_right">0.31873101</td>
-<td headers="conf.high" class="gt_row gt_right">0.37256296</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.32165821</td>
-<td headers="std.error" class="gt_row gt_right">0.012800329</td>
-<td headers="statistic" class="gt_row gt_right">25.12890</td>
-<td headers="p.value" class="gt_row gt_right">2.403953e-139</td>
-<td headers="s.value" class="gt_row gt_right">460.48260</td>
-<td headers="conf.low" class="gt_row gt_right">0.29657002</td>
-<td headers="conf.high" class="gt_row gt_right">0.34674639</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.57558948</td>
-<td headers="std.error" class="gt_row gt_right">0.011700004</td>
-<td headers="statistic" class="gt_row gt_right">49.19566</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.55265789</td>
-<td headers="conf.high" class="gt_row gt_right">0.59852106</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.59331691</td>
-<td headers="std.error" class="gt_row gt_right">0.012085981</td>
-<td headers="statistic" class="gt_row gt_right">49.09133</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.56962882</td>
-<td headers="conf.high" class="gt_row gt_right">0.61700500</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.54522411</td>
-<td headers="std.error" class="gt_row gt_right">0.011829783</td>
-<td headers="statistic" class="gt_row gt_right">46.08910</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.52203816</td>
-<td headers="conf.high" class="gt_row gt_right">0.56841006</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.51416409</td>
-<td headers="std.error" class="gt_row gt_right">0.011989819</td>
-<td headers="statistic" class="gt_row gt_right">42.88339</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.49066448</td>
-<td headers="conf.high" class="gt_row gt_right">0.53766371</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.52645762</td>
-<td headers="std.error" class="gt_row gt_right">0.014396834</td>
-<td headers="statistic" class="gt_row gt_right">36.56760</td>
-<td headers="p.value" class="gt_row gt_right">9.366502e-293</td>
-<td headers="s.value" class="gt_row gt_right">970.09742</td>
-<td headers="conf.low" class="gt_row gt_right">0.49824035</td>
-<td headers="conf.high" class="gt_row gt_right">0.55467490</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.50246384</td>
-<td headers="std.error" class="gt_row gt_right">0.013912699</td>
-<td headers="statistic" class="gt_row gt_right">36.11548</td>
-<td headers="p.value" class="gt_row gt_right">1.296150e-285</td>
-<td headers="s.value" class="gt_row gt_right">946.37527</td>
-<td headers="conf.low" class="gt_row gt_right">0.47519545</td>
-<td headers="conf.high" class="gt_row gt_right">0.52973223</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.80231219</td>
-<td headers="std.error" class="gt_row gt_right">0.008274738</td>
-<td headers="statistic" class="gt_row gt_right">96.95922</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.78609401</td>
-<td headers="conf.high" class="gt_row gt_right">0.81853038</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.81421046</td>
-<td headers="std.error" class="gt_row gt_right">0.007869037</td>
-<td headers="statistic" class="gt_row gt_right">103.47016</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.79878743</td>
-<td headers="conf.high" class="gt_row gt_right">0.82963348</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.74092628</td>
-<td headers="std.error" class="gt_row gt_right">0.008612144</td>
-<td headers="statistic" class="gt_row gt_right">86.03273</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.72404679</td>
-<td headers="conf.high" class="gt_row gt_right">0.75780577</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.72213959</td>
-<td headers="std.error" class="gt_row gt_right">0.009592938</td>
-<td headers="statistic" class="gt_row gt_right">75.27825</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.70333777</td>
-<td headers="conf.high" class="gt_row gt_right">0.74094140</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.79109662</td>
-<td headers="std.error" class="gt_row gt_right">0.010136064</td>
-<td headers="statistic" class="gt_row gt_right">78.04771</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.77123030</td>
-<td headers="conf.high" class="gt_row gt_right">0.81096294</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.77718524</td>
-<td headers="std.error" class="gt_row gt_right">0.010234256</td>
-<td headers="statistic" class="gt_row gt_right">75.93960</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.75712646</td>
-<td headers="conf.high" class="gt_row gt_right">0.79724401</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.87160347</td>
-<td headers="std.error" class="gt_row gt_right">0.006435993</td>
-<td headers="statistic" class="gt_row gt_right">135.42641</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.85898915</td>
-<td headers="conf.high" class="gt_row gt_right">0.88421778</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.87929674</td>
-<td headers="std.error" class="gt_row gt_right">0.006053759</td>
-<td headers="statistic" class="gt_row gt_right">145.24806</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.86743159</td>
-<td headers="conf.high" class="gt_row gt_right">0.89116189</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.80595981</td>
-<td headers="std.error" class="gt_row gt_right">0.007171972</td>
-<td headers="statistic" class="gt_row gt_right">112.37632</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.79190300</td>
-<td headers="conf.high" class="gt_row gt_right">0.82001662</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.79573031</td>
-<td headers="std.error" class="gt_row gt_right">0.008294042</td>
-<td headers="statistic" class="gt_row gt_right">95.93999</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.77947429</td>
-<td headers="conf.high" class="gt_row gt_right">0.81198634</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.87090986</td>
-<td headers="std.error" class="gt_row gt_right">0.007530754</td>
-<td headers="statistic" class="gt_row gt_right">115.64710</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.85614986</td>
-<td headers="conf.high" class="gt_row gt_right">0.88566987</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.86178788</td>
-<td headers="std.error" class="gt_row gt_right">0.007750350</td>
-<td headers="statistic" class="gt_row gt_right">111.19342</td>
-<td headers="p.value" class="gt_row gt_right">0.000000e+00</td>
-<td headers="s.value" class="gt_row gt_right">Inf</td>
-<td headers="conf.low" class="gt_row gt_right">0.84659747</td>
-<td headers="conf.high" class="gt_row gt_right">0.87697828</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">1.00000000</td>
-<td headers="std.error" class="gt_row gt_right">NA</td>
-<td headers="statistic" class="gt_row gt_right">NA</td>
-<td headers="p.value" class="gt_row gt_right">NA</td>
-<td headers="s.value" class="gt_row gt_right">NA</td>
-<td headers="conf.low" class="gt_row gt_right">NA</td>
-<td headers="conf.high" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">1.00000000</td>
-<td headers="std.error" class="gt_row gt_right">NA</td>
-<td headers="statistic" class="gt_row gt_right">NA</td>
-<td headers="p.value" class="gt_row gt_right">NA</td>
-<td headers="s.value" class="gt_row gt_right">NA</td>
-<td headers="conf.low" class="gt_row gt_right">NA</td>
-<td headers="conf.high" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">1.00000000</td>
-<td headers="std.error" class="gt_row gt_right">NA</td>
-<td headers="statistic" class="gt_row gt_right">NA</td>
-<td headers="p.value" class="gt_row gt_right">NA</td>
-<td headers="s.value" class="gt_row gt_right">NA</td>
-<td headers="conf.low" class="gt_row gt_right">NA</td>
-<td headers="conf.high" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">1.00000000</td>
-<td headers="std.error" class="gt_row gt_right">NA</td>
-<td headers="statistic" class="gt_row gt_right">NA</td>
-<td headers="p.value" class="gt_row gt_right">NA</td>
-<td headers="s.value" class="gt_row gt_right">NA</td>
-<td headers="conf.low" class="gt_row gt_right">NA</td>
-<td headers="conf.high" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">1.00000000</td>
-<td headers="std.error" class="gt_row gt_right">NA</td>
-<td headers="statistic" class="gt_row gt_right">NA</td>
-<td headers="p.value" class="gt_row gt_right">NA</td>
-<td headers="s.value" class="gt_row gt_right">NA</td>
-<td headers="conf.low" class="gt_row gt_right">NA</td>
-<td headers="conf.high" class="gt_row gt_right">NA</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">1.00000000</td>
-<td headers="std.error" class="gt_row gt_right">NA</td>
-<td headers="statistic" class="gt_row gt_right">NA</td>
-<td headers="p.value" class="gt_row gt_right">NA</td>
-<td headers="s.value" class="gt_row gt_right">NA</td>
-<td headers="conf.low" class="gt_row gt_right">NA</td>
-<td headers="conf.high" class="gt_row gt_right">NA</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_predictions</span>(fit_freq, <span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"ich_location"</span>, <span class="st">"ich_laterality"</span>), <span class="at">type =</span> <span class="st">"cum.prob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model_mrs03 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  mrs_90_03 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">bernoulli</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 6 rows containing missing values (`geom_segment()`).</code></pre>
+<pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
 </div>
-<div class="cell-output-display">
-<p><img src="models_files/figure-html/frequentist%20ordinal-1.png" class="img-fluid" width="672"></p>
+<div class="cell-output cell-output-stderr">
+<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
+                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
+                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
+                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
+                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
+                 from stan/lib/stan_math/stan/math/rev.hpp:10,
+                 from stan/lib/stan_math/stan/math.hpp:19,
+                 from stan/src/stan/model/model_header.hpp:4,
+                 from /tmp/RtmpU289bB/model-106d52d8d77d.hpp:2:
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
+      |                                             ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13.2.1/string:49,
+                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
+                 from /usr/include/c++/13.2.1/ios:44,
+                 from /usr/include/c++/13.2.1/istream:40,
+                 from /usr/include/c++/13.2.1/sstream:40,
+                 from /usr/include/c++/13.2.1/complex:45,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
+                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
+                 from stan/lib/stan_math/stan/</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>math/rev.hpp:4:
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  214 |         : public boost::functional::detail::binary_function&lt;
+      |                                             ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  252 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  299 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
+      |                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
+      |                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
+      |                                                               ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
+      |                                                                ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
+      |                                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
+      |                                                              ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
+      |                                                                   ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
+      |                                                                    ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
+      |                                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+st</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
+      |                                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Start sampling</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
+
+Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 finished in 2.3 seconds.
+Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 finished in 2.4 seconds.
+Chain 3 finished in 2.4 seconds.
+Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 finished in 2.5 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 2.4 seconds.
+Total execution time: 2.9 seconds.</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(fit_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model_mrs03)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 13 × 6
-   term                 estimate std.error statistic  p.value coef.type
-   &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
- 1 0|1                   -2.04     0.237      -8.59  8.65e-18 intercept
- 2 1|2                   -0.182    0.229      -0.794 4.27e- 1 intercept
- 3 2|3                    0.844    0.230       3.68  2.38e- 4 intercept
- 4 3|4                    1.74     0.231       7.50  6.19e-14 intercept
- 5 4|5                    3.25     0.235      13.8   1.65e-43 intercept
- 6 5|6                    3.97     0.239      16.6   3.43e-62 intercept
- 7 ich_lateralityRight    0.176    0.0667      2.64  8.34e- 3 location 
- 8 age                    0.0472   0.00260    18.2   1.10e-73 location 
- 9 ich_locationLobar     -0.723    0.0885     -8.16  3.28e-16 location 
-10 ich_locationThalamus   0.601    0.0792      7.59  3.21e-14 location 
-11 ich_volume_baseline    0.0482   0.00238    20.3   1.01e-91 location 
-12 gcs_baseline          -0.185    0.0125    -14.8   2.13e-49 location 
-13 neurosurgery_evacYes   0.257    0.135       1.91  5.67e- 2 location </code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="bayesian-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="bayesian-analysis">Bayesian Analysis</h2>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fit_brms <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(logit),</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">prior =</span> <span class="fu">set_prior</span>(<span class="st">"normal(0,5)"</span>),</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">2</span>,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">6</span>,</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">backend =</span> <span class="st">"cmdstanr"</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fit_brms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> Family: cumulative 
-  Links: mu = logit; disc = identity 
-Formula: mrs_90 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac 
+<pre><code> Family: bernoulli 
+  Links: mu = logit 
+Formula: mrs_90_03 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac 
    Data: data (Number of observations: 3105) 
-  Draws: 2 chains, each with iter = 2000; warmup = 1000; thin = 1;
-         total post-warmup draws = 2000
+  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+         total post-warmup draws = 4000
 
 Population-Level Effects: 
                      Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
-Intercept[1]            -2.05      0.24    -2.53    -1.56 1.00     2972
-Intercept[2]            -0.19      0.23    -0.67     0.26 1.00     3418
-Intercept[3]             0.84      0.24     0.37     1.28 1.00     3415
-Intercept[4]             1.73      0.24     1.25     2.18 1.00     3424
-Intercept[5]             3.25      0.24     2.78     3.73 1.00     3531
-Intercept[6]             3.97      0.24     3.49     4.45 1.00     3615
-ich_lateralityRight      0.18      0.07     0.04     0.31 1.00     2946
-age                      0.05      0.00     0.04     0.05 1.00     3259
-ich_locationLobar       -0.72      0.09    -0.89    -0.55 1.00     2473
-ich_locationThalamus     0.60      0.08     0.44     0.76 1.00     2346
-ich_volume_baseline      0.05      0.00     0.04     0.05 1.00     2636
-gcs_baseline            -0.19      0.01    -0.21    -0.16 1.00     2555
-neurosurgery_evacYes     0.25      0.13     0.00     0.51 1.00     3200
+Intercept               -1.08      0.32    -1.69    -0.45 1.00     6173
+ich_lateralityRight      0.11      0.09    -0.06     0.28 1.00     5991
+age                      0.05      0.00     0.04     0.05 1.00     6234
+ich_locationLobar       -0.93      0.12    -1.18    -0.71 1.00     4280
+ich_locationThalamus     0.54      0.10     0.33     0.74 1.00     3950
+ich_volume_baseline      0.06      0.00     0.05     0.07 1.00     4478
+gcs_baseline            -0.18      0.02    -0.21    -0.14 1.00     5336
+neurosurgery_evacYes     0.83      0.23     0.39     1.30 1.00     5713
                      Tail_ESS
-Intercept[1]             1790
-Intercept[2]             1650
-Intercept[3]             1793
-Intercept[4]             1730
-Intercept[5]             1725
-Intercept[6]             1609
-ich_lateralityRight      1608
-age                      1529
-ich_locationLobar        1625
-ich_locationThalamus     1462
-ich_volume_baseline      1539
-gcs_baseline             1657
-neurosurgery_evacYes     1362
-
-Family Specific Parameters: 
-     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-disc     1.00      0.00     1.00     1.00   NA       NA       NA
+Intercept                3019
+ich_lateralityRight      2851
+age                      3090
+ich_locationLobar        2845
+ich_locationThalamus     2907
+ich_volume_baseline      3411
+gcs_baseline             3044
+neurosurgery_evacYes     3031
 
 Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
@@ -1908,732 +502,662 @@ scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(fit_brms, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ich_location"</span>, <span class="st">"ich_laterality"</span>), <span class="at">type =</span> <span class="st">"response"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs03, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-
-<div id="vjzmmmpvth" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vjzmmmpvth table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#vjzmmmpvth thead, #vjzmmmpvth tbody, #vjzmmmpvth tfoot, #vjzmmmpvth tr, #vjzmmmpvth td, #vjzmmmpvth th {
-  border-style: none;
-}
-
-#vjzmmmpvth p {
-  margin: 0;
-  padding: 0;
-}
-
-#vjzmmmpvth .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#vjzmmmpvth .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#vjzmmmpvth .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#vjzmmmpvth .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#vjzmmmpvth .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#vjzmmmpvth .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#vjzmmmpvth .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#vjzmmmpvth .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#vjzmmmpvth .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#vjzmmmpvth .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#vjzmmmpvth .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#vjzmmmpvth .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#vjzmmmpvth .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#vjzmmmpvth .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#vjzmmmpvth .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjzmmmpvth .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#vjzmmmpvth .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#vjzmmmpvth .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#vjzmmmpvth .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjzmmmpvth .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#vjzmmmpvth .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjzmmmpvth .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#vjzmmmpvth .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjzmmmpvth .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#vjzmmmpvth .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#vjzmmmpvth .gt_left {
-  text-align: left;
-}
-
-#vjzmmmpvth .gt_center {
-  text-align: center;
-}
-
-#vjzmmmpvth .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#vjzmmmpvth .gt_font_normal {
-  font-weight: normal;
-}
-
-#vjzmmmpvth .gt_font_bold {
-  font-weight: bold;
-}
-
-#vjzmmmpvth .gt_font_italic {
-  font-style: italic;
-}
-
-#vjzmmmpvth .gt_super {
-  font-size: 65%;
-}
-
-#vjzmmmpvth .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#vjzmmmpvth .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#vjzmmmpvth .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#vjzmmmpvth .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#vjzmmmpvth .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#vjzmmmpvth .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#vjzmmmpvth .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="group">group</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="ich_location">ich_location</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="ich_laterality">ich_laterality</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="conf.low">conf.low</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="conf.high">conf.high</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.05449119</td>
-<td headers="conf.low" class="gt_row gt_right">0.04565733</td>
-<td headers="conf.high" class="gt_row gt_right">0.06472618</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.05408702</td>
-<td headers="conf.low" class="gt_row gt_right">0.04540981</td>
-<td headers="conf.high" class="gt_row gt_right">0.06413488</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.06387597</td>
-<td headers="conf.low" class="gt_row gt_right">0.05277829</td>
-<td headers="conf.high" class="gt_row gt_right">0.07647737</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.05659268</td>
-<td headers="conf.low" class="gt_row gt_right">0.04731068</td>
-<td headers="conf.high" class="gt_row gt_right">0.06735030</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.03572561</td>
-<td headers="conf.low" class="gt_row gt_right">0.02942247</td>
-<td headers="conf.high" class="gt_row gt_right">0.04337189</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">0</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.03136958</td>
-<td headers="conf.low" class="gt_row gt_right">0.02600279</td>
-<td headers="conf.high" class="gt_row gt_right">0.03781904</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.17870199</td>
-<td headers="conf.low" class="gt_row gt_right">0.16240735</td>
-<td headers="conf.high" class="gt_row gt_right">0.19609203</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.18431733</td>
-<td headers="conf.low" class="gt_row gt_right">0.16724408</td>
-<td headers="conf.high" class="gt_row gt_right">0.20254400</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.17997224</td>
-<td headers="conf.low" class="gt_row gt_right">0.16314970</td>
-<td headers="conf.high" class="gt_row gt_right">0.19653687</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.16469797</td>
-<td headers="conf.low" class="gt_row gt_right">0.14978985</td>
-<td headers="conf.high" class="gt_row gt_right">0.18114043</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.14072594</td>
-<td headers="conf.low" class="gt_row gt_right">0.12464206</td>
-<td headers="conf.high" class="gt_row gt_right">0.15777190</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">1</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.12805419</td>
-<td headers="conf.low" class="gt_row gt_right">0.11336293</td>
-<td headers="conf.high" class="gt_row gt_right">0.14404612</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.17553394</td>
-<td headers="conf.low" class="gt_row gt_right">0.16272557</td>
-<td headers="conf.high" class="gt_row gt_right">0.18940798</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.18394930</td>
-<td headers="conf.low" class="gt_row gt_right">0.17105111</td>
-<td headers="conf.high" class="gt_row gt_right">0.19764802</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.15814546</td>
-<td headers="conf.low" class="gt_row gt_right">0.14663415</td>
-<td headers="conf.high" class="gt_row gt_right">0.17098417</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.15050806</td>
-<td headers="conf.low" class="gt_row gt_right">0.13963457</td>
-<td headers="conf.high" class="gt_row gt_right">0.16250297</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.16870117</td>
-<td headers="conf.low" class="gt_row gt_right">0.15435192</td>
-<td headers="conf.high" class="gt_row gt_right">0.18303561</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">2</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.16150395</td>
-<td headers="conf.low" class="gt_row gt_right">0.14857566</td>
-<td headers="conf.high" class="gt_row gt_right">0.17521526</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.16549416</td>
-<td headers="conf.low" class="gt_row gt_right">0.15331281</td>
-<td headers="conf.high" class="gt_row gt_right">0.17889888</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.16990372</td>
-<td headers="conf.low" class="gt_row gt_right">0.15748687</td>
-<td headers="conf.high" class="gt_row gt_right">0.18341690</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.14244046</td>
-<td headers="conf.low" class="gt_row gt_right">0.13170870</td>
-<td headers="conf.high" class="gt_row gt_right">0.15399539</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.14138264</td>
-<td headers="conf.low" class="gt_row gt_right">0.13065391</td>
-<td headers="conf.high" class="gt_row gt_right">0.15291885</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.18072054</td>
-<td headers="conf.low" class="gt_row gt_right">0.16726480</td>
-<td headers="conf.high" class="gt_row gt_right">0.19494138</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">3</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.18068446</td>
-<td headers="conf.low" class="gt_row gt_right">0.16707898</td>
-<td headers="conf.high" class="gt_row gt_right">0.19494628</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.22674979</td>
-<td headers="conf.low" class="gt_row gt_right">0.21077448</td>
-<td headers="conf.high" class="gt_row gt_right">0.24274066</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.22085391</td>
-<td headers="conf.low" class="gt_row gt_right">0.20438461</td>
-<td headers="conf.high" class="gt_row gt_right">0.23713047</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.19568449</td>
-<td headers="conf.low" class="gt_row gt_right">0.18246451</td>
-<td headers="conf.high" class="gt_row gt_right">0.20983330</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.20786203</td>
-<td headers="conf.low" class="gt_row gt_right">0.19437942</td>
-<td headers="conf.high" class="gt_row gt_right">0.22222877</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.26462588</td>
-<td headers="conf.low" class="gt_row gt_right">0.24666374</td>
-<td headers="conf.high" class="gt_row gt_right">0.28313748</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">4</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.27462357</td>
-<td headers="conf.low" class="gt_row gt_right">0.25644206</td>
-<td headers="conf.high" class="gt_row gt_right">0.29351176</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.06953191</td>
-<td headers="conf.low" class="gt_row gt_right">0.06043405</td>
-<td headers="conf.high" class="gt_row gt_right">0.07857021</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.06529098</td>
-<td headers="conf.low" class="gt_row gt_right">0.05694680</td>
-<td headers="conf.high" class="gt_row gt_right">0.07392804</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.06519727</td>
-<td headers="conf.low" class="gt_row gt_right">0.05727845</td>
-<td headers="conf.high" class="gt_row gt_right">0.07363858</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.07378954</td>
-<td headers="conf.low" class="gt_row gt_right">0.06474091</td>
-<td headers="conf.high" class="gt_row gt_right">0.08278742</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.08010667</td>
-<td headers="conf.low" class="gt_row gt_right">0.06942199</td>
-<td headers="conf.high" class="gt_row gt_right">0.09059298</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">5</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.08483952</td>
-<td headers="conf.low" class="gt_row gt_right">0.07379331</td>
-<td headers="conf.high" class="gt_row gt_right">0.09645199</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.12833964</td>
-<td headers="conf.low" class="gt_row gt_right">0.11591554</td>
-<td headers="conf.high" class="gt_row gt_right">0.14139386</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Basal Ganglia</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.12067643</td>
-<td headers="conf.low" class="gt_row gt_right">0.10962717</td>
-<td headers="conf.high" class="gt_row gt_right">0.13306092</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.19403176</td>
-<td headers="conf.low" class="gt_row gt_right">0.18025948</td>
-<td headers="conf.high" class="gt_row gt_right">0.20839472</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Lobar</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.20435719</td>
-<td headers="conf.low" class="gt_row gt_right">0.18809199</td>
-<td headers="conf.high" class="gt_row gt_right">0.22130524</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Left</td>
-<td headers="estimate" class="gt_row gt_right">0.12880492</td>
-<td headers="conf.low" class="gt_row gt_right">0.11555508</td>
-<td headers="conf.high" class="gt_row gt_right">0.14558245</td></tr>
-    <tr><td headers="group" class="gt_row gt_right">6</td>
-<td headers="ich_location" class="gt_row gt_center">Thalamus</td>
-<td headers="ich_laterality" class="gt_row gt_center">Right</td>
-<td headers="estimate" class="gt_row gt_right">0.13819543</td>
-<td headers="conf.low" class="gt_row gt_right">0.12348267</td>
-<td headers="conf.high" class="gt_row gt_right">0.15501278</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
+<p><img src="models_files/figure-html/eda-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_predictions</span>(fit_brms, <span class="at">condition =</span> <span class="fu">c</span>(<span class="st">"ich_location"</span>, <span class="st">"ich_laterality"</span>), <span class="at">type =</span> <span class="st">"response"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs03,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># Fixed Effects
+
+Parameter            |  Mean |    SD |         95% CI |  Rhat |      ESS |                        Prior
+-------------------------------------------------------------------------------------------------------
+(Intercept)          | 0.340 | 0.322 | [0.187, 0.648] | 1.000 | 6442.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  | 1.118 | 0.088 | [0.940, 1.329] | 1.000 | 5987.000 |                      Uniform
+age                  | 1.049 | 0.004 | [1.042, 1.056] | 1.001 | 6509.000 |                      Uniform
+ich_locationLobar    | 0.393 | 0.119 | [0.311, 0.497] | 0.999 | 4164.000 |                      Uniform
+ich_locationThalamus | 1.712 | 0.103 | [1.408, 2.118] | 1.000 | 3920.000 |                      Uniform
+ich_volume_baseline  | 1.060 | 0.004 | [1.052, 1.069] | 0.999 | 4451.000 |                      Uniform
+gcs_baseline         | 0.837 | 0.018 | [0.808, 0.867] | 0.999 | 5352.000 |                      Uniform
+neurosurgery_evacYes | 2.300 | 0.230 | [1.447, 3.565] | 1.000 | 5603.000 |                      Uniform</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_erich_atach</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
+                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
+                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
+                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
+                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
+                 from stan/lib/stan_math/stan/math/rev.hpp:10,
+                 from stan/lib/stan_math/stan/math.hpp:19,
+                 from stan/src/stan/model/model_header.hpp:4,
+                 from /tmp/RtmpU289bB/model-106d566f1ad9a.hpp:2:
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
+      |                                             ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13.2.1/string:49,
+                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
+                 from /usr/include/c++/13.2.1/ios:44,
+                 from /usr/include/c++/13.2.1/istream:40,
+                 from /usr/include/c++/13.2.1/sstream:40,
+                 from /usr/include/c++/13.2.1/complex:45,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
+                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
+                 from stan/lib/stan_math/stan</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/math/rev.hpp:4:
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  214 |         : public boost::functional::detail::binary_function&lt;
+      |                                             ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  252 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  299 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
+      |                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
+      |                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
+      |                                                               ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
+      |                                                                ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
+      |                                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
+      |                                                              ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
+      |                                                                   ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
+      |                                                                    ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
+      |                                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+st</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
+      |                                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Start sampling</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
+
+Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 3 finished in 30.3 seconds.
+Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 finished in 34.1 seconds.
+Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 2 finished in 35.4 seconds.
+Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 1 finished in 37.9 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 34.4 seconds.
+Total execution time: 37.9 seconds.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="models_files/figure-html/bayesian%20ordinal-1.png" class="img-fluid" width="672"></p>
+<p><img src="models_files/figure-html/eda-2.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parameter            |   Mean |    SD |           95% CI |  Rhat |      ESS |                        Prior
+----------------------------------------------------------------------------------------------------------
+Intercept[1]         |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 |                      Uniform
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[2]         |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 |                      Uniform
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[3]         |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 |                      Uniform
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[4]         |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 |                      Uniform
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[5]         | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 |                      Uniform
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[6]         | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 |                      Uniform
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  |  1.154 | 0.081 | [ 0.990,  1.355] | 0.999 | 5671.000 |                      Uniform
+age                  |  1.050 | 0.003 | [ 1.044,  1.056] | 1.000 | 5539.000 |                      Uniform
+ich_locationLobar    |  0.468 | 0.107 | [ 0.382,  0.579] | 1.000 | 5050.000 |                      Uniform
+ich_locationThalamus |  1.715 | 0.103 | [ 1.385,  2.072] | 1.000 | 4727.000 |                      Uniform
+ich_volume_baseline  |  1.045 | 0.003 | [ 1.040,  1.051] | 1.000 | 4602.000 |                      Uniform
+gcs_baseline         |  0.838 | 0.014 | [ 0.815,  0.862] | 0.999 | 5617.000 |                      Uniform
+neurosurgery_evacYes |  0.993 | 0.181 | [ 0.696,  1.392] | 0.999 | 5928.000 |                      Uniform</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90_all <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
+                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
+                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
+                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
+                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
+                 from stan/lib/stan_math/stan/math/rev.hpp:10,
+                 from stan/lib/stan_math/stan/math.hpp:19,
+                 from stan/src/stan/model/model_header.hpp:4,
+                 from /tmp/RtmpU289bB/model-106d57ae63a17.hpp:2:
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
+      |                                             ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13.2.1/string:49,
+                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
+                 from /usr/include/c++/13.2.1/ios:44,
+                 from /usr/include/c++/13.2.1/istream:40,
+                 from /usr/include/c++/13.2.1/sstream:40,
+                 from /usr/include/c++/13.2.1/complex:45,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
+                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
+                 from stan/lib/stan_math/stan</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/math/rev.hpp:4:
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  214 |         : public boost::functional::detail::binary_function&lt;
+      |                                             ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  252 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  299 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
+      |                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
+      |                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
+      |                                                               ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
+      |                                                                ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
+      |                                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
+      |                                                              ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
+      |                                                                   ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
+      |                                                                    ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
+      |                                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+st</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
+      |                                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Start sampling</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
+
+Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 1 finished in 51.7 seconds.
+Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 2 finished in 54.9 seconds.
+Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 finished in 55.0 seconds.
+Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 3 finished in 57.2 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 54.7 seconds.
+Total execution time: 57.3 seconds.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90_all, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="models_files/figure-html/eda-3.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90_all,</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parameter            |   Mean |    SD |           95% CI |  Rhat |      ESS |                        Prior
+----------------------------------------------------------------------------------------------------------
+Intercept[1]         |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 |                      Uniform
+b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[2]         |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 |                      Uniform
+b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[3]         |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 |                      Uniform
+b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[4]         |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 |                      Uniform
+b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[5]         | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 |                      Uniform
+b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[6]         | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 |                      Uniform
+b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  |  1.193 | 0.065 | [ 1.051,  1.355] | 0.999 | 5404.000 |                      Uniform
+age                  |  1.048 | 0.003 | [ 1.043,  1.053] | 0.999 | 5447.000 |                      Uniform
+ich_locationLobar    |  0.485 | 0.088 | [ 0.408,  0.572] | 1.001 | 4169.000 |                      Uniform
+ich_locationThalamus |  1.826 | 0.079 | [ 1.558,  2.127] | 1.000 | 4870.000 |                      Uniform
+ich_volume_baseline  |  1.050 | 0.002 | [ 1.045,  1.054] | 1.000 | 4128.000 |                      Uniform
+gcs_baseline         |  0.831 | 0.013 | [ 0.810,  0.851] | 0.999 | 5210.000 |                      Uniform
+neurosurgery_evacYes |  1.291 | 0.136 | [ 0.988,  1.686] | 1.000 | 5261.000 |                      Uniform</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -2664,9 +1188,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2678,7 +1216,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -2714,24 +1269,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

@@ -9,6 +9,7 @@ library(tidyverse)
 library(ordinal)
 library(marginaleffects)
 library(modelsummary)
+library(parameters)
 library(brms)
 library(cmdstanr)
 library(tidybayes)
@@ -16,102 +17,98 @@ library(broom.mixed)
 library(ggplot2)
 library(ggdist)
 library(broom)
+library(janitor)
 library(gt)
 library(here)
 
-options(mc.cores = parallel::detectCores())
+# seeds
+set.seed(160)
+BAYES_SEED <- 160
+
+# Bayes
+options(
+  mc.cores = parallel::detectCores(),
+  brms.backend = "cmdstanr"
+)
 
 data <- read_rds(here("data", "all.rds"), refhook = NULL)
 
 data <- data |>
-  filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar")
+  filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar") |>
+  select(study, age, ich_laterality, ich_location, ich_volume_baseline, gcs_baseline, ivh, neurosurgery_evac, sbp_baseline, mrs_90_01, mrs_90_02, mrs_90_03, mrs_90_04, mrs_90) |>
+  drop_na(ich_laterality)
 
 data$ich_location <- fct_drop(data$ich_location)
-table(data$ich_location)
+data$ich_laterality <- fct_drop(data$ich_laterality)
+
+data_erich_atach <- data |>
+  filter(study == "ERICH" | study == "ATACH2")
+
 
 # plot stuff
 theme_set(theme_minimal(base_family = "Cantarell"))
 
 ```
 
-## Visualization
+## Dichotimized mRS: 0-3 vs. 4-6
 
+### Priors
 
-```{r interact2 analysis replication}
+Based on previous knowledge, we can say that on average, there is a 60% chance of a good outcome of mRS 0-3. On the log-odds scale, that would be `qlogis(0.6) = 0.41`. That can range a lot from 20% to 80%, so in log-odds we can say that is `qlogis(0.2) = -1.38` as the variance.
 
-mrs_prop <- data |>
-  count(mrs_90) |>
-  mutate(p = n / sum(n), cumsum_p = cumsum(p)) |>
-  na.omit()
-
-mrs_prop |>
-  ggplot(aes(x = mrs_90, y = p)) +
-  geom_col(fill = "coral") +
-  scale_y_continuous(labels = scales::percent) +
-  labs(x = "mRS 90", y = "Proportion")
-
-mrs_prop |>
-  ggplot(aes(x = as.integer(mrs_90), y = cumsum_p)) +
-  geom_point(size = 2) +
-  geom_line(linewidth = 1) +
-  labs(x = "mRS 90", y = "Cumulative Proportion")
-
-mrs_prop |>
-  ggplot(aes(x = as.integer(mrs_90), y = log(cumsum_p) - log(1 - cumsum_p))) +
-  geom_point(size = 2) +
-  geom_line(linewidth = 1) +
-  labs(x = "mRS 90", y = "Logit Cumulative Proportion")
+```{r priors log_odds}
 
 
 ```
 
-## Frequentist Analysis
+```{r eda}
 
-### Mediation Analysis with Neurosurgery and ICH Laterality
-
-```{r frequentist ordinal}
-
-fit_freq <- clm(
-  mrs_90 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac,
-  data = data,
-  link = "logit"
+model_mrs03 <- brm(
+  mrs_90_03 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac,
+  family = bernoulli(link = "logit"),
+  data = data
 )
 
-summary(fit_freq)
+print(model_mrs03)
 
-predictions(fit_freq, by = "ich_laterality", type = "cum.prob") |>
-  gt()
+pp_check(model_mrs03, ndraws = 500)
 
-predictions(fit_freq, by = c("ich_location", "ich_laterality"), type = "cum.prob") |>
-  gt()
+model_parameters(model_mrs03,
+  centrality = "mean", dispersion = TRUE,
+  test = FALSE, verbose = FALSE, ci_method = "hdi", priors = TRUE,
+  exponentiate = TRUE
+) |>
+  print(digits = 3, zap_small = TRUE)
 
-plot_predictions(fit_freq, condition = c("ich_location", "ich_laterality"), type = "cum.prob")
-
-tidy(fit_freq)
-
-```
-
-## Bayesian Analysis
-
-```{r bayesian ordinal, warning=FALSE, message=FALSE}
-
-fit_brms <- brm(
+model_mrs_90 <- brm(
   mrs_90 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac,
-  data = data,
-  family = cumulative(logit),
-  prior = set_prior("normal(0,5)"),
-  chains = 2,
-  cores = 6,
-  backend = "cmdstanr"
+  family = cumulative(link = "logit"),
+  data = data_erich_atach
 )
 
-print(fit_brms)
+pp_check(model_mrs_90, type = "ecdf_overlay", ndraws = 500)
 
-predictions(fit_brms, by = c("ich_location", "ich_laterality"), type = "response") |>
-  gt()
+model_parameters(model_mrs_90,
+  centrality = "mean", dispersion = TRUE,
+  test = FALSE, verbose = FALSE, ci_method = "hdi", priors = TRUE,
+  exponentiate = TRUE
+) |>
+  print(digits = 3, zap_small = TRUE)
 
-plot_predictions(fit_brms, condition = c("ich_location", "ich_laterality"), type = "response")
+model_mrs_90_all <- brm(
+  mrs_90 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac,
+  family = cumulative(link = "logit"),
+  data = data
+)
 
+pp_check(model_mrs_90_all, type = "ecdf_overlay", ndraws = 500)
+
+model_parameters(model_mrs_90_all,
+  centrality = "mean", dispersion = TRUE,
+  test = FALSE, verbose = FALSE, ci_method = "hdi", priors = TRUE,
+  exponentiate = TRUE
+) |>
+  print(digits = 3, zap_small = TRUE)
 
 ```
 
