@@ -250,7 +250,623 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                  from stan/lib/stan_math/stan/math/rev.hpp:10,
                  from stan/lib/stan_math/stan/math.hpp:19,
                  from stan/src/stan/model/model_header.hpp:4,
-                 from /tmp/RtmpU289bB/model-106d52d8d77d.hpp:2:
+                 from /tmp/RtmpZgLE3L/model-25237ab4614e.hpp:2:
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
+      |                                             ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13.2.1/string:49,
+                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
+                 from /usr/include/c++/13.2.1/ios:44,
+                 from /usr/include/c++/13.2.1/istream:40,
+                 from /usr/include/c++/13.2.1/sstream:40,
+                 from /usr/include/c++/13.2.1/complex:45,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
+                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
+                 from stan/lib/stan_math/stan/</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>math/rev.hpp:4:
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  214 |         : public boost::functional::detail::binary_function&lt;
+      |                                             ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  252 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  299 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
+      |                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
+      |                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
+      |                                                               ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
+      |                                                                ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
+      |                                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
+      |                                                              ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
+      |                                                                   ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
+      |                                                                    ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
+      |                                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+st</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
+      |                                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Start sampling</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
+
+Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 finished in 2.1 seconds.
+Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 3 finished in 2.3 seconds.
+Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 finished in 2.5 seconds.
+Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 finished in 2.5 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 2.4 seconds.
+Total execution time: 3.0 seconds.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model_mrs03)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> Family: bernoulli 
+  Links: mu = logit 
+Formula: mrs_90_03 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac 
+   Data: data (Number of observations: 3105) 
+  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+         total post-warmup draws = 4000
+
+Population-Level Effects: 
+                     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
+Intercept               -1.08      0.32    -1.69    -0.45 1.00     6173
+ich_lateralityRight      0.11      0.09    -0.06     0.28 1.00     5991
+age                      0.05      0.00     0.04     0.05 1.00     6234
+ich_locationLobar       -0.93      0.12    -1.18    -0.71 1.00     4280
+ich_locationThalamus     0.54      0.10     0.33     0.74 1.00     3950
+ich_volume_baseline      0.06      0.00     0.05     0.07 1.00     4478
+gcs_baseline            -0.18      0.02    -0.21    -0.14 1.00     5336
+neurosurgery_evacYes     0.83      0.23     0.39     1.30 1.00     5713
+                     Tail_ESS
+Intercept                3019
+ich_lateralityRight      2851
+age                      3090
+ich_locationLobar        2845
+ich_locationThalamus     2907
+ich_volume_baseline      3411
+gcs_baseline             3044
+neurosurgery_evacYes     3031
+
+Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs03, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="models_files/figure-html/eda-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs03,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># Fixed Effects
+
+Parameter            |  Mean |    SD |         95% CI |  Rhat |      ESS |                        Prior
+-------------------------------------------------------------------------------------------------------
+(Intercept)          | 0.340 | 0.322 | [0.187, 0.648] | 1.000 | 6442.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  | 1.118 | 0.088 | [0.940, 1.329] | 1.000 | 5987.000 |                      Uniform
+age                  | 1.049 | 0.004 | [1.042, 1.056] | 1.001 | 6509.000 |                      Uniform
+ich_locationLobar    | 0.393 | 0.119 | [0.311, 0.497] | 0.999 | 4164.000 |                      Uniform
+ich_locationThalamus | 1.712 | 0.103 | [1.408, 2.118] | 1.000 | 3920.000 |                      Uniform
+ich_volume_baseline  | 1.060 | 0.004 | [1.052, 1.069] | 0.999 | 4451.000 |                      Uniform
+gcs_baseline         | 0.837 | 0.018 | [0.808, 0.867] | 0.999 | 5352.000 |                      Uniform
+neurosurgery_evacYes | 2.300 | 0.230 | [1.447, 3.565] | 1.000 | 5603.000 |                      Uniform</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_erich_atach</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
+                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
+                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
+                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
+                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
+                 from stan/lib/stan_math/stan/math/rev.hpp:10,
+                 from stan/lib/stan_math/stan/math.hpp:19,
+                 from stan/src/stan/model/model_header.hpp:4,
+                 from /tmp/RtmpZgLE3L/model-25239ae42e4.hpp:2:
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
+      |                                             ^~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>In file included from /usr/include/c++/13.2.1/string:49,
+                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
+                 from /usr/include/c++/13.2.1/ios:44,
+                 from /usr/include/c++/13.2.1/istream:40,
+                 from /usr/include/c++/13.2.1/sstream:40,
+                 from /usr/include/c++/13.2.1/complex:45,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
+                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
+                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
+                 from stan/lib/stan_math/stan/math/rev.hpp:4:
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  214 |         : public boost::functional::detail::binary_function&lt;
+      |                                             ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  252 |         : public boost::functional::detail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  299 |         : public boost::functional::d</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>etail::unary_function&lt;
+      |                                             ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
+      |                                                         ^~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
+      |                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
+      |                                                               ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
+      |                                                                ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
+      |                                        </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>                     ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
+      |                                                              ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
+      |                                                                   ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
+      |                                                                    ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  533 |     class pointer_to_unary_function : public boost::functional::detai</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>l::unary_function&lt;Arg,Result&gt;
+      |                                                                         ^~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
+      |                                                                          ^~~~~~~~~~~~~~~
+/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Start sampling</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
+
+Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
+Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
+Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
+Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
+Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
+Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
+Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
+Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 3 finished in 28.5 seconds.
+Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 4 finished in 31.8 seconds.
+Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
+Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
+Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 2 finished in 33.0 seconds.
+Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
+Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
+Chain 1 finished in 34.9 seconds.
+
+All 4 chains finished successfully.
+Mean chain execution time: 32.0 seconds.
+Total execution time: 34.9 seconds.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="models_files/figure-html/eda-2.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parameter            |   Mean |    SD |           95% CI |  Rhat |      ESS |                        Prior
+----------------------------------------------------------------------------------------------------------
+Intercept[1]         |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 |                      Uniform
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[2]         |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 |                      Uniform
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[3]         |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 |                      Uniform
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[4]         |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 |                      Uniform
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[5]         | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 |                      Uniform
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[6]         | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 |                      Uniform
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  |  1.154 | 0.081 | [ 0.990,  1.355] | 0.999 | 5671.000 |                      Uniform
+age                  |  1.050 | 0.003 | [ 1.044,  1.056] | 1.000 | 5539.000 |                      Uniform
+ich_locationLobar    |  0.468 | 0.107 | [ 0.382,  0.579] | 1.000 | 5050.000 |                      Uniform
+ich_locationThalamus |  1.715 | 0.103 | [ 1.385,  2.072] | 1.000 | 4727.000 |                      Uniform
+ich_volume_baseline  |  1.045 | 0.003 | [ 1.040,  1.051] | 1.000 | 4602.000 |                      Uniform
+gcs_baseline         |  0.838 | 0.014 | [ 0.815,  0.862] | 0.999 | 5617.000 |                      Uniform
+neurosurgery_evacYes |  0.993 | 0.181 | [ 0.696,  1.392] | 0.999 | 5928.000 |                      Uniform</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90_all <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
+                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
+                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
+                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
+                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
+                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
+                 from stan/lib/stan_math/stan/math/rev.hpp:10,
+                 from stan/lib/stan_math/stan/math.hpp:19,
+                 from stan/src/stan/model/model_header.hpp:4,
+                 from /tmp/RtmpZgLE3L/model-2523667d67b6.hpp:2:
 stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
   180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
       |                                             ^~~~~~~~~~~~~~
@@ -373,621 +989,6 @@ Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
 Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
 Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 1 finished in 2.3 seconds.
-Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 2 finished in 2.4 seconds.
-Chain 3 finished in 2.4 seconds.
-Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 finished in 2.5 seconds.
-
-All 4 chains finished successfully.
-Mean chain execution time: 2.4 seconds.
-Total execution time: 2.9 seconds.</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model_mrs03)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> Family: bernoulli 
-  Links: mu = logit 
-Formula: mrs_90_03 ~ ich_laterality + age + ich_location + ich_volume_baseline + gcs_baseline + neurosurgery_evac 
-   Data: data (Number of observations: 3105) 
-  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
-         total post-warmup draws = 4000
-
-Population-Level Effects: 
-                     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
-Intercept               -1.08      0.32    -1.69    -0.45 1.00     6173
-ich_lateralityRight      0.11      0.09    -0.06     0.28 1.00     5991
-age                      0.05      0.00     0.04     0.05 1.00     6234
-ich_locationLobar       -0.93      0.12    -1.18    -0.71 1.00     4280
-ich_locationThalamus     0.54      0.10     0.33     0.74 1.00     3950
-ich_volume_baseline      0.06      0.00     0.05     0.07 1.00     4478
-gcs_baseline            -0.18      0.02    -0.21    -0.14 1.00     5336
-neurosurgery_evacYes     0.83      0.23     0.39     1.30 1.00     5713
-                     Tail_ESS
-Intercept                3019
-ich_lateralityRight      2851
-age                      3090
-ich_locationLobar        2845
-ich_locationThalamus     2907
-ich_volume_baseline      3411
-gcs_baseline             3044
-neurosurgery_evacYes     3031
-
-Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
-and Tail_ESS are effective sample size measures, and Rhat is the potential
-scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs03, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="models_files/figure-html/eda-1.png" class="img-fluid" width="672"></p>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs03,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># Fixed Effects
-
-Parameter            |  Mean |    SD |         95% CI |  Rhat |      ESS |                        Prior
--------------------------------------------------------------------------------------------------------
-(Intercept)          | 0.340 | 0.322 | [0.187, 0.648] | 1.000 | 6442.000 | Student_t (df=3) (0 +- 2.50)
-ich_lateralityRight  | 1.118 | 0.088 | [0.940, 1.329] | 1.000 | 5987.000 |                      Uniform
-age                  | 1.049 | 0.004 | [1.042, 1.056] | 1.001 | 6509.000 |                      Uniform
-ich_locationLobar    | 0.393 | 0.119 | [0.311, 0.497] | 0.999 | 4164.000 |                      Uniform
-ich_locationThalamus | 1.712 | 0.103 | [1.408, 2.118] | 1.000 | 3920.000 |                      Uniform
-ich_volume_baseline  | 1.060 | 0.004 | [1.052, 1.069] | 0.999 | 4451.000 |                      Uniform
-gcs_baseline         | 0.837 | 0.018 | [0.808, 0.867] | 0.999 | 5352.000 |                      Uniform
-neurosurgery_evacYes | 2.300 | 0.230 | [1.447, 3.565] | 1.000 | 5603.000 |                      Uniform</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_erich_atach</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
-                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
-                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
-                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
-                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
-                 from stan/lib/stan_math/stan/math/rev.hpp:10,
-                 from stan/lib/stan_math/stan/math.hpp:19,
-                 from stan/src/stan/model/model_header.hpp:4,
-                 from /tmp/RtmpU289bB/model-106d566f1ad9a.hpp:2:
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
-      |                                             ^~~~~~~~~~~~~~
-In file included from /usr/include/c++/13.2.1/string:49,
-                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
-                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
-                 from /usr/include/c++/13.2.1/ios:44,
-                 from /usr/include/c++/13.2.1/istream:40,
-                 from /usr/include/c++/13.2.1/sstream:40,
-                 from /usr/include/c++/13.2.1/complex:45,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
-                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
-                 from stan/lib/stan_math/stan</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/math/rev.hpp:4:
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  214 |         : public boost::functional::detail::binary_function&lt;
-      |                                             ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  252 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  299 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
-      |                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
-      |                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
-      |                                                               ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
-      |                                                                ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
-      |                                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
-      |                                                              ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
-      |                                                                   ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
-      |                                                                    ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
-      |                                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
-      |                                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Start sampling</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
-
-Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 3 finished in 30.3 seconds.
-Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 finished in 34.1 seconds.
-Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 2 finished in 35.4 seconds.
-Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 1 finished in 37.9 seconds.
-
-All 4 chains finished successfully.
-Mean chain execution time: 34.4 seconds.
-Total execution time: 37.9 seconds.</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="models_files/figure-html/eda-2.png" class="img-fluid" width="672"></p>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90,</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Parameter            |   Mean |    SD |           95% CI |  Rhat |      ESS |                        Prior
-----------------------------------------------------------------------------------------------------------
-Intercept[1]         |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 |                      Uniform
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[2]         |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 |                      Uniform
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[3]         |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 |                      Uniform
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[4]         |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 |                      Uniform
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[5]         | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 |                      Uniform
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[6]         | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 |                      Uniform
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-ich_lateralityRight  |  1.154 | 0.081 | [ 0.990,  1.355] | 0.999 | 5671.000 |                      Uniform
-age                  |  1.050 | 0.003 | [ 1.044,  1.056] | 1.000 | 5539.000 |                      Uniform
-ich_locationLobar    |  0.468 | 0.107 | [ 0.382,  0.579] | 1.000 | 5050.000 |                      Uniform
-ich_locationThalamus |  1.715 | 0.103 | [ 1.385,  2.072] | 1.000 | 4727.000 |                      Uniform
-ich_volume_baseline  |  1.045 | 0.003 | [ 1.040,  1.051] | 1.000 | 4602.000 |                      Uniform
-gcs_baseline         |  0.838 | 0.014 | [ 0.815,  0.862] | 0.999 | 5617.000 |                      Uniform
-neurosurgery_evacYes |  0.993 | 0.181 | [ 0.696,  1.392] | 0.999 | 5928.000 |                      Uniform</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90_all <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
-                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
-                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
-                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
-                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
-                 from stan/lib/stan_math/stan/math/rev.hpp:10,
-                 from stan/lib/stan_math/stan/math.hpp:19,
-                 from stan/src/stan/model/model_header.hpp:4,
-                 from /tmp/RtmpU289bB/model-106d57ae63a17.hpp:2:
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
-      |                                             ^~~~~~~~~~~~~~
-In file included from /usr/include/c++/13.2.1/string:49,
-                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
-                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
-                 from /usr/include/c++/13.2.1/ios:44,
-                 from /usr/include/c++/13.2.1/istream:40,
-                 from /usr/include/c++/13.2.1/sstream:40,
-                 from /usr/include/c++/13.2.1/complex:45,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
-                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
-                 from stan/lib/stan_math/stan</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/math/rev.hpp:4:
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  214 |         : public boost::functional::detail::binary_function&lt;
-      |                                             ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  252 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  299 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
-      |                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
-      |                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
-      |                                                               ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
-      |                                                                ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
-      |                                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
-      |                                                              ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
-      |                                                                   ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
-      |                                                                    ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
-      |                                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
-      |                                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Start sampling</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
-
-Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
 Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
 Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
 Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
@@ -999,8 +1000,8 @@ Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup)
 Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
 Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
 Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
 Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
+Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
 Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
 Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
 Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
@@ -1008,20 +1009,20 @@ Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup)
 Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
 Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
 Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
 Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
+Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
 Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
 Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
 Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
 Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
 Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
+Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
 Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
 Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
 Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
 Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
+Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
 Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
 Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
 Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
@@ -1031,20 +1032,20 @@ Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup)
 Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
 Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
 Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
 Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
+Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
 Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
 Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
 Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
 Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
 Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
 Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
 Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
+Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
 Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
 Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
 Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
+Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
 Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
 Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
 Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
@@ -1052,48 +1053,48 @@ Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling)
 Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
 Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
 Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
 Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
+Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
 Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
 Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
 Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
+Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
 Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
 Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
 Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
 Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
 Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 1 finished in 51.7 seconds.
+Chain 1 finished in 46.9 seconds.
 Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
 Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
 Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
 Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 2 finished in 54.9 seconds.
+Chain 2 finished in 49.7 seconds.
 Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 finished in 55.0 seconds.
+Chain 4 finished in 50.1 seconds.
 Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
 Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 3 finished in 57.2 seconds.
+Chain 3 finished in 52.1 seconds.
 
 All 4 chains finished successfully.
-Mean chain execution time: 54.7 seconds.
-Total execution time: 57.3 seconds.</code></pre>
+Mean chain execution time: 49.7 seconds.
+Total execution time: 52.2 seconds.</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90_all, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90_all, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="models_files/figure-html/eda-3.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90_all,</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90_all,</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter            |   Mean |    SD |           95% CI |  Rhat |      ESS |                        Prior
