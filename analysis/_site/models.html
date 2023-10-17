@@ -207,39 +207,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cmdstanr)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidybayes)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom.mixed)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># seeds</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">160</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>BAYES_SEED <span class="ot">&lt;-</span> <span class="dv">160</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Bayes</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>(),</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">brms.backend =</span> <span class="st">"cmdstanr"</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"all.rds"</span>), <span class="at">refhook =</span> <span class="cn">NULL</span>)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich_location <span class="sc">==</span> <span class="st">"Basal Ganglia"</span> <span class="sc">|</span> ich_location <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span> ich_location <span class="sc">==</span> <span class="st">"Lobar"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, age, ich_laterality, ich_location, ich_volume_baseline, gcs_baseline, ivh, neurosurgery_evac, sbp_baseline, mrs_90_01, mrs_90_02, mrs_90_03, mrs_90_04, mrs_90) <span class="sc">|&gt;</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(ich_laterality)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ich_location <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(data<span class="sc">$</span>ich_location)</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ich_laterality <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(data<span class="sc">$</span>ich_laterality)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>data_erich_atach <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study <span class="sc">==</span> <span class="st">"ERICH"</span> <span class="sc">|</span> study <span class="sc">==</span> <span class="st">"ATACH2"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdist)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># seeds</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">160</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>BAYES_SEED <span class="ot">&lt;-</span> <span class="dv">160</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Bayes</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">mc.cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>(),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">brms.backend =</span> <span class="st">"cmdstanr"</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"all.rds"</span>), <span class="at">refhook =</span> <span class="cn">NULL</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ich_location <span class="sc">==</span> <span class="st">"Basal Ganglia"</span> <span class="sc">|</span> ich_location <span class="sc">==</span> <span class="st">"Thalamus"</span> <span class="sc">|</span> ich_location <span class="sc">==</span> <span class="st">"Lobar"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, age, ich_laterality, ich_location, ich_volume_baseline, gcs_baseline, ivh, neurosurgery_evac, sbp_baseline, mrs_90_01, mrs_90_02, mrs_90_03, mrs_90_04, mrs_90) <span class="sc">|&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(ich_laterality)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ich_location <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(data<span class="sc">$</span>ich_location)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>ich_laterality <span class="ot">&lt;-</span> <span class="fu">fct_drop</span>(data<span class="sc">$</span>ich_laterality)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>data_erich_atach <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(study <span class="sc">==</span> <span class="st">"ERICH"</span> <span class="sc">|</span> study <span class="sc">==</span> <span class="st">"ATACH2"</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># plot stuff</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Cantarell"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># plot stuff</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Cantarell"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="dichotimized-mrs-0-3-vs.-4-6" class="level2">
@@ -349,7 +348,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 2.41652e+166, but should be greater than the previous element, 2.41652e+166 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 2.41652e+166, but should be greater than the previous element, 2.41652e+166 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -364,7 +363,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 7.23183e+166, but should be greater than the previous element, 7.23183e+166 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 7.23183e+166, but should be greater than the previous element, 7.23183e+166 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -379,7 +378,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 6.55926e+41, but should be greater than the previous element, 6.55926e+41 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 6.55926e+41, but should be greater than the previous element, 6.55926e+41 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -394,7 +393,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 9.78952e+10, but should be greater than the previous element, 9.78952e+10 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 9.78952e+10, but should be greater than the previous element, 9.78952e+10 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -409,7 +408,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -47621, but should be greater than the previous element, -47621 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -47621, but should be greater than the previous element, -47621 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -424,7 +423,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -1359.23, but should be greater than the previous element, -1359.23 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -1359.23, but should be greater than the previous element, -1359.23 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -439,7 +438,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -13.6705, but should be greater than the previous element, -13.6705 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -13.6705, but should be greater than the previous element, -13.6705 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -454,7 +453,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 5.91971e+06, but should be greater than the previous element, 5.91971e+06 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 5.91971e+06, but should be greater than the previous element, 5.91971e+06 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -469,7 +468,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 3.87065e+06, but should be greater than the previous element, 3.87065e+06 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 3.87065e+06, but should be greater than the previous element, 3.87065e+06 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -484,7 +483,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is -79.5699, but should be greater than the previous element, -79.5699 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is -79.5699, but should be greater than the previous element, -79.5699 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -499,7 +498,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is -26.5935, but should be greater than the previous element, -26.5935 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is -26.5935, but should be greater than the previous element, -26.5935 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -514,7 +513,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -529,7 +528,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -544,7 +543,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 1.4781e+38, but should be greater than the previous element, 1.4781e+38 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 1.4781e+38, but should be greater than the previous element, 1.4781e+38 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -559,7 +558,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 2.54562e+38, but should be greater than the previous element, 2.54562e+38 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 2.54562e+38, but should be greater than the previous element, 2.54562e+38 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -574,7 +573,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 1.99122e+09, but should be greater than the previous element, 1.99122e+09 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 1.99122e+09, but should be greater than the previous element, 1.99122e+09 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -589,7 +588,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -604,7 +603,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 2.94651e+22, but should be greater than the previous element, 2.94651e+22 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 2.94651e+22, but should be greater than the previous element, 2.94651e+22 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -619,7 +618,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 2.25541e+118, but should be greater than the previous element, 2.25541e+118 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 2.25541e+118, but should be greater than the previous element, 2.25541e+118 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -634,7 +633,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 1.82506e+118, but should be greater than the previous element, 1.82506e+118 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 1.82506e+118, but should be greater than the previous element, 1.82506e+118 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -649,7 +648,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is 3.00501e+29, but should be greater than the previous element, 3.00501e+29 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is 3.00501e+29, but should be greater than the previous element, 3.00501e+29 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -664,7 +663,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -55762.1, but should be greater than the previous element, -55762.1 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -55762.1, but should be greater than the previous element, -55762.1 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -679,7 +678,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -1592.89, but should be greater than the previous element, -1592.89 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -1592.89, but should be greater than the previous element, -1592.89 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -694,7 +693,7 @@ neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |        
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is -13.6249, but should be greater than the previous element, -13.6249 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is -13.6249, but should be greater than the previous element, -13.6249 (in '/tmp/RtmpNzBBhC/model-186a45fda69c.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -798,7 +797,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -633.178, but should be greater than the previous element, -633.178 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -633.178, but should be greater than the previous element, -633.178 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -813,7 +812,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -631.131, but should be greater than the previous element, -631.131 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -631.131, but should be greater than the previous element, -631.131 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -828,7 +827,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -158.994, but should be greater than the previous element, -158.994 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -158.994, but should be greater than the previous element, -158.994 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -843,7 +842,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -41.1323, but should be greater than the previous element, -41.1323 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -41.1323, but should be greater than the previous element, -41.1323 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -858,7 +857,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -160856, but should be greater than the previous element, -160856 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -160856, but should be greater than the previous element, -160856 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -873,7 +872,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -4600.87, but should be greater than the previous element, -4600.87 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -4600.87, but should be greater than the previous element, -4600.87 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -888,7 +887,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -46.0586, but should be greater than the previous element, -46.0586 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -46.0586, but should be greater than the previous element, -46.0586 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -903,7 +902,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -668.309, but should be greater than the previous element, -668.309 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -668.309, but should be greater than the previous element, -668.309 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -918,7 +917,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -665.672, but should be greater than the previous element, -665.672 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -665.672, but should be greater than the previous element, -665.672 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -933,7 +932,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 5.16702e+23, but should be greater than the previous element, 5.16702e+23 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 5.16702e+23, but should be greater than the previous element, 5.16702e+23 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -948,7 +947,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -963,7 +962,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 2.20842e+120, but should be greater than the previous element, 2.20842e+120 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 2.20842e+120, but should be greater than the previous element, 2.20842e+120 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -978,7 +977,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -993,7 +992,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1008,7 +1007,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 1.30551e+87, but should be greater than the previous element, 1.30551e+87 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 1.30551e+87, but should be greater than the previous element, 1.30551e+87 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1023,7 +1022,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is 1.50464e+22, but should be greater than the previous element, 1.50464e+22 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is 1.50464e+22, but should be greater than the previous element, 1.50464e+22 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1038,7 +1037,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -139098, but should be greater than the previous element, -139098 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -139098, but should be greater than the previous element, -139098 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1053,7 +1052,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -3972.05, but should be greater than the previous element, -3972.05 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -3972.05, but should be greater than the previous element, -3972.05 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1068,7 +1067,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -39.862, but should be greater than the previous element, -39.862 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -39.862, but should be greater than the previous element, -39.862 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1083,7 +1082,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -760.814, but should be greater than the previous element, -760.814 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -760.814, but should be greater than the previous element, -760.814 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1098,7 +1097,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -760.29, but should be greater than the previous element, -760.29 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -760.29, but should be greater than the previous element, -760.29 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1113,7 +1112,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -191.351, but should be greater than the previous element, -191.351 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -191.351, but should be greater than the previous element, -191.351 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1128,7 +1127,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -48.4154, but should be greater than the previous element, -48.4154 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -48.4154, but should be greater than the previous element, -48.4154 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1143,7 +1142,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -13.0203, but should be greater than the previous element, -13.0203 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -13.0203, but should be greater than the previous element, -13.0203 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1158,7 +1157,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -213790, but should be greater than the previous element, -213790 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -213790, but should be greater than the previous element, -213790 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1173,7 +1172,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -6106.7, but should be greater than the previous element, -6106.7 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -6106.7, but should be greater than the previous element, -6106.7 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
@@ -1188,7 +1187,7 @@ neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |     
 <pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -60.8877, but should be greater than the previous element, -60.8877 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -60.8877, but should be greater than the previous element, -60.8877 (in '/tmp/RtmpNzBBhC/model-186a2bfd779e.stan', line 84, column 6 to column 63)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
