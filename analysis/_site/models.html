@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,10 +17,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,13 +46,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -89,8 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -109,31 +137,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">ICH Laterality Analysis Notebook</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./clean.html" rel="" target="">
- <span class="menu-text">Process and Clean Data</span></a>
+    <a class="nav-link" href="./clean.html">Process and Clean Data</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dag.html" rel="" target="">
- <span class="menu-text">Causal Assumptions - DAG</span></a>
+    <a class="nav-link" href="./dag.html">Causal Assumptions - DAG</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./descriptive.html" rel="" target="">
- <span class="menu-text">Descriptive Statistics</span></a>
+    <a class="nav-link" href="./descriptive.html">Descriptive Statistics</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./models.html" rel="" target="" aria-current="page">
- <span class="menu-text">Models</span></a>
+    <a class="nav-link active" href="./models.html" aria-current="page">Models</a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -167,7 +189,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-  
     
   </div>
   
@@ -227,6 +248,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="priors">Priors</h3>
 <p>Based on previous knowledge, we can say that on average, there is a 60% chance of a good outcome of mRS 0-3. On the log-odds scale, that would be <code>qlogis(0.6) = 0.41</code>. That can range a lot from 20% to 80%, so in log-odds we can say that is <code>qlogis(0.2) = -1.38</code> as the variance.</p>
 <div class="cell">
+
+</div>
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model_mrs03 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
@@ -239,234 +263,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
-                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
-                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
-                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
-                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
-                 from stan/lib/stan_math/stan/math/rev.hpp:10,
-                 from stan/lib/stan_math/stan/math.hpp:19,
-                 from stan/src/stan/model/model_header.hpp:4,
-                 from /tmp/RtmpZgLE3L/model-25237ab4614e.hpp:2:
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
-      |                                             ^~~~~~~~~~~~~~
-In file included from /usr/include/c++/13.2.1/string:49,
-                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
-                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
-                 from /usr/include/c++/13.2.1/ios:44,
-                 from /usr/include/c++/13.2.1/istream:40,
-                 from /usr/include/c++/13.2.1/sstream:40,
-                 from /usr/include/c++/13.2.1/complex:45,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
-                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
-                 from stan/lib/stan_math/stan/</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>math/rev.hpp:4:
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  214 |         : public boost::functional::detail::binary_function&lt;
-      |                                             ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  252 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  299 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
-      |                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
-      |                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
-      |                                                               ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
-      |                                                                ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
-      |                                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
-      |                                                              ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
-      |                                                                   ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
-      |                                                                    ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
-      |                                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
-      |                                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>Start sampling</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
-
-Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 1 finished in 2.1 seconds.
-Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 3 finished in 2.3 seconds.
-Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 2 finished in 2.5 seconds.
-Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 finished in 2.5 seconds.
-
-All 4 chains finished successfully.
-Mean chain execution time: 2.4 seconds.
-Total execution time: 3.0 seconds.</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model_mrs03)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model_mrs03)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> Family: bernoulli 
@@ -478,23 +279,23 @@ Formula: mrs_90_03 ~ ich_laterality + age + ich_location + ich_volume_baseline +
 
 Population-Level Effects: 
                      Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
-Intercept               -1.08      0.32    -1.69    -0.45 1.00     6173
-ich_lateralityRight      0.11      0.09    -0.06     0.28 1.00     5991
-age                      0.05      0.00     0.04     0.05 1.00     6234
-ich_locationLobar       -0.93      0.12    -1.18    -0.71 1.00     4280
-ich_locationThalamus     0.54      0.10     0.33     0.74 1.00     3950
-ich_volume_baseline      0.06      0.00     0.05     0.07 1.00     4478
-gcs_baseline            -0.18      0.02    -0.21    -0.14 1.00     5336
-neurosurgery_evacYes     0.83      0.23     0.39     1.30 1.00     5713
+Intercept               -1.07      0.33    -1.71    -0.45 1.00     5949
+ich_lateralityRight      0.11      0.09    -0.05     0.28 1.00     4929
+age                      0.05      0.00     0.04     0.05 1.00     5894
+ich_locationLobar       -0.93      0.12    -1.17    -0.70 1.00     4064
+ich_locationThalamus     0.54      0.10     0.35     0.74 1.00     4177
+ich_volume_baseline      0.06      0.00     0.05     0.07 1.00     4106
+gcs_baseline            -0.18      0.02    -0.21    -0.14 1.00     4854
+neurosurgery_evacYes     0.84      0.23     0.39     1.29 1.00     5047
                      Tail_ESS
-Intercept                3019
-ich_lateralityRight      2851
-age                      3090
-ich_locationLobar        2845
-ich_locationThalamus     2907
-ich_volume_baseline      3411
-gcs_baseline             3044
-neurosurgery_evacYes     3031
+Intercept                3466
+ich_lateralityRight      3030
+age                      3048
+ich_locationLobar        3118
+ich_locationThalamus     2985
+ich_volume_baseline      3174
+gcs_baseline             2937
+neurosurgery_evacYes     3176
 
 Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
 and Tail_ESS are effective sample size measures, and Rhat is the potential
@@ -502,658 +303,976 @@ scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs03, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs03, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="models_files/figure-html/eda-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs03,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs03,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># Fixed Effects
 
-Parameter            |  Mean |    SD |         95% CI |  Rhat |      ESS |                        Prior
--------------------------------------------------------------------------------------------------------
-(Intercept)          | 0.340 | 0.322 | [0.187, 0.648] | 1.000 | 6442.000 | Student_t (df=3) (0 +- 2.50)
-ich_lateralityRight  | 1.118 | 0.088 | [0.940, 1.329] | 1.000 | 5987.000 |                      Uniform
-age                  | 1.049 | 0.004 | [1.042, 1.056] | 1.001 | 6509.000 |                      Uniform
-ich_locationLobar    | 0.393 | 0.119 | [0.311, 0.497] | 0.999 | 4164.000 |                      Uniform
-ich_locationThalamus | 1.712 | 0.103 | [1.408, 2.118] | 1.000 | 3920.000 |                      Uniform
-ich_volume_baseline  | 1.060 | 0.004 | [1.052, 1.069] | 0.999 | 4451.000 |                      Uniform
-gcs_baseline         | 0.837 | 0.018 | [0.808, 0.867] | 0.999 | 5352.000 |                      Uniform
-neurosurgery_evacYes | 2.300 | 0.230 | [1.447, 3.565] | 1.000 | 5603.000 |                      Uniform</code></pre>
+Parameter            |  Mean |    SD |       95% CI |  Rhat |      ESS |                        Prior
+-----------------------------------------------------------------------------------------------------
+(Intercept)          | 0.342 | 0.326 | [0.18, 0.63] | 1.000 | 5878.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  | 1.120 | 0.088 | [0.95, 1.33] | 1.000 | 4907.000 |                      Uniform
+age                  | 1.049 | 0.003 | [1.04, 1.06] | 0.999 | 5852.000 |                      Uniform
+ich_locationLobar    | 0.393 | 0.120 | [0.31, 0.50] | 1.000 | 4026.000 |                      Uniform
+ich_locationThalamus | 1.719 | 0.102 | [1.41, 2.09] | 1.000 | 4182.000 |                      Uniform
+ich_volume_baseline  | 1.060 | 0.004 | [1.05, 1.07] | 1.000 | 4159.000 |                      Uniform
+gcs_baseline         | 0.837 | 0.018 | [0.81, 0.87] | 1.000 | 4819.000 |                      Uniform
+neurosurgery_evacYes | 2.307 | 0.228 | [1.47, 3.59] | 0.999 | 5119.000 |                      Uniform</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_erich_atach</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90 <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_erich_atach</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
-                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
-                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
-                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
-                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
-                 from stan/lib/stan_math/stan/math/rev.hpp:10,
-                 from stan/lib/stan_math/stan/math.hpp:19,
-                 from stan/src/stan/model/model_header.hpp:4,
-                 from /tmp/RtmpZgLE3L/model-25239ae42e4.hpp:2:
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
-      |                                             ^~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>In file included from /usr/include/c++/13.2.1/string:49,
-                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
-                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
-                 from /usr/include/c++/13.2.1/ios:44,
-                 from /usr/include/c++/13.2.1/istream:40,
-                 from /usr/include/c++/13.2.1/sstream:40,
-                 from /usr/include/c++/13.2.1/complex:45,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
-                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
-                 from stan/lib/stan_math/stan/math/rev.hpp:4:
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  214 |         : public boost::functional::detail::binary_function&lt;
-      |                                             ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  252 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  299 |         : public boost::functional::d</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>etail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
-      |                                                         ^~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
-      |                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
-      |                                                               ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
-      |                                                                ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
-      |                                        </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>                     ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
-      |                                                              ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
-      |                                                                   ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
-      |                                                                    ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  533 |     class pointer_to_unary_function : public boost::functional::detai</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>l::unary_function&lt;Arg,Result&gt;
-      |                                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
-      |                                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>Start sampling</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
-
-Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 3 finished in 28.5 seconds.
-Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 finished in 31.8 seconds.
-Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 2 finished in 33.0 seconds.
-Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 1 finished in 34.9 seconds.
-
-All 4 chains finished successfully.
-Mean chain execution time: 32.0 seconds.
-Total execution time: 34.9 seconds.</code></pre>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 2.41652e+166, but should be greater than the previous element, 2.41652e+166 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 7.23183e+166, but should be greater than the previous element, 7.23183e+166 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 6.55926e+41, but should be greater than the previous element, 6.55926e+41 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 9.78952e+10, but should be greater than the previous element, 9.78952e+10 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -47621, but should be greater than the previous element, -47621 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -1359.23, but should be greater than the previous element, -1359.23 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -13.6705, but should be greater than the previous element, -13.6705 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 5.91971e+06, but should be greater than the previous element, 5.91971e+06 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 3.87065e+06, but should be greater than the previous element, 3.87065e+06 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is -79.5699, but should be greater than the previous element, -79.5699 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is -26.5935, but should be greater than the previous element, -26.5935 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 1.4781e+38, but should be greater than the previous element, 1.4781e+38 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 2.54562e+38, but should be greater than the previous element, 2.54562e+38 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 1.99122e+09, but should be greater than the previous element, 1.99122e+09 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 5 is 2.94651e+22, but should be greater than the previous element, 2.94651e+22 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 2.25541e+118, but should be greater than the previous element, 2.25541e+118 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 1.82506e+118, but should be greater than the previous element, 1.82506e+118 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is 3.00501e+29, but should be greater than the previous element, 3.00501e+29 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -55762.1, but should be greater than the previous element, -55762.1 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -1592.89, but should be greater than the previous element, -1592.89 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is -13.6249, but should be greater than the previous element, -13.6249 (in '/tmp/RtmpZsnoI1/model-289c775e2e39.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="models_files/figure-html/eda-2.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90,</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90,</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Parameter            |   Mean |    SD |           95% CI |  Rhat |      ESS |                        Prior
-----------------------------------------------------------------------------------------------------------
-Intercept[1]         |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 |                      Uniform
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.134 | 0.272 | [ 0.080,  0.231] | 1.000 | 6199.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[2]         |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 |                      Uniform
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.867 | 0.258 | [ 0.528,  1.446] | 1.000 | 6286.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[3]         |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 |                      Uniform
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.486 | 0.258 | [ 1.543,  4.261] | 1.000 | 6255.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[4]         |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 |                      Uniform
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.982 | 0.261 | [ 3.716, 10.331] | 1.000 | 6300.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[5]         | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 |                      Uniform
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 22.228 | 0.265 | [13.376, 37.729] | 1.000 | 6147.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[6]         | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 |                      Uniform
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 44.263 | 0.269 | [25.506, 73.458] | 1.000 | 6185.000 | Student_t (df=3) (0 +- 2.50)
-ich_lateralityRight  |  1.154 | 0.081 | [ 0.990,  1.355] | 0.999 | 5671.000 |                      Uniform
-age                  |  1.050 | 0.003 | [ 1.044,  1.056] | 1.000 | 5539.000 |                      Uniform
-ich_locationLobar    |  0.468 | 0.107 | [ 0.382,  0.579] | 1.000 | 5050.000 |                      Uniform
-ich_locationThalamus |  1.715 | 0.103 | [ 1.385,  2.072] | 1.000 | 4727.000 |                      Uniform
-ich_volume_baseline  |  1.045 | 0.003 | [ 1.040,  1.051] | 1.000 | 4602.000 |                      Uniform
-gcs_baseline         |  0.838 | 0.014 | [ 0.815,  0.862] | 0.999 | 5617.000 |                      Uniform
-neurosurgery_evacYes |  0.993 | 0.181 | [ 0.696,  1.392] | 0.999 | 5928.000 |                      Uniform</code></pre>
+<pre><code>Parameter            |   Mean |    SD |         95% CI |  Rhat |      ESS |                        Prior
+--------------------------------------------------------------------------------------------------------
+Intercept[1]         |  0.133 | 0.270 | [ 0.08,  0.23] | 0.999 | 6215.000 |                      Uniform
+b_Intercept[1]       |  0.133 | 0.270 | [ 0.08,  0.23] | 0.999 | 6215.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.133 | 0.270 | [ 0.08,  0.23] | 0.999 | 6215.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.133 | 0.270 | [ 0.08,  0.23] | 0.999 | 6215.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.133 | 0.270 | [ 0.08,  0.23] | 0.999 | 6215.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.133 | 0.270 | [ 0.08,  0.23] | 0.999 | 6215.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.133 | 0.270 | [ 0.08,  0.23] | 0.999 | 6215.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.133 | 0.270 | [ 0.08,  0.23] | 0.999 | 6215.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[2]         |  0.871 | 0.260 | [ 0.53,  1.45] | 1.000 | 6810.000 |                      Uniform
+b_Intercept[2]       |  0.871 | 0.260 | [ 0.53,  1.45] | 1.000 | 6810.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.871 | 0.260 | [ 0.53,  1.45] | 1.000 | 6810.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.871 | 0.260 | [ 0.53,  1.45] | 1.000 | 6810.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.871 | 0.260 | [ 0.53,  1.45] | 1.000 | 6810.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.871 | 0.260 | [ 0.53,  1.45] | 1.000 | 6810.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.871 | 0.260 | [ 0.53,  1.45] | 1.000 | 6810.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.871 | 0.260 | [ 0.53,  1.45] | 1.000 | 6810.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[3]         |  2.499 | 0.262 | [ 1.48,  4.10] | 1.000 | 6841.000 |                      Uniform
+b_Intercept[3]       |  2.499 | 0.262 | [ 1.48,  4.10] | 1.000 | 6841.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.499 | 0.262 | [ 1.48,  4.10] | 1.000 | 6841.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.499 | 0.262 | [ 1.48,  4.10] | 1.000 | 6841.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.499 | 0.262 | [ 1.48,  4.10] | 1.000 | 6841.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.499 | 0.262 | [ 1.48,  4.10] | 1.000 | 6841.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.499 | 0.262 | [ 1.48,  4.10] | 1.000 | 6841.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.499 | 0.262 | [ 1.48,  4.10] | 1.000 | 6841.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[4]         |  6.018 | 0.264 | [ 3.62, 10.12] | 1.000 | 6894.000 |                      Uniform
+b_Intercept[4]       |  6.018 | 0.264 | [ 3.62, 10.12] | 1.000 | 6894.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  6.018 | 0.264 | [ 3.62, 10.12] | 1.000 | 6894.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  6.018 | 0.264 | [ 3.62, 10.12] | 1.000 | 6894.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  6.018 | 0.264 | [ 3.62, 10.12] | 1.000 | 6894.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  6.018 | 0.264 | [ 3.62, 10.12] | 1.000 | 6894.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  6.018 | 0.264 | [ 3.62, 10.12] | 1.000 | 6894.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  6.018 | 0.264 | [ 3.62, 10.12] | 1.000 | 6894.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[5]         | 22.370 | 0.267 | [13.47, 38.47] | 1.000 | 6864.000 |                      Uniform
+b_Intercept[5]       | 22.370 | 0.267 | [13.47, 38.47] | 1.000 | 6864.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.370 | 0.267 | [13.47, 38.47] | 1.000 | 6864.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.370 | 0.267 | [13.47, 38.47] | 1.000 | 6864.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.370 | 0.267 | [13.47, 38.47] | 1.000 | 6864.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.370 | 0.267 | [13.47, 38.47] | 1.000 | 6864.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.370 | 0.267 | [13.47, 38.47] | 1.000 | 6864.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 22.370 | 0.267 | [13.47, 38.47] | 1.000 | 6864.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[6]         | 44.554 | 0.270 | [26.19, 75.39] | 1.000 | 6879.000 |                      Uniform
+b_Intercept[6]       | 44.554 | 0.270 | [26.19, 75.39] | 1.000 | 6879.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.554 | 0.270 | [26.19, 75.39] | 1.000 | 6879.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.554 | 0.270 | [26.19, 75.39] | 1.000 | 6879.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.554 | 0.270 | [26.19, 75.39] | 1.000 | 6879.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.554 | 0.270 | [26.19, 75.39] | 1.000 | 6879.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.554 | 0.270 | [26.19, 75.39] | 1.000 | 6879.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 44.554 | 0.270 | [26.19, 75.39] | 1.000 | 6879.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  |  1.154 | 0.082 | [ 0.99,  1.36] | 1.000 | 5932.000 |                      Uniform
+age                  |  1.050 | 0.003 | [ 1.04,  1.06] | 0.999 | 6208.000 |                      Uniform
+ich_locationLobar    |  0.467 | 0.107 | [ 0.38,  0.58] | 1.000 | 4238.000 |                      Uniform
+ich_locationThalamus |  1.716 | 0.101 | [ 1.40,  2.07] | 1.000 | 4283.000 |                      Uniform
+ich_volume_baseline  |  1.045 | 0.003 | [ 1.04,  1.05] | 1.000 | 5183.000 |                      Uniform
+gcs_baseline         |  0.838 | 0.014 | [ 0.81,  0.86] | 0.999 | 5571.000 |                      Uniform
+neurosurgery_evacYes |  0.996 | 0.179 | [ 0.69,  1.40] | 1.000 | 6455.000 |                      Uniform</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90_all <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>model_mrs_90_all <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>  mrs_90 <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> gcs_baseline <span class="sc">+</span> neurosurgery_evac,</span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">cumulative</span>(<span class="at">link =</span> <span class="st">"logit"</span>),</span>
+<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data</span>
+<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
-                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
-                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
-                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
-                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
-                 from stan/lib/stan_math/stan/math/rev.hpp:10,
-                 from stan/lib/stan_math/stan/math.hpp:19,
-                 from stan/src/stan/model/model_header.hpp:4,
-                 from /tmp/RtmpZgLE3L/model-2523667d67b6.hpp:2:
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
-      |                                             ^~~~~~~~~~~~~~
-In file included from /usr/include/c++/13.2.1/string:49,
-                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
-                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
-                 from /usr/include/c++/13.2.1/ios:44,
-                 from /usr/include/c++/13.2.1/istream:40,
-                 from /usr/include/c++/13.2.1/sstream:40,
-                 from /usr/include/c++/13.2.1/complex:45,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
-                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
-                 from stan/lib/stan_math/stan/</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>math/rev.hpp:4:
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  214 |         : public boost::functional::detail::binary_function&lt;
-      |                                             ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  252 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  299 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
-      |                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
-      |                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
-      |                                                               ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
-      |                                                                ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
-      |                                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
-      |                                                              ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
-      |                                                                   ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
-      |                                                                    ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
-      |                                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
-      |                                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>Start sampling</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
-
-Chain 1 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 2 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 3 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 4 Iteration:    1 / 2000 [  0%]  (Warmup) 
-Chain 1 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 2 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 4 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 1 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 3 Iteration:  100 / 2000 [  5%]  (Warmup) 
-Chain 1 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 2 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 4 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 1 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 3 Iteration:  200 / 2000 [ 10%]  (Warmup) 
-Chain 4 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 2 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 1 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 2 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 4 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 3 Iteration:  300 / 2000 [ 15%]  (Warmup) 
-Chain 1 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 3 Iteration:  400 / 2000 [ 20%]  (Warmup) 
-Chain 2 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 1 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 2 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 3 Iteration:  500 / 2000 [ 25%]  (Warmup) 
-Chain 4 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 1 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 4 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 2 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 1 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 3 Iteration:  600 / 2000 [ 30%]  (Warmup) 
-Chain 2 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 4 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 3 Iteration:  700 / 2000 [ 35%]  (Warmup) 
-Chain 1 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 1 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 2 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 3 Iteration:  800 / 2000 [ 40%]  (Warmup) 
-Chain 1 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 3 Iteration:  900 / 2000 [ 45%]  (Warmup) 
-Chain 4 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 4 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 2 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 2 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 1 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 4 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 2 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 3 Iteration: 1000 / 2000 [ 50%]  (Warmup) 
-Chain 3 Iteration: 1001 / 2000 [ 50%]  (Sampling) 
-Chain 1 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 4 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 2 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 3 Iteration: 1100 / 2000 [ 55%]  (Sampling) 
-Chain 1 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 2 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 4 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 3 Iteration: 1200 / 2000 [ 60%]  (Sampling) 
-Chain 1 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 2 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 4 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 3 Iteration: 1300 / 2000 [ 65%]  (Sampling) 
-Chain 1 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 2 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 4 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 3 Iteration: 1400 / 2000 [ 70%]  (Sampling) 
-Chain 1 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 2 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 3 Iteration: 1500 / 2000 [ 75%]  (Sampling) 
-Chain 4 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 1 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 3 Iteration: 1600 / 2000 [ 80%]  (Sampling) 
-Chain 4 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 1 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 2 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 4 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 3 Iteration: 1700 / 2000 [ 85%]  (Sampling) 
-Chain 1 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 1 finished in 46.9 seconds.
-Chain 2 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 4 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 3 Iteration: 1800 / 2000 [ 90%]  (Sampling) 
-Chain 2 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 2 finished in 49.7 seconds.
-Chain 4 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 4 finished in 50.1 seconds.
-Chain 3 Iteration: 1900 / 2000 [ 95%]  (Sampling) 
-Chain 3 Iteration: 2000 / 2000 [100%]  (Sampling) 
-Chain 3 finished in 52.1 seconds.
-
-All 4 chains finished successfully.
-Mean chain execution time: 49.7 seconds.
-Total execution time: 52.2 seconds.</code></pre>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -633.178, but should be greater than the previous element, -633.178 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -631.131, but should be greater than the previous element, -631.131 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -158.994, but should be greater than the previous element, -158.994 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -41.1323, but should be greater than the previous element, -41.1323 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -160856, but should be greater than the previous element, -160856 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -4600.87, but should be greater than the previous element, -4600.87 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -46.0586, but should be greater than the previous element, -46.0586 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 1 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -668.309, but should be greater than the previous element, -668.309 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -665.672, but should be greater than the previous element, -665.672 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 5.16702e+23, but should be greater than the previous element, 5.16702e+23 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 6 is 2.20842e+120, but should be greater than the previous element, 2.20842e+120 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is inf, but should be greater than the previous element, inf (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 3 is 1.30551e+87, but should be greater than the previous element, 1.30551e+87 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 4 is 1.50464e+22, but should be greater than the previous element, 1.50464e+22 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -139098, but should be greater than the previous element, -139098 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -3972.05, but should be greater than the previous element, -3972.05 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -39.862, but should be greater than the previous element, -39.862 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 3 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -760.814, but should be greater than the previous element, -760.814 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -760.29, but should be greater than the previous element, -760.29 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -191.351, but should be greater than the previous element, -191.351 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -48.4154, but should be greater than the previous element, -48.4154 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -13.0203, but should be greater than the previous element, -13.0203 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -213790, but should be greater than the previous element, -213790 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -6106.7, but should be greater than the previous element, -6106.7 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Informational Message: The current Metropolis proposal is about to be rejected because of the following issue:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 Exception: ordered_logistic: Cut-points is not a valid ordered vector. The element at 2 is -60.8877, but should be greater than the previous element, -60.8877 (in '/tmp/RtmpZsnoI1/model-289c475aedc6.stan', line 84, column 6 to column 63)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 If this warning occurs sporadically, such as for highly constrained variable types like covariance matrices, then the sampler is fine,</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 but if this warning occurs often then your model may be either severely ill-conditioned or misspecified.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Chain 4 </code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90_all, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb274"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb274-1"><a href="#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(model_mrs_90_all, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="models_files/figure-html/eda-3.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90_all,</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb275"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb275-1"><a href="#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(model_mrs_90_all,</span>
+<span id="cb275-2"><a href="#cb275-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb275-3"><a href="#cb275-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb275-4"><a href="#cb275-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb275-5"><a href="#cb275-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb275-6"><a href="#cb275-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Parameter            |   Mean |    SD |           95% CI |  Rhat |      ESS |                        Prior
-----------------------------------------------------------------------------------------------------------
-Intercept[1]         |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 |                      Uniform
-b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.131 | 0.238 | [ 0.082,  0.206] | 0.999 | 6084.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[2]         |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 |                      Uniform
-b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.838 | 0.228 | [ 0.532,  1.290] | 0.999 | 6432.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[3]         |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 |                      Uniform
-b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.339 | 0.230 | [ 1.517,  3.742] | 0.999 | 6611.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[4]         |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 |                      Uniform
-b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.715 | 0.231 | [ 3.630,  8.959] | 0.999 | 6445.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[5]         | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 |                      Uniform
-b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 26.062 | 0.236 | [16.061, 40.191] | 0.999 | 6525.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[6]         | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 |                      Uniform
-b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.446 | 0.242 | [32.722, 84.248] | 0.999 | 6763.000 | Student_t (df=3) (0 +- 2.50)
-ich_lateralityRight  |  1.193 | 0.065 | [ 1.051,  1.355] | 0.999 | 5404.000 |                      Uniform
-age                  |  1.048 | 0.003 | [ 1.043,  1.053] | 0.999 | 5447.000 |                      Uniform
-ich_locationLobar    |  0.485 | 0.088 | [ 0.408,  0.572] | 1.001 | 4169.000 |                      Uniform
-ich_locationThalamus |  1.826 | 0.079 | [ 1.558,  2.127] | 1.000 | 4870.000 |                      Uniform
-ich_volume_baseline  |  1.050 | 0.002 | [ 1.045,  1.054] | 1.000 | 4128.000 |                      Uniform
-gcs_baseline         |  0.831 | 0.013 | [ 0.810,  0.851] | 0.999 | 5210.000 |                      Uniform
-neurosurgery_evacYes |  1.291 | 0.136 | [ 0.988,  1.686] | 1.000 | 5261.000 |                      Uniform</code></pre>
+<pre><code>Parameter            |   Mean |    SD |         95% CI |  Rhat |      ESS |                        Prior
+--------------------------------------------------------------------------------------------------------
+Intercept[1]         |  0.130 | 0.233 | [ 0.08,  0.21] | 1.000 | 6207.000 |                      Uniform
+b_Intercept[1]       |  0.130 | 0.233 | [ 0.08,  0.21] | 1.000 | 6207.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.233 | [ 0.08,  0.21] | 1.000 | 6207.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.233 | [ 0.08,  0.21] | 1.000 | 6207.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.233 | [ 0.08,  0.21] | 1.000 | 6207.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.233 | [ 0.08,  0.21] | 1.000 | 6207.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.233 | [ 0.08,  0.21] | 1.000 | 6207.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.233 | [ 0.08,  0.21] | 1.000 | 6207.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[2]         |  0.832 | 0.222 | [ 0.54,  1.30] | 1.000 | 6287.000 |                      Uniform
+b_Intercept[2]       |  0.832 | 0.222 | [ 0.54,  1.30] | 1.000 | 6287.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.832 | 0.222 | [ 0.54,  1.30] | 1.000 | 6287.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.832 | 0.222 | [ 0.54,  1.30] | 1.000 | 6287.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.832 | 0.222 | [ 0.54,  1.30] | 1.000 | 6287.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.832 | 0.222 | [ 0.54,  1.30] | 1.000 | 6287.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.832 | 0.222 | [ 0.54,  1.30] | 1.000 | 6287.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.832 | 0.222 | [ 0.54,  1.30] | 1.000 | 6287.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[3]         |  2.322 | 0.221 | [ 1.48,  3.52] | 1.000 | 6315.000 |                      Uniform
+b_Intercept[3]       |  2.322 | 0.221 | [ 1.48,  3.52] | 1.000 | 6315.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.322 | 0.221 | [ 1.48,  3.52] | 1.000 | 6315.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.322 | 0.221 | [ 1.48,  3.52] | 1.000 | 6315.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.322 | 0.221 | [ 1.48,  3.52] | 1.000 | 6315.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.322 | 0.221 | [ 1.48,  3.52] | 1.000 | 6315.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.322 | 0.221 | [ 1.48,  3.52] | 1.000 | 6315.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.322 | 0.221 | [ 1.48,  3.52] | 1.000 | 6315.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[4]         |  5.669 | 0.224 | [ 3.71,  8.93] | 1.000 | 6485.000 |                      Uniform
+b_Intercept[4]       |  5.669 | 0.224 | [ 3.71,  8.93] | 1.000 | 6485.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.669 | 0.224 | [ 3.71,  8.93] | 1.000 | 6485.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.669 | 0.224 | [ 3.71,  8.93] | 1.000 | 6485.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.669 | 0.224 | [ 3.71,  8.93] | 1.000 | 6485.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.669 | 0.224 | [ 3.71,  8.93] | 1.000 | 6485.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.669 | 0.224 | [ 3.71,  8.93] | 1.000 | 6485.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.669 | 0.224 | [ 3.71,  8.93] | 1.000 | 6485.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[5]         | 25.880 | 0.228 | [16.23, 39.34] | 1.000 | 6660.000 |                      Uniform
+b_Intercept[5]       | 25.880 | 0.228 | [16.23, 39.34] | 1.000 | 6660.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.880 | 0.228 | [16.23, 39.34] | 1.000 | 6660.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.880 | 0.228 | [16.23, 39.34] | 1.000 | 6660.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.880 | 0.228 | [16.23, 39.34] | 1.000 | 6660.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.880 | 0.228 | [16.23, 39.34] | 1.000 | 6660.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.880 | 0.228 | [16.23, 39.34] | 1.000 | 6660.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.880 | 0.228 | [16.23, 39.34] | 1.000 | 6660.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[6]         | 53.071 | 0.231 | [33.31, 81.39] | 1.000 | 6695.000 |                      Uniform
+b_Intercept[6]       | 53.071 | 0.231 | [33.31, 81.39] | 1.000 | 6695.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.071 | 0.231 | [33.31, 81.39] | 1.000 | 6695.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.071 | 0.231 | [33.31, 81.39] | 1.000 | 6695.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.071 | 0.231 | [33.31, 81.39] | 1.000 | 6695.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.071 | 0.231 | [33.31, 81.39] | 1.000 | 6695.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.071 | 0.231 | [33.31, 81.39] | 1.000 | 6695.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.071 | 0.231 | [33.31, 81.39] | 1.000 | 6695.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  |  1.193 | 0.067 | [ 1.05,  1.36] | 1.000 | 5629.000 |                      Uniform
+age                  |  1.048 | 0.003 | [ 1.04,  1.05] | 1.000 | 5976.000 |                      Uniform
+ich_locationLobar    |  0.486 | 0.087 | [ 0.40,  0.57] | 0.999 | 4369.000 |                      Uniform
+ich_locationThalamus |  1.824 | 0.079 | [ 1.57,  2.13] | 0.999 | 4685.000 |                      Uniform
+ich_volume_baseline  |  1.049 | 0.002 | [ 1.04,  1.05] | 1.000 | 5052.000 |                      Uniform
+gcs_baseline         |  0.831 | 0.012 | [ 0.81,  0.85] | 1.000 | 5778.000 |                      Uniform
+neurosurgery_evacYes |  1.297 | 0.133 | [ 1.00,  1.66] | 1.000 | 5738.000 |                      Uniform</code></pre>
 </div>
 </div>
 
@@ -1189,23 +1308,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -1217,24 +1322,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1270,128 +1358,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

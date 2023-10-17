@@ -758,7 +758,7 @@ Removed 20 rows containing missing values (`geom_point()`).</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> ich_volume_baseline, <span class="at">y =</span> <span class="fu">as.numeric</span>(mrs_90_03))) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> ich_volume_baseline, <span class="at">y =</span> <span class="fu">as.numeric</span>(mrs_90_04))) <span class="sc">+</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dots</span>(<span class="fu">aes</span>(<span class="at">side =</span> <span class="fu">ifelse</span>(mrs_90_04, <span class="st">"bottom"</span>, <span class="st">"top"</span>)),</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">color =</span> <span class="st">"grey20"</span>, <span class="at">scale =</span> <span class="fl">0.2</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
@@ -775,10 +775,10 @@ Removed 20 rows containing missing values (`geom_point()`).</code></pre>
 <pre><code>Warning: Removed 427 rows containing non-finite values (`stat_smooth()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 20 rows containing non-finite values (`geom_dotsinterval()`).</code></pre>
+<pre><code>Warning: Removed 410 rows containing non-finite values (`geom_dotsinterval()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 407 rows containing missing values (`geom_dotsinterval()`).</code></pre>
+<pre><code>Warning: Removed 17 rows containing missing values (`geom_dotsinterval()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="posterior_files/figure-html/logistic%20ich%20eda-1.png" class="img-fluid" width="672"></p>
