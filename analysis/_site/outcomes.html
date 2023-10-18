@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,10 +17,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -47,13 +46,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -89,8 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -109,35 +137,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">ICH Laterality Analysis Notebook</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./clean.html" rel="" target="">
- <span class="menu-text">Process and Clean Data</span></a>
+    <a class="nav-link" href="./clean.html">Process and Clean Data</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dag.html" rel="" target="">
- <span class="menu-text">Causal Assumptions - DAG</span></a>
+    <a class="nav-link" href="./dag.html">Causal Assumptions - DAG</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./eda.html" rel="" target="">
- <span class="menu-text">Exploratory Data Analysis</span></a>
+    <a class="nav-link" href="./eda.html">Exploratory Data Analysis</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./aggressive_care.html" rel="" target="">
- <span class="menu-text">Aggressive Care and Hemispheric Laterality</span></a>
+    <a class="nav-link" href="./aggressive_care.html">Aggressive Care and Hemispheric Laterality</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./outcomes.html" rel="" target="" aria-current="page">
- <span class="menu-text">Outcomes</span></a>
+    <a class="nav-link active" href="./outcomes.html" aria-current="page">Outcomes</a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-</div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -162,7 +183,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
-  
     
   </div>
   
@@ -227,234 +247,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">iter =</span> <span class="dv">5000</span> <span class="sc">*</span> <span class="dv">2</span>,</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> BAYES_SEED,</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">refresh =</span> <span class="dv">0</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Rows containing NAs were excluded from the model.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>In file included from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array/multi_array_ref.hpp:32,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/multi_array.hpp:34,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint/algebra/multi_array_algebra.hpp:22,
-                 from stan/lib/stan_math/lib/boost_1.78.0/boost/numeric/odeint.hpp:63,
-                 from stan/lib/stan_math/stan/math/prim/functor/ode_rk45.hpp:9,
-                 from stan/lib/stan_math/stan/math/prim/functor/integrate_ode_rk45.hpp:6,
-                 from stan/lib/stan_math/stan/math/prim/functor.hpp:15,
-                 from stan/lib/stan_math/stan/math/rev/fun.hpp:198,
-                 from stan/lib/stan_math/stan/math/rev.hpp:10,
-                 from stan/lib/stan_math/stan/math.hpp:19,
-                 from stan/src/stan/model/model_header.hpp:4,
-                 from /tmp/RtmpYuZZth/model-734d7ca8f45f.hpp:2:
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:180:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  180 |         : public boost::functional::detail::unary_function&lt;typename unary_traits&lt;Predicate&gt;::argument_type,bool&gt;
-      |                                             ^~~~~~~~~~~~~~
-In file included from /usr/include/c++/13.2.1/string:49,
-                 from /usr/include/c++/13.2.1/bits/locale_classes.h:40,
-                 from /usr/include/c++/13.2.1/bits/ios_base.h:41,
-                 from /usr/include/c++/13.2.1/ios:44,
-                 from /usr/include/c++/13.2.1/istream:40,
-                 from /usr/include/c++/13.2.1/sstream:40,
-                 from /usr/include/c++/13.2.1/complex:45,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Core:50,
-                 from stan/lib/stan_math/lib/eigen_3.4.0/Eigen/Dense:1,
-                 from stan/lib/stan_math/stan/math/prim/fun/Eigen.hpp:22,
-                 from stan/lib/stan_math/stan/</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>math/rev.hpp:4:
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:214:45: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  214 |         : public boost::functional::detail::binary_function&lt;
-      |                                             ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:252:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  252 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:299:45: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  299 |         : public boost::functional::detail::unary_function&lt;
-      |                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:345:57: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  345 |     class mem_fun_t : public boost::functional::detail::unary_function&lt;T*, S&gt;
-      |                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:361:58: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ruct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  361 |     class mem_fun1_t : public boost::functional::detail::binary_function&lt;T*, A, S&gt;
-      |                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:377:63: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  377 |     class const_mem_fun_t : public boost::functional::detail::unary_function&lt;const T*, S&gt;
-      |                                                               ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:393:64: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  393 |     class const_mem_fun1_t : public boost::functional::detail::binary_function&lt;const T*, A, S&gt;
-      |                                                                ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:438:61: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  438 |     class mem_fun_ref_t : public boost::functional::detail::unary_function&lt;T&amp;, S&gt;
-      |                                                             ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:454:62: warning: ‘template&lt;class _</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  454 |     class mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;T&amp;, A, S&gt;
-      |                                                              ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:470:67: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  470 |     class const_mem_fun_ref_t : public boost::functional::detail::unary_function&lt;const T&amp;, S&gt;
-      |                                                                   ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:487:68: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  487 |     class const_mem_fun1_ref_t : public boost::functional::detail::binary_function&lt;const T&amp;, A, S&gt;
-      |                                                                    ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~
-stan/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:533:73: warning: ‘template&lt;class _Arg, class _Result&gt; struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
-  533 |     class pointer_to_unary_function : public boost::functional::detail::unary_function&lt;Arg,Result&gt;
-      |                                                                         ^~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:117:12: note: declared here
-  117 |     struct unary_function
-      |            ^~~~~~~~~~~~~~
-st</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>an/lib/stan_math/lib/boost_1.78.0/boost/functional.hpp:557:74: warning: ‘template&lt;class _Arg1, class _Arg2, class _Result&gt; struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
-  557 |     class pointer_to_binary_function : public boost::functional::detail::binary_function&lt;Arg1,Arg2,Result&gt;
-      |                                                                          ^~~~~~~~~~~~~~~
-/usr/include/c++/13.2.1/bits/stl_function.h:131:12: note: declared here
-  131 |     struct binary_function
-      |            ^~~~~~~~~~~~~~~</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Start sampling</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running MCMC with 4 chains, at most 8 in parallel...
-
-Chain 4 finished in 236.2 seconds.
-Chain 2 finished in 244.7 seconds.
-Chain 3 finished in 260.0 seconds.
-Chain 1 finished in 261.4 seconds.
-
-All 4 chains finished successfully.
-Mean chain execution time: 250.6 seconds.
-Total execution time: 261.6 seconds.</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(mod_mrs_90, <span class="at">type =</span> <span class="st">"bars"</span>, <span class="at">ndraws =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(mod_mrs_90, <span class="at">type =</span> <span class="st">"bars"</span>, <span class="at">ndraws =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="outcomes_files/figure-html/brms priors-1.png" class="img-fluid" width="672"></p>
+<p><img src="outcomes_files/figure-html/brms%20priors-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(mod_mrs_90, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(mod_mrs_90, <span class="at">type =</span> <span class="st">"ecdf_overlay"</span>, <span class="at">ndraws =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="outcomes_files/figure-html/brms priors-2.png" class="img-fluid" width="672"></p>
+<p><img src="outcomes_files/figure-html/brms%20priors-2.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(mod_mrs_90,</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_parameters</span>(mod_mrs_90,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>, <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="cn">FALSE</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>, <span class="at">ci_method =</span> <span class="st">"hdi"</span>, <span class="at">priors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">exponentiate =</span> <span class="cn">TRUE</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">digits =</span> <span class="dv">3</span>, <span class="at">zap_small =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Parameter            |   Mean |    SD |           95% CI |  Rhat |       ESS |                        Prior
------------------------------------------------------------------------------------------------------------
-Intercept[1]         |  0.130 | 0.239 | [ 0.082,  0.208] | 1.000 | 31522.000 |          Normal (0 +- 10.00)
-b_Intercept[1]       |  0.130 | 0.239 | [ 0.082,  0.208] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.130 | 0.239 | [ 0.082,  0.208] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.130 | 0.239 | [ 0.082,  0.208] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.130 | 0.239 | [ 0.082,  0.208] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.130 | 0.239 | [ 0.082,  0.208] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.130 | 0.239 | [ 0.082,  0.208] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[1]       |  0.130 | 0.239 | [ 0.082,  0.208] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[2]         |  0.834 | 0.231 | [ 0.531,  1.311] | 1.000 | 33176.000 |          Normal (0 +- 10.00)
-b_Intercept[2]       |  0.834 | 0.231 | [ 0.531,  1.311] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.834 | 0.231 | [ 0.531,  1.311] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.834 | 0.231 | [ 0.531,  1.311] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.834 | 0.231 | [ 0.531,  1.311] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.834 | 0.231 | [ 0.531,  1.311] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.834 | 0.231 | [ 0.531,  1.311] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[2]       |  0.834 | 0.231 | [ 0.531,  1.311] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[3]         |  2.326 | 0.231 | [ 1.496,  3.708] | 1.000 | 32251.000 |          Normal (0 +- 10.00)
-b_Intercept[3]       |  2.326 | 0.231 | [ 1.496,  3.708] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.326 | 0.231 | [ 1.496,  3.708] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.326 | 0.231 | [ 1.496,  3.708] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.326 | 0.231 | [ 1.496,  3.708] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.326 | 0.231 | [ 1.496,  3.708] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.326 | 0.231 | [ 1.496,  3.708] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[3]       |  2.326 | 0.231 | [ 1.496,  3.708] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[4]         |  5.682 | 0.233 | [ 3.556,  8.920] | 1.000 | 31573.000 |          Normal (0 +- 10.00)
-b_Intercept[4]       |  5.682 | 0.233 | [ 3.556,  8.920] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.682 | 0.233 | [ 3.556,  8.920] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.682 | 0.233 | [ 3.556,  8.920] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.682 | 0.233 | [ 3.556,  8.920] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.682 | 0.233 | [ 3.556,  8.920] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.682 | 0.233 | [ 3.556,  8.920] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[4]       |  5.682 | 0.233 | [ 3.556,  8.920] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[5]         | 25.928 | 0.237 | [16.424, 41.969] | 1.000 | 30809.000 |          Normal (0 +- 10.00)
-b_Intercept[5]       | 25.928 | 0.237 | [16.424, 41.969] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 25.928 | 0.237 | [16.424, 41.969] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 25.928 | 0.237 | [16.424, 41.969] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 25.928 | 0.237 | [16.424, 41.969] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 25.928 | 0.237 | [16.424, 41.969] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 25.928 | 0.237 | [16.424, 41.969] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[5]       | 25.928 | 0.237 | [16.424, 41.969] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
-Intercept[6]         | 53.175 | 0.240 | [32.486, 83.697] | 1.000 | 30401.000 |          Normal (0 +- 10.00)
-b_Intercept[6]       | 53.175 | 0.240 | [32.486, 83.697] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.175 | 0.240 | [32.486, 83.697] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.175 | 0.240 | [32.486, 83.697] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.175 | 0.240 | [32.486, 83.697] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.175 | 0.240 | [32.486, 83.697] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.175 | 0.240 | [32.486, 83.697] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
-b_Intercept[6]       | 53.175 | 0.240 | [32.486, 83.697] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
-ich_lateralityRight  |  1.192 | 0.068 | [ 1.045,  1.360] | 1.000 | 32238.000 |          Normal (0 +- 10.00)
-age                  |  1.048 | 0.003 | [ 1.043,  1.054] | 1.000 | 28745.000 |          Normal (0 +- 10.00)
-ich_locationLobar    |  0.486 | 0.089 | [ 0.408,  0.577] | 1.000 | 24229.000 |          Normal (0 +- 10.00)
-ich_locationThalamus |  1.825 | 0.080 | [ 1.557,  2.125] | 1.000 | 28362.000 |          Normal (0 +- 10.00)
-ich_volume_baseline  |  1.050 | 0.002 | [ 1.045,  1.055] | 1.000 | 24068.000 |          Normal (0 +- 10.00)
-gcs_baseline         |  0.831 | 0.013 | [ 0.811,  0.852] | 1.000 | 27586.000 |          Normal (0 +- 10.00)
-neurosurgery_evacYes |  1.292 | 0.135 | [ 0.992,  1.685] | 1.000 | 30052.000 |          Normal (0 +- 10.00)</code></pre>
+<pre><code>Parameter            |   Mean |    SD |         95% CI |  Rhat |       ESS |                        Prior
+---------------------------------------------------------------------------------------------------------
+Intercept[1]         |  0.130 | 0.239 | [ 0.08,  0.21] | 1.000 | 31522.000 |          Normal (0 +- 10.00)
+b_Intercept[1]       |  0.130 | 0.239 | [ 0.08,  0.21] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.239 | [ 0.08,  0.21] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.239 | [ 0.08,  0.21] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.239 | [ 0.08,  0.21] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.239 | [ 0.08,  0.21] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.239 | [ 0.08,  0.21] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[1]       |  0.130 | 0.239 | [ 0.08,  0.21] | 1.000 | 31522.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[2]         |  0.834 | 0.231 | [ 0.53,  1.31] | 1.000 | 33176.000 |          Normal (0 +- 10.00)
+b_Intercept[2]       |  0.834 | 0.231 | [ 0.53,  1.31] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.834 | 0.231 | [ 0.53,  1.31] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.834 | 0.231 | [ 0.53,  1.31] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.834 | 0.231 | [ 0.53,  1.31] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.834 | 0.231 | [ 0.53,  1.31] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.834 | 0.231 | [ 0.53,  1.31] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[2]       |  0.834 | 0.231 | [ 0.53,  1.31] | 1.000 | 33176.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[3]         |  2.326 | 0.231 | [ 1.50,  3.71] | 1.000 | 32251.000 |          Normal (0 +- 10.00)
+b_Intercept[3]       |  2.326 | 0.231 | [ 1.50,  3.71] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.326 | 0.231 | [ 1.50,  3.71] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.326 | 0.231 | [ 1.50,  3.71] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.326 | 0.231 | [ 1.50,  3.71] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.326 | 0.231 | [ 1.50,  3.71] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.326 | 0.231 | [ 1.50,  3.71] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[3]       |  2.326 | 0.231 | [ 1.50,  3.71] | 1.000 | 32251.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[4]         |  5.682 | 0.233 | [ 3.56,  8.92] | 1.000 | 31573.000 |          Normal (0 +- 10.00)
+b_Intercept[4]       |  5.682 | 0.233 | [ 3.56,  8.92] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.682 | 0.233 | [ 3.56,  8.92] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.682 | 0.233 | [ 3.56,  8.92] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.682 | 0.233 | [ 3.56,  8.92] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.682 | 0.233 | [ 3.56,  8.92] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.682 | 0.233 | [ 3.56,  8.92] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[4]       |  5.682 | 0.233 | [ 3.56,  8.92] | 1.000 | 31573.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[5]         | 25.928 | 0.237 | [16.42, 41.97] | 1.000 | 30809.000 |          Normal (0 +- 10.00)
+b_Intercept[5]       | 25.928 | 0.237 | [16.42, 41.97] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.928 | 0.237 | [16.42, 41.97] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.928 | 0.237 | [16.42, 41.97] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.928 | 0.237 | [16.42, 41.97] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.928 | 0.237 | [16.42, 41.97] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.928 | 0.237 | [16.42, 41.97] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[5]       | 25.928 | 0.237 | [16.42, 41.97] | 1.000 | 30809.000 | Student_t (df=3) (0 +- 2.50)
+Intercept[6]         | 53.175 | 0.240 | [32.49, 83.70] | 1.000 | 30401.000 |          Normal (0 +- 10.00)
+b_Intercept[6]       | 53.175 | 0.240 | [32.49, 83.70] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.175 | 0.240 | [32.49, 83.70] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.175 | 0.240 | [32.49, 83.70] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.175 | 0.240 | [32.49, 83.70] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.175 | 0.240 | [32.49, 83.70] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.175 | 0.240 | [32.49, 83.70] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
+b_Intercept[6]       | 53.175 | 0.240 | [32.49, 83.70] | 1.000 | 30401.000 | Student_t (df=3) (0 +- 2.50)
+ich_lateralityRight  |  1.192 | 0.068 | [ 1.04,  1.36] | 1.000 | 32238.000 |          Normal (0 +- 10.00)
+age                  |  1.048 | 0.003 | [ 1.04,  1.05] | 1.000 | 28745.000 |          Normal (0 +- 10.00)
+ich_locationLobar    |  0.486 | 0.089 | [ 0.41,  0.58] | 1.000 | 24229.000 |          Normal (0 +- 10.00)
+ich_locationThalamus |  1.825 | 0.080 | [ 1.56,  2.13] | 1.000 | 28362.000 |          Normal (0 +- 10.00)
+ich_volume_baseline  |  1.050 | 0.002 | [ 1.04,  1.05] | 1.000 | 24068.000 |          Normal (0 +- 10.00)
+gcs_baseline         |  0.831 | 0.013 | [ 0.81,  0.85] | 1.000 | 27586.000 |          Normal (0 +- 10.00)
+neurosurgery_evacYes |  1.292 | 0.135 | [ 0.99,  1.68] | 1.000 | 30052.000 |          Normal (0 +- 10.00)</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_variables</span>(mod_mrs_90)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_variables</span>(mod_mrs_90)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "b_Intercept[1]"         "b_Intercept[2]"         "b_Intercept[3]"        
@@ -468,26 +345,22 @@ neurosurgery_evacYes |  1.292 | 0.135 | [ 0.992,  1.685] | 1.000 | 30052.000 |  
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> mod_mrs_90 <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread_draws</span>(b_ich_lateralityRight) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich_right_OR =</span> <span class="fu">exp</span>(b_ich_lateralityRight))</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>draws <span class="sc">|&gt;</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ich_right_OR)) <span class="sc">+</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_halfeye</span>(<span class="fu">aes</span>(<span class="at">fill_ramp =</span> <span class="fu">stat</span>(x <span class="sc">&gt;</span> <span class="dv">1</span>), <span class="at">fill =</span> <span class="st">"green"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> mod_mrs_90 <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread_draws</span>(b_ich_lateralityRight) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ich_right_OR =</span> <span class="fu">exp</span>(b_ich_lateralityRight))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>draws <span class="sc">|&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ich_right_OR)) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_halfeye</span>(<span class="fu">aes</span>(<span class="at">fill_ramp =</span> <span class="fu">stat</span>(x <span class="sc">&gt;</span> <span class="dv">1</span>), <span class="at">fill =</span> <span class="st">"green"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `stat(x &gt; 1)` was deprecated in ggplot2 3.4.0.
-ℹ Please use `after_stat(x &gt; 1)` instead.</code></pre>
-</div>
 <div class="cell-output-display">
-<p><img src="outcomes_files/figure-html/brms priors-3.png" class="img-fluid" width="672"></p>
+<p><img src="outcomes_files/figure-html/brms%20priors-3.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the proportion of posterior draws that are bigger than OR of 1</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>draws <span class="sc">%&gt;%</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop_greater_0 =</span> <span class="fu">sum</span>(ich_right_OR <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the proportion of posterior draws that are bigger than OR of 1</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>draws <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop_greater_0 =</span> <span class="fu">sum</span>(ich_right_OR <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
@@ -497,9 +370,9 @@ neurosurgery_evacYes |  1.292 | 0.135 | [ 0.992,  1.685] | 1.000 | 30052.000 |  
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the proportion of posterior draws that are bigger than OR of 1.2</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>draws <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop_greater_0 =</span> <span class="fu">sum</span>(ich_right_OR <span class="sc">&gt;</span> <span class="fl">1.2</span>) <span class="sc">/</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the proportion of posterior draws that are bigger than OR of 1.2</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>draws <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop_greater_0 =</span> <span class="fu">sum</span>(ich_right_OR <span class="sc">&gt;</span> <span class="fl">1.2</span>) <span class="sc">/</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
@@ -539,23 +412,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -567,24 +426,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -620,128 +462,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

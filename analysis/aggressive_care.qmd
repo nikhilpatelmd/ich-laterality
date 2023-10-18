@@ -1,51 +1,7 @@
 ---
 title: "Aggressive Care and Hemispheric Laterality"
 ---
-
-```{r setup}
-#| code-fold: true
-#| code-summary: "Setup"
-#| warning: false
-#| message: false
-
-library(tidyverse) # ggplot, dplyr, and friends
-library(janitor)
-library(glue) # Easier string interpolation
-library(gt) # Fancy tables
-library(scales) # Nicer labeling functions
-library(patchwork) # Combine plots nicely
-library(ggmosaic) # Mosaic plots with ggplot
-library(parameters) # Extract model parameters as data frames
-library(cmdstanr) # Run Stan code from R
-library(brms) # Nice frontend for Stan
-library(tidybayes) # Manipulate MCMC chains in a tidy way
-library(here)
-
-# Set some global Stan options
-CHAINS <- 4
-ITER <- 2000
-WARMUP <- 1000
-BAYES_SEED <- 160
-options(mc.cores = parallel::detectCores(), brms.backend = "cmdstanr")
-
-# ggplot theming
-theme_nice <- function() {
-  theme_minimal(base_family = "Cantarell") +
-    theme(
-      panel.grid.minor = element_blank(),
-      plot.title = element_text(family = "Cantarell", face = "bold"),
-      axis.title = element_text(family = "Cantarell Medium"),
-      axis.title.x = element_text(hjust = 0),
-      axis.title.y = element_text(hjust = 1),
-      strip.text = element_text(
-        family = "Cantarell", face = "bold",
-        size = rel(1), hjust = 0
-      ),
-      strip.background = element_rect(fill = NA, color = NA)
-    )
-}
-
-```
+{{< include 00-setup.qmd >}}
 
 I am interested in seeing if hemispheric laterality affects the aggressiveness of care that a patient receives. This mostly includes neurosurgery, but also other processes such as days of mechanical ventilation, EVD placement, rates of tracheostomy/PEG, and if patients were transitioned to comfort care.
 

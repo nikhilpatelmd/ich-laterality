@@ -2,19 +2,9 @@
 title: "Process and Clean Data"
 ---
 
-```{r setup, warning=FALSE, message=FALSE}
+{{< include 00-setup.qmd >}}
 
-library(tidyverse)
-library(patchwork)
-library(here)
-library(tableone)
-library(gt)
-library(gtExtras)
-library(broom)
-
-```
-
-*Data has been cleaned and merged elsewhere.*
+*Data has been mostly cleaned and merged elsewhere.*
 
 
 ```{r description of data}
@@ -25,7 +15,7 @@ data <- read_csv(here("data", "all.csv"))
 factors <- c("sex", "race", "euro_mobility_90", "euro_mobility_180", "euro_mobility_365", "euro_selfcare_90", "euro_selfcare_180", "euro_selfcare_365", "euro_usual_90", "euro_usual_180", "euro_usual_365", "euro_pain_90", "euro_pain_180", "euro_pain_365", "euro_anxiety_90", "euro_anxiety_180", "euro_anxiety_365", "location_90", "location_180", "location_365", "ethnicity", "stroke", "cad", "chf", "afib", "pvd", "hld", "dm2", "tobacco", "htn_meds", "dm2_meds", "ich_location", "ich_laterality", "ivh", "evd", "neurosurgery_evac", "tracheostomy", "peg", "dnr_binary", "dni_binary", "comfort_care_binary", "mrs_90", "mrs_180", "mrs_365", "euroqol_90_assessment_source", "euroqol_180_assessment_source", "euroqol_365_assessment_source", "euro_mobility_365_binary", "euro_selfcare_365_binary", "euro_usual_365_binary", "euro_pain_365_binary", "euro_anxiety_365_binary", "study", "enrolling_country", "treatment_group", "euro_mobility_90_binary", "euro_selfcare_90_binary", "euro_usual_90_binary", "euro_pain_90_binary", "euro_anxiety_90_binary", "cocaine", "anticoagulated", "etoh", "mrs_270", "location_30")
 
 data <- data |>
-  mutate_at(factors, factor)
+  mutate(across(factors, factor))
 
 glimpse(data)
 

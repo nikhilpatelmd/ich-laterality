@@ -1,0 +1,7 @@
+```{r setup}
+#| include: false
+#| warning: false
+#| message: false
+
+source(here::here("analysis/R/setup.R"))
+```

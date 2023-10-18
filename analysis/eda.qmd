@@ -3,19 +3,8 @@ title: "Exploratory Data Analysis"
 code-fold: true
 ---
 
-```{r setup, warning=FALSE, message=FALSE}
+{{< include 00-setup.qmd >}}
 
-library(tidyverse)
-library(dagitty)
-library(ggdag)
-library(MetBrewer)
-library(here)
-library(broom) # For converting model output to data frames
-
-# set theme of all DAGs to `theme_dag()`
-theme_set(theme_dag(base_family = "Noah"))
-
-```
 
 ## Outcomes
 
