@@ -122,30 +122,3 @@ clr_diff <- clrs_saguaro[4]
 
 ```
 
-## Frequentist Way
-
-
-```{r frequentist}
-
-matrix <- counts_tidy |>
-  filter(neurosurgery_evac == "Yes") |>
-  mutate(n_no = total - n) |>
-  select(n_yes = n, n_no) |>
-  as.matrix()
-
-prop.test(matrix) |>
-  model_parameters()
-
-```
-
-
-```{r binomial}
-
-ggplot() +
-  stat_function(fun = ~ dbeta(., 2, 6), geom = "area", fill = "#AC3414") +
-  scale_x_continuous(labels = label_percent()) +
-  labs(x = "Possible values for π", y = NULL, fill = NULL) +
-  theme_nice() +
-  theme(axis.text.y = element_blank())
-
-```

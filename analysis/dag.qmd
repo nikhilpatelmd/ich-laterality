@@ -14,28 +14,17 @@ library(here)
 library(broom) # For converting model output to data frames
 
 # set theme of all DAGs to `theme_dag()`
-theme_set(theme_dag(base_family = "Cantarell"))
+theme_set(theme_dag(base_family = "Noah"))
 
 ```
 
-## Specify a Causal Question
+## Specify Causal Questions
+
+Do patients with **left hemispheric** injuries receive less aggressive care as compared to patients with **right hemispheric** injuries? We will look at rates of neurosurgery, evd, tracheostomy, withdrawal of life-sustaining therapies.
 
 Do patients with **left hemispheric** injuries have worse otucomes as compared to patients with **right hemispheric** injuries?
 
-## Exploratory Data Analysis
 
-```{r eda, warning=FALSE, message=FALSE}
-#| fig-width: 10
-
-data <- read_csv(here("data", "all.csv"))
-
-data |>
-  filter(ich_location == c("Lobar", "Basal Ganglia", "Thalamus")) |>
-  filter(!is.na(ich_laterality)) |>
-  ggplot(aes(euro_vas_90, fill = ich_laterality)) +
-  geom_density(color = NA, alpha = .8)
-
-```
 
 ## Model Our Assumptions
 
@@ -141,11 +130,5 @@ ggdag_dseparated(ich_dag_tidy, controlling_for = adjustment_vars) +
   scale_color_manual(values = status_colors, na.value = "grey20") +
   scale_fill_manual(values = status_colors, na.value = "grey20") +
   guides(color = FALSE, fill = FALSE)
-
-```
-
-
-```{r}
-
 
 ```

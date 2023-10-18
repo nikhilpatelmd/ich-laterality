@@ -1,0 +1,40 @@
+---
+title: "Exploratory Data Analysis"
+code-fold: true
+---
+
+```{r setup, warning=FALSE, message=FALSE}
+
+library(tidyverse)
+library(dagitty)
+library(ggdag)
+library(MetBrewer)
+library(here)
+library(broom) # For converting model output to data frames
+
+# set theme of all DAGs to `theme_dag()`
+theme_set(theme_dag(base_family = "Noah"))
+
+```
+
+## Outcomes
+
+```{r aggressiveness, warning=FALSE, message=FALSE}
+#| fig-width: 10
+
+
+
+```
+
+```{r euroqol, warning=FALSE, message=FALSE}
+#| fig-width: 10
+
+data <- read_csv(here("data", "all.csv")) |>
+  filter(ich_location == c("Lobar", "Basal Ganglia", "Thalamus")) |>
+  filter(!is.na(ich_laterality))
+
+data |>
+  ggplot(aes(euro_vas_90, fill = ich_laterality)) +
+  geom_density(color = NA, alpha = .8)
+
+```

@@ -7,8 +7,9 @@ website:
     left:
       - clean.qmd
       - dag.qmd
-      - descriptive.qmd
-      - models.qmd
+      - eda.qmd
+      - aggressive_care.qmd
+      - outcomes.qmd
 
 
 format:
