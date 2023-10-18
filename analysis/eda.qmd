@@ -5,12 +5,47 @@ code-fold: true
 
 {{< include 00-setup.qmd >}}
 
+```{r table1, warning=FALSE, message=FALSE}
+#| fig-width: 10
+
+table_one_vars <- c("age", "sex", "race", "ethnicity", "time_symptoms_to_ed", "sbp_baseline", "nihss_baseline", "gcs_baseline", "ich_laterality", "htn", "dm2", "stroke", "tobacco", "ich_location", "ich_volume_baseline", "ivh_volume_baseline", "study")
+
+table1 <- data |>
+  select(table_one_vars) |>
+  tbl_summary(by = ich_laterality) |>
+  add_p() |>
+  add_overall() |>
+  bold_labels()
+
+table1
+
+```
+
+## Aggressiveness of Care
+
+First, we will explore if patients with **left hemispheric** injuries receive less aggressive care. 
+
+### Neurosurgical Intervention
+
+```{r neurosurgery, warning=FALSE, message=FALSE}
+
+table_two_vars <- c("neurosurgery_evac", "evd", "tracheostomy", "peg", "ich_laterality", "comfort_care_binary", "")
+
+table2 <- data |>
+  select(table_two_vars) |>
+  tbl_summary(by = ich_laterality) |>
+  add_p() |>
+  add_overall() |>
+  bold_labels()
+
+table2
+
+```
 
 ## Outcomes
 
-```{r aggressiveness, warning=FALSE, message=FALSE}
+```{r eda, warning=FALSE, message=FALSE}
 #| fig-width: 10
-
 
 
 ```
