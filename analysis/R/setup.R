@@ -44,7 +44,7 @@ data <- read_rds(here("data", "all.rds"), refhook = NULL)
 
 data <- data |>
   filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar") |>
-  select(study, age, sex, race, ethnicity, time_symptoms_to_ed, sbp_baseline, ich_laterality, ich_location, nihss_baseline, gcs_baseline, ich_volume_baseline, ivh, ivh_volume_baseline, htn, hld, dm2, stroke, afib, tobacco, cad, neurosurgery_evac, neurosurgery_evac_day, evd, tracheostomy, peg, dnr_binary, dnr_day, dni_binary, dni_day, comfort_care_binary, comfort_care_day, mrs_90_01, mrs_90_02, mrs_90_03, mrs_90_04, mrs_90, hospital_los) |>
+  select(study, age, sex, race, ethnicity, time_symptoms_to_ed, sbp_baseline, ich_laterality, ich_location, nihss_baseline, gcs_baseline, ich_volume_baseline, ivh, ivh_volume_baseline, htn, hld, dm2, stroke, afib, tobacco, cad, neurosurgery_evac, neurosurgery_evac_day, evd, days_mechanical_ventilation, tracheostomy, peg, dnr_binary, dnr_day, dni_binary, dni_day, comfort_care_binary, comfort_care_day, mrs_90_01, mrs_90_02, mrs_90_03, mrs_90_04, mrs_90, hospital_los) |>
   drop_na(ich_laterality)
 
 glimpse(data)

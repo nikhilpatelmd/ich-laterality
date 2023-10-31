@@ -172,10 +172,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#aggressiveness-of-care" id="toc-aggressiveness-of-care" class="nav-link active" data-scroll-target="#aggressiveness-of-care">Aggressiveness of Care</a>
-  <ul class="collapse">
-  <li><a href="#neurosurgical-intervention" id="toc-neurosurgical-intervention" class="nav-link" data-scroll-target="#neurosurgical-intervention">Neurosurgical Intervention</a></li>
-  </ul></li>
+  <li><a href="#table-1" id="toc-table-1" class="nav-link active" data-scroll-target="#table-1">Table 1</a></li>
+  <li><a href="#table-2---aggressiveness-of-care-unadjusted" id="toc-table-2---aggressiveness-of-care-unadjusted" class="nav-link" data-scroll-target="#table-2---aggressiveness-of-care-unadjusted">Table 2 - Aggressiveness of Care (Unadjusted)</a></li>
+  <li><a href="#neurosurgical-intervention---multivariate-regression" id="toc-neurosurgical-intervention---multivariate-regression" class="nav-link" data-scroll-target="#neurosurgical-intervention---multivariate-regression">Neurosurgical Intervention - Multivariate Regression</a></li>
   <li><a href="#outcomes" id="toc-outcomes" class="nav-link" data-scroll-target="#outcomes">Outcomes</a></li>
   </ul>
 </nav>
@@ -204,6 +203,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Collapse some categorical values</li>
 <li>IVH as binary instead of volume</li>
 </ul>
+<section id="table-1" class="level2">
+<h2 class="anchored" data-anchor-id="table-1">Table 1</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -902,13 +903,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<section id="aggressiveness-of-care" class="level2">
-<h2 class="anchored" data-anchor-id="aggressiveness-of-care">Aggressiveness of Care</h2>
+</section>
+<section id="table-2---aggressiveness-of-care-unadjusted" class="level2">
+<h2 class="anchored" data-anchor-id="table-2---aggressiveness-of-care-unadjusted">Table 2 - Aggressiveness of Care (Unadjusted)</h2>
 <p>First, we will explore if patients with <strong>left hemispheric</strong> injuries receive less aggressive care.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table_two_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"neurosurgery_evac"</span>, <span class="st">"evd"</span>, <span class="st">"tracheostomy"</span>, <span class="st">"ich_laterality"</span>, <span class="st">"comfort_care_binary"</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table_two_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"neurosurgery_evac"</span>, <span class="st">"evd"</span>, <span class="st">"days_mechanical_ventilation"</span>, <span class="st">"tracheostomy"</span>, <span class="st">"ich_laterality"</span>, <span class="st">"comfort_care_binary"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(table_two_vars) <span class="sc">|&gt;</span></span>
@@ -918,14 +920,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">list</span>(</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      neurosurgery_evac <span class="sc">~</span> <span class="st">"Neurosurgical Intervention"</span>,</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      evd <span class="sc">~</span> <span class="st">"Ventriculostomy"</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      tracheostomy <span class="sc">~</span> <span class="st">"Tracheostomy"</span>, comfort_care_binary <span class="sc">~</span> <span class="st">"Comfort Care"</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">|&gt;</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_overall</span>() <span class="sc">|&gt;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      days_mechanical_ventilation <span class="sc">~</span> <span class="st">"Intubation Days"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      tracheostomy <span class="sc">~</span> <span class="st">"Tracheostomy"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      comfort_care_binary <span class="sc">~</span> <span class="st">"Comfort Care"</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_overall</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -1391,6 +1395,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td headers="stat_1" class="gt_row gt_center">437 (19%)</td>
 <td headers="stat_2" class="gt_row gt_center">465 (21%)</td>
 <td headers="p.value" class="gt_row gt_center">0.3</td></tr>
+    <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Intubation Days</td>
+<td headers="stat_0" class="gt_row gt_center">6.0 (3.0, 10.0)</td>
+<td headers="stat_1" class="gt_row gt_center">6.0 (3.0, 12.5)</td>
+<td headers="stat_2" class="gt_row gt_center">6.0 (3.0, 9.0)</td>
+<td headers="p.value" class="gt_row gt_center">0.4</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Tracheostomy</td>
 <td headers="stat_0" class="gt_row gt_center">38 (1.4%)</td>
 <td headers="stat_1" class="gt_row gt_center">19 (1.5%)</td>
@@ -1405,18 +1414,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   <tfoot class="gt_footnotes">
     <tr>
-      <td class="gt_footnote" colspan="5"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%)</td>
+      <td class="gt_footnote" colspan="5"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%); Median (IQR)</td>
     </tr>
     <tr>
-      <td class="gt_footnote" colspan="5"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test</td>
+      <td class="gt_footnote" colspan="5"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test; Wilcoxon rank sum test</td>
     </tr>
   </tfoot>
 </table>
 </div>
 </div>
 </div>
-<section id="neurosurgical-intervention" class="level3">
-<h3 class="anchored" data-anchor-id="neurosurgical-intervention">Neurosurgical Intervention</h3>
+</section>
+<section id="neurosurgical-intervention---multivariate-regression" class="level2">
+<h2 class="anchored" data-anchor-id="neurosurgical-intervention---multivariate-regression">Neurosurgical Intervention - Multivariate Regression</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -1447,7 +1457,6 @@ ivh [Yes]               |       0.74 | 0.09 | [0.58, 0.94] | -2.42 | 0.015
 time symptoms to ed     |       1.00 | 0.00 | [1.00, 1.00] |  0.37 | 0.710 </code></pre>
 </div>
 </div>
-</section>
 </section>
 <section id="outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="outcomes">Outcomes</h2>

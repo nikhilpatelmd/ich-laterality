@@ -10,6 +10,8 @@ code-fold: true
 - Collapse some categorical values
 - IVH as binary instead of volume
 
+## Table 1
+
 ```{r table1, warning=FALSE, message=FALSE}
 #| fig-width: 10
 
@@ -47,13 +49,13 @@ table1
 
 ```
 
-## Aggressiveness of Care
+## Table 2 - Aggressiveness of Care (Unadjusted)
 
 First, we will explore if patients with **left hemispheric** injuries receive less aggressive care. 
 
 ```{r neurosurgery, warning=FALSE, message=FALSE}
 
-table_two_vars <- c("neurosurgery_evac", "evd", "tracheostomy", "ich_laterality", "comfort_care_binary")
+table_two_vars <- c("neurosurgery_evac", "evd", "days_mechanical_ventilation", "tracheostomy", "ich_laterality", "comfort_care_binary")
 
 table2 <- data |>
   select(table_two_vars) |>
@@ -63,7 +65,9 @@ table2 <- data |>
     label = list(
       neurosurgery_evac ~ "Neurosurgical Intervention",
       evd ~ "Ventriculostomy",
-      tracheostomy ~ "Tracheostomy", comfort_care_binary ~ "Comfort Care"
+      days_mechanical_ventilation ~ "Intubation Days",
+      tracheostomy ~ "Tracheostomy",
+      comfort_care_binary ~ "Comfort Care"
     )
   ) |>
   add_p() |>
@@ -74,7 +78,7 @@ table2
 
 ```
 
-### Neurosurgical Intervention
+## Neurosurgical Intervention - Multivariate Regression
 
 ```{r neurosurgical intervention, warning=FALSE, message=FALSE}
 #| fig-width: 10
