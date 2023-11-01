@@ -18,8 +18,8 @@ library(ggdag)
 library(MetBrewer)
 library(patchwork)
 library(tableone)
-library(gtsummary)
 library(gt)
+library(gtsummary)
 library(gtExtras)
 library(janitor)
 library(scales) # Nicer labeling functions
@@ -56,7 +56,7 @@ glimpse(data)
 #   mutate(across(factors, factor))
 
 data_erich_atach <- data |>
-  filter(study == "ERICH" | study == "ATACH2")
+  filter(study == "ERICH" | study == "ATACH-2")
 
 data_surgery_trials <- data |>
   filter(study == "MISTIE2" | study == "MISTIE-3" | study == "CLEAR III")

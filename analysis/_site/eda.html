@@ -210,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>table_one_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"sex"</span>, <span class="st">"race"</span>, <span class="st">"ethnicity"</span>, <span class="st">"time_symptoms_to_ed"</span>, <span class="st">"sbp_baseline"</span>, <span class="st">"nihss_baseline"</span>, <span class="st">"gcs_baseline"</span>, <span class="st">"ich_laterality"</span>, <span class="st">"htn"</span>, <span class="st">"dm2"</span>, <span class="st">"stroke"</span>, <span class="st">"tobacco"</span>, <span class="st">"ich_location"</span>, <span class="st">"ich_volume_baseline"</span>, <span class="st">"ivh"</span>, <span class="st">"study"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> data_erich_atach <span class="sc">|&gt;</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(table_one_vars) <span class="sc">|&gt;</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> ich_laterality,</span>
@@ -687,72 +687,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Overall</strong>, N = 4,514<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Overall</strong>, N = 4,514<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Left</strong>, N = 2,257<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Left</strong>, N = 2,257<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Right</strong>, N = 2,257<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Right</strong>, N = 2,257<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Overall</strong>, N = 3,477<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Overall</strong>, N = 3,477<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Left</strong>, N = 1,720<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Left</strong>, N = 1,720<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Right</strong>, N = 1,757<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Right</strong>, N = 1,757<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Age</td>
-<td headers="stat_0" class="gt_row gt_center">61 (52, 72)</td>
-<td headers="stat_1" class="gt_row gt_center">61 (52, 71)</td>
-<td headers="stat_2" class="gt_row gt_center">61 (52, 72)</td>
-<td headers="p.value" class="gt_row gt_center">0.6</td></tr>
+<td headers="stat_0" class="gt_row gt_center">61 (52, 73)</td>
+<td headers="stat_1" class="gt_row gt_center">61 (52, 72)</td>
+<td headers="stat_2" class="gt_row gt_center">61 (52, 73)</td>
+<td headers="p.value" class="gt_row gt_center">&gt;0.9</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Sex</td>
 <td headers="stat_0" class="gt_row gt_center"><br></td>
 <td headers="stat_1" class="gt_row gt_center"><br></td>
 <td headers="stat_2" class="gt_row gt_center"><br></td>
-<td headers="p.value" class="gt_row gt_center">0.068</td></tr>
+<td headers="p.value" class="gt_row gt_center">0.12</td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Female</td>
-<td headers="stat_0" class="gt_row gt_center">1,810 (40%)</td>
-<td headers="stat_1" class="gt_row gt_center">935 (41%)</td>
-<td headers="stat_2" class="gt_row gt_center">875 (39%)</td>
+<td headers="stat_0" class="gt_row gt_center">1,396 (40%)</td>
+<td headers="stat_1" class="gt_row gt_center">713 (41%)</td>
+<td headers="stat_2" class="gt_row gt_center">683 (39%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Male</td>
-<td headers="stat_0" class="gt_row gt_center">2,704 (60%)</td>
-<td headers="stat_1" class="gt_row gt_center">1,322 (59%)</td>
-<td headers="stat_2" class="gt_row gt_center">1,382 (61%)</td>
+<td headers="stat_0" class="gt_row gt_center">2,081 (60%)</td>
+<td headers="stat_1" class="gt_row gt_center">1,007 (59%)</td>
+<td headers="stat_2" class="gt_row gt_center">1,074 (61%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Race</td>
 <td headers="stat_0" class="gt_row gt_center"><br></td>
 <td headers="stat_1" class="gt_row gt_center"><br></td>
 <td headers="stat_2" class="gt_row gt_center"><br></td>
-<td headers="p.value" class="gt_row gt_center"><br></td></tr>
+<td headers="p.value" class="gt_row gt_center">0.6</td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;American Indian or Alaskan Native</td>
-<td headers="stat_0" class="gt_row gt_center">11 (0.2%)</td>
-<td headers="stat_1" class="gt_row gt_center">8 (0.4%)</td>
-<td headers="stat_2" class="gt_row gt_center">3 (0.1%)</td>
+<td headers="stat_0" class="gt_row gt_center">7 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">5 (0.3%)</td>
+<td headers="stat_2" class="gt_row gt_center">2 (0.1%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Asian</td>
-<td headers="stat_0" class="gt_row gt_center">572 (13%)</td>
-<td headers="stat_1" class="gt_row gt_center">272 (12%)</td>
-<td headers="stat_2" class="gt_row gt_center">300 (13%)</td>
+<td headers="stat_0" class="gt_row gt_center">557 (16%)</td>
+<td headers="stat_1" class="gt_row gt_center">263 (15%)</td>
+<td headers="stat_2" class="gt_row gt_center">294 (17%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Black or African-American</td>
-<td headers="stat_0" class="gt_row gt_center">1,246 (28%)</td>
-<td headers="stat_1" class="gt_row gt_center">625 (28%)</td>
-<td headers="stat_2" class="gt_row gt_center">621 (28%)</td>
+<td headers="stat_0" class="gt_row gt_center">1,022 (29%)</td>
+<td headers="stat_1" class="gt_row gt_center">510 (30%)</td>
+<td headers="stat_2" class="gt_row gt_center">512 (29%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Black or American-American</td>
-<td headers="stat_0" class="gt_row gt_center">41 (0.9%)</td>
-<td headers="stat_1" class="gt_row gt_center">26 (1.2%)</td>
-<td headers="stat_2" class="gt_row gt_center">15 (0.7%)</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Native Hawaiian/Pacific Islander</td>
-<td headers="stat_0" class="gt_row gt_center">3 (&lt;0.1%)</td>
-<td headers="stat_1" class="gt_row gt_center">2 (&lt;0.1%)</td>
-<td headers="stat_2" class="gt_row gt_center">1 (&lt;0.1%)</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Other/Not Reported</td>
-<td headers="stat_0" class="gt_row gt_center">310 (6.9%)</td>
-<td headers="stat_1" class="gt_row gt_center">162 (7.2%)</td>
-<td headers="stat_2" class="gt_row gt_center">148 (6.6%)</td>
+<td headers="stat_0" class="gt_row gt_center">16 (0.5%)</td>
+<td headers="stat_1" class="gt_row gt_center">7 (0.4%)</td>
+<td headers="stat_2" class="gt_row gt_center">9 (0.5%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;White</td>
-<td headers="stat_0" class="gt_row gt_center">2,331 (52%)</td>
-<td headers="stat_1" class="gt_row gt_center">1,162 (51%)</td>
-<td headers="stat_2" class="gt_row gt_center">1,169 (52%)</td>
+<td headers="stat_0" class="gt_row gt_center">1,875 (54%)</td>
+<td headers="stat_1" class="gt_row gt_center">935 (54%)</td>
+<td headers="stat_2" class="gt_row gt_center">940 (54%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Ethnicity</td>
 <td headers="stat_0" class="gt_row gt_center"><br></td>
@@ -760,49 +760,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td headers="stat_2" class="gt_row gt_center"><br></td>
 <td headers="p.value" class="gt_row gt_center">0.4</td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Hispanic or Latino</td>
-<td headers="stat_0" class="gt_row gt_center">259 (5.7%)</td>
-<td headers="stat_1" class="gt_row gt_center">135 (6.0%)</td>
-<td headers="stat_2" class="gt_row gt_center">124 (5.5%)</td>
+<td headers="stat_0" class="gt_row gt_center">129 (3.7%)</td>
+<td headers="stat_1" class="gt_row gt_center">70 (4.1%)</td>
+<td headers="stat_2" class="gt_row gt_center">59 (3.4%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Not Hispanic or Latino</td>
-<td headers="stat_0" class="gt_row gt_center">3,203 (71%)</td>
-<td headers="stat_1" class="gt_row gt_center">1,613 (71%)</td>
-<td headers="stat_2" class="gt_row gt_center">1,590 (70%)</td>
+<td headers="stat_0" class="gt_row gt_center">2,296 (66%)</td>
+<td headers="stat_1" class="gt_row gt_center">1,141 (66%)</td>
+<td headers="stat_2" class="gt_row gt_center">1,155 (66%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Unknown/Not Reported</td>
-<td headers="stat_0" class="gt_row gt_center">1,052 (23%)</td>
-<td headers="stat_1" class="gt_row gt_center">509 (23%)</td>
-<td headers="stat_2" class="gt_row gt_center">543 (24%)</td>
+<td headers="stat_0" class="gt_row gt_center">1,052 (30%)</td>
+<td headers="stat_1" class="gt_row gt_center">509 (30%)</td>
+<td headers="stat_2" class="gt_row gt_center">543 (31%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">LNW to ED Presentation (mins)</td>
-<td headers="stat_0" class="gt_row gt_center">96 (60, 209)</td>
-<td headers="stat_1" class="gt_row gt_center">95 (60, 196)</td>
-<td headers="stat_2" class="gt_row gt_center">99 (60, 216)</td>
-<td headers="p.value" class="gt_row gt_center">0.7</td></tr>
+<td headers="stat_0" class="gt_row gt_center">78 (60, 180)</td>
+<td headers="stat_1" class="gt_row gt_center">74 (60, 180)</td>
+<td headers="stat_2" class="gt_row gt_center">83 (59, 180)</td>
+<td headers="p.value" class="gt_row gt_center">0.2</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Baseline SBP (mm Hg)</td>
-<td headers="stat_0" class="gt_row gt_center">189 (163, 214)</td>
-<td headers="stat_1" class="gt_row gt_center">189 (163, 215)</td>
-<td headers="stat_2" class="gt_row gt_center">189 (162, 214)</td>
-<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
+<td headers="stat_0" class="gt_row gt_center">190 (165, 215)</td>
+<td headers="stat_1" class="gt_row gt_center">190 (165, 216)</td>
+<td headers="stat_2" class="gt_row gt_center">190 (165, 214)</td>
+<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Baseline NIHSS</td>
-<td headers="stat_0" class="gt_row gt_center">15 (9, 21)</td>
-<td headers="stat_1" class="gt_row gt_center">17 (9, 23)</td>
-<td headers="stat_2" class="gt_row gt_center">14 (9, 19)</td>
-<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
+<td headers="stat_0" class="gt_row gt_center">11 (6, 16)</td>
+<td headers="stat_1" class="gt_row gt_center">11 (6, 17)</td>
+<td headers="stat_2" class="gt_row gt_center">11 (7, 14)</td>
+<td headers="p.value" class="gt_row gt_center">0.014</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Baseline GCS</td>
-<td headers="stat_0" class="gt_row gt_center">14.0 (10.0, 15.0)</td>
-<td headers="stat_1" class="gt_row gt_center">13.0 (10.0, 15.0)</td>
-<td headers="stat_2" class="gt_row gt_center">15.0 (12.0, 15.0)</td>
+<td headers="stat_0" class="gt_row gt_center">15.0 (12.0, 15.0)</td>
+<td headers="stat_1" class="gt_row gt_center">14.0 (11.0, 15.0)</td>
+<td headers="stat_2" class="gt_row gt_center">15.0 (13.0, 15.0)</td>
 <td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Hypertension</td>
-<td headers="stat_0" class="gt_row gt_center">1,393 (87%)</td>
-<td headers="stat_1" class="gt_row gt_center">683 (86%)</td>
-<td headers="stat_2" class="gt_row gt_center">710 (87%)</td>
-<td headers="p.value" class="gt_row gt_center">0.5</td></tr>
+<td headers="stat_0" class="gt_row gt_center">784 (81%)</td>
+<td headers="stat_1" class="gt_row gt_center">366 (80%)</td>
+<td headers="stat_2" class="gt_row gt_center">418 (83%)</td>
+<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Type II Diabetes</td>
-<td headers="stat_0" class="gt_row gt_center">881 (22%)</td>
-<td headers="stat_1" class="gt_row gt_center">441 (23%)</td>
-<td headers="stat_2" class="gt_row gt_center">440 (22%)</td>
+<td headers="stat_0" class="gt_row gt_center">705 (21%)</td>
+<td headers="stat_1" class="gt_row gt_center">348 (21%)</td>
+<td headers="stat_2" class="gt_row gt_center">357 (22%)</td>
 <td headers="p.value" class="gt_row gt_center">&gt;0.9</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Previous Stroke</td>
 <td headers="stat_0" class="gt_row gt_center">583 (17%)</td>
@@ -810,19 +810,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td headers="stat_2" class="gt_row gt_center">290 (17%)</td>
 <td headers="p.value" class="gt_row gt_center">0.6</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Tobacco Use</td>
-<td headers="stat_0" class="gt_row gt_center">1,567 (43%)</td>
-<td headers="stat_1" class="gt_row gt_center">770 (41%)</td>
-<td headers="stat_2" class="gt_row gt_center">797 (44%)</td>
+<td headers="stat_0" class="gt_row gt_center">1,361 (51%)</td>
+<td headers="stat_1" class="gt_row gt_center">663 (50%)</td>
+<td headers="stat_2" class="gt_row gt_center">698 (53%)</td>
 <td headers="p.value" class="gt_row gt_center">0.2</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">ICH Location</td>
 <td headers="stat_0" class="gt_row gt_center"><br></td>
 <td headers="stat_1" class="gt_row gt_center"><br></td>
 <td headers="stat_2" class="gt_row gt_center"><br></td>
-<td headers="p.value" class="gt_row gt_center">0.001</td></tr>
+<td headers="p.value" class="gt_row gt_center">0.002</td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Basal Ganglia</td>
-<td headers="stat_0" class="gt_row gt_center">1,787 (40%)</td>
-<td headers="stat_1" class="gt_row gt_center">949 (42%)</td>
-<td headers="stat_2" class="gt_row gt_center">838 (37%)</td>
+<td headers="stat_0" class="gt_row gt_center">1,304 (38%)</td>
+<td headers="stat_1" class="gt_row gt_center">688 (40%)</td>
+<td headers="stat_2" class="gt_row gt_center">616 (35%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Brainstem</td>
 <td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
@@ -835,9 +835,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Lobar</td>
-<td headers="stat_0" class="gt_row gt_center">1,259 (28%)</td>
-<td headers="stat_1" class="gt_row gt_center">623 (28%)</td>
-<td headers="stat_2" class="gt_row gt_center">636 (28%)</td>
+<td headers="stat_0" class="gt_row gt_center">1,016 (29%)</td>
+<td headers="stat_1" class="gt_row gt_center">505 (29%)</td>
+<td headers="stat_2" class="gt_row gt_center">511 (29%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Primary IVH</td>
 <td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
@@ -845,49 +845,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Thalamus</td>
-<td headers="stat_0" class="gt_row gt_center">1,468 (33%)</td>
-<td headers="stat_1" class="gt_row gt_center">685 (30%)</td>
-<td headers="stat_2" class="gt_row gt_center">783 (35%)</td>
+<td headers="stat_0" class="gt_row gt_center">1,157 (33%)</td>
+<td headers="stat_1" class="gt_row gt_center">527 (31%)</td>
+<td headers="stat_2" class="gt_row gt_center">630 (36%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">ICH Volume (mL)</td>
-<td headers="stat_0" class="gt_row gt_center">14 (6, 31)</td>
-<td headers="stat_1" class="gt_row gt_center">14 (6, 31)</td>
-<td headers="stat_2" class="gt_row gt_center">14 (6, 33)</td>
-<td headers="p.value" class="gt_row gt_center">0.2</td></tr>
+<td headers="stat_0" class="gt_row gt_center">11 (5, 26)</td>
+<td headers="stat_1" class="gt_row gt_center">11 (5, 24)</td>
+<td headers="stat_2" class="gt_row gt_center">12 (5, 27)</td>
+<td headers="p.value" class="gt_row gt_center">0.060</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">IVH</td>
-<td headers="stat_0" class="gt_row gt_center">1,902 (42%)</td>
-<td headers="stat_1" class="gt_row gt_center">934 (42%)</td>
-<td headers="stat_2" class="gt_row gt_center">968 (43%)</td>
-<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
+<td headers="stat_0" class="gt_row gt_center">1,304 (38%)</td>
+<td headers="stat_1" class="gt_row gt_center">624 (37%)</td>
+<td headers="stat_2" class="gt_row gt_center">680 (39%)</td>
+<td headers="p.value" class="gt_row gt_center">0.2</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Study</td>
 <td headers="stat_0" class="gt_row gt_center"><br></td>
 <td headers="stat_1" class="gt_row gt_center"><br></td>
 <td headers="stat_2" class="gt_row gt_center"><br></td>
-<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
+<td headers="p.value" class="gt_row gt_center">0.2</td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;ATACH-2</td>
-<td headers="stat_0" class="gt_row gt_center">990 (22%)</td>
-<td headers="stat_1" class="gt_row gt_center">472 (21%)</td>
-<td headers="stat_2" class="gt_row gt_center">518 (23%)</td>
+<td headers="stat_0" class="gt_row gt_center">990 (28%)</td>
+<td headers="stat_1" class="gt_row gt_center">472 (27%)</td>
+<td headers="stat_2" class="gt_row gt_center">518 (29%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;CLEAR III</td>
-<td headers="stat_0" class="gt_row gt_center">394 (8.7%)</td>
-<td headers="stat_1" class="gt_row gt_center">201 (8.9%)</td>
-<td headers="stat_2" class="gt_row gt_center">193 (8.6%)</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;ERICH</td>
-<td headers="stat_0" class="gt_row gt_center">2,487 (55%)</td>
-<td headers="stat_1" class="gt_row gt_center">1,248 (55%)</td>
-<td headers="stat_2" class="gt_row gt_center">1,239 (55%)</td>
+<td headers="stat_0" class="gt_row gt_center">2,487 (72%)</td>
+<td headers="stat_1" class="gt_row gt_center">1,248 (73%)</td>
+<td headers="stat_2" class="gt_row gt_center">1,239 (71%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;MISTIE-2</td>
-<td headers="stat_0" class="gt_row gt_center">137 (3.0%)</td>
-<td headers="stat_1" class="gt_row gt_center">78 (3.5%)</td>
-<td headers="stat_2" class="gt_row gt_center">59 (2.6%)</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
     <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;MISTIE-3</td>
-<td headers="stat_0" class="gt_row gt_center">506 (11%)</td>
-<td headers="stat_1" class="gt_row gt_center">258 (11%)</td>
-<td headers="stat_2" class="gt_row gt_center">248 (11%)</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
 <td headers="p.value" class="gt_row gt_center"><br></td></tr>
   </tbody>
   
@@ -912,7 +912,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table_two_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"neurosurgery_evac"</span>, <span class="st">"evd"</span>, <span class="st">"days_mechanical_ventilation"</span>, <span class="st">"tracheostomy"</span>, <span class="st">"ich_laterality"</span>, <span class="st">"comfort_care_binary"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> data_erich_atach <span class="sc">|&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(table_two_vars) <span class="sc">|&gt;</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> ich_laterality,</span>
@@ -1378,23 +1378,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Overall</strong>, N = 4,514<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Overall</strong>, N = 4,514<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Left</strong>, N = 2,257<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Left</strong>, N = 2,257<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Right</strong>, N = 2,257<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Right</strong>, N = 2,257<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Overall</strong>, N = 3,477<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Overall</strong>, N = 3,477<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Left</strong>, N = 1,720<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Left</strong>, N = 1,720<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Right</strong>, N = 1,757<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Right</strong>, N = 1,757<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Neurosurgical Intervention</td>
-<td headers="stat_0" class="gt_row gt_center">580 (13%)</td>
-<td headers="stat_1" class="gt_row gt_center">266 (12%)</td>
-<td headers="stat_2" class="gt_row gt_center">314 (14%)</td>
-<td headers="p.value" class="gt_row gt_center">0.033</td></tr>
+<td headers="stat_0" class="gt_row gt_center">230 (6.6%)</td>
+<td headers="stat_1" class="gt_row gt_center">86 (5.0%)</td>
+<td headers="stat_2" class="gt_row gt_center">144 (8.2%)</td>
+<td headers="p.value" class="gt_row gt_center">&lt;0.001</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Ventriculostomy</td>
-<td headers="stat_0" class="gt_row gt_center">902 (20%)</td>
-<td headers="stat_1" class="gt_row gt_center">437 (19%)</td>
-<td headers="stat_2" class="gt_row gt_center">465 (21%)</td>
-<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
+<td headers="stat_0" class="gt_row gt_center">508 (15%)</td>
+<td headers="stat_1" class="gt_row gt_center">236 (14%)</td>
+<td headers="stat_2" class="gt_row gt_center">272 (16%)</td>
+<td headers="p.value" class="gt_row gt_center">0.14</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Intubation Days</td>
 <td headers="stat_0" class="gt_row gt_center">6.0 (3.0, 10.0)</td>
 <td headers="stat_1" class="gt_row gt_center">6.0 (3.0, 12.5)</td>
@@ -1406,10 +1406,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td headers="stat_2" class="gt_row gt_center">19 (1.4%)</td>
 <td headers="p.value" class="gt_row gt_center">&gt;0.9</td></tr>
     <tr><td headers="label" class="gt_row gt_left" style="font-weight: bold;">Comfort Care</td>
-<td headers="stat_0" class="gt_row gt_center">402 (13%)</td>
-<td headers="stat_1" class="gt_row gt_center">211 (14%)</td>
-<td headers="stat_2" class="gt_row gt_center">191 (13%)</td>
-<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
+<td headers="stat_0" class="gt_row gt_center">295 (12%)</td>
+<td headers="stat_1" class="gt_row gt_center">152 (12%)</td>
+<td headers="stat_2" class="gt_row gt_center">143 (11%)</td>
+<td headers="p.value" class="gt_row gt_center">0.6</td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
@@ -1432,7 +1432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>neurosurgery_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  neurosurgery_evac <span class="sc">~</span> ich_laterality <span class="sc">+</span> age <span class="sc">+</span> ich_location <span class="sc">+</span> gcs_baseline <span class="sc">+</span> ich_volume_baseline <span class="sc">+</span> ivh <span class="sc">+</span> time_symptoms_to_ed,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_erich_atach,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> binomial</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -1446,15 +1446,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter               | Odds Ratio |   SE |       95% CI |     z |      p
 ---------------------------------------------------------------------------
-(Intercept)             |       0.42 | 0.14 | [0.22, 0.80] | -2.62 | 0.009 
-ich laterality [Right]  |       1.39 | 0.15 | [1.13, 1.73] |  3.04 | 0.002 
-age                     |       0.98 | 0.00 | [0.97, 0.99] | -4.83 | &lt; .001
-ich location [Lobar]    |       0.80 | 0.10 | [0.62, 1.02] | -1.81 | 0.070 
-ich location [Thalamus] |       0.20 | 0.04 | [0.13, 0.29] | -7.69 | &lt; .001
-gcs baseline            |       0.96 | 0.02 | [0.93, 1.00] | -2.24 | 0.025 
-ich volume baseline     |       1.04 | 0.00 | [1.03, 1.04] | 13.74 | &lt; .001
-ivh [Yes]               |       0.74 | 0.09 | [0.58, 0.94] | -2.42 | 0.015 
-time symptoms to ed     |       1.00 | 0.00 | [1.00, 1.00] |  0.37 | 0.710 </code></pre>
+(Intercept)             |       0.35 | 0.18 | [0.12, 0.94] | -2.06 | 0.040 
+ich laterality [Right]  |       2.23 | 0.41 | [1.56, 3.21] |  4.35 | &lt; .001
+age                     |       0.95 | 0.01 | [0.94, 0.96] | -7.72 | &lt; .001
+ich location [Lobar]    |       1.44 | 0.29 | [0.96, 2.14] |  1.79 | 0.073 
+ich location [Thalamus] |       0.37 | 0.11 | [0.20, 0.64] | -3.43 | &lt; .001
+gcs baseline            |       1.00 | 0.03 | [0.95, 1.06] | -0.05 | 0.960 
+ich volume baseline     |       1.03 | 0.00 | [1.03, 1.04] |  9.63 | &lt; .001
+ivh [Yes]               |       1.22 | 0.24 | [0.82, 1.79] |  1.01 | 0.315 
+time symptoms to ed     |       1.00 | 0.00 | [1.00, 1.00] | -0.69 | 0.492 </code></pre>
 </div>
 </div>
 </section>

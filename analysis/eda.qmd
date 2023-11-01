@@ -17,7 +17,7 @@ code-fold: true
 
 table_one_vars <- c("age", "sex", "race", "ethnicity", "time_symptoms_to_ed", "sbp_baseline", "nihss_baseline", "gcs_baseline", "ich_laterality", "htn", "dm2", "stroke", "tobacco", "ich_location", "ich_volume_baseline", "ivh", "study")
 
-table1 <- data |>
+table1 <- data_erich_atach |>
   select(table_one_vars) |>
   tbl_summary(
     by = ich_laterality,
@@ -57,7 +57,7 @@ First, we will explore if patients with **left hemispheric** injuries receive le
 
 table_two_vars <- c("neurosurgery_evac", "evd", "days_mechanical_ventilation", "tracheostomy", "ich_laterality", "comfort_care_binary")
 
-table2 <- data |>
+table2 <- data_erich_atach |>
   select(table_two_vars) |>
   tbl_summary(
     by = ich_laterality,
@@ -85,16 +85,46 @@ table2
 
 neurosurgery_glm <- glm(
   neurosurgery_evac ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
-  data = data,
+  data = data_erich_atach,
   family = binomial
 )
 
-model_parameters(neurosurgery_glm,
+neurosurgery_glm |>
+  tbl_regression(
+    exponentiate = TRUE,
+    include = ich_laterality
+  )
+
+left_right_regression <- function(name, var, family) {
+  name <- glm(
+    {{ var }} ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
+    data = data_erich_atach,
+    family = family
+  )
+
+  neurosurgery_glm |>
+    tbl_regression(
+      exponentiate = TRUE,
+      include = ich_laterality
+    )
+}
+
+left_right_regression(neurosurgery_glm, neurosurgery_evac, binomial)
+
+vent_glm <- glm(
+  days_mechanical_ventilation ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  data = data_erich_atach,
+  family = poisson
+)
+
+model_parameters(vent_glm,
   centrality = "mean", dispersion = TRUE,
   test = FALSE, verbose = FALSE, ci_method = "hdi", priors = TRUE,
   exponentiate = TRUE
 ) |>
   print(digits = 2, zap_small = TRUE)
+
+
 
 ```
 
