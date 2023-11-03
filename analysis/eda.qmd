@@ -95,14 +95,14 @@ neurosurgery_glm |>
     include = ich_laterality
   )
 
-left_right_regression <- function(name, var, family) {
+left_right_regression <- function(name, x, family) {
   name <- glm(
-    {{ var }} ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
+    {{ x }} ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
     data = data_erich_atach,
     family = family
   )
 
-  neurosurgery_glm |>
+  {{ x }} |>
     tbl_regression(
       exponentiate = TRUE,
       include = ich_laterality
@@ -143,3 +143,4 @@ data |>
   geom_density(color = NA, alpha = .8)
 
 ```
+
