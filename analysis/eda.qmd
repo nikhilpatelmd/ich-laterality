@@ -9,12 +9,13 @@ code-fold: true
 
 - Collapse some categorical values
 - IVH as binary instead of volume
+- Some percentages values are off, likely due to missing data (e.g., Hypertension)
 
 ## Table 1
 
 ```{r table1, warning=FALSE, message=FALSE}
 #| fig-width: 10
-
+#|
 table_one_vars <- c("age", "sex", "race", "ethnicity", "time_symptoms_to_ed", "sbp_baseline", "nihss_baseline", "gcs_baseline", "ich_laterality", "htn", "dm2", "stroke", "tobacco", "ich_location", "ich_volume_baseline", "ivh", "study")
 
 table1 <- data_erich_atach |>
@@ -52,95 +53,4 @@ table1
 ## Table 2 - Aggressiveness of Care (Unadjusted)
 
 First, we will explore if patients with **left hemispheric** injuries receive less aggressive care. 
-
-```{r neurosurgery, warning=FALSE, message=FALSE}
-
-table_two_vars <- c("neurosurgery_evac", "evd", "days_mechanical_ventilation", "tracheostomy", "ich_laterality", "comfort_care_binary")
-
-table2 <- data_erich_atach |>
-  select(table_two_vars) |>
-  tbl_summary(
-    by = ich_laterality,
-    missing = "no",
-    label = list(
-      neurosurgery_evac ~ "Neurosurgical Intervention",
-      evd ~ "Ventriculostomy",
-      days_mechanical_ventilation ~ "Intubation Days",
-      tracheostomy ~ "Tracheostomy",
-      comfort_care_binary ~ "Comfort Care"
-    )
-  ) |>
-  add_p() |>
-  add_overall() |>
-  bold_labels()
-
-table2
-
-```
-
-## Neurosurgical Intervention - Multivariate Regression
-
-```{r neurosurgical intervention, warning=FALSE, message=FALSE}
-#| fig-width: 10
-
-neurosurgery_glm <- glm(
-  neurosurgery_evac ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
-  data = data_erich_atach,
-  family = binomial
-)
-
-neurosurgery_glm |>
-  tbl_regression(
-    exponentiate = TRUE,
-    include = ich_laterality
-  )
-
-left_right_regression <- function(name, x, family) {
-  name <- glm(
-    {{ x }} ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
-    data = data_erich_atach,
-    family = family
-  )
-
-  {{ x }} |>
-    tbl_regression(
-      exponentiate = TRUE,
-      include = ich_laterality
-    )
-}
-
-left_right_regression(neurosurgery_glm, neurosurgery_evac, binomial)
-
-vent_glm <- glm(
-  days_mechanical_ventilation ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
-  data = data_erich_atach,
-  family = poisson
-)
-
-model_parameters(vent_glm,
-  centrality = "mean", dispersion = TRUE,
-  test = FALSE, verbose = FALSE, ci_method = "hdi", priors = TRUE,
-  exponentiate = TRUE
-) |>
-  print(digits = 2, zap_small = TRUE)
-
-
-
-```
-
-## Outcomes
-
-
-```{r euroqol, warning=FALSE, message=FALSE}
-#| fig-width: 10
-
-data <- read_csv(here("data", "all.csv")) |>
-  filter(ich_location == c("Lobar", "Basal Ganglia", "Thalamus")) |>
-  filter(!is.na(ich_laterality))
-
-data |>
-  ggplot(aes(euro_vas_90, fill = ich_laterality)) +
-  geom_density(color = NA, alpha = .8)
-
-```
 

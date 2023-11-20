@@ -37,7 +37,7 @@ set.seed(160)
 BAYES_SEED <- 160
 
 # plot stuff
-theme_set(theme_minimal(base_family = "Noah"))
+theme_set(theme_minimal(base_family = "Figtree"))
 
 # data import
 data <- read_rds(here("data", "all.rds"), refhook = NULL)

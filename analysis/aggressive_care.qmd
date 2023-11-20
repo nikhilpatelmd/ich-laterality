@@ -7,60 +7,6 @@ I am interested in seeing if hemispheric laterality affects the aggressiveness o
 
 I will be using observational data from the ERICH study, as well as the randomized trial data from ATACH-2 to answer these questions. 
 
-## Exploratory Data Analysis
-
-Loading the data from ATACH-2 and ERICH, and filtering out the variables needed for the analysis.
-
-```{r loading data}
-
-# load data
-data <- read_rds(here("data", "all.rds"), refhook = NULL)
-
-# filter out only ERICH and ATACH2 and keep relevant variables
-cleaned_data <- data |>
-  mutate(id = 1:n()) |>
-  filter(study == "ERICH" | study == "ATACH-2") |>
-  select(id, study, ich_laterality, age, sex, race, ethnicity, sbp_baseline, gcs_baseline, ich_volume_baseline, ivh, ich_location, neurosurgery_evac, evd, tracheostomy, peg, comfort_care_binary, comfort_care_day) |>
-  drop_na(ich_laterality, neurosurgery_evac)
-
-
-```
-
-Now we can summarize the preliminary data.
-
-
-```{r exploratory data analysis}
-
-counts <- cleaned_data |>
-  tabyl(ich_laterality, neurosurgery_evac, ich_location) |>
-  adorn_percentages("row") |>
-  adorn_pct_formatting(rounding = "half up", digits = 1)
-
-counts
-
-counts_tidy <- cleaned_data |>
-  group_by(ich_laterality, neurosurgery_evac) |>
-  summarize(n = n()) |>
-  mutate(
-    total = sum(n),
-    prop = n / sum(n)
-  ) |>
-  ungroup()
-
-
-counts_tidy
-
-ggplot(cleaned_data) +
-  geom_mosaic(
-    aes(
-      x = product(neurosurgery_evac, ich_laterality),
-      fill = ich_laterality, alpha = neurosurgery_evac
-    ),
-    divider = mosaic("v")
-  )
-
-```
-
 ## The Question
 
 **Do patients with left hemispheric ICH receive neurosurgical evacuations less frequently as compared to patients with right hemispheric ICH?**
@@ -78,3 +24,72 @@ clr_diff <- clrs_saguaro[4]
 
 ```
 
+
+```{r neurosurgery, warning=FALSE, message=FALSE}
+
+table_two_vars <- c("neurosurgery_evac", "evd", "days_mechanical_ventilation", "tracheostomy", "ich_laterality", "comfort_care_binary")
+
+table2 <- data_erich_atach |>
+  select(table_two_vars) |>
+  tbl_summary(
+    by = ich_laterality,
+    missing = "no",
+    label = list(
+      neurosurgery_evac ~ "Neurosurgical Intervention",
+      evd ~ "Ventriculostomy",
+      days_mechanical_ventilation ~ "Intubation Days",
+      tracheostomy ~ "Tracheostomy",
+      comfort_care_binary ~ "Comfort Care"
+    )
+  ) |>
+  add_p() |>
+  add_overall() |>
+  bold_labels()
+
+table2
+
+```
+
+## Neurosurgical Intervention - Multivariate Regression
+
+```{r neurosurgical intervention, warning=FALSE, message=FALSE}
+#| fig-width: 10
+
+neurosurgery_glm <- glm(
+  neurosurgery_evac ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  data = data_erich_atach,
+  family = binomial
+)
+
+neurosurgery_glm |>
+  tbl_regression(
+    exponentiate = TRUE,
+    include = ich_laterality
+  )
+
+vent_glm <- glm(
+  days_mechanical_ventilation ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  data = data_erich_atach,
+  family = poisson
+)
+
+vent_glm |>
+  tbl_regression(
+    exponentiate = TRUE,
+    include = ich_laterality
+  )
+
+comfort_glm <- glm(
+  comfort_care_binary ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  data = data_erich_atach,
+  family = binomial
+)
+
+comfort_glm |>
+  tbl_regression(
+    exponentiate = TRUE,
+    include = ich_laterality
+  )
+
+
+```
