@@ -9,12 +9,7 @@ I will be using observational data from the ERICH study, as well as the randomiz
 
 ## The Question
 
-**Do patients with left hemispheric ICH receive neurosurgical evacuations less frequently as compared to patients with right hemispheric ICH?**
-
-We want to determine if there's a substantial difference in the proportion of patients who receive neurosurgical intervention in the right or left hemisphere.
-
-
-```{r color setup}
+```{r color setup, warning=FALSE, message=FALSE}
 
 # Left/Right hemisphere question colors
 clrs_saguaro <- NatParksPalettes::natparks.pals("Saguaro")
@@ -24,6 +19,17 @@ clr_diff <- clrs_saguaro[4]
 
 ```
 
+**Do patients with left hemispheric ICH receive neurosurgical evacuations less frequently as compared to patients with right hemispheric ICH?**
+
+We want to determine if there's a substantial difference in the proportion of patients who receive aggressive care (mostly neurosurgical intervention) in the right vs. left hemisphere.
+
+### Table 2 - Aggressiveness of Care (Unadjusted)
+
+Things to clarify:
+
+- How is comfort care defined?
+- Put mean instead of median?
+- Run "unadjusted analyses" and put results of both adjusted and unadjusted into one table
 
 ```{r neurosurgery, warning=FALSE, message=FALSE}
 
@@ -50,7 +56,9 @@ table2
 
 ```
 
-## Neurosurgical Intervention - Multivariate Regression
+### Aggressiveness of Care (Adjusted)
+
+#### Neurosurgical Intervention
 
 ```{r neurosurgical intervention, warning=FALSE, message=FALSE}
 #| fig-width: 10
@@ -67,6 +75,13 @@ neurosurgery_glm |>
     include = ich_laterality
   )
 
+```
+
+#### Days of Mechanical Ventilation
+
+```{r days of ventilation, warning=FALSE, message=FALSE}
+#| fig-width: 10
+
 vent_glm <- glm(
   days_mechanical_ventilation ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
   data = data_erich_atach,
@@ -79,6 +94,13 @@ vent_glm |>
     include = ich_laterality
   )
 
+```
+
+#### Comfort Care
+
+```{r comfort care, warning=FALSE, message=FALSE}
+#| fig-width: 10
+
 comfort_glm <- glm(
   comfort_care_binary ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
   data = data_erich_atach,
@@ -90,6 +112,5 @@ comfort_glm |>
     exponentiate = TRUE,
     include = ich_laterality
   )
-
 
 ```

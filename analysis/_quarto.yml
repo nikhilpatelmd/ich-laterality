@@ -1,6 +1,12 @@
 project:
   type: website
 
+  preview: 
+    port: 5555
+    browser: true
+    watch-inputs: true
+    navigate: true
+
 website:
   title: "ICH Laterality Analysis Notebook"
   navbar:
@@ -14,9 +20,11 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: litera
     css: styles.css
     toc: true
+    code-fold: true
+    code-overflow: wrap
 
 
 

@@ -7,9 +7,8 @@ code-fold: true
 
 **Things to do**: 
 
-- Collapse some categorical values
-- IVH as binary instead of volume
-- Some percentages values are off, likely due to missing data (e.g., Hypertension)
+- Collapse some categorical values especially those that are missing
+- Some percentages values are off, likely due to missing data (e.g., Hypertension). Confirm PMH data. 
 
 ## Table 1
 
