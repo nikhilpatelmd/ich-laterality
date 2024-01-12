@@ -10,13 +10,12 @@ project:
 website:
   title: "ICH Laterality Analysis Notebook"
   navbar:
-    left:
-      - clean.qmd
-      - dag.qmd
-      - eda.qmd
-      - aggressive_care.qmd
-      - outcomes.qmd
-
+    right:
+      - 01-clean.qmd
+      - 02-dag.qmd
+      - 03-eda.qmd
+      - 04-aggressive_care.qmd
+      - 05-outcomes.qmd
 
 format:
   html:
@@ -25,6 +24,6 @@ format:
     toc: true
     code-fold: true
     code-overflow: wrap
-
-
-
+    mainfont: 'Figtree'
+    monofont: 'Source Code Pro'
+    fontsize: 0.95rem

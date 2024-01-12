@@ -5,6 +5,7 @@ options(
 # libraries
 library(tidyverse)
 library(marginaleffects)
+library(modelsummary)
 library(brms)
 library(cmdstanr)
 library(tidybayes)

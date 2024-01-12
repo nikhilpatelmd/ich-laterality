@@ -1,0 +1,123 @@
+---
+title: "Differences in Care"
+code-fold: false
+toc-depth: 5
+---
+
+{{< include 00-setup.qmd >}}
+
+
+```{r color setup, warning=FALSE, message=FALSE}
+#| code-fold: true
+#| code-summary: Setup
+
+# Left/Right hemisphere colors
+clrs_saguaro <- NatParksPalettes::natparks.pals("Saguaro")
+clr_left <- clrs_saguaro[1]
+clr_right <- clrs_saguaro[6]
+clr_diff <- clrs_saguaro[4]
+
+```
+
+**How are patients treated differently if they experience a left hemispheric ICH vs. right hemispheric ICH?**
+
+- Do they receive neurosurgical intervention at a different rate?
+- Are they on the ventilator for longer?
+- Are they less likely to receive a tracheostomy or PEG?
+- Are they more likely to proceed to comfort care?
+
+There are five studies available to analyze: `ERICH`, `ATACH-2`, `MISTIE-II`, `CLEAR-IVH`, and `MISTIE-III`. Since we are interested in the potential differences in rates of neurosurgical intervention, we will exclude studies that randomized patients to an intervention, leaving `ERICH` and `ATACH-2` to help answer these questions.
+
+### Unadjusted Analysis
+
+::: {.callout-warning appearance="simple"}
+
+Things to clarify:
+
+- How should `comfort care` be defined? Below, it is a binary variable, but would it be better to model it based on a time-to-event process?
+- Run "unadjusted analyses" and put results of both adjusted and unadjusted into one table?
+
+:::
+
+```{r table two unadjusted, warning=FALSE, message=FALSE}
+
+table_two_vars <- c("neurosurgery_evac", "evd", "days_mechanical_ventilation", "tracheostomy", "ich_laterality", "comfort_care_binary")
+
+table2 <- data_erich_atach |>
+  select(table_two_vars) |>
+  tbl_summary(
+    by = ich_laterality,
+    missing = "no",
+    label = list(
+      neurosurgery_evac ~ "Neurosurgical Intervention",
+      evd ~ "Ventriculostomy",
+      days_mechanical_ventilation ~ "Mechanical Ventilation Days",
+      tracheostomy ~ "Tracheostomy",
+      comfort_care_binary ~ "Comfort Care"
+    )
+  ) |>
+  add_overall() |>
+  bold_labels()
+
+table2
+
+```
+
+It appears that patients with left hemispheric lesions tend to receive neurosurgical intervention at a lower rate, as well as stay on the ventilator for longer (based on IQR). There does not seem to be a large difference in rates of tracheostomy and comfort care.
+
+### Modeling Differences in Care
+
+#### Neurosurgical Intervention
+
+> How does the probability of neurosurgical intervention (outcome) change if a patient has a left hemispheric ICH vs. right hemispheric ICH?
+
+We will incoporate the following predictors into the model: `ich_laterality`, `age`, `ich_location`, `gcs_baseline`, `ich_volume_baseline`, `ivh`, and `time_symptoms_to_ed`.
+
+##### Priors
+
+We are using default priors as defined in the `brms` package.
+
+::: {.callout-warning appearance="simple"}
+
+Think about defining weakly informative priors and running prior predictive checks to make this analysis more robust.
+
+:::
+
+##### Posterior simulation
+
+```{r neurosurgical intervention, warning=FALSE, message=FALSE}
+#| fig-width: 10
+
+neurosurgery_glm <- brm(
+  neurosurgery_evac ~ ich_laterality + age + ich_location + gcs_baseline + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  data = data_erich_atach,
+  family = bernoulli(link = "logit")
+)
+
+neurosurgery_glm |>
+  gather_draws(`^b_.*`, regex = TRUE) |>
+  ggplot(aes(x = .iteration, y = .value, color = factor(.chain))) +
+  geom_line(size = 0.1) +
+  scale_color_viridis_d(option = "rocket", end = 0.85) +
+  facet_wrap(vars(.variable), scales = "free_y")
+
+pp_check(neurosurgery_glm, ndraws = 500)
+
+model_parameters(neurosurgery_glm,
+  centrality = "mean", dispersion = TRUE,
+  test = FALSE, verbose = FALSE, ci_method = "hdi", priors = TRUE,
+  exponentiate = TRUE
+) |>
+  print(digits = 2, zap_small = TRUE)
+
+```
+
+Based on this model, there is a **much higher odds (~120% increase)** of a patient with right hemispheric ICH receiving neurosurgical intervention as compared to a patient with left hemispheric ICH **(OR 2.24, 95% CI 1.55 - 3.14)**.
+
+
+```{r neurosurgical intervention marginaleffects, warning=FALSE, message=FALSE}
+#| fig-width: 10
+
+
+
+```
