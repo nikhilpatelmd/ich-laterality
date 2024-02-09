@@ -20,7 +20,7 @@ website:
 format:
   html:
     theme: litera
-    css: styles.css
+    css: /assets/css/styles.css
     toc: true
     code-fold: true
     code-overflow: wrap
