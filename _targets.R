@@ -32,16 +32,30 @@ set.seed(4641) # From random.org
 
 source("R/packages.R")
 source("R/data_cleaning.R")
+source("R/exploratory_data_analysis.R")
 
 # Pipeline ----
 tar_plan(
+
   ## Define raw data file ----
   tar_file_read(
     imported_data,
     "data/raw_data/all.rds",
     read_rds(!!.x)
   ),
+
   ## Select, filter, and clean data ----
   selected_data = select_variables(imported_data),
-  ich_cleaned = filter_variables(selected_data)
+  ich = filter_variables(selected_data),
+  non_surgery_trials = ich |> filter(study == "ERICH" | study == "ATACH-2"),
+  surgery_trials = ich |> filter(study == "MISTIE2" | study == "MISTIE-3" | study == "CLEAR III"),
+
+  ## Exploratory data analysis ----
+  table_one = table_1_function(non_surgery_trials),
+
+  ## Render report ----
+  tar_quarto(
+    report,
+    "reports/aggressiveness.qmd"
+  )
 )

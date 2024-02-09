@@ -50,3 +50,9 @@ filter_variables <- function(x) {
     filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar") |>
     drop_na(ich_laterality)
 }
+
+non_surgery_trial_function <- function(x) {
+  x |>
+    filter(study == "ERICH" | study == "ATACH-2")
+}
+

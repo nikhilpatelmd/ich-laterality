@@ -1,0 +1,72 @@
+---
+title: Differences in care for patients experiencing left vs. right hemisphere ICH
+author: Nikhil Patel, MD
+format: html
+toc: true
+---
+
+
+```{r setup, output=FALSE, message=FALSE, warning=FALSE}
+#| code-fold: false
+
+library(targets)
+library(readr)
+library(tidyr)
+library(janitor)
+library(dplyr)
+library(forcats)
+library(stringr)
+library(skimr)
+library(gt)
+library(gtsummary)
+library(marginaleffects)
+library(modelsummary)
+
+tar_load(ich)
+tar_load(non_surgery_trials)
+tar_load(surgery_trials)
+tar_load(table_one)
+
+```
+
+## Exploratory Data Analysis
+
+::: {.callout-warning title="Issues to Address"}
+`htn` is missing mostly all information. It is also listed as a character variable.
+
+All other co-morbidities are missing information; if this is the case, should default to "No".
+
+`ivh` is also missing some values, which should also default to "No"?
+
+Any "Yes/No" variable should not have any missing information, should just default to "No"
+
+Verify accuracy/validity of `time_symptoms_to_ed`, `sbp_baseline`, 
+
+Fix/drop unused levels in `race`, and fix "American Indian"
+
+Fix "unknown" category in `ethnicity` to "Not Hispanic or Latino"
+
+Fix/drop unused levels in `ich_location` and `study`
+:::
+
+```{r}
+
+glimpse(ich)
+skim(ich)
+
+```
+
+## Table 1
+
+::: {.callout-warning title="Issues to Address"}
+
+Change order of the displayed to frequency
+
+:::
+
+```{r}
+
+table_one
+
+```
+
