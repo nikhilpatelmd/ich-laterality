@@ -10,9 +10,12 @@ imported_data|stem|16a6c93d074065fd|8ec96915c66d6022|4d96234b842be553|-204986752
 imported_data_file|stem|ed45537c906d31ab|96dbc807e6ee35f2|ef46db3751d8e999|993233264|data/raw_data/all.rds|t19648.6664986641s|3ac1f8cc9dbea9fc|5937065|file|local|vector|||0||
 non_surgery_trial_function|function|6f4b63f7ec5ad692|||||||||||||||
 non_surgery_trials|stem|0d3e44fdbc2ce5ca|fa66276af7deb299|51d7d28bd2da87f4|662182307||t19762.7333857257s|f59c422385ed46c6|78576|rds|local|vector|||0.007||
-report|stem|d7b7676c6e2f1e96|1a10275c4c33da79|67d25e6f2c195681|-2030396770|reports/aggressiveness.html*reports/aggressiveness.qmd|t19762.7829694954s|e826b63c96924124|70324|file|local|vector|||4.929||
+report|stem|02ca3f994d355522|4bbe56e7c07813fd|c0aa53fe7d50213c|-2030396770|reports/aggressiveness.html*reports/aggressiveness.qmd|t19762.8124446122s|579e05fab5d31d7d|87039|file|local|vector|||5.202||
 select_variables|function|b5ce5124029c90a5|||||||||||||||
 selected_data|stem|e82331ea5eb5bca4|b5b9c57e05105341|2d6bda5f6169463b|1470964542||t19762.7198405572s|1f7aea70f30dc24d|110425|rds|local|vector|||0.025||
 surgery_trials|stem|9c138dab85f4e0da|70966fc722a1a0dd|51d7d28bd2da87f4|1641231837||t19762.7337261565s|14c39eb6cfbb1654|16443|rds|local|vector|||0.007||
-table_1_function|function|c861b5995c551707|||||||||||||||
-table_one|stem|0345d43d9d1014f0|fffa34134587a996|adb99334cd1e1b8c|337764723||t19762.7829124741s|6098dfc5b05ec66e|543393|rds|local|vector|||4.721|1m22mUsing an external vector in selections was deprecated in tidyselect 1.1.0.36mℹ39m Please use all_of or any_of instead.   Was  data  selecttable_one_vars   Now  data  selectall_oftable_one_varsSee httpstidyselect.rlib.orgreferencefaqexternalvector.html.|
+table_1|stem|f0657ab8556c557e|fffa34134587a996|80ce4318fa9ba6ad|740573240||t19762.802399512s|663377fb0d72da2d|543427|rds|local|vector|||4.431||
+table_1_function|function|dfd1f35179cf5959|||||||||||||||
+table_2|stem|903dcd599ccd07fc|5ebf2dbb887dcb3d|6daa6c432a002df6|660012358||t19762.8024167573s|dab4fd6e79fa5418|112375|rds|local|vector|||1.447||
+table_2_function|function|f6023baf8ca9ddb5|||||||||||||||
+table_one|stem|f0657ab8556c557e|fffa34134587a996|80ce4318fa9ba6ad|337764723||t19762.7899591657s|663377fb0d72da2d|543427|rds|local|vector|||4.784||

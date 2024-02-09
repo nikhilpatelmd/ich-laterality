@@ -80,8 +80,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link active" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link active" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data Overview</a></li>
   <li><a href="#table-1" id="toc-table-1" class="nav-link" data-scroll-target="#table-1">Table 1</a></li>
+  <li><a href="#relationships-between-variables" id="toc-relationships-between-variables" class="nav-link" data-scroll-target="#relationships-between-variables">Relationships between Variables</a></li>
+  </ul></li>
+  <li><a href="#statistical-models" id="toc-statistical-models" class="nav-link" data-scroll-target="#statistical-models">Statistical Models</a>
+  <ul class="collapse">
+  <li><a href="#dags" id="toc-dags" class="nav-link" data-scroll-target="#dags">DAGs</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -116,23 +124,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Figtree"</span>))</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(ich)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(non_surgery_trials)</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(surgery_trials)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(table_one)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(table_1)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(table_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="exploratory-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<section id="data-overview" class="level3">
+<h3 class="anchored" data-anchor-id="data-overview">Data Overview</h3>
 <div class="callout callout-style-default callout-warning callout-titled" title="Issues to Address">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -148,12 +159,15 @@ Issues to Address
 <p><code>ivh</code> is also missing some values, which should also default to “No”?</p>
 <p>Any “Yes/No” variable should not have any missing information, should just default to “No”</p>
 <p>Verify accuracy/validity of <code>time_symptoms_to_ed</code>, <code>sbp_baseline</code>,</p>
+<p>Fix/drop unused levels in <code>race</code>, and fix “American Indian”</p>
+<p>Fix “unknown” category in <code>ethnicity</code> to “Not Hispanic or Latino”</p>
+<p>Fix/drop unused levels in <code>ich_location</code> and <code>study</code></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(non_surgery_trials)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 4,514
+<pre><code>Rows: 3,477
 Columns: 41
 $ study                       &lt;fct&gt; ERICH, ERICH, ERICH, ERICH, ERICH, ERICH, …
 $ age                         &lt;dbl&gt; 85, 54, 71, 55, 68, 55, 51, 43, 60, 38, 68…
@@ -197,7 +211,7 @@ $ mrs_90_03                   &lt;lgl&gt; NA, FALSE, FALSE, FALSE, TRUE, FALSE, 
 $ mrs_90_04                   &lt;lgl&gt; NA, FALSE, FALSE, FALSE, TRUE, FALSE, FALS…
 $ hospital_los                &lt;dbl&gt; 24, 8, 2, 28, 12, 6, 10, 3, 22, 11, 3, 33,…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(ich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(non_surgery_trials)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table style="width: auto;" class="table table-condensed">
 <caption>
@@ -209,7 +223,7 @@ Data summary
 Name
 </td>
 <td style="text-align:left;">
-ich
+non_surgery_trials
 </td>
 </tr>
 <tr>
@@ -217,7 +231,7 @@ ich
 Number of rows
 </td>
 <td style="text-align:left;">
-4514
+3477
 </td>
 </tr>
 <tr>
@@ -327,10 +341,10 @@ whitespace
 htn
 </td>
 <td style="text-align:right;">
-2908
+2514
 </td>
 <td style="text-align:right;">
-0.36
+0.28
 </td>
 <td style="text-align:right;">
 2
@@ -389,10 +403,10 @@ study
 FALSE
 </td>
 <td style="text-align:right;">
-5
+2
 </td>
 <td style="text-align:left;">
-ERI: 2487, ATA: 990, MIS: 506, CLE: 394
+ERI: 2487, ATA: 990, CLE: 0, MIS: 0
 </td>
 </tr>
 <tr>
@@ -412,7 +426,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-Mal: 2704, Fem: 1810
+Mal: 2081, Fem: 1396
 </td>
 </tr>
 <tr>
@@ -429,10 +443,10 @@ race
 FALSE
 </td>
 <td style="text-align:right;">
-7
+5
 </td>
 <td style="text-align:left;">
-Whi: 2331, Bla: 1246, Asi: 572, Oth: 310
+Whi: 1875, Bla: 1022, Asi: 557, Oth: 16
 </td>
 </tr>
 <tr>
@@ -452,7 +466,7 @@ FALSE
 3
 </td>
 <td style="text-align:left;">
-Not: 3203, Unk: 1052, His: 259
+Not: 2296, Unk: 1052, His: 129
 </td>
 </tr>
 <tr>
@@ -460,10 +474,10 @@ Not: 3203, Unk: 1052, His: 259
 hld
 </td>
 <td style="text-align:right;">
-645
+229
 </td>
 <td style="text-align:right;">
-0.86
+0.93
 </td>
 <td style="text-align:left;">
 FALSE
@@ -472,7 +486,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-No: 2609, Yes: 1260
+No: 2238, Yes: 1010
 </td>
 </tr>
 <tr>
@@ -480,10 +494,10 @@ No: 2609, Yes: 1260
 dm2
 </td>
 <td style="text-align:right;">
-591
+196
 </td>
 <td style="text-align:right;">
-0.87
+0.94
 </td>
 <td style="text-align:left;">
 FALSE
@@ -492,7 +506,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-No: 3042, Yes: 881
+No: 2576, Yes: 705
 </td>
 </tr>
 <tr>
@@ -500,10 +514,10 @@ No: 3042, Yes: 881
 stroke
 </td>
 <td style="text-align:right;">
-1079
+42
 </td>
 <td style="text-align:right;">
-0.76
+0.99
 </td>
 <td style="text-align:left;">
 FALSE
@@ -520,10 +534,10 @@ No: 2852, Yes: 583
 afib
 </td>
 <td style="text-align:right;">
-1138
+101
 </td>
 <td style="text-align:right;">
-0.75
+0.97
 </td>
 <td style="text-align:left;">
 FALSE
@@ -540,10 +554,10 @@ No: 3124, Yes: 252
 cad
 </td>
 <td style="text-align:right;">
-631
+100
 </td>
 <td style="text-align:right;">
-0.86
+0.97
 </td>
 <td style="text-align:left;">
 FALSE
@@ -552,7 +566,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-No: 3488, Yes: 395
+No: 3056, Yes: 321
 </td>
 </tr>
 <tr>
@@ -563,7 +577,7 @@ tobacco
 830
 </td>
 <td style="text-align:right;">
-0.82
+0.76
 </td>
 <td style="text-align:left;">
 FALSE
@@ -572,7 +586,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-No: 2117, Yes: 1567
+Yes: 1361, No: 1286
 </td>
 </tr>
 <tr>
@@ -592,7 +606,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-Lef: 2257, Rig: 2257
+Rig: 1757, Lef: 1720
 </td>
 </tr>
 <tr>
@@ -612,7 +626,7 @@ FALSE
 3
 </td>
 <td style="text-align:left;">
-Bas: 1787, Tha: 1468, Lob: 1259, Bra: 0
+Bas: 1304, Tha: 1157, Lob: 1016, Bra: 0
 </td>
 </tr>
 <tr>
@@ -620,10 +634,10 @@ Bas: 1787, Tha: 1468, Lob: 1259, Bra: 0
 ivh
 </td>
 <td style="text-align:right;">
-22
+20
 </td>
 <td style="text-align:right;">
-1.00
+0.99
 </td>
 <td style="text-align:left;">
 FALSE
@@ -632,7 +646,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-No: 2590, Yes: 1902
+No: 2153, Yes: 1304
 </td>
 </tr>
 <tr>
@@ -652,7 +666,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-No: 3926, Yes: 580
+No: 3239, Yes: 230
 </td>
 </tr>
 <tr>
@@ -672,7 +686,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-No: 3604, Yes: 902
+No: 2961, Yes: 508
 </td>
 </tr>
 <tr>
@@ -680,10 +694,10 @@ No: 3604, Yes: 902
 tracheostomy
 </td>
 <td style="text-align:right;">
-1892
+855
 </td>
 <td style="text-align:right;">
-0.58
+0.75
 </td>
 <td style="text-align:left;">
 FALSE
@@ -700,10 +714,10 @@ No: 2584, Yes: 38
 peg
 </td>
 <td style="text-align:right;">
-2027
+990
 </td>
 <td style="text-align:right;">
-0.55
+0.72
 </td>
 <td style="text-align:left;">
 FALSE
@@ -720,10 +734,10 @@ No: 2487
 dnr_binary
 </td>
 <td style="text-align:right;">
-1998
+961
 </td>
 <td style="text-align:right;">
-0.56
+0.72
 </td>
 <td style="text-align:left;">
 FALSE
@@ -740,10 +754,10 @@ No: 2119, Yes: 397
 dni_binary
 </td>
 <td style="text-align:right;">
-2079
+1042
 </td>
 <td style="text-align:right;">
-0.54
+0.70
 </td>
 <td style="text-align:left;">
 FALSE
@@ -760,10 +774,10 @@ No: 2230, Yes: 205
 comfort_care_binary
 </td>
 <td style="text-align:right;">
-1442
+956
 </td>
 <td style="text-align:right;">
-0.68
+0.73
 </td>
 <td style="text-align:left;">
 FALSE
@@ -772,7 +786,7 @@ FALSE
 2
 </td>
 <td style="text-align:left;">
-No: 2670, Yes: 402
+No: 2226, Yes: 295
 </td>
 </tr>
 <tr>
@@ -780,10 +794,10 @@ No: 2670, Yes: 402
 mrs_90
 </td>
 <td style="text-align:right;">
-1356
+422
 </td>
 <td style="text-align:right;">
-0.70
+0.88
 </td>
 <td style="text-align:left;">
 TRUE
@@ -792,7 +806,7 @@ TRUE
 7
 </td>
 <td style="text-align:left;">
-4: 716, 2: 535, 1: 528, 3: 505
+4: 677, 2: 527, 1: 526, 3: 494
 </td>
 </tr>
 </tbody>
@@ -824,16 +838,16 @@ count
 mrs_90_01
 </td>
 <td style="text-align:right;">
-1356
+422
 </td>
 <td style="text-align:right;">
-0.7
+0.88
 </td>
 <td style="text-align:right;">
 0.95
 </td>
 <td style="text-align:left;">
-TRU: 3003, FAL: 155
+TRU: 2900, FAL: 155
 </td>
 </tr>
 <tr>
@@ -841,16 +855,16 @@ TRU: 3003, FAL: 155
 mrs_90_02
 </td>
 <td style="text-align:right;">
-1356
+422
 </td>
 <td style="text-align:right;">
-0.7
+0.88
 </td>
 <td style="text-align:right;">
 0.78
 </td>
 <td style="text-align:left;">
-TRU: 2475, FAL: 683
+TRU: 2374, FAL: 681
 </td>
 </tr>
 <tr>
@@ -858,16 +872,16 @@ TRU: 2475, FAL: 683
 mrs_90_03
 </td>
 <td style="text-align:right;">
-1356
+422
 </td>
 <td style="text-align:right;">
-0.7
+0.88
 </td>
 <td style="text-align:right;">
-0.61
+0.60
 </td>
 <td style="text-align:left;">
-TRU: 1940, FAL: 1218
+TRU: 1847, FAL: 1208
 </td>
 </tr>
 <tr>
@@ -875,16 +889,16 @@ TRU: 1940, FAL: 1218
 mrs_90_04
 </td>
 <td style="text-align:right;">
-1356
+422
 </td>
 <td style="text-align:right;">
-0.7
+0.88
 </td>
 <td style="text-align:right;">
-0.45
+0.44
 </td>
 <td style="text-align:left;">
-FAL: 1723, TRU: 1435
+FAL: 1702, TRU: 1353
 </td>
 </tr>
 </tbody>
@@ -940,10 +954,10 @@ age
 1.00
 </td>
 <td style="text-align:right;">
-61.48
+61.85
 </td>
 <td style="text-align:right;">
-13.36
+13.79
 </td>
 <td style="text-align:right;">
 21
@@ -955,13 +969,13 @@ age
 61.00
 </td>
 <td style="text-align:right;">
-72.00
+73.00
 </td>
 <td style="text-align:right;">
 94.00
 </td>
 <td style="text-align:left;">
-▁▅▇▆▂
+▁▅▇▆▃
 </td>
 </tr>
 <tr>
@@ -969,28 +983,28 @@ age
 time_symptoms_to_ed
 </td>
 <td style="text-align:right;">
-747
+744
 </td>
 <td style="text-align:right;">
-0.83
+0.79
 </td>
 <td style="text-align:right;">
-380.30
+364.37
 </td>
 <td style="text-align:right;">
-2527.78
+2941.98
 </td>
 <td style="text-align:right;">
--454
+0
 </td>
 <td style="text-align:right;">
 60.00
 </td>
 <td style="text-align:right;">
-96.00
+78.00
 </td>
 <td style="text-align:right;">
-208.50
+180.00
 </td>
 <td style="text-align:right;">
 131040.00
@@ -1004,28 +1018,28 @@ time_symptoms_to_ed
 sbp_baseline
 </td>
 <td style="text-align:right;">
-250
+223
 </td>
 <td style="text-align:right;">
 0.94
 </td>
 <td style="text-align:right;">
-189.76
+190.53
 </td>
 <td style="text-align:right;">
-41.54
+42.92
 </td>
 <td style="text-align:right;">
-68
+81
 </td>
 <td style="text-align:right;">
-163.00
+165.00
 </td>
 <td style="text-align:right;">
-189.00
+190.00
 </td>
 <td style="text-align:right;">
-214.00
+215.00
 </td>
 <td style="text-align:right;">
 888.00
@@ -1039,34 +1053,34 @@ sbp_baseline
 nihss_baseline
 </td>
 <td style="text-align:right;">
-2615
+2490
 </td>
 <td style="text-align:right;">
-0.42
+0.28
 </td>
 <td style="text-align:right;">
-15.83
+11.67
 </td>
 <td style="text-align:right;">
-9.02
+6.90
 </td>
 <td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-9.00
+6.00
 </td>
 <td style="text-align:right;">
-15.00
+11.00
 </td>
 <td style="text-align:right;">
-21.00
+16.00
 </td>
 <td style="text-align:right;">
-41.00
+40.00
 </td>
 <td style="text-align:left;">
-▆▇▇▂▂
+▇▇▃▁▁
 </td>
 </tr>
 <tr>
@@ -1074,25 +1088,25 @@ nihss_baseline
 gcs_baseline
 </td>
 <td style="text-align:right;">
-63
+29
 </td>
 <td style="text-align:right;">
 0.99
 </td>
 <td style="text-align:right;">
-12.32
+12.88
 </td>
 <td style="text-align:right;">
-3.45
+3.26
 </td>
 <td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
-10.00
+12.00
 </td>
 <td style="text-align:right;">
-14.00
+15.00
 </td>
 <td style="text-align:right;">
 15.00
@@ -1101,7 +1115,7 @@ gcs_baseline
 15.00
 </td>
 <td style="text-align:left;">
-▁▁▂▁▇
+▁▁▁▁▇
 </td>
 </tr>
 <tr>
@@ -1109,34 +1123,34 @@ gcs_baseline
 ich_volume_baseline
 </td>
 <td style="text-align:right;">
-26
+20
 </td>
 <td style="text-align:right;">
 0.99
 </td>
 <td style="text-align:right;">
-22.40
+19.92
 </td>
 <td style="text-align:right;">
-23.75
+23.65
 </td>
 <td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-5.73
+4.88
 </td>
 <td style="text-align:right;">
-13.71
+11.39
 </td>
 <td style="text-align:right;">
-31.47
+25.64
 </td>
 <td style="text-align:right;">
 175.32
 </td>
 <td style="text-align:left;">
-▇▂▁▁▁
+▇▁▁▁▁
 </td>
 </tr>
 <tr>
@@ -1144,16 +1158,16 @@ ich_volume_baseline
 ivh_volume_baseline
 </td>
 <td style="text-align:right;">
-26
+20
 </td>
 <td style="text-align:right;">
 0.99
 </td>
 <td style="text-align:right;">
-6.96
+5.59
 </td>
 <td style="text-align:right;">
-15.36
+14.41
 </td>
 <td style="text-align:right;">
 0
@@ -1165,7 +1179,7 @@ ivh_volume_baseline
 0.00
 </td>
 <td style="text-align:right;">
-6.54
+4.02
 </td>
 <td style="text-align:right;">
 244.84
@@ -1179,7 +1193,7 @@ ivh_volume_baseline
 neurosurgery_evac_day
 </td>
 <td style="text-align:right;">
-4393
+3356
 </td>
 <td style="text-align:right;">
 0.03
@@ -1214,10 +1228,10 @@ neurosurgery_evac_day
 evd_day
 </td>
 <td style="text-align:right;">
-4378
+3341
 </td>
 <td style="text-align:right;">
-0.03
+0.04
 </td>
 <td style="text-align:right;">
 2.82
@@ -1249,7 +1263,7 @@ evd_day
 days_EVD
 </td>
 <td style="text-align:right;">
-4445
+3408
 </td>
 <td style="text-align:right;">
 0.02
@@ -1284,10 +1298,10 @@ days_EVD
 days_mechanical_ventilation
 </td>
 <td style="text-align:right;">
-4379
+3342
 </td>
 <td style="text-align:right;">
-0.03
+0.04
 </td>
 <td style="text-align:right;">
 7.46
@@ -1319,10 +1333,10 @@ days_mechanical_ventilation
 dnr_day
 </td>
 <td style="text-align:right;">
-4229
+3192
 </td>
 <td style="text-align:right;">
-0.06
+0.08
 </td>
 <td style="text-align:right;">
 8.91
@@ -1354,10 +1368,10 @@ dnr_day
 dni_day
 </td>
 <td style="text-align:right;">
-4376
+3339
 </td>
 <td style="text-align:right;">
-0.03
+0.04
 </td>
 <td style="text-align:right;">
 9.28
@@ -1389,31 +1403,31 @@ dni_day
 comfort_care_day
 </td>
 <td style="text-align:right;">
-4186
+3256
 </td>
 <td style="text-align:right;">
-0.07
+0.06
 </td>
 <td style="text-align:right;">
-22.14
+9.10
 </td>
 <td style="text-align:right;">
-50.55
+12.21
 </td>
 <td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-3.00
+2.00
 </td>
 <td style="text-align:right;">
-8.00
+5.00
 </td>
 <td style="text-align:right;">
-16.00
+11.00
 </td>
 <td style="text-align:right;">
-357.00
+80.00
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -1424,10 +1438,10 @@ comfort_care_day
 hospital_los
 </td>
 <td style="text-align:right;">
-1043
+6
 </td>
 <td style="text-align:right;">
-0.77
+1.00
 </td>
 <td style="text-align:right;">
 14.65
@@ -1459,29 +1473,43 @@ hospital_los
 </div>
 </div>
 </section>
-<section id="table-1" class="level2">
-<h2 class="anchored" data-anchor-id="table-1">Table 1</h2>
+<section id="table-1" class="level3">
+<h3 class="anchored" data-anchor-id="table-1">Table 1</h3>
+<div class="callout callout-style-default callout-warning callout-titled" title="Issues to Address">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Issues to Address
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Collapse unused levels in <code>race</code>, <code>ethnicity</code>, <code>ich_location</code> and <code>study</code></p>
+<p>Change order of the displayed factors to frequency</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table_one</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="lpyovoyygo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lpyovoyygo table {
+<div id="jlqwdrkzgr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jlqwdrkzgr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lpyovoyygo thead, #lpyovoyygo tbody, #lpyovoyygo tfoot, #lpyovoyygo tr, #lpyovoyygo td, #lpyovoyygo th {
+#jlqwdrkzgr thead, #jlqwdrkzgr tbody, #jlqwdrkzgr tfoot, #jlqwdrkzgr tr, #jlqwdrkzgr td, #jlqwdrkzgr th {
   border-style: none;
 }
 
-#lpyovoyygo p {
+#jlqwdrkzgr p {
   margin: 0;
   padding: 0;
 }
 
-#lpyovoyygo .gt_table {
+#jlqwdrkzgr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1507,12 +1535,12 @@ hospital_los
   border-left-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_caption {
+#jlqwdrkzgr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lpyovoyygo .gt_title {
+#jlqwdrkzgr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1524,7 +1552,7 @@ hospital_los
   border-bottom-width: 0;
 }
 
-#lpyovoyygo .gt_subtitle {
+#jlqwdrkzgr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1536,7 +1564,7 @@ hospital_los
   border-top-width: 0;
 }
 
-#lpyovoyygo .gt_heading {
+#jlqwdrkzgr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1548,13 +1576,13 @@ hospital_los
   border-right-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_bottom_border {
+#jlqwdrkzgr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_col_headings {
+#jlqwdrkzgr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1569,7 +1597,7 @@ hospital_los
   border-right-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_col_heading {
+#jlqwdrkzgr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1589,7 +1617,7 @@ hospital_los
   overflow-x: hidden;
 }
 
-#lpyovoyygo .gt_column_spanner_outer {
+#jlqwdrkzgr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1601,15 +1629,15 @@ hospital_los
   padding-right: 4px;
 }
 
-#lpyovoyygo .gt_column_spanner_outer:first-child {
+#jlqwdrkzgr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lpyovoyygo .gt_column_spanner_outer:last-child {
+#jlqwdrkzgr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lpyovoyygo .gt_column_spanner {
+#jlqwdrkzgr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1621,11 +1649,11 @@ hospital_los
   width: 100%;
 }
 
-#lpyovoyygo .gt_spanner_row {
+#jlqwdrkzgr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lpyovoyygo .gt_group_heading {
+#jlqwdrkzgr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1651,7 +1679,7 @@ hospital_los
   text-align: left;
 }
 
-#lpyovoyygo .gt_empty_group_heading {
+#jlqwdrkzgr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1666,15 +1694,15 @@ hospital_los
   vertical-align: middle;
 }
 
-#lpyovoyygo .gt_from_md > :first-child {
+#jlqwdrkzgr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lpyovoyygo .gt_from_md > :last-child {
+#jlqwdrkzgr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lpyovoyygo .gt_row {
+#jlqwdrkzgr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1693,7 +1721,7 @@ hospital_los
   overflow-x: hidden;
 }
 
-#lpyovoyygo .gt_stub {
+#jlqwdrkzgr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1706,7 +1734,7 @@ hospital_los
   padding-right: 5px;
 }
 
-#lpyovoyygo .gt_stub_row_group {
+#jlqwdrkzgr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1720,15 +1748,15 @@ hospital_los
   vertical-align: top;
 }
 
-#lpyovoyygo .gt_row_group_first td {
+#jlqwdrkzgr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lpyovoyygo .gt_row_group_first th {
+#jlqwdrkzgr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lpyovoyygo .gt_summary_row {
+#jlqwdrkzgr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1738,16 +1766,16 @@ hospital_los
   padding-right: 5px;
 }
 
-#lpyovoyygo .gt_first_summary_row {
+#jlqwdrkzgr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_first_summary_row.thick {
+#jlqwdrkzgr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lpyovoyygo .gt_last_summary_row {
+#jlqwdrkzgr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1757,7 +1785,7 @@ hospital_los
   border-bottom-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_grand_summary_row {
+#jlqwdrkzgr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1767,7 +1795,7 @@ hospital_los
   padding-right: 5px;
 }
 
-#lpyovoyygo .gt_first_grand_summary_row {
+#jlqwdrkzgr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1777,7 +1805,7 @@ hospital_los
   border-top-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_last_grand_summary_row_top {
+#jlqwdrkzgr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1787,11 +1815,11 @@ hospital_los
   border-bottom-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_striped {
+#jlqwdrkzgr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lpyovoyygo .gt_table_body {
+#jlqwdrkzgr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1800,7 +1828,7 @@ hospital_los
   border-bottom-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_footnotes {
+#jlqwdrkzgr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1814,7 +1842,7 @@ hospital_los
   border-right-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_footnote {
+#jlqwdrkzgr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1823,7 +1851,7 @@ hospital_los
   padding-right: 5px;
 }
 
-#lpyovoyygo .gt_sourcenotes {
+#jlqwdrkzgr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1837,7 +1865,7 @@ hospital_los
   border-right-color: #D3D3D3;
 }
 
-#lpyovoyygo .gt_sourcenote {
+#jlqwdrkzgr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1845,63 +1873,63 @@ hospital_los
   padding-right: 5px;
 }
 
-#lpyovoyygo .gt_left {
+#jlqwdrkzgr .gt_left {
   text-align: left;
 }
 
-#lpyovoyygo .gt_center {
+#jlqwdrkzgr .gt_center {
   text-align: center;
 }
 
-#lpyovoyygo .gt_right {
+#jlqwdrkzgr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lpyovoyygo .gt_font_normal {
+#jlqwdrkzgr .gt_font_normal {
   font-weight: normal;
 }
 
-#lpyovoyygo .gt_font_bold {
+#jlqwdrkzgr .gt_font_bold {
   font-weight: bold;
 }
 
-#lpyovoyygo .gt_font_italic {
+#jlqwdrkzgr .gt_font_italic {
   font-style: italic;
 }
 
-#lpyovoyygo .gt_super {
+#jlqwdrkzgr .gt_super {
   font-size: 65%;
 }
 
-#lpyovoyygo .gt_footnote_marks {
+#jlqwdrkzgr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lpyovoyygo .gt_asterisk {
+#jlqwdrkzgr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lpyovoyygo .gt_indent_1 {
+#jlqwdrkzgr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lpyovoyygo .gt_indent_2 {
+#jlqwdrkzgr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lpyovoyygo .gt_indent_3 {
+#jlqwdrkzgr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lpyovoyygo .gt_indent_4 {
+#jlqwdrkzgr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lpyovoyygo .gt_indent_5 {
+#jlqwdrkzgr .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2250,6 +2278,528 @@ hospital_los
 </div>
 </div>
 </div>
+</section>
+<section id="relationships-between-variables" class="level3">
+<h3 class="anchored" data-anchor-id="relationships-between-variables">Relationships between Variables</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="cncmbhprts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cncmbhprts table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#cncmbhprts thead, #cncmbhprts tbody, #cncmbhprts tfoot, #cncmbhprts tr, #cncmbhprts td, #cncmbhprts th {
+  border-style: none;
+}
+
+#cncmbhprts p {
+  margin: 0;
+  padding: 0;
+}
+
+#cncmbhprts .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cncmbhprts .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cncmbhprts .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cncmbhprts .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cncmbhprts .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cncmbhprts .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cncmbhprts .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cncmbhprts .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cncmbhprts .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#cncmbhprts .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cncmbhprts .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cncmbhprts .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cncmbhprts .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cncmbhprts .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cncmbhprts .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cncmbhprts .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cncmbhprts .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cncmbhprts .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#cncmbhprts .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cncmbhprts .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cncmbhprts .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cncmbhprts .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cncmbhprts .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cncmbhprts .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cncmbhprts .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cncmbhprts .gt_left {
+  text-align: left;
+}
+
+#cncmbhprts .gt_center {
+  text-align: center;
+}
+
+#cncmbhprts .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cncmbhprts .gt_font_normal {
+  font-weight: normal;
+}
+
+#cncmbhprts .gt_font_bold {
+  font-weight: bold;
+}
+
+#cncmbhprts .gt_font_italic {
+  font-style: italic;
+}
+
+#cncmbhprts .gt_super {
+  font-size: 65%;
+}
+
+#cncmbhprts .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#cncmbhprts .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cncmbhprts .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cncmbhprts .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cncmbhprts .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cncmbhprts .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cncmbhprts .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_col_headings">
+<th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
+<th id="<strong>Overall</strong>, N = 3,477<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Overall</strong>, N = 3,477<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>Left</strong>, N = 1,720<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Left</strong>, N = 1,720<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>Right</strong>, N = 1,757<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Right</strong>, N = 1,757<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Neurosurgical Intervention</td>
+<td class="gt_row gt_center" headers="stat_0">230 (6.6%)</td>
+<td class="gt_row gt_center" headers="stat_1">86 (5.0%)</td>
+<td class="gt_row gt_center" headers="stat_2">144 (8.2%)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Ventriculostomy</td>
+<td class="gt_row gt_center" headers="stat_0">508 (15%)</td>
+<td class="gt_row gt_center" headers="stat_1">236 (14%)</td>
+<td class="gt_row gt_center" headers="stat_2">272 (16%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Mechanical Ventilation Days</td>
+<td class="gt_row gt_center" headers="stat_0">6.0 (3.0, 10.0)</td>
+<td class="gt_row gt_center" headers="stat_1">6.0 (3.0, 12.5)</td>
+<td class="gt_row gt_center" headers="stat_2">6.0 (3.0, 9.0)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Tracheostomy</td>
+<td class="gt_row gt_center" headers="stat_0">38 (1.4%)</td>
+<td class="gt_row gt_center" headers="stat_1">19 (1.5%)</td>
+<td class="gt_row gt_center" headers="stat_2">19 (1.4%)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Comfort Care</td>
+<td class="gt_row gt_center" headers="stat_0">295 (12%)</td>
+<td class="gt_row gt_center" headers="stat_1">152 (12%)</td>
+<td class="gt_row gt_center" headers="stat_2">143 (11%)</td>
+</tr>
+</tbody><tfoot class="gt_footnotes">
+<tr class="even">
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%); Median (IQR)</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="statistical-models" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-models">Statistical Models</h2>
+<div class="callout callout-style-default callout-important callout-titled" title="Other Considerations">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Other Considerations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Add analyses stratifying by each study: <code>ERICH</code> and <code>ATACH2</code></p>
+<p>Construct DAGs for <strong>each</strong> outcome (e.g., each model)!</p>
+<p>Add <code>DNR</code> in addition to <code>comfort_care</code>?</p>
+</div>
+</div>
+<section id="dags" class="level3">
+<h3 class="anchored" data-anchor-id="dags">DAGs</h3>
+</section>
 </section>
 
 </main>

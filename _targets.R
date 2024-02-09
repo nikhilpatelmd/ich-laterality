@@ -51,7 +51,8 @@ tar_plan(
   surgery_trials = ich |> filter(study == "MISTIE2" | study == "MISTIE-3" | study == "CLEAR III"),
 
   ## Exploratory data analysis ----
-  table_one = table_1_function(non_surgery_trials),
+  table_1 = table_1_function(non_surgery_trials),
+  table_2 = table_2_function(non_surgery_trials),
 
   ## Render report ----
   tar_quarto(

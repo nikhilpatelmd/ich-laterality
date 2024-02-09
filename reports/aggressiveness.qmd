@@ -12,24 +12,27 @@ toc: true
 library(targets)
 library(readr)
 library(tidyr)
-library(janitor)
-library(dplyr)
-library(forcats)
-library(stringr)
 library(skimr)
+library(dplyr)
 library(gt)
 library(gtsummary)
+library(ggplot2)
 library(marginaleffects)
 library(modelsummary)
+
+theme_set(theme_minimal(base_family = "Figtree"))
 
 tar_load(ich)
 tar_load(non_surgery_trials)
 tar_load(surgery_trials)
-tar_load(table_one)
+tar_load(table_1)
+tar_load(table_2)
 
 ```
 
 ## Exploratory Data Analysis
+
+### Data Overview
 
 ::: {.callout-warning title="Issues to Address"}
 `htn` is missing mostly all information. It is also listed as a character variable.
@@ -51,22 +54,57 @@ Fix/drop unused levels in `ich_location` and `study`
 
 ```{r}
 
-glimpse(ich)
-skim(ich)
+glimpse(non_surgery_trials)
+skim(non_surgery_trials)
 
 ```
 
-## Table 1
+
+### Table 1
 
 ::: {.callout-warning title="Issues to Address"}
 
-Change order of the displayed to frequency
+Collapse unused levels in `race`, `ethnicity`, `ich_location` and `study`
+
+Change order of the displayed factors to frequency 
 
 :::
 
+
 ```{r}
 
-table_one
+table_1
 
 ```
+
+### Relationships between Variables
+
+
+
+```{r}
+#| fig-align: center
+
+table_2
+
+```
+
+## Statistical Models
+
+::: {.callout-important title="Other Considerations"}
+
+Add analyses stratifying by each study: `ERICH` and `ATACH2`
+
+Construct DAGs for **each** outcome (e.g., each model)!
+
+Add `DNR` in addition to `comfort_care`?
+
+:::
+
+* `neurosurgery_evac`: logistic
+* `ventriculostomy`: logistic
+* `days_mechanical_ventilation`: poisson (cumulative logit?)
+* `tracheostomy`: logistic
+* `comfort_care`: logistic (days to comfort care, time to event?)
+
+### DAGs
 

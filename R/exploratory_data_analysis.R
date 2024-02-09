@@ -47,3 +47,30 @@ table_1_function <- function(x) {
     add_overall() |>
     bold_labels()
 }
+
+table_2_function <- function(x) {
+  table_two_vars <- c(
+    "neurosurgery_evac",
+    "evd",
+    "days_mechanical_ventilation",
+    "tracheostomy",
+    "ich_laterality",
+    "comfort_care_binary"
+  )
+
+  x |>
+    select(all_of(table_two_vars)) |>
+    tbl_summary(
+      by = ich_laterality,
+      missing = "no",
+      label = list(
+        neurosurgery_evac ~ "Neurosurgical Intervention",
+        evd ~ "Ventriculostomy",
+        days_mechanical_ventilation ~ "Mechanical Ventilation Days",
+        tracheostomy ~ "Tracheostomy",
+        comfort_care_binary ~ "Comfort Care"
+      )
+    ) |>
+    add_overall() |>
+    bold_labels()
+}
