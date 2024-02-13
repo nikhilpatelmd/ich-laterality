@@ -6,7 +6,7 @@ format:
     mainfont: Figtree
     monofont: Source Code Pro
     fontsize: 0.97rem
-    embed-resources: false
+    embed-resources: true
     toc: true
     toc-location: left
     toc-depth: 6
@@ -17,6 +17,7 @@ format:
     link-external-newwindow: true
     code-overflow: wrap
     code-tools: true
+    code-fold: true
     highlight-style: nord
 ---
 
@@ -57,12 +58,6 @@ status_colors <- c(exposure = "#CE4441", outcome = "#004F63", latent = "grey80")
 
 # load all targets objects
 tar_load_everything()
-tar_load(ich)
-tar_load(non_surgery_trials)
-tar_load(surgery_trials)
-tar_load(table_1)
-tar_load(table_2)
-tar_load(aggressive_dag)
 
 ```
 
@@ -109,18 +104,22 @@ Change order of the displayed factors to frequency
 
 ```{r}
 
-table_1
+table_1_non_surgery
 
 ```
 
 ### Relationships between Variables
 
+::: {.callout-important title="Other Considerations"}
 
+Need to point out in table that `days_mechanical_ventilation` is only available in ATACH2 data. Have to clarify if `tracheostomy` and `peg` are included in ATACH2 (def included in ERICH)
+
+:::
 
 ```{r}
 #| fig-align: center
 
-table_2
+table_2_non_surgery
 
 ```
 
@@ -132,31 +131,25 @@ Add analyses stratifying by each study: `ERICH` and `ATACH2`
 
 Construct DAGs for **each** outcome (e.g., each model)!
 
-Add `DNR` in addition to `comfort_care`?
+Add `DNR` in addition to `comfort_care` in first analysis? 
 
 :::
+
+
+We aim to estimate the **total causal effect of hemispheric laterality in intracerebral hemorrhage on the probability of receiving aggressive interventions**, as defined by the following:
 
 * `neurosurgery_evac`: logistic
 * `ventriculostomy`: logistic
 * `days_mechanical_ventilation`: poisson (cumulative logit?)
 * `tracheostomy`: logistic
+* `peg`: logistic
 * `comfort_care`: logistic (days to comfort care, time to event?)
 
-### DAGs
-
-#### Aggressive Care
-
-We aim to estimate the **total causal effect of hemispheric laterality in intracerebral hemorrhage on the probability of receiving aggressive interventions**, as defined by the following:
-
-- neurosurgery
-- ventriculostomy
-- tracheostomy
-- PEG placement
-- early withdrawal of life-sustaining therapies (< 72 hours from presentation)
+The directed acyclic graph (DAG) is described below. 
 
 ::: {.callout-warning title="Issues to Address"}
 
-* Make sure other people think it's easy to read
+* Make it easier to [read](https://github.com/sakeefkarim/intro_ggdag_script/blob/main/code/code_intro_ggdag.R)! 
 
 * Add any connections? Ask Nick, Matt, and others
 
@@ -164,25 +157,64 @@ We aim to estimate the **total causal effect of hemispheric laterality in intrac
 
 * Fix position of arrows
 
+* Include `symptom_onset_to_ED` in the DAG (this is known to differ in patients with ischemic stroke)
+
 :::
 
-```{r dags}
+### DAG
+
+```{r aggressive dag}
 #| fig-align: center
 #| fig.height: 9
-
 
 aggressive_dag |>
   tidy_dagitty() |>
   node_status() |>
   ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
   geom_dag_point(aes(color = status)) +
-  geom_dag_edges_diagonal() +
+  geom_dag_edges() +
   geom_dag_label_repel(aes(label = label, fill = status),
-    seed = 2,
-    color = "white", fontface = "bold", size = 4
+    seed = 51,
+    color = "white", fontface = "bold", size = 4.5
   ) +
   scale_color_manual(values = status_colors, na.value = "grey20") +
   scale_fill_manual(values = status_colors, na.value = "grey20")
 
 ```
 
+#### DAG-Implied Adjustment Sets
+
+Since there is no variable that affects `hemispheric_laterality` in the DAG, the minimally sufficient adjustment set does not include any variables for the estimand of interest (total effect of `hemispheric_laterality`).
+
+The canonical adjustment set includes `age`, `gcs_baseline`, `ich_location`, `ich_volume`, `ivh`, and `stroke`.
+
+We include the competing exposures in the canonical adjustment set (e.g., `age`, `gcs_baseline`, `ich_location`, `ich_volume`, `ivh`, and `stroke`) as covariates in our final model to increase precision, and also run the minimal adjustment set as a sensitivity analysis.
+
+```{r aggressive dag adjustment sets}
+#| code-fold: false
+#| fig-align: center
+#| fig.height: 9
+
+adjustmentSets(
+  aggressive_dag,
+  type = "minimal",
+  effect = "total",
+  max.results = Inf
+)
+
+adjustmentSets(
+  aggressive_dag,
+  type = "canonical",
+  effect = "total",
+  max.results = Inf
+)
+
+```
+
+### Priors
+
+
+
+### Posterior Simulation
+
+### Analysis

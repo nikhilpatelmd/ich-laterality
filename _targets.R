@@ -53,15 +53,25 @@ tar_plan(
   surgery_trials = ich |> filter(study == "MISTIE2" | study == "MISTIE-3" | study == "CLEAR III"),
 
   ## Exploratory data analysis ----
-  table_1 = table_1_function(non_surgery_trials),
-  table_2 = table_2_function(non_surgery_trials),
+  table_1_non_surgery = table_1_function(non_surgery_trials),
+  table_2_non_surgery = table_2_aggressive_function(non_surgery_trials),
+  table_1_all = table_1_function(ich),
 
   ## DAGs ----
   aggressive_dag = aggressive_dag_function(x),
+  outcomes_dag = outcomes_dag_function(x),
+
+  ## Priors ----
+
+
 
   ## Render report ----
   tar_quarto(
-    report,
+    aggressive,
     "reports/aggressiveness.qmd"
+  ),
+  tar_quarto(
+    outcomes,
+    "reports/outcomes.qmd"
   )
 )

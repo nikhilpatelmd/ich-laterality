@@ -48,7 +48,7 @@ table_1_function <- function(x) {
     bold_labels()
 }
 
-table_2_function <- function(x) {
+table_2_aggressive_function <- function(x) {
   table_two_vars <- c(
     "neurosurgery_evac",
     "evd",

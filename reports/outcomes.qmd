@@ -1,0 +1,170 @@
+---
+title: Differences in outcomes for patients experiencing left vs. right hemisphere ICH
+author: Nikhil Patel, MD
+format:
+  html: 
+    mainfont: Figtree
+    monofont: Source Code Pro
+    fontsize: 0.97rem
+    embed-resources: true
+    toc: true
+    toc-location: left
+    toc-depth: 6
+    toc-expand: true
+    toc-title: Contents
+    smooth-scroll: true
+    link-external-icon: true
+    link-external-newwindow: true
+    code-overflow: wrap
+    code-tools: true
+    code-fold: true
+    highlight-style: nord
+---
+
+::: {.callout-note icon="false"}
+## Research question
+
+Do patients presenting with left hemispheric ICH have different functional outcomes (as measured by mRs and EuroQoL at 90 days) as compared to those with right hemispheric ICH?
+
+:::
+
+
+```{r setup, output=FALSE, message=FALSE, warning=FALSE}
+library(targets)
+library(skimr)
+library(dplyr)
+library(gt)
+library(gtsummary)
+library(ggplot2)
+library(ggdag)
+library(dagitty)
+library(marginaleffects)
+library(modelsummary)
+library(MetBrewer)
+
+# theme customization
+theme_set(theme_minimal(base_family = "Figtree"))
+
+theme_set(
+  theme_dag(base_family = "Figtree") %+replace%
+    # also add some additional styling
+    theme(
+      legend.position = "bottom",
+      strip.text.x = element_text(margin = margin(2, 0, 2, 0, "mm"))
+    )
+)
+
+status_colors <- c(exposure = "#CE4441", outcome = "#004F63", latent = "grey80")
+
+# load all targets objects
+tar_load_everything()
+
+
+```
+
+## Exploratory Data Analysis
+
+### Data Overview
+
+::: {.callout-warning title="Issues to Address"}
+
+?
+
+:::
+
+```{r}
+
+glimpse(ich)
+skim(ich)
+
+```
+
+
+### Table 1
+
+::: {.callout-warning title="Issues to Address"}
+
+?
+
+:::
+
+
+```{r}
+
+table_1_all
+
+```
+
+### Relationships between Variables
+
+::: {.callout-important title="Other Considerations"}
+
+?
+
+:::
+
+
+## Statistical Models
+
+::: {.callout-important title="Other Considerations"}
+
+Add analyses stratifying by each study: `ERICH` and `ATACH2`
+
+?
+
+:::
+
+### Outcomes
+
+We aim to estimate the total direct effect of hemispheric laterality in intracerebral hemorrhage on the probability of a good functional outcome, as defined by the following:
+
+* `mrs_90`: modified Rankin at 90 days: cumulative logit
+* `euro_vas_90`: EuroQOL VAS at 90 days: beta regression
+* `euro_90`: all 5 domains of the EuroQOL at 90 days: cumulative logit
+
+#### DAG
+
+```{r outcomes dag}
+#| fig-align: center
+#| fig.height: 9
+
+outcomes_dag |>
+  tidy_dagitty() |>
+  node_status() |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(aes(color = status)) +
+  geom_dag_edges() +
+  geom_dag_label_repel(aes(label = label, fill = status),
+    seed = 51,
+    color = "white", fontface = "bold", size = 4.5
+  ) +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20")
+
+```
+
+#### DAG-Implied Adjustment Sets
+
+Similar to above, there are no 
+
+```{r outcomes dag adjustment sets}
+#| code-fold: false
+#| fig-align: center
+#| fig.height: 10
+#| fig.width: 20
+
+adjustmentSets(
+  outcomes_dag,
+  type = "minimal",
+  effect = "direct",
+  max.results = Inf
+)
+
+adjustmentSets(
+  outcomes_dag,
+  type = "canonical",
+  effect = "total",
+  max.results = Inf
+)
+
+```
