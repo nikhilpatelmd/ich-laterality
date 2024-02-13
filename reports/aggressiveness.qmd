@@ -17,16 +17,20 @@ library(dplyr)
 library(gt)
 library(gtsummary)
 library(ggplot2)
+library(ggdag)
+library(dagitty)
 library(marginaleffects)
 library(modelsummary)
 
 theme_set(theme_minimal(base_family = "Figtree"))
 
-tar_load(ich)
-tar_load(non_surgery_trials)
-tar_load(surgery_trials)
-tar_load(table_1)
-tar_load(table_2)
+# tar_load(ich)
+# tar_load(non_surgery_trials)
+# tar_load(surgery_trials)
+# tar_load(table_1)
+# tar_load(table_2)
+# tar_load(aggressive_dag)
+tar_load_everything()
 
 ```
 
@@ -108,3 +112,25 @@ Add `DNR` in addition to `comfort_care`?
 
 ### DAGs
 
+```{r}
+#| width: 1200
+#| height: 2000
+#| fig-align: center
+#|
+theme_set(
+  theme_dag() %+replace%
+    # also add some additional styling
+    theme(
+      legend.position = "bottom",
+      strip.text.x = element_text(margin = margin(2, 0, 2, 0, "mm"))
+    )
+)
+
+ggdag_adjustment_set(aggressive_dag, shadow = TRUE, use_labels = "label", text = FALSE)
+
+ggdag_adjustment_set(outcome_dag, shadow = TRUE, use_labels = "label", text = FALSE)
+
+aggressive_dag |>
+  ggdag_paths(shadow = TRUE, text = FALSE, use_labels = "label")
+
+```

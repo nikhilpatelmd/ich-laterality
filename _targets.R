@@ -33,6 +33,8 @@ set.seed(4641) # From random.org
 source("R/packages.R")
 source("R/data_cleaning.R")
 source("R/exploratory_data_analysis.R")
+source("R/dags.R")
+
 
 # Pipeline ----
 tar_plan(
@@ -53,6 +55,10 @@ tar_plan(
   ## Exploratory data analysis ----
   table_1 = table_1_function(non_surgery_trials),
   table_2 = table_2_function(non_surgery_trials),
+
+  ## DAGs ----
+  aggressive_dag = aggressive_dag_function(x),
+  outcome_dag = outcome_dag_function(x),
 
   ## Render report ----
   tar_quarto(

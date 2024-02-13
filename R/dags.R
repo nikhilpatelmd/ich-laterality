@@ -1,17 +1,57 @@
-dag_function <- function(x) {
-  node_details <- tribble(
+aggressive_dag_function <- function(x) {
+  aggressiveness_node_details <- tribble(
     ~name, ~label, ~x, ~y,
-    "functional_disability", "Functional Disability", 4, 1,
+    "aggressive_care", "Aggressive Care", 5, 1,
     "ich_laterality", "Hemispheric Laterality", 1, 1,
-    "age", "Age", 2.75, 3,
-    "ich_location", "ICH Location", 2, 2.75,
-    "ich_volume", "ICH Volume", 1, 2.75,
-    "ivh", "IVH", 1.5, 2.25,
-    "gcs_baseline", "Admission GCS", 2, 3.25,
-    "wlst", "Early WLST", 3.75, 2.25,
-    "neurosurgery", "Neurosurgery", 2, 1.5,
+    "age", "Age", 3.75, 2.5,
+    "ich_location", "ICH Location", 2.75, 1.75,
+    "ich_volume", "ICH Volume", 1.25, 4,
+    "ivh", "IVH", 1, 3,
+    "gcs_baseline", "Admission GCS", 4.5, 3.75
   )
 
-  node_labels <- node_details$label
-  names(node_labels) <- node_details$name
+  aggressiveness_node_labels <- aggressiveness_node_details$label
+  names(aggressiveness_node_labels) <- aggressiveness_node_details$name
+
+  dagify(
+    aggressive_care ~ ich_laterality + ivh + ich_volume + gcs_baseline + ich_location + age,
+    ivh ~ ich_location,
+    gcs_baseline ~ ich_volume + age + ivh,
+    ich_location ~ age,
+    exposure = "ich_laterality",
+    outcome = "aggressive_care",
+    coords = aggressiveness_node_details,
+    labels = aggressiveness_node_labels
+  )
+}
+
+outcome_dag_function <- function(x) {
+  outcome_node_details <- tribble(
+    ~name, ~label, ~x, ~y,
+    "functional_outcome", "Functional Outcome", 5, 1,
+    "ich_laterality", "Hemispheric Laterality", 1, 1,
+    "age", "Age", 3.75, 2.5,
+    "ich_location", "ICH Location", 2.75, 1.75,
+    "ich_volume", "ICH Volume", 1.25, 4,
+    "ivh", "IVH", 1, 3,
+    "gcs_baseline", "Admission GCS", 4.5, 3.75,
+    "wlst", "Early WLST", 3.75, 2.25,
+    "neurosurgery", "Neurosurgery", 2, 1.5
+  )
+
+  outcome_node_labels <- outcome_node_details$label
+  names(outcome_node_labels) <- outcome_node_details$name
+
+  dagify(
+    functional_outcome ~ ich_laterality + age + ich_location + ich_volume + ivh + gcs_baseline + wlst + neurosurgery,
+    neurosurgery ~ ich_laterality + age + ich_location + gcs_baseline,
+    wlst ~ age + ich_location + gcs_baseline + ich_volume + ivh,
+    gcs_baseline ~ age + ich_location + ich_volume + ivh,
+    ich_location ~ age,
+    ivh ~ ich_location,
+    exposure = "ich_laterality",
+    outcome = "functional_outcome",
+    coords = outcome_node_details,
+    labels = outcome_node_labels
+  )
 }
