@@ -7,20 +7,24 @@ aggressive_dag_function <- function(x) {
     "ich_location", "ICH Location", 2.75, 1.75,
     "ich_volume", "ICH Volume", 1.25, 4,
     "ivh", "IVH", 1, 3,
-    "gcs_baseline", "Admission GCS", 4.5, 3.75
+    "gcs_baseline", "Admission GCS", 4.5, 3.75,
+    "stroke", "Previous Stroke", 1, 1,
+    "hypertension", "Hypertension", 1, 1,
+    "amyloid", "Amyloid Angiopathy", 1, 1
   )
 
   aggressiveness_node_labels <- aggressiveness_node_details$label
   names(aggressiveness_node_labels) <- aggressiveness_node_details$name
 
   dagify(
-    aggressive_care ~ ich_laterality + ivh + ich_volume + gcs_baseline + ich_location + age,
+    aggressive_care ~ ich_laterality + ivh + ich_volume + gcs_baseline + ich_location + age + stroke + amyloid,
     ivh ~ ich_location,
     gcs_baseline ~ ich_volume + age + ivh,
-    ich_location ~ age,
+    ich_location ~ amyloid + hypertension,
+    amyloid ~ age,
     exposure = "ich_laterality",
     outcome = "aggressive_care",
-    coords = aggressiveness_node_details,
+    latent = "amyloid",
     labels = aggressiveness_node_labels
   )
 }

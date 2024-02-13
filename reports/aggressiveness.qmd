@@ -1,17 +1,38 @@
 ---
 title: Differences in care for patients experiencing left vs. right hemisphere ICH
 author: Nikhil Patel, MD
-format: html
-toc: true
+format:
+  html: 
+    mainfont: Figtree
+    monofont: Source Code Pro
+    fontsize: 0.97rem
+    embed-resources: true
+    toc: true
+    toc-location: left
+    toc-depth: 5
+    toc-title: Contents
+    smooth-scroll: true
+    link-external-icon: true
+    link-external-newwindow: true
+    code-overflow: wrap
+    code-tools: true
+    highlight-style: nord
+    lightbox: true
 ---
+
+::: {.callout-note icon="false"}
+## Research question
+
+Do patients presenting with left hemispheric ICH receive less aggressive care (as measured by rates of neurosurgery, ventriculostomy, tracheostomy, PEG, and early withdrawal of life-sustaining therapies) as compared to those with right hemispheric ICH?
+
+:::
 
 
 ```{r setup, output=FALSE, message=FALSE, warning=FALSE}
-#| code-fold: false
+#| code-fold: true
+#| code-summary: "Loading Libraries and Other Code Setup"
 
 library(targets)
-library(readr)
-library(tidyr)
 library(skimr)
 library(dplyr)
 library(gt)
@@ -22,14 +43,19 @@ library(dagitty)
 library(marginaleffects)
 library(modelsummary)
 
+# theme customization
 theme_set(theme_minimal(base_family = "Figtree"))
 
-# tar_load(ich)
-# tar_load(non_surgery_trials)
-# tar_load(surgery_trials)
-# tar_load(table_1)
-# tar_load(table_2)
-# tar_load(aggressive_dag)
+theme_set(
+  theme_dag() %+replace%
+    # also add some additional styling
+    theme(
+      legend.position = "bottom",
+      strip.text.x = element_text(margin = margin(2, 0, 2, 0, "mm"))
+    )
+)
+
+# load all targets objects
 tar_load_everything()
 
 ```
@@ -117,14 +143,8 @@ Add `DNR` in addition to `comfort_care`?
 #| height: 2000
 #| fig-align: center
 #|
-theme_set(
-  theme_dag() %+replace%
-    # also add some additional styling
-    theme(
-      legend.position = "bottom",
-      strip.text.x = element_text(margin = margin(2, 0, 2, 0, "mm"))
-    )
-)
+
+ggdag(aggressive_dag, use_labels = "label", text = FALSE)
 
 ggdag_adjustment_set(aggressive_dag, shadow = TRUE, use_labels = "label", text = FALSE)
 
@@ -133,4 +153,7 @@ ggdag_adjustment_set(outcome_dag, shadow = TRUE, use_labels = "label", text = FA
 aggressive_dag |>
   ggdag_paths(shadow = TRUE, text = FALSE, use_labels = "label")
 
+tidy_dagitty(aggressive_dag)
+
 ```
+

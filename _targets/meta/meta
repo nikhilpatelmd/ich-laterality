@@ -1,7 +1,7 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 .Random.seed|object|0ee20f82b7e86e42|||||||||||||||
-aggressive_dag|stem|415fe452981e6edb|29692275e9b65343|2d1222371ed7697c|-1029196547||t19765.8494295783s|24e075d0352ab5d9|394|rds|local|vector|||0.026||
-aggressive_dag_function|function|3ba1f915f420977f|||||||||||||||
+aggressive_dag|stem|2e5164d10705aca5|29692275e9b65343|89456d85a3d1c235|-1029196547||t19766.6329170107s|1bd6378f9a2638bb|414|rds|local|vector|||0.064||
+aggressive_dag_function|function|b946cb41829787d7|||||||||||||||
 all_ich|stem|e79194e01da40297|2963b87b7f29846a|76fbe09d8f27f4c0|1378681474||t19762.7198410202s|9658160aa55a7543|97165|rds|local|vector|||0.01||
 dag_function|function|48f900edb19c4d15|||||||||||||||
 data|stem|16a6c93d074065fd|298ccd24a0410b5f|453796bb239505d9|-2078757027||t19762.6479844981s|e12f26c54c9b54f7|365894|rds|local|vector|||0.013||
@@ -15,7 +15,7 @@ non_surgery_trial_function|function|6f4b63f7ec5ad692|||||||||||||||
 non_surgery_trials|stem|0d3e44fdbc2ce5ca|fa66276af7deb299|51d7d28bd2da87f4|662182307||t19762.7333857257s|f59c422385ed46c6|78576|rds|local|vector|||0.007||
 outcome_dag|stem|a59dbdd67c993155|717d5a23a89561c3|925743bd9d849397|655817424||t19765.8493565075s|2cabad3ee722f40e|486|rds|local|vector|||0.071||
 outcome_dag_function|function|2e77d95d899c681d|||||||||||||||
-report|stem|3486288321c67288|48263bc3e757df9e|ef46db3751d8e999|-2030396770|reports/aggressiveness.html*reports/aggressiveness.qmd|t19765.9041048316s|b4b0d5355694da85|92757|file|local|vector|||7.077||
+report|stem|aca413f6be21aff3|48263bc3e757df9e|ef46db3751d8e999|-2030396770|reports/aggressiveness.html*reports/aggressiveness.qmd|t19766.6329158533s|4f0984d66a7bd89a|1744204|file|local|vector|||7.988||
 select_variables|function|b5ce5124029c90a5|||||||||||||||
 selected_data|stem|e82331ea5eb5bca4|b5b9c57e05105341|2d6bda5f6169463b|1470964542||t19762.7198405572s|1f7aea70f30dc24d|110425|rds|local|vector|||0.025||
 surgery_trials|stem|9c138dab85f4e0da|70966fc722a1a0dd|51d7d28bd2da87f4|1641231837||t19762.7337261565s|14c39eb6cfbb1654|16443|rds|local|vector|||0.007||
