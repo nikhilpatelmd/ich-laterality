@@ -58,7 +58,6 @@ tar_plan(
 
   ## DAGs ----
   aggressive_dag = aggressive_dag_function(x),
-  outcome_dag = outcome_dag_function(x),
 
   ## Render report ----
   tar_quarto(

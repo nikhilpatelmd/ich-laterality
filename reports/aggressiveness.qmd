@@ -6,10 +6,11 @@ format:
     mainfont: Figtree
     monofont: Source Code Pro
     fontsize: 0.97rem
-    embed-resources: true
+    embed-resources: false
     toc: true
     toc-location: left
-    toc-depth: 5
+    toc-depth: 6
+    toc-expand: true
     toc-title: Contents
     smooth-scroll: true
     link-external-icon: true
@@ -17,7 +18,6 @@ format:
     code-overflow: wrap
     code-tools: true
     highlight-style: nord
-    lightbox: true
 ---
 
 ::: {.callout-note icon="false"}
@@ -29,9 +29,6 @@ Do patients presenting with left hemispheric ICH receive less aggressive care (a
 
 
 ```{r setup, output=FALSE, message=FALSE, warning=FALSE}
-#| code-fold: true
-#| code-summary: "Loading Libraries and Other Code Setup"
-
 library(targets)
 library(skimr)
 library(dplyr)
@@ -42,12 +39,13 @@ library(ggdag)
 library(dagitty)
 library(marginaleffects)
 library(modelsummary)
+library(MetBrewer)
 
 # theme customization
 theme_set(theme_minimal(base_family = "Figtree"))
 
 theme_set(
-  theme_dag() %+replace%
+  theme_dag(base_family = "Figtree") %+replace%
     # also add some additional styling
     theme(
       legend.position = "bottom",
@@ -55,8 +53,16 @@ theme_set(
     )
 )
 
+status_colors <- c(exposure = "#CE4441", outcome = "#004F63", latent = "grey80")
+
 # load all targets objects
 tar_load_everything()
+tar_load(ich)
+tar_load(non_surgery_trials)
+tar_load(surgery_trials)
+tar_load(table_1)
+tar_load(table_2)
+tar_load(aggressive_dag)
 
 ```
 
@@ -138,22 +144,45 @@ Add `DNR` in addition to `comfort_care`?
 
 ### DAGs
 
-```{r}
-#| width: 1200
-#| height: 2000
+#### Aggressive Care
+
+We aim to estimate the **total causal effect of hemispheric laterality in intracerebral hemorrhage on the probability of receiving aggressive interventions**, as defined by the following:
+
+- neurosurgery
+- ventriculostomy
+- tracheostomy
+- PEG placement
+- early withdrawal of life-sustaining therapies (< 72 hours from presentation)
+
+::: {.callout-warning title="Issues to Address"}
+
+* Make sure other people think it's easy to read
+
+* Add any connections? Ask Nick, Matt, and others
+
+* Add transparency to colors to be able to see arrows
+
+* Fix position of arrows
+
+:::
+
+```{r dags}
 #| fig-align: center
-#|
+#| fig.height: 9
 
-ggdag(aggressive_dag, use_labels = "label", text = FALSE)
-
-ggdag_adjustment_set(aggressive_dag, shadow = TRUE, use_labels = "label", text = FALSE)
-
-ggdag_adjustment_set(outcome_dag, shadow = TRUE, use_labels = "label", text = FALSE)
 
 aggressive_dag |>
-  ggdag_paths(shadow = TRUE, text = FALSE, use_labels = "label")
-
-tidy_dagitty(aggressive_dag)
+  tidy_dagitty() |>
+  node_status() |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(aes(color = status)) +
+  geom_dag_edges_diagonal() +
+  geom_dag_label_repel(aes(label = label, fill = status),
+    seed = 2,
+    color = "white", fontface = "bold", size = 4
+  ) +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20")
 
 ```
 
