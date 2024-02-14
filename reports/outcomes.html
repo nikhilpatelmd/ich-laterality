@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.12">
+<meta name="generator" content="quarto-1.5.13">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -3244,1260 +3244,550 @@ $ hospital_los                &lt;dbl&gt; 24, 8, 2, 28, 12, 6, 10, 3, 22, 11, 3,
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(ich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table style="width: auto;" class="table table-condensed">
-<caption>
-Data summary
-</caption>
+<table class="table table-sm table-striped small">
+<caption>Data summary</caption>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Name
-</td>
-<td style="text-align:left;">
-ich
-</td>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">ich</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Number of rows
-</td>
-<td style="text-align:left;">
-4514
-</td>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">4514</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Number of columns
-</td>
-<td style="text-align:left;">
-41
-</td>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">41</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-_______________________
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Column type frequency:
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-1
-</td>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-factor
-</td>
-<td style="text-align:left;">
-21
-</td>
+<tr class="odd">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">21</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-logical
-</td>
-<td style="text-align:left;">
-4
-</td>
+<tr class="even">
+<td style="text-align: left;">logical</td>
+<td style="text-align: left;">4</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-15
-</td>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">15</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-________________________
-</td>
-<td style="text-align:left;">
-</td>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Group variables
-</td>
-<td style="text-align:left;">
-None
-</td>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Variable type: character</strong></p>
-<table>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 15%">
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-min
-</th>
-<th style="text-align:right;">
-max
-</th>
-<th style="text-align:right;">
-empty
-</th>
-<th style="text-align:right;">
-n_unique
-</th>
-<th style="text-align:right;">
-whitespace
-</th>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-htn
-</td>
-<td style="text-align:right;">
-2908
-</td>
-<td style="text-align:right;">
-0.36
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-0
-</td>
+<tr class="odd">
+<td style="text-align: left;">htn</td>
+<td style="text-align: right;">2908</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Variable type: factor</strong></p>
-<table>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 40%">
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:left;">
-ordered
-</th>
-<th style="text-align:right;">
-n_unique
-</th>
-<th style="text-align:left;">
-top_counts
-</th>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">ordered</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: left;">top_counts</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-study
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-ERI: 2487, ATA: 990, MIS: 506, CLE: 394
-</td>
+<tr class="odd">
+<td style="text-align: left;">study</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">ERI: 2487, ATA: 990, MIS: 506, CLE: 394</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Mal: 2704, Fem: 1810
-</td>
+<tr class="even">
+<td style="text-align: left;">sex</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Mal: 2704, Fem: 1810</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-race
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-Whi: 2331, Bla: 1246, Asi: 572, Oth: 310
-</td>
+<tr class="odd">
+<td style="text-align: left;">race</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Whi: 2331, Bla: 1246, Asi: 572, Oth: 310</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-ethnicity
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Not: 3203, Unk: 1052, His: 259
-</td>
+<tr class="even">
+<td style="text-align: left;">ethnicity</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Not: 3203, Unk: 1052, His: 259</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-hld
-</td>
-<td style="text-align:right;">
-645
-</td>
-<td style="text-align:right;">
-0.86
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 2609, Yes: 1260
-</td>
+<tr class="odd">
+<td style="text-align: left;">hld</td>
+<td style="text-align: right;">645</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2609, Yes: 1260</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-dm2
-</td>
-<td style="text-align:right;">
-591
-</td>
-<td style="text-align:right;">
-0.87
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 3042, Yes: 881
-</td>
+<tr class="even">
+<td style="text-align: left;">dm2</td>
+<td style="text-align: right;">591</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 3042, Yes: 881</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-stroke
-</td>
-<td style="text-align:right;">
-1079
-</td>
-<td style="text-align:right;">
-0.76
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 2852, Yes: 583
-</td>
+<tr class="odd">
+<td style="text-align: left;">stroke</td>
+<td style="text-align: right;">1079</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2852, Yes: 583</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-afib
-</td>
-<td style="text-align:right;">
-1138
-</td>
-<td style="text-align:right;">
-0.75
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 3124, Yes: 252
-</td>
+<tr class="even">
+<td style="text-align: left;">afib</td>
+<td style="text-align: right;">1138</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 3124, Yes: 252</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-cad
-</td>
-<td style="text-align:right;">
-631
-</td>
-<td style="text-align:right;">
-0.86
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 3488, Yes: 395
-</td>
+<tr class="odd">
+<td style="text-align: left;">cad</td>
+<td style="text-align: right;">631</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 3488, Yes: 395</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-tobacco
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:right;">
-0.82
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 2117, Yes: 1567
-</td>
+<tr class="even">
+<td style="text-align: left;">tobacco</td>
+<td style="text-align: right;">830</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2117, Yes: 1567</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-ich_laterality
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Lef: 2257, Rig: 2257
-</td>
+<tr class="odd">
+<td style="text-align: left;">ich_laterality</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Lef: 2257, Rig: 2257</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-ich_location
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Bas: 1787, Tha: 1468, Lob: 1259, Bra: 0
-</td>
+<tr class="even">
+<td style="text-align: left;">ich_location</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Bas: 1787, Tha: 1468, Lob: 1259, Bra: 0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-ivh
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 2590, Yes: 1902
-</td>
+<tr class="odd">
+<td style="text-align: left;">ivh</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2590, Yes: 1902</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-neurosurgery_evac
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 3926, Yes: 580
-</td>
+<tr class="even">
+<td style="text-align: left;">neurosurgery_evac</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 3926, Yes: 580</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-evd
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 3604, Yes: 902
-</td>
+<tr class="odd">
+<td style="text-align: left;">evd</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 3604, Yes: 902</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-tracheostomy
-</td>
-<td style="text-align:right;">
-1892
-</td>
-<td style="text-align:right;">
-0.58
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 2584, Yes: 38
-</td>
+<tr class="even">
+<td style="text-align: left;">tracheostomy</td>
+<td style="text-align: right;">1892</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2584, Yes: 38</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-peg
-</td>
-<td style="text-align:right;">
-2027
-</td>
-<td style="text-align:right;">
-0.55
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-No: 2487
-</td>
+<tr class="odd">
+<td style="text-align: left;">peg</td>
+<td style="text-align: right;">2027</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">No: 2487</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-dnr_binary
-</td>
-<td style="text-align:right;">
-1998
-</td>
-<td style="text-align:right;">
-0.56
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 2119, Yes: 397
-</td>
+<tr class="even">
+<td style="text-align: left;">dnr_binary</td>
+<td style="text-align: right;">1998</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2119, Yes: 397</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-dni_binary
-</td>
-<td style="text-align:right;">
-2079
-</td>
-<td style="text-align:right;">
-0.54
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 2230, Yes: 205
-</td>
+<tr class="odd">
+<td style="text-align: left;">dni_binary</td>
+<td style="text-align: right;">2079</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2230, Yes: 205</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-comfort_care_binary
-</td>
-<td style="text-align:right;">
-1442
-</td>
-<td style="text-align:right;">
-0.68
-</td>
-<td style="text-align:left;">
-FALSE
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-No: 2670, Yes: 402
-</td>
+<tr class="even">
+<td style="text-align: left;">comfort_care_binary</td>
+<td style="text-align: right;">1442</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2670, Yes: 402</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-mrs_90
-</td>
-<td style="text-align:right;">
-1356
-</td>
-<td style="text-align:right;">
-0.70
-</td>
-<td style="text-align:left;">
-TRUE
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-4: 716, 2: 535, 1: 528, 3: 505
-</td>
+<tr class="odd">
+<td style="text-align: left;">mrs_90</td>
+<td style="text-align: right;">1356</td>
+<td style="text-align: right;">0.70</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">4: 716, 2: 535, 1: 528, 3: 505</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Variable type: logical</strong></p>
-<table>
+<table class="table table-sm table-striped small">
 <thead>
-<tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-mean
-</th>
-<th style="text-align:left;">
-count
-</th>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: left;">count</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-mrs_90_01
-</td>
-<td style="text-align:right;">
-1356
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-0.95
-</td>
-<td style="text-align:left;">
-TRU: 3003, FAL: 155
-</td>
+<tr class="odd">
+<td style="text-align: left;">mrs_90_01</td>
+<td style="text-align: right;">1356</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: left;">TRU: 3003, FAL: 155</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-mrs_90_02
-</td>
-<td style="text-align:right;">
-1356
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-0.78
-</td>
-<td style="text-align:left;">
-TRU: 2475, FAL: 683
-</td>
+<tr class="even">
+<td style="text-align: left;">mrs_90_02</td>
+<td style="text-align: right;">1356</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: left;">TRU: 2475, FAL: 683</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-mrs_90_03
-</td>
-<td style="text-align:right;">
-1356
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-0.61
-</td>
-<td style="text-align:left;">
-TRU: 1940, FAL: 1218
-</td>
+<tr class="odd">
+<td style="text-align: left;">mrs_90_03</td>
+<td style="text-align: right;">1356</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: left;">TRU: 1940, FAL: 1218</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-mrs_90_04
-</td>
-<td style="text-align:right;">
-1356
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-0.45
-</td>
-<td style="text-align:left;">
-FAL: 1723, TRU: 1435
-</td>
+<tr class="even">
+<td style="text-align: left;">mrs_90_04</td>
+<td style="text-align: right;">1356</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: left;">FAL: 1723, TRU: 1435</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table>
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 5%">
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-mean
-</th>
-<th style="text-align:right;">
-sd
-</th>
-<th style="text-align:right;">
-p0
-</th>
-<th style="text-align:right;">
-p25
-</th>
-<th style="text-align:right;">
-p50
-</th>
-<th style="text-align:right;">
-p75
-</th>
-<th style="text-align:right;">
-p100
-</th>
-<th style="text-align:left;">
-hist
-</th>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-age
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-61.48
-</td>
-<td style="text-align:right;">
-13.36
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
-52.00
-</td>
-<td style="text-align:right;">
-61.00
-</td>
-<td style="text-align:right;">
-72.00
-</td>
-<td style="text-align:right;">
-94.00
-</td>
-<td style="text-align:left;">
-▁▅▇▆▂
-</td>
+<tr class="odd">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">61.48</td>
+<td style="text-align: right;">13.36</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">52.00</td>
+<td style="text-align: right;">61.00</td>
+<td style="text-align: right;">72.00</td>
+<td style="text-align: right;">94.00</td>
+<td style="text-align: left;">▁▅▇▆▂</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-time_symptoms_to_ed
-</td>
-<td style="text-align:right;">
-747
-</td>
-<td style="text-align:right;">
-0.83
-</td>
-<td style="text-align:right;">
-380.30
-</td>
-<td style="text-align:right;">
-2527.78
-</td>
-<td style="text-align:right;">
--454
-</td>
-<td style="text-align:right;">
-60.00
-</td>
-<td style="text-align:right;">
-96.00
-</td>
-<td style="text-align:right;">
-208.50
-</td>
-<td style="text-align:right;">
-131040.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="even">
+<td style="text-align: left;">time_symptoms_to_ed</td>
+<td style="text-align: right;">747</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">380.30</td>
+<td style="text-align: right;">2527.78</td>
+<td style="text-align: right;">-454</td>
+<td style="text-align: right;">60.00</td>
+<td style="text-align: right;">96.00</td>
+<td style="text-align: right;">208.50</td>
+<td style="text-align: right;">131040.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-sbp_baseline
-</td>
-<td style="text-align:right;">
-250
-</td>
-<td style="text-align:right;">
-0.94
-</td>
-<td style="text-align:right;">
-189.76
-</td>
-<td style="text-align:right;">
-41.54
-</td>
-<td style="text-align:right;">
-68
-</td>
-<td style="text-align:right;">
-163.00
-</td>
-<td style="text-align:right;">
-189.00
-</td>
-<td style="text-align:right;">
-214.00
-</td>
-<td style="text-align:right;">
-888.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="odd">
+<td style="text-align: left;">sbp_baseline</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">189.76</td>
+<td style="text-align: right;">41.54</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">163.00</td>
+<td style="text-align: right;">189.00</td>
+<td style="text-align: right;">214.00</td>
+<td style="text-align: right;">888.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-nihss_baseline
-</td>
-<td style="text-align:right;">
-2615
-</td>
-<td style="text-align:right;">
-0.42
-</td>
-<td style="text-align:right;">
-15.83
-</td>
-<td style="text-align:right;">
-9.02
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-9.00
-</td>
-<td style="text-align:right;">
-15.00
-</td>
-<td style="text-align:right;">
-21.00
-</td>
-<td style="text-align:right;">
-41.00
-</td>
-<td style="text-align:left;">
-▆▇▇▂▂
-</td>
+<tr class="even">
+<td style="text-align: left;">nihss_baseline</td>
+<td style="text-align: right;">2615</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">15.83</td>
+<td style="text-align: right;">9.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9.00</td>
+<td style="text-align: right;">15.00</td>
+<td style="text-align: right;">21.00</td>
+<td style="text-align: right;">41.00</td>
+<td style="text-align: left;">▆▇▇▂▂</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-gcs_baseline
-</td>
-<td style="text-align:right;">
-63
-</td>
-<td style="text-align:right;">
-0.99
-</td>
-<td style="text-align:right;">
-12.32
-</td>
-<td style="text-align:right;">
-3.45
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:right;">
-14.00
-</td>
-<td style="text-align:right;">
-15.00
-</td>
-<td style="text-align:right;">
-15.00
-</td>
-<td style="text-align:left;">
-▁▁▂▁▇
-</td>
+<tr class="odd">
+<td style="text-align: left;">gcs_baseline</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">12.32</td>
+<td style="text-align: right;">3.45</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">14.00</td>
+<td style="text-align: right;">15.00</td>
+<td style="text-align: right;">15.00</td>
+<td style="text-align: left;">▁▁▂▁▇</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-ich_volume_baseline
-</td>
-<td style="text-align:right;">
-26
-</td>
-<td style="text-align:right;">
-0.99
-</td>
-<td style="text-align:right;">
-22.40
-</td>
-<td style="text-align:right;">
-23.75
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-5.73
-</td>
-<td style="text-align:right;">
-13.71
-</td>
-<td style="text-align:right;">
-31.47
-</td>
-<td style="text-align:right;">
-175.32
-</td>
-<td style="text-align:left;">
-▇▂▁▁▁
-</td>
+<tr class="even">
+<td style="text-align: left;">ich_volume_baseline</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">22.40</td>
+<td style="text-align: right;">23.75</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.73</td>
+<td style="text-align: right;">13.71</td>
+<td style="text-align: right;">31.47</td>
+<td style="text-align: right;">175.32</td>
+<td style="text-align: left;">▇▂▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-ivh_volume_baseline
-</td>
-<td style="text-align:right;">
-26
-</td>
-<td style="text-align:right;">
-0.99
-</td>
-<td style="text-align:right;">
-6.96
-</td>
-<td style="text-align:right;">
-15.36
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-6.54
-</td>
-<td style="text-align:right;">
-244.84
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="odd">
+<td style="text-align: left;">ivh_volume_baseline</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0.99</td>
+<td style="text-align: right;">6.96</td>
+<td style="text-align: right;">15.36</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">6.54</td>
+<td style="text-align: right;">244.84</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-neurosurgery_evac_day
-</td>
-<td style="text-align:right;">
-4393
-</td>
-<td style="text-align:right;">
-0.03
-</td>
-<td style="text-align:right;">
-2.36
-</td>
-<td style="text-align:right;">
-2.56
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:right;">
-13.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="even">
+<td style="text-align: left;">neurosurgery_evac_day</td>
+<td style="text-align: right;">4393</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">2.36</td>
+<td style="text-align: right;">2.56</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-evd_day
-</td>
-<td style="text-align:right;">
-4378
-</td>
-<td style="text-align:right;">
-0.03
-</td>
-<td style="text-align:right;">
-2.82
-</td>
-<td style="text-align:right;">
-10.84
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.75
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:right;">
-88.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="odd">
+<td style="text-align: left;">evd_day</td>
+<td style="text-align: right;">4378</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">2.82</td>
+<td style="text-align: right;">10.84</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">88.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-days_EVD
-</td>
-<td style="text-align:right;">
-4445
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
-10.10
-</td>
-<td style="text-align:right;">
-9.32
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:right;">
-7.00
-</td>
-<td style="text-align:right;">
-13.00
-</td>
-<td style="text-align:right;">
-58.00
-</td>
-<td style="text-align:left;">
-▇▂▁▁▁
-</td>
+<tr class="even">
+<td style="text-align: left;">days_EVD</td>
+<td style="text-align: right;">4445</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">10.10</td>
+<td style="text-align: right;">9.32</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">7.00</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">58.00</td>
+<td style="text-align: left;">▇▂▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-days_mechanical_ventilation
-</td>
-<td style="text-align:right;">
-4379
-</td>
-<td style="text-align:right;">
-0.03
-</td>
-<td style="text-align:right;">
-7.46
-</td>
-<td style="text-align:right;">
-6.01
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:right;">
-6.00
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:right;">
-33.00
-</td>
-<td style="text-align:left;">
-▇▃▁▁▁
-</td>
+<tr class="odd">
+<td style="text-align: left;">days_mechanical_ventilation</td>
+<td style="text-align: right;">4379</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">7.46</td>
+<td style="text-align: right;">6.01</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">6.00</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">33.00</td>
+<td style="text-align: left;">▇▃▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-dnr_day
-</td>
-<td style="text-align:right;">
-4229
-</td>
-<td style="text-align:right;">
-0.06
-</td>
-<td style="text-align:right;">
-8.91
-</td>
-<td style="text-align:right;">
-21.30
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:right;">
-10.00
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="even">
+<td style="text-align: left;">dnr_day</td>
+<td style="text-align: right;">4229</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">8.91</td>
+<td style="text-align: right;">21.30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">300.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-dni_day
-</td>
-<td style="text-align:right;">
-4376
-</td>
-<td style="text-align:right;">
-0.03
-</td>
-<td style="text-align:right;">
-9.28
-</td>
-<td style="text-align:right;">
-27.33
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:right;">
-8.75
-</td>
-<td style="text-align:right;">
-300.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="odd">
+<td style="text-align: left;">dni_day</td>
+<td style="text-align: right;">4376</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">9.28</td>
+<td style="text-align: right;">27.33</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">8.75</td>
+<td style="text-align: right;">300.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-comfort_care_day
-</td>
-<td style="text-align:right;">
-4186
-</td>
-<td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
-22.14
-</td>
-<td style="text-align:right;">
-50.55
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:right;">
-8.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-357.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="even">
+<td style="text-align: left;">comfort_care_day</td>
+<td style="text-align: right;">4186</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">22.14</td>
+<td style="text-align: right;">50.55</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">16.00</td>
+<td style="text-align: right;">357.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-hospital_los
-</td>
-<td style="text-align:right;">
-1043
-</td>
-<td style="text-align:right;">
-0.77
-</td>
-<td style="text-align:right;">
-14.65
-</td>
-<td style="text-align:right;">
-16.02
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:right;">
-9.00
-</td>
-<td style="text-align:right;">
-19.00
-</td>
-<td style="text-align:right;">
-253.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
+<tr class="odd">
+<td style="text-align: left;">hospital_los</td>
+<td style="text-align: right;">1043</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">14.65</td>
+<td style="text-align: right;">16.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">9.00</td>
+<td style="text-align: right;">19.00</td>
+<td style="text-align: right;">253.00</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
 </tr>
 </tbody>
 </table>
@@ -4526,20 +3816,20 @@ Issues to Address
 </details>
 <div class="cell-output-display">
 <div>
-<div id="djqljqajzv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#djqljqajzv table {
+<div id="pzkaidcxwi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pzkaidcxwi table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#djqljqajzv thead, #djqljqajzv tbody, #djqljqajzv tfoot, #djqljqajzv tr, #djqljqajzv td, #djqljqajzv th {
+#pzkaidcxwi thead, #pzkaidcxwi tbody, #pzkaidcxwi tfoot, #pzkaidcxwi tr, #pzkaidcxwi td, #pzkaidcxwi th {
 border-style: none;
 }
-#djqljqajzv p {
+#pzkaidcxwi p {
 margin: 0;
 padding: 0;
 }
-#djqljqajzv .gt_table {
+#pzkaidcxwi .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -4564,11 +3854,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#djqljqajzv .gt_caption {
+#pzkaidcxwi .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#djqljqajzv .gt_title {
+#pzkaidcxwi .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -4579,7 +3869,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#djqljqajzv .gt_subtitle {
+#pzkaidcxwi .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -4590,7 +3880,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#djqljqajzv .gt_heading {
+#pzkaidcxwi .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -4601,12 +3891,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#djqljqajzv .gt_bottom_border {
+#pzkaidcxwi .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#djqljqajzv .gt_col_headings {
+#pzkaidcxwi .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4620,7 +3910,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#djqljqajzv .gt_col_heading {
+#pzkaidcxwi .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4639,7 +3929,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#djqljqajzv .gt_column_spanner_outer {
+#pzkaidcxwi .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4650,13 +3940,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#djqljqajzv .gt_column_spanner_outer:first-child {
+#pzkaidcxwi .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#djqljqajzv .gt_column_spanner_outer:last-child {
+#pzkaidcxwi .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#djqljqajzv .gt_column_spanner {
+#pzkaidcxwi .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -4667,10 +3957,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#djqljqajzv .gt_spanner_row {
+#pzkaidcxwi .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#djqljqajzv .gt_group_heading {
+#pzkaidcxwi .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4695,7 +3985,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#djqljqajzv .gt_empty_group_heading {
+#pzkaidcxwi .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -4709,13 +3999,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#djqljqajzv .gt_from_md > :first-child {
+#pzkaidcxwi .gt_from_md > :first-child {
 margin-top: 0;
 }
-#djqljqajzv .gt_from_md > :last-child {
+#pzkaidcxwi .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#djqljqajzv .gt_row {
+#pzkaidcxwi .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4733,7 +4023,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#djqljqajzv .gt_stub {
+#pzkaidcxwi .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4745,7 +4035,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#djqljqajzv .gt_stub_row_group {
+#pzkaidcxwi .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4758,13 +4048,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#djqljqajzv .gt_row_group_first td {
+#pzkaidcxwi .gt_row_group_first td {
 border-top-width: 2px;
 }
-#djqljqajzv .gt_row_group_first th {
+#pzkaidcxwi .gt_row_group_first th {
 border-top-width: 2px;
 }
-#djqljqajzv .gt_summary_row {
+#pzkaidcxwi .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4773,14 +4063,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#djqljqajzv .gt_first_summary_row {
+#pzkaidcxwi .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#djqljqajzv .gt_first_summary_row.thick {
+#pzkaidcxwi .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#djqljqajzv .gt_last_summary_row {
+#pzkaidcxwi .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4789,7 +4079,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#djqljqajzv .gt_grand_summary_row {
+#pzkaidcxwi .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4798,7 +4088,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#djqljqajzv .gt_first_grand_summary_row {
+#pzkaidcxwi .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4807,7 +4097,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#djqljqajzv .gt_last_grand_summary_row_top {
+#pzkaidcxwi .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4816,10 +4106,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#djqljqajzv .gt_striped {
+#pzkaidcxwi .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#djqljqajzv .gt_table_body {
+#pzkaidcxwi .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4827,7 +4117,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#djqljqajzv .gt_footnotes {
+#pzkaidcxwi .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -4840,7 +4130,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#djqljqajzv .gt_footnote {
+#pzkaidcxwi .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -4848,7 +4138,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#djqljqajzv .gt_sourcenotes {
+#pzkaidcxwi .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -4861,57 +4151,57 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#djqljqajzv .gt_sourcenote {
+#pzkaidcxwi .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#djqljqajzv .gt_left {
+#pzkaidcxwi .gt_left {
 text-align: left;
 }
-#djqljqajzv .gt_center {
+#pzkaidcxwi .gt_center {
 text-align: center;
 }
-#djqljqajzv .gt_right {
+#pzkaidcxwi .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#djqljqajzv .gt_font_normal {
+#pzkaidcxwi .gt_font_normal {
 font-weight: normal;
 }
-#djqljqajzv .gt_font_bold {
+#pzkaidcxwi .gt_font_bold {
 font-weight: bold;
 }
-#djqljqajzv .gt_font_italic {
+#pzkaidcxwi .gt_font_italic {
 font-style: italic;
 }
-#djqljqajzv .gt_super {
+#pzkaidcxwi .gt_super {
 font-size: 65%;
 }
-#djqljqajzv .gt_footnote_marks {
+#pzkaidcxwi .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#djqljqajzv .gt_asterisk {
+#pzkaidcxwi .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#djqljqajzv .gt_indent_1 {
+#pzkaidcxwi .gt_indent_1 {
 text-indent: 5px;
 }
-#djqljqajzv .gt_indent_2 {
+#pzkaidcxwi .gt_indent_2 {
 text-indent: 10px;
 }
-#djqljqajzv .gt_indent_3 {
+#pzkaidcxwi .gt_indent_3 {
 text-indent: 15px;
 }
-#djqljqajzv .gt_indent_4 {
+#pzkaidcxwi .gt_indent_4 {
 text-indent: 20px;
 }
-#djqljqajzv .gt_indent_5 {
+#pzkaidcxwi .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
@@ -4952,18 +4242,18 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value">0.068</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">    Female</td>
-<td class="gt_row gt_center" headers="stat_0">1,810 (40%)</td>
-<td class="gt_row gt_center" headers="stat_1">935 (41%)</td>
-<td class="gt_row gt_center" headers="stat_2">875 (39%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
-<tr class="even">
 <td class="gt_row gt_left" headers="label">    Male</td>
 <td class="gt_row gt_center" headers="stat_0">2,704 (60%)</td>
 <td class="gt_row gt_center" headers="stat_1">1,322 (59%)</td>
 <td class="gt_row gt_center" headers="stat_2">1,382 (61%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">    Female</td>
+<td class="gt_row gt_center" headers="stat_0">1,810 (40%)</td>
+<td class="gt_row gt_center" headers="stat_1">935 (41%)</td>
+<td class="gt_row gt_center" headers="stat_2">875 (39%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -4979,22 +4269,14 @@ text-indent: 25px;
 </td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">    American Indian or Alaskan Native</td>
-<td class="gt_row gt_center" headers="stat_0">11 (0.2%)</td>
-<td class="gt_row gt_center" headers="stat_1">8 (0.4%)</td>
-<td class="gt_row gt_center" headers="stat_2">3 (0.1%)</td>
+<td class="gt_row gt_left" headers="label">    White</td>
+<td class="gt_row gt_center" headers="stat_0">2,331 (52%)</td>
+<td class="gt_row gt_center" headers="stat_1">1,162 (51%)</td>
+<td class="gt_row gt_center" headers="stat_2">1,169 (52%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">    Asian</td>
-<td class="gt_row gt_center" headers="stat_0">572 (13%)</td>
-<td class="gt_row gt_center" headers="stat_1">272 (12%)</td>
-<td class="gt_row gt_center" headers="stat_2">300 (13%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
-<tr class="even">
 <td class="gt_row gt_left" headers="label">    Black or African-American</td>
 <td class="gt_row gt_center" headers="stat_0">1,246 (28%)</td>
 <td class="gt_row gt_center" headers="stat_1">625 (28%)</td>
@@ -5002,19 +4284,11 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">    Black or American-American</td>
-<td class="gt_row gt_center" headers="stat_0">41 (0.9%)</td>
-<td class="gt_row gt_center" headers="stat_1">26 (1.2%)</td>
-<td class="gt_row gt_center" headers="stat_2">15 (0.7%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">    Native Hawaiian/Pacific Islander</td>
-<td class="gt_row gt_center" headers="stat_0">3 (&lt;0.1%)</td>
-<td class="gt_row gt_center" headers="stat_1">2 (&lt;0.1%)</td>
-<td class="gt_row gt_center" headers="stat_2">1 (&lt;0.1%)</td>
+<td class="gt_row gt_left" headers="label">    Asian</td>
+<td class="gt_row gt_center" headers="stat_0">572 (13%)</td>
+<td class="gt_row gt_center" headers="stat_1">272 (12%)</td>
+<td class="gt_row gt_center" headers="stat_2">300 (13%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -5027,10 +4301,26 @@ text-indent: 25px;
 </td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">    White</td>
-<td class="gt_row gt_center" headers="stat_0">2,331 (52%)</td>
-<td class="gt_row gt_center" headers="stat_1">1,162 (51%)</td>
-<td class="gt_row gt_center" headers="stat_2">1,169 (52%)</td>
+<td class="gt_row gt_left" headers="label">    Black or American-American</td>
+<td class="gt_row gt_center" headers="stat_0">41 (0.9%)</td>
+<td class="gt_row gt_center" headers="stat_1">26 (1.2%)</td>
+<td class="gt_row gt_center" headers="stat_2">15 (0.7%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    American Indian or Alaskan Native</td>
+<td class="gt_row gt_center" headers="stat_0">11 (0.2%)</td>
+<td class="gt_row gt_center" headers="stat_1">8 (0.4%)</td>
+<td class="gt_row gt_center" headers="stat_2">3 (0.1%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">    Native Hawaiian/Pacific Islander</td>
+<td class="gt_row gt_center" headers="stat_0">3 (&lt;0.1%)</td>
+<td class="gt_row gt_center" headers="stat_1">2 (&lt;0.1%)</td>
+<td class="gt_row gt_center" headers="stat_2">1 (&lt;0.1%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -5045,14 +4335,6 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value">0.4</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">    Hispanic or Latino</td>
-<td class="gt_row gt_center" headers="stat_0">259 (5.7%)</td>
-<td class="gt_row gt_center" headers="stat_1">135 (6.0%)</td>
-<td class="gt_row gt_center" headers="stat_2">124 (5.5%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
-<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Not Hispanic or Latino</td>
 <td class="gt_row gt_center" headers="stat_0">3,203 (71%)</td>
 <td class="gt_row gt_center" headers="stat_1">1,613 (71%)</td>
@@ -5060,11 +4342,19 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Unknown/Not Reported</td>
 <td class="gt_row gt_center" headers="stat_0">1,052 (23%)</td>
 <td class="gt_row gt_center" headers="stat_1">509 (23%)</td>
 <td class="gt_row gt_center" headers="stat_2">543 (24%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">    Hispanic or Latino</td>
+<td class="gt_row gt_center" headers="stat_0">259 (5.7%)</td>
+<td class="gt_row gt_center" headers="stat_1">135 (6.0%)</td>
+<td class="gt_row gt_center" headers="stat_2">124 (5.5%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -5143,6 +4433,22 @@ text-indent: 25px;
 </td>
 </tr>
 <tr class="odd">
+<td class="gt_row gt_left" headers="label">    Thalamus</td>
+<td class="gt_row gt_center" headers="stat_0">1,468 (33%)</td>
+<td class="gt_row gt_center" headers="stat_1">685 (30%)</td>
+<td class="gt_row gt_center" headers="stat_2">783 (35%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">    Lobar</td>
+<td class="gt_row gt_center" headers="stat_0">1,259 (28%)</td>
+<td class="gt_row gt_center" headers="stat_1">623 (28%)</td>
+<td class="gt_row gt_center" headers="stat_2">636 (28%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Brainstem</td>
 <td class="gt_row gt_center" headers="stat_0">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
@@ -5159,26 +4465,10 @@ text-indent: 25px;
 </td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">    Lobar</td>
-<td class="gt_row gt_center" headers="stat_0">1,259 (28%)</td>
-<td class="gt_row gt_center" headers="stat_1">623 (28%)</td>
-<td class="gt_row gt_center" headers="stat_2">636 (28%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
-<tr class="even">
 <td class="gt_row gt_left" headers="label">    Primary IVH</td>
 <td class="gt_row gt_center" headers="stat_0">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_2">0 (0%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">    Thalamus</td>
-<td class="gt_row gt_center" headers="stat_0">1,468 (33%)</td>
-<td class="gt_row gt_center" headers="stat_1">685 (30%)</td>
-<td class="gt_row gt_center" headers="stat_2">783 (35%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -5207,10 +4497,26 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value">0.3</td>
 </tr>
 <tr class="odd">
+<td class="gt_row gt_left" headers="label">    ERICH</td>
+<td class="gt_row gt_center" headers="stat_0">2,487 (55%)</td>
+<td class="gt_row gt_center" headers="stat_1">1,248 (55%)</td>
+<td class="gt_row gt_center" headers="stat_2">1,239 (55%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
 <td class="gt_row gt_left" headers="label">    ATACH-2</td>
 <td class="gt_row gt_center" headers="stat_0">990 (22%)</td>
 <td class="gt_row gt_center" headers="stat_1">472 (21%)</td>
 <td class="gt_row gt_center" headers="stat_2">518 (23%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">    MISTIE-3</td>
+<td class="gt_row gt_center" headers="stat_0">506 (11%)</td>
+<td class="gt_row gt_center" headers="stat_1">258 (11%)</td>
+<td class="gt_row gt_center" headers="stat_2">248 (11%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -5223,26 +4529,10 @@ text-indent: 25px;
 </td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="label">    ERICH</td>
-<td class="gt_row gt_center" headers="stat_0">2,487 (55%)</td>
-<td class="gt_row gt_center" headers="stat_1">1,248 (55%)</td>
-<td class="gt_row gt_center" headers="stat_2">1,239 (55%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
-<tr class="even">
 <td class="gt_row gt_left" headers="label">    MISTIE-2</td>
 <td class="gt_row gt_center" headers="stat_0">137 (3.0%)</td>
 <td class="gt_row gt_center" headers="stat_1">78 (3.5%)</td>
 <td class="gt_row gt_center" headers="stat_2">59 (2.6%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label">    MISTIE-3</td>
-<td class="gt_row gt_center" headers="stat_0">506 (11%)</td>
-<td class="gt_row gt_center" headers="stat_1">258 (11%)</td>
-<td class="gt_row gt_center" headers="stat_2">248 (11%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>

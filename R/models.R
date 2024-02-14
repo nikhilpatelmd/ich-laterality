@@ -18,6 +18,10 @@ neurosurgery_evac_func <- function(x) {
     family = bernoulli(link = "logit"),
     prior = priors,
     init = 0,
+    control = list(
+      adapt_delta = 0.99,
+      max_treedepth = 12
+    ),
     chains = 4, iter = 4000, seed = BAYES_SEED
   )
 }
@@ -41,6 +45,10 @@ neurosurgery_evac_func_canon <- function(x) {
     family = bernoulli(link = "logit"),
     prior = priors,
     init = 0,
+    control = list(
+      adapt_delta = 0.99,
+      max_treedepth = 12
+    ),
     chains = 4, iter = 4000, seed = BAYES_SEED
   )
 }
