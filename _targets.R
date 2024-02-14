@@ -34,7 +34,7 @@ source("R/packages.R")
 source("R/data_cleaning.R")
 source("R/exploratory_data_analysis.R")
 source("R/dags.R")
-
+source("R/models.R")
 
 # Pipeline ----
 tar_plan(
@@ -61,11 +61,11 @@ tar_plan(
   aggressive_dag = aggressive_dag_function(x),
   outcomes_dag = outcomes_dag_function(x),
 
-  ## Priors ----
+  ## Models ----
+  neurosurgery_evac_min = neurosurgery_evac_func(non_surgery_trials),
+  neurosurgery_evac_can = neurosurgery_evac_func_canon(non_surgery_trials),
 
-
-
-  ## Render report ----
+  ## Reports ----
   tar_quarto(
     aggressive,
     "reports/aggressiveness.qmd"

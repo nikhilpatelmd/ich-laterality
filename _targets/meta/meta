@@ -1,26 +1,30 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|0ee20f82b7e86e42|||||||||||||||
-aggressive|stem|9ccf2370427ff2b4|48263bc3e757df9e|ef46db3751d8e999|488423977|reports/aggressiveness.html*reports/aggressiveness.qmd|t19766.8249460473s|6e8a80d155eac3ed|1472813|file|local|vector|||6.613||
-aggressive_dag|stem|d19566befe274259|29692275e9b65343|65d646eee8050088|-1029196547||t19766.8010546036s|424943d8c3732df6|506|rds|local|vector|||0.068||
+.Random.seed|object|0852f3863582f017|||||||||||||||
+aggressive|stem|e98e4437597f0272|7f53a1e41f66c0f2|3af340e82892dd9a|488423977|reports/aggressiveness.html*reports/aggressiveness.qmd|t19767.150627715s|a0c658efe38a15ad|1638895|file|local|vector|||25.213||
+aggressive_dag|stem|d19566befe274259|29692275e9b65343|65d646eee8050088|-1029196547||t19766.9312047647s|424943d8c3732df6|506|rds|local|vector|||0.068||
 aggressive_dag_function|function|4276730616c6d155|||||||||||||||
 filter_variables|function|665e7b8186d91151|||||||||||||||
-ich|stem|e79194e01da40297|2963b87b7f29846a|76fbe09d8f27f4c0|-1236375097||t19766.7120325262s|9658160aa55a7543|97165|rds|local|vector|||0.022||
-imported_data|stem|16a6c93d074065fd|8ec96915c66d6022|4d96234b842be553|-2049867529||t19766.7120312916s|e12f26c54c9b54f7|365894|rds|local|vector|||0.013||
-imported_data_file|stem|ed45537c906d31ab|96dbc807e6ee35f2|ef46db3751d8e999|993233264|data/raw_data/all.rds|t19648.6664986641s|3ac1f8cc9dbea9fc|5937065|file|local|vector|||0||
+ich|stem|e79194e01da40297|2963b87b7f29846a|76fbe09d8f27f4c0|-1236375097||t19766.9298250644s|9658160aa55a7543|97165|rds|local|vector|||0.022||
+imported_data|stem|16a6c93d074065fd|8ec96915c66d6022|4d96234b842be553|-2049867529||t19766.9296742549s|e12f26c54c9b54f7|365894|rds|local|vector|||0.013||
+imported_data_file|stem|ed45537c906d31ab|96dbc807e6ee35f2|ef46db3751d8e999|993233264|data/raw_data/all.rds|t19766.921774534s|3ac1f8cc9dbea9fc|5937065|file|local|vector|||0||
+neurosurgery_evac_can|stem|ef8fd7b32832ea2b|bce1eae81fc320cf|e24bc531c08637b0|1905387055||t19767.1494115927s|6c9da553a26be297|924820|rds|local|vector|||68.144|Rows containing NAs were excluded from the model.|
+neurosurgery_evac_func|function|67f04250623de500|||||||||||||||
+neurosurgery_evac_func_canon|function|b73ac3ba9e60293d|||||||||||||||
+neurosurgery_evac_min|stem|8f2e3319093c6932|4c467e77a0f520ab|52a79806713ea21b|-1458726586||t19767.1503353935s|c0ec55f513bee6d8|544578|rds|local|vector|||79.746|Rows containing NAs were excluded from the model.|
 non_surgery_trial_function|function|6f4b63f7ec5ad692|||||||||||||||
-non_surgery_trials|stem|0d3e44fdbc2ce5ca|fa66276af7deb299|51d7d28bd2da87f4|662182307||t19766.7120329506s|f59c422385ed46c6|78576|rds|local|vector|||0.002||
-outcomes|stem|7300415840952837|c80e24a5faba4562|ef46db3751d8e999|1744469513|reports/outcomes.html*reports/outcomes.qmd|t19766.8250203525s|82c1040cbb63fcb8|1634014|file|local|vector|||6.391||
-outcomes_dag|stem|efb6f9c86d3345ea|4df36d24aeb98996|422690ad8219b4d7|1229204989||t19766.8250220886s|326e9a18fc8cb135|693|rds|local|vector|||0.121||
+non_surgery_trials|stem|0d3e44fdbc2ce5ca|fa66276af7deb299|51d7d28bd2da87f4|662182307||t19766.9298254888s|f59c422385ed46c6|78576|rds|local|vector|||0.002||
+outcomes|stem|0ab4dd49f1518153|a540f61ec7256a50|83e46add481c24ed|1744469513|reports/outcomes.html*reports/outcomes.qmd|t19767.077494544s|20d1d5bc0239b3f9|1645897|file|local|vector|||5.429||
+outcomes_dag|stem|efb6f9c86d3345ea|4df36d24aeb98996|422690ad8219b4d7|1229204989||t19766.9304519133s|326e9a18fc8cb135|693|rds|local|vector|||0.121||
 outcomes_dag_function|function|ecfcecb277740937|||||||||||||||
 report|stem|883f453126d11b97|48263bc3e757df9e|ef46db3751d8e999|-2030396770|reports/aggressiveness.html*reports/aggressiveness.qmd|t19766.8093488832s||1915056|file|local|vector|||3.193||33m39m System command quarto failed
 select_variables|function|b5ce5124029c90a5|||||||||||||||
-selected_data|stem|e82331ea5eb5bca4|b5b9c57e05105341|2d6bda5f6169463b|1470964542||t19766.7120319089s|1f7aea70f30dc24d|110425|rds|local|vector|||0.018||
-surgery_trials|stem|9c138dab85f4e0da|70966fc722a1a0dd|51d7d28bd2da87f4|1641231837||t19766.7120326419s|14c39eb6cfbb1654|16443|rds|local|vector|||0.002||
+selected_data|stem|e82331ea5eb5bca4|b5b9c57e05105341|2d6bda5f6169463b|1470964542||t19766.9296749108s|1f7aea70f30dc24d|110425|rds|local|vector|||0.018||
+surgery_trials|stem|9c138dab85f4e0da|70966fc722a1a0dd|51d7d28bd2da87f4|1641231837||t19766.9306461639s|14c39eb6cfbb1654|16443|rds|local|vector|||0.002||
 table_1|stem|f0657ab8556c557e|fffa34134587a996|80ce4318fa9ba6ad|740573240||t19766.7120864998s|663377fb0d72da2d|543427|rds|local|vector|||4.46||
-table_1_all|stem|5cf37570ed7de57f|2db6544cbf158e1f|de60f68dd7baf56f|1621204092||t19766.8244382567s|f9a2b2d7fb5c4715|670519|rds|local|vector|||4.411||
+table_1_all|stem|dc35d9f7c8b69c4a|2db6544cbf158e1f|de60f68dd7baf56f|1621204092||t19766.9555239725s|7ef2fdffb06a60ba|670514|rds|local|vector|||5.534||
 table_1_function|function|dfd1f35179cf5959|||||||||||||||
-table_1_non_surgery|stem|f0657ab8556c557e|fffa34134587a996|80ce4318fa9ba6ad|-1044284693||t19766.8238724032s|663377fb0d72da2d|543427|rds|local|vector|||4.484||
+table_1_non_surgery|stem|14ad6847a8854d81|fffa34134587a996|80ce4318fa9ba6ad|-1044284693||t19766.9556033655s|27f80875dd69bb0e|543422|rds|local|vector|||4.972||
 table_2|stem|903dcd599ccd07fc|5ebf2dbb887dcb3d|6daa6c432a002df6|660012358||t19766.7121028577s|dab4fd6e79fa5418|112375|rds|local|vector|||1.371||
 table_2_aggressive_function|function|f6023baf8ca9ddb5|||||||||||||||
 table_2_function|function|f6023baf8ca9ddb5|||||||||||||||
-table_2_non_surgery|stem|903dcd599ccd07fc|06f44dd81e16954b|c25f20f880115ee8|1452447886||t19766.82421619s|dab4fd6e79fa5418|112375|rds|local|vector|||1.45||
+table_2_non_surgery|stem|dae13744cc699cfc|06f44dd81e16954b|c25f20f880115ee8|1452447886||t19766.9555434542s|dfa62af0b43c41ae|112370|rds|local|vector|||1.625||

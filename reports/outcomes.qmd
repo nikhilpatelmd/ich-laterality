@@ -57,8 +57,10 @@ theme_set(
 status_colors <- c(exposure = "#CE4441", outcome = "#004F63", latent = "grey80")
 
 # load all targets objects
-tar_load_everything()
-
+# tar_load_everything()
+tar_load(table_1_all)
+tar_load(outcomes_dag)
+tar_load(ich)
 
 ```
 
@@ -133,7 +135,7 @@ outcomes_dag |>
   node_status() |>
   ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
   geom_dag_point(aes(color = status)) +
-  geom_dag_edges() +
+  geom_dag_edges_diagonal() +
   geom_dag_label_repel(aes(label = label, fill = status),
     seed = 51,
     color = "white", fontface = "bold", size = 4.5
