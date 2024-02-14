@@ -60,10 +60,10 @@ status_colors <- c(exposure = "#CE4441", outcome = "#004F63", latent = "grey80")
 
 # load all targets objects
 # tar_load_everything()
-tar_load(non_surgery_trials)
-tar_load(table_1_non_surgery)
-tar_load(table_2_non_surgery)
-tar_load(aggressive_dag)
+tar_load(ich_aggressive)
+tar_load(table_1_aggressive)
+tar_load(table_2_aggressive)
+tar_load(dag_aggressive)
 
 ```
 
@@ -79,8 +79,8 @@ Verify accuracy/validity of `time_symptoms_to_ed`, `sbp_baseline`,
 
 ```{r}
 
-glimpse(non_surgery_trials)
-skim(non_surgery_trials)
+glimpse(ich_aggressive)
+skim(ich_aggressive)
 
 ```
 
@@ -98,7 +98,7 @@ Change order of the displayed factors to frequency
 
 ```{r}
 
-table_1_non_surgery
+table_1_aggressive
 
 ```
 
@@ -113,7 +113,7 @@ Need to point out in table that `days_mechanical_ventilation` is only available 
 ```{r}
 #| fig-align: center
 
-table_2_non_surgery
+table_2_aggressive
 
 ```
 
@@ -160,7 +160,7 @@ The directed acyclic graph (DAG) is described below.
 #| fig-align: center
 #| fig.height: 9
 
-aggressive_dag |>
+dag_aggressive |>
   tidy_dagitty() |>
   node_status() |>
   ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +

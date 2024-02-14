@@ -35,6 +35,7 @@ source("R/packages.R")
 source("R/data_cleaning.R")
 source("R/exploratory_data_analysis.R")
 source("R/dags.R")
+source("R/priors.R")
 source("R/models.R")
 
 # Pipeline ----
@@ -49,22 +50,24 @@ tar_plan(
 
   ## Select, filter, and clean data ----
   selected_data = select_variables(imported_data),
-  ich = filter_variables(selected_data),
-  non_surgery_trials = ich |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels(),
-  surgery_trials = ich |> filter(study == "MISTIE2" | study == "MISTIE-3" | study == "CLEAR III") |> droplevels(),
+  ich_all = filter_variables(selected_data),
+  ich_aggressive = ich_all |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels(),
 
   ## Exploratory data analysis ----
-  table_1_non_surgery = table_1_function(non_surgery_trials),
-  table_2_non_surgery = table_2_aggressive_function(non_surgery_trials),
-  table_1_all = table_1_function(ich),
+  table_1_aggressive = table_1_function(ich_aggressive),
+  table_2_aggressive = table_2_aggressive_function(ich_aggressive),
+  table_1_outcomes = table_1_function(ich_all),
 
   ## DAGs ----
-  aggressive_dag = aggressive_dag_function(x),
-  outcomes_dag = outcomes_dag_function(x),
+  dag_aggressive = aggressive_dag_function(x),
+  dag_outcomes = outcomes_dag_function(x),
+
+  ## Priors ----
+  neurosurgery_min_priors = neurosurgery_min_prior_f(ich_aggressive),
 
   ## Models ----
-  neurosurgery_evac_min = neurosurgery_evac_func(non_surgery_trials),
-  neurosurgery_evac_can = neurosurgery_evac_func_canon(non_surgery_trials),
+  neurosurgery_evac_min = neurosurgery_evac_func(ich_aggressive),
+  neurosurgery_evac_can = neurosurgery_evac_func_canon(ich_aggressive),
 
   ## Reports ----
   tar_quarto(

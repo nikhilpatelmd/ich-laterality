@@ -58,9 +58,9 @@ status_colors <- c(exposure = "#CE4441", outcome = "#004F63", latent = "grey80")
 
 # load all targets objects
 # tar_load_everything()
-tar_load(table_1_all)
-tar_load(outcomes_dag)
-tar_load(ich)
+tar_load(table_1_outcomes)
+tar_load(dag_outcomes)
+tar_load(ich_all)
 
 ```
 
@@ -76,8 +76,8 @@ tar_load(ich)
 
 ```{r}
 
-glimpse(ich)
-skim(ich)
+glimpse(ich_all)
+skim(ich_all)
 
 ```
 
