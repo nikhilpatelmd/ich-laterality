@@ -26,7 +26,8 @@ options(
   dplyr.summarise.inform = FALSE
 )
 
-set.seed(4641) # From random.org
+set.seed(908)
+BAYES_SEED <- 908
 
 # R functions ----
 
@@ -49,8 +50,8 @@ tar_plan(
   ## Select, filter, and clean data ----
   selected_data = select_variables(imported_data),
   ich = filter_variables(selected_data),
-  non_surgery_trials = ich |> filter(study == "ERICH" | study == "ATACH-2"),
-  surgery_trials = ich |> filter(study == "MISTIE2" | study == "MISTIE-3" | study == "CLEAR III"),
+  non_surgery_trials = ich |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels(),
+  surgery_trials = ich |> filter(study == "MISTIE2" | study == "MISTIE-3" | study == "CLEAR III") |> droplevels(),
 
   ## Exploratory data analysis ----
   table_1_non_surgery = table_1_function(non_surgery_trials),

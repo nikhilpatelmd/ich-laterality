@@ -41,7 +41,8 @@ table_1_function <- function(x) {
         ich_volume_baseline ~ "ICH Volume (mL)",
         ivh ~ "IVH",
         study ~ "Study"
-      )
+      ),
+      sort = list(everything() ~ "frequency")
     ) |>
     add_p() |>
     add_overall() |>
