@@ -63,11 +63,16 @@ tar_plan(
   dag_outcomes = outcomes_dag_function(x),
 
   ## Priors ----
-  neurosurgery_min_priors = neurosurgery_min_prior_f(ich_aggressive),
+  model_parameters = model_parameters_function(ich_aggressive),
+  prior_neurosurgery_minimal = prior_func_meta(model_parameters, "neurosurgery_minimal"),
+  prior_neurosurgery_canonical = prior_func_meta(model_parameters, "neurosurgery_canonical"),
+  prior_evd_minimal = prior_func_meta(model_parameters, "evd_minimal"),
+  prior_evd_canonical = prior_func_meta(model_parameters, "evd_canonical"),
 
   ## Models ----
   neurosurgery_evac_min = neurosurgery_evac_func(ich_aggressive),
   neurosurgery_evac_can = neurosurgery_evac_func_canon(ich_aggressive),
+
 
   ## Reports ----
   tar_quarto(
@@ -77,5 +82,9 @@ tar_plan(
   tar_quarto(
     outcomes,
     "reports/outcomes.qmd"
+  ),
+  tar_quarto(
+    prior_report,
+    "reports/priors.qmd"
   )
 )

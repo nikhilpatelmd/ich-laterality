@@ -5,7 +5,7 @@ format:
   html: 
     mainfont: Figtree
     monofont: Source Code Pro
-    fontsize: 0.97rem
+    fontsize: 1rem
     embed-resources: true
     toc: true
     toc-location: left
@@ -30,11 +30,13 @@ Do patients presenting with left hemispheric ICH receive less aggressive care (a
 
 
 ```{r setup, output=FALSE, message=FALSE, warning=FALSE}
+
 library(targets)
 library(skimr)
 library(dplyr)
 library(gt)
 library(gtsummary)
+library(tibble)
 library(ggplot2)
 library(ggdist)
 library(gghalves)
@@ -57,6 +59,8 @@ theme_set(
 )
 
 status_colors <- c(exposure = "#CE4441", outcome = "#004F63", latent = "grey80")
+
+theme_gtsummary_compact()
 
 # load all targets objects
 # tar_load_everything()
@@ -87,20 +91,13 @@ skim(ich_aggressive)
 
 ### Table 1
 
-::: {.callout-warning title="Issues to Address"}
-
-Collapse unused levels in `race`, `ethnicity`, `ich_location` and `study`
-
-Change order of the displayed factors to frequency 
-
-:::
-
-
 ```{r}
+#| fig-align: center
 
 table_1_aggressive
 
 ```
+
 
 ### Relationships between Variables
 
@@ -189,14 +186,14 @@ We include the competing exposures in the canonical adjustment set (e.g., `age`,
 #| fig.height: 9
 
 adjustmentSets(
-  aggressive_dag,
+  dag_aggressive,
   type = "minimal",
   effect = "total",
   max.results = Inf
 )
 
 adjustmentSets(
-  aggressive_dag,
+  dag_aggressive,
   type = "canonical",
   effect = "total",
   max.results = Inf
@@ -204,112 +201,3 @@ adjustmentSets(
 
 ```
 
-### Neurosurgical Intervention
-
-There are two models we will run here: 1) the minimally-sufficient adjustment model, 2) the canonical adjustment model
-
-#### Model
-
-```{r}
-
-tar_load(neurosurgery_evac_min)
-
-predictions(neurosurgery_evac_min, by = "ich_laterality")
-
-plot_predictions(neurosurgery_evac_min, condition = "ich_laterality") +
-  labs(x = "ICH Laterality", y = "Probability of Neurosurgery")
-
-# Format things as percentage points
-label_pp <- label_number(
-  accuracy = 1, scale = 100,
-  suffix = " pp.", style_negative = "minus"
-)
-
-label_pp_tiny <- label_number(
-  accuracy = 0.01, scale = 100,
-  suffix = " pp.", style_negative = "minus"
-)
-
-theme_clean <- function() {
-  theme_minimal(base_family = "Barlow Semi Condensed") +
-    theme(
-      panel.grid.minor = element_blank(),
-      plot.title = element_text(family = "BarlowSemiCondensed-Bold"),
-      axis.title = element_text(family = "BarlowSemiCondensed-Medium"),
-      strip.text = element_text(
-        family = "BarlowSemiCondensed-Bold",
-        size = rel(1), hjust = 0
-      ),
-      strip.background = element_rect(fill = "grey80", color = NA)
-    )
-}
-
-avg_comparisons(neurosurgery_evac_min, variables = "ich_laterality") |>
-  posterior_draws() |>
-  ggplot(aes(x = draw)) +
-  stat_halfeye(
-    .width = c(0.8, 0.95), point_interval = "median_hdi",
-    fill = "#bc3032"
-  ) +
-  scale_x_continuous(labels = label_pp) +
-  labs(
-    x = "Effect of hemispheric laterality\n on the probability of receiving neurosurgical intervention",
-    y = NULL, caption = "80% and 95% credible intervals shown in black"
-  ) +
-  theme_clean()
-
-```
-
-```{r canonical}
-tar_load(neurosurgery_evac_can)
-
-predictions(neurosurgery_evac_can, by = "ich_laterality")
-
-plot_predictions(neurosurgery_evac_can, condition = "ich_laterality") +
-  labs(x = "ICH Laterality", y = "Probability of Neurosurgery")
-
-# Format things as percentage points
-label_pp <- label_number(
-  accuracy = 1, scale = 100,
-  suffix = " pp.", style_negative = "minus"
-)
-
-label_pp_tiny <- label_number(
-  accuracy = 0.01, scale = 100,
-  suffix = " pp.", style_negative = "minus"
-)
-
-theme_clean <- function() {
-  theme_minimal(base_family = "Barlow Semi Condensed") +
-    theme(
-      panel.grid.minor = element_blank(),
-      plot.title = element_text(family = "BarlowSemiCondensed-Bold"),
-      axis.title = element_text(family = "BarlowSemiCondensed-Medium"),
-      strip.text = element_text(
-        family = "BarlowSemiCondensed-Bold",
-        size = rel(1), hjust = 0
-      ),
-      strip.background = element_rect(fill = "grey80", color = NA)
-    )
-}
-
-avg_comparisons(neurosurgery_evac_can, variables = "ich_laterality") |>
-  posterior_draws() |>
-  ggplot(aes(x = draw)) +
-  stat_halfeye(
-    .width = c(0.8, 0.95), point_interval = "median_hdi",
-    fill = "#bc3032"
-  ) +
-  scale_x_continuous(labels = label_pp) +
-  labs(
-    x = "Effect of hemispheric laterality\n on the probability of receiving neurosurgical intervention",
-    y = NULL, caption = "80% and 95% credible intervals shown in black"
-  ) +
-  theme_clean()
-
-
-```
-
-### Posterior Simulation
-
-### Analysis

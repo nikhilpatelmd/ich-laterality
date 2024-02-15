@@ -3167,8 +3167,8 @@ Research question
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># load all targets objects</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># tar_load_everything()</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(table_1_all)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(outcomes_dag)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(table_1_outcomes)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(dag_outcomes)</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_load</span>(ich_all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -3206,7 +3206,7 @@ $ time_symptoms_to_ed         &lt;dbl&gt; NA, NA, 240, 60, 60, 180, NA, 360, NA,
 $ sbp_baseline                &lt;dbl&gt; 180, 220, 163, 240, 149, 227, NA, 133, NA,…
 $ nihss_baseline              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
 $ gcs_baseline                &lt;dbl&gt; 15, 15, 15, 15, 15, 3, NA, 14, 14, 8, 15, …
-$ htn                         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ htn                         &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No…
 $ hld                         &lt;fct&gt; Yes, No, Yes, No, Yes, No, Yes, No, Yes, N…
 $ dm2                         &lt;fct&gt; No, No, No, No, Yes, No, Yes, Yes, Yes, No…
 $ stroke                      &lt;fct&gt; No, No, Yes, No, Yes, No, No, Yes, No, No,…
@@ -3226,9 +3226,9 @@ $ days_EVD                    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 $ days_mechanical_ventilation &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
 $ tracheostomy                &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No…
 $ peg                         &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No…
-$ dnr_binary                  &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, NA, N…
+$ dnr_binary                  &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, No, N…
 $ dnr_day                     &lt;dbl&gt; 12, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-$ dni_binary                  &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, NA, N…
+$ dni_binary                  &lt;fct&gt; Yes, No, No, No, No, No, No, No, No, No, N…
 $ dni_day                     &lt;dbl&gt; 12, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
 $ comfort_care_binary         &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No…
 $ comfort_care_day            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
@@ -3268,65 +3268,24 @@ $ hospital_los                &lt;dbl&gt; 24, 8, 2, 28, 12, 6, 10, 3, 22, 11, 3,
 <td style="text-align: left;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">character</td>
-<td style="text-align: left;">1</td>
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">22</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">factor</td>
-<td style="text-align: left;">21</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">logical</td>
 <td style="text-align: left;">4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">numeric</td>
 <td style="text-align: left;">15</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">________________________</td>
 <td style="text-align: left;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Group variables</td>
 <td style="text-align: left;">None</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Variable type: character</strong></p>
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 13%">
-<col style="width: 19%">
-<col style="width: 5%">
-<col style="width: 5%">
-<col style="width: 8%">
-<col style="width: 12%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">skim_variable</th>
-<th style="text-align: right;">n_missing</th>
-<th style="text-align: right;">complete_rate</th>
-<th style="text-align: right;">min</th>
-<th style="text-align: right;">max</th>
-<th style="text-align: right;">empty</th>
-<th style="text-align: right;">n_unique</th>
-<th style="text-align: right;">whitespace</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">htn</td>
-<td style="text-align: right;">2908</td>
-<td style="text-align: right;">0.36</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
@@ -3354,7 +3313,7 @@ $ hospital_los                &lt;dbl&gt; 24, 8, 2, 28, 12, 6, 10, 3, 22, 11, 3,
 <tr class="odd">
 <td style="text-align: left;">study</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: left;">ERI: 2487, ATA: 990, MIS: 506, CLE: 394</td>
@@ -3362,7 +3321,7 @@ $ hospital_los                &lt;dbl&gt; 24, 8, 2, 28, 12, 6, 10, 3, 22, 11, 3,
 <tr class="even">
 <td style="text-align: left;">sex</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Mal: 2704, Fem: 1810</td>
@@ -3370,151 +3329,159 @@ $ hospital_los                &lt;dbl&gt; 24, 8, 2, 28, 12, 6, 10, 3, 22, 11, 3,
 <tr class="odd">
 <td style="text-align: left;">race</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">Whi: 2331, Bla: 1246, Asi: 572, Oth: 310</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Whi: 2331, Bla: 1287, Asi: 572, Oth: 310</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ethnicity</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">Not: 3203, Unk: 1052, His: 259</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">htn</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 3121, Yes: 1393</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">hld</td>
-<td style="text-align: right;">645</td>
-<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 2609, Yes: 1260</td>
+<td style="text-align: left;">No: 3254, Yes: 1260</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">dm2</td>
-<td style="text-align: right;">591</td>
-<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 3042, Yes: 881</td>
+<td style="text-align: left;">No: 3633, Yes: 881</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">stroke</td>
-<td style="text-align: right;">1079</td>
-<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 2852, Yes: 583</td>
+<td style="text-align: left;">No: 3931, Yes: 583</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">afib</td>
-<td style="text-align: right;">1138</td>
-<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 3124, Yes: 252</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">cad</td>
-<td style="text-align: right;">631</td>
-<td style="text-align: right;">0.86</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 3488, Yes: 395</td>
+<td style="text-align: left;">No: 4262, Yes: 252</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">tobacco</td>
-<td style="text-align: right;">830</td>
-<td style="text-align: right;">0.82</td>
+<td style="text-align: left;">cad</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 2117, Yes: 1567</td>
+<td style="text-align: left;">No: 4119, Yes: 395</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">tobacco</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 2947, Yes: 1567</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">ich_laterality</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Lef: 2257, Rig: 2257</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">ich_location</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">Bas: 1787, Tha: 1468, Lob: 1259, Bra: 0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">ivh</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 2590, Yes: 1902</td>
+<td style="text-align: left;">No: 2612, Yes: 1902</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">neurosurgery_evac</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 3926, Yes: 580</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">evd</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 3604, Yes: 902</td>
+<td style="text-align: left;">No: 3934, Yes: 580</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">tracheostomy</td>
-<td style="text-align: right;">1892</td>
-<td style="text-align: right;">0.58</td>
+<td style="text-align: left;">evd</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 2584, Yes: 38</td>
+<td style="text-align: left;">No: 3612, Yes: 902</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">tracheostomy</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 4476, Yes: 38</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">peg</td>
-<td style="text-align: right;">2027</td>
-<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: left;">No: 2487</td>
+<td style="text-align: left;">No: 4514</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">dnr_binary</td>
-<td style="text-align: right;">1998</td>
-<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 2119, Yes: 397</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">dni_binary</td>
-<td style="text-align: right;">2079</td>
-<td style="text-align: right;">0.54</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 2230, Yes: 205</td>
+<td style="text-align: left;">No: 4117, Yes: 397</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">comfort_care_binary</td>
-<td style="text-align: right;">1442</td>
-<td style="text-align: right;">0.68</td>
+<td style="text-align: left;">dni_binary</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">FALSE</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: left;">No: 2670, Yes: 402</td>
+<td style="text-align: left;">No: 4309, Yes: 205</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">comfort_care_binary</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">No: 4112, Yes: 402</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">mrs_90</td>
 <td style="text-align: right;">1356</td>
-<td style="text-align: right;">0.70</td>
+<td style="text-align: right;">0.7</td>
 <td style="text-align: left;">TRUE</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: left;">4: 716, 2: 535, 1: 528, 3: 505</td>
@@ -3812,24 +3779,24 @@ Issues to Address
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table_1_all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table_1_outcomes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
-<div id="xepaboccdr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xepaboccdr table {
+<div id="yrjoawzzwu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yrjoawzzwu table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#xepaboccdr thead, #xepaboccdr tbody, #xepaboccdr tfoot, #xepaboccdr tr, #xepaboccdr td, #xepaboccdr th {
+#yrjoawzzwu thead, #yrjoawzzwu tbody, #yrjoawzzwu tfoot, #yrjoawzzwu tr, #yrjoawzzwu td, #yrjoawzzwu th {
 border-style: none;
 }
-#xepaboccdr p {
+#yrjoawzzwu p {
 margin: 0;
 padding: 0;
 }
-#xepaboccdr .gt_table {
+#yrjoawzzwu .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -3854,11 +3821,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#xepaboccdr .gt_caption {
+#yrjoawzzwu .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#xepaboccdr .gt_title {
+#yrjoawzzwu .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -3869,7 +3836,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#xepaboccdr .gt_subtitle {
+#yrjoawzzwu .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -3880,7 +3847,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#xepaboccdr .gt_heading {
+#yrjoawzzwu .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -3891,12 +3858,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#xepaboccdr .gt_bottom_border {
+#yrjoawzzwu .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#xepaboccdr .gt_col_headings {
+#yrjoawzzwu .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -3910,7 +3877,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#xepaboccdr .gt_col_heading {
+#yrjoawzzwu .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3929,7 +3896,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#xepaboccdr .gt_column_spanner_outer {
+#yrjoawzzwu .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -3940,13 +3907,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#xepaboccdr .gt_column_spanner_outer:first-child {
+#yrjoawzzwu .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#xepaboccdr .gt_column_spanner_outer:last-child {
+#yrjoawzzwu .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#xepaboccdr .gt_column_spanner {
+#yrjoawzzwu .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -3957,10 +3924,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#xepaboccdr .gt_spanner_row {
+#yrjoawzzwu .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#xepaboccdr .gt_group_heading {
+#yrjoawzzwu .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -3985,7 +3952,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#xepaboccdr .gt_empty_group_heading {
+#yrjoawzzwu .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -3999,13 +3966,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#xepaboccdr .gt_from_md > :first-child {
+#yrjoawzzwu .gt_from_md > :first-child {
 margin-top: 0;
 }
-#xepaboccdr .gt_from_md > :last-child {
+#yrjoawzzwu .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#xepaboccdr .gt_row {
+#yrjoawzzwu .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4023,7 +3990,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#xepaboccdr .gt_stub {
+#yrjoawzzwu .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4035,7 +4002,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xepaboccdr .gt_stub_row_group {
+#yrjoawzzwu .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4048,13 +4015,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#xepaboccdr .gt_row_group_first td {
+#yrjoawzzwu .gt_row_group_first td {
 border-top-width: 2px;
 }
-#xepaboccdr .gt_row_group_first th {
+#yrjoawzzwu .gt_row_group_first th {
 border-top-width: 2px;
 }
-#xepaboccdr .gt_summary_row {
+#yrjoawzzwu .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4063,14 +4030,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xepaboccdr .gt_first_summary_row {
+#yrjoawzzwu .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#xepaboccdr .gt_first_summary_row.thick {
+#yrjoawzzwu .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#xepaboccdr .gt_last_summary_row {
+#yrjoawzzwu .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4079,7 +4046,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#xepaboccdr .gt_grand_summary_row {
+#yrjoawzzwu .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4088,7 +4055,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xepaboccdr .gt_first_grand_summary_row {
+#yrjoawzzwu .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4097,7 +4064,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#xepaboccdr .gt_last_grand_summary_row_top {
+#yrjoawzzwu .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4106,10 +4073,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#xepaboccdr .gt_striped {
+#yrjoawzzwu .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#xepaboccdr .gt_table_body {
+#yrjoawzzwu .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4117,7 +4084,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#xepaboccdr .gt_footnotes {
+#yrjoawzzwu .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -4130,7 +4097,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#xepaboccdr .gt_footnote {
+#yrjoawzzwu .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -4138,7 +4105,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xepaboccdr .gt_sourcenotes {
+#yrjoawzzwu .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -4151,57 +4118,57 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#xepaboccdr .gt_sourcenote {
+#yrjoawzzwu .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#xepaboccdr .gt_left {
+#yrjoawzzwu .gt_left {
 text-align: left;
 }
-#xepaboccdr .gt_center {
+#yrjoawzzwu .gt_center {
 text-align: center;
 }
-#xepaboccdr .gt_right {
+#yrjoawzzwu .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#xepaboccdr .gt_font_normal {
+#yrjoawzzwu .gt_font_normal {
 font-weight: normal;
 }
-#xepaboccdr .gt_font_bold {
+#yrjoawzzwu .gt_font_bold {
 font-weight: bold;
 }
-#xepaboccdr .gt_font_italic {
+#yrjoawzzwu .gt_font_italic {
 font-style: italic;
 }
-#xepaboccdr .gt_super {
+#yrjoawzzwu .gt_super {
 font-size: 65%;
 }
-#xepaboccdr .gt_footnote_marks {
+#yrjoawzzwu .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#xepaboccdr .gt_asterisk {
+#yrjoawzzwu .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#xepaboccdr .gt_indent_1 {
+#yrjoawzzwu .gt_indent_1 {
 text-indent: 5px;
 }
-#xepaboccdr .gt_indent_2 {
+#yrjoawzzwu .gt_indent_2 {
 text-indent: 10px;
 }
-#xepaboccdr .gt_indent_3 {
+#yrjoawzzwu .gt_indent_3 {
 text-indent: 15px;
 }
-#xepaboccdr .gt_indent_4 {
+#yrjoawzzwu .gt_indent_4 {
 text-indent: 20px;
 }
-#xepaboccdr .gt_indent_5 {
+#yrjoawzzwu .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
@@ -4265,8 +4232,7 @@ text-indent: 25px;
 </td>
 <td class="gt_row gt_center" headers="stat_2"><br>
 </td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
+<td class="gt_row gt_center" headers="p.value">0.4</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">    White</td>
@@ -4278,9 +4244,9 @@ text-indent: 25px;
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label">    Black or African-American</td>
-<td class="gt_row gt_center" headers="stat_0">1,246 (28%)</td>
-<td class="gt_row gt_center" headers="stat_1">625 (28%)</td>
-<td class="gt_row gt_center" headers="stat_2">621 (28%)</td>
+<td class="gt_row gt_center" headers="stat_0">1,287 (29%)</td>
+<td class="gt_row gt_center" headers="stat_1">651 (29%)</td>
+<td class="gt_row gt_center" headers="stat_2">636 (28%)</td>
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
@@ -4301,14 +4267,6 @@ text-indent: 25px;
 </td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label">    Black or American-American</td>
-<td class="gt_row gt_center" headers="stat_0">41 (0.9%)</td>
-<td class="gt_row gt_center" headers="stat_1">26 (1.2%)</td>
-<td class="gt_row gt_center" headers="stat_2">15 (0.7%)</td>
-<td class="gt_row gt_center" headers="p.value"><br>
-</td>
-</tr>
-<tr class="odd">
 <td class="gt_row gt_left" headers="label">    American Indian or Alaskan Native</td>
 <td class="gt_row gt_center" headers="stat_0">11 (0.2%)</td>
 <td class="gt_row gt_center" headers="stat_1">8 (0.4%)</td>
@@ -4316,7 +4274,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Native Hawaiian/Pacific Islander</td>
 <td class="gt_row gt_center" headers="stat_0">3 (&lt;0.1%)</td>
 <td class="gt_row gt_center" headers="stat_1">2 (&lt;0.1%)</td>
@@ -4324,7 +4282,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Ethnicity</td>
 <td class="gt_row gt_center" headers="stat_0"><br>
 </td>
@@ -4334,7 +4292,7 @@ text-indent: 25px;
 </td>
 <td class="gt_row gt_center" headers="p.value">0.4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Not Hispanic or Latino</td>
 <td class="gt_row gt_center" headers="stat_0">3,203 (71%)</td>
 <td class="gt_row gt_center" headers="stat_1">1,613 (71%)</td>
@@ -4342,7 +4300,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">    Unknown/Not Reported</td>
 <td class="gt_row gt_center" headers="stat_0">1,052 (23%)</td>
 <td class="gt_row gt_center" headers="stat_1">509 (23%)</td>
@@ -4350,7 +4308,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Hispanic or Latino</td>
 <td class="gt_row gt_center" headers="stat_0">259 (5.7%)</td>
 <td class="gt_row gt_center" headers="stat_1">135 (6.0%)</td>
@@ -4358,63 +4316,63 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">LNW to ED Presentation (mins)</td>
 <td class="gt_row gt_center" headers="stat_0">96 (60, 209)</td>
 <td class="gt_row gt_center" headers="stat_1">95 (60, 196)</td>
 <td class="gt_row gt_center" headers="stat_2">99 (60, 216)</td>
 <td class="gt_row gt_center" headers="p.value">0.7</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Baseline SBP (mm Hg)</td>
 <td class="gt_row gt_center" headers="stat_0">189 (163, 214)</td>
 <td class="gt_row gt_center" headers="stat_1">189 (163, 215)</td>
 <td class="gt_row gt_center" headers="stat_2">189 (162, 214)</td>
 <td class="gt_row gt_center" headers="p.value">0.5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Baseline NIHSS</td>
 <td class="gt_row gt_center" headers="stat_0">15 (9, 21)</td>
 <td class="gt_row gt_center" headers="stat_1">17 (9, 23)</td>
 <td class="gt_row gt_center" headers="stat_2">14 (9, 19)</td>
 <td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Baseline GCS</td>
 <td class="gt_row gt_center" headers="stat_0">14.0 (10.0, 15.0)</td>
 <td class="gt_row gt_center" headers="stat_1">13.0 (10.0, 15.0)</td>
 <td class="gt_row gt_center" headers="stat_2">15.0 (12.0, 15.0)</td>
 <td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
 </tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="label" style="font-weight: bold">Hypertension</td>
-<td class="gt_row gt_center" headers="stat_0">1,393 (87%)</td>
-<td class="gt_row gt_center" headers="stat_1">683 (86%)</td>
-<td class="gt_row gt_center" headers="stat_2">710 (87%)</td>
-<td class="gt_row gt_center" headers="p.value">0.5</td>
-</tr>
 <tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Hypertension</td>
+<td class="gt_row gt_center" headers="stat_0">1,393 (31%)</td>
+<td class="gt_row gt_center" headers="stat_1">683 (30%)</td>
+<td class="gt_row gt_center" headers="stat_2">710 (31%)</td>
+<td class="gt_row gt_center" headers="p.value">0.4</td>
+</tr>
+<tr class="odd">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Type II Diabetes</td>
-<td class="gt_row gt_center" headers="stat_0">881 (22%)</td>
-<td class="gt_row gt_center" headers="stat_1">441 (23%)</td>
-<td class="gt_row gt_center" headers="stat_2">440 (22%)</td>
+<td class="gt_row gt_center" headers="stat_0">881 (20%)</td>
+<td class="gt_row gt_center" headers="stat_1">441 (20%)</td>
+<td class="gt_row gt_center" headers="stat_2">440 (19%)</td>
 <td class="gt_row gt_center" headers="p.value">&gt;0.9</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Previous Stroke</td>
-<td class="gt_row gt_center" headers="stat_0">583 (17%)</td>
-<td class="gt_row gt_center" headers="stat_1">293 (17%)</td>
-<td class="gt_row gt_center" headers="stat_2">290 (17%)</td>
-<td class="gt_row gt_center" headers="p.value">0.6</td>
+<td class="gt_row gt_center" headers="stat_0">583 (13%)</td>
+<td class="gt_row gt_center" headers="stat_1">293 (13%)</td>
+<td class="gt_row gt_center" headers="stat_2">290 (13%)</td>
+<td class="gt_row gt_center" headers="p.value">0.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Tobacco Use</td>
+<td class="gt_row gt_center" headers="stat_0">1,567 (35%)</td>
+<td class="gt_row gt_center" headers="stat_1">770 (34%)</td>
+<td class="gt_row gt_center" headers="stat_2">797 (35%)</td>
+<td class="gt_row gt_center" headers="p.value">0.4</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="label" style="font-weight: bold">Tobacco Use</td>
-<td class="gt_row gt_center" headers="stat_0">1,567 (43%)</td>
-<td class="gt_row gt_center" headers="stat_1">770 (41%)</td>
-<td class="gt_row gt_center" headers="stat_2">797 (44%)</td>
-<td class="gt_row gt_center" headers="p.value">0.2</td>
-</tr>
-<tr class="odd">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">ICH Location</td>
 <td class="gt_row gt_center" headers="stat_0"><br>
 </td>
@@ -4424,7 +4382,7 @@ text-indent: 25px;
 </td>
 <td class="gt_row gt_center" headers="p.value">0.001</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Basal Ganglia</td>
 <td class="gt_row gt_center" headers="stat_0">1,787 (40%)</td>
 <td class="gt_row gt_center" headers="stat_1">949 (42%)</td>
@@ -4432,7 +4390,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">    Thalamus</td>
 <td class="gt_row gt_center" headers="stat_0">1,468 (33%)</td>
 <td class="gt_row gt_center" headers="stat_1">685 (30%)</td>
@@ -4440,7 +4398,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Lobar</td>
 <td class="gt_row gt_center" headers="stat_0">1,259 (28%)</td>
 <td class="gt_row gt_center" headers="stat_1">623 (28%)</td>
@@ -4448,7 +4406,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">    Brainstem</td>
 <td class="gt_row gt_center" headers="stat_0">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
@@ -4456,7 +4414,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    Cerebellum</td>
 <td class="gt_row gt_center" headers="stat_0">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
@@ -4464,7 +4422,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">    Primary IVH</td>
 <td class="gt_row gt_center" headers="stat_0">0 (0%)</td>
 <td class="gt_row gt_center" headers="stat_1">0 (0%)</td>
@@ -4472,21 +4430,21 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">ICH Volume (mL)</td>
 <td class="gt_row gt_center" headers="stat_0">14 (6, 31)</td>
 <td class="gt_row gt_center" headers="stat_1">14 (6, 31)</td>
 <td class="gt_row gt_center" headers="stat_2">14 (6, 33)</td>
 <td class="gt_row gt_center" headers="p.value">0.2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">IVH</td>
 <td class="gt_row gt_center" headers="stat_0">1,902 (42%)</td>
-<td class="gt_row gt_center" headers="stat_1">934 (42%)</td>
+<td class="gt_row gt_center" headers="stat_1">934 (41%)</td>
 <td class="gt_row gt_center" headers="stat_2">968 (43%)</td>
 <td class="gt_row gt_center" headers="p.value">0.3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label" style="font-weight: bold">Study</td>
 <td class="gt_row gt_center" headers="stat_0"><br>
 </td>
@@ -4496,7 +4454,7 @@ text-indent: 25px;
 </td>
 <td class="gt_row gt_center" headers="p.value">0.3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">    ERICH</td>
 <td class="gt_row gt_center" headers="stat_0">2,487 (55%)</td>
 <td class="gt_row gt_center" headers="stat_1">1,248 (55%)</td>
@@ -4504,7 +4462,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    ATACH-2</td>
 <td class="gt_row gt_center" headers="stat_0">990 (22%)</td>
 <td class="gt_row gt_center" headers="stat_1">472 (21%)</td>
@@ -4512,7 +4470,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">    MISTIE-3</td>
 <td class="gt_row gt_center" headers="stat_0">506 (11%)</td>
 <td class="gt_row gt_center" headers="stat_1">258 (11%)</td>
@@ -4520,7 +4478,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td class="gt_row gt_left" headers="label">    CLEAR III</td>
 <td class="gt_row gt_center" headers="stat_0">394 (8.7%)</td>
 <td class="gt_row gt_center" headers="stat_1">201 (8.9%)</td>
@@ -4528,7 +4486,7 @@ text-indent: 25px;
 <td class="gt_row gt_center" headers="p.value"><br>
 </td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td class="gt_row gt_left" headers="label">    MISTIE-2</td>
 <td class="gt_row gt_center" headers="stat_0">137 (3.0%)</td>
 <td class="gt_row gt_center" headers="stat_1">78 (3.5%)</td>
@@ -4537,10 +4495,10 @@ text-indent: 25px;
 </td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
-<tr class="even">
+<tr class="odd">
 <td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (IQR); n (%)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Wilcoxon rank sum test; Pearson’s Chi-squared test; Fisher’s exact test</td>
 </tr>
 </tfoot>
@@ -4598,7 +4556,7 @@ Other Considerations
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>outcomes_dag <span class="sc">|&gt;</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dag_outcomes <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy_dagitty</span>() <span class="sc">|&gt;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">node_status</span>() <span class="sc">|&gt;</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend)) <span class="sc">+</span></span>
@@ -4625,14 +4583,14 @@ Other Considerations
 <p>Similar to above, there are no</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">adjustmentSets</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  outcomes_dag,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  dag_outcomes,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;minimal&quot;</span>,</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">effect =</span> <span class="st">&quot;direct&quot;</span>,</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">max.results =</span> <span class="cn">Inf</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">adjustmentSets</span>(</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  outcomes_dag,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  dag_outcomes,</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;canonical&quot;</span>,</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">effect =</span> <span class="st">&quot;total&quot;</span>,</span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">max.results =</span> <span class="cn">Inf</span></span>
@@ -5168,8 +5126,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="in"># load all targets objects</span></span>
 <span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="in"># tar_load_everything()</span></span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="in">tar_load(table_1_all)</span></span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="in">tar_load(outcomes_dag)</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="in">tar_load(table_1_outcomes)</span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="in">tar_load(dag_outcomes)</span></span>
 <span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="in">tar_load(ich_all)</span></span>
 <span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -5201,7 +5159,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>table_1_all</span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>table_1_outcomes</span>
 <span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a></span>
@@ -5238,7 +5196,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-align: center</span></span>
 <span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig.height: 9</span></span>
 <span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a><span class="in">outcomes_dag |&gt;</span></span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a><span class="in">dag_outcomes |&gt;</span></span>
 <span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a><span class="in">  tidy_dagitty() |&gt;</span></span>
 <span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a><span class="in">  node_status() |&gt;</span></span>
 <span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a><span class="in">  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +</span></span>
@@ -5264,14 +5222,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig.width: 20</span></span>
 <span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a><span class="in">adjustmentSets(</span></span>
-<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="in">  outcomes_dag,</span></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="in">  dag_outcomes,</span></span>
 <span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a><span class="in">  type = &quot;minimal&quot;,</span></span>
 <span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="in">  effect = &quot;direct&quot;,</span></span>
 <span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a><span class="in">  max.results = Inf</span></span>
 <span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a><span class="in">adjustmentSets(</span></span>
-<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a><span class="in">  outcomes_dag,</span></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a><span class="in">  dag_outcomes,</span></span>
 <span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a><span class="in">  type = &quot;canonical&quot;,</span></span>
 <span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a><span class="in">  effect = &quot;total&quot;,</span></span>
 <span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a><span class="in">  max.results = Inf</span></span>

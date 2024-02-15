@@ -93,7 +93,7 @@ skim(ich_all)
 
 ```{r}
 
-table_1_all
+table_1_outcomes
 
 ```
 
@@ -130,7 +130,7 @@ We aim to estimate the total direct effect of hemispheric laterality in intracer
 #| fig-align: center
 #| fig.height: 9
 
-outcomes_dag |>
+dag_outcomes |>
   tidy_dagitty() |>
   node_status() |>
   ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
@@ -156,14 +156,14 @@ Similar to above, there are no
 #| fig.width: 20
 
 adjustmentSets(
-  outcomes_dag,
+  dag_outcomes,
   type = "minimal",
   effect = "direct",
   max.results = Inf
 )
 
 adjustmentSets(
-  outcomes_dag,
+  dag_outcomes,
   type = "canonical",
   effect = "total",
   max.results = Inf
