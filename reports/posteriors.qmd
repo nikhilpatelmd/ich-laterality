@@ -1,6 +1,6 @@
 ---
 title: Differences in care for patients experiencing left vs. right hemisphere ICH
-subtitle: Prior Predictive Checks
+subtitle: Posteriors!
 author: Nikhil Patel, MD
 format:
   html: 
@@ -47,24 +47,24 @@ label_pp_tiny <- label_number(
 
 # load targets objects
 tar_load(model_parameters)
-tar_load(prior_neurosurgery_minimal)
-tar_load(prior_neurosurgery_canonical)
-tar_load(prior_evd_minimal)
-tar_load(prior_evd_canonical)
-tar_load(prior_trach_minimal)
-tar_load(prior_trach_canonical)
-tar_load(prior_vent_minimal)
-tar_load(prior_vent_canonical)
-tar_load(prior_comfort_care_minimal)
-tar_load(prior_comfort_care_canonical)
-tar_load(prior_early_wlst_minimal)
-tar_load(prior_early_wlst_canonical)
-tar_load(prior_dnr_minimal)
-tar_load(prior_dnr_canonical)
+tar_load(posterior_neurosurgery_minimal)
+tar_load(posterior_neurosurgery_canonical)
+tar_load(posterior_evd_minimal)
+tar_load(posterior_evd_canonical)
+tar_load(posterior_trach_minimal)
+tar_load(posterior_trach_canonical)
+tar_load(posterior_vent_minimal)
+tar_load(posterior_vent_canonical)
+tar_load(posterior_comfort_care_minimal)
+tar_load(posterior_comfort_care_canonical)
+tar_load(posterior_early_wlst_minimal)
+tar_load(posterior_early_wlst_canonical)
+tar_load(posterior_dnr_minimal)
+tar_load(posterior_dnr_canonical)
 
-# prior functions
+# posterior functions
 
-prior_printing <- function(x, y, var) {
+posterior_printing <- function(x, y, var) {
   p1 <- model_parameters$priors[x]
 
   p2 <- y
@@ -81,7 +81,7 @@ prior_printing <- function(x, y, var) {
     ) +
     scale_x_continuous(labels = label_pp) +
     labs(
-      title = "Prior Predictive Check",
+      title = "Posterior Prediction",
       x = paste("Effect of hemispheric laterality\n on the probability of", {{ var }}),
       y = NULL, caption = "80% and 95% credible intervals shown in black"
     )
@@ -104,7 +104,7 @@ prior_printing <- function(x, y, var) {
 
 ```{r}
 
-prior_printing("neurosurgery_minimal", prior_neurosurgery_minimal, "receiving neurosurgical intervention")
+posterior_printing("neurosurgery_minimal", posterior_neurosurgery_minimal, "receiving neurosurgical intervention")
 
 ```
   
@@ -113,7 +113,7 @@ prior_printing("neurosurgery_minimal", prior_neurosurgery_minimal, "receiving ne
   
 ```{r}
 
-prior_printing("neurosurgery_canonical", prior_neurosurgery_canonical, "receiving neurosurgical intervention")
+posterior_printing("neurosurgery_canonical", posterior_neurosurgery_canonical, "receiving neurosurgical intervention")
 
 ```
 
@@ -123,7 +123,7 @@ prior_printing("neurosurgery_canonical", prior_neurosurgery_canonical, "receivin
 
 ```{r}
 
-prior_printing("evd_minimal", prior_evd_minimal, "receiving an EVD")
+posterior_printing("evd_minimal", posterior_evd_minimal, "receiving an EVD")
 
 ```
 
@@ -131,7 +131,7 @@ prior_printing("evd_minimal", prior_evd_minimal, "receiving an EVD")
 
 ```{r}
 
-prior_printing("evd_canonical", prior_evd_canonical, "receiving an EVD")
+posterior_printing("evd_canonical", posterior_evd_canonical, "receiving an EVD")
 
 
 ```
@@ -142,7 +142,7 @@ prior_printing("evd_canonical", prior_evd_canonical, "receiving an EVD")
 
 ```{r}
 
-prior_printing("trach_minimal", prior_trach_minimal, "receiving an tracheostomy")
+posterior_printing("trach_minimal", posterior_trach_minimal, "receiving an tracheostomy")
 
 ```
 
@@ -150,7 +150,7 @@ prior_printing("trach_minimal", prior_trach_minimal, "receiving an tracheostomy"
 
 ```{r}
 
-prior_printing("trach_canonical", prior_trach_canonical, "receiving a tracheostomy")
+posterior_printing("trach_canonical", posterior_trach_canonical, "receiving a tracheostomy")
 
 ```
 
@@ -160,14 +160,15 @@ prior_printing("trach_canonical", prior_trach_canonical, "receiving a tracheosto
 
 ```{r}
 
-prior_printing("vent_minimal", prior_vent_minimal, "number of days of mechanical ventilation")
+posterior_printing("vent_minimal", posterior_vent_minimal, "number of days of mechanical ventilation")
 
 ```
 
 #### Canonical Model
 
 ```{r}
-prior_printing("vent_canonical", prior_vent_canonical, "number of days of mechanical ventilation")
+
+posterior_printing("vent_canonical", posterior_vent_canonical, "number of days of mechanical ventilation")
 
 ```
 
@@ -177,14 +178,14 @@ prior_printing("vent_canonical", prior_vent_canonical, "number of days of mechan
 
 ```{r}
 
-prior_printing("comfort_care_minimal", prior_comfort_care_minimal, "comfort care")
+posterior_printing("comfort_care_minimal", posterior_comfort_care_minimal, "comfort care")
 
 ```
 
 #### Canonical Model
 
 ```{r}
-prior_printing("comfort_care_canonical", prior_comfort_care_canonical, "comfort care")
+posterior_printing("comfort_care_canonical", posterior_comfort_care_canonical, "comfort care")
 
 ```
 
@@ -193,14 +194,14 @@ prior_printing("comfort_care_canonical", prior_comfort_care_canonical, "comfort 
 #### Minimal Model
 
 ```{r}
-prior_printing("early_wlst_minimal", prior_early_wlst_minimal, "early WLST")
+posterior_printing("early_wlst_minimal", posterior_early_wlst_minimal, "early WLST")
 
 ```
 
 #### Canonical Model
 
 ```{r}
-prior_printing("early_wlst_canonical", prior_early_wlst_canonical, "early WLST")
+posterior_printing("early_wlst_canonical", posterior_early_wlst_canonical, "early WLST")
 
 ```
 
@@ -209,13 +210,13 @@ prior_printing("early_wlst_canonical", prior_early_wlst_canonical, "early WLST")
 #### Minimal Model
 
 ```{r}
-prior_printing("dnr_minimal", prior_dnr_minimal, "DNR")
+posterior_printing("dnr_minimal", posterior_dnr_minimal, "DNR")
 
 ```
 
 #### Canonical Model
 
 ```{r}
-prior_printing("dnr_canonical", prior_dnr_canonical, "DNR")
+posterior_printing("dnr_canonical", posterior_dnr_canonical, "DNR")
 
 ```

@@ -36,7 +36,6 @@ source("R/data_cleaning.R")
 source("R/exploratory_data_analysis.R")
 source("R/dags.R")
 source("R/priors.R")
-source("R/models.R")
 
 # Pipeline ----
 tar_plan(
@@ -72,12 +71,28 @@ tar_plan(
   prior_trach_canonical = prior_func_meta(model_parameters, "trach_canonical"),
   prior_vent_minimal = prior_func_meta(model_parameters, "vent_minimal"),
   prior_vent_canonical = prior_func_meta(model_parameters, "vent_canonical"),
+  prior_comfort_care_minimal = prior_func_meta(model_parameters, "comfort_care_minimal"),
+  prior_comfort_care_canonical = prior_func_meta(model_parameters, "comfort_care_canonical"),
+  prior_early_wlst_minimal = prior_func_meta(model_parameters, "early_wlst_minimal"),
+  prior_early_wlst_canonical = prior_func_meta(model_parameters, "early_wlst_canonical"),
+  prior_dnr_minimal = prior_func_meta(model_parameters, "dnr_minimal"),
+  prior_dnr_canonical = prior_func_meta(model_parameters, "dnr_canonical"),
 
-
-  ## Models ----
-  neurosurgery_evac_min = neurosurgery_evac_func(ich_aggressive),
-  neurosurgery_evac_can = neurosurgery_evac_func_canon(ich_aggressive),
-
+  ## Posterior Simulation ----
+  posterior_neurosurgery_minimal = posterior_func_meta(model_parameters, "neurosurgery_minimal"),
+  posterior_neurosurgery_canonical = posterior_func_meta(model_parameters, "neurosurgery_canonical"),
+  posterior_evd_minimal = posterior_func_meta(model_parameters, "evd_minimal"),
+  posterior_evd_canonical = posterior_func_meta(model_parameters, "evd_canonical"),
+  posterior_trach_minimal = posterior_func_meta(model_parameters, "trach_minimal"),
+  posterior_trach_canonical = posterior_func_meta(model_parameters, "trach_canonical"),
+  posterior_vent_minimal = posterior_func_meta(model_parameters, "vent_minimal"),
+  posterior_vent_canonical = posterior_func_meta(model_parameters, "vent_canonical"),
+  posterior_comfort_care_minimal = posterior_func_meta(model_parameters, "comfort_care_minimal"),
+  posterior_comfort_care_canonical = posterior_func_meta(model_parameters, "comfort_care_canonical"),
+  posterior_early_wlst_minimal = posterior_func_meta(model_parameters, "early_wlst_minimal"),
+  posterior_early_wlst_canonical = posterior_func_meta(model_parameters, "early_wlst_canonical"),
+  posterior_dnr_minimal = posterior_func_meta(model_parameters, "dnr_minimal"),
+  posterior_dnr_canonical = posterior_func_meta(model_parameters, "dnr_canonical"),
 
   ## Reports ----
   tar_quarto(
@@ -91,5 +106,9 @@ tar_plan(
   tar_quarto(
     prior_report,
     "reports/priors.qmd"
+  ),
+  tar_quarto(
+    posterior_report,
+    "reports/posteriors.qmd"
   )
 )
