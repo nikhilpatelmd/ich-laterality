@@ -36,6 +36,7 @@ select_variables <- function(x) {
       dni_day,
       comfort_care_binary,
       comfort_care_day,
+      early_wlst,
       mrs_90,
       mrs_90_01,
       mrs_90_02,
@@ -55,4 +56,3 @@ non_surgery_trial_function <- function(x) {
   x |>
     filter(study == "ERICH" | study == "ATACH-2")
 }
-

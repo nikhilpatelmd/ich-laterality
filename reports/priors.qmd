@@ -51,16 +51,22 @@ tar_load(prior_neurosurgery_minimal)
 tar_load(prior_neurosurgery_canonical)
 tar_load(prior_evd_minimal)
 tar_load(prior_evd_canonical)
+tar_load(prior_trach_minimal)
+tar_load(prior_trach_canonical)
+tar_load(prior_vent_minimal)
+tar_load(prior_vent_canonical)
 
 # prior functions
 
 prior_printing <- function(x, y, var) {
   p1 <- model_parameters$priors[x]
 
-  p2 <- predictions(y, by = "ich_laterality") |>
+  p2 <- y
+
+  p3 <- predictions(y, by = "ich_laterality") |>
     as_tibble()
 
-  p3 <- avg_comparisons(y, variables = "ich_laterality") |>
+  p4 <- avg_comparisons(y, variables = "ich_laterality") |>
     posterior_draws() |>
     ggplot(aes(x = draw)) +
     stat_halfeye(
@@ -76,8 +82,9 @@ prior_printing <- function(x, y, var) {
 
   return(list(
     priors = p1,
-    predictions = p2,
-    plot = p3
+    model = p2,
+    predictions = p3,
+    plot = p4
   ))
 }
 
@@ -116,11 +123,45 @@ prior_printing("evd_minimal", prior_evd_minimal, "receiving an EVD")
 
 #### Canonical Model
 
-
 ```{r}
 
 prior_printing("evd_canonical", prior_evd_canonical, "receiving an EVD")
 
-prior_neurosurgery_minimal
+
+```
+
+### Tracheostomy
+
+#### Minimal Model
+
+```{r}
+
+prior_printing("trach_minimal", prior_trach_minimal, "receiving an tracheostomy")
+
+```
+
+#### Canonical Model
+
+```{r}
+
+prior_printing("trach_canonical", prior_trach_canonical, "receiving a tracheostomy")
+
+```
+
+### Days of Mechanical Ventilation
+
+#### Minimal Model
+
+```{r}
+
+prior_printing("vent_minimal", prior_vent_minimal, "number of days of mechanical ventilation")
+
+```
+
+#### Canonical Model
+
+```{r}
+
+prior_printing("vent_canonical", prior_vent_canonical, "number of days of mechanical ventilation")
 
 ```

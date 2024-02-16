@@ -68,6 +68,11 @@ tar_plan(
   prior_neurosurgery_canonical = prior_func_meta(model_parameters, "neurosurgery_canonical"),
   prior_evd_minimal = prior_func_meta(model_parameters, "evd_minimal"),
   prior_evd_canonical = prior_func_meta(model_parameters, "evd_canonical"),
+  prior_trach_minimal = prior_func_meta(model_parameters, "trach_minimal"),
+  prior_trach_canonical = prior_func_meta(model_parameters, "trach_canonical"),
+  prior_vent_minimal = prior_func_meta(model_parameters, "vent_minimal"),
+  prior_vent_canonical = prior_func_meta(model_parameters, "vent_canonical"),
+
 
   ## Models ----
   neurosurgery_evac_min = neurosurgery_evac_func(ich_aggressive),

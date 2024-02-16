@@ -56,7 +56,9 @@ table_2_aggressive_function <- function(x) {
     "days_mechanical_ventilation",
     "tracheostomy",
     "ich_laterality",
-    "comfort_care_binary"
+    "comfort_care_binary",
+    "early_wlst",
+    "dnr_binary"
   )
 
   x |>
@@ -69,7 +71,9 @@ table_2_aggressive_function <- function(x) {
         evd ~ "Ventriculostomy",
         days_mechanical_ventilation ~ "Mechanical Ventilation Days",
         tracheostomy ~ "Tracheostomy",
-        comfort_care_binary ~ "Comfort Care"
+        comfort_care_binary ~ "Withdrawal of Life-Sustaining Therapy",
+        early_wlst ~ "Early Withdrawal of Life-Sustaining Therapy (< 72 hours)",
+        dnr_binary ~ "DNR Order"
       )
     ) |>
     add_overall() |>
