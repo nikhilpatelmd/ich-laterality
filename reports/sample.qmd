@@ -1,0 +1,79 @@
+---
+title: Bayesian Workflow with Soccer Data
+subtitle: Posteriors!
+author: Nikhil Patel, MD
+format:
+  html: 
+    mainfont: Gotham
+    monofont: Source Code Pro
+    embed-resources: true
+    toc: true
+    toc-location: left
+    toc-depth: 6
+    toc-title: Contents
+    smooth-scroll: true
+    link-external-icon: true
+    link-external-newwindow: true
+    code-overflow: wrap
+    code-tools: true
+    code-link: true
+    highlight-style: nord
+---
+
+
+```{r setup, output=FALSE}
+
+library(worldfootballR)
+library(understatr)
+library(tidyverse)
+library(janitor)
+library(MetBrewer)
+
+colors <- met.brewer("Juarez", 5)
+
+```
+
+## Load data
+
+```{r}
+eng_match_results <- load_match_results(
+  country = "ENG",
+  gender = "M",
+  season_end_year = 2022,
+  tier = "1st"
+) |>
+  clean_names()
+
+
+eng_adv <- load_fb_match_summary(
+  country = "ENG",
+  gender = "M",
+  season_end_year = 2024,
+  tier = "1st"
+) |>
+  clean_names()
+
+
+arsenal_match_results <- eng_match_results |>
+  filter(home == "Arsenal" | away == "Arsenal") |>
+  mutate(
+    Wk = as.integer(wk),
+    arsenal_xg_off = case_when(
+      home == "Arsenal" ~ home_x_g,
+      away == "Arsenal" ~ away_x_g
+    ),
+    arsenal_xg_def = case_when(
+      home == "Arsenal" ~ away_x_g,
+      away == "Arsenal" ~ home_x_g
+    )
+  )
+
+arsenal_match_results |>
+  ggplot(aes(x = Wk, y = arsenal_xg_off)) +
+  geom_step(linewidth = 1.25, color = colors[1]) +
+  theme_minimal(base family = "Gotham")
+
+
+
+```
+

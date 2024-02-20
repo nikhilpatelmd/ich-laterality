@@ -17,6 +17,7 @@ format:
     code-overflow: wrap
     code-tools: true
     code-fold: true
+    code-link: true
     highlight-style: nord
 ---
 
@@ -30,6 +31,8 @@ library(ggdist)
 library(gghalves)
 library(scales)
 library(systemfonts)
+library(brms)
+library(tidybayes)
 
 # theme customization
 theme_set(theme_minimal(base_family = "Figtree"))
@@ -64,13 +67,15 @@ tar_load(posterior_dnr_canonical)
 
 # posterior functions
 
-posterior_printing <- function(x, y, var) {
+posterior_printing <- function(x, y, z) {
   p1 <- model_parameters$priors[x]
 
   p2 <- y
 
   p3 <- predictions(y, by = "ich_laterality") |>
     as_tibble()
+
+  p35 <- avg_comparisons(y, variables = "ich_laterality")
 
   p4 <- avg_comparisons(y, variables = "ich_laterality") |>
     posterior_draws() |>
@@ -82,33 +87,58 @@ posterior_printing <- function(x, y, var) {
     scale_x_continuous(labels = label_pp) +
     labs(
       title = "Posterior Prediction",
-      x = paste("Effect of hemispheric laterality\n on the probability of", {{ var }}),
+      x = paste("Effect of hemispheric laterality\n on the probability of", {{ z }}),
       y = NULL, caption = "80% and 95% credible intervals shown in black"
     )
+
+  p5 <- y |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    ggplot(aes(ich_right_or)) +
+    stat_halfeye(aes(fill_ramp = stat(x > 1), fill = "bc3032")) +
+    theme(legend.position = "none")
+
+
+  p6 <- y |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    summarize(
+      or_1 = sum(ich_right_or > 1) / n(),
+      or_1.1 = sum(ich_right_or > 1.1) / n(),
+      or_1.2 = sum(ich_right_or > 1.2) / n()
+    )
+
+  p5 <- pp_check(p2, ndraws = 500)
 
   return(list(
     priors = p1,
     model = p2,
+    fit = p5,
     predictions = p3,
-    plot = p4
+    comparison = p35,
+    plot = p4,
+    plot2 = p5,
+    probabilities = p6
   ))
 }
 
+
 ```
 
-## Prior Predictive Checks
+## Posterior Predictions
 
 ### Neurosurgical Intervention
 
 #### Minimal Model
 
 ```{r}
-
 posterior_printing("neurosurgery_minimal", posterior_neurosurgery_minimal, "receiving neurosurgical intervention")
 
+
+
 ```
-  
- 
+
+
 #### Canonical Model
   
 ```{r}

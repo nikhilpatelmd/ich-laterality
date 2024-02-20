@@ -17,6 +17,7 @@ format:
     code-overflow: wrap
     code-tools: true
     code-fold: true
+    code-link: true
     highlight-style: nord
 ---
 

@@ -42,12 +42,12 @@ model_parameters_function <- function(ich_aggressive) {
       set_prior("normal(0, 1)", class = "b")
     ),
     vent_minimal = c(
-      set_prior("normal(1.5, 0.2)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(0, 1.5)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b")
     ),
     vent_canonical = c(
-      set_prior("normal(0.95, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(0, 1.5)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b")
     ),
     comfort_care_minimal = c(
       set_prior("normal(1.5, 0.2)", class = "Intercept"),
@@ -99,8 +99,8 @@ model_parameters_function <- function(ich_aggressive) {
     evd_canonical = bernoulli(link = "logit"),
     trach_minimal = bernoulli(link = "logit"),
     trach_canonical = bernoulli(link = "logit"),
-    vent_minimal = poisson,
-    vent_canonical = poisson,
+    vent_minimal = cumulative(link = "logit"),
+    vent_canonical = cumulative(link = "logit"),
     comfort_care_minimal = bernoulli(link = "logit"),
     comfort_care_canonical = bernoulli(link = "logit"),
     early_wlst_minimal = bernoulli(link = "logit"),
