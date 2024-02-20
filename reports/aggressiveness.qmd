@@ -1,24 +1,8 @@
 ---
-title: Differences in care for patients experiencing left vs. right hemisphere ICH
+title: Differences in outcomes for patients experiencing left vs. right hemisphere ICH
 author: Nikhil Patel, MD
 format:
-  html: 
-    mainfont: Figtree
-    monofont: Source Code Pro
-    fontsize: 1rem
-    embed-resources: true
-    toc: true
-    toc-location: left
-    toc-depth: 6
-    toc-expand: true
-    toc-title: Contents
-    smooth-scroll: true
-    link-external-icon: true
-    link-external-newwindow: true
-    code-overflow: wrap
-    code-tools: true
-    code-fold: true
-    highlight-style: nord
+  html
 ---
 
 ::: {.callout-note icon="false"}

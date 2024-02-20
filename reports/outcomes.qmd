@@ -2,23 +2,7 @@
 title: Differences in outcomes for patients experiencing left vs. right hemisphere ICH
 author: Nikhil Patel, MD
 format:
-  html: 
-    mainfont: Figtree
-    monofont: Source Code Pro
-    fontsize: 0.97rem
-    embed-resources: true
-    toc: true
-    toc-location: left
-    toc-depth: 6
-    toc-expand: true
-    toc-title: Contents
-    smooth-scroll: true
-    link-external-icon: true
-    link-external-newwindow: true
-    code-overflow: wrap
-    code-tools: true
-    code-fold: true
-    highlight-style: nord
+  html
 ---
 
 ::: {.callout-note icon="false"}
@@ -30,6 +14,7 @@ Do patients presenting with left hemispheric ICH have different functional outco
 
 
 ```{r setup, output=FALSE, message=FALSE, warning=FALSE}
+
 library(targets)
 library(skimr)
 library(dplyr)
@@ -142,31 +127,5 @@ dag_outcomes |>
   ) +
   scale_color_manual(values = status_colors, na.value = "grey20") +
   scale_fill_manual(values = status_colors, na.value = "grey20")
-
-```
-
-#### DAG-Implied Adjustment Sets
-
-Similar to above, there are no 
-
-```{r outcomes dag adjustment sets}
-#| code-fold: false
-#| fig-align: center
-#| fig.height: 10
-#| fig.width: 20
-
-adjustmentSets(
-  dag_outcomes,
-  type = "minimal",
-  effect = "direct",
-  max.results = Inf
-)
-
-adjustmentSets(
-  dag_outcomes,
-  type = "canonical",
-  effect = "total",
-  max.results = Inf
-)
 
 ```

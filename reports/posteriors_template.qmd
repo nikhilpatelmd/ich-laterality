@@ -1,0 +1,236 @@
+---
+title: Differences in outcomes for patients experiencing left vs. right hemisphere ICH
+author: Nikhil Patel, MD
+format:
+  html
+---
+
+```{r setup, output=FALSE, message=FALSE, warning=FALSE}
+library(targets)
+library(tidyverse)
+library(glue)
+library(marginaleffects)
+library(modelsummary)
+library(ggdist)
+library(gghalves)
+library(scales)
+library(systemfonts)
+library(brms)
+library(tidybayes)
+
+# theme customization
+theme_set(theme_minimal(base_family = "Figtree"))
+
+# Format things as percentage points
+label_pp <- label_number(
+  accuracy = 1, scale = 100,
+  suffix = " pp.", style_negative = "minus"
+)
+
+label_pp_tiny <- label_number(
+  accuracy = 0.01, scale = 100,
+  suffix = " pp.", style_negative = "minus"
+)
+
+# load targets objects
+tar_load(model_parameters)
+tar_load(posterior_neurosurgery_minimal)
+tar_load(posterior_neurosurgery_canonical)
+tar_load(posterior_evd_minimal)
+tar_load(posterior_evd_canonical)
+tar_load(posterior_trach_minimal)
+tar_load(posterior_trach_canonical)
+tar_load(posterior_vent_minimal)
+tar_load(posterior_vent_canonical)
+tar_load(posterior_comfort_care_minimal)
+tar_load(posterior_comfort_care_canonical)
+tar_load(posterior_early_wlst_minimal)
+tar_load(posterior_early_wlst_canonical)
+tar_load(posterior_dnr_minimal)
+tar_load(posterior_dnr_canonical)
+
+# posterior functions
+
+posterior_printing <- function(x, y, z) {
+  p1 <- model_parameters$priors[x]
+
+  p2 <- y
+
+  p3 <- predictions(y, by = "ich_laterality") |>
+    as_tibble()
+
+  p35 <- avg_comparisons(y, variables = "ich_laterality")
+
+  p4 <- avg_comparisons(y, variables = "ich_laterality") |>
+    posterior_draws() |>
+    ggplot(aes(x = draw)) +
+    stat_halfeye(
+      .width = c(0.8, 0.95), point_interval = "median_hdi",
+      fill = "#bc3032"
+    ) +
+    scale_x_continuous(labels = label_pp) +
+    labs(
+      title = "Posterior Prediction",
+      x = paste("Effect of hemispheric laterality\n on the probability of", {{ z }}),
+      y = NULL, caption = "80% and 95% credible intervals shown in black"
+    )
+
+  p5 <- y |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    ggplot(aes(ich_right_or)) +
+    stat_halfeye(aes(fill_ramp = stat(x > 1), fill = "bc3032")) +
+    theme(legend.position = "none")
+
+
+  p6 <- y |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    summarize(
+      or_1 = sum(ich_right_or > 1) / n(),
+      or_1.1 = sum(ich_right_or > 1.1) / n(),
+      or_1.2 = sum(ich_right_or > 1.2) / n()
+    )
+
+  p5 <- pp_check(p2, ndraws = 500)
+
+  return(list(
+    priors = p1,
+    model = p2,
+    fit = p5,
+    predictions = p3,
+    comparison = p35,
+    plot = p4,
+    plot2 = p5,
+    probabilities = p6
+  ))
+}
+
+
+```
+
+## Posterior Predictions
+
+### Neurosurgical Intervention
+
+#### Minimal Model
+
+```{r}
+posterior_printing("neurosurgery_minimal", posterior_neurosurgery_minimal, "receiving neurosurgical intervention")
+
+
+
+```
+
+
+#### Canonical Model
+  
+```{r}
+
+posterior_printing("neurosurgery_canonical", posterior_neurosurgery_canonical, "receiving neurosurgical intervention")
+
+```
+
+### EVD
+
+#### Minimal Model
+
+```{r}
+
+posterior_printing("evd_minimal", posterior_evd_minimal, "receiving an EVD")
+
+```
+
+#### Canonical Model
+
+```{r}
+
+posterior_printing("evd_canonical", posterior_evd_canonical, "receiving an EVD")
+
+
+```
+
+### Tracheostomy
+
+#### Minimal Model
+
+```{r}
+
+posterior_printing("trach_minimal", posterior_trach_minimal, "receiving an tracheostomy")
+
+```
+
+#### Canonical Model
+
+```{r}
+
+posterior_printing("trach_canonical", posterior_trach_canonical, "receiving a tracheostomy")
+
+```
+
+### Days of Mechanical Ventilation
+
+#### Minimal Model
+
+```{r}
+
+posterior_printing("vent_minimal", posterior_vent_minimal, "number of days of mechanical ventilation")
+
+```
+
+#### Canonical Model
+
+```{r}
+
+posterior_printing("vent_canonical", posterior_vent_canonical, "number of days of mechanical ventilation")
+
+```
+
+### Comfort Care
+
+#### Minimal Model
+
+```{r}
+
+posterior_printing("comfort_care_minimal", posterior_comfort_care_minimal, "comfort care")
+
+```
+
+#### Canonical Model
+
+```{r}
+posterior_printing("comfort_care_canonical", posterior_comfort_care_canonical, "comfort care")
+
+```
+
+### Early WLST
+
+#### Minimal Model
+
+```{r}
+posterior_printing("early_wlst_minimal", posterior_early_wlst_minimal, "early WLST")
+
+```
+
+#### Canonical Model
+
+```{r}
+posterior_printing("early_wlst_canonical", posterior_early_wlst_canonical, "early WLST")
+
+```
+
+### DNR
+
+#### Minimal Model
+
+```{r}
+posterior_printing("dnr_minimal", posterior_dnr_minimal, "DNR")
+
+```
+
+#### Canonical Model
+
+```{r}
+posterior_printing("dnr_canonical", posterior_dnr_canonical, "DNR")
+
+```
