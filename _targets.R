@@ -39,6 +39,8 @@ tar_plan(
   selected_data = select_variables(imported_data),
   ich_all = filter_variables(selected_data),
   ich_aggressive = ich_all |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels(),
+  erich = ich_all |> filter(study == "ERICH") |> droplevels(),
+  atach = ich_all |> filter(study == "ATACH-2") |> droplevels(),
 
   ## Exploratory data analysis ----
   table_1_aggressive = table_1_function(ich_aggressive),
@@ -49,7 +51,7 @@ tar_plan(
   dag_aggressive = aggressive_dag_function(x),
   dag_outcomes = outcomes_dag_function(x),
 
-  ## Priors ----
+  ## Prior Models: Aggressive Care ----
   settings = model_setup(),
   m_prior_neurosurgery_minimal = f_prior_neurosurgery_minimal(ich_aggressive),
   m_prior_neurosurgery_canonical = f_prior_neurosurgery_canonical(ich_aggressive),
@@ -81,6 +83,38 @@ tar_plan(
   m_posterior_early_comfort_canonical = f_posterior_early_comfort_canonical(ich_aggressive),
   m_posterior_dnr_minimal = f_posterior_dnr_minimal(ich_aggressive),
   m_posterior_dnr_canonical = f_posterior_dnr_canonical(ich_aggressive),
+
+  ### Subgroups with ERICH ----
+  m_posterior_neurosurgery_minimal_erich = f_posterior_neurosurgery_minimal(erich),
+  m_posterior_neurosurgery_canonical_erich = f_posterior_neurosurgery_canonical(erich),
+  m_posterior_evd_minimal_erich = f_posterior_evd_minimal(erich),
+  m_posterior_evd_canonical_erich = f_posterior_evd_canonical(erich),
+  m_posterior_trach_minimal_erich = f_posterior_trach_minimal(erich),
+  m_posterior_trach_canonical_erich = f_posterior_trach_canonical(erich),
+  m_posterior_vent_minimal_erich = f_posterior_vent_minimal(erich),
+  m_posterior_vent_canonical_erich = f_posterior_vent_canonical(erich),
+  m_posterior_comfort_minimal_erich = f_posterior_comfort_minimal(erich),
+  m_posterior_comfort_canonical_erich = f_posterior_comfort_canonical(erich),
+  m_posterior_early_comfort_minimal_erich = f_posterior_early_comfort_minimal(erich),
+  m_posterior_early_comfort_canonical_erich = f_posterior_early_comfort_canonical(erich),
+  m_posterior_dnr_minimal_erich = f_posterior_dnr_minimal(erich),
+  m_posterior_dnr_canonical_erich = f_posterior_dnr_canonical(erich),
+
+  ### Subgroups with ATACH ----
+  m_posterior_neurosurgery_minimal_atach = f_posterior_neurosurgery_minimal(atach),
+  m_posterior_neurosurgery_canonical_atach = f_posterior_neurosurgery_canonical(atach),
+  m_posterior_evd_minimal_atach = f_posterior_evd_minimal(atach),
+  m_posterior_evd_canonical_atach = f_posterior_evd_canonical(atach),
+  m_posterior_trach_minimal_atach = f_posterior_trach_minimal(atach),
+  m_posterior_trach_canonical_atach = f_posterior_trach_canonical(atach),
+  m_posterior_vent_minimal_atach = f_posterior_vent_minimal(atach),
+  m_posterior_vent_canonical_atach = f_posterior_vent_canonical(atach),
+  m_posterior_comfort_minimal_atach = f_posterior_comfort_minimal(atach),
+  m_posterior_comfort_canonical_atach = f_posterior_comfort_canonical(atach),
+  m_posterior_early_comfort_minimal_atach = f_posterior_early_comfort_minimal(atach),
+  m_posterior_early_comfort_canonical_atach = f_posterior_early_comfort_canonical(atach),
+  m_posterior_dnr_minimal_atach = f_posterior_dnr_minimal(atach),
+  m_posterior_dnr_canonical_atach = f_posterior_dnr_canonical(atach),
 
   ## Diagnostics ----
   neurosugery_minimal_diagnostics = posterior_diagnostics(m_posterior_neurosurgery_minimal),
