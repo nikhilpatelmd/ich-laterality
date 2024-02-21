@@ -52,7 +52,4 @@ filter_variables <- function(x) {
     drop_na(ich_laterality)
 }
 
-non_surgery_trial_function <- function(x) {
-  x |>
-    filter(study == "ERICH" | study == "ATACH-2")
-}
+ 
