@@ -23,7 +23,8 @@ source("R/aggressive_care_prior_models.R")
 source("R/aggressive_care_posterior_models.R")
 source("R/diagnostics.R")
 source("R/results_visualization.R")
-
+source("R/outcomes_prior_models.R")
+source("R/outcomes_posterior_models.R")
 
 # Pipeline ----
 tar_plan(
@@ -51,7 +52,9 @@ tar_plan(
   dag_aggressive = aggressive_dag_function(x),
   dag_outcomes = outcomes_dag_function(x),
 
-  ## Prior Models: Aggressive Care ----
+  ## Aggressive Care ----
+
+  ### Priors ----
   settings = model_setup(),
   m_prior_neurosurgery_minimal = f_prior_neurosurgery_minimal(ich_aggressive),
   m_prior_neurosurgery_canonical = f_prior_neurosurgery_canonical(ich_aggressive),
@@ -68,7 +71,7 @@ tar_plan(
   m_prior_dnr_minimal = f_prior_dnr_minimal(ich_aggressive),
   m_prior_dnr_canonical = f_prior_dnr_canonical(ich_aggressive),
 
-  ## Posterior Simulation ----
+  ### Posterior Simulation ----
   m_posterior_neurosurgery_minimal = f_posterior_neurosurgery_minimal(ich_aggressive),
   m_posterior_neurosurgery_canonical = f_posterior_neurosurgery_canonical(ich_aggressive),
   m_posterior_evd_minimal = f_posterior_evd_minimal(ich_aggressive),
@@ -84,15 +87,13 @@ tar_plan(
   m_posterior_dnr_minimal = f_posterior_dnr_minimal(ich_aggressive),
   m_posterior_dnr_canonical = f_posterior_dnr_canonical(ich_aggressive),
 
-  ### Subgroups with ERICH ----
+  #### Subgroups with ERICH ----
   m_posterior_neurosurgery_minimal_erich = f_posterior_neurosurgery_minimal(erich),
   m_posterior_neurosurgery_canonical_erich = f_posterior_neurosurgery_canonical(erich),
   m_posterior_evd_minimal_erich = f_posterior_evd_minimal(erich),
   m_posterior_evd_canonical_erich = f_posterior_evd_canonical(erich),
   m_posterior_trach_minimal_erich = f_posterior_trach_minimal(erich),
   m_posterior_trach_canonical_erich = f_posterior_trach_canonical(erich),
-  m_posterior_vent_minimal_erich = f_posterior_vent_minimal(erich),
-  m_posterior_vent_canonical_erich = f_posterior_vent_canonical(erich),
   m_posterior_comfort_minimal_erich = f_posterior_comfort_minimal(erich),
   m_posterior_comfort_canonical_erich = f_posterior_comfort_canonical(erich),
   m_posterior_early_comfort_minimal_erich = f_posterior_early_comfort_minimal(erich),
@@ -100,15 +101,13 @@ tar_plan(
   m_posterior_dnr_minimal_erich = f_posterior_dnr_minimal(erich),
   m_posterior_dnr_canonical_erich = f_posterior_dnr_canonical(erich),
 
-  ### Subgroups with ATACH ----
+  #### Subgroups with ATACH ----
   m_posterior_neurosurgery_minimal_atach = f_posterior_neurosurgery_minimal(atach),
   m_posterior_neurosurgery_canonical_atach = f_posterior_neurosurgery_canonical(atach),
   m_posterior_evd_minimal_atach = f_posterior_evd_minimal(atach),
   m_posterior_evd_canonical_atach = f_posterior_evd_canonical(atach),
   m_posterior_trach_minimal_atach = f_posterior_trach_minimal(atach),
   m_posterior_trach_canonical_atach = f_posterior_trach_canonical(atach),
-  m_posterior_vent_minimal_atach = f_posterior_vent_minimal(atach),
-  m_posterior_vent_canonical_atach = f_posterior_vent_canonical(atach),
   m_posterior_comfort_minimal_atach = f_posterior_comfort_minimal(atach),
   m_posterior_comfort_canonical_atach = f_posterior_comfort_canonical(atach),
   m_posterior_early_comfort_minimal_atach = f_posterior_early_comfort_minimal(atach),
@@ -116,7 +115,7 @@ tar_plan(
   m_posterior_dnr_minimal_atach = f_posterior_dnr_minimal(atach),
   m_posterior_dnr_canonical_atach = f_posterior_dnr_canonical(atach),
 
-  ## Diagnostics ----
+  ### Diagnostics ----
   neurosugery_minimal_diagnostics = posterior_diagnostics(m_posterior_neurosurgery_minimal),
   neurosugery_canonical_diagnostics = posterior_diagnostics(m_posterior_neurosurgery_canonical),
   evd_minimal_diagnostics = posterior_diagnostics(m_posterior_evd_minimal),
@@ -132,7 +131,7 @@ tar_plan(
   dnr_minimal_diagnostics = posterior_diagnostics(m_posterior_dnr_minimal),
   dnr_canonical_diagnostics = posterior_diagnostics(m_posterior_dnr_canonical),
 
-  ## Plots ----
+  ### Plots ----
   neurosurgery_minimal_visuals = results_visual(m_posterior_neurosurgery_minimal, "Neurosurgical Intervention"),
   neurosurgery_canonical_visuals = results_visual(m_posterior_neurosurgery_canonical, "Neurosurgical Intervention"),
   evd_minimal_visuals = results_visual(m_posterior_evd_minimal, "External Ventricular Drain"),
@@ -147,6 +146,85 @@ tar_plan(
   early_wlst_canonical_visuals = results_visual(m_posterior_early_comfort_canonical, "Early Comfort Care"),
   dnr_minimal_visuals = results_visual(m_posterior_dnr_minimal, "DNR Order"),
   dnr_canonical_visuals = results_visual(m_posterior_dnr_canonical, "DNR Order"),
+
+  ## Outcomes ----
+
+  ### Priors ----
+  m_prior_mrs_90_minimal = f_prior_mrs_90_minimal(ich_all),
+  m_prior_mrs_90_canonical = f_prior_mrs_90_canonical(ich_all),
+  m_prior_mrs_180_minimal = f_prior_mrs_180_minimal(ich_all),
+  m_prior_mrs_180_canonical = f_prior_mrs_180_canonical(ich_all),
+  m_prior_mrs_365_minimal = f_prior_mrs_365_minimal(ich_all),
+  m_prior_mrs_365_canonical = f_prior_mrs_365_canonical(ich_all),
+  m_prior_euro_mobility_90_minimal = f_prior_euro_mobility_90_minimal(ich_all),
+  m_prior_euro_mobility_90_canonical = f_prior_euro_mobility_90_canonical(ich_all),
+  m_prior_euro_mobility_180_minimal = f_prior_euro_mobility_180_minimal(ich_all),
+  m_prior_euro_mobility_180_canonical = f_prior_euro_mobility_180_canonical(ich_all),
+  m_prior_euro_mobility_365_minimal = f_prior_euro_mobility_365_minimal(ich_all),
+  m_prior_euro_mobility_365_canonical = f_prior_euro_mobility_365_canonical(ich_all),
+  m_prior_euro_selfcare_90_minimal = f_prior_euro_selfcare_90_minimal(ich_all),
+  m_prior_euro_selfcare_90_canonical = f_prior_euro_selfcare_90_canonical(ich_all),
+  m_prior_euro_selfcare_180_minimal = f_prior_euro_selfcare_180_minimal(ich_all),
+  m_prior_euro_selfcare_180_canonical = f_prior_euro_selfcare_180_canonical(ich_all),
+  m_prior_euro_selfcare_365_minimal = f_prior_euro_selfcare_365_minimal(ich_all),
+  m_prior_euro_selfcare_365_canonical = f_prior_euro_selfcare_365_canonical(ich_all),
+  m_prior_euro_usual_90_minimal = f_prior_euro_usual_90_minimal(ich_all),
+  m_prior_euro_usual_90_canonical = f_prior_euro_usual_90_canonical(ich_all),
+  m_prior_euro_usual_180_minimal = f_prior_euro_usual_180_minimal(ich_all),
+  m_prior_euro_usual_180_canonical = f_prior_euro_usual_180_canonical(ich_all),
+  m_prior_euro_usual_365_minimal = f_prior_euro_usual_365_minimal(ich_all),
+  m_prior_euro_usual_365_canonical = f_prior_euro_usual_365_canonical(ich_all),
+  m_prior_euro_pain_90_minimal = f_prior_euro_pain_90_minimal(ich_all),
+  m_prior_euro_pain_90_canonical = f_prior_euro_pain_90_canonical(ich_all),
+  m_prior_euro_pain_180_minimal = f_prior_euro_pain_180_minimal(ich_all),
+  m_prior_euro_pain_180_canonical = f_prior_euro_pain_180_canonical(ich_all),
+  m_prior_euro_pain_365_minimal = f_prior_euro_pain_365_minimal(ich_all),
+  m_prior_euro_pain_365_canonical = f_prior_euro_pain_365_canonical(ich_all),
+  m_prior_euro_anxiety_90_minimal = f_prior_euro_anxiety_90_minimal(ich_all),
+  m_prior_euro_anxiety_90_canonical = f_prior_euro_anxiety_90_canonical(ich_all),
+  m_prior_euro_anxiety_180_minimal = f_prior_euro_anxiety_180_minimal(ich_all),
+  m_prior_euro_anxiety_180_canonical = f_prior_euro_anxiety_180_canonical(ich_all),
+  m_prior_euro_anxiety_365_minimal = f_prior_euro_anxiety_365_minimal(ich_all),
+  m_prior_euro_anxiety_365_canonical = f_prior_euro_anxiety_365_canonical(ich_all),
+
+
+  ### Posterior Simulation ----
+  m_posterior_mrs_90_minimal = f_posterior_mrs_90_minimal(ich_all),
+  m_posterior_mrs_90_canonical = f_posterior_mrs_90_canonical(ich_all),
+  m_posterior_mrs_180_minimal = f_posterior_mrs_180_minimal(ich_all),
+  m_posterior_mrs_180_canonical = f_posterior_mrs_180_canonical(ich_all),
+  m_posterior_mrs_365_minimal = f_posterior_mrs_365_minimal(ich_all),
+  m_posterior_mrs_365_canonical = f_posterior_mrs_365_canonical(ich_all),
+  m_posterior_euro_mobility_90_minimal = f_posterior_euro_mobility_90_minimal(ich_all),
+  m_posterior_euro_mobility_90_canonical = f_posterior_euro_mobility_90_canonical(ich_all),
+  m_posterior_euro_mobility_180_minimal = f_posterior_euro_mobility_180_minimal(ich_all),
+  m_posterior_euro_mobility_180_canonical = f_posterior_euro_mobility_180_canonical(ich_all),
+  m_posterior_euro_mobility_365_minimal = f_posterior_euro_mobility_365_minimal(ich_all),
+  m_posterior_euro_mobility_365_canonical = f_posterior_euro_mobility_365_canonical(ich_all),
+  m_posterior_euro_selfcare_90_minimal = f_posterior_euro_selfcare_90_minimal(ich_all),
+  m_posterior_euro_selfcare_90_canonical = f_posterior_euro_selfcare_90_canonical(ich_all),
+  m_posterior_euro_selfcare_180_minimal = f_posterior_euro_selfcare_180_minimal(ich_all),
+  m_posterior_euro_selfcare_180_canonical = f_posterior_euro_selfcare_180_canonical(ich_all),
+  m_posterior_euro_selfcare_365_minimal = f_posterior_euro_selfcare_365_minimal(ich_all),
+  m_posterior_euro_selfcare_365_canonical = f_posterior_euro_selfcare_365_canonical(ich_all),
+  m_posterior_euro_usual_90_minimal = f_posterior_euro_usual_90_minimal(ich_all),
+  m_posterior_euro_usual_90_canonical = f_posterior_euro_usual_90_canonical(ich_all),
+  m_posterior_euro_usual_180_minimal = f_posterior_euro_usual_180_minimal(ich_all),
+  m_posterior_euro_usual_180_canonical = f_posterior_euro_usual_180_canonical(ich_all),
+  m_posterior_euro_usual_365_minimal = f_posterior_euro_usual_365_minimal(ich_all),
+  m_posterior_euro_usual_365_canonical = f_posterior_euro_usual_365_canonical(ich_all),
+  m_posterior_euro_pain_90_minimal = f_posterior_euro_pain_90_minimal(ich_all),
+  m_posterior_euro_pain_90_canonical = f_posterior_euro_pain_90_canonical(ich_all),
+  m_posterior_euro_pain_180_minimal = f_posterior_euro_pain_180_minimal(ich_all),
+  m_posterior_euro_pain_180_canonical = f_posterior_euro_pain_180_canonical(ich_all),
+  m_posterior_euro_pain_365_minimal = f_posterior_euro_pain_365_minimal(ich_all),
+  m_posterior_euro_pain_365_canonical = f_posterior_euro_pain_365_canonical(ich_all),
+  m_posterior_euro_anxiety_90_minimal = f_posterior_euro_anxiety_90_minimal(ich_all),
+  m_posterior_euro_anxiety_90_canonical = f_posterior_euro_anxiety_90_canonical(ich_all),
+  m_posterior_euro_anxiety_180_minimal = f_posterior_euro_anxiety_180_minimal(ich_all),
+  m_posterior_euro_anxiety_180_canonical = f_posterior_euro_anxiety_180_canonical(ich_all),
+  m_posterior_euro_anxiety_365_minimal = f_posterior_euro_anxiety_365_minimal(ich_all),
+  m_posterior_euro_anxiety_365_canonical = f_posterior_euro_anxiety_365_canonical(ich_all),
 
   ## Reports ----
   # tar_quarto(

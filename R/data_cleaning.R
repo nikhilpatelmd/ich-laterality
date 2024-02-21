@@ -42,6 +42,29 @@ select_variables <- function(x) {
       mrs_90_02,
       mrs_90_03,
       mrs_90_04,
+      mrs_180,
+      mrs_365,
+      euro_vas_90,
+      euro_vas_180,
+      euro_vas_365,
+      barthel_total_90,
+      barthel_total_180,
+      barthel_total_365,
+      euro_mobility_90,
+      euro_mobility_180,
+      euro_mobility_365,
+      euro_selfcare_90,
+      euro_selfcare_180,
+      euro_selfcare_365,
+      euro_usual_90,
+      euro_usual_180,
+      euro_usual_365,
+      euro_pain_90,
+      euro_pain_180,
+      euro_pain_365,
+      euro_anxiety_90,
+      euro_anxiety_180,
+      euro_anxiety_365,
       hospital_los
     )
 }
@@ -49,7 +72,6 @@ select_variables <- function(x) {
 filter_variables <- function(x) {
   x |>
     filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar") |>
-    drop_na(ich_laterality)
+    drop_na(ich_laterality) |>
+    droplevels()
 }
-
- 
