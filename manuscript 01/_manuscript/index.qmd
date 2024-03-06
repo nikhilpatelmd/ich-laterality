@@ -1,0 +1,85 @@
+---
+title: Does Hemispheric Lateralization Influence Aggressive Treatment in Patients with Intracerebral Hemorrhage?
+subtitle: An Analysis of ATACH-2 and ERICH
+authors:
+  - name: Nikhil Patel
+    orcid: 0000-0002-3193-8590
+    affiliation: Department of Neurology, Wake Forest University School of Medicine
+    roles: data analysis, writing
+    corresponding: true
+  - name: Matt Jaffa
+    affiliation: Department of Neurology, University of Connecticut School of Medicine
+  - name: Rahul Karamchandani
+    affiliation: Department of Neurology, Wake Forest University School of Medicine
+date: last-modified
+abstract: |
+  Hemispheric laterality blah blah blah
+bibliography: references.bib
+csl: american-heart-association.csl
+mainfont: Figtree
+
+---
+
+```{r}
+library(targets)
+library(dplyr)
+library(targets)
+library(withr)
+library(here)
+
+with_dir(here(), tar_load(ich_aggressive))
+
+sample_size <- count(ich_aggressive)
+
+```
+
+## Introduction
+The clinical presentation of patients with stroke can vary based on the hemisphere affected, in particular with language, spatial orientation, and emotional processing. Previous research involving patients with ischemic stroke provide evidence that those with right hemispheric injury present later to the hospital and may not be treated as frequently with thrombolytic therapy.[@legge_neglecting_2006; @di_legge_impact_2005-1] On the other hand, there is a hesitation among some practitioners to offer decompressive craniectomy in patients with dominant-hemispheric infarcts. [@lin_decompressive_2021-1]
+
+It is unclear how previous research in the ischemic stroke population translates to patients experiencing intracerebral hemorrhage. Not much has been investigated.
+
+We aimed to evaluate the effect of hemispheric lateralization on the probability of receiving aggressive care in patients with ICH.
+
+## Methods
+
+### Study Design and Participants
+
+We conducted a cohort study using data from 2 prospective studies: the Antihypertensive Treatment of Acute Cerebral Hemorrhage II (ATACH-2) trial [@qureshi_intensive_2016] and the Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH)[@woo_ethnicracial_2013] study. ATACH-2 was a large, multicenter, international, open-label, blinded-endpoint randomized controlled trial enrolling 1000 patients with ICH while ERICH was a large, multicenter, prospective observational study enrolling patients in the United States admitted with ICH. Study protocols and results of both studies have been previously published and are available elsewhere.
+
+We included all patients enrolled in these two studies with supratentorial location of ICH. We excluded patients with cerebellar or brainstem ICH as well as any patient with primary intraventricular hemorrhage (IVH).
+
+The study was approved by the institutional review board of the Wake Forest School of Medicine.
+
+#### Data Availability Statement
+
+The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, MD, MS, NCT01202864) data and analyses presented in this manuscript are based on the research files downloaded from the Archived Clinical Research web site of the National Institute of Neurologic Disease and Stroke (NINDS). The datasets can be obtained after approval of a written proposal as outlined on the NINDS website. 
+
+The analysis code is publicly available as outlined by the NINDS Data Request Agreement at [https://github.com/nikhilpatelmd/ich-laterality](https://github.com/nikhilpatelmd/ich-laterality).
+
+### Exposures and Outcomes
+
+Our exposure was hemispheric laterality (left versus right). Our primary outcome was neurosurgical intervention, defined as receiving a hematoma evacuation, decompressive craniectomy, or other craniotomy. 
+
+To explore differences in other aspects of aggressive care, we defined several secondary outcomes: receipt of external ventricular drain (EVD), tracheostomy, percutaneous endoscopic gastrostomy (PEG) tube, do-not-resuscitate (DNR) order at any point in the hospitalization, withdrawal of life-sustaining therapy (WLST) at any point in the hospitalization, and early WLST (< 72 from symptom onset).
+
+### Statistical Analysis
+
+#### Overall Analysis Plan
+
+## Results
+
+A total of `r sample_size` patients were included in the analysis.
+
+```{r}
+
+library(gtsummary)
+
+theme_gtsummary_compact(set_theme = TRUE, font_size = 14)
+with_dir(here(), tar_read(table_1_aggressive))
+
+
+```
+
+## Acknowledgments {.appendix}
+
+## References {.appendix}

@@ -1,0 +1,15 @@
+---
+title: "Differences in Treatment Driven by Hemispheric Laterality"
+author: "Nikhil Patel, MD"
+---
+
+This is the actual manuscript
+
+
+```{r}
+
+library(tidyverse)
+
+```
+
+This is more [@noauthor_simvastatin_2023]

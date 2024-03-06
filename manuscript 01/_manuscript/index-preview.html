@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.5.24">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+    <meta name="dcterms.date" content="2024-03-06">
+
+    <title>Does Hemispheric Lateralization Influence Aggressive Treatment in Patients with Intracerebral Hemorrhage?</title>
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      /* CSS for citations */
+      div.csl-bib-body { }
+      div.csl-entry {
+        clear: both;
+        margin-bottom: 0em;
+      }
+      .hanging-indent div.csl-entry {
+        margin-left:2em;
+        text-indent:-2em;
+      }
+      div.csl-left-margin {
+        min-width:2em;
+        float:left;
+      }
+      div.csl-right-inline {
+        margin-left:2em;
+        padding-left:1em;
+      }
+      div.csl-indent {
+        margin-left: 2em;
+      }    </style>
+
+    <style>
+      body.hypothesis-enabled #quarto-embed-header {
+        padding-right: 36px;
+      }
+
+      #quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+
+      #quarto-embed-header h6 {
+        font-size: 1.1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 400;
+      }
+
+      #quarto-embed-header a.quarto-back-link,
+      #quarto-embed-header a.quarto-download-embed {
+        font-size: 0.8em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
+
+      .headroom {
+          will-change: transform;
+          transition: transform 200ms linear;
+      }
+
+      .headroom--pinned {
+          transform: translateY(0%);
+      }
+
+      .headroom--unpinned {
+          transform: translateY(-100%);
+      }      
+    </style>
+
+    <script>
+    window.document.addEventListener("DOMContentLoaded", function () {
+
+      var header = window.document.querySelector("#quarto-embed-header");
+      const titleBannerEl = window.document.querySelector("body > #title-block-header");
+      if (titleBannerEl) {
+        titleBannerEl.style.paddingTop = header.clientHeight + "px";
+      }
+      const contentEl = window.document.getElementById('quarto-content');
+      for (const child of contentEl.children) {
+        child.style.paddingTop = header.clientHeight + "px";
+        child.style.marginTop = "1em";
+      }
+
+      // Use the article root if the `back` call doesn't work. This isn't perfect
+      // but should typically work
+      window.quartoBackToArticle = () => {
+        var currentUrl = window.location.href;
+        window.history.back();
+        setTimeout(() => {
+            // if location was not changed in 100 ms, then there is no history back
+            if(currentUrl === window.location.href){              
+                // redirect to site root
+                window.location.href = "index.html";
+            }
+        }, 100);
+      }
+
+      const headroom = new window.Headroom(header, {
+        tolerance: 5,
+        onPin: function () {
+        },
+        onUnpin: function () {
+        },
+      });
+      headroom.init();
+    });
+    </script>
+
+    
+<script src="site_libs/manuscript-notebook/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+     <script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>  
+      <meta name="citation_title" content="Does Hemispheric Lateralization Influence Aggressive Treatment in Patients with Intracerebral Hemorrhage?">
+<meta name="citation_abstract" content="Hemispheric laterality blah blah blah
+">
+<meta name="citation_author" content="Nikhil Patel">
+<meta name="citation_author" content="Matt Jaffa">
+<meta name="citation_author" content="Rahul Karamchandani">
+<meta name="citation_publication_date" content="2024-03-06">
+<meta name="citation_cover_date" content="2024-03-06">
+<meta name="citation_year" content="2024">
+<meta name="citation_online_date" content="2024-03-06">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Testing Graphical Causal Models Using the R Package “dagitty”;,citation_abstract=Causal diagrams such as directed acyclic graphs (DAGs) are used in several scientific fields to help design and analyze studies that aim to infer causal effects from observational data; for example, DAGs can help identify suitable strategies to reduce confounding bias. However, DAGs can be difficult to design, and the validity of any DAG-derived strategy hinges on the validity of the postulated DAG itself. Researchers should therefore check whether the assumptions encoded in the DAG are consistent with the data before proceeding with the analysis. Here, we explain how the R package “dagitty”, based on the web tool dagitty.net, can be used to test the statistical implications of the assumptions encoded in a given DAG. We hope that this will help researchers discover model specification errors, avoid erroneous conclusions, and build better models. © 2021 The Authors. This article was corrected on 19 July 2022. See the end of the full text for details. Basic Protocol 1: Constructing and importing DAG models from the dagitty web interface Support Protocol 1: Installing R, RStudio, and the dagitty package Basic Protocol 2: Testing DAGs against categorical data Basic Protocol 3: Testing DAGs against continuous data Support Protocol 2: Testing DAGs against continuous data with non-linearities Basic Protocol 4: Testing DAGs against a combination of categorical and continuous data;,citation_author=Ankur Ankan;,citation_author=Inge M. N. Wortel;,citation_author=Johannes Textor;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_issue=2;,citation_doi=10.1002/cpz1.45;,citation_issn=2691-1299;,citation_volume=1;,citation_language=en-US;,citation_journal_title=Current Protocols;">
+<meta name="citation_reference" content="citation_title=Functional Long-Term Outcome after Left- versus Right-Sided Intracerebral Hemorrhage;,citation_abstract=&amp;amp;amp;lt;b&amp;gt;&amp;lt;i&amp;gt;Background and Purpose:</i></b> Hemispheric location might influence outcome after intracerebral hemorrhage (ICH). INTERACT suggested higher short-term mortality in right hemispheric ICH, yet statistical imbalances were not addressed. This study aimed at determining the differences in long-term functional outcome in patients with right- vs. left-sided ICH with a priori-defined sub-analysis of lobar vs. deep bleedings. <b><i>Methods:</i></b> Data from a prospective hospital registry were analyzed including patients with ICH admitted between January 2006 and August 2014. Data were retrieved from institutional databases. Outcome was assessed using the modified Rankin Scale (mRS) score. Outcome measures (long-term mortality and functional outcome at 12 months) were correlated with ICH location and hemisphere, and the imbalances of baseline characteristics were addressed by propensity score matching. <b><i>Results:</i></b> A total of 831 patients with supratentorial ICH (429 left and 402 right) were analyzed. Regarding clinical baseline characteristics in the unadjusted overall cohort, there were differences in disfavor of right-sided ICH (antiplatelets: 25.2% in left ICH vs. 34.3% in right ICH; <i>p</i> < 0.01; previous ischemic stroke: 14.7% in left ICH vs. 19.7% in right ICH; <i>p</i> = 0.057; and presence/extent of intraventricular hemorrhage: 45.0% in left ICH vs. 53.0% in right ICH; <i>p</i> = 0.021; Graeb-score: 0 [0-4] in left ICH vs. 1 [0-5] in right ICH; <i>p</i> = 0.017). While there were no differences in mortality and in the proportion of patients with favorable vs. unfavorable outcome (mRS 0-3: 142/375 [37.9%] in left ICH vs. 117/362 [32.3%] in right ICH; <i>p</i> = 0.115), patients with left-sided ICH showed excellent outcome more frequently (mRS 0-1: 64/375 [17.1%] in left ICH vs. 43/362 [11.9%] in right ICH; <i>p</i> = 0.046) in the unadjusted analysis. After adjusting for confounding variables, a well-balanced group of patients (<i>n</i> = 360/hemisphere) was compared showing no differences in long-term functional outcome (mRS 0-3: 36.4% in left ICH vs. 33.9% in right ICH; <i>p</i> = 0.51). Sub-analyses of patients with deep vs. lobar ICH revealed also no differences in outcome measures (mRS 0-3: 53/151 [35.1%] in left deep ICH vs. 53/165 [32.1%] in right deep ICH; <i>p</i> = 0.58). <b><i>Conclusion:</i></b> Previously described differences in clinical end points among patients with left- vs. right-hemispheric ICH may be driven by different baseline characteristics rather than by functional deficits emerging from different hemispheric functions affected. After statistical corrections for confounding variables, there was no impact of hemispheric location on functional outcome after ICH.;,citation_author=Vanessa D. Beuscher;,citation_author=Joji B. Kuramatsu;,citation_author=Stefan T. Gerner;,citation_author=Julia Köhn;,citation_author=Hannes Lücking;,citation_author=Stephan P. Kloska;,citation_author=Hagen B. Huttner;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_issue=3-4;,citation_doi=10.1159/000454775;,citation_issn=1015-9770, 1421-9786;,citation_pmid=28049189;,citation_volume=43;,citation_language=en-US;,citation_journal_title=Cerebrovascular Diseases;,citation_publisher=Karger Publishers;">
+<meta name="citation_reference" content="citation_title=Comparative Effectiveness of Fludrocortisone and Hydrocortisone vs Hydrocortisone Alone Among Patients With Septic Shock;,citation_abstract=OBJECTIVE To compare the effectiveness of adding fludrocortisone to hydrocortisone vs hydrocortisone alone among patients with septic shock using target trial emulation. DESIGN, SETTING, AND PARTICIPANTS This retrospective cohort study from 2016 to 2020 used the enhanced claims-based Premier Healthcare Database, which included approximately 25% of US hospitalizations. Participants were adult patients hospitalized with septic shock and receiving norepinephrine who began hydrocortisone treatment. Data analysis was performed from May 2022 to December 2022. EXPOSURE Addition of fludrocortisone on the same calendar day that hydrocortisone treatment was initiated vs use of hydrocortisone alone. MAIN OUTCOME AND MEASURES Composite of hospital death or discharge to hospice. Adjusted risk differences were calculated using doubly robust targeted maximum likelihood estimation. RESULTS Analyses included 88 275 patients, 2280 who began treatment with hydrocortisone-fludrocortisone (median [IQR] age, 64 [54-73] years; 1041 female; 1239 male) and 85 995 (median [IQR] age, 67 [57-76] years; 42 136 female; 43 859 male) who began treatment with hydrocortisone alone. The primary composite outcome of death in hospital or discharge to hospice occurred among 1076 (47.2%) patients treated with hydrocortisonefludrocortisone vs 43 669 (50.8%) treated with hydrocortisone alone (adjusted absolute risk difference, -3.7%; 95% CI, -4.2% to -3.1%; P &amp;amp;amp;lt; .001). CONCLUSIONS AND RELEVANCE In this comparative effectiveness cohort study among adult patients with septic shock who began hydrocortisone treatment, the addition of fludrocortisone was superior to hydrocortisone alone.;,citation_author=Nicholas A. Bosch;,citation_author=Bijan Teja;,citation_author=Anica C. Law;,citation_author=Brandon Pang;,citation_author=S. Reza Jafarzadeh;,citation_author=Allan J. Walkey;,citation_publication_date=2023-05;,citation_cover_date=2023-05;,citation_year=2023;,citation_issue=5;,citation_doi=10.1001/jamainternmed.2023.0258;,citation_issn=2168-6106;,citation_volume=183;,citation_language=en-US;,citation_journal_title=JAMA Internal Medicine;">
+<meta name="citation_reference" content="citation_title=Inhaled nitric oxide versus epoprostenol during acute respiratory failure: An observational target trial emulation;,citation_abstract=Background Inhaled vasodilators nitric oxide and epoprostenol may be initiated to improve oxygenation in mechanically ventilated patients with severe acute respiratory failure; however, practice patterns and head-to-head comparisons of effectiveness are unclear. Research Question What are the practice patterns and comparative effectiveness for inhaled nitric oxide and epoprostenol in severe acute respiratory failure? Study Design and Methods Using a large United States database (Premier Healthcare Database), we identified adult patients with acute respiratory failure or acute respiratory distress syndrome who were mechanically ventilated and started on inhaled nitric oxide, epoprostenol or both. Leveraging large hospital variation in the choice of initial inhaled vasodilator, we compared the effectiveness of inhaled nitric oxide to epoprostenol by limiting analysis to patients admitted to hospitals that exclusively used either inhaled nitric oxide or epoprostenol. The primary outcome of successful extubation was modeled using multivariable Fine-Grey competing risk (death or hospice discharge) time to event models. Results Among 11,200 patients (303 hospitals), 6,366 (56.8%) received inhaled nitric oxide first, 4,720 (42.1%) received inhaled epoprostenol first, and 114 (1.0%) received both therapies on the same day. 104 hospitals (34.3%; 1,666 patients) exclusively used nitric oxide and 118 hospitals (38.9%; 1,812 patients) exclusively used epoprostenol. There were no differences in the likelihood of successful extubation between patients admitted to nitric oxide-only hospitals versus epoprostenol-only hospitals (sub-distribution hazard ratio 0.97, 95% CI 0.80-1.18). There were also no differences in total hospital costs or death. Results were robust to multiple sensitivity analyses. Interpretation There is large variation in the use of initial inhaled vasodilator for respiratory failure across United hospitals. Comparative effectiveness analyses identified no differences in outcomes based on inhaled vasodilator type.;,citation_author=Nicholas A. Bosch;,citation_author=Anica C. Law;,citation_author=Emily A. Vail;,citation_author=Kari R. Gillmeyer;,citation_author=Hayley B. Gershengorn;,citation_author=Hannah Wunsch;,citation_author=Allan J. Walkey;,citation_publication_date=2022-08;,citation_cover_date=2022-08;,citation_year=2022;,citation_doi=10.1016/j.chest.2022.08.001;,citation_issn=0012-3692;,citation_language=en-US;,citation_journal_title=Chest;">
+<meta name="citation_reference" content="citation_title=Sex differences in quality of life after ischemic stroke;,citation_abstract=Objective: We aimed to compare quality of life (QOL) in women and men after ischemic stroke or TIA, and to determine the incremental impact of demographic, socioeconomic, clinical, and stroke-specific effects on longitudinal QOL. Methods: We assessed QOL in patients with ischemic stroke or TIA at 3 and 12 months postdischarge in the Adherence eValuation After Ischemic stroke–Longitudinal Registry using the European Quality of Life–5 Dimensions (EQ-5D) instrument. We generated multivariable linear regression models to evaluate the association between sex and EQ-5D while sequentially adjusting for sociodemographic, clinical, and stroke-related variables. We also used a proportional odds model to assess sex differences in the change in EQ-5D scores from 3 to 12 months. Correspondence to Dr. Bushnell: cbushnel@wakehealth.edu Results: A total of 1,370 patients were included, 53.7% male, median age 65 years (interquartile range 56–77 years). Women had significantly lower QOL at 3 months (unadjusted EQ-5D 0.81 in women vs 0.84 in men; p , 0.001) and 12 months (0.83 vs men 0.84; p , 0.001) poststroke. After multivariable adjustment for sociodemographic, clinical, and stroke-related factors, women continued to have lower QOL at 3 months (mean difference 20.036; p 5 0.003) and at 12 months (mean difference 20.022; p 5 0.046). Women fared worse in the dimensions of mobility, pain/ discomfort, and anxiety/depression at 3 and 12 months. There were no sex differences in change in EQ-5D score from 3 to 12 months. Conclusion: Women have worse QOL than men up to 12 months after stroke, even after adjusting for important sociodemographic variables, stroke severity, and disability. Neurology 2014;82:922–931;,citation_author=C. D. Bushnell;,citation_author=M. J. Reeves;,citation_author=X. Zhao;,citation_author=W. Pan;,citation_author=J. Prvu-Bettger;,citation_author=L. Zimmer;,citation_author=D. Olson;,citation_author=E. Peterson;,citation_publication_date=2014-03;,citation_cover_date=2014-03;,citation_year=2014;,citation_issue=11;,citation_doi=10.1212/WNL.0000000000000208;,citation_issn=0028-3878, 1526-632X;,citation_volume=82;,citation_language=en-US;,citation_journal_title=Neurology;">
+<meta name="citation_reference" content="citation_title=The impact of lesion side on acute stroke treatment;,citation_abstract=Background: Only a small percentage of patients with acute stroke are treated with recombinant tissue plasminogen activator (rt-PA). Objective: To investigate why patients with right-hemisphere strokes seem at high risk of not receiving rt-PA. Methods: This study includes two phases. Phase 1: the authors compared demographic, clinical, and outcome measures between patients with right- and left-hemisphere strokes in the rt-PA Registry of Southwestern Ontario (RSWO); Phase 2: the authors tested the hypotheses generated in Phase 1 using the Registry of the Canadian Stroke Network (RCSN). A multiple logistic analysis was applied to detect independent predictors of rt-PA administration. Results: Phase 1: of 179 rt-PA-treated patients, 39% had right-hemisphere syndrome. Patients with right-hemisphere strokes had a longer hospital stay (15 vs 9 days; p ϭ 0.03). Phase 2: of 990 stroke patients in the RCSN, 505 (51%) had a right- and 485 (49%) a left-hemisphere syndrome. Of 110 rt-PA-treated patients, 37 (34%) had a right-hemisphere syndrome (p ϭ 0.0001). Negative independent predictors of rt-PA administration were right-hemisphere stroke (OR, 0.55; CI: 0.31 to 0.96; p ϭ 0.037), onset-to-emergency department time (OR, 0.99; CI 0.98 to 0.99; p ϭ 0.04), and CNS score (OR, 0.78; CI 0.71 to 0.86; p Ͻ 0.0001). Neglect predicted rt-PA administration (OR, 2.32; CI 1.29 to 4.16; p ϭ 0.004). Conclusions: Patients with right-hemisphere strokes are 45% less likely to be treated with recombinant tissue plasminogen activator (rt-PA) compared to patients with left-hemisphere strokes. The presence of neglect confers a twofold increased likelihood of rt-PA administration. Prehospital delay and lack of standardized scores for the neglect syndrome may limit accessibility of patients with right-hemisphere stroke to thrombolysis.;,citation_author=Silvia Di Legge;,citation_author=Jiming Fang;,citation_author=Gustavo Saposnik;,citation_author=Vladimir Hachinski;,citation_publication_date=2005-07;,citation_cover_date=2005-07;,citation_year=2005;,citation_issue=1;,citation_doi=10.1212/01.wnl.0000167608.94237.aa;,citation_issn=0028-3878, 1526-632X;,citation_volume=65;,citation_language=en-US;,citation_journal_title=Neurology;">
+<meta name="citation_reference" content="citation_title=Quality of life in patients with intracranial tumors: Does tumor laterality matter?;,citation_abstract=OBJECTIVE Traditionally, the dominant (usually left) cerebral hemisphere is regarded as the more important one, and everyday clinical decisions are influenced by this view. However, reported results on the impact of lesion laterality are inconsistent in the scarce literature on quality of life (QOL) in patients with brain tumors. The authors aimed to study which cerebral hemisphere is the most important to patients with intracranial tumors with respect to health-related QOL (HRQOL). METHODS Two hundred forty-eight patients with unilateral, unifocal gliomas or meningiomas scheduled for primary surgery were included in this prospective cohort study. Generic HRQOL was measured using the EQ-5D-3L questionnaire preoperatively and after 4–6 weeks. Cross-sectional and longitudinal analyses of data were performed. RESULTS Tumor volumes were significantly larger in right-sided tumors at diagnosis, and language or speech problems were more common in left-sided lesions. Otherwise, no differences existed in baseline data. The median EQ-5D-3L index was 0.73 (range -0.24 to 1.00) in patients with right-sided tumors and 0.76 (range -0.48 to 1.00) in patients with left-sided tumors (p = 0.709). Due to the difference in tumor volumes at baseline, histopathology and tumor volumes were matched in 198 patients. EQ-5D-3L index scores in this 1:1 matched analysis were 0.74 (range -0.7 to 1.00) for patients with right-sided and 0.76 (range -0.48 to 1.00) for left-sided lesions (p = 0.342). In the analysis of longitudinal data, no association was found between tumor laterality and postoperative EQ-5D-3L index scores (p = 0.957) or clinically significant change in HRQOL following surgery (p = 0.793). CONCLUSIONS In an overall patient-reported QOL perspective, tumor laterality does not appear to be of significant importance for generic HRQOL in patients with intracranial tumors. This may imply that right-sided cerebral functions are underestimated by clinicians.;,citation_author=Christina Drewes;,citation_author=Lisa Millgård Sagberg;,citation_author=Asgeir Store Jakola;,citation_author=Ole Solheim;,citation_publication_date=2016-12;,citation_cover_date=2016-12;,citation_year=2016;,citation_issue=6;,citation_doi=10.3171/2015.12.JNS152252;,citation_issn=1933-0693, 0022-3085;,citation_volume=125;,citation_language=en-US;,citation_journal_title=Journal of Neurosurgery;,citation_publisher=American Association of Neurological Surgeons;">
+<meta name="citation_reference" content="citation_title=Does hemispheric lateralization influence functional and cardiovascular outcomes after stroke?: An analysis of placebo-treated patients from prospective acute stroke trials;,citation_abstract=BACKGROUND AND PURPOSE: The influence of stroke lateralization on functional and cardiovascular outcome after stroke is not well established. We evaluated the influence of hemispheric lateralization among patients enrolled in prospective acute stroke trials. METHODS: We obtained data from the VISTA database for acute stroke trials which reported lateralization. Baseline data, cardiac adverse events, and 90-day outcomes were compared between right and left hemisphere stroke patients. A &amp;amp;amp;quot;hemisphere unbiased&amp;quot; subscore of the NIHSS which omitted items strongly associated with lateralized cognitive deficits was also compared for trials which reported individual NIHSS item scores. A multivariable analysis of outcome predictors was performed. RESULTS: Three acute stroke trials met the prespecified inclusion criteria. 1644 placebo-treated patients with documented hemispheric lateralization were included in the analysis. Baseline NIHSS was higher for left hemisphere patients (mean 16.2, versus 12.8 right, P&amp;lt;0.001); there was no difference in the &quot;hemisphere unbiased&quot; NIHSS subscore (10.88 left, 11.08 right, n=687, P=0.49). There was no difference between hemispheres in 90-day modified Rankin Score (3.43 left, 3.29 right, P=0.13), mortality (22.1% left, 19.5% right, P=0.20), or cardiac adverse events (P=0.71). Hemispheric lateralization was not an independent predictor of outcome in the multivariable analysis after controlling for the hemispheric bias intrinsic to the NIHSS. CONCLUSIONS: There is no difference in functional outcome between patients with right or left hemisphere stroke. Use of the baseline NIHSS score to predict stroke outcome must take hemispheric lateralization into account. Stroke lateralization is not an important predictor of cardiac adverse events or 90-day mortality.;,citation_author=John N. Fink;,citation_author=Christopher M. Frampton;,citation_author=Patrick Lyden;,citation_author=Kennedy R. Lees;,citation_author=Virtual International Stroke Trials Archive Investigators;,citation_publication_date=2008-12;,citation_cover_date=2008-12;,citation_year=2008;,citation_issue=12;,citation_doi=10.1161/STROKEAHA.108.523365;,citation_issn=1524-4628;,citation_pmid=18988910;,citation_volume=39;,citation_language=en-US;,citation_journal_title=Stroke;">
+<meta name="citation_reference" content="citation_title=Aggressiveness of care following intracerebral hemorrhage in women and men;,citation_abstract=OBJECTIVE: To compare comorbidities and use of surgery and palliative care between men and women with intracerebral hemorrhage (ICH). METHODS: The Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH) study is a prospective, multicenter, case-control study of ICH risk factors and outcomes. We compared comorbidities, treatments, and use of do-not-resuscitate (DNR) orders in men vs women. Multivariate analysis was used to assess the likelihood of ICH surgery and palliative care after adjustment for variables that were p &amp;amp;amp;lt; 0.1 in univariate analyses and backward elimination to retain those that were significant (p &amp;lt; 0.05). RESULTS: Women were older on average (65.0 vs 59.9, p < 0.0001), and higher proportions of women had previous stroke (24.1% vs 19.3%, p = 0.002), had dementia (6.1% vs 3.4%, p = 0.0007), lived alone (23.1% vs 18.0%, p = 0.0005), and took anticoagulants (12.8% vs 10.1% p = 0.02), compared with men. Men had higher rates of alcohol and cocaine use. After adjusting for age, hematoma volume, and ICH location, there was no difference in rates of surgical treatment by sex (odds ratio [OR] 0.93 for men vs women, 95% confidence interval [CI] 0.68-1.28, p = 0.67), and there was no difference in DNR/comfort care decisions after adjustment for ICH score, prior stroke, and dementia (OR 0.96, CI 0.77-1.22, p = 0.76). CONCLUSIONS: After ICH, women do not receive less aggressive care than men after controlling for the substantial comorbidity differences. Future studies on sex bias should include the presence of comorbidities, prestroke disability, and other factors that may influence management.;,citation_author=Rahul Guha;,citation_author=Amelia Boehme;,citation_author=Stacie L. Demel;,citation_author=Janet J. Li;,citation_author=Xuemei Cai;,citation_author=Michael L. James;,citation_author=Sebastian Koch;,citation_author=Carl D. Langefeld;,citation_author=Charles J. Moomaw;,citation_author=Jennifer Osborne;,citation_author=Padmini Sekar;,citation_author=Kevin N. Sheth;,citation_author=E. Woodrich;,citation_author=Bradford B. Worrall;,citation_author=Daniel Woo;,citation_author=Seemant Chaturvedi;,citation_publication_date=2017-07;,citation_cover_date=2017-07;,citation_year=2017;,citation_issue=4;,citation_doi=10.1212/WNL.0000000000004143;,citation_issn=1526-632X;,citation_pmid=28659419;,citation_volume=89;,citation_language=en-US;,citation_journal_title=Neurology;">
+<meta name="citation_reference" content="citation_title=Ethnic and Racial Variation in Intracerebral Hemorrhage Risk Factors and Risk Factor Burden;,citation_abstract=Black and Hispanic individuals have an increased risk of intracerebral hemorrhage (ICH) compared with their White counterparts, but no large studies of ICH have been conducted in these disproportionately affected populations.To examine the prevalence, odds, and population attributable risk (PAR) percentage for established and novel risk factors for ICH, stratified by ICH location and racial/ethnic group.The Ethnic/Racial Variations of Intracerebral Hemorrhage Study was a case-control study of ICH among 3000 Black, Hispanic, and White individuals who experienced spontaneous ICH (1000 cases in each group). Recruitment was conducted between September 2009 and July 2016 at 19 US sites comprising 42 hospitals. Control participants were identified through random digit dialing and were matched to case participants by age (5 years), sex, race/ethnicity, and geographic area. Data analyses were conducted from January 2019 to May 2020.Case and control participants underwent a standardized interview, physical measurement for body mass index, and genotyping for the \varepsilon2 and \varepsilon4 alleles of APOE, the gene encoding apolipoprotein E. Prevalence, multivariable adjusted odds ratio (OR), and PAR percentage were calculated for each risk factor in the entire ICH population and stratified by racial/ethnic group and by lobar or nonlobar location.There were 1000 Black patients (median [interquartile range (IQR)] age, 57 [50-65] years, 425 [42.5%] women), 1000 Hispanic patients (median [IQR] age, 58 [49-69] years; 373 [37.3%] women), and 1000 White patients (median [IQR] age, 71 [59-80] years; 437 [43.7%] women). The mean (SD) age of patients with ICH was significantly lower among Black and Hispanic patients compared with White patients (eg, lobar ICH: Black, 62.2 [15.2] years; Hispanic, 62.5 [15.7] years; White, 71.0 [13.3] years). More than half of all ICH in Black and Hispanic patients was associated with treated or untreated hypertension (PAR for treated hypertension, Black patients: 53.6%; 95% CI, 46.4%-59.8%; Hispanic patients: 46.5%; 95% CI, 40.6%-51.8%; untreated hypertension, Black patients: 45.5%; 95% CI, 39.%-51.1%; Hispanic patients: 42.7%; 95% CI, 37.6%-47.3%). Lack of health insurance also had a disproportionate association with the PAR percentage for ICH in Black and Hispanic patients (Black patients: 21.7%; 95% CI, 17.5%-25.7%; Hispanic patients: 30.2%; 95% CI, 26.1%-34.1%; White patients: 5.8%; 95% CI, 3.3%-8.2%). A high sleep apnea risk score was associated with both lobar (OR, 1.68; 95% CI, 1.36-2.06) and nonlobar (OR, 1.62; 95% CI, 1.37-1.91) ICH, and high cholesterol was inversely associated only with nonlobar ICH (OR, 0.60; 95% CI, 0.52-0.70); both had no interactions with race and ethnicity. In contrast to the association between the \varepsilon2 and \varepsilon4 alleles of APOE and ICH in White individuals (eg, presence of APOE \varepsilon2 allele: OR, 1.84; 95% CI, 1.34-2.52), APOE alleles were not associated with lobar ICH among Black or Hispanic individuals.This study found sleep apnea as a novel risk factor for ICH. The results suggest a strong contribution from inadequately treated hypertension and lack of health insurance to the disproportionate burden and earlier onset of ICH in Black and Hispanic populations. These findings emphasize the importance of addressing modifiable risk factors and the social determinants of health to reduce health disparities.;,citation_author=Steven J. Kittner;,citation_author=Padmini Sekar;,citation_author=Mary E. Comeau;,citation_author=Christopher D. Anderson;,citation_author=Gunjan Y. Parikh;,citation_author=Tachira Tavarez;,citation_author=Matthew L. Flaherty;,citation_author=Fernando D. Testai;,citation_author=Michael R. Frankel;,citation_author=Michael L. James;,citation_author=Gene Sung;,citation_author=Mitchell S. V. Elkind;,citation_author=Bradford B. Worrall;,citation_author=Chelsea S. Kidwell;,citation_author=Nicole R. Gonzales;,citation_author=Sebastian Koch;,citation_author=Christiana E. Hall;,citation_author=Lee Birnbaum;,citation_author=Douglas Mayson;,citation_author=Bruce Coull;,citation_author=Marc D. Malkoff;,citation_author=Kevin N. Sheth;,citation_author=Jacob L. McCauley;,citation_author=Jennifer Osborne;,citation_author=Misty Morgan;,citation_author=Lee A. Gilkerson;,citation_author=Tyler P. Behymer;,citation_author=Stacie L. Demel;,citation_author=Charles J. Moomaw;,citation_author=Jonathan Rosand;,citation_author=Carl D. Langefeld;,citation_author=Daniel Woo;,citation_publication_date=2021-08;,citation_cover_date=2021-08;,citation_year=2021;,citation_issue=8;,citation_doi=10.1001/jamanetworkopen.2021.21921;,citation_issn=2574-3805;,citation_volume=4;,citation_journal_title=JAMA Network Open;">
+<meta name="citation_reference" content="citation_title=Bayesian data analysis;,citation_abstract=Abstract Bayesian methods have garnered huge interest in cognitive science as an approach to models of cognition and perception. On the other hand, Bayesian methods for data analysis have not yet made much headway in cognitive science against the institutionalized inertia of 20th century null hypothesis significance testing (NHST). Ironically, specific Bayesian models of cognition and perception may not long endure the ravages of empirical verification, but generic Bayesian methods for data analysis will eventually dominate. It is time that Bayesian data analysis became the norm for empirical methods in cognitive science. This article reviews a fatal flaw of NHST and introduces the reader to some benefits of Bayesian data analysis. The article presents illustrative examples of multiple comparisons in Bayesian analysis of variance and Bayesian approaches to statistical power. Copyright © 2010 John Wiley &amp;amp;amp; Sons, Ltd. This article is categorized under: Psychology &amp;gt; Theory and Methods;,citation_author=John K. Kruschke;,citation_publication_date=2010-09;,citation_cover_date=2010-09;,citation_year=2010;,citation_issue=5;,citation_doi=10.1002/wcs.72;,citation_issn=1939-5078, 1939-5086;,citation_volume=1;,citation_language=en-US;,citation_journal_title=WIREs Cognitive Science;">
+<meta name="citation_reference" content="citation_title=Bayesian Analysis Reporting Guidelines;,citation_abstract=Previous surveys of the literature have shown that reports of statistical analyses often lack important information, causing lack of transparency and failure of reproducibility. Editors and authors agree that guidelines for reporting should be encouraged. This Review presents a set of Bayesian analysis reporting guidelines (BARG). The BARG encompass the features of previous guidelines, while including many additional details for contemporary Bayesian analyses, with explanations. An extensive example of applying the BARG is presented. The BARG should be useful to researchers, authors, reviewers, editors, educators and students. Utilization, endorsement and promotion of the BARG may improve the quality, transparency and reproducibility of Bayesian analyses.;,citation_author=John K. Kruschke;,citation_publication_date=2021-10;,citation_cover_date=2021-10;,citation_year=2021;,citation_issue=10;,citation_doi=10.1038/s41562-021-01177-7;,citation_issn=2397-3374;,citation_volume=5;,citation_language=en-US;,citation_journal_title=Nature Human Behaviour;,citation_publisher=Nature Publishing Group;">
+<meta name="citation_reference" content="citation_title=Neglecting the Difference;,citation_abstract=Background and Purpose— Patients with right hemispheric strokes (RHSs) present later to an emergency department, have a lower chance to receive intravenous recombinant tissue plasminogen activator (IV rt-PA), and have worse clinical outcomes than do patients with left hemispheric strokes (LHSs). We analyzed outcomes after IV rt-PA with respect to the side of the affected hemisphere. Methods— A prospective cohort of acute stroke patients was treated with IV rt-PA at the London Health Sciences Centre (December 1998 to March 2003). Differences between patients with RHS and LHS were identified by univariate analysis. Logistic-regression analysis was used to determine a subset of variables independently associated with major neurological improvement at 24 hours and good outcome at 3 months after treatment. Results— Of 219 stroke patients who received IV rt-PA, 165 had hemispheric strokes (68 RHSs and 97 LHSs). Patients with RHSs were less hypertensive (P=0.001) and had lower pretreatment National Institutes of Health Stroke Scale (NIHSS) scores (P=0.005). LHS (odds ratio [OR], 2.29; 95% CI, 1.14 to 4.59; P=0.019), age (OR, 0.96; 95% CI, 0.93 to 0.99; P=0.012), and pretreatment NIHSS (OR, 0.83; 95% CI, 0.78 to 0.89; P&amp;amp;amp;lt;0.0001) were independent predictors of 3-month outcome. Female sex (OR, 3; 95% CI, 1.53 to 5.90; P=0.001) and LHS (OR, 2.07; 95% CI, 1.05 to 4.08; P=0.03) were independent predictors of major neurological improvement at 24 hours after IV rt-PA. Conclusions— Despite higher pretreatment NIHSS, patients with LHSs have a 2-fold increased chance of a good outcome 3 months after rt-PA treatment compared with patients with RHSs. This gain can be clinically detected at 24 hours after treatment. These results need to be coupled with neuroimaging and hemodynamic characteristics known to influence stroke outcome.;,citation_author=Silvia Di Legge;,citation_author=Gustavo Saposnik;,citation_author=Yongchai Nilanont;,citation_author=Vladimir Hachinski;,citation_publication_date=2006-08;,citation_cover_date=2006-08;,citation_year=2006;,citation_issue=8;,citation_doi=10.1161/01.STR.0000229899.66019.62;,citation_volume=37;,citation_journal_title=Stroke;,citation_publisher=American Heart Association;">
+<meta name="citation_reference" content="citation_title=Stroke Lateralization in Large Hemisphere Infarctions: Characteristics, Stroke-Related Complications, and Outcomes;,citation_abstract=Objectives: To assess the hemispheric differences in characteristics, stroke-related complications, and outcomes of patients with large hemisphere infarctions (LHI)., Methods: We enrolled consecutive patients admitted within 24 h after the diagnosis of LHI (defined as an ischemic stroke involving more than 50% of the territory of the middle cerebral artery in computed tomography and/or magnetic resonance imaging). Univariate and multivariate analysis were performed to explore the association between lateralization and stroke-related complications and clinical outcomes., Results: A total of 314 patients with LHI were enrolled, with 171 (54.5%) having right hemispheric involvement. Right-sided patients with LHI had lower baseline National Institutes of Health Stroke Scale (NIHSS) score (18 vs. 22, p &amp;amp;amp;lt; 0.001), higher frequency of atrial fibrillation (69.0 vs. 52.4%, p = 0.003), and higher proportion of cardio-embolism (73.1 vs. 56.6%, p = 0.013) than the left. Right-sided LHI had higher incidence rates of malignant brain edema (MBE) (48.5 vs. 30.8%, p = 0.001) and a composite of cardiovascular events (29.8 vs. 17.5%, p = 0.011) during hospitalization. The incidence rate of 1-month mortality (34.5 vs. 23.8%, p = 0.036) was higher in right-sided patients with LHI, but there were no hemispheric differences in the incidence rates of 3-month mortality and unfavorable outcome (both p &amp;gt; 0.05). Multivariate analyses suggested right hemisphere involvement was independently associated with increased risk of MBE (adjusted OR 2.37, 95% CI 1.26–4.43, p = 0.007) and composite of cardiovascular events (adjusted OR 2.04, 95% CI 1.12–3.72, p = 0.020). However, it was not independently associated with 1-month death, 3-month mortality, and 3-month unfavorable outcome (all p &amp;gt; 0.05)., Conclusions: Right-sided patients with LHI had higher frequency of atrial fibrillation and cardio-embolism than the left-sided patients. Right hemisphere involvement was independently associated with increased risk of MBE and composite of cardiovascular events during hospitalization, whereas stroke lateralization was not an independent predictor of mortality and unfavorable outcome in patients with LHI.;,citation_author=Jie Li;,citation_author=Ping Zhang;,citation_author=Yingying Liu;,citation_author=Wanli Chen;,citation_author=Xingyang Yi;,citation_author=Chun Wang;,citation_publication_date=2021-12;,citation_cover_date=2021-12;,citation_year=2021;,citation_doi=10.3389/fneur.2021.774247;,citation_issn=1664-2295;,citation_pmid=34956055;,citation_volume=12;,citation_journal_title=Frontiers in Neurology;">
+<meta name="citation_reference" content="citation_title=Decompressive Hemicraniectomy for Large Hemispheric Strokes;,citation_abstract=Large hemispheric infarcts occur in up to 10% of all ischemic strokes and can cause devastating disability. Significant research and clinical efforts have been made in hopes of mitigating the morbidity and mortality of this disease. Areas of interest include identifying predictors of malignant edema, optimizing medical and surgical techniques, selecting the patient population that would benefit most from decompressive hemicraniectomy, and studying the impact on quality of life of those who survive. Decompressive surgery can be a life-saving measure, and here we discuss the most up-to-date literature and provide a review on the surgical management of large hemispheric ischemic strokes.;,citation_author=Jessica Lin;,citation_author=Jennifer A. Frontera;,citation_publication_date=2021-04;,citation_cover_date=2021-04;,citation_year=2021;,citation_issue=4;,citation_doi=10.1161/STROKEAHA.120.032359;,citation_volume=52;,citation_journal_title=Stroke;,citation_publisher=American Heart Association;">
+<meta name="citation_reference" content="citation_title=Hemicraniectomy for Massive Middle Cerebral Artery Territory Infarction;,citation_doi=10.1161/01.STR.0000109772.64650.18;,citation_language=en-US;">
+<meta name="citation_reference" content="citation_title=Intensive Blood-Pressure Lowering in Patients with Acute Cerebral Hemorrhage;,citation_abstract=BACKGROUND Limited data are available to guide the choice of a target for the systolic blood-pressure level when treating acute hypertensive response in patients with intracerebral hemorrhage. METHODS We randomly assigned eligible participants with intracerebral hemorrhage (volume, &amp;amp;amp;lt;60 cm3) and a Glasgow Coma Scale (GCS) score of 5 or more (on a scale from 3 to 15, with lower scores indicating worse condition) to a systolic blood-pressure target of 110 to 139 mm Hg (intensive treatment) or a target of 140 to 179 mm Hg (standard treatment) in order to test the superiority of intensive reduction of systolic blood pressure to standard reduction; intravenous nicardipine to lower blood pressure was administered within 4.5 hours after symptom onset. The primary outcome was death or disability (modified Rankin scale score of 4 to 6, on a scale ranging from 0 [no symptoms] to 6 [death]) at 3 months after randomization, as ascertained by an investigator who was unaware of the treatment assignments. RESULTS Among 1000 participants with a mean (SD) systolic blood pressure of 200.627.0 mm Hg at baseline, 500 were assigned to intensive treatment and 500 to standard treatment. The mean age of the patients was 61.9 years, and 56.2% were Asian. Enrollment was stopped because of futility after a prespecified interim analysis. The primary outcome of death or disability was observed in 38.7% of the participants (186 of 481) in the intensive-treatment group and in 37.7% (181 of 480) in the standard-treatment group (relative risk, 1.04; 95% confidence interval, 0.85 to 1.27; analysis was adjusted for age, initial GCS score, and presence or absence of intraventricular hemorrhage). Serious adverse events occurring within 72 hours after randomization that were considered by the site investigator to be related to treatment were reported in 1.6% of the patients in the intensive-treatment group and in 1.2% of those in the standard-treatment group. The rate of renal adverse events within 7 days after randomization was significantly higher in the intensive-treatment group than in the standard-treatment group (9.0% vs. 4.0%, P = 0.002). The authors’ affiliations are listed in the Appendix. Address reprint requests to Dr. Qureshi at the Zeenat Qureshi Stroke Research Center, University of Minnesota, 925 Delaware St. SE, Minneapolis, MN 55455, or at qureshai@gmail.com. *A complete list of the investigators and sites participating in the Antihypertensive Treatment of Acute Cerebral Hemorrhage II (ATACH-2) trial is provided in the Supplementary Appendix, available at NEJM.org. This article was published on June 8, 2016, at NEJM.org. N Engl J Med 2016;375:1033-43. DOI: 10.1056/NEJMoa1603460 Copyright © 2016 Massachusetts Medical Society. CONCLUSIONS The treatment of participants with intracerebral hemorrhage to achieve a target systolic blood pressure of 110 to 139 mm Hg did not result in a lower rate of death or disability than standard reduction to a target of 140 to 179 mm Hg. (Funded by the National Institute of Neurological Disorders and Stroke and the National Cerebral and Cardiovascular Center; ATACH-2 ClinicalTrials.gov number, NCT01176565.);,citation_author=Adnan I. Qureshi;,citation_author=Yuko Y. Palesch;,citation_author=William G. Barsan;,citation_author=Daniel F. Hanley;,citation_author=Chung Y. Hsu;,citation_author=Renee L. Martin;,citation_author=Claudia S. Moy;,citation_author=Robert Silbergleit;,citation_author=Thorsten Steiner;,citation_author=Jose I. Suarez;,citation_author=Kazunori Toyoda;,citation_author=Yongjun Wang;,citation_author=Haruko Yamamoto;,citation_author=Byung-Woo Yoon;,citation_publication_date=2016-09;,citation_cover_date=2016-09;,citation_year=2016;,citation_issue=11;,citation_doi=10.1056/NEJMoa1603460;,citation_issn=0028-4793, 1533-4406;,citation_volume=375;,citation_language=en-US;,citation_journal_title=New England Journal of Medicine;">
+<meta name="citation_reference" content="citation_title=Hemicraniectomy for Dominant vs Nondominant Middle Cerebral Artery Infarction: A Systematic Review and Meta-Analysis;,citation_author=Silja Räty;,citation_author=Georgios Georgiopoulos;,citation_author=Karoliina Aarnio;,citation_author=Nicolas Martinez-Majander;,citation_author=Eberhard Uhl;,citation_author=George Ntaios;,citation_author=Daniel Strbian;,citation_publication_date=2021-11;,citation_cover_date=2021-11;,citation_year=2021;,citation_issue=11;,citation_doi=10.1016/j.jstrokecerebrovasdis.2021.106102;,citation_issn=10523057;,citation_pmid=34536811;,citation_volume=30;,citation_language=en-US;,citation_journal_title=Journal of Stroke and Cerebrovascular Diseases;">
+<meta name="citation_reference" content="citation_title=Higher mortality in patients with right hemispheric intracerebral haemorrhage: INTERACT1 and 2;,citation_abstract=Background and purpose Controversy exists over the prognostic significance of the affected hemisphere in stroke. We aimed to determine the relationship between laterality of acute intracerebral haemorrhage (ICH) and poor clinical outcomes. Methods A subsidiary analysis of the INTERACT Pilot and INTERACT2 studies—randomised controlled trials of patients with spontaneous acute ICH with elevated systolic blood pressure (BP), randomly assigned to intensive (target systolic BP &amp;amp;amp;lt;140 mm Hg) or guideline-based (&amp;lt;180 mm Hg) BP management. Outcomes were the combined and separate end points of death and major disability (modified Rankin scale (mRS) scores of 3–6, 6 and 3–5, respectively) at 90 days. Results A total of 2708 patients had supratentorial/hemispheric ICH and information on mRS at 90 days. Patients with right hemispheric ICH (1327, 49%) had a higher risk of death at 90 days compared to those with left hemispheric ICH after adjustment for potential confounding variables (OR, 1.77 (95% CI 1.33 to 2.37)). There were no differences between patients with right and left hemispheric ICH regarding the combined end point of death or major disability or major disability in the multivariable-adjusted models (1.07 (0.89 to 1.29) and 0.85 (0.72 to 1.01), respectively). Conclusions Right hemispheric lesion was associated with increased risk of death in patients with acute ICH. The laterality of the ICH does not appear to affect the level of disability in survivors. Trial registration number URL: http://www.clinicaltrials.gov. Unique identifier: NCT00226096 and NCT00716079.;,citation_author=Shoichiro Sato;,citation_author=Emma Heeley;,citation_author=Hisatomi Arima;,citation_author=Candice Delcourt;,citation_author=Yoichiro Hirakawa;,citation_author=Vijaya Pamidimukkala;,citation_author=Zhendong Li;,citation_author=Qingling Tao;,citation_author=Yuehong Xu;,citation_author=Michael G. Hennerici;,citation_author=Thompson Robinson;,citation_author=Christophe Tzourio;,citation_author=Richard I. Lindley;,citation_author=John Chalmers;,citation_author=Craig S. Anderson;,citation_publication_date=2015-12;,citation_cover_date=2015-12;,citation_year=2015;,citation_issue=12;,citation_doi=10.1136/jnnp-2014-309870;,citation_issn=0022-3050, 1468-330X;,citation_pmid=25589782;,citation_volume=86;,citation_language=en-US;,citation_journal_title=Journal of Neurology, Neurosurgery &amp;amp; Psychiatry;,citation_publisher=BMJ Publishing Group Ltd;">
+<meta name="citation_reference" content="citation_title=Declaring independence: Why we should be cautious.;,citation_author=G D Smith;,citation_author=A Phillips;,citation_publication_date=1990-12;,citation_cover_date=1990-12;,citation_year=1990;,citation_issue=4;,citation_doi=10.1136/jech.44.4.257;,citation_issn=0143-005X;,citation_volume=44;,citation_language=en-US;,citation_journal_title=Journal of Epidemiology &amp;amp;amp; Community Health;">
+<meta name="citation_reference" content="citation_title=Patient preferences for stroke outcomes.;,citation_abstract=In clinical trials stroke is reported as a major morbid outcome, but the impact of stroke on patients is not directly assessed. This study examines patient preferences for different outcomes of stroke, including death. We presented patients with written case scenarios of stroke outcomes. The scenarios represented four categories of stroke severity (mild, moderate, severe, and fatal), and for nonfatal strokes the scenarios described motor, language, and cognitive deficits. Patients reported values for each of the 10 stroke scenarios using a rank-and-scale method over a 100-point range, with 100 representing perfect health and 0 corresponding to the worst possible health state. One hundred seventeen of 209 consecutive patients at risk for stroke participated in this study. Severe strokes were uniformly rated as having low preference weights (mean +/- SD [median]: 3 +/- 4 [1] for disabling hemiplegia, 8 +/- 9 [5] for confusion, and 15 +/- 14 [10] for global aphasia), and severe motor impairment (a disabling hemiplegia) was rated as significantly worse than death. Even mild deficits resulted in substantial loss to patients (54 +/- 21 [55] for dysarthria and 53 +/- 21 [50] for mild anomia). Strokes may result in a wide variety of post-stroke consequences for patients. Severe strokes may be viewed by patients as tantamount to or worse than death. Even mild strokes may cause significant declines in patient preferences for health states. These data are useful in interpreting studies that report stroke and death, in designing new studies that measure stroke in at-risk populations, and in helping patients reach treatment decisions about therapies designed to prevent strokes.;,citation_author=N A Solomon;,citation_author=H A Glick;,citation_author=C J Russo;,citation_author=J Lee;,citation_author=K A Schulman;,citation_publication_date=1994-09;,citation_cover_date=1994-09;,citation_year=1994;,citation_issue=9;,citation_doi=10.1161/01.STR.25.9.1721;,citation_volume=25;,citation_journal_title=Stroke;,citation_publisher=American Heart Association;">
+<meta name="citation_reference" content="citation_title=Intracerebral Hemorrhage Location and Functional Outcomes of Patients: A Systematic Literature Review and Meta-Analysis;,citation_abstract=Intracerebral hemorrhage (ICH) has the highest mortality rate among all strokes. While ICH location, lobar versus non-lobar, has been established as a predictor of mortality, less is known regarding the relationship between more specific ICH locations and functional outcome. This review summarizes current work studying how ICH location affects outcome, with an emphasis on how studies designate regions of interest.;,citation_author=Anirudh Sreekrishnan;,citation_author=Jennifer L. Dearborn;,citation_author=David M. Greer;,citation_author=Fu-Dong Shi;,citation_author=David Y. Hwang;,citation_author=Audrey C. Leasure;,citation_author=Sonya E. Zhou;,citation_author=Emily J. Gilmore;,citation_author=Charles C. Matouk;,citation_author=Nils H. Petersen;,citation_author=Lauren H. Sansing;,citation_author=Kevin N. Sheth;,citation_publication_date=2016-12;,citation_cover_date=2016-12;,citation_year=2016;,citation_issue=3;,citation_doi=10.1007/s12028-016-0276-4;,citation_issn=1556-0961;,citation_volume=25;,citation_language=en-US;,citation_journal_title=Neurocritical Care;">
+<meta name="citation_reference" content="citation_title=Early decompressive surgery in malignant infarction of the middle cerebral artery: A pooled analysis of three randomised controlled trials;,citation_abstract=Background Malignant infarction of the middle cerebral artery (MCA) is associated with an 80% mortality rate. Non-randomised studies have suggested that decompressive surgery reduces this mortality without increasing the number of severely disabled survivors. To obtain sufficient data as soon as possible to reliably estimate the effects of decompressive surgery, results from three European randomised controlled trials (DECIMAL, DESTINY, HAMLET) were pooled. The trials were ongoing when the pooled analysis was planned. Methods Individual data for patients aged between 18 years and 60 years, with space-occupying MCA infarction, included in one of the three trials, and treated within 48 h after stroke onset were pooled for analysis. The protocol was designed prospectively when the trials were still recruiting patients and outcomes were defined without knowledge of the results of the individual trials. The primary outcome measure was the score on the modified Rankin scale (mRS) at 1 year dichotomised between favourable (0–4) and unfavourable (5 and death) outcome. Secondary outcome measures included case fatality rate at 1 year and a dichotomisation of the mRS between 0–3 and 4 to death. Data analysis was done by an independent data monitoring committee. Findings 93 patients were included in the pooled analysis. More patients in the decompressive-surgery group than in the control group had an mRS\leq4 (75% vs 24%; pooled absolute risk reduction 51% [95% CI 34–69]), an mRS\leq3 (43% vs 21%; 23% [5–41]), and survived (78% vs 29%; 50% [33–67]), indicating numbers needed to treat of two for survival with mRS\leq4, four for survival with mRS\leq3, and two for survival irrespective of functional outcome. The effect of surgery was highly consistent across the three trials. Interpretation In patients with malignant MCA infarction, decompressive surgery undertaken within 48 h of stroke onset reduces mortality and increases the number of patients with a favourable functional outcome. The decision to perform decompressive surgery should, however, be made on an individual basis in every patient.;,citation_author=Katayoun Vahedi;,citation_author=Jeannette Hofmeijer;,citation_author=Eric Juettler;,citation_author=Eric Vicaut;,citation_author=Bernard George;,citation_author=Ale Algra;,citation_author=G Johan Amelink;,citation_author=Peter Schmiedeck;,citation_author=Stefan Schwab;,citation_author=Peter M Rothwell;,citation_author=Marie-Germaine Bousser;,citation_author=H Bart Worp;,citation_author=Werner Hacke;,citation_publication_date=2007-03;,citation_cover_date=2007-03;,citation_year=2007;,citation_issue=3;,citation_doi=10.1016/S1474-4422(07)70036-4;,citation_issn=1474-4422;,citation_volume=6;,citation_language=en-US;,citation_journal_title=The Lancet Neurology;">
+<meta name="citation_reference" content="citation_title=The Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH) Study Protocol;,citation_abstract=Background and Purpose— Epidemiological studies of intracerebral hemorrhage (ICH) have consistently demonstrated variation in incidence, location, age at presentation, and outcomes among non-Hispanic white, black, and Hispanic populations. We report here the design and methods for this large, prospective, multi-center case–control study of ICH. Methods— The Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH) study is a multi-center, prospective case–control study of ICH. Cases are identified by hot-pursuit and enrolled using standard phenotype and risk factor information and include neuroimaging and blood sample collection. Controls are centrally identified by random digit dialing to match cases by age (5 years), race, ethnicity, sex, and metropolitan region. Results— As of March 22, 2013, 1655 cases of ICH had been recruited into the study, which is 101.5% of the target for that date, and 851 controls had been recruited, which is 67.2% of the target for that date (1267 controls) for a total of 2506 subjects, which is 86.5% of the target for that date (2897 subjects). Of the 1655 cases enrolled, 1640 cases had the case interview entered into the database, of which 628 (38%) were non-Hispanic black, 458 (28%) were non-Hispanic white, and 554 (34%) were Hispanic. Of the 1197 cases with imaging submitted, 876 (73.2%) had a 24 hour follow-up CT available. In addition to CT imaging, 607 cases have had MRI evaluation. Conclusions— The ERICH study is a large, case–control study of ICH with particular emphasis on recruitment of minority populations for the identification of genetic and epidemiological risk factors for ICH and outcomes after ICH.;,citation_author=Daniel Woo;,citation_author=Jonathan Rosand;,citation_author=Chelsea Kidwell;,citation_author=Jacob L. McCauley;,citation_author=Jennifer Osborne;,citation_author=Mark W. Brown;,citation_author=Sandra E. West;,citation_author=Eric W. Rademacher;,citation_author=Salina Waddy;,citation_author=Jamie N. Roberts;,citation_author=Sebastian Koch;,citation_author=Nicole R. Gonzales;,citation_author=Gene Sung;,citation_author=Steven J. Kittner;,citation_author=Lee Birnbaum;,citation_author=Michael Frankel;,citation_author=Fernando Daniel Testai;,citation_author=Christiana E. Hall;,citation_author=Mitchell S. V. Elkind;,citation_author=Matthew Flaherty;,citation_author=Bruce Coull;,citation_author=Ji Y. Chong;,citation_author=Tanya Warwick;,citation_author=Marc Malkoff;,citation_author=Michael L. James;,citation_author=Latisha K. Ali;,citation_author=Bradford B. Worrall;,citation_author=Floyd Jones;,citation_author=Tiffany Watson;,citation_author=Anne Leonard;,citation_author=Rebecca Martinez;,citation_author=Ralph I. Sacco;,citation_author=Carl D. Langefeld;,citation_publication_date=2013-10;,citation_cover_date=2013-10;,citation_year=2013;,citation_issue=10;,citation_doi=10.1161/STROKEAHA.113.002332;,citation_issn=0039-2499, 1524-4628;,citation_volume=44;,citation_language=en-US;,citation_journal_title=Stroke;">
+</head>
+
+  <body class="quarto-notebook">
+    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
+      
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
+      <h6><i class="bi bi-journal-code"></i> Article Notebook</h6>
+
+            <a href="./index.qmd" class="btn btn-primary quarto-download-embed" download="index.qmd">Download Source</a>
+          </div>
+
+     <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Does Hemispheric Lateralization Influence Aggressive Treatment in Patients with Intracerebral Hemorrhage?</h1>
+            <p class="subtitle lead">An Analysis of ATACH-2 and ERICH</p>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliations</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Nikhil Patel <a href="https://orcid.org/0000-0002-3193-8590" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Department of Neurology, Wake Forest University School of Medicine
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Matt Jaffa </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Department of Neurology, University of Connecticut School of Medicine
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Rahul Karamchandani </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Department of Neurology, Wake Forest University School of Medicine
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">March 6, 2024</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+    <div>
+      <div class="abstract">
+        <div class="block-title">Abstract</div>
+        <p>Hemispheric laterality blah blah blah</p>
+      </div>
+    </div>
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#study-design-and-participants" id="toc-study-design-and-participants" class="nav-link" data-scroll-target="#study-design-and-participants">Study Design and Participants</a></li>
+  <li><a href="#exposures-and-outcomes" id="toc-exposures-and-outcomes" class="nav-link" data-scroll-target="#exposures-and-outcomes">Exposures and Outcomes</a></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis">Statistical Analysis</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">      
+
+       <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(withr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>here() starts at /home/nikhil/Documents/GitHub/ich-laterality</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with_dir</span>(<span class="fu">here</span>(), <span class="fu">tar_load</span>(ich_aggressive))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">count</span>(ich_aggressive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The clinical presentation of patients with stroke can vary based on the hemisphere affected, in particular with language, spatial orientation, and emotional processing. Previous research involving patients with ischemic stroke provide evidence that those with right hemispheric injury present later to the hospital and may not be treated as frequently with thrombolytic therapy.<span class="citation" data-cites="legge_neglecting_2006 di_legge_impact_2005-1"><sup><a href="#ref-legge_neglecting_2006" role="doc-biblioref">1</a>,<a href="#ref-di_legge_impact_2005-1" role="doc-biblioref">2</a></sup></span> On the other hand, there is a hesitation among some practitioners to offer decompressive craniectomy in patients with dominant-hemispheric infarcts.<span class="citation" data-cites="lin_decompressive_2021-1"><sup><a href="#ref-lin_decompressive_2021-1" role="doc-biblioref">3</a></sup></span></p>
+<p>It is unclear how previous research in the ischemic stroke population translates to patients experiencing intracerebral hemorrhage. Not much has been investigated.</p>
+<p>We aimed to evaluate the effect of hemispheric lateralization on the probability of receiving aggressive care in patients with ICH.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="study-design-and-participants" class="level3">
+<h3 class="anchored" data-anchor-id="study-design-and-participants">Study Design and Participants</h3>
+<p>We conducted a cohort study using data from 2 prospective studies: the Antihypertensive Treatment of Acute Cerebral Hemorrhage II (ATACH-2) trial<span class="citation" data-cites="qureshi_intensive_2016"><sup><a href="#ref-qureshi_intensive_2016" role="doc-biblioref">4</a></sup></span> and the Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH)<span class="citation" data-cites="woo_ethnicracial_2013"><sup><a href="#ref-woo_ethnicracial_2013" role="doc-biblioref">5</a></sup></span> study. ATACH-2 was a large, multicenter, international, open-label, blinded-endpoint randomized controlled trial enrolling 1000 patients with ICH while ERICH was a large, multicenter, prospective observational study enrolling patients in the United States admitted with ICH. Study protocols and results of both studies have been previously published and are available elsewhere.</p>
+<p>We included all patients enrolled in these two studies with supratentorial location of ICH. We excluded patients with cerebellar or brainstem ICH as well as any patient with primary intraventricular hemorrhage (IVH).</p>
+<p>The study was approved by the institutional review board of the Wake Forest School of Medicine.</p>
+<section id="data-availability-statement" class="level4">
+<h4 class="anchored" data-anchor-id="data-availability-statement">Data Availability Statement</h4>
+<p>The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, MD, MS, NCT01202864) data and analyses presented in this manuscript are based on the research files downloaded from the Archived Clinical Research web site of the National Institute of Neurologic Disease and Stroke (NINDS). The datasets can be obtained after approval of a written proposal as outlined on the NINDS website.</p>
+<p>The analysis code is publicly available as outlined by the NINDS Data Request Agreement at <a href="https://github.com/nikhilpatelmd/ich-laterality">https://github.com/nikhilpatelmd/ich-laterality</a>.</p>
+</section>
+</section>
+<section id="exposures-and-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="exposures-and-outcomes">Exposures and Outcomes</h3>
+<p>Our exposure was hemispheric laterality (left versus right). Our primary outcome was neurosurgical intervention, defined as receiving a hematoma evacuation, decompressive craniectomy, or other craniotomy.</p>
+<p>To explore differences in other aspects of aggressive care, we defined several secondary outcomes: receipt of external ventricular drain (EVD), tracheostomy, percutaneous endoscopic gastrostomy (PEG) tube, do-not-resuscitate (DNR) order at any point in the hospitalization, withdrawal of life-sustaining therapy (WLST) at any point in the hospitalization, and early WLST (&lt; 72 from symptom onset).</p>
+</section>
+<section id="statistical-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-analysis">Statistical Analysis</h3>
+<section id="overall-analysis-plan" class="level4">
+<h4 class="anchored" data-anchor-id="overall-analysis-plan">Overall Analysis Plan</h4>
+</section>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>A total of 3477 patients were included in the analysis.</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#StandWithUkraine</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_gtsummary_compact</span>(<span class="at">set_theme =</span> <span class="cn">TRUE</span>, <span class="at">font_size =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting theme `Compact`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with_dir</span>(<span class="fu">here</span>(), <span class="fu">tar_read</span>(table_1_aggressive))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<div id="ugemqqwrbo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ugemqqwrbo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ugemqqwrbo thead, #ugemqqwrbo tbody, #ugemqqwrbo tfoot, #ugemqqwrbo tr, #ugemqqwrbo td, #ugemqqwrbo th {
+  border-style: none;
+}
+
+#ugemqqwrbo p {
+  margin: 0;
+  padding: 0;
+}
+
+#ugemqqwrbo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ugemqqwrbo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ugemqqwrbo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ugemqqwrbo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ugemqqwrbo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ugemqqwrbo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ugemqqwrbo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ugemqqwrbo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ugemqqwrbo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ugemqqwrbo .gt_group_heading {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ugemqqwrbo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ugemqqwrbo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ugemqqwrbo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ugemqqwrbo .gt_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ugemqqwrbo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ugemqqwrbo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ugemqqwrbo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ugemqqwrbo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ugemqqwrbo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ugemqqwrbo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ugemqqwrbo .gt_last_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ugemqqwrbo .gt_first_grand_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_last_grand_summary_row_top {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ugemqqwrbo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ugemqqwrbo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ugemqqwrbo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ugemqqwrbo .gt_left {
+  text-align: left;
+}
+
+#ugemqqwrbo .gt_center {
+  text-align: center;
+}
+
+#ugemqqwrbo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ugemqqwrbo .gt_font_normal {
+  font-weight: normal;
+}
+
+#ugemqqwrbo .gt_font_bold {
+  font-weight: bold;
+}
+
+#ugemqqwrbo .gt_font_italic {
+  font-style: italic;
+}
+
+#ugemqqwrbo .gt_super {
+  font-size: 65%;
+}
+
+#ugemqqwrbo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ugemqqwrbo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ugemqqwrbo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ugemqqwrbo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ugemqqwrbo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ugemqqwrbo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ugemqqwrbo .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
+<th id="<strong>Overall</strong>, N = 3,477<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Overall</strong>, N = 3,477<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>Left</strong>, N = 1,720<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Left</strong>, N = 1,720<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>Right</strong>, N = 1,757<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Right</strong>, N = 1,757<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+<th id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Age</td>
+<td class="gt_row gt_center" headers="stat_0">61 (52, 73)</td>
+<td class="gt_row gt_center" headers="stat_1">61 (52, 72)</td>
+<td class="gt_row gt_center" headers="stat_2">61 (52, 73)</td>
+<td class="gt_row gt_center" headers="p.value">&gt;0.9</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Sex</td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value">0.12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Male</td>
+<td class="gt_row gt_center" headers="stat_0">2,081 (60%)</td>
+<td class="gt_row gt_center" headers="stat_1">1,007 (59%)</td>
+<td class="gt_row gt_center" headers="stat_2">1,074 (61%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Female</td>
+<td class="gt_row gt_center" headers="stat_0">1,396 (40%)</td>
+<td class="gt_row gt_center" headers="stat_1">713 (41%)</td>
+<td class="gt_row gt_center" headers="stat_2">683 (39%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Race</td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value">0.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;White</td>
+<td class="gt_row gt_center" headers="stat_0">1,875 (54%)</td>
+<td class="gt_row gt_center" headers="stat_1">935 (54%)</td>
+<td class="gt_row gt_center" headers="stat_2">940 (54%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Black or African-American</td>
+<td class="gt_row gt_center" headers="stat_0">1,022 (29%)</td>
+<td class="gt_row gt_center" headers="stat_1">510 (30%)</td>
+<td class="gt_row gt_center" headers="stat_2">512 (29%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Asian</td>
+<td class="gt_row gt_center" headers="stat_0">557 (16%)</td>
+<td class="gt_row gt_center" headers="stat_1">263 (15%)</td>
+<td class="gt_row gt_center" headers="stat_2">294 (17%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Other/Not Reported</td>
+<td class="gt_row gt_center" headers="stat_0">16 (0.5%)</td>
+<td class="gt_row gt_center" headers="stat_1">7 (0.4%)</td>
+<td class="gt_row gt_center" headers="stat_2">9 (0.5%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;American Indian or Alaskan Native</td>
+<td class="gt_row gt_center" headers="stat_0">7 (0.2%)</td>
+<td class="gt_row gt_center" headers="stat_1">5 (0.3%)</td>
+<td class="gt_row gt_center" headers="stat_2">2 (0.1%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Ethnicity</td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value">0.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Not Hispanic or Latino</td>
+<td class="gt_row gt_center" headers="stat_0">2,296 (66%)</td>
+<td class="gt_row gt_center" headers="stat_1">1,141 (66%)</td>
+<td class="gt_row gt_center" headers="stat_2">1,155 (66%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Unknown/Not Reported</td>
+<td class="gt_row gt_center" headers="stat_0">1,052 (30%)</td>
+<td class="gt_row gt_center" headers="stat_1">509 (30%)</td>
+<td class="gt_row gt_center" headers="stat_2">543 (31%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Hispanic or Latino</td>
+<td class="gt_row gt_center" headers="stat_0">129 (3.7%)</td>
+<td class="gt_row gt_center" headers="stat_1">70 (4.1%)</td>
+<td class="gt_row gt_center" headers="stat_2">59 (3.4%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">LNW to ED Presentation (mins)</td>
+<td class="gt_row gt_center" headers="stat_0">78 (60, 180)</td>
+<td class="gt_row gt_center" headers="stat_1">74 (60, 180)</td>
+<td class="gt_row gt_center" headers="stat_2">83 (59, 180)</td>
+<td class="gt_row gt_center" headers="p.value">0.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Baseline SBP (mm Hg)</td>
+<td class="gt_row gt_center" headers="stat_0">190 (165, 215)</td>
+<td class="gt_row gt_center" headers="stat_1">190 (165, 216)</td>
+<td class="gt_row gt_center" headers="stat_2">190 (165, 214)</td>
+<td class="gt_row gt_center" headers="p.value">0.3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Baseline NIHSS</td>
+<td class="gt_row gt_center" headers="stat_0">11 (6, 16)</td>
+<td class="gt_row gt_center" headers="stat_1">11 (6, 17)</td>
+<td class="gt_row gt_center" headers="stat_2">11 (7, 14)</td>
+<td class="gt_row gt_center" headers="p.value">0.014</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Baseline GCS</td>
+<td class="gt_row gt_center" headers="stat_0">15.0 (12.0, 15.0)</td>
+<td class="gt_row gt_center" headers="stat_1">14.0 (11.0, 15.0)</td>
+<td class="gt_row gt_center" headers="stat_2">15.0 (13.0, 15.0)</td>
+<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Hypertension</td>
+<td class="gt_row gt_center" headers="stat_0">784 (23%)</td>
+<td class="gt_row gt_center" headers="stat_1">366 (21%)</td>
+<td class="gt_row gt_center" headers="stat_2">418 (24%)</td>
+<td class="gt_row gt_center" headers="p.value">0.076</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Type II Diabetes</td>
+<td class="gt_row gt_center" headers="stat_0">705 (20%)</td>
+<td class="gt_row gt_center" headers="stat_1">348 (20%)</td>
+<td class="gt_row gt_center" headers="stat_2">357 (20%)</td>
+<td class="gt_row gt_center" headers="p.value">&gt;0.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Previous Stroke</td>
+<td class="gt_row gt_center" headers="stat_0">583 (17%)</td>
+<td class="gt_row gt_center" headers="stat_1">293 (17%)</td>
+<td class="gt_row gt_center" headers="stat_2">290 (17%)</td>
+<td class="gt_row gt_center" headers="p.value">0.7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Tobacco Use</td>
+<td class="gt_row gt_center" headers="stat_0">1,361 (39%)</td>
+<td class="gt_row gt_center" headers="stat_1">663 (39%)</td>
+<td class="gt_row gt_center" headers="stat_2">698 (40%)</td>
+<td class="gt_row gt_center" headers="p.value">0.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">ICH Location</td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value">0.002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Basal Ganglia</td>
+<td class="gt_row gt_center" headers="stat_0">1,304 (38%)</td>
+<td class="gt_row gt_center" headers="stat_1">688 (40%)</td>
+<td class="gt_row gt_center" headers="stat_2">616 (35%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Thalamus</td>
+<td class="gt_row gt_center" headers="stat_0">1,157 (33%)</td>
+<td class="gt_row gt_center" headers="stat_1">527 (31%)</td>
+<td class="gt_row gt_center" headers="stat_2">630 (36%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Lobar</td>
+<td class="gt_row gt_center" headers="stat_0">1,016 (29%)</td>
+<td class="gt_row gt_center" headers="stat_1">505 (29%)</td>
+<td class="gt_row gt_center" headers="stat_2">511 (29%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">ICH Volume (mL)</td>
+<td class="gt_row gt_center" headers="stat_0">11 (5, 26)</td>
+<td class="gt_row gt_center" headers="stat_1">11 (5, 24)</td>
+<td class="gt_row gt_center" headers="stat_2">12 (5, 27)</td>
+<td class="gt_row gt_center" headers="p.value">0.060</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">IVH</td>
+<td class="gt_row gt_center" headers="stat_0">1,304 (38%)</td>
+<td class="gt_row gt_center" headers="stat_1">624 (36%)</td>
+<td class="gt_row gt_center" headers="stat_2">680 (39%)</td>
+<td class="gt_row gt_center" headers="p.value">0.14</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label" style="font-weight: bold">Study</td>
+<td class="gt_row gt_center" headers="stat_0"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value">0.2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;ERICH</td>
+<td class="gt_row gt_center" headers="stat_0">2,487 (72%)</td>
+<td class="gt_row gt_center" headers="stat_1">1,248 (73%)</td>
+<td class="gt_row gt_center" headers="stat_2">1,239 (71%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;ATACH-2</td>
+<td class="gt_row gt_center" headers="stat_0">990 (28%)</td>
+<td class="gt_row gt_center" headers="stat_1">472 (27%)</td>
+<td class="gt_row gt_center" headers="stat_2">518 (29%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+</tbody><tfoot class="gt_footnotes">
+<tr class="even">
+<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Median (IQR); n (%)</td>
+</tr>
+<tr class="odd">
+<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Wilcoxon rank sum test; Pearson’s Chi-squared test; Fisher’s exact test</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="acknowledgments" class="level2 appendix">
+<h2 class="appendix anchored" data-anchor-id="acknowledgments">Acknowledgments</h2>
+</section>
+<section id="references" class="level2 unnumbered appendix">
+<h2 class="unnumbered appendix anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-legge_neglecting_2006" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Legge SD, Saposnik G, Nilanont Y, Hachinski V. <a href="https://doi.org/10.1161/01.STR.0000229899.66019.62">Neglecting the <span>Difference</span></a>. <em>Stroke</em>. 2006;37(8):2066–2069.</div>
+</div>
+<div id="ref-di_legge_impact_2005-1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Di Legge S, Fang J, Saposnik G, Hachinski V. <a href="https://doi.org/10.1212/01.wnl.0000167608.94237.aa">The impact of lesion side on acute stroke treatment</a>. <em>Neurology</em>. 2005;65(1):81–86.</div>
+</div>
+<div id="ref-lin_decompressive_2021-1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Lin J, Frontera JA. <a href="https://doi.org/10.1161/STROKEAHA.120.032359">Decompressive <span>Hemicraniectomy</span> for <span>Large Hemispheric Strokes</span></a>. <em>Stroke</em>. 2021;52(4):1500–1510.</div>
+</div>
+<div id="ref-qureshi_intensive_2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Qureshi AI, Palesch YY, Barsan WG, Hanley DF, Hsu CY, Martin RL, Moy CS, Silbergleit R, Steiner T, Suarez JI, Toyoda K, Wang Y, Yamamoto H, Yoon B-W. <a href="https://doi.org/10.1056/NEJMoa1603460">Intensive <span>Blood-Pressure Lowering</span> in <span>Patients</span> with <span>Acute Cerebral Hemorrhage</span></a>. <em>New England Journal of Medicine</em>. 2016;375(11):1033–1043.</div>
+</div>
+<div id="ref-woo_ethnicracial_2013" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Woo D, Rosand J, Kidwell C, McCauley JL, Osborne J, Brown MW, West SE, Rademacher EW, Waddy S, Roberts JN, Koch S, Gonzales NR, Sung G, Kittner SJ, Birnbaum L, et al. <a href="https://doi.org/10.1161/STROKEAHA.113.002332">The <span>Ethnic</span>/<span>Racial Variations</span> of <span>Intracerebral Hemorrhage</span> (<span>ERICH</span>) <span>Study Protocol</span></a>. <em>Stroke</em>. 2013;44(10).</div>
+</div>
+</div>
+</section>
+     </main>
+<!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>  </div> <!-- /content --> 
+  
+</body></html>

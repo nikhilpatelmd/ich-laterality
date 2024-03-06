@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|ee6d5331b83d3d67|||||||||||||||
+.Random.seed|object|cb3c0831eda45c4a|||||||||||||||
 aggressive_dag_function|function|4276730616c6d155|||||||||||||||
 atach|stem|924da92e1d97a053|332dc1f141f8e5ed|3268da799d75cf81|860028905||t19774.8084096571s|580c91cf60ee1b35|31110|rds|local|vector|||0.007||
 comfort_canonical_visuals|stem|0cb7da27ca72e0a1|cc51541ad5cbca3d|97da178a4f0c8a4d|662216964||t19774.7869911228s|4a478f7ff7703992|2813375|rds|local|vector|||7.656||
@@ -276,9 +276,9 @@ results_visual|function|0ff515e85509ca41|||||||||||||||
 select_variables|function|c928b53b8e3537a7|||||||||||||||
 selected_data|stem|c17798004d0a0b71|b5b9c57e05105341|45f90c964c83112e|-1052555108||t19774.7851520086s|e75590979fdd45a0|158412|rds|local|vector|||0.037||
 settings|stem|f4002f6841bfa0b4|f73c98d159064a1a|bbe484ecadeaf602|-416401554||t19774.773077042s|253d6f95309bef1a|362|rds|local|vector|||0.004||
-table_1_aggressive|stem|91da3040b9d2d292|638610d9242045c6|61a4a9602dc904e8|-15126430||t19774.785547802s|f2b1cb355f7075eb|572137|rds|local|vector|||3.874||
-table_1_function|function|d848e4825969204d|||||||||||||||
-table_1_outcomes|stem|7134c910d452120f|4ea3ad5495a7bbd9|4e37ddfeb3b41078|-541678962||t19774.8085096183s|b27354c5a46faf5d|702411|rds|local|vector|||3.759||
+table_1_aggressive|stem|0554ce799f10132e|638610d9242045c6|55d55bcc53f11c52|-15126430||t19788.83530312s|773db55385317d2c|572136|rds|local|vector|||3.978||
+table_1_function|function|aa543186f73a387c|||||||||||||||
+table_1_outcomes|stem|756015040c023274|4ea3ad5495a7bbd9|90697de48f148e84|-541678962||t19788.8352536989s|b27354c5a46faf5d|702411|rds|local|vector|||3.885||
 table_2_aggressive|stem|5a900e7184d203d1|b64b6af1ec25d0c7|a10e438e46e16601|-1897827915||t19774.7861523524s|ac7659edbc293ff3|150409|rds|local|vector|||1.68||
 table_2_aggressive_function|function|a8791c9b4d0ff36d|||||||||||||||
 trach_canonical_diagnostics|stem|ab7b58d2e07fb87d|e84c602a7c5376cb|bc21d5728a1ed340|-1818965111||t19774.7870811688s|41bd930b061c925b|4376933|rds|local|vector|||2.237||

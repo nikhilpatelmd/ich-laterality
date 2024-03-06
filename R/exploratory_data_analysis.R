@@ -1,4 +1,6 @@
 table_1_function <- function(x) {
+
+
   table_one_vars <- c(
     "age",
     "sex",

@@ -1,19 +1,6 @@
 ---
-title: Differences in care for patients with left vs. right hemisphere intracerebral hemorrhage
-authors:
-  - name: Nikhil Patel
-    orcid: 0000-0002-3193-8590
-    affiliation: Department of Neurology, Wake Forest School of Medicine
-    email: nikhil.patel@atriumhealth.org
-    roles: writing
-    corresponding: true
-  - name: Rahul Karamchandani
-    affiliation: Department of Neurology, Wake Forest School of Medicine
-    corresponding: false
-    roles: writing
-bibliography: references.bib
+title: "ICH Laterality"
+subtitle: "Project Website"
 ---
 
-## Section
-
-This is a simple placeholder for the manuscript's main document [@audetat_diagnosis_2017-1].
+This is the landing page for the website.

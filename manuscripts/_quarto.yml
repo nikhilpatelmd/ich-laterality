@@ -1,25 +1,26 @@
 project:
-  type: manuscript
+  type: website
+  preview:
+    port: 5555
+    browser: false
 
-manuscript:
-  article: index.qmd
+website:
+  title: "Hemispheric Laterality in ICH"
+  navbar:
+    search: true
+    right:
+      - manuscript1.qmd
+      - icon: github
+        href: https://https://github.com/nikhilpatelmd/ich-laterality
+        aria-label: GitHub
 
 format:
   html:
     theme: litera
-    toc-location: left
-    comments:
-      hypothesis: true
-    citations-hover: true
-    crossrefs-hover: true
-  # docx: default
-  # jats: default
-
-  # (other formats)
-  # pdf: default
-
-execute:
-  freeze: true
-
-
-
+    css: styles.css
+    highlight-style: nord
+    toc: true
+    bibliography: references.bib
+    csl: american-heart-association.csl
+    mainfont: Figtree
+    monofont: Source Code Pro
