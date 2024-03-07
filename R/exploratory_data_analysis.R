@@ -1,6 +1,4 @@
 table_1_function <- function(x) {
-
-
   table_one_vars <- c(
     "age",
     "sex",
@@ -44,11 +42,13 @@ table_1_function <- function(x) {
         ivh ~ "IVH",
         study ~ "Study"
       ),
-      sort = list(everything() ~ "frequency")
+      sort = list(everything() ~ "frequency"),
+      digits = starts_with("gcs") ~ 0,
     ) |>
-    add_p() |>
+    add_p(pvalue_fun = ~ style_pvalue(.x, digits = 2)) |>
     add_overall() |>
-    bold_labels()
+    bold_labels() |>
+    modify_header(label ~ "")
 }
 
 table_2_aggressive_function <- function(x) {
@@ -65,6 +65,7 @@ table_2_aggressive_function <- function(x) {
 
   x |>
     select(all_of(table_two_vars)) |>
+    mutate(days_mechanical_ventilation = as.numeric(days_mechanical_ventilation)) |>
     tbl_summary(
       by = ich_laterality,
       missing = "no",
@@ -78,6 +79,6 @@ table_2_aggressive_function <- function(x) {
         dnr_binary ~ "DNR Order"
       )
     ) |>
-    add_overall() |>
-    bold_labels()
+    bold_labels() |>
+    modify_header(label ~ "Outcome")
 }
