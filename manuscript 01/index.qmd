@@ -40,6 +40,7 @@ library(bayesplot)
 library(ggdist)
 library(patchwork)
 library(tinytable)
+library(flextable)
 
 # plot stuff
 theme_ich <- function(base_family = "Figtree",
@@ -131,8 +132,6 @@ I should report the following: point estimate, 95% CIs, and posterior probabilit
 
 
 ```{r neurosurgery}
-neurosurgery_mod <- with_dir(here(), tar_read(m_posterior_neurosurgery_canonical))
-
 models <- list(
   "Neurosurgical Intervention" = with_dir(here(), tar_read(m_posterior_neurosurgery_canonical)),
   "External Ventricular Drain" = with_dir(here(), tar_read(m_posterior_evd_canonical)),
@@ -256,14 +255,39 @@ rope <- list(
   "DNR Order" = pluck(dnr, 4)
 )
 
-
-
 table1 <- bind_rows(odds_ratios, credible_ints)
 table2 <- bind_rows(prob_difference, rope) |> mutate(across(1:7, as.character))
 
 ult_table <- bind_rows(table1, table2)
 
-ult_table <- t(ult_table)
+ult_table <- as_tibble(t(ult_table))
+
+tibble_2 <- as_tibble(table_2) |> select(-1)
+
+column_names <- c(
+  "Neurosurgical Intervention",
+  "External Ventricular Drain",
+  "Tracheostomy",
+  "Days of Mechanical Ventilation",
+  "Withdrawal of Life-Sustaining Therapy",
+  "Early Withdrawal of Life-Sustaining Therapy",
+  "DNR Order"
+)
+
+combined <- bind_cols(column_names, tibble_2, ult_table) |>
+  rename(
+    "Outcome" = ...1,
+    "aOR" = V1,
+    "95% Credible Interval" = V2,
+    "Probability of Difference (aOR >1)" = V3,
+    "% ROPE" = V4
+  )
+
+vector <- as.numeric(noquote(unlist(odds_ratios, use.names = FALSE)))
+
+flextable(combined)
+get_flextable_defaults()
+
 ```
 
 ### Left hemispheric ICH and other measures of aggressive care
