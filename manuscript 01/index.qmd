@@ -155,36 +155,121 @@ summary <- modelsummary(models,
   gof_map = c("none")
 )
 
-noquote(summary$"Neurosurgical Intervention"[1])
+# gather odds ratios from modelsummary object
+odds_ratios <- summary |> map(pluck(1))
+odds_ratios[1] <- NULL
 
-odds_ratios <- list(
-  "Neurosurgical Intervention" = noquote(summary$"Neurosurgical Intervention"[1]),
-  "External Ventricular Drain" = noquote(summary$"External Ventricular Drain"[1]),
-  "Tracheostomy" = noquote(summary$"Tracheostomy"[1]),
-  "Days of Mechanical Ventilation" = noquote(summary$"Days of Mechanical Ventilation"[1]),
-  "DNR Order" = noquote(summary$"DNR Order"[1]),
-  "Withdrawal of Life-Sustaining Therapy" = noquote(summary$"Withdrawal of Life-Sustaining Therapy"[1]),
-  "Early Withdrawal of Life-Sustaining Therapy" = noquote(summary$"Early Withdrawal of Life-Sustaining Therapy"[1])
+# gather credible intervals from modelsummary object
+credible_ints <- summary |> map(pluck(2))
+credible_ints[1] <- NULL
+
+# gather posterior probabilities of various magnitudes of difference
+neurosurgery <- models$"Neurosurgical Intervention" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  summarize(
+    or_1 = sum(ich_right_or > 1) / n(),
+    or_1.1 = sum(ich_right_or > 1.1) / n(),
+    or_1.2 = sum(ich_right_or > 1.2) / n(),
+    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  )
+
+evd <- models$"External Ventricular Drain" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  summarize(
+    or_1 = sum(ich_right_or > 1) / n(),
+    or_1.1 = sum(ich_right_or > 1.1) / n(),
+    or_1.2 = sum(ich_right_or > 1.2) / n(),
+    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  )
+
+trach <- models$"Tracheostomy" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  summarize(
+    or_1 = sum(ich_right_or > 1) / n(),
+    or_1.1 = sum(ich_right_or > 1.1) / n(),
+    or_1.2 = sum(ich_right_or > 1.2) / n(),
+    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  )
+
+vent <- models$"Days of Mechanical Ventilation" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  summarize(
+    or_1 = sum(ich_right_or > 1) / n(),
+    or_1.1 = sum(ich_right_or > 1.1) / n(),
+    or_1.2 = sum(ich_right_or > 1.2) / n(),
+    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  )
+
+dnr <- models$"DNR Order" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  summarize(
+    or_1 = sum(ich_right_or > 1) / n(),
+    or_1.1 = sum(ich_right_or > 1.1) / n(),
+    or_1.2 = sum(ich_right_or > 1.2) / n(),
+    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  )
+
+wlst <- models$"Withdrawal of Life-Sustaining Therapy" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  summarize(
+    or_1 = sum(ich_right_or > 1) / n(),
+    or_1.1 = sum(ich_right_or > 1.1) / n(),
+    or_1.2 = sum(ich_right_or > 1.2) / n(),
+    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  )
+
+early_wlst <- models$"Early Withdrawal of Life-Sustaining Therapy" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  summarize(
+    or_1 = sum(ich_right_or > 1) / n(),
+    or_1.1 = sum(ich_right_or > 1.1) / n(),
+    or_1.2 = sum(ich_right_or > 1.2) / n(),
+    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  )
+
+# combine probability of OR > 1 (prob of difference)
+prob_difference <- list(
+  "Neurosurgical Intervention" = pluck(neurosurgery, 1),
+  "External Ventricular Drain" = pluck(evd, 1),
+  "Tracheostomy" = pluck(trach, 1),
+  "Days of Mechanical Ventilation" = pluck(vent, 1),
+  "DNR Order" = pluck(dnr, 1),
+  "Withdrawal of Life-Sustaining Therapy" = pluck(wlst, 1),
+  "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 1)
 )
 
-credible_ints <- list(
-  "Neurosurgical Intervention" = noquote(summary$"Neurosurgical Intervention"[2]),
-  "External Ventricular Drain" = noquote(summary$"External Ventricular Drain"[2]),
-  "Tracheostomy" = noquote(summary$"Tracheostomy"[2]),
-  "Days of Mechanical Ventilation" = noquote(summary$"Days of Mechanical Ventilation"[2]),
-  "DNR Order" = noquote(summary$"DNR Order"[2]),
-  "Withdrawal of Life-Sustaining Therapy" = noquote(summary$"Withdrawal of Life-Sustaining Therapy"[2]),
-  "Early Withdrawal of Life-Sustaining Therapy" = noquote(summary$"Early Withdrawal of Life-Sustaining Therapy"[2])
+# combine % of posterior within the ROPE
+rope <- list(
+  "Neurosurgical Intervention" = pluck(neurosurgery, 4),
+  "External Ventricular Drain" = pluck(evd, 4),
+  "Tracheostomy" = pluck(trach, 4),
+  "Days of Mechanical Ventilation" = pluck(vent, 4),
+  "DNR Order" = pluck(dnr, 4),
+  "Withdrawal of Life-Sustaining Therapy" = pluck(wlst, 4),
+  "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 4)
 )
 
-table_2
 
+
+table1 <- bind_rows(odds_ratios, credible_ints)
+table2 <- bind_rows(prob_difference, rope) |> mutate(across(1:7, as.character))
+
+ult_table <- bind_rows(table1, table2)
 
 ```
 
 ### Left hemispheric ICH and other measures of aggressive care
 
-### Sensitivity analysis
+### Subgroup analyses
+
+### Sensitivity analyses
 
 ## Discussion
 
