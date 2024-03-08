@@ -30,7 +30,7 @@ library(targets)
 library(tidyverse)
 library(withr)
 library(here)
-library(scales)
+library(formattable)
 library(gt)
 library(gtsummary)
 library(modelsummary)
@@ -62,6 +62,7 @@ theme_ich <- function(base_family = "Figtree",
     )
 }
 
+# load data and models
 with_dir(here(), tar_load(ich_aggressive))
 
 sample_size <- count(ich_aggressive)
@@ -69,6 +70,16 @@ sample_size <- count(ich_aggressive)
 left_hemisphere_count <- ich_aggressive |>
   filter(ich_laterality == "Left") |>
   count()
+
+models <- list(
+  "Neurosurgical Intervention" = with_dir(here(), tar_read(m_posterior_neurosurgery_canonical)),
+  "External Ventricular Drain" = with_dir(here(), tar_read(m_posterior_evd_canonical)),
+  "Tracheostomy" = with_dir(here(), tar_read(m_posterior_trach_canonical)),
+  "Days of Mechanical Ventilation" = with_dir(here(), tar_read(m_posterior_vent_canonical)),
+  "Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_comfort_canonical)),
+  "Early Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_early_comfort_canonical)),
+  "DNR Order" = with_dir(here(), tar_read(m_posterior_dnr_canonical))
+)
 
 ```
 
@@ -93,7 +104,7 @@ The study was approved by the institutional review board of the Wake Forest Scho
 
 The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, MD, MS, NCT01202864) data and analyses presented in this manuscript are based on the research files downloaded from the Archived Clinical Research web site of the National Institute of Neurologic Disease and Stroke (NINDS). The datasets can be obtained after approval of a written proposal as outlined on the NINDS website. 
 
-The analysis code is publicly available as outlined by the NINDS Data Request Agreement at [https://github.com/nikhilpatelmd/ich-laterality](https://github.com/nikhilpatelmd/ich-laterality).
+As outlined in the NINDS Data Request Agreement, the analysis code is publicly available at [https://github.com/nikhilpatelmd/ich-laterality](https://github.com/nikhilpatelmd/ich-laterality).
 
 ### Exposures and Outcomes
 
@@ -109,44 +120,34 @@ To explore differences in other aspects of aggressive care, we defined several s
 
 ### Baseline Characteristics
 
-A total of `r sample_size` patients were included in the analysis, of which `r left_hemisphere_count` (`r left_hemisphere_count/sample_size`) had left hemispheric ICH. They had higher NIHSS scores, higher GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH (@tbl-1).
+A total of `r sample_size` patients were included in the analysis, of which `r left_hemisphere_count` (`r percent(left_hemisphere_count/sample_size, digits = 1)`) had left hemispheric ICH. They had higher NIHSS scores, higher GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH (@tbl-1).
 
 ```{r table_1}
 #| label: tbl-1
 #| tbl-cap: "Baseline Characteristics"
 
-theme_gtsummary_compact(set_theme = TRUE, font_size = 14)
-with_dir(here(), tar_read(table_1_aggressive))
+with_dir(here(), tar_read(table_1_aggressive)) |>
+  as_flex_table() |>
+  font(part = "all", fontname = "Figtree") |>
+  fontsize(size = 11, part = "header") |>
+  fontsize(size = 10) |>
+  theme_zebra() |>
+  line_spacing(space = 1.25, part = "all") |>
+  padding(padding = 4, part = "all")
 
 ```
 
 ### Left hemispheric ICH and neurosurgical intervention
 
-::: {.callout-note}
-What am I trying to do here? I want to present the results of the logistic regression showing that after controlling for other factors, there is still a higher probability of a right-hemisphere ICH patient receiving neurosurgical intervention.
-
-I have to change the baseline factor in `ich_laterality` to "Left".
-
-I should report the following: point estimate, 95% CIs, and posterior probability that effect is greater than 0, or for minimal clinically important difference.
-:::
 
 
 ```{r neurosurgery}
-models <- list(
-  "Neurosurgical Intervention" = with_dir(here(), tar_read(m_posterior_neurosurgery_canonical)),
-  "External Ventricular Drain" = with_dir(here(), tar_read(m_posterior_evd_canonical)),
-  "Tracheostomy" = with_dir(here(), tar_read(m_posterior_trach_canonical)),
-  "Days of Mechanical Ventilation" = with_dir(here(), tar_read(m_posterior_vent_canonical)),
-  "Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_comfort_canonical)),
-  "Early Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_early_comfort_canonical)),
-  "DNR Order" = with_dir(here(), tar_read(m_posterior_dnr_canonical))
-)
-
-table_2 <- with_dir(here(), tar_read(table_2_aggressive))
+#| label: tbl-2
+#| tbl-cap: "Association between hemispheric lateralization and care"#|
 
 summary <- modelsummary(models,
   exponentiate = TRUE,
-  fmt = fmt_significant(3),
+  fmt = 2,
   estimate = "{estimate}",
   statistic = "{conf.low} - {conf.high}",
   coef_omit = "^(?!b_ich_lat)",
@@ -161,6 +162,7 @@ odds_ratios[1] <- NULL
 # gather credible intervals from modelsummary object
 credible_ints <- summary |> map(pluck(2))
 credible_ints[1] <- NULL
+
 
 # gather posterior probabilities of various magnitudes of difference
 neurosurgery <- models$"Neurosurgical Intervention" |>
@@ -258,14 +260,10 @@ rope <- list(
 table1 <- bind_rows(odds_ratios, credible_ints)
 table2 <- bind_rows(prob_difference, rope) |> mutate(across(1:7, as.character))
 
-ult_table <- bind_rows(table1, table2)
+pre_tab <- as_tibble(t(bind_rows(table1, table2)))
 
-ult_table <- as_tibble(t(ult_table))
-
+table_2 <- with_dir(here(), tar_read(table_2_aggressive))
 tibble_2 <- as_tibble(table_2) |> select(-1)
-
-tibble_2
-
 
 column_names <- c(
   "Neurosurgical Intervention",
@@ -277,8 +275,10 @@ column_names <- c(
   "DNR Order"
 )
 
-combined <- bind_cols(column_names, tibble_2, ult_table) |>
+combined <- bind_cols(column_names, tibble_2, pre_tab) |>
   rename(
+    "Right Hemisphere" = "**Right**, N = 1,757",
+    "Left Hemisphere" = "**Left**, N = 1,720",
     "Outcome" = ...1,
     "aOR" = V1,
     "95% Credible Interval" = V2,
@@ -286,7 +286,19 @@ combined <- bind_cols(column_names, tibble_2, ult_table) |>
     "% ROPE" = V4
   )
 
-flextable(combined)
+flextable(combined) |>
+  font(part = "all", fontname = "Figtree") |>
+  fontsize(size = 10) |>
+  theme_zebra() |>
+  line_spacing(space = 1.25, part = "all") |>
+  padding(padding = 4, part = "all") |>
+  bold(part = "header") |>
+  bold(i = 1) |>
+  padding(padding = 5, part = "all") |>
+  width(width = 50, j = 1) |>
+  width(width = 2, j = 2:3) |>
+  width(width = 4, j = 4:6)
+
 ```
 
 ### Left hemispheric ICH and other measures of aggressive care
