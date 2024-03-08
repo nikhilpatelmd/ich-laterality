@@ -138,9 +138,9 @@ models <- list(
   "External Ventricular Drain" = with_dir(here(), tar_read(m_posterior_evd_canonical)),
   "Tracheostomy" = with_dir(here(), tar_read(m_posterior_trach_canonical)),
   "Days of Mechanical Ventilation" = with_dir(here(), tar_read(m_posterior_vent_canonical)),
-  "DNR Order" = with_dir(here(), tar_read(m_posterior_dnr_canonical)),
   "Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_comfort_canonical)),
-  "Early Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_early_comfort_canonical))
+  "Early Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_early_comfort_canonical)),
+  "DNR Order" = with_dir(here(), tar_read(m_posterior_dnr_canonical))
 )
 
 table_2 <- with_dir(here(), tar_read(table_2_aggressive))
@@ -240,9 +240,9 @@ prob_difference <- list(
   "External Ventricular Drain" = pluck(evd, 1),
   "Tracheostomy" = pluck(trach, 1),
   "Days of Mechanical Ventilation" = pluck(vent, 1),
-  "DNR Order" = pluck(dnr, 1),
   "Withdrawal of Life-Sustaining Therapy" = pluck(wlst, 1),
-  "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 1)
+  "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 1),
+  "DNR Order" = pluck(dnr, 1)
 )
 
 # combine % of posterior within the ROPE
@@ -251,9 +251,9 @@ rope <- list(
   "External Ventricular Drain" = pluck(evd, 4),
   "Tracheostomy" = pluck(trach, 4),
   "Days of Mechanical Ventilation" = pluck(vent, 4),
-  "DNR Order" = pluck(dnr, 4),
   "Withdrawal of Life-Sustaining Therapy" = pluck(wlst, 4),
-  "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 4)
+  "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 4),
+  "DNR Order" = pluck(dnr, 4)
 )
 
 
@@ -263,6 +263,7 @@ table2 <- bind_rows(prob_difference, rope) |> mutate(across(1:7, as.character))
 
 ult_table <- bind_rows(table1, table2)
 
+ult_table <- t(ult_table)
 ```
 
 ### Left hemispheric ICH and other measures of aggressive care
