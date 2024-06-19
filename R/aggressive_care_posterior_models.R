@@ -20,8 +20,6 @@ f_posterior_neurosurgery_minimal <- function(dat) {
     seed = settings$seed,
     backend = "cmdstanr"
   )
-
-  return(model)
 }
 
 f_posterior_neurosurgery_canonical <- function(dat) {
@@ -43,7 +41,6 @@ f_posterior_neurosurgery_canonical <- function(dat) {
     backend = "cmdstanr"
   )
 
-  return(model)
 }
 
 ## EVD as outcome -----

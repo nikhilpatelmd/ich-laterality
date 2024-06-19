@@ -1,7 +1,7 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|29d9ef64756360a5|||||||||||||||
+.Random.seed|object|f6c58d6141d7b51d|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
-atach|stem|924da92e1d97a053|332dc1f141f8e5ed|3268da799d75cf81|860028905||t19774.8084096571s|580c91cf60ee1b35|31110|rds|local|vector|||0.007||
+atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19893.0080530561s|55f706f8f6e4d315|31110|rds|local|vector|||0.011||
 comfort_canonical_visuals|stem|0cb7da27ca72e0a1|cc51541ad5cbca3d|97da178a4f0c8a4d|662216964||t19774.7869911228s|4a478f7ff7703992|2813375|rds|local|vector|||7.656||
 comfort_care_canonical_diagnostics|stem|1e398df5828f3c48|23bf8883389aae4e|54232a5edf0df66e|-1027137305||t19774.7870366474s|fd408bda8de17028|5310881|rds|local|vector|||1.973||
 comfort_care_minimal_diagnostics|stem|aa0fa2d0111ba9b2|7f2aced94fdd258f|0b919146dedae4dd|346575851||t19774.7875364143s|3357aaf90d20bc51|3629461|rds|local|vector|||1.837||
@@ -71,8 +71,8 @@ f_posterior_mrs_365_canonical|function|867aa633256f2546|||||||||||||||
 f_posterior_mrs_365_minimal|function|51cf63920e7bf78d|||||||||||||||
 f_posterior_mrs_90_canonical|function|113127c6b61415cf|||||||||||||||
 f_posterior_mrs_90_minimal|function|56f3067634ae76d6|||||||||||||||
-f_posterior_neurosurgery_canonical|function|bdd7121d318f9920|||||||||||||||
-f_posterior_neurosurgery_minimal|function|a7b46f5f8e7fedd4|||||||||||||||
+f_posterior_neurosurgery_canonical|function|be10ecb6e63043da|||||||||||||||
+f_posterior_neurosurgery_minimal|function|72d22ffb619ee188|||||||||||||||
 f_posterior_trach_canonical|function|d80359d791309ef0|||||||||||||||
 f_posterior_trach_minimal|function|590296212b098367|||||||||||||||
 f_posterior_vent_canonical|function|63a642bdc74eca5c|||||||||||||||
@@ -180,7 +180,7 @@ m_posterior_euro_selfcare_365_canonical|stem|2500b628a204419b|937aa146bc8c3ac4|2
 m_posterior_euro_selfcare_365_minimal|stem|410096aa90c367c2|e04adfca4c4b10e3|c55dccf5c73faf2f|645469701||t19774.9413915375s|f6fab23c54eae6af|614689|rds|local|vector|||5.11|Rows containing NAs were excluded from the model.|
 m_posterior_euro_selfcare_90_canonical|stem|b72b4f26c4a25526|880dce48e7588c14|704e33eebf66c536|-1928241926||t19774.8740972875s|7abf5c29e946fbba|1062517|rds|local|vector|||857.52|Rows containing NAs were excluded from the model.|
 m_posterior_euro_selfcare_90_minimal|stem|cd385be442fe42f9|5ab350ace36e7a82|e06904053518da91|1108455457||t19774.8930345134s|9b19a0a6f1245dea|629491|rds|local|vector|||8.642|Rows containing NAs were excluded from the model.|
-m_posterior_euro_usual_180_canonical|stem|a525437d5b142b3b|fd12a4b977b6f555|4f0c73a7b97abbc5|-2089615508||t19774.819752222s||1057395|rds|local|vector|||0.136|Rows containing NAs were excluded from the model.|CmdStan path has not been set yet. See set_cmdstan_path.
+m_posterior_euro_usual_180_canonical|stem|a525437d5b142b3b|fd12a4b977b6f555|4f0c73a7b97abbc5|-2089615508||t19774.819752222s||1057395|rds|local|vector|||380.694|Rows containing NAs were excluded from the model.|cxxdso is not a defined class
 m_posterior_euro_usual_180_minimal|stem|ee29f6efb6724e57|020999b65940cacd|58b8d5f1fd0de662|-2048663044||t19774.907997943s|7f7b90f98e49d516|628551|rds|local|vector|||6.46|Rows containing NAs were excluded from the model.|
 m_posterior_euro_usual_365_canonical|stem|72f1684de5929660|df06e534ce624764|e57c1708d476bcca|-139486542||t19774.9175112693s|d6b9b922a843a96e|1054547|rds|local|vector|||212.938|Rows containing NAs were excluded from the model.|
 m_posterior_euro_usual_365_minimal|stem|34973069e4af5d0d|d95f98d0d1f4c660|3a637dbee005a438|-129935305||t19774.8925697382s|5e876c11a352f6dc|622551|rds|local|vector|||5.841|Rows containing NAs were excluded from the model.|
@@ -198,7 +198,7 @@ m_posterior_mrs_365_canonical|stem|4f7ad809589075ec|8195a179677da874|99cf19bd2a8
 m_posterior_mrs_365_minimal|stem|6985cefa5584614b|9084ed4f4c92488c|0d7f6f07be8ebe28|703763794||t19774.8929335105s|91fb46e2bffc15b3|1043756|rds|local|vector|||21.622|Rows containing NAs were excluded from the model.|
 m_posterior_mrs_90_canonical|stem|d781671431db41d9|624ea2777eed89d3|518c5c53d08c18dc|834643700||t19774.9079222102s|9e0e9e7293aff672|1455013|rds|local|vector|||1277.868|Rows containing NAs were excluded from the model.|
 m_posterior_mrs_90_minimal|stem|2fb62d3591e553db|1443a510e617cee3|ef85ff547edb26bd|1076811092||t19774.8744273793s|82de562aeece3208|986863|rds|local|vector|||28.419|Rows containing NAs were excluded from the model.|
-m_posterior_neurosurgery_canonical|stem|4b07ceddca627d05|d25168898a4d86a2|24e21521daf2920b|-690002383||t19774.7859770444s|35652acec988336f|914630|rds|local|vector|||4.079|Rows containing NAs were excluded from the model.|
+m_posterior_neurosurgery_canonical|stem|4b07ceddca627d05|4ab162549c4c6387|b5a88087e4bec590|-690002383||t19774.7859770444s||914630|rds|local|vector|||17.247|Rows containing NAs were excluded from the model.|cxxdso is not a defined class
 m_posterior_neurosurgery_canonical_atach|stem|917c243f224c6fb5|f09e09da7aa55749|bdde24c97eb321fb|903043240||t19774.7868441711s|da31d558d777ae6c|763323|rds|local|vector|||1.926||
 m_posterior_neurosurgery_canonical_erich|stem|a2b74bca2cb7dd5e|045d8e16bc3a35d3|abd8fe11c0b38e03|1933281405||t19774.7866045114s|876c75e554a26a18|858257|rds|local|vector|||3.686|Rows containing NAs were excluded from the model.|
 m_posterior_neurosurgery_minimal|stem|b80bae9b86f107db|e385887496baec02|3467b30a6215840d|1757798209||t19774.7858929783s|5634e26bb94769d3|473898|rds|local|vector|||1.617||
@@ -260,7 +260,7 @@ m_prior_mrs_365_minimal|stem|d356ebe3cfca6605|d6ac7f45d915130f|3f86d09d5cc235a3|
 m_prior_mrs_90_canonical|stem|72d4d572297a3c52|d2467d96f6ede1a8|1a3e71a66319c5c8|-1960015551||t19774.8086174884s|ed40718f0e726b66|1321394|rds|local|vector|||0.837|Rows containing NAs were excluded from the model.|
 m_prior_mrs_90_minimal|stem|520d969a6050be86|7c5c2171b1e7693d|8fce70a1ef659070|492862794||t19774.8054529137s|b5276dfa9680ba54|960495|rds|local|vector|||19.342|Rows containing NAs were excluded from the model.|
 m_prior_neurosurgery_canonical|stem|3d8c6553ef2d4bdb|4b1faded6b577209|fd3a843b82a720b5|114468795||t19774.786312267s|063916282e1995b8|842485|rds|local|vector|||0.845|Rows containing NAs were excluded from the model.|
-m_prior_neurosurgery_minimal|stem|97e8c3e36b650ffe|910e71968f0ac600|d43d579346091af6|497813916||t19774.786171874s|17837ddcb276156b|467900|rds|local|vector|||0.78||
+m_prior_neurosurgery_minimal|stem|97e8c3e36b650ffe|6ed1bbbe5d2aeefd|3d51c4477ee045e7|497813916||t19774.786171874s||467900|rds|local|vector|||11.705||cxxdso is not a defined class
 m_prior_trach_canonical|stem|ff82b8865dc43aa0|162121daeef6a613|30490b38d154ec94|-993513890||t19774.7862497287s|abad6b69dc129fdb|841846|rds|local|vector|||0.835|Rows containing NAs were excluded from the model.|
 m_prior_trach_minimal|stem|7364c6b1fa8737ce|62eef9390824c041|60d1b6b9f1545951|-340765268||t19774.7863373827s|51ffd0e82d6bb739|467431|rds|local|vector|||1.06||
 m_prior_vent_canonical|stem|5ca5df7b9a89954a|48eacca23a736aa7|bf311013919f6cee|1382909142||t19774.786324304s|5b53d691039f93da|2765611|rds|local|vector|||0.854|Rows containing NAs were excluded from the model.|
@@ -275,11 +275,11 @@ posterior_diagnostics|function|35a8ac4d3fa32822|||||||||||||||
 results_visual|function|60bfc24e70594483|||||||||||||||
 select_variables|function|51eaa047f9ead67f|||||||||||||||
 selected_data|stem|0f476d661b9297b1|44280be3ad15831f|c743c3864cfa3125|-1052555108||t19892.7883193478s|6c0061a438cae8f9|158412|rds|local|vector|||0.019||
-settings|stem|113c35e390419099|0d725b29fc99973a|e4562df55d19cb87|-416401554||t19892.7883163386s|b0e8a36a8bde68fd|362|rds|local|vector|||0.005||
-table_1_aggressive|stem|f6f84a281ff50130|638610d9242045c6|5b629850b8ab271c|-15126430||t19789.8557682993s|24eaa6d6412b2bb8|724566|rds|local|vector|||4.083||
+settings|stem|113c35e390419099|0d725b29fc99973a|e4562df55d19cb87|-416401554||t19893.002980208s|b0e8a36a8bde68fd|362|rds|local|vector|||0.006||
+table_1_aggressive|stem|779fd97a2641161b|1a2e2eefc146e3c7|23a0847c28b9c73d|-15126430||t19893.0082557556s|8dc3612c73cdb104|724561|rds|local|vector|||3.256||
 table_1_function|function|8f8fb2a03829abf2|||||||||||||||
-table_1_outcomes|stem|85571af95c4f6cc9|4ea3ad5495a7bbd9|32cf69359535cf82|-541678962||t19789.8557168334s|f9e98deb7f46358b|883462|rds|local|vector|||3.998||
-table_2_aggressive|stem|6ce87313739ceb86|b64b6af1ec25d0c7|1bae5ac3a3304c95|-1897827915||t19789.8548402934s|8fdc07d6f8236acd|154546|rds|local|vector|||1.106||
+table_1_outcomes|stem|18b368bba66a8db3|ff32e4d6c57ce9fe|d77e08d66f26f955|-541678962||t19893.0093074828s|a7f98d81182a5304|883459|rds|local|vector|||3.329||
+table_2_aggressive|stem|5c36c36e6c6e96f2|88d16aec5bf7a342|d9fb2c6accd64b1c|-1897827915||t19893.0083595359s|e1f84bb1f33b9ce1|154541|rds|local|vector|||0.931||
 table_2_aggressive_function|function|1fab1741f125d382|||||||||||||||
 trach_canonical_diagnostics|stem|ab7b58d2e07fb87d|e84c602a7c5376cb|bc21d5728a1ed340|-1818965111||t19774.7870811688s|41bd930b061c925b|4376933|rds|local|vector|||2.237||
 trach_canonical_visuals|stem|34e978d7f41cb0f4|aabe525fb52871f4|e9f1c858fae0cb74|-36796315||t19774.7871550884s|9dcc62e7f00396a3|2813225|rds|local|vector|||6.091||

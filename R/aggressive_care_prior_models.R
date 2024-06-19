@@ -29,19 +29,19 @@ f_prior_neurosurgery_minimal <- function(dat) {
 
   model <- brm(neurosurgery_evac ~ ich_laterality,
     family = bernoulli(link = "logit"),
-    data = dat,
+    data = ich_aggressive,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
       set_prior("normal(0, 1)", class = "b")
     ),
     sample_prior = "only",
-    cores = settings$cores,
-    chains = settings$chains,
-    threads = settings$threads,
-    warmup = settings$warmup,
-    iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    # cores = settings$cores,
+    # chains = settings$chains,
+    # threads = settings$threads,
+    # warmup = settings$warmup,
+    # iter = settings$iter,
+    # seed = settings$seed,
+    # backend = "cmdstanr"
   )
 
   return(model)
