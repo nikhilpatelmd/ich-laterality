@@ -17,8 +17,7 @@ f_posterior_neurosurgery_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 }
 
@@ -37,8 +36,7 @@ f_posterior_neurosurgery_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
 }
@@ -60,8 +58,7 @@ f_posterior_evd_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -82,8 +79,7 @@ f_posterior_evd_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -106,8 +102,7 @@ f_posterior_trach_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -128,8 +123,7 @@ f_posterior_trach_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -152,8 +146,7 @@ f_posterior_vent_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -174,8 +167,7 @@ f_posterior_vent_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -198,8 +190,7 @@ f_posterior_comfort_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -220,8 +211,7 @@ f_posterior_comfort_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -244,8 +234,7 @@ f_posterior_early_comfort_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -266,8 +255,7 @@ f_posterior_early_comfort_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -290,8 +278,7 @@ f_posterior_dnr_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -312,8 +299,7 @@ f_posterior_dnr_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)

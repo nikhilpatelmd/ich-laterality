@@ -29,19 +29,18 @@ f_prior_neurosurgery_minimal <- function(dat) {
 
   model <- brm(neurosurgery_evac ~ ich_laterality,
     family = bernoulli(link = "logit"),
-    data = ich_aggressive,
+    data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
       set_prior("normal(0, 1)", class = "b")
     ),
     sample_prior = "only",
-    # cores = settings$cores,
-    # chains = settings$chains,
-    # threads = settings$threads,
-    # warmup = settings$warmup,
-    # iter = settings$iter,
-    # seed = settings$seed,
-    # backend = "cmdstanr"
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
   )
 
   return(model)
@@ -63,11 +62,11 @@ f_prior_neurosurgery_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
+
 }
 
 ## EVD as outcome -----
@@ -88,8 +87,7 @@ f_prior_evd_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -111,8 +109,7 @@ f_prior_evd_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -136,8 +133,7 @@ f_prior_trach_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -159,8 +155,7 @@ f_prior_trach_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -184,8 +179,7 @@ f_prior_vent_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -207,8 +201,7 @@ f_prior_vent_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -232,8 +225,7 @@ f_prior_comfort_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -255,8 +247,7 @@ f_prior_comfort_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -280,8 +271,7 @@ f_prior_early_comfort_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -303,8 +293,7 @@ f_prior_early_comfort_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -328,8 +317,7 @@ f_prior_dnr_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)
@@ -351,8 +339,7 @@ f_prior_dnr_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "cmdstanr"
+    seed = settings$seed
   )
 
   return(model)

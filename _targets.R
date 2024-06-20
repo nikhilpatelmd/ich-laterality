@@ -7,6 +7,14 @@ suppressPackageStartupMessages(library(brms))
 
 # Taken from Andrew Heiss (https://github.com/andrewheiss/cautioning-canary/blob/master/_targets.R)
 
+#   - If using cmdstanr, you can use within-chain threading
+#   - (https://cran.r-project.org/web/packages/brms/vignettes/brms_threading.html)
+#   - On a four-core computer, use mc.cores = 2 and threads = threading(2)
+#   - On an eight+-core computer, use mc.cores = 4 and threads = threading(2)
+options(mc.cores = 4,
+        mc.threads = 2,
+        brms.backend = "rstan")
+
 options(
   tidyverse.quiet = TRUE,
   dplyr.summarise.inform = FALSE

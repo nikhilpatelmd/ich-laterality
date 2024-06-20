@@ -87,11 +87,13 @@ models <- list(
 ```
 
 ## Introduction
-The clinical presentation of patients with stroke can vary based on the hemisphere affected, in particular with language, spatial orientation, and emotional processing. Previous research involving patients with ischemic stroke provide evidence that those with right hemispheric injury present later to the hospital and may not be treated as frequently with thrombolytic therapy.[@legge_neglecting_2006; @di_legge_impact_2005] On the other hand, there is a hesitation among some practitioners to offer decompressive craniectomy in patients with dominant-hemispheric infarcts. [@lin_decompressive_2021-1]
+Intracerebral hemorrhage (ICH) remains a challenging disease, marked by its sudden onset, morbidity, and mortality. While ischemic stroke has garnered considerable attention and therapeutic advancements, the acute management of ICH remains limited to blood pressure control, coagulopathy reversal, and more recently surgical evacuation of hemorrhage. Overwhelmingly these efforts have focused on reducing mortality and preventing additional morbidity due to secondary injury.
 
-It is unclear how previous research in the ischemic stroke population translates to patients experiencing intracerebral hemorrhage. Not much has been investigated.
+Clinical presentations for patients with stroke are varied based on the hemisphere affected, where hemispheric dominance dictates cognitive processing, attention, language, and emotional responses. Consequently, when confronted with the occurrence of ICH, the specific hemisphere affected can profoundly influence not only the clinical presentation but also therapeutic strategies and prognostic outcomes.
 
-We aimed to evaluate the effect of hemispheric lateralization on the probability of receiving aggressive care in patients with ICH.
+Previous research involving patients with ischemic stroke provide evidence that those with right hemispheric injury present later to the hospital and may not be treated as frequently with thrombolytic therapy.1,2 It has also been noted that there is a hesitation among some practitioners to offer decompressive craniectomy in patients with left dominant-hemispheric ischemic infarcts3 despite growing literature that long-term outcomes are better for patients with left hemispheric injuries in terms of both function and health related quality of life (HRQoL). [@deb-chatterjiSideMattersDifferences2022]
+
+It is uncertain how the results of prior work in the ischemic stroke literature translate to patients experiencing acute ICH. We aimed to evaluate the effect of hemispheric lateralization of ICH on likelihood of receiving aggressive surgical intervention. 
 
 ## Methods
 
