@@ -20,7 +20,6 @@ options(
   dplyr.summarise.inform = FALSE
 )
 
-
 # R functions ----
 
 source("R/packages.R")
@@ -123,37 +122,6 @@ tar_plan(
   m_posterior_dnr_minimal_atach = f_posterior_dnr_minimal(atach),
   m_posterior_dnr_canonical_atach = f_posterior_dnr_canonical(atach),
 
-  ### Diagnostics ----
-  neurosugery_minimal_diagnostics = posterior_diagnostics(m_posterior_neurosurgery_minimal),
-  neurosugery_canonical_diagnostics = posterior_diagnostics(m_posterior_neurosurgery_canonical),
-  evd_minimal_diagnostics = posterior_diagnostics(m_posterior_evd_minimal),
-  evd_canonical_diagnostics = posterior_diagnostics(m_posterior_evd_canonical),
-  trach_minimal_diagnostics = posterior_diagnostics(m_posterior_trach_minimal),
-  trach_canonical_diagnostics = posterior_diagnostics(m_posterior_trach_canonical),
-  vent_minimal_diagnostics = posterior_diagnostics(m_posterior_vent_minimal),
-  vent_canonical_diagnostics = posterior_diagnostics(m_posterior_vent_canonical),
-  comfort_care_minimal_diagnostics = posterior_diagnostics(m_posterior_comfort_minimal),
-  comfort_care_canonical_diagnostics = posterior_diagnostics(m_posterior_comfort_canonical),
-  early_wlst_minimal_diagnostics = posterior_diagnostics(m_posterior_early_comfort_minimal),
-  early_wlst_canonical_diagnostics = posterior_diagnostics(m_posterior_early_comfort_canonical),
-  dnr_minimal_diagnostics = posterior_diagnostics(m_posterior_dnr_minimal),
-  dnr_canonical_diagnostics = posterior_diagnostics(m_posterior_dnr_canonical),
-
-  ### Plots ----
-  neurosurgery_minimal_visuals = results_visual(m_posterior_neurosurgery_minimal, "Neurosurgical Intervention"),
-  neurosurgery_canonical_visuals = results_visual(m_posterior_neurosurgery_canonical, "Neurosurgical Intervention"),
-  evd_minimal_visuals = results_visual(m_posterior_evd_minimal, "External Ventricular Drain"),
-  evd_canonical_visuals = results_visual(m_posterior_evd_canonical, "External Ventricular Drain"),
-  trach_minimal_visuals = results_visual(m_posterior_trach_minimal, "Tracheostomy"),
-  trach_canonical_visuals = results_visual(m_posterior_trach_canonical, "Tracheostomy"),
-  vent_minimal_visuals = results_visual(m_posterior_vent_minimal, "Days of Mechanical Ventilation"),
-  vent_canonical_visuals = results_visual(m_posterior_vent_canonical, "Days of Mechanical Ventilation"),
-  comfort_minimal_visuals = results_visual(m_posterior_comfort_minimal, "Comfort Care"),
-  comfort_canonical_visuals = results_visual(m_posterior_comfort_canonical, "Comfort Care"),
-  early_wlst_minimal_visuals = results_visual(m_posterior_early_comfort_minimal, "Early Comfort Care"),
-  early_wlst_canonical_visuals = results_visual(m_posterior_early_comfort_canonical, "Early Comfort Care"),
-  dnr_minimal_visuals = results_visual(m_posterior_dnr_minimal, "DNR Order"),
-  dnr_canonical_visuals = results_visual(m_posterior_dnr_canonical, "DNR Order"),
 
   ## Outcomes ----
 
