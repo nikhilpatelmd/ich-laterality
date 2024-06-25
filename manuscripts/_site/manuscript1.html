@@ -159,7 +159,7 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention</h1>
-<p class="subtitle lead">A Bayesian Re-Analysis of ATACH-2 and ERICH data</p>
+<p class="subtitle lead">A Post Hoc Bayesian of ATACH-2 and ERICH data</p>
 </div>
 
 
@@ -258,16 +258,16 @@ div.csl-indent {
 <section id="statistical-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="statistical-analysis">Statistical Analysis</h3>
 <p>To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models adjusted for the specified covariates below and study as a random intercept. This report follows suggestions from the Bayesian Analysis Reporting Guidelines<span class="citation" data-cites="kruschkeBayesianAnalysisReporting2021"><sup><a href="#ref-kruschkeBayesianAnalysisReporting2021" role="doc-biblioref">12</a></sup></span>. For binary endpoints, hierarchal Bayesian logistic regression models were used. For ordinal endpoints, hierarchal Bayesian ordinal logisitic regression models were used. All analyses were performed in R version 4.4.1 (R Foundation for Statistical Computing, Vienna, Austria) using the ‘brms’ and ‘tidybayes’ packages.</p>
-<section id="covariates" class="level4">
-<h4 class="anchored" data-anchor-id="covariates">Covariates</h4>
+<section id="covariate-selection" class="level4">
+<h4 class="anchored" data-anchor-id="covariate-selection">Covariate Selection</h4>
 <p>We constructed directed acyclic graphs (DAGs) to model our causal assumptions and to appropriately select variables to minimize confounding and selection bias. Based on our specifications, we included the following covariates in our models: age, admission Glasgow coma score (GCS), ICH location (categorized as lobar, thalamic, or basal ganglia), baseline ICH volume (measured in millilters), and presence of intraventricular hemorrhage (IVH). The DAGs used in the analyses are available in the supplementary material.</p>
 </section>
-<section id="priors" class="level4">
-<h4 class="anchored" data-anchor-id="priors">Priors</h4>
-<p>Two sets of priors were applied for all models, both assuming no association of hemispheric laterality on the outcomes of interest: 1) default vague priors as defined by the ‘brms’ software package; 2) flat priors; 3) weakly informative priors based on previous literature. A description of the reasons for these priors is available in the supplementary material.</p>
+<section id="prior-distribution-specification" class="level4">
+<h4 class="anchored" data-anchor-id="prior-distribution-specification">Prior Distribution Specification</h4>
+<p>Two sets of priors were applied for all models, both assuming no association of hemispheric laterality on the outcomes of interest: 1) default, weakly informative priors as defined by the ‘brms’ software package; 2) priors informed from review of previous literature. A description of the reasons for these priors is available in the supplementary material.</p>
 </section>
-<section id="posterior-distribution" class="level4">
-<h4 class="anchored" data-anchor-id="posterior-distribution">Posterior distribution</h4>
+<section id="computation-and-description-of-the-posterior-distribution" class="level4">
+<h4 class="anchored" data-anchor-id="computation-and-description-of-the-posterior-distribution">Computation and Description of the Posterior Distribution</h4>
 <p>We report the following metrics for the effect of hemispheric laterality on the primary and secondary outcomes: 1) median odds ratio (OR) of the posterior distribution with 95% credible interval; 2) probability of any difference (P[OR] &gt; 1); 3) probability of a large difference (P[OR] &gt; 1.2) as defined by the study authors; 4) percent of the posterior distribution outside of the region of practical equivalence as defined by the study authors (ROPE; 0.95 &gt; P[OR] &gt; 1.05). A description of the reasons for these thresholds is available in the supplementary material.</p>
 </section>
 <section id="missing-value-policies" class="level4">
@@ -292,23 +292,23 @@ Table&nbsp;1: Baseline Characteristics
 </figcaption>
 <div aria-describedby="tbl-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="xehmjxpruc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xehmjxpruc table {
+<div id="mkmhzmzndz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mkmhzmzndz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xehmjxpruc thead, #xehmjxpruc tbody, #xehmjxpruc tfoot, #xehmjxpruc tr, #xehmjxpruc td, #xehmjxpruc th {
+#mkmhzmzndz thead, #mkmhzmzndz tbody, #mkmhzmzndz tfoot, #mkmhzmzndz tr, #mkmhzmzndz td, #mkmhzmzndz th {
   border-style: none;
 }
 
-#xehmjxpruc p {
+#mkmhzmzndz p {
   margin: 0;
   padding: 0;
 }
 
-#xehmjxpruc .gt_table {
+#mkmhzmzndz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -334,12 +334,12 @@ Table&nbsp;1: Baseline Characteristics
   border-left-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_caption {
+#mkmhzmzndz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xehmjxpruc .gt_title {
+#mkmhzmzndz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -351,7 +351,7 @@ Table&nbsp;1: Baseline Characteristics
   border-bottom-width: 0;
 }
 
-#xehmjxpruc .gt_subtitle {
+#mkmhzmzndz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -363,7 +363,7 @@ Table&nbsp;1: Baseline Characteristics
   border-top-width: 0;
 }
 
-#xehmjxpruc .gt_heading {
+#mkmhzmzndz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -375,13 +375,13 @@ Table&nbsp;1: Baseline Characteristics
   border-right-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_bottom_border {
+#mkmhzmzndz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_col_headings {
+#mkmhzmzndz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -396,7 +396,7 @@ Table&nbsp;1: Baseline Characteristics
   border-right-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_col_heading {
+#mkmhzmzndz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -416,7 +416,7 @@ Table&nbsp;1: Baseline Characteristics
   overflow-x: hidden;
 }
 
-#xehmjxpruc .gt_column_spanner_outer {
+#mkmhzmzndz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -428,15 +428,15 @@ Table&nbsp;1: Baseline Characteristics
   padding-right: 4px;
 }
 
-#xehmjxpruc .gt_column_spanner_outer:first-child {
+#mkmhzmzndz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xehmjxpruc .gt_column_spanner_outer:last-child {
+#mkmhzmzndz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xehmjxpruc .gt_column_spanner {
+#mkmhzmzndz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -448,11 +448,11 @@ Table&nbsp;1: Baseline Characteristics
   width: 100%;
 }
 
-#xehmjxpruc .gt_spanner_row {
+#mkmhzmzndz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xehmjxpruc .gt_group_heading {
+#mkmhzmzndz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -478,7 +478,7 @@ Table&nbsp;1: Baseline Characteristics
   text-align: left;
 }
 
-#xehmjxpruc .gt_empty_group_heading {
+#mkmhzmzndz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -493,15 +493,15 @@ Table&nbsp;1: Baseline Characteristics
   vertical-align: middle;
 }
 
-#xehmjxpruc .gt_from_md > :first-child {
+#mkmhzmzndz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xehmjxpruc .gt_from_md > :last-child {
+#mkmhzmzndz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xehmjxpruc .gt_row {
+#mkmhzmzndz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -520,7 +520,7 @@ Table&nbsp;1: Baseline Characteristics
   overflow-x: hidden;
 }
 
-#xehmjxpruc .gt_stub {
+#mkmhzmzndz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -533,7 +533,7 @@ Table&nbsp;1: Baseline Characteristics
   padding-right: 5px;
 }
 
-#xehmjxpruc .gt_stub_row_group {
+#mkmhzmzndz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -547,15 +547,15 @@ Table&nbsp;1: Baseline Characteristics
   vertical-align: top;
 }
 
-#xehmjxpruc .gt_row_group_first td {
+#mkmhzmzndz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xehmjxpruc .gt_row_group_first th {
+#mkmhzmzndz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xehmjxpruc .gt_summary_row {
+#mkmhzmzndz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -565,16 +565,16 @@ Table&nbsp;1: Baseline Characteristics
   padding-right: 5px;
 }
 
-#xehmjxpruc .gt_first_summary_row {
+#mkmhzmzndz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_first_summary_row.thick {
+#mkmhzmzndz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xehmjxpruc .gt_last_summary_row {
+#mkmhzmzndz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -584,7 +584,7 @@ Table&nbsp;1: Baseline Characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_grand_summary_row {
+#mkmhzmzndz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -594,7 +594,7 @@ Table&nbsp;1: Baseline Characteristics
   padding-right: 5px;
 }
 
-#xehmjxpruc .gt_first_grand_summary_row {
+#mkmhzmzndz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -604,7 +604,7 @@ Table&nbsp;1: Baseline Characteristics
   border-top-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_last_grand_summary_row_top {
+#mkmhzmzndz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -614,11 +614,11 @@ Table&nbsp;1: Baseline Characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_striped {
+#mkmhzmzndz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xehmjxpruc .gt_table_body {
+#mkmhzmzndz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -627,7 +627,7 @@ Table&nbsp;1: Baseline Characteristics
   border-bottom-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_footnotes {
+#mkmhzmzndz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -641,7 +641,7 @@ Table&nbsp;1: Baseline Characteristics
   border-right-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_footnote {
+#mkmhzmzndz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -650,7 +650,7 @@ Table&nbsp;1: Baseline Characteristics
   padding-right: 5px;
 }
 
-#xehmjxpruc .gt_sourcenotes {
+#mkmhzmzndz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -664,7 +664,7 @@ Table&nbsp;1: Baseline Characteristics
   border-right-color: #D3D3D3;
 }
 
-#xehmjxpruc .gt_sourcenote {
+#mkmhzmzndz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -672,63 +672,63 @@ Table&nbsp;1: Baseline Characteristics
   padding-right: 5px;
 }
 
-#xehmjxpruc .gt_left {
+#mkmhzmzndz .gt_left {
   text-align: left;
 }
 
-#xehmjxpruc .gt_center {
+#mkmhzmzndz .gt_center {
   text-align: center;
 }
 
-#xehmjxpruc .gt_right {
+#mkmhzmzndz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xehmjxpruc .gt_font_normal {
+#mkmhzmzndz .gt_font_normal {
   font-weight: normal;
 }
 
-#xehmjxpruc .gt_font_bold {
+#mkmhzmzndz .gt_font_bold {
   font-weight: bold;
 }
 
-#xehmjxpruc .gt_font_italic {
+#mkmhzmzndz .gt_font_italic {
   font-style: italic;
 }
 
-#xehmjxpruc .gt_super {
+#mkmhzmzndz .gt_super {
   font-size: 65%;
 }
 
-#xehmjxpruc .gt_footnote_marks {
+#mkmhzmzndz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xehmjxpruc .gt_asterisk {
+#mkmhzmzndz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xehmjxpruc .gt_indent_1 {
+#mkmhzmzndz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xehmjxpruc .gt_indent_2 {
+#mkmhzmzndz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xehmjxpruc .gt_indent_3 {
+#mkmhzmzndz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xehmjxpruc .gt_indent_4 {
+#mkmhzmzndz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xehmjxpruc .gt_indent_5 {
+#mkmhzmzndz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1035,9 +1035,9 @@ Table&nbsp;2: Association between hemispheric lateralization and care
   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_3s6hmosg8kmz8wmfronv</title>
+    <title>tinytable_saijmepgqma3t385vpdt</title>
     <style>
-.table td.tinytable_css_bhyz32g1uqsvkaub9gjh, .table th.tinytable_css_bhyz32g1uqsvkaub9gjh {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_bl4gustcjaqgiwud7zr1, .table th.tinytable_css_bl4gustcjaqgiwud7zr1 {    border-bottom: solid 0.1em #d3d8dc; }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -1055,7 +1055,7 @@ Table&nbsp;2: Association between hemispheric lateralization and care
 
   
     <div class="container">
-      <table class="table table-borderless" id="tinytable_3s6hmosg8kmz8wmfronv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_saijmepgqma3t385vpdt" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
@@ -1138,12 +1138,12 @@ Table&nbsp;2: Association between hemispheric lateralization and care
     </div>
 
     <script>
-      function styleCell_tinytable_ib9cckzwh55qhxwqg8ac(i, j, css_id) {
-        var table = document.getElementById("tinytable_3s6hmosg8kmz8wmfronv");
+      function styleCell_tinytable_wmvgd8jc77lppxexefdh(i, j, css_id) {
+        var table = document.getElementById("tinytable_saijmepgqma3t385vpdt");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_3s6hmosg8kmz8wmfronv');
+        var table = document.getElementById('tinytable_saijmepgqma3t385vpdt');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -1151,8 +1151,8 @@ Table&nbsp;2: Association between hemispheric lateralization and care
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_tinytable_ib9cckzwh55qhxwqg8ac(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_3s6hmosg8kmz8wmfronv");
+      function spanCell_tinytable_wmvgd8jc77lppxexefdh(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_saijmepgqma3t385vpdt");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -1179,13 +1179,13 @@ Table&nbsp;2: Association between hemispheric lateralization and care
         targetCell.colSpan = colspan;
       }
 
-window.addEventListener('load', function () { styleCell_tinytable_ib9cckzwh55qhxwqg8ac(0, 0, 'tinytable_css_bhyz32g1uqsvkaub9gjh') })
-window.addEventListener('load', function () { styleCell_tinytable_ib9cckzwh55qhxwqg8ac(0, 1, 'tinytable_css_bhyz32g1uqsvkaub9gjh') })
-window.addEventListener('load', function () { styleCell_tinytable_ib9cckzwh55qhxwqg8ac(0, 2, 'tinytable_css_bhyz32g1uqsvkaub9gjh') })
-window.addEventListener('load', function () { styleCell_tinytable_ib9cckzwh55qhxwqg8ac(0, 3, 'tinytable_css_bhyz32g1uqsvkaub9gjh') })
-window.addEventListener('load', function () { styleCell_tinytable_ib9cckzwh55qhxwqg8ac(0, 4, 'tinytable_css_bhyz32g1uqsvkaub9gjh') })
-window.addEventListener('load', function () { styleCell_tinytable_ib9cckzwh55qhxwqg8ac(0, 5, 'tinytable_css_bhyz32g1uqsvkaub9gjh') })
-window.addEventListener('load', function () { styleCell_tinytable_ib9cckzwh55qhxwqg8ac(0, 6, 'tinytable_css_bhyz32g1uqsvkaub9gjh') })
+window.addEventListener('load', function () { styleCell_tinytable_wmvgd8jc77lppxexefdh(0, 0, 'tinytable_css_bl4gustcjaqgiwud7zr1') })
+window.addEventListener('load', function () { styleCell_tinytable_wmvgd8jc77lppxexefdh(0, 1, 'tinytable_css_bl4gustcjaqgiwud7zr1') })
+window.addEventListener('load', function () { styleCell_tinytable_wmvgd8jc77lppxexefdh(0, 2, 'tinytable_css_bl4gustcjaqgiwud7zr1') })
+window.addEventListener('load', function () { styleCell_tinytable_wmvgd8jc77lppxexefdh(0, 3, 'tinytable_css_bl4gustcjaqgiwud7zr1') })
+window.addEventListener('load', function () { styleCell_tinytable_wmvgd8jc77lppxexefdh(0, 4, 'tinytable_css_bl4gustcjaqgiwud7zr1') })
+window.addEventListener('load', function () { styleCell_tinytable_wmvgd8jc77lppxexefdh(0, 5, 'tinytable_css_bl4gustcjaqgiwud7zr1') })
+window.addEventListener('load', function () { styleCell_tinytable_wmvgd8jc77lppxexefdh(0, 6, 'tinytable_css_bl4gustcjaqgiwud7zr1') })
     </script>
 
   

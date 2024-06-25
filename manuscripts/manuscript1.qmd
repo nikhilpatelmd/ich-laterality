@@ -1,7 +1,7 @@
 ---
 title: Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention
 author: "Nikhil Patel, MD"
-subtitle: A Bayesian Re-Analysis of ATACH-2 and ERICH data
+subtitle: A Post Hoc Bayesian of ATACH-2 and ERICH data
 authors:
   - name: Nikhil Patel
     orcid: 0000-0002-3193-8590
@@ -112,13 +112,13 @@ To explore differences in other aspects of aggressive care, we defined several s
 ### Statistical Analysis
 To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models adjusted for the specified covariates below and study as a random intercept. This report follows suggestions from the Bayesian Analysis Reporting Guidelines [@kruschkeBayesianAnalysisReporting2021]. For binary endpoints, hierarchal Bayesian logistic regression models were used. For ordinal endpoints, hierarchal Bayesian ordinal logisitic regression models were used. All analyses were performed in R version 4.4.1 (R Foundation for Statistical Computing, Vienna, Austria) using the 'brms' and 'tidybayes' packages.
 
-#### Covariates
+#### Covariate Selection
 We constructed directed acyclic graphs (DAGs) to model our causal assumptions and to appropriately select variables to minimize confounding and selection bias. Based on our specifications, we included the following covariates in our models: age, admission Glasgow coma score (GCS), ICH location (categorized as lobar, thalamic, or basal ganglia), baseline ICH volume (measured in millilters), and presence of intraventricular hemorrhage (IVH). The DAGs used in the analyses are available in the supplementary material.
 
-#### Priors
-Two sets of priors were applied for all models, both assuming no association of hemispheric laterality on the outcomes of interest: 1) default vague priors as defined by the 'brms' software package; 2) flat priors; 3) weakly informative priors based on previous literature. A description of the reasons for these priors is available in the supplementary material.
+#### Prior Distribution Specification
+Two sets of priors were applied for all models, both assuming no association of hemispheric laterality on the outcomes of interest: 1) default, weakly informative priors as defined by the 'brms' software package; 2) priors informed from review of previous literature. A description of the reasons for these priors is available in the supplementary material.
 
-#### Posterior distribution
+#### Computation and Description of the Posterior Distribution
 We report the following metrics for the effect of hemispheric laterality on the primary and secondary outcomes: 1) median odds ratio (OR) of the posterior distribution with 95% credible interval; 2) probability of any difference (P[OR] > 1); 3) probability of a large difference (P[OR] > 1.2) as defined by the study authors; 4) percent of the posterior distribution outside of the region of practical equivalence as defined by the study authors (ROPE; 0.95 > P[OR] > 1.05). A description of the reasons for these thresholds is available in the supplementary material.
 
 #### Missing value policies
@@ -305,6 +305,8 @@ tibble_2 <- bind_cols(column_names, tibble_2) |>
   full_join(table_almost_2, by = "Outcome")
 
 tt(tibble_2, digits = 4)
+
+
 
 ```
 

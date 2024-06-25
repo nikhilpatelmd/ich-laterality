@@ -11,9 +11,9 @@ suppressPackageStartupMessages(library(brms))
 #   - (https://cran.r-project.org/web/packages/brms/vignettes/brms_threading.html)
 #   - On a four-core computer, use mc.cores = 2 and threads = threading(2)
 #   - On an eight+-core computer, use mc.cores = 4 and threads = threading(2)
-options(mc.cores = 4,
+options(mc.cores = 3,
         mc.threads = 2,
-        brms.backend = "rstan")
+        brms.backend = "cmdstanr")
 
 options(
   tidyverse.quiet = TRUE,
@@ -63,8 +63,8 @@ tar_plan(
 
   ### Priors ----
   settings = model_setup(),
-  m_prior_neurosurgery_minimal = f_prior_neurosurgery_minimal(ich_aggressive),
-  m_prior_neurosurgery_canonical = f_prior_neurosurgery_canonical(ich_aggressive),
+  m_prior_default_neurosurgery = f_prior_default_neurosurgery(ich_aggressive),
+  m_prior_informative_neurosurgery = f_prior_informative_neurosurgery(ich_aggressive),
   m_prior_evd_minimal = f_prior_evd_minimal(ich_aggressive),
   m_prior_evd_canonical = f_prior_evd_canonical(ich_aggressive),
   m_prior_trach_minimal = f_prior_trach_minimal(ich_aggressive),

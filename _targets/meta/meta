@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|0a51d47c042f3ad3|||||||||||||||
+.Random.seed|object|f744216e16b6573e|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19894.9493194027s|55f706f8f6e4d315|31110|rds|local|vector|||0.007||
 comfort_canonical_visuals|stem|a4fb43967580fe0f|e0fb3e373e95f76b|a32cab511a69989a|662216964||t19894.5677061218s|b042f2db11a3df15|29424135|rds|local|vector|||6.059||
@@ -21,117 +21,120 @@ evd_canonical_diagnostics|stem|525c60990528ab54|3cdff9e9dd982d49|68b6d18ea6c43a0
 evd_canonical_visuals|stem|7d89df8d93b71ec8|f2d54ea7f5c1734e|14ad57e522040068|1359732802||t19894.5673718497s|deada744ee4a64cd|28137903|rds|local|vector|||5.258||
 evd_minimal_diagnostics|stem|cabe4c3b10cf1c53|e17294f478192bdd|3dff69efe4c6ecf8|-1754463944||t19894.5662447848s|6987813e5b127c83|30781294|rds|local|vector|||2.794||
 evd_minimal_visuals|stem|810b79e7df31e063|22c836fae6ede3ee|a8217c8fe710b5d6|-2017772427||t19894.5661202111s|77bc6e75b02cce9c|27339879|rds|local|vector|||1.266||
-f_posterior_comfort_canonical|function|27167c087ff7d672|||||||||||||||
-f_posterior_comfort_minimal|function|d2a7a07541d39a97|||||||||||||||
-f_posterior_dnr_canonical|function|99155cf73f404d38|||||||||||||||
-f_posterior_dnr_minimal|function|8cf189d4c6df6a38|||||||||||||||
-f_posterior_early_comfort_canonical|function|44027188347b840a|||||||||||||||
-f_posterior_early_comfort_minimal|function|fa7f36d8f41a755a|||||||||||||||
-f_posterior_euro_anxiety_180_canonical|function|b1674b95651cf47a|||||||||||||||
-f_posterior_euro_anxiety_180_minimal|function|ab3dfd8b3d5e8770|||||||||||||||
-f_posterior_euro_anxiety_365_canonical|function|7cf2fdf12a09dc9a|||||||||||||||
-f_posterior_euro_anxiety_365_minimal|function|d7a7dbd94e05bf16|||||||||||||||
-f_posterior_euro_anxiety_90_canonical|function|e94940c97ec5f03b|||||||||||||||
-f_posterior_euro_anxiety_90_minimal|function|849bd114b569ae15|||||||||||||||
-f_posterior_euro_mobility_180_canonical|function|76d0dc747ef7aa3f|||||||||||||||
-f_posterior_euro_mobility_180_minimal|function|3588cfe464ddca47|||||||||||||||
-f_posterior_euro_mobility_365_canonical|function|da7382ed382c6651|||||||||||||||
-f_posterior_euro_mobility_365_minimal|function|9f6bb747ba779243|||||||||||||||
-f_posterior_euro_mobility_90_canonical|function|8d7bc878dab0ce4f|||||||||||||||
-f_posterior_euro_mobility_90_minimal|function|f4c3037917bf5863|||||||||||||||
-f_posterior_euro_pain_180_canonical|function|d5d2689afca8d30e|||||||||||||||
-f_posterior_euro_pain_180_minimal|function|edd6e9496f0b7c52|||||||||||||||
-f_posterior_euro_pain_365_canonical|function|d0db4995ba043090|||||||||||||||
-f_posterior_euro_pain_365_minimal|function|40e9369c753e63e5|||||||||||||||
-f_posterior_euro_pain_90_canonical|function|0c7dc2954aabca41|||||||||||||||
-f_posterior_euro_pain_90_minimal|function|a0180584cf307077|||||||||||||||
-f_posterior_euro_selfcare_180_canonical|function|bc25d296520be28f|||||||||||||||
-f_posterior_euro_selfcare_180_minimal|function|1ffb82b68c6c1144|||||||||||||||
-f_posterior_euro_selfcare_365_canonical|function|cc4311be77bbedff|||||||||||||||
-f_posterior_euro_selfcare_365_minimal|function|f01d3854731013b7|||||||||||||||
-f_posterior_euro_selfcare_90_canonical|function|1a11f6319cc89c06|||||||||||||||
-f_posterior_euro_selfcare_90_minimal|function|f37d98ab5ca9d1ea|||||||||||||||
-f_posterior_euro_usual_180_canonical|function|949dc2e77af58b63|||||||||||||||
-f_posterior_euro_usual_180_minimal|function|50adad29ce7fe697|||||||||||||||
-f_posterior_euro_usual_365_canonical|function|a65b9f9424ba35b5|||||||||||||||
-f_posterior_euro_usual_365_minimal|function|c23e5b126b039bb2|||||||||||||||
-f_posterior_euro_usual_90_canonical|function|60f7e869d14e23d1|||||||||||||||
-f_posterior_euro_usual_90_minimal|function|07c2d2f46161135a|||||||||||||||
-f_posterior_euro_vas_180_canonical|function|921d37d89fe751ca|||||||||||||||
-f_posterior_euro_vas_180_minimal|function|c214365464bec921|||||||||||||||
-f_posterior_euro_vas_365_canonical|function|921d37d89fe751ca|||||||||||||||
-f_posterior_euro_vas_365_minimal|function|c214365464bec921|||||||||||||||
-f_posterior_euro_vas_90_canonical|function|cc30dc9dab0a140f|||||||||||||||
-f_posterior_euro_vas_90_minimal|function|29547ef4f68ecc90|||||||||||||||
-f_posterior_evd_canonical|function|c006aeb3f2004e8a|||||||||||||||
-f_posterior_evd_minimal|function|2b54982842f6a3d7|||||||||||||||
-f_posterior_mrs_180_canonical|function|c517baf63209c85e|||||||||||||||
-f_posterior_mrs_180_minimal|function|af8f27b0d2b204d6|||||||||||||||
-f_posterior_mrs_365_canonical|function|78af9be28f2aa1f1|||||||||||||||
-f_posterior_mrs_365_minimal|function|95f64f4ba346fe8b|||||||||||||||
-f_posterior_mrs_90_canonical|function|36be97a1420a0075|||||||||||||||
-f_posterior_mrs_90_minimal|function|ffaeff4cb1f6b978|||||||||||||||
-f_posterior_neurosurgery_canonical|function|d5109a329cf4cd41|||||||||||||||
-f_posterior_neurosurgery_minimal|function|c6c2d439245390a0|||||||||||||||
-f_posterior_trach_canonical|function|7612d55675dc4f33|||||||||||||||
-f_posterior_trach_minimal|function|93efbd915162020d|||||||||||||||
-f_posterior_vent_canonical|function|e8dd06892f05c1b2|||||||||||||||
-f_posterior_vent_minimal|function|2741e4412b418d69|||||||||||||||
-f_prior_comfort_canonical|function|0e68f44d4554e9cc|||||||||||||||
+f_posterior_comfort_canonical|function|ed85b610f6ac6cd5|||||||||||||||
+f_posterior_comfort_minimal|function|ebe23466dd431e82|||||||||||||||
+f_posterior_dnr_canonical|function|a976e1c9b060d5e8|||||||||||||||
+f_posterior_dnr_minimal|function|5c17ff8f2747b9e9|||||||||||||||
+f_posterior_early_comfort_canonical|function|e8d2a7d2da89eb52|||||||||||||||
+f_posterior_early_comfort_minimal|function|f8565bd54e04a94f|||||||||||||||
+f_posterior_euro_anxiety_180_canonical|function|30cdf27895fd1c3f|||||||||||||||
+f_posterior_euro_anxiety_180_minimal|function|f3a0a3bb669319a6|||||||||||||||
+f_posterior_euro_anxiety_365_canonical|function|27bebe215d282cf2|||||||||||||||
+f_posterior_euro_anxiety_365_minimal|function|0d6e968c13e2481f|||||||||||||||
+f_posterior_euro_anxiety_90_canonical|function|7e6ed4a6f5caa639|||||||||||||||
+f_posterior_euro_anxiety_90_minimal|function|6c83da0e78d9b911|||||||||||||||
+f_posterior_euro_mobility_180_canonical|function|eb8a32cafc4cb870|||||||||||||||
+f_posterior_euro_mobility_180_minimal|function|cc2e59a48d508c93|||||||||||||||
+f_posterior_euro_mobility_365_canonical|function|c74e680b836bfa6b|||||||||||||||
+f_posterior_euro_mobility_365_minimal|function|75cc3be3109abf16|||||||||||||||
+f_posterior_euro_mobility_90_canonical|function|68da17d20eb7b277|||||||||||||||
+f_posterior_euro_mobility_90_minimal|function|1308192b7b7104c7|||||||||||||||
+f_posterior_euro_pain_180_canonical|function|d3f2514fd5835b08|||||||||||||||
+f_posterior_euro_pain_180_minimal|function|31963136249e30ab|||||||||||||||
+f_posterior_euro_pain_365_canonical|function|f533a19d0a9b3f42|||||||||||||||
+f_posterior_euro_pain_365_minimal|function|14930e7a9cbbed46|||||||||||||||
+f_posterior_euro_pain_90_canonical|function|a3b35eaf2ddc621e|||||||||||||||
+f_posterior_euro_pain_90_minimal|function|6764e6f2f549639c|||||||||||||||
+f_posterior_euro_selfcare_180_canonical|function|8c7412195735afd2|||||||||||||||
+f_posterior_euro_selfcare_180_minimal|function|69e5ac27a82b709a|||||||||||||||
+f_posterior_euro_selfcare_365_canonical|function|b882345500e639c7|||||||||||||||
+f_posterior_euro_selfcare_365_minimal|function|e247e392ca41f4fb|||||||||||||||
+f_posterior_euro_selfcare_90_canonical|function|22886e6510ce79c1|||||||||||||||
+f_posterior_euro_selfcare_90_minimal|function|f9dffec1d95d653a|||||||||||||||
+f_posterior_euro_usual_180_canonical|function|71b1c0d86546fd43|||||||||||||||
+f_posterior_euro_usual_180_minimal|function|79df15251dc8e5e1|||||||||||||||
+f_posterior_euro_usual_365_canonical|function|7a2581f23b950c22|||||||||||||||
+f_posterior_euro_usual_365_minimal|function|5e9c2e97587e5854|||||||||||||||
+f_posterior_euro_usual_90_canonical|function|1bbbf8daa8df2c70|||||||||||||||
+f_posterior_euro_usual_90_minimal|function|41cf6f6cdf0d5eb4|||||||||||||||
+f_posterior_euro_vas_180_canonical|function|0d69f7f4bf254011|||||||||||||||
+f_posterior_euro_vas_180_minimal|function|1aa6d86d3c353d88|||||||||||||||
+f_posterior_euro_vas_365_canonical|function|0d69f7f4bf254011|||||||||||||||
+f_posterior_euro_vas_365_minimal|function|1aa6d86d3c353d88|||||||||||||||
+f_posterior_euro_vas_90_canonical|function|1aa96d5816e7b706|||||||||||||||
+f_posterior_euro_vas_90_minimal|function|d3a4e6ffdae30a3c|||||||||||||||
+f_posterior_evd_canonical|function|7063d26e6eecbdbd|||||||||||||||
+f_posterior_evd_minimal|function|5c146bad25909d82|||||||||||||||
+f_posterior_mrs_180_canonical|function|8afea418b159bce1|||||||||||||||
+f_posterior_mrs_180_minimal|function|1cb6b2e9b66fad0e|||||||||||||||
+f_posterior_mrs_365_canonical|function|fb222b8b342bfa40|||||||||||||||
+f_posterior_mrs_365_minimal|function|83817d38b043325f|||||||||||||||
+f_posterior_mrs_90_canonical|function|6e0199a72f2fa64b|||||||||||||||
+f_posterior_mrs_90_minimal|function|1ff0a7c90d59e489|||||||||||||||
+f_posterior_neurosurgery_canonical|function|c675e7ad45e28ce2|||||||||||||||
+f_posterior_neurosurgery_minimal|function|65fd6acce1014f0b|||||||||||||||
+f_posterior_trach_canonical|function|7e1870da92b90ee0|||||||||||||||
+f_posterior_trach_minimal|function|e55d1c6f63ba5abc|||||||||||||||
+f_posterior_vent_canonical|function|609da182f3b2405d|||||||||||||||
+f_posterior_vent_minimal|function|89ff52a5e8f68718|||||||||||||||
+f_prior_comfort_canonical|function|9c2918f3e8501b68|||||||||||||||
 f_prior_comfort_minimal|function|067e24f8e4979635|||||||||||||||
-f_prior_dnr_canonical|function|c1a5e635eefaf56d|||||||||||||||
+f_prior_default_neurosurgery|function|c31c5d7e628db6d0|||||||||||||||
+f_prior_dnr_canonical|function|91bedd4907550791|||||||||||||||
 f_prior_dnr_minimal|function|622c40d3ff0693a2|||||||||||||||
-f_prior_early_comfort_canonical|function|e38657adff91f440|||||||||||||||
+f_prior_early_comfort_canonical|function|a7002d601741f8e9|||||||||||||||
 f_prior_early_comfort_minimal|function|26c8df2c2fba65f8|||||||||||||||
-f_prior_euro_anxiety_180_canonical|function|bc90471633e9f26f|||||||||||||||
-f_prior_euro_anxiety_180_minimal|function|2357cbd9f6987b69|||||||||||||||
-f_prior_euro_anxiety_365_canonical|function|fc063a1c9de7f898|||||||||||||||
-f_prior_euro_anxiety_365_minimal|function|1b71fd0680128b22|||||||||||||||
-f_prior_euro_anxiety_90_canonical|function|e2deb9f90147af60|||||||||||||||
-f_prior_euro_anxiety_90_minimal|function|254507107f9cf7ff|||||||||||||||
-f_prior_euro_mobility_180_canonical|function|9929407b15fb8787|||||||||||||||
-f_prior_euro_mobility_180_minimal|function|e9e043a5848a7854|||||||||||||||
-f_prior_euro_mobility_365_canonical|function|813c31f3451231fa|||||||||||||||
-f_prior_euro_mobility_365_minimal|function|798f75ba1bfd3a92|||||||||||||||
-f_prior_euro_mobility_90_canonical|function|25b8e306a74e3528|||||||||||||||
-f_prior_euro_mobility_90_minimal|function|c7ac86b2f96a427c|||||||||||||||
-f_prior_euro_pain_180_canonical|function|b21a145889e8f8df|||||||||||||||
-f_prior_euro_pain_180_minimal|function|b4ada0cd434ecdfa|||||||||||||||
-f_prior_euro_pain_365_canonical|function|742795ee725aaec3|||||||||||||||
-f_prior_euro_pain_365_minimal|function|503eedeb70cb4919|||||||||||||||
-f_prior_euro_pain_90_canonical|function|cdad422672a1ba9d|||||||||||||||
-f_prior_euro_pain_90_minimal|function|d31b292f15670ecf|||||||||||||||
-f_prior_euro_selfcare_180_canonical|function|a3a19e68e74f7eb9|||||||||||||||
-f_prior_euro_selfcare_180_minimal|function|828a3ed9eb18c783|||||||||||||||
-f_prior_euro_selfcare_365_canonical|function|7f757df3b9dd8673|||||||||||||||
-f_prior_euro_selfcare_365_minimal|function|4e4df9339f6baab1|||||||||||||||
-f_prior_euro_selfcare_90_canonical|function|1cd3dfe274e9eed6|||||||||||||||
-f_prior_euro_selfcare_90_minimal|function|df3ee3f2c11cd31f|||||||||||||||
-f_prior_euro_usual_180_canonical|function|173334df030eceaf|||||||||||||||
-f_prior_euro_usual_180_minimal|function|c5d7d8bb485a95f9|||||||||||||||
-f_prior_euro_usual_365_canonical|function|df909f57dd293398|||||||||||||||
-f_prior_euro_usual_365_minimal|function|eca9fc753dc078fe|||||||||||||||
-f_prior_euro_usual_90_canonical|function|f5f53eaebd4ce8d6|||||||||||||||
-f_prior_euro_usual_90_minimal|function|ceed4345b699029b|||||||||||||||
-f_prior_euro_vas_180_canonical|function|d7e4d14d6153311d|||||||||||||||
-f_prior_euro_vas_180_minimal|function|458890d7dba5bd8a|||||||||||||||
-f_prior_euro_vas_365_canonical|function|d7e4d14d6153311d|||||||||||||||
-f_prior_euro_vas_365_minimal|function|458890d7dba5bd8a|||||||||||||||
-f_prior_euro_vas_90_canonical|function|1fe09c07fa97365f|||||||||||||||
-f_prior_euro_vas_90_minimal|function|a7af952c6b70d0a0|||||||||||||||
-f_prior_evd_canonical|function|909ee72e85f3326b|||||||||||||||
+f_prior_euro_anxiety_180_canonical|function|098c7db9f010e54e|||||||||||||||
+f_prior_euro_anxiety_180_minimal|function|d80ee45932b3215e|||||||||||||||
+f_prior_euro_anxiety_365_canonical|function|1f15bf0d293a983d|||||||||||||||
+f_prior_euro_anxiety_365_minimal|function|13c45da79e5c0578|||||||||||||||
+f_prior_euro_anxiety_90_canonical|function|ca5e8417506bd69e|||||||||||||||
+f_prior_euro_anxiety_90_minimal|function|a5b4d3648ae83344|||||||||||||||
+f_prior_euro_mobility_180_canonical|function|605e007bb783b3ee|||||||||||||||
+f_prior_euro_mobility_180_minimal|function|92d0d6d4bb1fc48c|||||||||||||||
+f_prior_euro_mobility_365_canonical|function|2023f0a92ce81543|||||||||||||||
+f_prior_euro_mobility_365_minimal|function|4b238ee04ed381bb|||||||||||||||
+f_prior_euro_mobility_90_canonical|function|0c63900a93d099ea|||||||||||||||
+f_prior_euro_mobility_90_minimal|function|f634711c0af20844|||||||||||||||
+f_prior_euro_pain_180_canonical|function|d09721337abebf44|||||||||||||||
+f_prior_euro_pain_180_minimal|function|5ab22755f62f7c42|||||||||||||||
+f_prior_euro_pain_365_canonical|function|42f38f7bac224e30|||||||||||||||
+f_prior_euro_pain_365_minimal|function|258e7cc4f51ac768|||||||||||||||
+f_prior_euro_pain_90_canonical|function|12603fad5ebcbd46|||||||||||||||
+f_prior_euro_pain_90_minimal|function|26400d645bb43817|||||||||||||||
+f_prior_euro_selfcare_180_canonical|function|ed6f101affda977b|||||||||||||||
+f_prior_euro_selfcare_180_minimal|function|3e9895982563f153|||||||||||||||
+f_prior_euro_selfcare_365_canonical|function|23d491e8fcde9a02|||||||||||||||
+f_prior_euro_selfcare_365_minimal|function|153177bef4b645e0|||||||||||||||
+f_prior_euro_selfcare_90_canonical|function|8e81dbdae20db119|||||||||||||||
+f_prior_euro_selfcare_90_minimal|function|40e357549a858b6d|||||||||||||||
+f_prior_euro_usual_180_canonical|function|b56808ce1cdd0dd1|||||||||||||||
+f_prior_euro_usual_180_minimal|function|41f664ad44d245ad|||||||||||||||
+f_prior_euro_usual_365_canonical|function|a1c35a0e29b0d3e7|||||||||||||||
+f_prior_euro_usual_365_minimal|function|b3c47ffda6512c0a|||||||||||||||
+f_prior_euro_usual_90_canonical|function|c5553c450e22c6af|||||||||||||||
+f_prior_euro_usual_90_minimal|function|57fc39a400e134ea|||||||||||||||
+f_prior_euro_vas_180_canonical|function|efa88eede8d04f2c|||||||||||||||
+f_prior_euro_vas_180_minimal|function|c6895a79b417eeab|||||||||||||||
+f_prior_euro_vas_365_canonical|function|efa88eede8d04f2c|||||||||||||||
+f_prior_euro_vas_365_minimal|function|c6895a79b417eeab|||||||||||||||
+f_prior_euro_vas_90_canonical|function|2fefaec0c7705159|||||||||||||||
+f_prior_euro_vas_90_minimal|function|53bc54eaed396883|||||||||||||||
+f_prior_evd_canonical|function|beef56d617b5edf0|||||||||||||||
 f_prior_evd_minimal|function|609419dd9f5105c5|||||||||||||||
-f_prior_mrs_180_canonical|function|49b6fb3f49f8a826|||||||||||||||
-f_prior_mrs_180_minimal|function|7a52c55aedbdbeb5|||||||||||||||
-f_prior_mrs_365_canonical|function|f36fb1d4f9c72523|||||||||||||||
-f_prior_mrs_365_minimal|function|bace56cc2fa1153f|||||||||||||||
-f_prior_mrs_90_canonical|function|5f05ca276a8f6805|||||||||||||||
-f_prior_mrs_90_minimal|function|e77de6f4c06c8329|||||||||||||||
-f_prior_neurosurgery_canonical|function|e280383ea5a27fa8|||||||||||||||
-f_prior_neurosurgery_minimal|function|b4ba0c7d34a2408e|||||||||||||||
-f_prior_trach_canonical|function|2a59102ebf19ae6b|||||||||||||||
+f_prior_informative_neurosurgery|function|f46a91aa09de6163|||||||||||||||
+f_prior_mrs_180_canonical|function|c6b9529c3402aff3|||||||||||||||
+f_prior_mrs_180_minimal|function|410a084f9e2539b4|||||||||||||||
+f_prior_mrs_365_canonical|function|4cec07ac1862d003|||||||||||||||
+f_prior_mrs_365_minimal|function|ee9f1af916de3e1e|||||||||||||||
+f_prior_mrs_90_canonical|function|1851640335caf262|||||||||||||||
+f_prior_mrs_90_minimal|function|de190fac85ea938d|||||||||||||||
+f_prior_neurosurgery|function|236446dddaa8e5df|||||||||||||||
+f_prior_neurosurgery_canonical|function|214654bd320e396e|||||||||||||||
+f_prior_neurosurgery_minimal|function|d05b64682d753d08|||||||||||||||
+f_prior_trach_canonical|function|1705e68f1bba860c|||||||||||||||
 f_prior_trach_minimal|function|034f7978cbe5c216|||||||||||||||
-f_prior_vent_canonical|function|c044f28e42aa7bfb|||||||||||||||
+f_prior_vent_canonical|function|ecdb12786a40bfaa|||||||||||||||
 f_prior_vent_minimal|function|177f311585f14fc8|||||||||||||||
 filter_variables|function|aab6a12635d42cbf|||||||||||||||
 ich_aggressive|stem|7de9a8e37efc4277|792fce65c3b577e1|6a6695351ab5b4a4|-1490752604||t19894.9367727923s|eecb88c8213f6d27|116088|rds|local|vector|||0.012||
@@ -217,6 +220,7 @@ m_posterior_vent_minimal|stem|a0c9e193d801a1c9|ba1d9ada8490ca32|599978b1df5aec0f
 m_posterior_vent_minimal_atach|stem|055557c7347b0416|9a7704c6930875d5|8d3ca6d951d45843|-1433829555||t19774.7813536394s|2a1342015c174a14|2537196|rds|local|vector|||22.138|Rows containing NAs were excluded from the model.|
 m_prior_comfort_canonical|stem|2eff1236da058458|1abf70fc4c8a30ee|2fce77cb255b4cf2|-1567292249||t19899.5620678387s|ee979319c4bcc68d|25203741|rds|local|vector|||75.805|Rows containing NAs were excluded from the model.|
 m_prior_comfort_minimal|stem|d7b6dccb8a4b86c8|6bfafa9732d9588c|b7341e0bad0bcf05|1909620682||t19899.5799069475s|188bd1f3be203d58|25528583|rds|local|vector|||76.594||
+m_prior_default_neurosurgery|stem|e4ecb2bdcfa628f3|331b27f099c3a4be|6832aeb394e230b2|-792961561||t19899.7831210295s|9ec0f4e81abc3511|1035648|rds|local|vector|||17.137|Rows containing NAs were excluded from the model.|
 m_prior_dnr_canonical|stem|82ab96c5cd5e420f|c0229c6701997d3a|0939b74937bfb861|-497685203||t19899.5675736447s|8194cf7669fbf662|25577227|rds|local|vector|||74.97|Rows containing NAs were excluded from the model.|
 m_prior_dnr_minimal|stem|88b6b1bc92ba11fc|fe45138ef336cab4|a8e5868449b97508|-283975852||t19899.5602266599s|3d90f1783a2acf7e|24252681|rds|local|vector|||75.308||
 m_prior_early_comfort_canonical|stem|252dacca2bb0d73e|ca7cc448054fb94e|d6f9282455878f6b|2146096585||t19899.555611915s|4a2b7802eeab59bb|24766954|rds|local|vector|||79.93|Rows containing NAs were excluded from the model.|
@@ -253,19 +257,23 @@ m_prior_euro_usual_90_canonical|stem|7ee363eb3772b3e8|217a09a04e06bafb|91aec288c
 m_prior_euro_usual_90_minimal|stem|9431ab793f361ca3|dd82be0172ac2f92|0e23ffc357620ac4|-1173411193||t19894.9542702109s|4dbec0a0959b62fc|26252763|rds|local|vector|||79.321|Rows containing NAs were excluded from the model.|
 m_prior_evd_canonical|stem|b405a0ce1d9dec1b|6d9fcc78204c5cf3|9c061395581ae307|1718623535||t19899.5723766807s|87c2e2eff1d17740|25905285|rds|local|vector|||75.091|Rows containing NAs were excluded from the model.|
 m_prior_evd_minimal|stem|6e49c7869df1ccf1|bf0fa1bb507ae08a|acdd0963c5d6f480|-107865603||t19899.5761034675s|d77fd378992c1866|25285986|rds|local|vector|||75.281||
+m_prior_informative_neurosurgery|stem|21b548b419f1721b|da1da3f7c1b1b597|be70db62088595f8|-1901668035||t19899.7872512248s|e4c0ea4d4eded086|1025245|rds|local|vector|||17.378|Rows containing NAs were excluded from the model.|
 m_prior_mrs_180_canonical|stem|336780b2e372127c|aadf0760a4d2b142|3bdd96640d9ad41d|-231073701||t19895.0463524829s|be65b7f4780c3e14|30604007|rds|local|vector|||82.377|Rows containing NAs were excluded from the model.|
 m_prior_mrs_180_minimal|stem|95fdc4ac77b2dd07|c9bf3827b79945ee|10eee578bbd9ed18|1206748303||t19895.0144643414s|cdccfdf898ff7a49|29053666|rds|local|vector|||78.036|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_mrs_365_canonical|stem|0b4bc4066a5200e0|ce2a06636a2b09b3|3732f53af1b1301d|943777168||t19894.9650596393s|5548dc5042b36aa3|28375569|rds|local|vector|||88.193|Rows containing NAs were excluded from the model.|
 m_prior_mrs_365_minimal|stem|26c1845ba79cc38d|d7ff888475537352|2f9403c79503ac67|-435941919||t19895.0602329582s|80cf052fc46ce170|30082672|rds|local|vector|||79.625|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_mrs_90_canonical|stem|c65a8e8f97f3d8d9|38a8c73cc1c89175|94a5bceb48ae2231|-1960015551||t19895.0453189161s|f724f53c7bef5751|30561180|rds|local|vector|||991.599|Rows containing NAs were excluded from the model.|
 m_prior_mrs_90_minimal|stem|a3cead6e737fe177|9a943fcee0664e0c|82ba15d36809c8cb|492862794||t19894.9552499542s|739e315ff31f6888|27275878|rds|local|vector|||80.194|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-m_prior_neurosurgery_canonical|stem|90b8fae75b444f2b|edd9b9c3e46551bc|351c65cb2af1d93b|114468795||t19899.573285813s|72d49ccee5677b29|25957257|rds|local|vector|||74.282|Rows containing NAs were excluded from the model.|
+m_prior_neurosurgery|stem|f8ea77ff2965f371|3bc8eef3da23dbc0|d6d8ffed48b45699|346779608||t19899.7771131008s||1030936|rds|local|vector|||0.099|Rows containing NAs were excluded from the model.|Sampling from priors is not possible as some parameters have no proper priors. Error occurred for parameter b.
+m_prior_neurosurgery_canonical|stem|4c8e7688c14aadff|edd9b9c3e46551bc|29232446c73636a0|114468795||t19899.7201315235s|98f8e26d931e0dfc|1031061|rds|local|vector|||17.903|Rows containing NAs were excluded from the model.|
+m_prior_neurosurgery_default|stem|260df3b7faf5420c|331b27f099c3a4be|6832aeb394e230b2|-1335069635||t19899.7811814522s|b9ce1016fc8af9ca|1035680|rds|local|vector|||17.105|Rows containing NAs were excluded from the model.|
+m_prior_neurosurgery_informative|stem||668016f70fcd5b63|080d0dc8582e622f|-1908244161||t19899.7823841025s||0|rds|local|vector|||0.005||could not find function f_prior_neurosurgery_informative
 m_prior_neurosurgery_minimal|stem|9e26bf3c40741503|6ed1bbbe5d2aeefd|f4c920a08a6e4575|497813916||t19899.5593156345s|07e0ec63a0c5be4e|24193282|rds|local|vector|||76.328||
 m_prior_trach_canonical|stem|7e1d66a1d285f529|f94ba58d3adbd86b|72e59631b738630d|-993513890||t19899.5780106898s|1af7bc1c55701ee9|26262512|rds|local|vector|||76.486|Rows containing NAs were excluded from the model.|
 m_prior_trach_minimal|stem|4055871c742ed5e6|479b34e74f33cbbf|35f837b3590e049f|-340765268||t19899.5648222278s|f83eb85e01914a75|24553448|rds|local|vector|||74.261||
 m_prior_vent_canonical|stem|e9766fa9d2254134|65923b65d2e7f3cd|89d712cfc9df7db2|1382909142||t19899.5714479496s|81781e8fb29e522f|32360750|rds|local|vector|||78.683|Rows containing NAs were excluded from the model.. There were 4 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_vent_minimal|stem|8a7458351b2d93b7|a35fb8d5b4ada18c|acf831a71a7a0ca4|195812241||t19899.5789666705s|135f44f5c484cee0|32130835|rds|local|vector|||77.632|Rows containing NAs were excluded from the model.. There were 7 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-model_setup|function|744a394f2ed553aa|||||||||||||||
+model_setup|function|37e6496cd4573235|||||||||||||||
 neurosugery_canonical_diagnostics|stem|84fd7224ab029534|90a4a3f9739100fd|1c3207e4a4ff6564|-1246627164||t19894.5679005348s|7253ea01ae2a5008|32334520|rds|local|vector|||1.94||
 neurosugery_minimal_diagnostics|stem|baa18dd903fa8593|ced01af576ed104b|427b079fc69c8d11|154228766||t19894.5688833599s|6dc4bfcf5ff5142b|30258521|rds|local|vector|||2.006||
 neurosurgery_canonical_visuals|stem|8aa0d3c2257ae029|c99e1efb00c6c7b8|acec8cbcc9751d3a|526014170||t19894.5678114498s|2dafc272f716f85b|28151112|rds|local|vector|||5.214||
