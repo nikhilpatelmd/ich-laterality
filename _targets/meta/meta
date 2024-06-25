@@ -412,3 +412,6 @@ f_posterior_euro_mobility_90_minimal|function|f4c3037917bf5863
 f_posterior_euro_usual_365_canonical|function|a65b9f9424ba35b5
 f_posterior_euro_anxiety_180_canonical|function|b1674b95651cf47a
 m_prior_early_comfort_canonical|stem|252dacca2bb0d73e|ca7cc448054fb94e|d6f9282455878f6b|2146096585||t19899.555611915s|4a2b7802eeab59bb|24766954|rds|local|vector|||79.93|Rows containing NAs were excluded from the model.|
+m_posterior_comfort_canonical|stem|e00a91a14ca7698e|5e19d5daca607574|f1e84dfcf26d52a8|-2111432347||t19899.5565697701s|4cac9b1a5b2a921a|24922109|rds|local|vector|||79.535|Rows containing NAs were excluded from the model.|
+m_posterior_trach_minimal|stem|3fed4525674090e2|57f8862d8bda7617|cf3888f0cf210a0e|471362897||t19899.5574720728s|1c9f3d49e09a298f|24162060|rds|local|vector|||74.76||
+m_posterior_neurosurgery_minimal|stem|095e27e0a82e9b76|1f618d57c445a4db|cc766fbce25a3124|1757798209||t19899.5583932223s|830d2ab5e16416a9|24210900|rds|local|vector|||76.046||
