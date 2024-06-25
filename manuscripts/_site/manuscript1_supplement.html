@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -220,6 +254,23 @@ ul.task-list li input[type="checkbox"] {
 <h1>Details of Statistical Analysis</h1>
 <section id="covariate-selection" class="level2">
 <h2 class="anchored" data-anchor-id="covariate-selection">Covariate Selection</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dag_aggressive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dag {\nage [pos=\"1.000,3.750\"]\naggressive_care [outcome,pos=\"5.000,5.000\"]\namyloid [latent,pos=\"2.000,7.000\"]\ngcs_baseline [pos=\"3.000,8.000\"]\nhypertension [pos=\"2.000,2.000\"]\nich_laterality [exposure,pos=\"3.250,0.000\"]\nich_location [pos=\"3.000,3.750\"]\nich_volume [pos=\"3.500,5.500\"]\nivh [pos=\"3.250,2.000\"]\nstroke [pos=\"2.000,5.000\"]\nage -&gt; aggressive_care\nage -&gt; amyloid\nage -&gt; gcs_baseline\nage -&gt; hypertension\nage -&gt; stroke\namyloid -&gt; aggressive_care\namyloid -&gt; ich_location\namyloid -&gt; stroke\ngcs_baseline -&gt; aggressive_care\nhypertension -&gt; ich_location\nhypertension -&gt; stroke\nich_laterality -&gt; aggressive_care\nich_location -&gt; aggressive_care\nich_location -&gt; gcs_baseline\nich_location -&gt; ivh\nich_volume -&gt; aggressive_care\nich_volume -&gt; gcs_baseline\nivh -&gt; aggressive_care\nivh -&gt; gcs_baseline\nstroke -&gt; aggressive_care\n}\n"
+attr(,"class")
+[1] "dagitty"
+attr(,"labels")
+         aggressive_care           ich_laterality                      age 
+       "Aggressive Care" "Hemispheric Laterality"                    "Age" 
+            ich_location               ich_volume                      ivh 
+          "ICH Location"             "ICH Volume"                    "IVH" 
+            gcs_baseline                   stroke             hypertension 
+         "Admission GCS"        "Previous Stroke"           "Hypertension" 
+                 amyloid 
+    "Amyloid Angiopathy" </code></pre>
+</div>
+</div>
 </section>
 <section id="prior-distribution-specification" class="level2">
 <h2 class="anchored" data-anchor-id="prior-distribution-specification">Prior Distribution Specification</h2>
