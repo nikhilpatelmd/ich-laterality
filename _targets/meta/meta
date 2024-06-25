@@ -1,13 +1,8 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|5f25e4c7bfefe777|||||||||||||||
-aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
-atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19893.0080530561s|55f706f8f6e4d315|31110|rds|local|vector|||0.011||
 comfort_canonical_visuals|stem|a4fb43967580fe0f|e0fb3e373e95f76b|a32cab511a69989a|662216964||t19894.5677061218s|b042f2db11a3df15|29424135|rds|local|vector|||6.059||
 comfort_care_canonical_diagnostics|stem|a2bf26351df41db3|f3915461b54043c5|0dbf43aa0750e4df|-1027137305||t19894.5675837407s|d4292132670ddb92|33824979|rds|local|vector|||1.945||
 comfort_care_minimal_diagnostics|stem|a66e0b2c0a126a8a|d3ea759524a003de|4990187868935dbd|346575851||t19894.5672064109s|4aafc842c7304d61|30288925|rds|local|vector|||1.728||
 comfort_minimal_visuals|stem|cd344415b68a3f6e|b2925beb29d2eeaa|36930cb7d65dc7d2|-1543084841||t19894.5672665213s|e33351618a91da80|27617997|rds|local|vector|||0.815||
-dag_aggressive|stem|f466625e621fbf47|4c5f2530d47a4a16|494adb38a275e02b|1651356463||t19892.7883167244s|c5bb5d828e920a89|506|rds|local|vector|||0.029||
-dag_outcomes|stem|b12d02c46fcefb52|35435e3659cf1296|1f323843a51566f7|2092730130||t19892.7883162614s|ab78dd2160f1066c|693|rds|local|vector|||0.082||
 dnr_canonical_diagnostics|stem|9104bae4fa8037e5|97eef9e2b6099cb7|e9eda9335712b050|-814848266||t19894.5687674228s|46c608e03e400e5d|34235006|rds|local|vector|||2.074||
 dnr_canonical_visuals|stem|3d74f8304b511227|66d2bd43b9c74cb8|69641778cefe8ac6|678247428||t19894.5686600893s|25858538ca4672d1|29588552|rds|local|vector|||5.869||
 dnr_minimal_diagnostics|stem|f86862c4b22558d1|aa442343f246d580|a7566a92a9822963|1378280447||t19894.5680787818s|55f3f4dd650fd55e|30811030|rds|local|vector|||1.922||
@@ -16,131 +11,12 @@ early_wlst_canonical_diagnostics|stem|6f871ca4dd83b6e4|9ff1690d915b8698|c655edf0
 early_wlst_canonical_visuals|stem|1c085b53b6ac9137|c592ed4b5a958384|b179125f958bddef|-893963219||t19894.5684247424s|f34eb00775b248a5|29560014|rds|local|vector|||6.797||
 early_wlst_minimal_diagnostics|stem|246c6a176fb0f703|da870ecfc68f026b|c8b4c38588f7b89a|-263630374||t19894.5690666599s|0e6797b9b88360b3|29725690|rds|local|vector|||2.161||
 early_wlst_minimal_visuals|stem|cfacfafd8aa1eca5|50c9debea1f7c676|817101414b6cc2b7|-1687180241||t19894.5691507286s|e31eaaa54a7b09fc|28223913|rds|local|vector|||2.385||
-erich|stem|fac61d76da9bbe1f|3a93622e2896a8d4|6a6695351ab5b4a4|1934531450||t19892.7883211997s|9663e145af04b2f6|86178|rds|local|vector|||0.017||
 evd_canonical_diagnostics|stem|525c60990528ab54|3cdff9e9dd982d49|68b6d18ea6c43a0f|-1486296988||t19894.5674646002s|24504bef0c07407e|33178554|rds|local|vector|||1.869||
 evd_canonical_visuals|stem|7d89df8d93b71ec8|f2d54ea7f5c1734e|14ad57e522040068|1359732802||t19894.5673718497s|deada744ee4a64cd|28137903|rds|local|vector|||5.258||
 evd_minimal_diagnostics|stem|cabe4c3b10cf1c53|e17294f478192bdd|3dff69efe4c6ecf8|-1754463944||t19894.5662447848s|6987813e5b127c83|30781294|rds|local|vector|||2.794||
 evd_minimal_visuals|stem|810b79e7df31e063|22c836fae6ede3ee|a8217c8fe710b5d6|-2017772427||t19894.5661202111s|77bc6e75b02cce9c|27339879|rds|local|vector|||1.266||
-f_posterior_comfort_canonical|function|27167c087ff7d672|||||||||||||||
-f_posterior_comfort_minimal|function|d2a7a07541d39a97|||||||||||||||
-f_posterior_dnr_canonical|function|99155cf73f404d38|||||||||||||||
-f_posterior_dnr_minimal|function|8cf189d4c6df6a38|||||||||||||||
-f_posterior_early_comfort_canonical|function|44027188347b840a|||||||||||||||
-f_posterior_early_comfort_minimal|function|fa7f36d8f41a755a|||||||||||||||
-f_posterior_euro_anxiety_180_canonical|function|b1674b95651cf47a|||||||||||||||
-f_posterior_euro_anxiety_180_minimal|function|ab3dfd8b3d5e8770|||||||||||||||
-f_posterior_euro_anxiety_365_canonical|function|7cf2fdf12a09dc9a|||||||||||||||
-f_posterior_euro_anxiety_365_minimal|function|d7a7dbd94e05bf16|||||||||||||||
-f_posterior_euro_anxiety_90_canonical|function|e94940c97ec5f03b|||||||||||||||
-f_posterior_euro_anxiety_90_minimal|function|849bd114b569ae15|||||||||||||||
-f_posterior_euro_mobility_180_canonical|function|76d0dc747ef7aa3f|||||||||||||||
-f_posterior_euro_mobility_180_minimal|function|3588cfe464ddca47|||||||||||||||
-f_posterior_euro_mobility_365_canonical|function|da7382ed382c6651|||||||||||||||
-f_posterior_euro_mobility_365_minimal|function|9f6bb747ba779243|||||||||||||||
-f_posterior_euro_mobility_90_canonical|function|8d7bc878dab0ce4f|||||||||||||||
-f_posterior_euro_mobility_90_minimal|function|f4c3037917bf5863|||||||||||||||
-f_posterior_euro_pain_180_canonical|function|d5d2689afca8d30e|||||||||||||||
-f_posterior_euro_pain_180_minimal|function|edd6e9496f0b7c52|||||||||||||||
-f_posterior_euro_pain_365_canonical|function|d0db4995ba043090|||||||||||||||
-f_posterior_euro_pain_365_minimal|function|40e9369c753e63e5|||||||||||||||
-f_posterior_euro_pain_90_canonical|function|0c7dc2954aabca41|||||||||||||||
-f_posterior_euro_pain_90_minimal|function|a0180584cf307077|||||||||||||||
-f_posterior_euro_selfcare_180_canonical|function|bc25d296520be28f|||||||||||||||
-f_posterior_euro_selfcare_180_minimal|function|1ffb82b68c6c1144|||||||||||||||
-f_posterior_euro_selfcare_365_canonical|function|cc4311be77bbedff|||||||||||||||
-f_posterior_euro_selfcare_365_minimal|function|f01d3854731013b7|||||||||||||||
-f_posterior_euro_selfcare_90_canonical|function|1a11f6319cc89c06|||||||||||||||
-f_posterior_euro_selfcare_90_minimal|function|f37d98ab5ca9d1ea|||||||||||||||
-f_posterior_euro_usual_180_canonical|function|949dc2e77af58b63|||||||||||||||
-f_posterior_euro_usual_180_minimal|function|50adad29ce7fe697|||||||||||||||
-f_posterior_euro_usual_365_canonical|function|a65b9f9424ba35b5|||||||||||||||
-f_posterior_euro_usual_365_minimal|function|c23e5b126b039bb2|||||||||||||||
-f_posterior_euro_usual_90_canonical|function|60f7e869d14e23d1|||||||||||||||
-f_posterior_euro_usual_90_minimal|function|07c2d2f46161135a|||||||||||||||
-f_posterior_euro_vas_180_canonical|function|921d37d89fe751ca|||||||||||||||
-f_posterior_euro_vas_180_minimal|function|c214365464bec921|||||||||||||||
-f_posterior_euro_vas_365_canonical|function|921d37d89fe751ca|||||||||||||||
-f_posterior_euro_vas_365_minimal|function|c214365464bec921|||||||||||||||
-f_posterior_euro_vas_90_canonical|function|cc30dc9dab0a140f|||||||||||||||
-f_posterior_euro_vas_90_minimal|function|29547ef4f68ecc90|||||||||||||||
-f_posterior_evd_canonical|function|c006aeb3f2004e8a|||||||||||||||
-f_posterior_evd_minimal|function|2b54982842f6a3d7|||||||||||||||
-f_posterior_mrs_180_canonical|function|c517baf63209c85e|||||||||||||||
-f_posterior_mrs_180_minimal|function|af8f27b0d2b204d6|||||||||||||||
-f_posterior_mrs_365_canonical|function|78af9be28f2aa1f1|||||||||||||||
-f_posterior_mrs_365_minimal|function|95f64f4ba346fe8b|||||||||||||||
-f_posterior_mrs_90_canonical|function|36be97a1420a0075|||||||||||||||
-f_posterior_mrs_90_minimal|function|ffaeff4cb1f6b978|||||||||||||||
-f_posterior_neurosurgery_canonical|function|d5109a329cf4cd41|||||||||||||||
-f_posterior_neurosurgery_minimal|function|c6c2d439245390a0|||||||||||||||
-f_posterior_trach_canonical|function|7612d55675dc4f33|||||||||||||||
-f_posterior_trach_minimal|function|93efbd915162020d|||||||||||||||
-f_posterior_vent_canonical|function|e8dd06892f05c1b2|||||||||||||||
-f_posterior_vent_minimal|function|2741e4412b418d69|||||||||||||||
-f_prior_comfort_canonical|function|0e68f44d4554e9cc|||||||||||||||
-f_prior_comfort_minimal|function|067e24f8e4979635|||||||||||||||
-f_prior_dnr_canonical|function|c1a5e635eefaf56d|||||||||||||||
-f_prior_dnr_minimal|function|622c40d3ff0693a2|||||||||||||||
-f_prior_early_comfort_canonical|function|e38657adff91f440|||||||||||||||
-f_prior_early_comfort_minimal|function|26c8df2c2fba65f8|||||||||||||||
-f_prior_euro_anxiety_180_canonical|function|bc90471633e9f26f|||||||||||||||
-f_prior_euro_anxiety_180_minimal|function|2357cbd9f6987b69|||||||||||||||
-f_prior_euro_anxiety_365_canonical|function|fc063a1c9de7f898|||||||||||||||
-f_prior_euro_anxiety_365_minimal|function|1b71fd0680128b22|||||||||||||||
-f_prior_euro_anxiety_90_canonical|function|e2deb9f90147af60|||||||||||||||
-f_prior_euro_anxiety_90_minimal|function|254507107f9cf7ff|||||||||||||||
-f_prior_euro_mobility_180_canonical|function|9929407b15fb8787|||||||||||||||
-f_prior_euro_mobility_180_minimal|function|e9e043a5848a7854|||||||||||||||
-f_prior_euro_mobility_365_canonical|function|813c31f3451231fa|||||||||||||||
-f_prior_euro_mobility_365_minimal|function|798f75ba1bfd3a92|||||||||||||||
-f_prior_euro_mobility_90_canonical|function|25b8e306a74e3528|||||||||||||||
-f_prior_euro_mobility_90_minimal|function|c7ac86b2f96a427c|||||||||||||||
-f_prior_euro_pain_180_canonical|function|b21a145889e8f8df|||||||||||||||
-f_prior_euro_pain_180_minimal|function|b4ada0cd434ecdfa|||||||||||||||
-f_prior_euro_pain_365_canonical|function|742795ee725aaec3|||||||||||||||
-f_prior_euro_pain_365_minimal|function|503eedeb70cb4919|||||||||||||||
-f_prior_euro_pain_90_canonical|function|cdad422672a1ba9d|||||||||||||||
-f_prior_euro_pain_90_minimal|function|d31b292f15670ecf|||||||||||||||
-f_prior_euro_selfcare_180_canonical|function|a3a19e68e74f7eb9|||||||||||||||
-f_prior_euro_selfcare_180_minimal|function|828a3ed9eb18c783|||||||||||||||
-f_prior_euro_selfcare_365_canonical|function|7f757df3b9dd8673|||||||||||||||
-f_prior_euro_selfcare_365_minimal|function|4e4df9339f6baab1|||||||||||||||
-f_prior_euro_selfcare_90_canonical|function|1cd3dfe274e9eed6|||||||||||||||
-f_prior_euro_selfcare_90_minimal|function|df3ee3f2c11cd31f|||||||||||||||
-f_prior_euro_usual_180_canonical|function|173334df030eceaf|||||||||||||||
-f_prior_euro_usual_180_minimal|function|c5d7d8bb485a95f9|||||||||||||||
-f_prior_euro_usual_365_canonical|function|df909f57dd293398|||||||||||||||
-f_prior_euro_usual_365_minimal|function|eca9fc753dc078fe|||||||||||||||
-f_prior_euro_usual_90_canonical|function|f5f53eaebd4ce8d6|||||||||||||||
-f_prior_euro_usual_90_minimal|function|ceed4345b699029b|||||||||||||||
-f_prior_euro_vas_180_canonical|function|d7e4d14d6153311d|||||||||||||||
-f_prior_euro_vas_180_minimal|function|458890d7dba5bd8a|||||||||||||||
-f_prior_euro_vas_365_canonical|function|d7e4d14d6153311d|||||||||||||||
-f_prior_euro_vas_365_minimal|function|458890d7dba5bd8a|||||||||||||||
-f_prior_euro_vas_90_canonical|function|1fe09c07fa97365f|||||||||||||||
-f_prior_euro_vas_90_minimal|function|a7af952c6b70d0a0|||||||||||||||
-f_prior_evd_canonical|function|909ee72e85f3326b|||||||||||||||
-f_prior_evd_minimal|function|609419dd9f5105c5|||||||||||||||
-f_prior_mrs_180_canonical|function|49b6fb3f49f8a826|||||||||||||||
-f_prior_mrs_180_minimal|function|7a52c55aedbdbeb5|||||||||||||||
-f_prior_mrs_365_canonical|function|f36fb1d4f9c72523|||||||||||||||
-f_prior_mrs_365_minimal|function|bace56cc2fa1153f|||||||||||||||
-f_prior_mrs_90_canonical|function|5f05ca276a8f6805|||||||||||||||
-f_prior_mrs_90_minimal|function|e77de6f4c06c8329|||||||||||||||
-f_prior_neurosurgery_canonical|function|e280383ea5a27fa8|||||||||||||||
-f_prior_neurosurgery_minimal|function|b4ba0c7d34a2408e|||||||||||||||
-f_prior_trach_canonical|function|2a59102ebf19ae6b|||||||||||||||
-f_prior_trach_minimal|function|034f7978cbe5c216|||||||||||||||
-f_prior_vent_canonical|function|c044f28e42aa7bfb|||||||||||||||
-f_prior_vent_minimal|function|177f311585f14fc8|||||||||||||||
-filter_variables|function|aab6a12635d42cbf|||||||||||||||
-ich_aggressive|stem|7de9a8e37efc4277|792fce65c3b577e1|6a6695351ab5b4a4|-1490752604||t19892.7883218941s|eecb88c8213f6d27|116088|rds|local|vector|||0.012||
-ich_all|stem|655381b0ae66d76c|aa517dc5f415ced9|3495652fb3f346b0|-1013614662||t19892.7883204281s|7e8bf7e3089d6b45|138374|rds|local|vector|||0.033||
-imported_data|stem|da1252f9e69e093d|be64c3e532f8d964|05f85a6f0a6d88de|-1154221612||t19892.7883183833s|03a875b811495020|358954|rds|local|vector|||0.008||
-imported_data_file|stem|213dc061ba9a4705|5def87000f2374d5|2c530c1562a7fbd1|623732428|data/raw_data/all.rds|t19868.6030345265s|de07191611414fc8|5544452|file|local|vector|||0.001||
 m_posterior_comfort_canonical|stem|71b110d11ed8d24a|5e19d5daca607574|f1e84dfcf26d52a8|-2111432347||t19894.486319783s|34e7df8cc26a4174|26210070|rds|local|vector|||80.111|Rows containing NAs were excluded from the model.|
 m_posterior_comfort_canonical_atach|stem|ed431ca5d7f49a78|245b8f6c6e268fb5|b7f06df1df875952|-803407853||t19894.4967372459s|06986559fc4696b9|26648167|rds|local|vector|||75.099||
-m_posterior_comfort_canonical_erich|stem|40a2d2699bba782e|75850be246defe51|b167e44fb34f836b|1807789374||t19894.4724639077s|d6e1900947f1ad85|25232777|rds|local|vector|||75.848|Rows containing NAs were excluded from the model.|
 m_posterior_comfort_minimal|stem|21f53beffb5841fb|36ab64e06ae924fe|a46d978892a0b167|483785407||t19894.4853393392s|9130c8cb72f7bbee|25272106|rds|local|vector|||74.49||
 m_posterior_comfort_minimal_atach|stem|16f5c8cee9b7c0d3|c09de9cb137f9eca|7bcae5053031e2bf|1019763961||t19894.5042780823s|3042fd84524f0a2f|26379997|rds|local|vector|||75.183||
 m_posterior_comfort_minimal_erich|stem|111a5a2238eceee2|8af1182c35b39e06|a40862b0c3d420d3|1470731931||t19894.4752046628s|ffdb8c98d42598c3|24589329|rds|local|vector|||75.244||
@@ -155,58 +31,19 @@ m_posterior_early_comfort_canonical_atach|stem|1d40fbbfba91e369|6ff651e57074d0e8
 m_posterior_early_comfort_canonical_erich|stem|a6cdc137bdba392c|763f8d6125a91178|d11e22ed22d997eb|-557785578||t19894.4798017673s|927f410c996621f9|25737861|rds|local|vector|||78.471|Rows containing NAs were excluded from the model.|
 m_posterior_early_comfort_minimal|stem|1f822a8999381381|93d6de25dbf0ef08|de455a55b6e9f181|-532853572||t19894.4948590686s|9020cf6595981f34|25881314|rds|local|vector|||81.195||
 m_posterior_early_comfort_minimal_atach|stem|6f68ac477f9973f5|cf3076690e74503c|3f56144ad0e83491|1407227580||t19894.5004945541s|cfdf755ab1ff1255|26150178|rds|local|vector|||76.069||
-m_posterior_early_comfort_minimal_erich|stem|55435c71839182a2|56c1eea5aefadea6|bbab7054505639db|-810733713||t19894.4715452045s|dce4ffa37b5230f5|24369557|rds|local|vector|||73.797||
-m_posterior_euro_anxiety_180_canonical|stem|40ec63f3b45882ff|bfde25c0cf0c0a78|44b5d220d7bfd630|1857809142||t19893.8820541736s|cf710db5df315300|26711657|rds|local|vector|||449.039|Rows containing NAs were excluded from the model.. There were 2749 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_anxiety_180_minimal|stem|42d90e557fa4bbe4|97fd1f282330326b|37370e339a7a1bcb|618069538||t19893.9175550777s|82b39b64b7a643a5|27032135|rds|local|vector|||78.771|Rows containing NAs were excluded from the model.|
-m_posterior_euro_anxiety_365_canonical|stem|549d6dfeb94b7fb5|772709f2850ce42f|9b378a1ccc1c26a8|658977586||t19893.9924294647s|383d4714c0df4ffa|30031761|rds|local|vector|||246.705|Rows containing NAs were excluded from the model.|
-m_posterior_euro_anxiety_365_minimal|stem|b87aad37b94d9da5|bc4b02eafe861841|9795e6b9040fc48c|-2100670502||t19893.8848921597s|ebf34d4e04b2756d|25981699|rds|local|vector|||79.471|Rows containing NAs were excluded from the model.|
-m_posterior_euro_anxiety_90_canonical|stem|93fababcd9f0b4ae|10b31e0df2b36ffa|6e96155eb2a192e0|1293610545||t19893.896252603s|3e81ae0b7e1ae144|27268587|rds|local|vector|||575.275|Rows containing NAs were excluded from the model.. There were 894 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_anxiety_90_minimal|stem|c355adf4a385c499|4b1ece596f70afe0|57623f8aef24a839|-621454129||t19893.9671471178s|e27801586368deee|28552318|rds|local|vector|||80.141|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_180_canonical|stem|d046e1fe27f4262c|39d17520b343345d|a751eb00d78353aa|-1634508493||t19893.9991225192s|968711ae0edcc548|30212742|rds|local|vector|||380.742|Rows containing NAs were excluded from the model.. There were 1824 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_mobility_180_minimal|stem|db5c6216ace0055a|aaca9e4489be56f4|0873af0576e35911|1248700976||t19893.8876951157s|9bca83c9ff42c84f|26161578|rds|local|vector|||79.238|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_365_canonical|stem|4564aa32adf358af|21bfd955b2758497|567324ba7b182527|-498117374||t19893.9569088318s|9c31f70ab0a4d1fb|29015289|rds|local|vector|||208.249|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_365_minimal|stem|da7ea3c81203e651|7361734e819ca78b|74ec645de0d24ca6|156091426||t19893.9000265627s|2584f1e7a32700ef|26577633|rds|local|vector|||78.547|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_90_canonical|stem|a63be0074a584a13|235c5b49f95d65b2|bf3d8e2ed212b2b8|-1110817529||t19893.9250760718s|9f39bd3239bf812c|28055097|rds|local|vector|||565.2|Rows containing NAs were excluded from the model.. There were 1941 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_mobility_90_minimal|stem|baac858b21be5923|8455d0ad4e692357|2eb7672106b5041b|-1059684847||t19894.0021307574s|fa7d90cc0431877f|29540808|rds|local|vector|||80.261|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_180_canonical|stem|87ffdd91418324bb|c822ff07418def39|7790886f27e24b3c|222671448||t19893.9033175584s|bd9fedfa7671ea76|27543477|rds|local|vector|||279.95|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_180_minimal|stem|76cc8f854026a62d|295e87c8bb9c8029|d25074330871acfa|-1898582826||t19893.9936644883s|2080b7c4d5715a42|29247083|rds|local|vector|||99.824|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_365_canonical|stem|9520c0decfe91ea4|49e228d648141b3f|0a616ba80ce8e4eb|-2009267851||t19893.9452328175s|9270bfb11c491908|28718360|rds|local|vector|||208.429|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_365_minimal|stem|684bc24dfd51519e|28c06834ddcfa2b5|6784cd75a61a9a77|-895947708||t19893.9462218947s|ae0b2cea0bc5ef9d|27906848|rds|local|vector|||80.117|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_90_canonical|stem|9fb7640c050f72f6|0973378e761ba9ec|d104271d603641f4|265162252||t19893.986040845s|66fced15ad70fc4c|29893205|rds|local|vector|||457.115|Rows containing NAs were excluded from the model.. There were 67 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_pain_90_minimal|stem|b5152b976329c44f|a5617af256a9fd30|76d1a9853fa414b7|444790462||t19894.0011191508s|bce6ae39ec15946a|29482226|rds|local|vector|||81.203|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_180_canonical|stem|ade01635e739bb2f|e42a5def0a5c23eb|0306b7925d254c3b|-468572100||t19893.9544287546s|7b80f9a3ab45752e|28973020|rds|local|vector|||453.773|Rows containing NAs were excluded from the model.. There were 2891 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_selfcare_180_minimal|stem|d6072606f0da5e0f|6d5e5851cded6f64|dcfea0c3e67d02b7|-1613025108||t19893.9481738139s|90def38582f42bd2|27993786|rds|local|vector|||78.376|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_365_canonical|stem|569602a2d1751f4a|3c8f966e45054c7d|97f68e6eb88346c8|161116136||t19893.906055617s|d2100d43360bd8f2|27589588|rds|local|vector|||232.062|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_365_minimal|stem|86584f455de5f057|f849172401f27905|e17fdcf118c8d95b|645469701||t19894.4688048353s|64aa39767afc99c0|25840291|rds|local|vector|||78.116|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_90_canonical|stem|96035679bc64f18b|934bd3a7c9ff8e7c|07e76772ac00d53e|-1928241926||t19893.9378686623s|25de08ecb11d38dd|28403576|rds|local|vector|||679.367|Rows containing NAs were excluded from the model.. There were 3013 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_selfcare_90_minimal|stem|8a2245499c994a02|7bd0b3aea33a23d9|1278a007ac13c05c|1108455457||t19893.9661474686s|cf56652527fd1d2d|28504242|rds|local|vector|||79.67|Rows containing NAs were excluded from the model.|
-m_posterior_euro_usual_180_canonical|stem|206fd6bbd853bee4|fd12a4b977b6f555|8c48f58cdbff9c53|-2089615508||t19893.8758448367s|73dfc197a901cee8|26567274|rds|local|vector|||2812.679|Rows containing NAs were excluded from the model.. There were 3084 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_usual_180_minimal|stem|ebd3334fcf532372|69cfecf9616b2ac9|a0084ba172796ee7|-2048663044||t19893.9796890689s|47353579e7805dbb|28901376|rds|local|vector|||79.805|Rows containing NAs were excluded from the model.|
-m_posterior_euro_usual_365_canonical|stem|ebc21675efeab636|3aadb39aa56dc59d|5bf435470471625c|-139486542||t19893.9894905545s|983fafc1c1542379|29966397|rds|local|vector|||206.777|Rows containing NAs were excluded from the model.|
-m_posterior_euro_usual_365_minimal|stem|e94552c99d48b0bf|03ccf37db3385e63|f1ba348e64349dd2|-129935305||t19893.9620807511s|7c03476814dd5b94|28281109|rds|local|vector|||80.192|Rows containing NAs were excluded from the model.|
-m_posterior_euro_usual_90_canonical|stem|beb152921d608bf8|a407f1f60222d4c0|90ac30075fef3d84|-1210116604||t19893.9128577358s|d4ab97ec1ed0670d|27667025|rds|local|vector|||582.819|Rows containing NAs were excluded from the model.. There were 2606 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_usual_90_minimal|stem|b2d93c411314399b|a2dcc26575d10d6d|0f632bf2183abe40|-294776818||t19893.9631041627s|77bca477b35d07f4|28337937|rds|local|vector|||82.625|Rows containing NAs were excluded from the model.|
 m_posterior_evd_canonical|stem|499a99f481ae107e|8c407c6bca801a84|57ba8aa0a530fb18|-1893502698||t19893.8409605471s|1999cb293f277640|24849269|rds|local|vector|||79.077|Rows containing NAs were excluded from the model.|
 m_posterior_evd_canonical_atach|stem|0cca626351b3185b|55099bc0876f0692|fe72f066e131b948|-1579994772||t19894.4986282041s|13d8ec61f8ab5209|26760489|rds|local|vector|||77.071||
 m_posterior_evd_canonical_erich|stem|5814e2eb2983b5d9|0eb620df00cd54aa|d933a79a1eab410b|-1025853061||t19894.4733929504s|68c37d0a9c06baa4|25311452|rds|local|vector|||76.414|Rows containing NAs were excluded from the model.|
 m_posterior_evd_minimal|stem|e06cb674b748ca4d|65b9510a74ecfade|4c400592ff30e786|764229151||t19894.4807137577s|5e050f14ec14fc0b|24983980|rds|local|vector|||74.866||
 m_posterior_evd_minimal_atach|stem|ac26f6b293aa6b16|b090283f67e7a6b8|f1f932fdee34822c|-91857298||t19894.5014200559s|f703b29aba7ba1dd|26211430|rds|local|vector|||74.606||
 m_posterior_evd_minimal_erich|stem|fff15b18e2c460eb|f1885571b69ef692|1b40408df16e4813|-1582283771||t19894.4770347006s|ae5d4bb1ba1978d6|24708382|rds|local|vector|||74.022||
-m_posterior_mrs_180_canonical|stem|6323194142770f50|5d93315a5e14eb95|9f02051a4de6a9bf|2007593764||t19894.465988811s|767a66b1d87a2ef9|27538514|rds|local|vector|||632.742|Rows containing NAs were excluded from the model.. There were 3426 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_mrs_180_minimal|stem|933e75b07b291592|ccaa48d5a43dc42b|07c517a534a1ce6e|-849030262||t19893.9261819302s|761d0f4b1191106c|28162275|rds|local|vector|||90.835|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_365_canonical|stem|2d792e6eec413eb4|bbe6ab5ee70e171d|f59d6418afa93832|-41222666||t19893.961083188s|8b6edfb86db2b7cd|30054081|rds|local|vector|||354.296|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_365_minimal|stem|85ccfeb0386cacb4|1363bf432bd045d8|6e97d224499aa517|703763794||t19893.9642009148s|9ad6284ebbd615db|29343685|rds|local|vector|||88.575|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_90_canonical|stem|c1ab8e808c036d4f|d3a0a38119c76b08|3ebf1aa144e14e42|834643700||t19893.9786884187s|e5eca598a8e63b44|30681921|rds|local|vector|||656.075|Rows containing NAs were excluded from the model.. There were 3446 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_mrs_90_minimal|stem|c91ff241b66e70f6|9b773a0f5c013b65|f5efe0ca907c78d1|1076811092||t19893.9408791356s|49ad3ff5c00ab54d|28616593|rds|local|vector|||89.639|Rows containing NAs were excluded from the model.|
 m_posterior_neurosurgery_canonical|stem|ccc5130fae8ae201|4ab162549c4c6387|9e1fa595cf41d0eb|-690002383||t19893.8386401296s|b6068085fd5aca30|24841846|rds|local|vector|||78.716|Rows containing NAs were excluded from the model.|
 m_posterior_neurosurgery_canonical_atach|stem|6ac8775af5067446|7cabcda7f435c0d4|f44eee4ae12836f4|903043240||t19894.4976756962s|2c406a5d8c4ce370|26701834|rds|local|vector|||75.841||
-m_posterior_neurosurgery_canonical_erich|stem|3f474838c6469af2|211658dd1bd755a8|8974b45e0ce65764|1933281405||t19894.4697351897s|c1028e248afa0da7|25059869|rds|local|vector|||77.027|Rows containing NAs were excluded from the model.|
 m_posterior_neurosurgery_minimal|stem|934d1f7dc4dc457d|1f618d57c445a4db|cc766fbce25a3124|1757798209||t19894.4901560939s|7d45eecdff831de3|25564419|rds|local|vector|||75.257||
 m_posterior_neurosurgery_minimal_atach|stem|988ec93f38089857|d4ca306b4d9a9614|eee9e1956a18102e|-1309560881||t19894.4995557721s|eea56ab72cfb2596|26083591|rds|local|vector|||74.83||
 m_posterior_neurosurgery_minimal_erich|stem|5dafdb889146877a|39d626a75581ccad|08534ab18abde5e5|1716499208||t19894.4742929425s|9f7856ac0d5356e5|24543005|rds|local|vector|||74.248||
 m_posterior_trach_canonical|stem|541bdcca3796489a|3a92a5d61a8fdad6|af544eebe71d1558|892589480||t19893.8420370783s|dd1caffe911513a9|24833430|rds|local|vector|||78.962|Rows containing NAs were excluded from the model.|
 m_posterior_trach_canonical_atach|stem|b9c8c845cf56397e|67cfa46e10a7c152|be5dbd48f50c3687|2042011252||t19894.5023957028s|c21219c0ce40f9bb|26994044|rds|local|vector|||78.712||
-m_posterior_trach_canonical_erich|stem|7b792b39c9263ae8|a2148e46e48371c9|7a360ce3590e3e29|366988299||t19894.4706507679s|49a72b1c7c407bda|25122441|rds|local|vector|||75.51|Rows containing NAs were excluded from the model.|
 m_posterior_trach_minimal|stem|310a4aa0a6bec0ba|57f8862d8bda7617|cf3888f0cf210a0e|471362897||t19894.4816106737s|68fe907c97734f8b|25060593|rds|local|vector|||73.573||
 m_posterior_trach_minimal_atach|stem|5e8515fd00382845|0b64484c6e5ebdd5|270d9c2443993d13|948012518||t19894.5061783513s|f82de8156ccd8917|26493565|rds|local|vector|||77.041||
 m_posterior_trach_minimal_erich|stem|f4bce96defc89e4d|c055f7f888fd61f8|275d8a22b84a6c5a|83971950||t19894.4779262437s|98088f578195835e|24783520|rds|local|vector|||73.202||
@@ -221,66 +58,20 @@ m_prior_dnr_canonical|stem|f5ff9a3d3feb9f6e|c0229c6701997d3a|0939b74937bfb861|-4
 m_prior_dnr_minimal|stem|f25f0f291367399a|fe45138ef336cab4|a8e5868449b97508|-283975852||t19894.4938640833s|d79594c78d20972e|25741938|rds|local|vector|||75.33||
 m_prior_early_comfort_canonical|stem|79a3ac9bef8c9c89|ca7cc448054fb94e|d6f9282455878f6b|2146096585||t19894.491075083s|c72cedfac1b8dd68|26419250|rds|local|vector|||74.927|Rows containing NAs were excluded from the model.|
 m_prior_early_comfort_minimal|stem|8bb07ff8c90cfe12|8498e197b0de6ac9|ae9c5ff0df4aac73|-1063447086||t19894.4919960195s|f3787dde61d62da4|25600207|rds|local|vector|||74.802||
-m_prior_euro_anxiety_180_canonical|stem|d4b2b69d2ce7ebf7|6a0247ec0816eb06|451af1f7ef6cf640|1025150664||t19893.9289917135s|61c5ab5560e8a01b|28262887|rds|local|vector|||75.874|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_180_minimal|stem|25451f6129d7f67f|818708d90b4f078c|e89f8c6d6207cb35|-361848219||t19893.9418101478s|75c29d6e4f39e2c2|27772361|rds|local|vector|||75.361|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_365_canonical|stem|ac95fc1c80874188|a5151b9bf54aefbf|fcf2180869585c4e|1598769769||t19893.9165911575s|8dbfe27c94ce7d92|27855546|rds|local|vector|||75.151|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_365_minimal|stem|64928b1effaf4d5a|2842615f4f37a639|259cfe4736c76db9|1564135733||t19894.4678587789s|17d866668c533fe3|25838272|rds|local|vector|||75.922|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_90_canonical|stem|3d7919430e86027c|660e41635ba9b191|ac0bcb5a5d63b90b|1674658635||t19893.9271186534s|d99a870c6fbc5d1a|28162830|rds|local|vector|||76.114|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_90_minimal|stem|b0b2f75916309e3e|3f5fe0fb4ad6fc7f|43a3341b478eb51e|-293535632||t19893.8768128857s|18d629867b85a4bb|25764501|rds|local|vector|||80.124|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_180_canonical|stem|0b853c49455195b9|e39b9d983b656842|83101ef78fe252e2|-901516529||t19893.9397815737s|55d3e2c61ef75bd0|28479867|rds|local|vector|||76.279|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_180_minimal|stem|7867e6c55f3494a2|4129e7389fabf66e|3f724a30cff9ff9b|-915638834||t19894.4669383781s|e96fe18e13929241|25768086|rds|local|vector|||78.551|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_365_canonical|stem|b89515100e8e85b4|be60cb06500dc09d|71f7abeba82a9e48|-789876567||t19893.8830023165s|400a08a48a0a4bfc|26748942|rds|local|vector|||78.335|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_365_minimal|stem|d4bad09451065d8d|d4d12892e5d0dc91|fb427ffbff53e5af|1735604425||t19893.8839299734s|8370ac54ce23f737|25960445|rds|local|vector|||76.628|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_90_canonical|stem|472d5c6edb31607d|e6d64af2b6a07e4a|a72c80c241bd1bc1|-1251173589||t19893.9680888966s|8d427c65e2183fd0|29493813|rds|local|vector|||75.361|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_90_minimal|stem|0761b555fbe48535|a2a3d5ae5372b1fa|a7f89edde162acb3|749685634||t19893.9156687878s|e88a13fecc261920|26969565|rds|local|vector|||76.734|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_180_canonical|stem|476582abe0ba7246|839d2306ea08c8dd|0287de8125fa8c54|673666802||t19893.9690551735s|047c739cbca10ec5|29515140|rds|local|vector|||77.273|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_180_minimal|stem|f6a1a3f4056292a9|0d58ef6533fbff5f|b2ad59af0d990432|-308748057||t19893.8858153029s|6596792ddefd6492|26088806|rds|local|vector|||76.107|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_365_canonical|stem|df6bb0b71ad04d80|259c242994a14b32|26f69c49f60e3462|-244304452||t19893.9427549724s|bff8cf73f838b235|28649189|rds|local|vector|||76.39|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_365_minimal|stem|4e35cae3e1fbc675|a0dbcd926f47b6f4|63cd7ff8a61936d2|-1978370333||t19893.8971884364s|bcfcd84dd9a291f2|26433303|rds|local|vector|||76.94|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_90_canonical|stem|5e2d69053e39f2fe|1f5ce965b6549238|675a63b148c7e399|385575567||t19893.9147293657s|4a2aaadebfc407c5|27765561|rds|local|vector|||75.236|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_90_minimal|stem|82e0777a1acdedc1|ad9ffacb2c672ceb|980ac0dcead19770|100775080||t19893.9280589644s|b4a68638aac8fe1e|27372510|rds|local|vector|||76.44|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_180_canonical|stem|5d1ab7c59aeb19c0|15424709424bb9b0|2ac7160efa7c115a|1855000105||t19893.9138088478s|f5377aee81ddfe59|27695839|rds|local|vector|||77.654|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_180_minimal|stem|b3a2bafcbc59e9fb|f900fab94853d977|47c041e67018c0c3|441143818||t19893.8867352827s|3737012418e8164a|26143688|rds|local|vector|||75.759|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_365_canonical|stem|9f11ace74ec71a79|e945586b0f539549|a19a4b1564d40d79|2077605640||t19893.9184774859s|63cf1f7e85909ac1|27965677|rds|local|vector|||75.174|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_365_minimal|stem|b1bddd531891edc7|7383f603fe662f7b|bd6de5bf9fb3bc7e|1155147481||t19893.938839952s|9378c18ca3422532|27603087|rds|local|vector|||78.743|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_90_canonical|stem|2eff9073fa4d2d28|2005e3bc7392bf45|a84709003cd89f77|1030851877||t19893.898115039s|ecb25d285909015e|27369886|rds|local|vector|||76.088|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_90_minimal|stem|da7444fc37c3a735|52e60ba0dbfc28b4|8b45572ab1e595c2|-32501492||t19894.0000953529s|2937701113b79b3d|29485336|rds|local|vector|||76.956|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_180_canonical|stem|4b28ac28fce8bf4a|e104cdfb2fabacae|e8627f45995ceeb0|1640802607||t19893.9651489025s|3827470efd86ae1f|29300000|rds|local|vector|||76.05|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_180_minimal|stem|0cc383b01dfb96a0|b41fe37d56b9a721|051d243da55b6951|-728995954||t19893.9946261339s|9cef6ee16c742b2d|29371807|rds|local|vector|||76.252|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_365_canonical|stem|e78d4e396d8d76ef|ee8cf19e0ea00e7f|b788da147b60bd78|1693150206||t19893.9299458744s|94be98d3fbc9b08d|28314579|rds|local|vector|||77.518|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_365_minimal|stem|8d6ec2925fa32f1c|8f92963e7c88bb93|d88a845d5e8f957c|-2112409878||t19893.9806568102s|0e3e30c756c20371|29010543|rds|local|vector|||77.091|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_90_canonical|stem|5a40571cfaff4d76|217a09a04e06bafb|91aec288c07a44e7|-1311604222||t19893.9471691123s|e23d11b21908a501|28845069|rds|local|vector|||76.47|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_90_minimal|stem|60742d2997faa8c6|dd82be0172ac2f92|0e23ffc357620ac4|-1173411193||t19893.8886121248s|dad26d9cf42fc0c2|26272542|rds|local|vector|||75.41|Rows containing NAs were excluded from the model.|
 m_prior_evd_canonical|stem|145e5ff1cf7ca96a|6d9fcc78204c5cf3|9c061395581ae307|1718623535||t19893.8251889603s|71db0cc8a1de4c21|24748380|rds|local|vector|||79.836|Rows containing NAs were excluded from the model.|
 m_prior_evd_minimal|stem|b1efd9c5f2795e39|bf0fa1bb507ae08a|acdd0963c5d6f480|-107865603||t19893.8230759928s|007bb1155f90005f|23927075|rds|local|vector|||80.704||
-m_prior_mrs_180_canonical|stem|0318de14f7b1635c|aadf0760a4d2b142|3bdd96640d9ad41d|-231073701||t19893.9709963299s|4b804a701dcca7e4|30615214|rds|local|vector|||78.078|Rows containing NAs were excluded from the model.|
-m_prior_mrs_180_minimal|stem|50e024bb381ad0ee|c9bf3827b79945ee|10eee578bbd9ed18|1206748303||t19893.9491098042s|f309bcc45224e388|29052933|rds|local|vector|||75.406|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-m_prior_mrs_365_canonical|stem|53b1799840144ac8|ce2a06636a2b09b3|3732f53af1b1301d|943777168||t19893.8990697719s|4ba5dae1fe0347df|28386423|rds|local|vector|||78.345|Rows containing NAs were excluded from the model.|
-m_prior_mrs_365_minimal|stem|6a726f7466c748e9|d7ff888475537352|2f9403c79503ac67|-435941919||t19893.9870124056s|e94a1947b3e835e5|30083565|rds|local|vector|||76.985|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-m_prior_mrs_90_canonical|stem|82dacb8364f0bd03|38a8c73cc1c89175|94a5bceb48ae2231|-1960015551||t19893.9700165119s|9325ba62b2a08870|30570677|rds|local|vector|||76.886|Rows containing NAs were excluded from the model.|
-m_prior_mrs_90_minimal|stem|1ed823239fb334e4|9a943fcee0664e0c|82ba15d36809c8cb|492862794||t19893.8895446047s|5ceed0213c5dee1f|27282132|rds|local|vector|||76.812|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_neurosurgery_canonical|stem|24804d981dd4dcc3|edd9b9c3e46551bc|351c65cb2af1d93b|114468795||t19893.8212006466s|8441f0e0f1f0300e|24751436|rds|local|vector|||80.539|Rows containing NAs were excluded from the model.|
 m_prior_neurosurgery_minimal|stem|796abc31fdf67593|6ed1bbbe5d2aeefd|f4c920a08a6e4575|497813916||t19893.8198009153s|b1c268a955f06e26|23924413|rds|local|vector|||80.087||
 m_prior_trach_canonical|stem|fb50bbf6ee91fec2|f94ba58d3adbd86b|72e59631b738630d|-993513890||t19893.827798304s|8e49b3ebf7733c54|24741592|rds|local|vector|||76.213|Rows containing NAs were excluded from the model.|
 m_prior_trach_minimal|stem|869bd689062730ea|479b34e74f33cbbf|35f837b3590e049f|-340765268||t19893.8264404487s|4a4cef3b05c75400|23930108|rds|local|vector|||78.477||
 m_prior_vent_canonical|stem|003082a9c254b414|65923b65d2e7f3cd|89d712cfc9df7db2|1382909142||t19893.8351519914s|f4a9fd505fe55c98|31347084|rds|local|vector|||78.399|Rows containing NAs were excluded from the model.. There were 4 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_vent_minimal|stem|bf71ce14d6aec812|a35fb8d5b4ada18c|acf831a71a7a0ca4|195812241||t19893.8289335553s|6c6e871e8b7df18a|30611514|rds|local|vector|||79.341|Rows containing NAs were excluded from the model.. There were 7 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-model_setup|function|744a394f2ed553aa|||||||||||||||
 neurosugery_canonical_diagnostics|stem|84fd7224ab029534|90a4a3f9739100fd|1c3207e4a4ff6564|-1246627164||t19894.5679005348s|7253ea01ae2a5008|32334520|rds|local|vector|||1.94||
 neurosugery_minimal_diagnostics|stem|baa18dd903fa8593|ced01af576ed104b|427b079fc69c8d11|154228766||t19894.5688833599s|6dc4bfcf5ff5142b|30258521|rds|local|vector|||2.006||
 neurosurgery_canonical_visuals|stem|8aa0d3c2257ae029|c99e1efb00c6c7b8|acec8cbcc9751d3a|526014170||t19894.5678114498s|2dafc272f716f85b|28151112|rds|local|vector|||5.214||
 neurosurgery_minimal_visuals|stem|80cfcac0df1b7284|172adc89ce1769b1|b661ffd2bee906e6|1064045853||t19894.5689454373s|a50f78f5e47e7641|27892739|rds|local|vector|||0.771||
-outcomes_dag_function|function|6e154598f5ab410a|||||||||||||||
-posterior_diagnostics|function|35a8ac4d3fa32822|||||||||||||||
-results_visual|function|60bfc24e70594483|||||||||||||||
-select_variables|function|51eaa047f9ead67f|||||||||||||||
-selected_data|stem|0f476d661b9297b1|44280be3ad15831f|c743c3864cfa3125|-1052555108||t19892.7883193478s|6c0061a438cae8f9|158412|rds|local|vector|||0.019||
-settings|stem|113c35e390419099|0d725b29fc99973a|e4562df55d19cb87|-416401554||t19893.002980208s|b0e8a36a8bde68fd|362|rds|local|vector|||0.006||
 table_1_aggressive|stem|779fd97a2641161b|1a2e2eefc146e3c7|23a0847c28b9c73d|-15126430||t19893.0082557556s|8dc3612c73cdb104|724561|rds|local|vector|||3.256||
-table_1_function|function|8f8fb2a03829abf2|||||||||||||||
-table_1_outcomes|stem|18b368bba66a8db3|ff32e4d6c57ce9fe|d77e08d66f26f955|-541678962||t19893.0093074828s|a7f98d81182a5304|883459|rds|local|vector|||3.329||
 table_2_aggressive|stem|5c36c36e6c6e96f2|88d16aec5bf7a342|d9fb2c6accd64b1c|-1897827915||t19893.0083595359s|e1f84bb1f33b9ce1|154541|rds|local|vector|||0.931||
-table_2_aggressive_function|function|1fab1741f125d382|||||||||||||||
 trach_canonical_diagnostics|stem|7f2df790e751315d|e18dd856fa6012d5|8492d1ff66249852|-1818965111||t19894.5682774768s|18ed591d8429be14|31355293|rds|local|vector|||1.921||
 trach_canonical_visuals|stem|089639e6c56c4096|c67f46bc550e8cab|d04ce979fa6b318e|-36796315||t19894.5681869259s|5b86fdc6fc5541c1|28153308|rds|local|vector|||5.532||
 trach_minimal_diagnostics|stem|9711997cfa2908bc|7193bd526b331db7|63229912cfd29b31|-336722777||t19894.5664330534s|5e15f60c11fad22e|28513288|rds|local|vector|||2.889||
@@ -289,10 +80,219 @@ vent_canonical_diagnostics|stem|d171811926d1cab8|f7c5bad5537b352a|88168c0e9fc88d
 vent_canonical_visuals|stem|0708a65b875f3053|9b0097dcff6c09b9|23ab35d421968a3d|-1736312122||t19894.566998416s|89a56562000814af|55298986|rds|local|vector|||18.026||
 vent_minimal_diagnostics|stem|567ff847d8c68b85|d28447ab7b307f5c|cb66f8019184c034|-592705850||t19894.566536254s|8eb25461e3649092|47458574|rds|local|vector|||1.731||
 vent_minimal_visuals|stem|aee3613b9caf9c0f|8a32b0f019458956|eb67e2b089b89c47|234212292||t19894.5667036896s|110fea862236118e|53254938|rds|local|vector|||6.623||
+model_setup|function|744a394f2ed553aa|||||||||||||||
+table_2_aggressive_function|function|1fab1741f125d382|||||||||||||||
+aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
+.Random.seed|object|2016560c36e6065e|||||||||||||||
+select_variables|function|51eaa047f9ead67f|||||||||||||||
+results_visual|function|60bfc24e70594483|||||||||||||||
+filter_variables|function|aab6a12635d42cbf|||||||||||||||
+posterior_diagnostics|function|35a8ac4d3fa32822|||||||||||||||
+table_1_function|function|8f8fb2a03829abf2|||||||||||||||
+outcomes_dag_function|function|6e154598f5ab410a|||||||||||||||
+f_posterior_euro_usual_180_canonical|function|949dc2e77af58b63|||||||||||||||
+f_posterior_euro_selfcare_365_canonical|function|cc4311be77bbedff|||||||||||||||
+f_posterior_mrs_90_canonical|function|36be97a1420a0075|||||||||||||||
+f_posterior_comfort_canonical|function|27167c087ff7d672|||||||||||||||
+f_prior_euro_vas_90_minimal|function|a7af952c6b70d0a0|||||||||||||||
+f_prior_mrs_90_canonical|function|5f05ca276a8f6805|||||||||||||||
+f_prior_neurosurgery_canonical|function|e280383ea5a27fa8|||||||||||||||
+f_prior_early_comfort_minimal|function|26c8df2c2fba65f8|||||||||||||||
+f_posterior_euro_selfcare_90_minimal|function|f37d98ab5ca9d1ea|||||||||||||||
+f_prior_euro_anxiety_365_canonical|function|fc063a1c9de7f898|||||||||||||||
+f_prior_vent_minimal|function|177f311585f14fc8|||||||||||||||
+f_prior_euro_mobility_180_minimal|function|e9e043a5848a7854|||||||||||||||
+f_posterior_euro_mobility_180_canonical|function|76d0dc747ef7aa3f|||||||||||||||
+f_prior_euro_vas_365_minimal|function|458890d7dba5bd8a|||||||||||||||
+f_posterior_euro_pain_365_canonical|function|d0db4995ba043090|||||||||||||||
+f_prior_mrs_180_canonical|function|49b6fb3f49f8a826|||||||||||||||
+f_posterior_euro_selfcare_180_minimal|function|1ffb82b68c6c1144|||||||||||||||
+f_posterior_euro_pain_90_minimal|function|a0180584cf307077|||||||||||||||
+f_prior_euro_selfcare_90_canonical|function|1cd3dfe274e9eed6|||||||||||||||
+f_prior_mrs_365_canonical|function|f36fb1d4f9c72523|||||||||||||||
+f_prior_evd_canonical|function|909ee72e85f3326b|||||||||||||||
+f_posterior_euro_anxiety_365_minimal|function|d7a7dbd94e05bf16|||||||||||||||
+f_posterior_dnr_canonical|function|99155cf73f404d38|||||||||||||||
+f_posterior_vent_canonical|function|e8dd06892f05c1b2|||||||||||||||
+f_prior_euro_vas_365_canonical|function|d7e4d14d6153311d|||||||||||||||
+f_posterior_euro_usual_90_canonical|function|60f7e869d14e23d1|||||||||||||||
+f_posterior_euro_vas_90_canonical|function|cc30dc9dab0a140f|||||||||||||||
+f_posterior_euro_selfcare_90_canonical|function|1a11f6319cc89c06|||||||||||||||
+f_posterior_neurosurgery_minimal|function|c6c2d439245390a0|||||||||||||||
+f_posterior_trach_canonical|function|7612d55675dc4f33|||||||||||||||
+f_prior_euro_selfcare_180_minimal|function|828a3ed9eb18c783|||||||||||||||
+f_posterior_euro_anxiety_90_canonical|function|e94940c97ec5f03b|||||||||||||||
+f_prior_euro_selfcare_365_minimal|function|4e4df9339f6baab1|||||||||||||||
+f_posterior_euro_anxiety_90_minimal|function|849bd114b569ae15|||||||||||||||
+f_posterior_euro_pain_365_minimal|function|40e9369c753e63e5|||||||||||||||
+f_prior_euro_selfcare_90_minimal|function|df3ee3f2c11cd31f|||||||||||||||
+f_posterior_dnr_minimal|function|8cf189d4c6df6a38|||||||||||||||
+f_prior_euro_vas_180_minimal|function|458890d7dba5bd8a|||||||||||||||
+f_posterior_euro_usual_90_minimal|function|07c2d2f46161135a|||||||||||||||
+f_posterior_comfort_minimal|function|d2a7a07541d39a97|||||||||||||||
+f_posterior_euro_vas_365_canonical|function|921d37d89fe751ca|||||||||||||||
+f_prior_euro_pain_180_minimal|function|b4ada0cd434ecdfa|||||||||||||||
+f_posterior_euro_anxiety_180_minimal|function|ab3dfd8b3d5e8770|||||||||||||||
+f_prior_euro_mobility_90_minimal|function|c7ac86b2f96a427c|||||||||||||||
+f_prior_trach_minimal|function|034f7978cbe5c216|||||||||||||||
+f_prior_euro_vas_90_canonical|function|1fe09c07fa97365f|||||||||||||||
+f_prior_euro_mobility_365_canonical|function|813c31f3451231fa|||||||||||||||
+f_posterior_euro_selfcare_365_minimal|function|f01d3854731013b7|||||||||||||||
+f_prior_euro_pain_365_canonical|function|742795ee725aaec3|||||||||||||||
+f_prior_euro_usual_365_canonical|function|df909f57dd293398|||||||||||||||
+f_posterior_euro_mobility_180_minimal|function|3588cfe464ddca47|||||||||||||||
+f_posterior_mrs_365_minimal|function|95f64f4ba346fe8b|||||||||||||||
+f_prior_euro_anxiety_180_canonical|function|bc90471633e9f26f|||||||||||||||
+f_prior_dnr_minimal|function|622c40d3ff0693a2|||||||||||||||
+f_prior_euro_anxiety_90_minimal|function|254507107f9cf7ff|||||||||||||||
+f_prior_euro_selfcare_365_canonical|function|7f757df3b9dd8673|||||||||||||||
+f_posterior_euro_pain_180_minimal|function|edd6e9496f0b7c52|||||||||||||||
+f_prior_trach_canonical|function|2a59102ebf19ae6b|||||||||||||||
+f_posterior_evd_minimal|function|2b54982842f6a3d7|||||||||||||||
+f_prior_euro_anxiety_365_minimal|function|1b71fd0680128b22|||||||||||||||
+f_prior_euro_anxiety_180_minimal|function|2357cbd9f6987b69|||||||||||||||
+f_prior_euro_vas_180_canonical|function|d7e4d14d6153311d|||||||||||||||
+f_prior_euro_pain_90_minimal|function|d31b292f15670ecf|||||||||||||||
+f_posterior_mrs_180_canonical|function|c517baf63209c85e|||||||||||||||
+f_prior_comfort_minimal|function|067e24f8e4979635|||||||||||||||
+f_posterior_trach_minimal|function|93efbd915162020d|||||||||||||||
+f_prior_dnr_canonical|function|c1a5e635eefaf56d|||||||||||||||
+f_posterior_mrs_365_canonical|function|78af9be28f2aa1f1|||||||||||||||
+f_posterior_evd_canonical|function|c006aeb3f2004e8a|||||||||||||||
+f_posterior_euro_usual_180_minimal|function|50adad29ce7fe697|||||||||||||||
+f_prior_euro_selfcare_180_canonical|function|a3a19e68e74f7eb9|||||||||||||||
+f_prior_euro_mobility_180_canonical|function|9929407b15fb8787|||||||||||||||
+f_prior_evd_minimal|function|609419dd9f5105c5|||||||||||||||
+f_prior_euro_pain_365_minimal|function|503eedeb70cb4919|||||||||||||||
+f_prior_euro_anxiety_90_canonical|function|e2deb9f90147af60|||||||||||||||
+f_posterior_neurosurgery_canonical|function|d5109a329cf4cd41|||||||||||||||
+f_posterior_early_comfort_minimal|function|fa7f36d8f41a755a|||||||||||||||
+f_posterior_euro_vas_365_minimal|function|c214365464bec921|||||||||||||||
+f_prior_euro_usual_365_minimal|function|eca9fc753dc078fe|||||||||||||||
+f_prior_mrs_90_minimal|function|e77de6f4c06c8329|||||||||||||||
+f_posterior_euro_mobility_90_canonical|function|8d7bc878dab0ce4f|||||||||||||||
+f_posterior_euro_pain_90_canonical|function|0c7dc2954aabca41|||||||||||||||
+f_prior_mrs_180_minimal|function|7a52c55aedbdbeb5|||||||||||||||
+f_prior_euro_pain_180_canonical|function|b21a145889e8f8df|||||||||||||||
+f_posterior_euro_selfcare_180_canonical|function|bc25d296520be28f|||||||||||||||
+f_posterior_euro_anxiety_365_canonical|function|7cf2fdf12a09dc9a|||||||||||||||
+f_prior_euro_usual_180_canonical|function|173334df030eceaf|||||||||||||||
+f_prior_euro_usual_90_canonical|function|f5f53eaebd4ce8d6|||||||||||||||
+f_posterior_early_comfort_canonical|function|44027188347b840a|||||||||||||||
+f_prior_euro_mobility_365_minimal|function|798f75ba1bfd3a92|||||||||||||||
+f_posterior_euro_mobility_365_minimal|function|9f6bb747ba779243|||||||||||||||
+f_posterior_euro_vas_180_minimal|function|c214365464bec921|||||||||||||||
+f_prior_comfort_canonical|function|0e68f44d4554e9cc|||||||||||||||
+f_prior_euro_usual_90_minimal|function|ceed4345b699029b|||||||||||||||
+f_posterior_vent_minimal|function|2741e4412b418d69|||||||||||||||
+f_prior_euro_usual_180_minimal|function|c5d7d8bb485a95f9|||||||||||||||
+f_posterior_mrs_180_minimal|function|af8f27b0d2b204d6|||||||||||||||
+f_posterior_euro_mobility_365_canonical|function|da7382ed382c6651|||||||||||||||
+f_prior_euro_pain_90_canonical|function|cdad422672a1ba9d|||||||||||||||
+f_prior_vent_canonical|function|c044f28e42aa7bfb|||||||||||||||
+f_posterior_euro_usual_365_minimal|function|c23e5b126b039bb2|||||||||||||||
+f_prior_early_comfort_canonical|function|e38657adff91f440|||||||||||||||
+f_prior_euro_mobility_90_canonical|function|25b8e306a74e3528|||||||||||||||
+f_posterior_euro_pain_180_canonical|function|d5d2689afca8d30e|||||||||||||||
+f_posterior_euro_vas_90_minimal|function|29547ef4f68ecc90|||||||||||||||
+f_posterior_euro_vas_180_canonical|function|921d37d89fe751ca|||||||||||||||
+f_prior_neurosurgery_minimal|function|b4ba0c7d34a2408e|||||||||||||||
+f_posterior_mrs_90_minimal|function|ffaeff4cb1f6b978|||||||||||||||
+f_prior_mrs_365_minimal|function|bace56cc2fa1153f|||||||||||||||
+f_posterior_euro_mobility_90_minimal|function|f4c3037917bf5863|||||||||||||||
+f_posterior_euro_usual_365_canonical|function|a65b9f9424ba35b5|||||||||||||||
+f_posterior_euro_anxiety_180_canonical|function|b1674b95651cf47a|||||||||||||||
+imported_data_file|stem|213dc061ba9a4705|5def87000f2374d5|2c530c1562a7fbd1|623732428|data/raw_data/all.rds|t19868.4912584081s|de07191611414fc8|5544452|file|local|vector|||0.001||
+dag_outcomes|stem|b12d02c46fcefb52|35435e3659cf1296|1f323843a51566f7|2092730130||t19894.9367682799s|ab78dd2160f1066c|693|rds|local|vector|||0.069||
+settings|stem|113c35e390419099|0d725b29fc99973a|e4562df55d19cb87|-416401554||t19894.936768357s|b0e8a36a8bde68fd|362|rds|local|vector|||0.005||
+dag_aggressive|stem|f466625e621fbf47|4c5f2530d47a4a16|494adb38a275e02b|1651356463||t19894.9367686656s|c5bb5d828e920a89|506|rds|local|vector|||0.024||
+imported_data|stem|da1252f9e69e093d|be64c3e532f8d964|05f85a6f0a6d88de|-1154221612||t19894.9367701312s|03a875b811495020|358954|rds|local|vector|||0.008||
+selected_data|stem|0f476d661b9297b1|44280be3ad15831f|c743c3864cfa3125|-1052555108||t19894.9367709411s|6c0061a438cae8f9|158412|rds|local|vector|||0.018||
+ich_all|stem|655381b0ae66d76c|aa517dc5f415ced9|3495652fb3f346b0|-1013614662||t19894.9367717124s|7e8bf7e3089d6b45|138374|rds|local|vector|||0.021||
+erich|stem|fac61d76da9bbe1f|3a93622e2896a8d4|6a6695351ab5b4a4|1934531450||t19894.9367722138s|9663e145af04b2f6|86178|rds|local|vector|||0.01||
+ich_aggressive|stem|7de9a8e37efc4277|792fce65c3b577e1|6a6695351ab5b4a4|-1490752604||t19894.9367727923s|eecb88c8213f6d27|116088|rds|local|vector|||0.012||
+m_posterior_euro_usual_180_canonical|stem|35d8738fa9668b75|fd12a4b977b6f555|8c48f58cdbff9c53|-2089615508||t19894.9414376919s|7069aa9c51ae896a|26590818|rds|local|vector|||399.69|Rows containing NAs were excluded from the model.. There were 2935 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_prior_euro_anxiety_90_minimal|stem|16587a834627b0fa|3f5fe0fb4ad6fc7f|43a3341b478eb51e|-293535632||t19894.9423935599s|03ae14f94334d7d0|25765234|rds|local|vector|||79.242|Rows containing NAs were excluded from the model.|
+m_posterior_euro_anxiety_180_canonical|stem|7409cf3678b7d482|bfde25c0cf0c0a78|44b5d220d7bfd630|1857809142||t19894.9473692147s|0251b0165f910d89|26709437|rds|local|vector|||426.467|Rows containing NAs were excluded from the model.. There were 3006 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_prior_euro_mobility_365_canonical|stem|00f257bc2e543f64|be60cb06500dc09d|71f7abeba82a9e48|-789876567||t19894.9483537019s|6c9ff1c05764ae68|26749705|rds|local|vector|||81.602|Rows containing NAs were excluded from the model.|
+m_prior_euro_mobility_365_minimal|stem|85bfd8f2c3caf0e0|d4d12892e5d0dc91|fb427ffbff53e5af|1735604425||t19894.9493190555s|0f7bff20de977a87|25962113|rds|local|vector|||79.922|Rows containing NAs were excluded from the model.|
+atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19894.9493194027s|55f706f8f6e4d315|31110|rds|local|vector|||0.007||
+m_posterior_euro_anxiety_365_minimal|stem|4556ebfe56252430|bc4b02eafe861841|9795e6b9040fc48c|-2100670502||t19894.9503276714s|7b646834963ddbe5|25968932|rds|local|vector|||83.561|Rows containing NAs were excluded from the model.|
+m_prior_euro_pain_180_minimal|stem|54132cdbc5072052|0d58ef6533fbff5f|b2ad59af0d990432|-308748057||t19894.951309455s|98fc446f72f03cb7|26081997|rds|local|vector|||81.218|Rows containing NAs were excluded from the model.|
+m_prior_euro_selfcare_180_minimal|stem|593333dffa4ee0d4|f900fab94853d977|47c041e67018c0c3|441143818||t19894.9522923057s|30ef2e70976fe883|26137383|rds|local|vector|||81.217|Rows containing NAs were excluded from the model.|
+m_posterior_euro_mobility_180_minimal|stem|be5acc065a27f121|aaca9e4489be56f4|0873af0576e35911|1248700976||t19894.953308402s|19f798924b6cfa2e|26148176|rds|local|vector|||83.494|Rows containing NAs were excluded from the model.|
+m_prior_euro_usual_90_minimal|stem|9431ab793f361ca3|dd82be0172ac2f92|0e23ffc357620ac4|-1173411193||t19894.9542702109s|4dbec0a0959b62fc|26252763|rds|local|vector|||79.321|Rows containing NAs were excluded from the model.|
+m_prior_mrs_90_minimal|stem|a3cead6e737fe177|9a943fcee0664e0c|82ba15d36809c8cb|492862794||t19894.9552499542s|739e315ff31f6888|27275878|rds|local|vector|||80.194|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
+m_posterior_euro_anxiety_90_canonical|stem|aad34c87fcc47e97|10b31e0df2b36ffa|6e96155eb2a192e0|1293610545||t19894.9619613398s|13bfbb37d0cf65c0|27278098|rds|local|vector|||575.78|Rows containing NAs were excluded from the model.. There were 1016 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_prior_euro_pain_365_minimal|stem|60add8cb5aaf619f|a0dbcd926f47b6f4|63cd7ff8a61936d2|-1978370333||t19894.9629674002s|d9d7dcdb8fedfe8a|26432227|rds|local|vector|||82.967|Rows containing NAs were excluded from the model.|
+m_prior_euro_selfcare_90_canonical|stem|4091012fc66d7ae2|2005e3bc7392bf45|a84709003cd89f77|1030851877||t19894.9639894526s|0ab6154a0ab00f61|27363640|rds|local|vector|||84.198|Rows containing NAs were excluded from the model.|
+m_prior_mrs_365_canonical|stem|0b4bc4066a5200e0|ce2a06636a2b09b3|3732f53af1b1301d|943777168||t19894.9650596393s|5548dc5042b36aa3|28375569|rds|local|vector|||88.193|Rows containing NAs were excluded from the model.|
+m_posterior_euro_mobility_365_minimal|stem|6de6778b0aa8cfbc|7361734e819ca78b|74ec645de0d24ca6|156091426||t19894.9661735651s|f5c3b799a42db9da|26559124|rds|local|vector|||91.328|Rows containing NAs were excluded from the model.|
+m_posterior_euro_pain_180_canonical|stem|5d5d1034b257bc88|c822ff07418def39|7790886f27e24b3c|222671448||t19894.9693421978s|864bb4e5613fea25|27517597|rds|local|vector|||269.491|Rows containing NAs were excluded from the model.. There were 2 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_posterior_euro_selfcare_365_canonical|stem|aa0de963d3f9b87d|3c8f966e45054c7d|97f68e6eb88346c8|161116136||t19894.9720323765s|24b2604ee9df7110|27572687|rds|local|vector|||228.037|Rows containing NAs were excluded from the model.|
+m_posterior_euro_usual_90_canonical|stem|5363c59ef044cf19|a407f1f60222d4c0|90ac30075fef3d84|-1210116604||t19894.9787698875s|38351c146a79c6d9|27648425|rds|local|vector|||577.653|Rows containing NAs were excluded from the model.. There were 2413 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_prior_euro_selfcare_180_canonical|stem|35daa77781289a0f|15424709424bb9b0|2ac7160efa7c115a|1855000105||t19894.979785167s|fc740c0eb007217d|27681092|rds|local|vector|||83.331|Rows containing NAs were excluded from the model.|
+m_prior_euro_pain_90_canonical|stem|b6dc665ff453a798|1f5ce965b6549238|675a63b148c7e399|385575567||t19894.9808090086s|81ff9599a677d42a|27756517|rds|local|vector|||83.999|Rows containing NAs were excluded from the model.|
+m_prior_euro_mobility_90_minimal|stem|0d528be869f91950|a2a3d5ae5372b1fa|a7f89edde162acb3|749685634||t19894.9818157183s|4c4175137a44c150|26955859|rds|local|vector|||81.853|Rows containing NAs were excluded from the model.|
+m_prior_euro_anxiety_365_canonical|stem|6d754b82f1020fff|a5151b9bf54aefbf|fcf2180869585c4e|1598769769||t19894.982873622s|bff8aab1dc269384|27841265|rds|local|vector|||86.829|Rows containing NAs were excluded from the model.|
+m_posterior_euro_anxiety_180_minimal|stem|8dbfe495e10b9062|97fd1f282330326b|37370e339a7a1bcb|618069538||t19894.9838864239s|79749cf32f489c27|27014364|rds|local|vector|||82.88|Rows containing NAs were excluded from the model.|
+m_prior_euro_selfcare_365_canonical|stem|18e731bb0e9091d2|e945586b0f539549|a19a4b1564d40d79|2077605640||t19894.9849007291s|0591d8fba3f8175c|27955222|rds|local|vector|||82.812|Rows containing NAs were excluded from the model.|
+m_posterior_euro_mobility_90_canonical|stem|157566ed0d42d780|235c5b49f95d65b2|bf3d8e2ed212b2b8|-1110817529||t19894.9911949113s|35926c106632d27f|28035328|rds|local|vector|||539.015|Rows containing NAs were excluded from the model.. There were 1747 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_posterior_mrs_180_minimal|stem|68faad9709860205|ccaa48d5a43dc42b|07c517a534a1ce6e|-849030262||t19894.992354387s|cdea9b48e570bf50|28134303|rds|local|vector|||95.167|Rows containing NAs were excluded from the model.|
+m_prior_euro_anxiety_90_canonical|stem|e16e2e114fc3c042|660e41635ba9b191|ac0bcb5a5d63b90b|1674658635||t19894.9933678766s|79793afdb734214b|28140516|rds|local|vector|||82.514|Rows containing NAs were excluded from the model.|
+m_prior_euro_pain_90_minimal|stem|f0c26573d86bcb05|ad9ffacb2c672ceb|980ac0dcead19770|100775080||t19894.9943849968s|ae68cccf70273e7b|27351965|rds|local|vector|||82.872|Rows containing NAs were excluded from the model.|
+m_prior_euro_anxiety_180_canonical|stem|04973a31857ff4b5|6a0247ec0816eb06|451af1f7ef6cf640|1025150664||t19894.9953943783s|23d8c5debc013a2e|28242173|rds|local|vector|||82.206|Rows containing NAs were excluded from the model.|
+m_prior_euro_usual_365_canonical|stem|f60dbf077c41419f|ee8cf19e0ea00e7f|b788da147b60bd78|1693150206||t19894.9963537182s|22734b11d3063ebe|28288041|rds|local|vector|||77.469|Rows containing NAs were excluded from the model.|
+m_posterior_euro_selfcare_90_canonical|stem|e4de6d3463d0151d|934bd3a7c9ff8e7c|07e76772ac00d53e|-1928241926||t19895.0031984464s|d73a5957a038c0c1|28392156|rds|local|vector|||586.192|Rows containing NAs were excluded from the model.. There were 3067 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_prior_euro_selfcare_365_minimal|stem|d0acbced0c516a8f|7383f603fe662f7b|bd6de5bf9fb3bc7e|1155147481||t19895.0041681916s|edabc5d45abc9906|27589013|rds|local|vector|||78.514|Rows containing NAs were excluded from the model.|
+m_prior_euro_mobility_180_canonical|stem|1821f61ed42174d1|e39b9d983b656842|83101ef78fe252e2|-901516529||t19895.0051872028s|d0ef465ef62cb7c9|28468409|rds|local|vector|||82.758|Rows containing NAs were excluded from the model.|
+m_posterior_mrs_90_minimal|stem|cdd272837002efb7|9b773a0f5c013b65|f5efe0ca907c78d1|1076811092||t19895.0062818685s|69b136440073f244|28594720|rds|local|vector|||89.169|Rows containing NAs were excluded from the model.|
+m_prior_euro_anxiety_180_minimal|stem|9266826650da1148|818708d90b4f078c|e89f8c6d6207cb35|-361848219||t19895.0072521522s|012735835474df8e|27757658|rds|local|vector|||78.369|Rows containing NAs were excluded from the model.|
+m_prior_euro_pain_365_canonical|stem|494d18f5412a8d04|259c242994a14b32|26f69c49f60e3462|-244304452||t19895.0082534151s|d69e066d59596ad0|28625087|rds|local|vector|||80.986|Rows containing NAs were excluded from the model.|
+m_posterior_euro_pain_365_canonical|stem|87f1b13a1e0e91f9|49e228d648141b3f|0a616ba80ce8e4eb|-2009267851||t19895.0105107598s|481bd908023c1baf|28693731|rds|local|vector|||189.231|Rows containing NAs were excluded from the model.|
+m_posterior_euro_pain_365_minimal|stem|b2046e46575fe7bd|28c06834ddcfa2b5|6784cd75a61a9a77|-895947708||t19895.0115038429s|4a26d3be4c41b146|27884609|rds|local|vector|||80.116|Rows containing NAs were excluded from the model.|
+m_prior_euro_usual_90_canonical|stem|7ee363eb3772b3e8|217a09a04e06bafb|91aec288c07a44e7|-1311604222||t19895.0124775588s|dd3e5af56a9ea4e1|28810316|rds|local|vector|||78.381|Rows containing NAs were excluded from the model.|
+m_posterior_euro_selfcare_180_minimal|stem|f227fc0df47228ba|6d5e5851cded6f64|dcfea0c3e67d02b7|-1613025108||t19895.0134765057s|9c5eb3b64e40510a|27994339|rds|local|vector|||80.336|Rows containing NAs were excluded from the model.|
+m_prior_mrs_180_minimal|stem|95fdc4ac77b2dd07|c9bf3827b79945ee|10eee578bbd9ed18|1206748303||t19895.0144643414s|cdccfdf898ff7a49|29053666|rds|local|vector|||78.036|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
+table_1_outcomes|stem|18b368bba66a8db3|ff32e4d6c57ce9fe|d77e08d66f26f955|-541678962||t19895.0145138393s|a7f98d81182a5304|883459|rds|local|vector|||3.961||
+m_posterior_euro_selfcare_180_canonical|stem|456c4d20697a843f|e42a5def0a5c23eb|0306b7925d254c3b|-468572100||t19895.0194642846s|4d21b6734202225b|28973041|rds|local|vector|||421.685|Rows containing NAs were excluded from the model.. There were 2995 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_posterior_euro_mobility_365_canonical|stem|f59f1bfd63947f51|21bfd955b2758497|567324ba7b182527|-498117374||t19895.0216703987s|99243a26211caa64|29013561|rds|local|vector|||184.683|Rows containing NAs were excluded from the model.|
+m_posterior_mrs_365_canonical|stem|52741b26459725f4|bbe6ab5ee70e171d|f59d6418afa93832|-41222666||t19895.0251871893s|299632edc1469383|30035251|rds|local|vector|||294.237|Rows containing NAs were excluded from the model.|
+m_posterior_euro_usual_365_minimal|stem|ab2dbbbe01bcc0f2|03ccf37db3385e63|f1ba348e64349dd2|-129935305||t19895.0262079059s|467ae2a323521b53|28276216|rds|local|vector|||81.984|Rows containing NAs were excluded from the model.|
+m_posterior_euro_usual_90_minimal|stem|aa7b572460fccecc|a2dcc26575d10d6d|0f632bf2183abe40|-294776818||t19895.0272702495s|62ac633801f81a95|28323812|rds|local|vector|||85.223|Rows containing NAs were excluded from the model.|
+m_posterior_mrs_365_minimal|stem|4ea0e65ea57d252b|1363bf432bd045d8|6e97d224499aa517|703763794||t19895.0283596367s|63b48892cad07e13|29335442|rds|local|vector|||87.855|Rows containing NAs were excluded from the model.|
+m_prior_euro_usual_180_canonical|stem|277071fd8b9f6ccd|e104cdfb2fabacae|e8627f45995ceeb0|1640802607||t19895.0293854816s|1bfe69c638444606|29284505|rds|local|vector|||82.323|Rows containing NAs were excluded from the model.|
+m_posterior_euro_selfcare_90_minimal|stem|a3d49afc71b66916|7bd0b3aea33a23d9|1278a007ac13c05c|1108455457||t19895.0304335866s|97a45ec7b3c8ee78|28500127|rds|local|vector|||83.205|Rows containing NAs were excluded from the model.|
+m_posterior_euro_anxiety_90_minimal|stem|657a64cb90cabfab|4b1ece596f70afe0|57623f8aef24a839|-621454129||t19895.0314753253s|2ad1724026fac934|28552005|rds|local|vector|||83.207|Rows containing NAs were excluded from the model.|
+m_prior_euro_mobility_90_canonical|stem|c78ecf8a13230ebb|e6d64af2b6a07e4a|a72c80c241bd1bc1|-1251173589||t19895.0325883981s|0964f84cf0169b41|29475080|rds|local|vector|||89.578|Rows containing NAs were excluded from the model.|
+m_prior_euro_pain_180_canonical|stem|53dbf2f5a64a6d39|839d2306ea08c8dd|0287de8125fa8c54|673666802||t19895.0337040938s|59b580fce8739281|29514619|rds|local|vector|||89.812|Rows containing NAs were excluded from the model.|
+m_prior_mrs_90_canonical|stem|c65a8e8f97f3d8d9|38a8c73cc1c89175|94a5bceb48ae2231|-1960015551||t19895.0453189161s|f724f53c7bef5751|30561180|rds|local|vector|||991.599|Rows containing NAs were excluded from the model.|
+m_prior_mrs_180_canonical|stem|336780b2e372127c|aadf0760a4d2b142|3bdd96640d9ad41d|-231073701||t19895.0463524829s|be65b7f4780c3e14|30604007|rds|local|vector|||82.377|Rows containing NAs were excluded from the model.|
+m_posterior_mrs_90_canonical|stem|31d8d20be692ac18|d3a0a38119c76b08|3ebf1aa144e14e42|834643700||t19895.0523811787s|abaa5d8b08fc9923|30675901|rds|local|vector|||514.024|Rows containing NAs were excluded from the model.. There were 2830 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_posterior_euro_usual_180_minimal|stem|43ab7c9b36f8298a|69cfecf9616b2ac9|a0084ba172796ee7|-2048663044||t19895.0534026644s|9b4ed8a23493420b|28906342|rds|local|vector|||80.716|Rows containing NAs were excluded from the model.|
+m_prior_euro_usual_365_minimal|stem|e344d3dbf01c7764|8f92963e7c88bb93|d88a845d5e8f957c|-2112409878||t19895.0543934786s|5b49a04ae95c1fb9|29011531|rds|local|vector|||78.436|Rows containing NAs were excluded from the model.|
+m_posterior_euro_pain_90_canonical|stem|bdb51fd9a0608abd|0973378e761ba9ec|d104271d603641f4|265162252||t19895.0592294138s|c87f3ceee2087eff|29887949|rds|local|vector|||410.79|Rows containing NAs were excluded from the model.. There were 82 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_prior_mrs_365_minimal|stem|26c1845ba79cc38d|d7ff888475537352|2f9403c79503ac67|-435941919||t19895.0602329582s|80cf052fc46ce170|30082672|rds|local|vector|||79.625|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
+m_posterior_euro_usual_365_canonical|stem|ea27cb2f0e07a96d|3aadb39aa56dc59d|5bf435470471625c|-139486542||t19895.0626252298s|5ab9f007bfab9699|29966529|rds|local|vector|||199.55|Rows containing NAs were excluded from the model.|
+m_posterior_euro_anxiety_365_canonical|stem|4eb625ac77cdbd85|772709f2850ce42f|9b378a1ccc1c26a8|658977586||t19895.0654159184s|b91afd58352c76a4|30037801|rds|local|vector|||233.624|Rows containing NAs were excluded from the model.|
+m_posterior_euro_pain_180_minimal|stem|a611c4fefd661785|295e87c8bb9c8029|d25074330871acfa|-1898582826||t19895.0664346364s|1242cb47fb3a68e5|29252553|rds|local|vector|||80.597|Rows containing NAs were excluded from the model.|
+m_prior_euro_usual_180_minimal|stem|cd8c80a851ae1c7a|b41fe37d56b9a721|051d243da55b6951|-728995954||t19895.0677127672s|726ada693ff8bd00|29342972|rds|local|vector|||102.312|Rows containing NAs were excluded from the model.|
+m_posterior_euro_mobility_180_canonical|stem|cf92dfa645b41b5b|39d17520b343345d|a751eb00d78353aa|-1634508493||t19895.0719005818s|f3c6293873c41a39|30193843|rds|local|vector|||354.264|Rows containing NAs were excluded from the model.. There were 2340 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_prior_euro_selfcare_90_minimal|stem|b899cd5f47060405|52e60ba0dbfc28b4|8b45572ab1e595c2|-32501492||t19895.0729573327s|e0dcc33487f8896b|29467235|rds|local|vector|||83.838|Rows containing NAs were excluded from the model.|
+m_posterior_euro_pain_90_minimal|stem|d15ba68c85e95385|a5617af256a9fd30|76d1a9853fa414b7|444790462||t19895.0740415134s|a39e3252a140572e|29476830|rds|local|vector|||83.014|Rows containing NAs were excluded from the model.|
+m_posterior_euro_mobility_90_minimal|stem|4489068111d3e2dc|8455d0ad4e692357|2eb7672106b5041b|-1059684847||t19895.075094868s|dbd0b0db58bfb96d|29523516|rds|local|vector|||83.151|Rows containing NAs were excluded from the model.|
+m_posterior_mrs_180_canonical|stem|7fd894fc3e1fd2a5|5d93315a5e14eb95|9f02051a4de6a9bf|2007593764||t19895.08085496s|5410e60a86d7c930|31371251|rds|local|vector|||488.956|Rows containing NAs were excluded from the model.. There were 2815 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
+m_prior_euro_mobility_180_minimal|stem|2d2a581e6f405155|4129e7389fabf66e|3f724a30cff9ff9b|-915638834||t19895.0818711602s|7073d28e1bf4dd87|29692098|rds|local|vector|||79.726|Rows containing NAs were excluded from the model.|
+m_prior_euro_anxiety_365_minimal|stem|d9f328b85bae4adb|2842615f4f37a639|259cfe4736c76db9|1564135733||t19895.0828943819s|a83afb5be1c0cebf|29746786|rds|local|vector|||80.397|Rows containing NAs were excluded from the model.|
+m_posterior_euro_selfcare_365_minimal|stem|8557bd44a2b7cb86|f849172401f27905|e17fdcf118c8d95b|645469701||t19895.0839549104s|39640679e7a5641e|29762954|rds|local|vector|||82.065|Rows containing NAs were excluded from the model.|
+m_posterior_neurosurgery_canonical_erich|stem|f1ab89d82abcbd73|211658dd1bd755a8|8974b45e0ce65764|1933281405||t19895.0849695285s|239f4c2cffa772df|29175169|rds|local|vector|||79.433|Rows containing NAs were excluded from the model.|
+m_posterior_trach_canonical_erich|stem|f37bec4b66fa2672|a2148e46e48371c9|7a360ce3590e3e29|366988299||t19895.086509646s|090dabb98a7e33b4|29238388|rds|local|vector|||124.703|Rows containing NAs were excluded from the model.|
+m_posterior_early_comfort_minimal_erich|stem|9f55d57a1ca7bba0|56c1eea5aefadea6|bbab7054505639db|-810733713||t19895.0875219877s|379115f459976737|28333852|rds|local|vector|||79.277||
+m_posterior_comfort_canonical_erich|stem|7b0fc3a7ccf941f1|75850be246defe51|b167e44fb34f836b|1807789374||t19895.0885397306s|c9cac452fdeb8791|29345987|rds|local|vector|||79.544|Rows containing NAs were excluded from the model.|
 model_setup|function|744a394f2ed553aa
 table_2_aggressive_function|function|1fab1741f125d382
 aggressive_dag_function|function|56b830b48c4ac169
-.Random.seed|object|2016560c36e6065e
+.Random.seed|object|0a51d47c042f3ad3
 select_variables|function|51eaa047f9ead67f
 results_visual|function|60bfc24e70594483
 filter_variables|function|aab6a12635d42cbf
@@ -411,90 +411,4 @@ f_prior_mrs_365_minimal|function|bace56cc2fa1153f
 f_posterior_euro_mobility_90_minimal|function|f4c3037917bf5863
 f_posterior_euro_usual_365_canonical|function|a65b9f9424ba35b5
 f_posterior_euro_anxiety_180_canonical|function|b1674b95651cf47a
-imported_data_file|stem|213dc061ba9a4705|5def87000f2374d5|2c530c1562a7fbd1|623732428|data/raw_data/all.rds|t19868.4912584081s|de07191611414fc8|5544452|file|local|vector|||0.001||
-dag_outcomes|stem|b12d02c46fcefb52|35435e3659cf1296|1f323843a51566f7|2092730130||t19894.9367682799s|ab78dd2160f1066c|693|rds|local|vector|||0.069||
-settings|stem|113c35e390419099|0d725b29fc99973a|e4562df55d19cb87|-416401554||t19894.936768357s|b0e8a36a8bde68fd|362|rds|local|vector|||0.005||
-dag_aggressive|stem|f466625e621fbf47|4c5f2530d47a4a16|494adb38a275e02b|1651356463||t19894.9367686656s|c5bb5d828e920a89|506|rds|local|vector|||0.024||
-imported_data|stem|da1252f9e69e093d|be64c3e532f8d964|05f85a6f0a6d88de|-1154221612||t19894.9367701312s|03a875b811495020|358954|rds|local|vector|||0.008||
-selected_data|stem|0f476d661b9297b1|44280be3ad15831f|c743c3864cfa3125|-1052555108||t19894.9367709411s|6c0061a438cae8f9|158412|rds|local|vector|||0.018||
-ich_all|stem|655381b0ae66d76c|aa517dc5f415ced9|3495652fb3f346b0|-1013614662||t19894.9367717124s|7e8bf7e3089d6b45|138374|rds|local|vector|||0.021||
-erich|stem|fac61d76da9bbe1f|3a93622e2896a8d4|6a6695351ab5b4a4|1934531450||t19894.9367722138s|9663e145af04b2f6|86178|rds|local|vector|||0.01||
-ich_aggressive|stem|7de9a8e37efc4277|792fce65c3b577e1|6a6695351ab5b4a4|-1490752604||t19894.9367727923s|eecb88c8213f6d27|116088|rds|local|vector|||0.012||
-m_posterior_euro_usual_180_canonical|stem|35d8738fa9668b75|fd12a4b977b6f555|8c48f58cdbff9c53|-2089615508||t19894.9414376919s|7069aa9c51ae896a|26590818|rds|local|vector|||399.69|Rows containing NAs were excluded from the model.. There were 2935 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_prior_euro_anxiety_90_minimal|stem|16587a834627b0fa|3f5fe0fb4ad6fc7f|43a3341b478eb51e|-293535632||t19894.9423935599s|03ae14f94334d7d0|25765234|rds|local|vector|||79.242|Rows containing NAs were excluded from the model.|
-m_posterior_euro_anxiety_180_canonical|stem|7409cf3678b7d482|bfde25c0cf0c0a78|44b5d220d7bfd630|1857809142||t19894.9473692147s|0251b0165f910d89|26709437|rds|local|vector|||426.467|Rows containing NAs were excluded from the model.. There were 3006 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_prior_euro_mobility_365_canonical|stem|00f257bc2e543f64|be60cb06500dc09d|71f7abeba82a9e48|-789876567||t19894.9483537019s|6c9ff1c05764ae68|26749705|rds|local|vector|||81.602|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_365_minimal|stem|85bfd8f2c3caf0e0|d4d12892e5d0dc91|fb427ffbff53e5af|1735604425||t19894.9493190555s|0f7bff20de977a87|25962113|rds|local|vector|||79.922|Rows containing NAs were excluded from the model.|
-atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19894.9493194027s|55f706f8f6e4d315|31110|rds|local|vector|||0.007||
-m_posterior_euro_anxiety_365_minimal|stem|4556ebfe56252430|bc4b02eafe861841|9795e6b9040fc48c|-2100670502||t19894.9503276714s|7b646834963ddbe5|25968932|rds|local|vector|||83.561|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_180_minimal|stem|54132cdbc5072052|0d58ef6533fbff5f|b2ad59af0d990432|-308748057||t19894.951309455s|98fc446f72f03cb7|26081997|rds|local|vector|||81.218|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_180_minimal|stem|593333dffa4ee0d4|f900fab94853d977|47c041e67018c0c3|441143818||t19894.9522923057s|30ef2e70976fe883|26137383|rds|local|vector|||81.217|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_180_minimal|stem|be5acc065a27f121|aaca9e4489be56f4|0873af0576e35911|1248700976||t19894.953308402s|19f798924b6cfa2e|26148176|rds|local|vector|||83.494|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_90_minimal|stem|9431ab793f361ca3|dd82be0172ac2f92|0e23ffc357620ac4|-1173411193||t19894.9542702109s|4dbec0a0959b62fc|26252763|rds|local|vector|||79.321|Rows containing NAs were excluded from the model.|
-m_prior_mrs_90_minimal|stem|a3cead6e737fe177|9a943fcee0664e0c|82ba15d36809c8cb|492862794||t19894.9552499542s|739e315ff31f6888|27275878|rds|local|vector|||80.194|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_anxiety_90_canonical|stem|aad34c87fcc47e97|10b31e0df2b36ffa|6e96155eb2a192e0|1293610545||t19894.9619613398s|13bfbb37d0cf65c0|27278098|rds|local|vector|||575.78|Rows containing NAs were excluded from the model.. There were 1016 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_prior_euro_pain_365_minimal|stem|60add8cb5aaf619f|a0dbcd926f47b6f4|63cd7ff8a61936d2|-1978370333||t19894.9629674002s|d9d7dcdb8fedfe8a|26432227|rds|local|vector|||82.967|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_90_canonical|stem|4091012fc66d7ae2|2005e3bc7392bf45|a84709003cd89f77|1030851877||t19894.9639894526s|0ab6154a0ab00f61|27363640|rds|local|vector|||84.198|Rows containing NAs were excluded from the model.|
-m_prior_mrs_365_canonical|stem|0b4bc4066a5200e0|ce2a06636a2b09b3|3732f53af1b1301d|943777168||t19894.9650596393s|5548dc5042b36aa3|28375569|rds|local|vector|||88.193|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_365_minimal|stem|6de6778b0aa8cfbc|7361734e819ca78b|74ec645de0d24ca6|156091426||t19894.9661735651s|f5c3b799a42db9da|26559124|rds|local|vector|||91.328|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_180_canonical|stem|5d5d1034b257bc88|c822ff07418def39|7790886f27e24b3c|222671448||t19894.9693421978s|864bb4e5613fea25|27517597|rds|local|vector|||269.491|Rows containing NAs were excluded from the model.. There were 2 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_selfcare_365_canonical|stem|aa0de963d3f9b87d|3c8f966e45054c7d|97f68e6eb88346c8|161116136||t19894.9720323765s|24b2604ee9df7110|27572687|rds|local|vector|||228.037|Rows containing NAs were excluded from the model.|
-m_posterior_euro_usual_90_canonical|stem|5363c59ef044cf19|a407f1f60222d4c0|90ac30075fef3d84|-1210116604||t19894.9787698875s|38351c146a79c6d9|27648425|rds|local|vector|||577.653|Rows containing NAs were excluded from the model.. There were 2413 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_prior_euro_selfcare_180_canonical|stem|35daa77781289a0f|15424709424bb9b0|2ac7160efa7c115a|1855000105||t19894.979785167s|fc740c0eb007217d|27681092|rds|local|vector|||83.331|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_90_canonical|stem|b6dc665ff453a798|1f5ce965b6549238|675a63b148c7e399|385575567||t19894.9808090086s|81ff9599a677d42a|27756517|rds|local|vector|||83.999|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_90_minimal|stem|0d528be869f91950|a2a3d5ae5372b1fa|a7f89edde162acb3|749685634||t19894.9818157183s|4c4175137a44c150|26955859|rds|local|vector|||81.853|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_365_canonical|stem|6d754b82f1020fff|a5151b9bf54aefbf|fcf2180869585c4e|1598769769||t19894.982873622s|bff8aab1dc269384|27841265|rds|local|vector|||86.829|Rows containing NAs were excluded from the model.|
-m_posterior_euro_anxiety_180_minimal|stem|8dbfe495e10b9062|97fd1f282330326b|37370e339a7a1bcb|618069538||t19894.9838864239s|79749cf32f489c27|27014364|rds|local|vector|||82.88|Rows containing NAs were excluded from the model.|
-m_prior_euro_selfcare_365_canonical|stem|18e731bb0e9091d2|e945586b0f539549|a19a4b1564d40d79|2077605640||t19894.9849007291s|0591d8fba3f8175c|27955222|rds|local|vector|||82.812|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_90_canonical|stem|157566ed0d42d780|235c5b49f95d65b2|bf3d8e2ed212b2b8|-1110817529||t19894.9911949113s|35926c106632d27f|28035328|rds|local|vector|||539.015|Rows containing NAs were excluded from the model.. There were 1747 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_mrs_180_minimal|stem|68faad9709860205|ccaa48d5a43dc42b|07c517a534a1ce6e|-849030262||t19894.992354387s|cdea9b48e570bf50|28134303|rds|local|vector|||95.167|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_90_canonical|stem|e16e2e114fc3c042|660e41635ba9b191|ac0bcb5a5d63b90b|1674658635||t19894.9933678766s|79793afdb734214b|28140516|rds|local|vector|||82.514|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_90_minimal|stem|f0c26573d86bcb05|ad9ffacb2c672ceb|980ac0dcead19770|100775080||t19894.9943849968s|ae68cccf70273e7b|27351965|rds|local|vector|||82.872|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_180_canonical|stem|04973a31857ff4b5|6a0247ec0816eb06|451af1f7ef6cf640|1025150664||t19894.9953943783s|23d8c5debc013a2e|28242173|rds|local|vector|||82.206|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_365_canonical|stem|f60dbf077c41419f|ee8cf19e0ea00e7f|b788da147b60bd78|1693150206||t19894.9963537182s|22734b11d3063ebe|28288041|rds|local|vector|||77.469|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_90_canonical|stem|e4de6d3463d0151d|934bd3a7c9ff8e7c|07e76772ac00d53e|-1928241926||t19895.0031984464s|d73a5957a038c0c1|28392156|rds|local|vector|||586.192|Rows containing NAs were excluded from the model.. There were 3067 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_prior_euro_selfcare_365_minimal|stem|d0acbced0c516a8f|7383f603fe662f7b|bd6de5bf9fb3bc7e|1155147481||t19895.0041681916s|edabc5d45abc9906|27589013|rds|local|vector|||78.514|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_180_canonical|stem|1821f61ed42174d1|e39b9d983b656842|83101ef78fe252e2|-901516529||t19895.0051872028s|d0ef465ef62cb7c9|28468409|rds|local|vector|||82.758|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_90_minimal|stem|cdd272837002efb7|9b773a0f5c013b65|f5efe0ca907c78d1|1076811092||t19895.0062818685s|69b136440073f244|28594720|rds|local|vector|||89.169|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_180_minimal|stem|9266826650da1148|818708d90b4f078c|e89f8c6d6207cb35|-361848219||t19895.0072521522s|012735835474df8e|27757658|rds|local|vector|||78.369|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_365_canonical|stem|494d18f5412a8d04|259c242994a14b32|26f69c49f60e3462|-244304452||t19895.0082534151s|d69e066d59596ad0|28625087|rds|local|vector|||80.986|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_365_canonical|stem|87f1b13a1e0e91f9|49e228d648141b3f|0a616ba80ce8e4eb|-2009267851||t19895.0105107598s|481bd908023c1baf|28693731|rds|local|vector|||189.231|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_365_minimal|stem|b2046e46575fe7bd|28c06834ddcfa2b5|6784cd75a61a9a77|-895947708||t19895.0115038429s|4a26d3be4c41b146|27884609|rds|local|vector|||80.116|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_90_canonical|stem|7ee363eb3772b3e8|217a09a04e06bafb|91aec288c07a44e7|-1311604222||t19895.0124775588s|dd3e5af56a9ea4e1|28810316|rds|local|vector|||78.381|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_180_minimal|stem|f227fc0df47228ba|6d5e5851cded6f64|dcfea0c3e67d02b7|-1613025108||t19895.0134765057s|9c5eb3b64e40510a|27994339|rds|local|vector|||80.336|Rows containing NAs were excluded from the model.|
-m_prior_mrs_180_minimal|stem|95fdc4ac77b2dd07|c9bf3827b79945ee|10eee578bbd9ed18|1206748303||t19895.0144643414s|cdccfdf898ff7a49|29053666|rds|local|vector|||78.036|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-table_1_outcomes|stem|18b368bba66a8db3|ff32e4d6c57ce9fe|d77e08d66f26f955|-541678962||t19895.0145138393s|a7f98d81182a5304|883459|rds|local|vector|||3.961||
-m_posterior_euro_selfcare_180_canonical|stem|456c4d20697a843f|e42a5def0a5c23eb|0306b7925d254c3b|-468572100||t19895.0194642846s|4d21b6734202225b|28973041|rds|local|vector|||421.685|Rows containing NAs were excluded from the model.. There were 2995 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_mobility_365_canonical|stem|f59f1bfd63947f51|21bfd955b2758497|567324ba7b182527|-498117374||t19895.0216703987s|99243a26211caa64|29013561|rds|local|vector|||184.683|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_365_canonical|stem|52741b26459725f4|bbe6ab5ee70e171d|f59d6418afa93832|-41222666||t19895.0251871893s|299632edc1469383|30035251|rds|local|vector|||294.237|Rows containing NAs were excluded from the model.|
-m_posterior_euro_usual_365_minimal|stem|ab2dbbbe01bcc0f2|03ccf37db3385e63|f1ba348e64349dd2|-129935305||t19895.0262079059s|467ae2a323521b53|28276216|rds|local|vector|||81.984|Rows containing NAs were excluded from the model.|
-m_posterior_euro_usual_90_minimal|stem|aa7b572460fccecc|a2dcc26575d10d6d|0f632bf2183abe40|-294776818||t19895.0272702495s|62ac633801f81a95|28323812|rds|local|vector|||85.223|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_365_minimal|stem|4ea0e65ea57d252b|1363bf432bd045d8|6e97d224499aa517|703763794||t19895.0283596367s|63b48892cad07e13|29335442|rds|local|vector|||87.855|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_180_canonical|stem|277071fd8b9f6ccd|e104cdfb2fabacae|e8627f45995ceeb0|1640802607||t19895.0293854816s|1bfe69c638444606|29284505|rds|local|vector|||82.323|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_90_minimal|stem|a3d49afc71b66916|7bd0b3aea33a23d9|1278a007ac13c05c|1108455457||t19895.0304335866s|97a45ec7b3c8ee78|28500127|rds|local|vector|||83.205|Rows containing NAs were excluded from the model.|
-m_posterior_euro_anxiety_90_minimal|stem|657a64cb90cabfab|4b1ece596f70afe0|57623f8aef24a839|-621454129||t19895.0314753253s|2ad1724026fac934|28552005|rds|local|vector|||83.207|Rows containing NAs were excluded from the model.|
-m_prior_euro_mobility_90_canonical|stem|c78ecf8a13230ebb|e6d64af2b6a07e4a|a72c80c241bd1bc1|-1251173589||t19895.0325883981s|0964f84cf0169b41|29475080|rds|local|vector|||89.578|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_180_canonical|stem|53dbf2f5a64a6d39|839d2306ea08c8dd|0287de8125fa8c54|673666802||t19895.0337040938s|59b580fce8739281|29514619|rds|local|vector|||89.812|Rows containing NAs were excluded from the model.|
-m_prior_mrs_90_canonical|stem|c65a8e8f97f3d8d9|38a8c73cc1c89175|94a5bceb48ae2231|-1960015551||t19895.0453189161s|f724f53c7bef5751|30561180|rds|local|vector|||991.599|Rows containing NAs were excluded from the model.|
-m_prior_mrs_180_canonical|stem|336780b2e372127c|aadf0760a4d2b142|3bdd96640d9ad41d|-231073701||t19895.0463524829s|be65b7f4780c3e14|30604007|rds|local|vector|||82.377|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_90_canonical|stem|31d8d20be692ac18|d3a0a38119c76b08|3ebf1aa144e14e42|834643700||t19895.0523811787s|abaa5d8b08fc9923|30675901|rds|local|vector|||514.024|Rows containing NAs were excluded from the model.. There were 2830 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_usual_180_minimal|stem|43ab7c9b36f8298a|69cfecf9616b2ac9|a0084ba172796ee7|-2048663044||t19895.0534026644s|9b4ed8a23493420b|28906342|rds|local|vector|||80.716|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_365_minimal|stem|e344d3dbf01c7764|8f92963e7c88bb93|d88a845d5e8f957c|-2112409878||t19895.0543934786s|5b49a04ae95c1fb9|29011531|rds|local|vector|||78.436|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_90_canonical|stem|bdb51fd9a0608abd|0973378e761ba9ec|d104271d603641f4|265162252||t19895.0592294138s|c87f3ceee2087eff|29887949|rds|local|vector|||410.79|Rows containing NAs were excluded from the model.. There were 82 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_prior_mrs_365_minimal|stem|26c1845ba79cc38d|d7ff888475537352|2f9403c79503ac67|-435941919||t19895.0602329582s|80cf052fc46ce170|30082672|rds|local|vector|||79.625|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-m_posterior_euro_usual_365_canonical|stem|ea27cb2f0e07a96d|3aadb39aa56dc59d|5bf435470471625c|-139486542||t19895.0626252298s|5ab9f007bfab9699|29966529|rds|local|vector|||199.55|Rows containing NAs were excluded from the model.|
-m_posterior_euro_anxiety_365_canonical|stem|4eb625ac77cdbd85|772709f2850ce42f|9b378a1ccc1c26a8|658977586||t19895.0654159184s|b91afd58352c76a4|30037801|rds|local|vector|||233.624|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_180_minimal|stem|a611c4fefd661785|295e87c8bb9c8029|d25074330871acfa|-1898582826||t19895.0664346364s|1242cb47fb3a68e5|29252553|rds|local|vector|||80.597|Rows containing NAs were excluded from the model.|
-m_prior_euro_usual_180_minimal|stem|cd8c80a851ae1c7a|b41fe37d56b9a721|051d243da55b6951|-728995954||t19895.0677127672s|726ada693ff8bd00|29342972|rds|local|vector|||102.312|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_180_canonical|stem|cf92dfa645b41b5b|39d17520b343345d|a751eb00d78353aa|-1634508493||t19895.0719005818s|f3c6293873c41a39|30193843|rds|local|vector|||354.264|Rows containing NAs were excluded from the model.. There were 2340 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_prior_euro_selfcare_90_minimal|stem|b899cd5f47060405|52e60ba0dbfc28b4|8b45572ab1e595c2|-32501492||t19895.0729573327s|e0dcc33487f8896b|29467235|rds|local|vector|||83.838|Rows containing NAs were excluded from the model.|
-m_posterior_euro_pain_90_minimal|stem|d15ba68c85e95385|a5617af256a9fd30|76d1a9853fa414b7|444790462||t19895.0740415134s|a39e3252a140572e|29476830|rds|local|vector|||83.014|Rows containing NAs were excluded from the model.|
-m_posterior_euro_mobility_90_minimal|stem|4489068111d3e2dc|8455d0ad4e692357|2eb7672106b5041b|-1059684847||t19895.075094868s|dbd0b0db58bfb96d|29523516|rds|local|vector|||83.151|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_180_canonical|stem|7fd894fc3e1fd2a5|5d93315a5e14eb95|9f02051a4de6a9bf|2007593764||t19895.08085496s|5410e60a86d7c930|31371251|rds|local|vector|||488.956|Rows containing NAs were excluded from the model.. There were 2815 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
-m_prior_euro_mobility_180_minimal|stem|2d2a581e6f405155|4129e7389fabf66e|3f724a30cff9ff9b|-915638834||t19895.0818711602s|7073d28e1bf4dd87|29692098|rds|local|vector|||79.726|Rows containing NAs were excluded from the model.|
-m_prior_euro_anxiety_365_minimal|stem|d9f328b85bae4adb|2842615f4f37a639|259cfe4736c76db9|1564135733||t19895.0828943819s|a83afb5be1c0cebf|29746786|rds|local|vector|||80.397|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_365_minimal|stem|8557bd44a2b7cb86|f849172401f27905|e17fdcf118c8d95b|645469701||t19895.0839549104s|39640679e7a5641e|29762954|rds|local|vector|||82.065|Rows containing NAs were excluded from the model.|
-m_posterior_neurosurgery_canonical_erich|stem|f1ab89d82abcbd73|211658dd1bd755a8|8974b45e0ce65764|1933281405||t19895.0849695285s|239f4c2cffa772df|29175169|rds|local|vector|||79.433|Rows containing NAs were excluded from the model.|
-m_posterior_trach_canonical_erich|stem|f37bec4b66fa2672|a2148e46e48371c9|7a360ce3590e3e29|366988299||t19895.086509646s|090dabb98a7e33b4|29238388|rds|local|vector|||124.703|Rows containing NAs were excluded from the model.|
-m_posterior_early_comfort_minimal_erich|stem|9f55d57a1ca7bba0|56c1eea5aefadea6|bbab7054505639db|-810733713||t19895.0875219877s|379115f459976737|28333852|rds|local|vector|||79.277||
-m_posterior_comfort_canonical_erich|stem|7b0fc3a7ccf941f1|75850be246defe51|b167e44fb34f836b|1807789374||t19895.0885397306s|c9cac452fdeb8791|29345987|rds|local|vector|||79.544|Rows containing NAs were excluded from the model.|
+m_prior_early_comfort_canonical|stem|252dacca2bb0d73e|ca7cc448054fb94e|d6f9282455878f6b|2146096585||t19899.555611915s|4a2b7802eeab59bb|24766954|rds|local|vector|||79.93|Rows containing NAs were excluded from the model.|
