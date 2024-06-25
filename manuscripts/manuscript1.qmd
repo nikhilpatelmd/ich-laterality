@@ -98,36 +98,32 @@ It is uncertain how the results of prior work in the ischemic stroke literature 
 ## Methods
 
 ### Study Design and Participants
-
-We conducted a cohort study using data from 2 prospective studies: the Antihypertensive Treatment of Acute Cerebral Hemorrhage II (ATACH-2) trial [@qureshiIntensiveBloodPressureLowering2016] and the Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH) [@wooEthnicRacialVariations2013] study. ATACH-2 was a large, multicenter, international, open-label, blinded-endpoint randomized controlled trial enrolling 1000 patients with ICH while ERICH was a large, multicenter, prospective observational study enrolling patients in the United States admitted with ICH. Study protocols and results of both studies have been previously published and are available elsewhere.
+We conducted a post-hoc analysis using data from 2 prospective studies: the Antihypertensive Treatment of Acute Cerebral Hemorrhage II (ATACH-2) trial [@qureshiIntensiveBloodPressureLowering2016] and the Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH) [@wooEthnicRacialVariations2013] study. ATACH-2 was a large, multicenter, international, open-label, blinded-endpoint randomized controlled trial enrolling 1000 patients with ICH and randomizing them to either intesive blood pressure control (110-139 mm Hg) or standard blood pressure control (140-179 mm Hg). ERICH was a large, multicenter, prospective observational study enrolling patients in the United States admitted with ICH. Study protocols and results of both studies have been previously published.
 
 We included all patients enrolled in these two studies with supratentorial location of ICH. We excluded patients with cerebellar or brainstem ICH as well as any patient with primary intraventricular hemorrhage (IVH).
 
 The study was approved by the institutional review board of the Wake Forest School of Medicine.
 
-#### Data Availability Statement
-
-The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, MD, MS, NCT01202864) data and analyses presented in this manuscript are based on the research files downloaded from the Archived Clinical Research web site of the National Institute of Neurologic Disease and Stroke (NINDS). The datasets can be obtained after approval of a written proposal as outlined on the NINDS website. As outlined in the NINDS Data Request Agreement, the analysis code is publicly available at [https://github.com/nikhilpatelmd/ich-laterality](https://github.com/nikhilpatelmd/ich-laterality).
-
 ### Exposures and Outcomes
-
 Our exposure was hemispheric laterality (left versus right). Our primary outcome was neurosurgical intervention as a binary variable defined as receiving a hematoma evacuation, decompressive craniectomy, or other craniotomy.
 
-To explore differences in other aspects of aggressive care, we defined several secondary outcomes: receipt of external ventricular drain (EVD), tracheostomy, do-not-resuscitate (DNR) order at any point in the hospitalization, withdrawal of life-sustaining therapy (WLST) at any point in the hospitalization, and early WLST (defined as < 72 from symptom onset).
+To explore differences in other aspects of aggressive care, we defined several secondary outcomes: receipt of external ventricular drain (EVD), receipt of tracheostomy, days of mechanical ventilation, receipt of do-not-resuscitate (DNR) order at any point in the hospitalization, withdrawal of life-sustaining therapy (WLST) at any point in the hospitalization, and early WLST (defined as < 72 from symptom onset).
 
-### Covariates
-
-We constructed directed acyclic graphs (DAGs) to model our causal assumptions and to appropriately select variables to minimize confounding and selection bias. Based on our specificiations, we included the following covariates in our models: age, admission Glasgow coma score (GCS), ICH location (categorized as lobar, thalamic, or basal ganglia), baseline ICH volume (measured in millilters), and presence of intraventricular hemorrhage (IVH). We present results for both unadjusted and adjusted models.
 
 ### Statistical Analysis
-To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models. This report follows the Bayesian Analysis Reporting Guidelines [@kruschkeBayesianAnalysisReporting2021]. All analyses were performed in R version 4.4.1 (R Foundation for Statistical Computing, Vienna, Austria). 
+To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models adjusted for the specified covariates below and study as a random intercept. This report follows suggestions from the Bayesian Analysis Reporting Guidelines [@kruschkeBayesianAnalysisReporting2021]. For binary endpoints, hierarchal Bayesian logistic regression models were used. For ordinal endpoints, hierarchal Bayesian ordinal logisitic regression models were used. All analyses were performed in R version 4.4.1 (R Foundation for Statistical Computing, Vienna, Austria) using the 'brms' and 'tidybayes' packages.
+
+#### Covariates
+We constructed directed acyclic graphs (DAGs) to model our causal assumptions and to appropriately select variables to minimize confounding and selection bias. Based on our specifications, we included the following covariates in our models: age, admission Glasgow coma score (GCS), ICH location (categorized as lobar, thalamic, or basal ganglia), baseline ICH volume (measured in millilters), and presence of intraventricular hemorrhage (IVH).
 
 #### Priors
-
+Three sets of priors were used in the analyses: 1) 
 
 #### Posterior distribution
-
 We report the following metrics for the effect of hemispheric laterality on the primary and secondary outcomes: 1) median of the posterior distribution; 2) posterior distribution 95% highest density interval (HDI); 3) probability of any difference (PD; the probability that the effect size is on the side of the point estimate); 4) probability of "significance" based on a region of practical equivalence (ROPE) using traditional criteria; 5) probability of the effect size is at least equal or greater than what was considered a minimally important difference (MCID), as defined by the study authors; 6) probability of the effect size is at least 1.5 times greater than the MCID (which we considered a "large" effect). 
+
+### Data Availability Statement
+The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, MD, MS, NCT01202864) data and analyses presented in this manuscript are based on the research files downloaded from the Archived Clinical Research web site of the National Institute of Neurologic Disease and Stroke (NINDS). The datasets can be obtained after approval of a written proposal as outlined on the NINDS website. As outlined in the NINDS Data Request Agreement, the analysis code is publicly available at [https://github.com/nikhilpatelmd/ich-laterality](https://github.com/nikhilpatelmd/ich-laterality).
 
 ## Results
 
