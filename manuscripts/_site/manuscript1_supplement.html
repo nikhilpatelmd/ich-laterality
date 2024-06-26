@@ -255,52 +255,15 @@ div.csl-indent {
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code> Family: bernoulli 
-  Links: mu = logit 
-Formula: neurosurgery_evac ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study) 
-   Data: dat (Number of observations: 3428) 
-  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
-         total post-warmup draws = 4000
-
-Multilevel Hyperparameters:
-~study (Number of levels: 2) 
-              Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
-sd(Intercept)     2.68      2.83     0.09    10.11 1.00     5948     2441
-
-Regression Coefficients:
-                     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
-Intercept              -19.03     69.41  -157.43   117.77 1.00     9255
-ich_lateralityRight      0.02      0.97    -1.89     1.97 1.00     8599
-age                     -0.01      1.06    -2.07     2.07 1.00     8930
-gcs_baseline            -0.01      1.05    -2.05     2.04 1.00    10484
-ich_locationLobar       -0.01      0.98    -1.88     1.94 1.00     8709
-ich_locationThalamus     0.01      1.02    -2.04     2.00 1.00     7712
-ich_volume_baseline     -0.01      1.01    -2.00     1.97 1.00     8012
-ivhYes                   0.00      0.98    -1.86     1.89 1.00     9158
-                     Tail_ESS
-Intercept                2478
-ich_lateralityRight      3289
-age                      2456
-gcs_baseline             2700
-ich_locationLobar        2989
-ich_locationThalamus     2725
-ich_volume_baseline      3018
-ivhYes                   3103
-
-Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
-and Tail_ESS are effective sample size measures, and Rhat is the potential
-scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
-</div>
 </div>
 <section id="neurosurgical-intervention" class="level3">
 <h3 class="anchored" data-anchor-id="neurosurgical-intervention">Neurosurgical Intervention</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
- ich_laterality Estimate    2.5 % 97.5 %
-          Left     0.157 5.93e-06  0.435
-          Right    0.158 5.36e-06  0.435
+ ich_laterality Estimate   2.5 % 97.5 %
+          Left     0.244 0.00769  0.634
+          Right    0.229 0.00699  0.619
 
 Columns: ich_laterality, estimate, conf.low, conf.high 
 Type:  response </code></pre>

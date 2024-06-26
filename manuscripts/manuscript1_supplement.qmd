@@ -159,9 +159,6 @@ results_visual <- function(model, title) {
 
 # load data and models
 with_dir(here(), tar_load(ich_aggressive))
-with_dir(here(), tar_load(dag_aggressive))
-with_dir(here(), tar_load(m_prior_default_neurosurgery))
-with_dir(here(), tar_load(m_prior_informative_neurosurgery))
 
 ```
 
@@ -221,16 +218,12 @@ dnorm_limit <- function(x) {
   return(y)
 }
 
-
 ggplot(data = tibble(x = -2:2), aes(x = x)) +
   geom_function(fun = dnorm, args = list(mean = -20, sd = 0.5), linewidth = 1) +
   # stat_function(fun = dnorm_limit, geom = "area", color = "orange", alpha = 0.2) +
   geom_vline(xintercept = -0.22, linetype = "dashed", color = "orange", linewidth = 1) +
   scale_x_continuous(breaks = seq(-2, 2, 0.5)) +
   theme_ich()
-
-m_prior_informative_neurosurgery
-
 
 ```
 
@@ -239,24 +232,15 @@ m_prior_informative_neurosurgery
 ```{r informative prior predictive check - neurosurgical intervention}
 #| echo: false
 #| fig-height: 12
+#|
 
-avg_predictions(m_prior_informative_neurosurgery, variables = "ich_laterality")
+with_dir(here(), tar_load(m_prior_neutral_neurosurgery))
+with_dir(here(), tar_load(m_prior_left_neurosurgery))
 
-ggplot(mutate(spread_draws(m_prior_informative_neurosurgery, b_ich_lateralityRight),
-  ich_right_or = exp(b_ich_lateralityRight)
-), aes(ich_right_or)) +
-  geom_density(color = "#422f05", fill = "#E69F00") +
-  scale_x_continuous(breaks = seq(-10, 10, 0.25)) +
-  labs(
-    title = "Odds Ratio - Right Hemisphere",
-    y = NULL, fill = NULL
-  ) +
-  geom_vline(
-    xintercept = 1, linetype = "dashed",
-    color = "#999999", linewidth = 1
-  ) +
-  theme_ich() +
-  theme(legend.position = "none")
+
+avg_predictions(m_prior_left_neurosurgery, variables = "ich_laterality")
+
+results_visual(m_prior_left_neurosurgery, "Prior Predictive Check")
 
 ```
 

@@ -23,10 +23,10 @@ f_prior_neutral_neurosurgery <- function(dat) {
 
   model <- brm(neurosurgery_evac ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study),
     family = bernoulli(link = "logit"),
-    data = dat,e
+    data = dat,
     prior = c(
-      set_prior("normal(0, 0.35)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 0.35)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -40,15 +40,59 @@ f_prior_neutral_neurosurgery <- function(dat) {
   return(model)
 }
 
-f_prior_informative_neurosurgery <- function(dat) {
+f_prior_left_neurosurgery <- function(dat) {
   settings <- model_setup()
 
   model <- brm(neurosurgery_evac ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-20, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_neurosurgery <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(neurosurgery_evac ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study),
+    family = bernoulli(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_neurosurgery <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(neurosurgery_evac ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study),
+    family = bernoulli(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 2)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,

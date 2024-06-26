@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|9fc26459291f50fe|||||||||||||||
+.Random.seed|object|7ab093de388741c6|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19894.9493194027s|55f706f8f6e4d315|31110|rds|local|vector|||0.007||
 comfort_canonical_visuals|stem|a4fb43967580fe0f|e0fb3e373e95f76b|a32cab511a69989a|662216964||t19894.5677061218s|b042f2db11a3df15|29424135|rds|local|vector|||6.059||
@@ -122,7 +122,9 @@ f_prior_euro_vas_90_canonical|function|2fefaec0c7705159|||||||||||||||
 f_prior_euro_vas_90_minimal|function|53bc54eaed396883|||||||||||||||
 f_prior_evd_canonical|function|beef56d617b5edf0|||||||||||||||
 f_prior_evd_minimal|function|609419dd9f5105c5|||||||||||||||
+f_prior_flat_neurosurgery|function|069a0a7b9f6c6da3|||||||||||||||
 f_prior_informative_neurosurgery|function|f46a91aa09de6163|||||||||||||||
+f_prior_left_neurosurgery|function|4d767c30b47b4942|||||||||||||||
 f_prior_mrs_180_canonical|function|c6b9529c3402aff3|||||||||||||||
 f_prior_mrs_180_minimal|function|410a084f9e2539b4|||||||||||||||
 f_prior_mrs_365_canonical|function|4cec07ac1862d003|||||||||||||||
@@ -132,6 +134,8 @@ f_prior_mrs_90_minimal|function|de190fac85ea938d|||||||||||||||
 f_prior_neurosurgery|function|236446dddaa8e5df|||||||||||||||
 f_prior_neurosurgery_canonical|function|214654bd320e396e|||||||||||||||
 f_prior_neurosurgery_minimal|function|d05b64682d753d08|||||||||||||||
+f_prior_neutral_neurosurgery|function|fbae7d5090a7154e|||||||||||||||
+f_prior_right_neurosurgery|function|774c8f14c524a311|||||||||||||||
 f_prior_trach_canonical|function|1705e68f1bba860c|||||||||||||||
 f_prior_trach_minimal|function|034f7978cbe5c216|||||||||||||||
 f_prior_vent_canonical|function|ecdb12786a40bfaa|||||||||||||||
@@ -220,7 +224,7 @@ m_posterior_vent_minimal|stem|a0c9e193d801a1c9|ba1d9ada8490ca32|599978b1df5aec0f
 m_posterior_vent_minimal_atach|stem|055557c7347b0416|9a7704c6930875d5|8d3ca6d951d45843|-1433829555||t19774.7813536394s|2a1342015c174a14|2537196|rds|local|vector|||22.138|Rows containing NAs were excluded from the model.|
 m_prior_comfort_canonical|stem|2eff1236da058458|1abf70fc4c8a30ee|2fce77cb255b4cf2|-1567292249||t19899.5620678387s|ee979319c4bcc68d|25203741|rds|local|vector|||75.805|Rows containing NAs were excluded from the model.|
 m_prior_comfort_minimal|stem|d7b6dccb8a4b86c8|6bfafa9732d9588c|b7341e0bad0bcf05|1909620682||t19899.5799069475s|188bd1f3be203d58|25528583|rds|local|vector|||76.594||
-m_prior_default_neurosurgery|stem|26e5e25d0d00fa5a|331b27f099c3a4be|d5250a02544bcbdb|-792961561||t19900.5708441659s|5567dc377ee7009b|1025176|rds|local|vector|||21.481|Rows containing NAs were excluded from the model.|
+m_prior_default_neurosurgery|stem|a26b8c923236d363|56dd4cc9861e8d4d|f62bf266845bb248|-792961561||t19900.6730085612s|396de70515aa4884|1069739|rds|local|vector|||17.202|Rows containing NAs were excluded from the model.|
 m_prior_dnr_canonical|stem|82ab96c5cd5e420f|c0229c6701997d3a|0939b74937bfb861|-497685203||t19899.5675736447s|8194cf7669fbf662|25577227|rds|local|vector|||74.97|Rows containing NAs were excluded from the model.|
 m_prior_dnr_minimal|stem|88b6b1bc92ba11fc|fe45138ef336cab4|a8e5868449b97508|-283975852||t19899.5602266599s|3d90f1783a2acf7e|24252681|rds|local|vector|||75.308||
 m_prior_early_comfort_canonical|stem|252dacca2bb0d73e|ca7cc448054fb94e|d6f9282455878f6b|2146096585||t19899.555611915s|4a2b7802eeab59bb|24766954|rds|local|vector|||79.93|Rows containing NAs were excluded from the model.|
@@ -257,7 +261,9 @@ m_prior_euro_usual_90_canonical|stem|7ee363eb3772b3e8|217a09a04e06bafb|91aec288c
 m_prior_euro_usual_90_minimal|stem|9431ab793f361ca3|dd82be0172ac2f92|0e23ffc357620ac4|-1173411193||t19894.9542702109s|4dbec0a0959b62fc|26252763|rds|local|vector|||79.321|Rows containing NAs were excluded from the model.|
 m_prior_evd_canonical|stem|b405a0ce1d9dec1b|6d9fcc78204c5cf3|9c061395581ae307|1718623535||t19899.5723766807s|87c2e2eff1d17740|25905285|rds|local|vector|||75.091|Rows containing NAs were excluded from the model.|
 m_prior_evd_minimal|stem|6e49c7869df1ccf1|bf0fa1bb507ae08a|acdd0963c5d6f480|-107865603||t19899.5761034675s|d77fd378992c1866|25285986|rds|local|vector|||75.281||
+m_prior_flat_neurosurgery|stem|29fcca274a78ca7d|84371820683e2829|c1b18261bf2a402e|-799227157||t19900.7497382299s|d27de2535328cd8e|1005559|rds|local|vector|||17.812|Rows containing NAs were excluded from the model.|
 m_prior_informative_neurosurgery|stem|21b548b419f1721b|da1da3f7c1b1b597|be70db62088595f8|-1901668035||t19899.7872512248s|e4c0ea4d4eded086|1025245|rds|local|vector|||17.378|Rows containing NAs were excluded from the model.|
+m_prior_left_neurosurgery|stem|12e9dc9062c516c0|ad6b35daae87c37a|27ab181c3c0a297f|-1072511630||t19900.7393309353s|6e512c671594562e|1082548|rds|local|vector|||16.981|Rows containing NAs were excluded from the model.|
 m_prior_mrs_180_canonical|stem|336780b2e372127c|aadf0760a4d2b142|3bdd96640d9ad41d|-231073701||t19895.0463524829s|be65b7f4780c3e14|30604007|rds|local|vector|||82.377|Rows containing NAs were excluded from the model.|
 m_prior_mrs_180_minimal|stem|95fdc4ac77b2dd07|c9bf3827b79945ee|10eee578bbd9ed18|1206748303||t19895.0144643414s|cdccfdf898ff7a49|29053666|rds|local|vector|||78.036|Rows containing NAs were excluded from the model.. There were 2 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_mrs_365_canonical|stem|0b4bc4066a5200e0|ce2a06636a2b09b3|3732f53af1b1301d|943777168||t19894.9650596393s|5548dc5042b36aa3|28375569|rds|local|vector|||88.193|Rows containing NAs were excluded from the model.|
@@ -269,6 +275,7 @@ m_prior_neurosurgery_canonical|stem|4c8e7688c14aadff|edd9b9c3e46551bc|29232446c7
 m_prior_neurosurgery_default|stem|260df3b7faf5420c|331b27f099c3a4be|6832aeb394e230b2|-1335069635||t19899.7811814522s|b9ce1016fc8af9ca|1035680|rds|local|vector|||17.105|Rows containing NAs were excluded from the model.|
 m_prior_neurosurgery_informative|stem||668016f70fcd5b63|080d0dc8582e622f|-1908244161||t19899.7823841025s||0|rds|local|vector|||0.005||could not find function f_prior_neurosurgery_informative
 m_prior_neurosurgery_minimal|stem|9e26bf3c40741503|6ed1bbbe5d2aeefd|f4c920a08a6e4575|497813916||t19899.5593156345s|07e0ec63a0c5be4e|24193282|rds|local|vector|||76.328||
+m_prior_neutral_neurosurgery|stem|641f1ad00982f4c3|56dd4cc9861e8d4d|5ab55edacc38ae46|-525754257||t19900.6751332067s|4f412e53738afb34|1074526|rds|local|vector|||16.927|Rows containing NAs were excluded from the model.|
 m_prior_trach_canonical|stem|7e1d66a1d285f529|f94ba58d3adbd86b|72e59631b738630d|-993513890||t19899.5780106898s|1af7bc1c55701ee9|26262512|rds|local|vector|||76.486|Rows containing NAs were excluded from the model.|
 m_prior_trach_minimal|stem|4055871c742ed5e6|479b34e74f33cbbf|35f837b3590e049f|-340765268||t19899.5648222278s|f83eb85e01914a75|24553448|rds|local|vector|||74.261||
 m_prior_vent_canonical|stem|e9766fa9d2254134|65923b65d2e7f3cd|89d712cfc9df7db2|1382909142||t19899.5714479496s|81781e8fb29e522f|32360750|rds|local|vector|||78.683|Rows containing NAs were excluded from the model.. There were 4 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
