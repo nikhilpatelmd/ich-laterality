@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|f744216e16b6573e|||||||||||||||
+.Random.seed|object|9fc26459291f50fe|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19894.9493194027s|55f706f8f6e4d315|31110|rds|local|vector|||0.007||
 comfort_canonical_visuals|stem|a4fb43967580fe0f|e0fb3e373e95f76b|a32cab511a69989a|662216964||t19894.5677061218s|b042f2db11a3df15|29424135|rds|local|vector|||6.059||
@@ -79,7 +79,7 @@ f_posterior_vent_canonical|function|609da182f3b2405d|||||||||||||||
 f_posterior_vent_minimal|function|89ff52a5e8f68718|||||||||||||||
 f_prior_comfort_canonical|function|9c2918f3e8501b68|||||||||||||||
 f_prior_comfort_minimal|function|067e24f8e4979635|||||||||||||||
-f_prior_default_neurosurgery|function|c31c5d7e628db6d0|||||||||||||||
+f_prior_default_neurosurgery|function|f46a91aa09de6163|||||||||||||||
 f_prior_dnr_canonical|function|91bedd4907550791|||||||||||||||
 f_prior_dnr_minimal|function|622c40d3ff0693a2|||||||||||||||
 f_prior_early_comfort_canonical|function|a7002d601741f8e9|||||||||||||||
@@ -220,7 +220,7 @@ m_posterior_vent_minimal|stem|a0c9e193d801a1c9|ba1d9ada8490ca32|599978b1df5aec0f
 m_posterior_vent_minimal_atach|stem|055557c7347b0416|9a7704c6930875d5|8d3ca6d951d45843|-1433829555||t19774.7813536394s|2a1342015c174a14|2537196|rds|local|vector|||22.138|Rows containing NAs were excluded from the model.|
 m_prior_comfort_canonical|stem|2eff1236da058458|1abf70fc4c8a30ee|2fce77cb255b4cf2|-1567292249||t19899.5620678387s|ee979319c4bcc68d|25203741|rds|local|vector|||75.805|Rows containing NAs were excluded from the model.|
 m_prior_comfort_minimal|stem|d7b6dccb8a4b86c8|6bfafa9732d9588c|b7341e0bad0bcf05|1909620682||t19899.5799069475s|188bd1f3be203d58|25528583|rds|local|vector|||76.594||
-m_prior_default_neurosurgery|stem|e4ecb2bdcfa628f3|331b27f099c3a4be|6832aeb394e230b2|-792961561||t19899.7831210295s|9ec0f4e81abc3511|1035648|rds|local|vector|||17.137|Rows containing NAs were excluded from the model.|
+m_prior_default_neurosurgery|stem|26e5e25d0d00fa5a|331b27f099c3a4be|d5250a02544bcbdb|-792961561||t19900.5708441659s|5567dc377ee7009b|1025176|rds|local|vector|||21.481|Rows containing NAs were excluded from the model.|
 m_prior_dnr_canonical|stem|82ab96c5cd5e420f|c0229c6701997d3a|0939b74937bfb861|-497685203||t19899.5675736447s|8194cf7669fbf662|25577227|rds|local|vector|||74.97|Rows containing NAs were excluded from the model.|
 m_prior_dnr_minimal|stem|88b6b1bc92ba11fc|fe45138ef336cab4|a8e5868449b97508|-283975852||t19899.5602266599s|3d90f1783a2acf7e|24252681|rds|local|vector|||75.308||
 m_prior_early_comfort_canonical|stem|252dacca2bb0d73e|ca7cc448054fb94e|d6f9282455878f6b|2146096585||t19899.555611915s|4a2b7802eeab59bb|24766954|rds|local|vector|||79.93|Rows containing NAs were excluded from the model.|

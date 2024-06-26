@@ -170,29 +170,71 @@ with_dir(here(), tar_load(m_prior_informative_neurosurgery))
 ## Covariate Selection
 
 ```{r dags}
-
-dag_aggressive
-
-```
-
-## Prior Distribution Specification
-
-We show prior predictive checks for 2(?) sets of priors. 
-
-### Default Priors
-
-```{r default prior predictive check - neurosurgical intervention}
 #| echo: false
-#| fig-height: 12
 
-avg_predictions(m_prior_default_neurosurgery, variables = "ich_laterality")
 
-results_visual(m_prior_default_neurosurgery, "Prior Predictive Check - Neurosurgical Intervention")
+# dag_aggressive
 
 ```
 
+## Prior Distribution Definitions
 
-### Weakly Informative Priors
+```{r prior definitions}
+#| echo: false
+#| output: false
+
+neutral_mean <- 0
+neutral_sd <- 0.35
+neutral_lower_OR <- exp(neutral_mean - (1.96 * neutral_sd))
+neutral_upper_OR <- exp(neutral_mean + (1.96 * neutral_sd))
+
+left_mean <- -0.22
+left_sd <- 0.175
+left_lower_OR <- exp(left_mean - (1.96 * left_sd))
+left_upper_OR <- exp(left_mean + (1.96 * left_sd))
+
+right_mean <- 0.18
+right_sd <- 0.175
+right_lower_OR <- exp(right_mean - (1.96 * right_sd))
+right_upper_OR <- exp(right_mean + (1.96 * right_sd))
+
+```
+
+In defining prior distributions, we generally followed suggestions from previous literature. [@zampieriUsingBayesianMethods2021; @kruschkeBayesianAnalysisReporting2021; @gelmanBayesianWorkflow2020] Specifically, we defined 4 sets of priors for each outcome:
+
+**Neutral prior**: mean of **`r neutral_mean`** and standard deviation of **`r neutral_sd`**, centering around an OR of **`r exp(neutral_mean)`** and 95% of the the probability mass for the OR between **`r round(neutral_lower_OR, digits = 2)`** to **`r round(neutral_upper_OR, digits = 2)`**.
+    
+**Left hemisphere prior**: mean of **`r left_mean`** and standard deviation of **`r left_sd`**, centering around an OR of **`r round(exp(left_mean), digits = 2)`** and 95% of the the probability mass for the OR between **`r round(left_lower_OR, digits = 2)`** to **`r round(left_upper_OR, digits = 2)`**.
+
+**Right hemisphere prior**: mean of **`r right_mean`** and standard deviation of **`r right_sd`**, centering around an OR of **`r round(exp(right_mean), digits =2)`** and 95% of the the probability mass for the OR between **`r round(right_lower_OR, digits = 2)`** to **`r round(right_upper_OR, digits =2)`**.
+
+**Flat prior**: most mimics a frequentist analysis
+    
+```{r prior graphical summary}
+#| echo: false
+#| fig-height: 6
+
+# Return dnorm(x) for 0 < x < 2, and NA for all other x
+dnorm_limit <- function(x) {
+  y <- dnorm(x)
+  y[x < 0] <- NA
+  return(y)
+}
+
+
+ggplot(data = tibble(x = -2:2), aes(x = x)) +
+  geom_function(fun = dnorm, args = list(mean = -20, sd = 0.5), linewidth = 1) +
+  # stat_function(fun = dnorm_limit, geom = "area", color = "orange", alpha = 0.2) +
+  geom_vline(xintercept = -0.22, linetype = "dashed", color = "orange", linewidth = 1) +
+  scale_x_continuous(breaks = seq(-2, 2, 0.5)) +
+  theme_ich()
+
+m_prior_informative_neurosurgery
+
+
+```
+
+### Neurosurgical Intervention
 
 ```{r informative prior predictive check - neurosurgical intervention}
 #| echo: false
@@ -200,7 +242,21 @@ results_visual(m_prior_default_neurosurgery, "Prior Predictive Check - Neurosurg
 
 avg_predictions(m_prior_informative_neurosurgery, variables = "ich_laterality")
 
-results_visual(m_prior_informative_neurosurgery, "Prior Predictive Check - Neurosurgical Intervention")
+ggplot(mutate(spread_draws(m_prior_informative_neurosurgery, b_ich_lateralityRight),
+  ich_right_or = exp(b_ich_lateralityRight)
+), aes(ich_right_or)) +
+  geom_density(color = "#422f05", fill = "#E69F00") +
+  scale_x_continuous(breaks = seq(-10, 10, 0.25)) +
+  labs(
+    title = "Odds Ratio - Right Hemisphere",
+    y = NULL, fill = NULL
+  ) +
+  geom_vline(
+    xintercept = 1, linetype = "dashed",
+    color = "#999999", linewidth = 1
+  ) +
+  theme_ich() +
+  theme(legend.position = "none")
 
 ```
 

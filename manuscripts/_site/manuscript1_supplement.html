@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nikhil Patel, MD">
-<meta name="dcterms.date" content="2024-06-25">
+<meta name="dcterms.date" content="2024-06-26">
 
 <title>Hemispheric Laterality in ICH - Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention</title>
 <style>
@@ -22,41 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -152,10 +138,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#details-of-statistical-analysis" id="toc-details-of-statistical-analysis" class="nav-link active" data-scroll-target="#details-of-statistical-analysis">Details of Statistical Analysis</a>
   <ul class="collapse">
   <li><a href="#covariate-selection" id="toc-covariate-selection" class="nav-link" data-scroll-target="#covariate-selection">Covariate Selection</a></li>
-  <li><a href="#prior-distribution-specification" id="toc-prior-distribution-specification" class="nav-link" data-scroll-target="#prior-distribution-specification">Prior Distribution Specification</a>
+  <li><a href="#prior-distribution-definitions" id="toc-prior-distribution-definitions" class="nav-link" data-scroll-target="#prior-distribution-definitions">Prior Distribution Definitions</a>
   <ul class="collapse">
-  <li><a href="#default-priors" id="toc-default-priors" class="nav-link" data-scroll-target="#default-priors">Default Priors</a></li>
-  <li><a href="#weakly-informative-priors" id="toc-weakly-informative-priors" class="nav-link" data-scroll-target="#weakly-informative-priors">Weakly Informative Priors</a></li>
+  <li><a href="#neurosurgical-intervention" id="toc-neurosurgical-intervention" class="nav-link" data-scroll-target="#neurosurgical-intervention">Neurosurgical Intervention</a></li>
   </ul></li>
   <li><a href="#posterior-simulation-diagnostics" id="toc-posterior-simulation-diagnostics" class="nav-link" data-scroll-target="#posterior-simulation-diagnostics">Posterior Simulation Diagnostics</a>
   <ul class="collapse">
@@ -238,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 25, 2024</p>
+      <p class="date">June 26, 2024</p>
     </div>
   </div>
   
@@ -254,50 +239,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Details of Statistical Analysis</h1>
 <section id="covariate-selection" class="level2">
 <h2 class="anchored" data-anchor-id="covariate-selection">Covariate Selection</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dag_aggressive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "dag {\nage [pos=\"1.000,3.750\"]\naggressive_care [outcome,pos=\"5.000,5.000\"]\namyloid [latent,pos=\"2.000,7.000\"]\ngcs_baseline [pos=\"3.000,8.000\"]\nhypertension [pos=\"2.000,2.000\"]\nich_laterality [exposure,pos=\"3.250,0.000\"]\nich_location [pos=\"3.000,3.750\"]\nich_volume [pos=\"3.500,5.500\"]\nivh [pos=\"3.250,2.000\"]\nstroke [pos=\"2.000,5.000\"]\nage -&gt; aggressive_care\nage -&gt; amyloid\nage -&gt; gcs_baseline\nage -&gt; hypertension\nage -&gt; stroke\namyloid -&gt; aggressive_care\namyloid -&gt; ich_location\namyloid -&gt; stroke\ngcs_baseline -&gt; aggressive_care\nhypertension -&gt; ich_location\nhypertension -&gt; stroke\nich_laterality -&gt; aggressive_care\nich_location -&gt; aggressive_care\nich_location -&gt; gcs_baseline\nich_location -&gt; ivh\nich_volume -&gt; aggressive_care\nich_volume -&gt; gcs_baseline\nivh -&gt; aggressive_care\nivh -&gt; gcs_baseline\nstroke -&gt; aggressive_care\n}\n"
-attr(,"class")
-[1] "dagitty"
-attr(,"labels")
-         aggressive_care           ich_laterality                      age 
-       "Aggressive Care" "Hemispheric Laterality"                    "Age" 
-            ich_location               ich_volume                      ivh 
-          "ICH Location"             "ICH Volume"                    "IVH" 
-            gcs_baseline                   stroke             hypertension 
-         "Admission GCS"        "Previous Stroke"           "Hypertension" 
-                 amyloid 
-    "Amyloid Angiopathy" </code></pre>
-</div>
-</div>
 </section>
-<section id="prior-distribution-specification" class="level2">
-<h2 class="anchored" data-anchor-id="prior-distribution-specification">Prior Distribution Specification</h2>
-<p>We show prior predictive checks for 2(?) sets of priors.</p>
-<section id="default-priors" class="level3">
-<h3 class="anchored" data-anchor-id="default-priors">Default Priors</h3>
+<section id="prior-distribution-definitions" class="level2">
+<h2 class="anchored" data-anchor-id="prior-distribution-definitions">Prior Distribution Definitions</h2>
+<p>In defining prior distributions, we generally followed suggestions from previous literature.<span class="citation" data-cites="zampieriUsingBayesianMethods2021 kruschkeBayesianAnalysisReporting2021 gelmanBayesianWorkflow2020"><sup><a href="#ref-zampieriUsingBayesianMethods2021" role="doc-biblioref">1</a>–<a href="#ref-gelmanBayesianWorkflow2020" role="doc-biblioref">3</a></sup></span> Specifically, we defined 4 sets of priors for each outcome:</p>
+<p><strong>Neutral prior</strong>: mean of <strong>0</strong> and standard deviation of <strong>0.35</strong>, centering around an OR of <strong>1</strong> and 95% of the the probability mass for the OR between <strong>0.5</strong> to <strong>1.99</strong>.</p>
+<p><strong>Left hemisphere prior</strong>: mean of <strong>-0.22</strong> and standard deviation of <strong>0.175</strong>, centering around an OR of <strong>0.8</strong> and 95% of the the probability mass for the OR between <strong>0.57</strong> to <strong>1.13</strong>.</p>
+<p><strong>Right hemisphere prior</strong>: mean of <strong>0.18</strong> and standard deviation of <strong>0.175</strong>, centering around an OR of <strong>1.2</strong> and 95% of the the probability mass for the OR between <strong>0.85</strong> to <strong>1.69</strong>.</p>
+<p><strong>Flat prior</strong>: most mimics a frequentist analysis</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
- ich_laterality Estimate 2.5 % 97.5 %
-          Left     0.504 0.215  0.792
-          Right    0.502 0.211  0.794
-
-Columns: ich_laterality, estimate, conf.low, conf.high 
-Type:  response </code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="manuscript1_supplement_files/figure-html/default prior predictive check - neurosurgical intervention-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="manuscript1_supplement_files/figure-html/prior graphical summary-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Family: bernoulli 
+  Links: mu = logit 
+Formula: neurosurgery_evac ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study) 
+   Data: dat (Number of observations: 3428) 
+  Draws: 4 chains, each with iter = 2000; warmup = 1000; thin = 1;
+         total post-warmup draws = 4000
+
+Multilevel Hyperparameters:
+~study (Number of levels: 2) 
+              Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS
+sd(Intercept)     2.68      2.83     0.09    10.11 1.00     5948     2441
+
+Regression Coefficients:
+                     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS
+Intercept              -19.03     69.41  -157.43   117.77 1.00     9255
+ich_lateralityRight      0.02      0.97    -1.89     1.97 1.00     8599
+age                     -0.01      1.06    -2.07     2.07 1.00     8930
+gcs_baseline            -0.01      1.05    -2.05     2.04 1.00    10484
+ich_locationLobar       -0.01      0.98    -1.88     1.94 1.00     8709
+ich_locationThalamus     0.01      1.02    -2.04     2.00 1.00     7712
+ich_volume_baseline     -0.01      1.01    -2.00     1.97 1.00     8012
+ivhYes                   0.00      0.98    -1.86     1.89 1.00     9158
+                     Tail_ESS
+Intercept                2478
+ich_lateralityRight      3289
+age                      2456
+gcs_baseline             2700
+ich_locationLobar        2989
+ich_locationThalamus     2725
+ich_volume_baseline      3018
+ivhYes                   3103
+
+Draws were sampled using sample(hmc). For each parameter, Bulk_ESS
+and Tail_ESS are effective sample size measures, and Rhat is the potential
+scale reduction factor on split chains (at convergence, Rhat = 1).</code></pre>
 </div>
-</section>
-<section id="weakly-informative-priors" class="level3">
-<h3 class="anchored" data-anchor-id="weakly-informative-priors">Weakly Informative Priors</h3>
+</div>
+<section id="neurosurgical-intervention" class="level3">
+<h3 class="anchored" data-anchor-id="neurosurgical-intervention">Neurosurgical Intervention</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -331,13 +328,24 @@ Type:  response </code></pre>
 </section>
 </section>
 <section id="sensitivity-analyses" class="level2">
-<h2 class="anchored" data-anchor-id="sensitivity-analyses">Sensitivity Analyses</h2>
+
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Sensitivity Analyses</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-zampieriUsingBayesianMethods2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Zampieri FG, Casey JD, Shankar-Hari M, Harrell FE, Harhay MO. <a href="https://doi.org/10.1164/rccm.202006-2381CP">Using <span>Bayesian Methods</span> to <span>Augment</span> the <span>Interpretation</span> of <span>Critical Care Trials</span>. <span>An Overview</span> of <span>Theory</span> and <span>Example Reanalysis</span> of the <span>Alveolar Recruitment</span> for <span>Acute Respiratory Distress Syndrome Trial</span></a>. <em>American Journal of Respiratory and Critical Care Medicine</em>. 2021;203(5):543–552.</div>
+</div>
+<div id="ref-kruschkeBayesianAnalysisReporting2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Kruschke JK. <a href="https://doi.org/10.1038/s41562-021-01177-7">Bayesian <span>Analysis Reporting Guidelines</span></a>. <em>Nature Human Behaviour</em>. 2021;5(10):1282–1291.</div>
+</div>
+<div id="ref-gelmanBayesianWorkflow2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Gelman A, Vehtari A, Simpson D, Margossian CC, Carpenter B, Yao Y, Kennedy L, Gabry J, Bürkner P-C, Modrák M. <a href="https://doi.org/10.48550/arXiv.2011.01808">Bayesian <span>Workflow</span></a>. 2020.</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
