@@ -77,10 +77,10 @@ tar_plan(
   m_prior_left_tracheostomy = f_prior_left_tracheostomy(ich_aggressive),
   m_prior_right_tracheostomy = f_prior_right_tracheostomy(ich_aggressive),
   m_prior_flat_tracheostomy = f_prior_flat_tracheostomy(ich_aggressive),
-  m_prior_neutral_days_mechanical_ventilation = f_prior_neutral_days_mechanical_ventilation(ich_aggressive),
-  m_prior_left_days_mechanical_ventilation = f_prior_left_days_mechanical_ventilation(ich_aggressive),
-  m_prior_right_days_mechanical_ventilation = f_prior_right_days_mechanical_ventilation(ich_aggressive),
-  m_prior_flat_days_mechanical_ventilation = f_prior_flat_days_mechanical_ventilation(ich_aggressive),
+  m_prior_neutral_days_mechanical_ventilation = f_prior_neutral_days_mechanical_ventilation(ich_aggressive), # nolint: line_length_linter.
+  m_prior_left_days_mechanical_ventilation = f_prior_left_days_mechanical_ventilation(ich_aggressive), # nolint: line_length_linter.
+  m_prior_right_days_mechanical_ventilation = f_prior_right_days_mechanical_ventilation(ich_aggressive), # nolint: line_length_linter.
+  m_prior_flat_days_mechanical_ventilation = f_prior_flat_days_mechanical_ventilation(ich_aggressive), # nolint: line_length_linter.
   m_prior_neutral_comfort = f_prior_neutral_comfort(ich_aggressive),
   m_prior_left_comfort = f_prior_left_comfort(ich_aggressive),
   m_prior_right_comfort = f_prior_right_comfort(ich_aggressive),
