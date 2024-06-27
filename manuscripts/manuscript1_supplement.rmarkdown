@@ -165,9 +165,11 @@ with_dir(here(), tar_load(ich_aggressive))
 
 ```
 
+
 # Details of Statistical Analysis
 
 ## Covariate Selection
+
 
 ```{r dags}
 #| echo: false
@@ -176,7 +178,9 @@ with_dir(here(), tar_load(ich_aggressive))
 
 ```
 
+
 ## Prior Distribution Definitions
+
 
 ```{r prior definitions}
 #| echo: false
@@ -199,6 +203,7 @@ right_upper_OR <- exp(right_mean + (1.96 * right_sd))
 
 ```
 
+
 In defining prior distributions, we generally followed suggestions from previous literature. [@zampieriUsingBayesianMethods2021; @kruschkeBayesianAnalysisReporting2021; @gelmanBayesianWorkflow2020] Specifically, we defined 4 sets of priors for each outcome:
 
 **Neutral prior**: mean of **`r neutral_mean`** and standard deviation of **`r neutral_sd`**, centering around an OR of **`r exp(neutral_mean)`** and 95% of the the probability mass for the OR between **`r round(neutral_lower_OR, digits = 2)`** to **`r round(neutral_upper_OR, digits = 2)`**.
@@ -209,6 +214,7 @@ In defining prior distributions, we generally followed suggestions from previous
 
 **Flat prior**: most mimics a frequentist analysis
     
+
 ```{r prior graphical summary}
 #| echo: false
 #| fig-height: 6
@@ -229,7 +235,9 @@ dnorm_limit <- function(x) {
 
 ```
 
+
 ### Neurosurgical Intervention
+
 
 ```{r informative prior predictive check - neurosurgical intervention}
 #| echo: false
@@ -355,6 +363,7 @@ prior_prediction_summary |>
 
 ```
 
+
 ## Posterior Simulation Diagnostics
 
 ### MCMC Chain Convergence and Resolution
@@ -364,4 +373,5 @@ prior_prediction_summary |>
 ### 
 
 ## Sensitivity Analyses
+
 

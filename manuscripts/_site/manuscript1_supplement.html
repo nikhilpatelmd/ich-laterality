@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.4.556">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nikhil Patel, MD">
-<meta name="dcterms.date" content="2024-06-26">
+<meta name="dcterms.date" content="2024-06-27">
 
 <title>Hemispheric Laterality in ICH - Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention</title>
 <style>
@@ -223,7 +223,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 26, 2024</p>
+      <p class="date">June 27, 2024</p>
     </div>
   </div>
   
@@ -260,20 +260,15 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="neurosurgical-intervention">Neurosurgical Intervention</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>
- ich_laterality Estimate   2.5 % 97.5 %
-          Left     0.244 0.00769  0.634
-          Right    0.229 0.00699  0.619
-
-Columns: ich_laterality, estimate, conf.low, conf.high 
-Type:  response </code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="manuscript1_supplement_files/figure-html/informative prior predictive check - neurosurgical intervention-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<pre><code># A tibble: 4 × 7
+  `Prior Model`  Left Right aOR   `95% Credible Interval` Probabilty of any di…¹
+  &lt;chr&gt;             %     % &lt;chr&gt; &lt;chr&gt;                                    &lt;dbl&gt;
+1 Neutral Prior  22.7  24.1 1.00  "0.49 - 2.010000e+00"                    0.5  
+2 Left Hemisphe… 25.1  22.1 0.80  "0.57 - 1.140000e+00"                    0.89 
+3 Right Hemisph… 15.9  19.3 1.20  "0.85 - 1.69        "                    0.84 
+4 Flat Prior     47.7  47.3 0.97  "0.00 - 1.947886e+04"                    0.496
+# ℹ abbreviated name: ¹​`Probabilty of any difference (aOR &gt; 1)`
+# ℹ 1 more variable: `% within ROPE` &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>

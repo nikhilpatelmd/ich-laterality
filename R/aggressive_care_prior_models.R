@@ -291,7 +291,7 @@ f_prior_flat_tracheostomy <- function(dat) {
 f_prior_neutral_days_mechanical_ventilation <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(days_mechanical_ventilation ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study),
+  model <- brm(days_mechanical_ventilation ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -313,7 +313,7 @@ f_prior_neutral_days_mechanical_ventilation <- function(dat) {
 f_prior_left_days_mechanical_ventilation <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(days_mechanical_ventilation ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study),
+  model <- brm(days_mechanical_ventilation ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -335,7 +335,7 @@ f_prior_left_days_mechanical_ventilation <- function(dat) {
 f_prior_right_days_mechanical_ventilation <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(days_mechanical_ventilation ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study),
+  model <- brm(days_mechanical_ventilation ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -357,7 +357,7 @@ f_prior_right_days_mechanical_ventilation <- function(dat) {
 f_prior_flat_days_mechanical_ventilation <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(days_mechanical_ventilation ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + (1 | study),
+  model <- brm(days_mechanical_ventilation ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(

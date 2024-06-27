@@ -1,7 +1,7 @@
 ---
 title: Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention
 author: "Nikhil Patel, MD"
-subtitle: A Post Hoc Bayesian of ATACH-2 and ERICH data
+subtitle: A Post Hoc Bayesian Analysis using data from ATACH-2 and ERICH
 authors:
   - name: Nikhil Patel
     orcid: 0000-0002-3193-8590
@@ -147,10 +147,11 @@ with_dir(here(), tar_read(table_1_aggressive))
 
 ```{r neurosurgery}
 #| label: tbl-2
-#| tbl-cap: "Association between hemispheric lateralization and care"
+#| tbl-cap: "Association between hemispheric lateralization and aggressive care"
 #| echo: false
+#| warning: false
 
-# gather odds ratios and 95% credible intervals for each outcome
+# gather odds ratios and 95% credible intervals for each model
 summary <- modelsummary(models,
   exponentiate = TRUE,
   fmt = 2,
