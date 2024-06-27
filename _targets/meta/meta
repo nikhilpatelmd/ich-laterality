@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|7ab093de388741c6|||||||||||||||
+.Random.seed|object|19c562b2476d1941|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19894.9493194027s|55f706f8f6e4d315|31110|rds|local|vector|||0.007||
 comfort_canonical_visuals|stem|a4fb43967580fe0f|e0fb3e373e95f76b|a32cab511a69989a|662216964||t19894.5677061218s|b042f2db11a3df15|29424135|rds|local|vector|||6.059||
@@ -122,9 +122,21 @@ f_prior_euro_vas_90_canonical|function|2fefaec0c7705159|||||||||||||||
 f_prior_euro_vas_90_minimal|function|53bc54eaed396883|||||||||||||||
 f_prior_evd_canonical|function|beef56d617b5edf0|||||||||||||||
 f_prior_evd_minimal|function|609419dd9f5105c5|||||||||||||||
-f_prior_flat_neurosurgery|function|069a0a7b9f6c6da3|||||||||||||||
+f_prior_flat_comfort|function|bd99eddd1ee3ba51|||||||||||||||
+f_prior_flat_days_mechanical_ventilation|function|846932b7bd430873|||||||||||||||
+f_prior_flat_dnr_binary|function|214aaaff8de88d99|||||||||||||||
+f_prior_flat_early_wlst|function|b34329e3dcf8e0e5|||||||||||||||
+f_prior_flat_evd|function|4642c745749e6d53|||||||||||||||
+f_prior_flat_neurosurgery|function|7a1d0c9033a74ab2|||||||||||||||
+f_prior_flat_tracheostomy|function|921e308aa6a25808|||||||||||||||
 f_prior_informative_neurosurgery|function|f46a91aa09de6163|||||||||||||||
+f_prior_left_comfort|function|b72bfd8b7882b6f9|||||||||||||||
+f_prior_left_days_mechanical_ventilation|function|d6947b8a2a970ea0|||||||||||||||
+f_prior_left_dnr_binary|function|3a696d7269516a21|||||||||||||||
+f_prior_left_early_wlst|function|4b52e7daf6601102|||||||||||||||
+f_prior_left_evd|function|6320ee297144039a|||||||||||||||
 f_prior_left_neurosurgery|function|4d767c30b47b4942|||||||||||||||
+f_prior_left_tracheostomy|function|4b7a4eb32dceaa19|||||||||||||||
 f_prior_mrs_180_canonical|function|c6b9529c3402aff3|||||||||||||||
 f_prior_mrs_180_minimal|function|410a084f9e2539b4|||||||||||||||
 f_prior_mrs_365_canonical|function|4cec07ac1862d003|||||||||||||||
@@ -134,8 +146,20 @@ f_prior_mrs_90_minimal|function|de190fac85ea938d|||||||||||||||
 f_prior_neurosurgery|function|236446dddaa8e5df|||||||||||||||
 f_prior_neurosurgery_canonical|function|214654bd320e396e|||||||||||||||
 f_prior_neurosurgery_minimal|function|d05b64682d753d08|||||||||||||||
+f_prior_neutral_comfort|function|5002dc7ae982d0dc|||||||||||||||
+f_prior_neutral_days_mechanical_ventilation|function|15b328fc6c703731|||||||||||||||
+f_prior_neutral_dnr_binary|function|839a89385e27d77f|||||||||||||||
+f_prior_neutral_early_wlst|function|cee294c18f27dafb|||||||||||||||
+f_prior_neutral_evd|function|8850f46b9048f673|||||||||||||||
 f_prior_neutral_neurosurgery|function|fbae7d5090a7154e|||||||||||||||
+f_prior_neutral_tracheostomy|function|17001c1674f94fd3|||||||||||||||
+f_prior_right_comfort|function|72e05e0a22bd3306|||||||||||||||
+f_prior_right_days_mechanical_ventilation|function|4cd3800c81aa4a60|||||||||||||||
+f_prior_right_dnr_binary|function|349f0f8d3b540fa1|||||||||||||||
+f_prior_right_early_wlst|function|b49d9c124de5fa23|||||||||||||||
+f_prior_right_evd|function|9c5821feb27d9e99|||||||||||||||
 f_prior_right_neurosurgery|function|774c8f14c524a311|||||||||||||||
+f_prior_right_tracheostomy|function|79e1ad6a8bdfde60|||||||||||||||
 f_prior_trach_canonical|function|1705e68f1bba860c|||||||||||||||
 f_prior_trach_minimal|function|034f7978cbe5c216|||||||||||||||
 f_prior_vent_canonical|function|ecdb12786a40bfaa|||||||||||||||
@@ -184,7 +208,7 @@ m_posterior_euro_pain_90_minimal|stem|d15ba68c85e95385|a5617af256a9fd30|76d1a985
 m_posterior_euro_selfcare_180_canonical|stem|456c4d20697a843f|e42a5def0a5c23eb|0306b7925d254c3b|-468572100||t19895.0194642846s|4d21b6734202225b|28973041|rds|local|vector|||421.685|Rows containing NAs were excluded from the model.. There were 2995 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
 m_posterior_euro_selfcare_180_minimal|stem|f227fc0df47228ba|6d5e5851cded6f64|dcfea0c3e67d02b7|-1613025108||t19895.0134765057s|9c5eb3b64e40510a|27994339|rds|local|vector|||80.336|Rows containing NAs were excluded from the model.|
 m_posterior_euro_selfcare_365_canonical|stem|aa0de963d3f9b87d|3c8f966e45054c7d|97f68e6eb88346c8|161116136||t19894.9720323765s|24b2604ee9df7110|27572687|rds|local|vector|||228.037|Rows containing NAs were excluded from the model.|
-m_posterior_euro_selfcare_365_minimal|stem|8557bd44a2b7cb86|f849172401f27905|e17fdcf118c8d95b|645469701||t19895.0839549104s|39640679e7a5641e|29762954|rds|local|vector|||82.065|Rows containing NAs were excluded from the model.|
+m_posterior_euro_selfcare_365_minimal|stem|8557bd44a2b7cb86|f849172401f27905|0a04e8c3ea7ffd83|645469701||t19895.0839549104s||29762954|rds|local|vector|||80.312|Rows containing NAs were excluded from the model.|ignoring SIGPIPE signal
 m_posterior_euro_selfcare_90_canonical|stem|e4de6d3463d0151d|934bd3a7c9ff8e7c|07e76772ac00d53e|-1928241926||t19895.0031984464s|d73a5957a038c0c1|28392156|rds|local|vector|||586.192|Rows containing NAs were excluded from the model.. There were 3067 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
 m_posterior_euro_selfcare_90_minimal|stem|a3d49afc71b66916|7bd0b3aea33a23d9|1278a007ac13c05c|1108455457||t19895.0304335866s|97a45ec7b3c8ee78|28500127|rds|local|vector|||83.205|Rows containing NAs were excluded from the model.|
 m_posterior_euro_usual_180_canonical|stem|35d8738fa9668b75|fd12a4b977b6f555|8c48f58cdbff9c53|-2089615508||t19894.9414376919s|7069aa9c51ae896a|26590818|rds|local|vector|||399.69|Rows containing NAs were excluded from the model.. There were 2935 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. Seehttpsmcstan.orgmiscwarnings.htmlmaximumtreedepthexceeded. Examine the pairs plot to diagnose sampling problems|
@@ -290,7 +314,7 @@ posterior_diagnostics|function|35a8ac4d3fa32822|||||||||||||||
 results_visual|function|60bfc24e70594483|||||||||||||||
 select_variables|function|51eaa047f9ead67f|||||||||||||||
 selected_data|stem|0f476d661b9297b1|44280be3ad15831f|c743c3864cfa3125|-1052555108||t19894.9367709411s|6c0061a438cae8f9|158412|rds|local|vector|||0.018||
-settings|stem|113c35e390419099|0d725b29fc99973a|e4562df55d19cb87|-416401554||t19894.936768357s|b0e8a36a8bde68fd|362|rds|local|vector|||0.005||
+settings|stem|4783b37f00b6477d|0d725b29fc99973a|32d06ab6a460c526|-416401554||t19901.5131133585s|4fb7122a4503ae71|200|rds|local|vector|||0||
 table_1_aggressive|stem|779fd97a2641161b|1a2e2eefc146e3c7|23a0847c28b9c73d|-15126430||t19899.5676181274s|8dc3612c73cdb104|724561|rds|local|vector|||3.587||
 table_1_function|function|8f8fb2a03829abf2|||||||||||||||
 table_1_outcomes|stem|18b368bba66a8db3|ff32e4d6c57ce9fe|d77e08d66f26f955|-541678962||t19895.0145138393s|a7f98d81182a5304|883459|rds|local|vector|||3.961||
