@@ -45,7 +45,7 @@ library(glue)
 library(ggdist)
 library(patchwork)
 library(tinytable)
-library(flextable)
+library(gt)
 
 
 # plot stuff
@@ -67,98 +67,6 @@ theme_ich <- function(base_family = "Figtree",
       plot.margin = margin(0.25, 0.25, 0.25, 0.25, "cm")
     )
 }
-
-# visualization function
-results_visual <- function(model, title) {
-  model <- model
-  subtitle <- title
-
-  draws <- model |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize()
-
-  pred <- predictions(model, by = "ich_laterality") |>
-    tibble()
-
-  theme_ich <- function(base_family = "Inter",
-                        base_size = 14) {
-    theme_minimal(base_size = base_size) +
-      theme(
-        text = element_text(lineheight = 2),
-        plot.title = element_text(size = rel(1.3), margin = margin(12, 0, 8, 0)),
-        plot.subtitle = element_text(size = rel(1.1), margin = margin(4, 0, 0, 0)),
-        axis.text.y = element_text(size = rel(0.8)),
-        axis.title.y = element_text(size = 12, margin = margin(0, 4, 0, 0)),
-        axis.text.x = element_text(size = rel(2)),
-        axis.title.x = element_blank(),
-        legend.position = "bottom",
-        legend.justification = 1,
-        panel.grid = element_line(colour = "#F3F4F5"),
-        plot.caption = element_text(size = rel(0.8), margin = margin(8, 0, 0, 0)),
-        plot.margin = margin(0.25, 0.25, 0.25, 0.25, "cm")
-      )
-  }
-
-  p1 <- predictions(model, by = "ich_laterality") |>
-    posterior_draws() |>
-    ggplot(aes(x = draw, fill = ich_laterality)) +
-    geom_density(alpha = .7) +
-    scale_fill_manual(values = c("#422f05", "#E69F00")) +
-    scale_x_continuous(labels = scales::percent) +
-    labs(
-      title = "Predicted Probability",
-      fill = "ICH Laterality",
-      y = NULL
-    ) +
-    theme_ich()
-
-  p2 <- avg_comparisons(model, variables = "ich_laterality") |>
-    posterior_draws() |>
-    ggplot(aes(x = draw)) +
-    geom_density(color = "#422f05", fill = "#E69F00") +
-    scale_x_continuous(labels = scales::percent) +
-    labs(
-      title = "Average Difference between Left vs. Right Hemisphere",
-      y = NULL
-    ) +
-    geom_vline(
-      xintercept = 0, linetype = "dashed",
-      color = "#999999", linewidth = 1
-    ) +
-    theme_ich()
-
-  p3 <- model |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    ggplot(aes(ich_right_or)) +
-    geom_density(color = "#422f05", fill = "#E69F00") +
-    # stat_halfeye(aes(fill_ramp = stat(x > 1), fill = "#E69F00", color = "#422f05")) +
-    scale_x_continuous(breaks = seq(0, 3, 0.25)) +
-    labs(
-      title = "Odds Ratio - Right Hemisphere",
-      y = NULL,
-      fill = NULL
-    ) +
-    geom_vline(
-      xintercept = 1, linetype = "dashed",
-      color = "#999999", linewidth = 1
-    ) +
-    theme_ich() +
-    theme(legend.position = "none")
-
-
-  total <- p1 / p2 / p3
-
-  final <- total +
-    plot_annotation(
-      title = glue(subtitle),
-      theme = theme(plot.title = element_text(size = rel(2), margin = margin(12, 0, 8, 0)))
-    )
-
-  return(final)
-}
-
 
 # load data and models
 with_dir(here(), tar_load(ich_aggressive))
@@ -213,13 +121,6 @@ In defining prior distributions, we generally followed suggestions from previous
 #| echo: false
 #| fig-height: 6
 
-# Return dnorm(x) for 0 < x < 2, and NA for all other x
-dnorm_limit <- function(x) {
-  y <- dnorm(x)
-  y[x < 0] <- NA
-  return(y)
-}
-
 # ggplot(data = tibble(x = -2:2), aes(x = x)) +
 #   geom_function(fun = dnorm, args = list(mean = -20, sd = 0.5), linewidth = 1) +
 #   # stat_function(fun = dnorm_limit, geom = "area", color = "orange", alpha = 0.2) +
@@ -229,131 +130,198 @@ dnorm_limit <- function(x) {
 
 ```
 
-### Neurosurgical Intervention
 
-```{r informative prior predictive check - neurosurgical intervention}
+```{r prior predictive check - function}
 #| echo: false
-#| fig-height: 12
+#| output: false
+## | # | | fig-height: 12
 
-with_dir(here(), tar_load(m_prior_neutral_neurosurgery))
-with_dir(here(), tar_load(m_prior_left_neurosurgery))
-with_dir(here(), tar_load(m_prior_right_neurosurgery))
-with_dir(here(), tar_load(m_prior_flat_neurosurgery))
-
-models <- list(
-  "Neutral Prior" = with_dir(here(), tar_read(m_prior_neutral_neurosurgery)),
-  "Left Hemisphere Prior" = with_dir(here(), tar_read(m_prior_left_neurosurgery)),
-  "Right Hemisphere Prior" = with_dir(here(), tar_read(m_prior_right_neurosurgery)),
-  "Flat Prior" = with_dir(here(), tar_read(m_prior_flat_neurosurgery))
-)
-
-# gather summary variables for each model
-neutral <- models$"Neutral Prior" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    aor = quantile(ich_right_or, 0.5),
-    lower_ci = quantile(ich_right_or, 0.025),
-    upper_ci = quantile(ich_right_or, 0.975),
-    or_1 = round(sum(ich_right_or > 1) / n(), digits = 2),
-    or_1.1 = round(sum(ich_right_or > 1.1) / n(), digits = 2),
-    or_1.2 = round(sum(ich_right_or > 1.2) / n(), digits = 2),
-    rope = round(sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n(), digits = 2)
+f_prior_predictive_check <- function(neutral_model, left_model, right_model, flat_model) {
+  models <- list(
+    "Neutral Prior" = neutral_model,
+    "Left Hemisphere Prior" = left_model,
+    "Right Hemisphere Prior" = right_model,
+    "Flat Prior" = flat_model
   )
 
-left <- models$"Left Hemisphere Prior" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    aor = quantile(ich_right_or, 0.5),
-    lower_ci = quantile(ich_right_or, 0.025),
-    upper_ci = quantile(ich_right_or, 0.975),
-    or_1 = round(sum(ich_right_or > 1) / n(), digits = 2),
-    or_1.1 = round(sum(ich_right_or > 1.1) / n(), digits = 2),
-    or_1.2 = round(sum(ich_right_or > 1.2) / n(), digits = 2),
-    rope = round(sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n(), digits = 2)
-  )
+  # gather summary variables for each model
+  neutral <- models$"Neutral Prior" |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    summarize(
+      aor = quantile(ich_right_or, 0.5),
+      lower_ci = quantile(ich_right_or, 0.025),
+      upper_ci = quantile(ich_right_or, 0.975),
+      or_1 = sum(ich_right_or > 1) / n(),
+      rope = sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n()
+    )
 
-right <- models$"Right Hemisphere Prior" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    aor = quantile(ich_right_or, 0.5),
-    lower_ci = quantile(ich_right_or, 0.025),
-    upper_ci = quantile(ich_right_or, 0.975),
-    or_1 = round(sum(ich_right_or > 1) / n(), digits = 2),
-    or_1.1 = round(sum(ich_right_or > 1.1) / n(), digits = 2),
-    or_1.2 = round(sum(ich_right_or > 1.2) / n(), digits = 2),
-    rope = round(sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n(), digits = 2)
-  )
+  left <- models$"Left Hemisphere Prior" |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    summarize(
+      aor = quantile(ich_right_or, 0.5),
+      lower_ci = quantile(ich_right_or, 0.025),
+      upper_ci = quantile(ich_right_or, 0.975),
+      or_1 = sum(ich_right_or > 1) / n(),
+      rope = sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n()
+    )
 
-flat <- models$"Flat Prior" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    aor = quantile(ich_right_or, 0.5),
-    lower_ci = quantile(ich_right_or, 0.025),
-    upper_ci = quantile(ich_right_or, 0.975),
-    or_1 = round(sum(ich_right_or > 1) / n(), digits = 2),
-    or_1.1 = round(sum(ich_right_or > 1.1) / n(), digits = 2),
-    or_1.2 = round(sum(ich_right_or > 1.2) / n(), digits = 2),
-    rope = round(sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n(), digits = 2)
-  )
+  right <- models$"Right Hemisphere Prior" |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    summarize(
+      aor = quantile(ich_right_or, 0.5),
+      lower_ci = quantile(ich_right_or, 0.025),
+      upper_ci = quantile(ich_right_or, 0.975),
+      or_1 = sum(ich_right_or > 1) / n(),
+      rope = sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n()
+    )
 
+  flat <- models$"Flat Prior" |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    summarize(
+      aor = quantile(ich_right_or, 0.5),
+      lower_ci = quantile(ich_right_or, 0.025),
+      upper_ci = quantile(ich_right_or, 0.975),
+      or_1 = sum(ich_right_or > 1) / n(),
+      rope = sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n()
+    )
 
-# add prior predictions
-neutral_predictions <-
-  as_tibble(avg_predictions(m_prior_neutral_neurosurgery, by = "ich_laterality")) |>
-  mutate("Prior Model" = "Neutral Prior") |>
-  select(c("Prior Model", ich_laterality, estimate)) |>
-  pivot_wider(names_from = ich_laterality, values_from = estimate) |>
-  mutate(
-    Left = num(Left, label = "%", scale = 100),
-    Right = num(Right, label = "%", scale = 100)
-  )
+  prior_summary <- rbind(neutral, left, right, flat) |>
+    mutate(prior = c("Neutral", "Left Hemisphere", "Right Hemisphere", "Flat")) |>
+    select(c(prior, aor, lower_ci, upper_ci, or_1, rope))
 
-left_predictions <-
-  as_tibble(avg_predictions(m_prior_left_neurosurgery, by = "ich_laterality")) |>
-  mutate("Prior Model" = "Left Hemisphere Prior") |>
-  select(c("Prior Model", ich_laterality, estimate)) |>
-  pivot_wider(names_from = ich_laterality, values_from = estimate) |>
-  mutate(
-    Left = num(Left, label = "%", scale = 100),
-    Right = num(Right, label = "%", scale = 100)
-  )
+  # add prior predictions
+  neutral_predictions <-
+    as_tibble(avg_predictions(models$"Neutral Prior", by = "ich_laterality")) |>
+    mutate("prior" = "Neutral") |>
+    select(c("prior", ich_laterality, estimate)) |>
+    pivot_wider(names_from = ich_laterality, values_from = estimate)
 
-right_predictions <-
-  as_tibble(avg_predictions(m_prior_right_neurosurgery, by = "ich_laterality")) |>
-  mutate("Prior Model" = "Right Hemisphere Prior") |>
-  select(c("Prior Model", ich_laterality, estimate)) |>
-  pivot_wider(names_from = ich_laterality, values_from = estimate) |>
-  mutate(
-    Left = num(Left, label = "%", scale = 100),
-    Right = num(Right, label = "%", scale = 100)
-  )
+  left_predictions <-
+    as_tibble(avg_predictions(models$"Left Hemisphere Prior", by = "ich_laterality")) |>
+    mutate("prior" = "Left Hemisphere") |>
+    select(c("prior", ich_laterality, estimate)) |>
+    pivot_wider(names_from = ich_laterality, values_from = estimate)
 
-flat_predictions <-
-  as_tibble(avg_predictions(m_prior_flat_neurosurgery, by = "ich_laterality")) |>
-  mutate("Prior Model" = "Flat Prior") |>
-  select(c("Prior Model", ich_laterality, estimate)) |>
-  pivot_wider(names_from = ich_laterality, values_from = estimate) |>
-  mutate(
-    Left = num(Left, label = "%", scale = 100),
-    Right = num(Right, label = "%", scale = 100)
-  )
+  right_predictions <-
+    as_tibble(avg_predictions(models$"Right Hemisphere Prior", by = "ich_laterality")) |>
+    mutate("prior" = "Right Hemisphere") |>
+    select(c("prior", ich_laterality, estimate)) |>
+    pivot_wider(names_from = ich_laterality, values_from = estimate)
 
-all_predictions <- rbind(neutral_predictions, left_predictions, right_predictions, flat_predictions)
+  flat_predictions <-
+    as_tibble(avg_predictions(models$"Flat Prior", by = "ich_laterality")) |>
+    mutate("prior" = "Flat") |>
+    select(c("prior", ich_laterality, estimate)) |>
+    pivot_wider(names_from = ich_laterality, values_from = estimate)
 
-prior_prediction_summary <- left_join(all_predictions, table_almost_2, by = "Prior Model")
+  prediction_summary <- rbind(neutral_predictions, left_predictions, right_predictions, flat_predictions)
 
-prior_prediction_summary |>
-  gt() |>
-  fmt_number(
-    columns = 5:7,
-    decimals = 2
-  )
+  prior_prediction_summary <- left_join(prediction_summary, prior_summary, by = "prior") |>
+    gt(rowname_col = "prior") |>
+    tab_stubhead(label = "Type of Prior") |>
+    fmt_number(columns = everything(), decimals = 2) |>
+    fmt_number(columns = 6, rows = 4, decimals = 0) |>
+    fmt_percent(columns = 2:3, rows = 1:4, decimals = 1) |>
+    tab_header(
+      title = md("**Prior Predictive Checks**")
+    ) |>
+    cols_label(
+      Left = "Left Hemisphere",
+      Right = "Right Hemisphere",
+      aor = "aOR",
+      lower_ci = "Lower 95% Credible Interval",
+      upper_ci = "Upper 95% Credible Interval",
+      or_1 = "Probability of Difference (aOR >1)",
+      rope = "% of Distribution outside of ROPE"
+    ) |>
+    cols_width(
+      1 ~ pct(50)
+    )
+
+  return(prior_prediction_summary)
+}
 
 ```
+
+### Neurosurgical Intervention
+
+```{r prior predictive check - neurosurgery}
+#| echo: false
+#| warning: false
+
+neutral_model <- with_dir(here(), tar_read(m_prior_neutral_neurosurgery))
+left_model <- with_dir(here(), tar_read(m_prior_left_neurosurgery))
+right_model <- with_dir(here(), tar_read(m_prior_right_neurosurgery))
+flat_model <- with_dir(here(), tar_read(m_prior_flat_neurosurgery))
+
+f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
+
+```
+
+### Ventriculostomy
+
+```{r prior predictive check - evd}
+#| echo: false
+#| warning: false
+
+neutral_model <- with_dir(here(), tar_read(m_prior_neutral_evd))
+left_model <- with_dir(here(), tar_read(m_prior_left_evd))
+right_model <- with_dir(here(), tar_read(m_prior_right_evd))
+flat_model <- with_dir(here(), tar_read(m_prior_flat_evd))
+
+f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
+predictions(neutral_model, by = "ich_laterality") |>
+  posterior_draws() |>
+  ggplot(aes(x = draw, fill = ich_laterality)) +
+  geom_density(alpha = .3) +
+  scale_fill_manual(values = c("#422f05", "#E69F00")) +
+  scale_x_continuous(labels = scales::percent) +
+  labs(
+    title = "Predicted Probability",
+    fill = "ICH Laterality",
+    y = NULL
+  )
+
+avg_comparisons(neutral_model, variables = "ich_laterality") |>
+  posterior_draws() |>
+  ggplot(aes(x = draw)) +
+  geom_density(color = "#422f05", fill = "#E69F00") +
+  scale_x_continuous(labels = scales::percent) +
+  labs(
+    title = "Average Difference between Left vs. Right Hemisphere",
+    y = NULL
+  ) +
+  geom_vline(
+    xintercept = 0, linetype = "dashed",
+    color = "#999999", linewidth = 1
+  )
+
+neutral_model |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  ggplot(aes(ich_right_or)) +
+  geom_density(color = "#422f05", fill = "#E69F00") +
+  # stat_halfeye(aes(fill_ramp = stat(x > 1), fill = "#E69F00", color = "#422f05")) +
+  scale_x_continuous(breaks = seq(0, 3, 0.25)) +
+  labs(
+    title = "Odds Ratio - Right Hemisphere",
+    y = NULL,
+    fill = NULL
+  ) +
+  geom_vline(
+    xintercept = 1, linetype = "dashed",
+    color = "#999999", linewidth = 1
+  )
+
+
+```
+
 
 ## Posterior Simulation Diagnostics
 
