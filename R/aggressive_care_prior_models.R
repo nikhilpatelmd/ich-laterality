@@ -25,8 +25,8 @@ f_prior_neutral_neurosurgery <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 0.35)", class = "b")
+      set_prior("normal(-7, 0.35)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -47,7 +47,7 @@ f_prior_left_neurosurgery <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-7, 0.5)", class = "Intercept"),
       set_prior("normal(-0.22, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -69,7 +69,7 @@ f_prior_right_neurosurgery <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-7, 0.5)", class = "Intercept"),
       set_prior("normal(0.18, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -91,7 +91,7 @@ f_prior_flat_neurosurgery <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 1)", class = "Intercept"),
       set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
@@ -181,7 +181,7 @@ f_prior_flat_evd <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(0, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 1)", class = "Intercept"),
       set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
@@ -205,7 +205,7 @@ f_prior_neutral_tracheostomy <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(0, 0.35)", class = "b")
     ),
     sample_prior = "only",
@@ -227,7 +227,7 @@ f_prior_left_tracheostomy <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(-0.22, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -249,7 +249,7 @@ f_prior_right_tracheostomy <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(0.18, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -271,7 +271,7 @@ f_prior_flat_tracheostomy <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 1)", class = "Intercept"),
       set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
@@ -451,7 +451,7 @@ f_prior_flat_comfort <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 1)", class = "Intercept"),
       set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
@@ -541,7 +541,7 @@ f_prior_flat_early_wlst <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 1)", class = "Intercept"),
       set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
@@ -631,7 +631,7 @@ f_prior_flat_dnr_binary <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 1)", class = "Intercept"),
       set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",

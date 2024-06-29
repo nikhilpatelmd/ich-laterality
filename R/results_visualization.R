@@ -33,7 +33,7 @@ results_visual <- function(model, title) {
     posterior_draws() |>
     ggplot(aes(x = draw, fill = ich_laterality)) +
     geom_density(alpha = .7) +
-    scale_fill_manual(values = c("#422f05", "#E69F00")) +
+    scale_fill_manual(values = c("#054224", "#ff8800")) +
     scale_x_continuous(labels = scales::percent) +
     labs(
       title = "Predicted Probability",
@@ -45,7 +45,7 @@ results_visual <- function(model, title) {
   p2 <- avg_comparisons(model, variables = "ich_laterality") |>
     posterior_draws() |>
     ggplot(aes(x = draw)) +
-    geom_density(color = "#422f05", fill = "#E69F00") +
+    geom_density(color = "#054224", fill = "#ff8800") +
     scale_x_continuous(labels = scales::percent) +
     labs(
       title = "Average Difference between Left vs. Right Hemisphere",
@@ -61,7 +61,7 @@ results_visual <- function(model, title) {
     spread_draws(b_ich_lateralityRight) |>
     mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
     ggplot(aes(ich_right_or)) +
-    geom_density(color = "#422f05", fill = "#E69F00") +
+    geom_density(color = "#054224", fill = "#ff8800") +
     # stat_halfeye(aes(fill_ramp = stat(x > 1), fill = "#E69F00", color = "#422f05")) +
     scale_x_continuous(breaks = seq(0, 3, 0.25)) +
     labs(

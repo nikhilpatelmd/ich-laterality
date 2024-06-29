@@ -130,6 +130,8 @@ In defining prior distributions, we generally followed suggestions from previous
 
 ```
 
+### Prior Predictive Checks
+
 
 ```{r prior predictive check - function}
 #| echo: false
@@ -163,7 +165,7 @@ f_prior_predictive_check <- function(neutral_model, left_model, right_model, fla
       aor = quantile(ich_right_or, 0.5),
       lower_ci = quantile(ich_right_or, 0.025),
       upper_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
+      or_1 = sum(ich_right_or < 1) / n(),
       rope = sum(ich_right_or > 1.05 | ich_right_or < 0.95) / n()
     )
 
@@ -240,18 +242,114 @@ f_prior_predictive_check <- function(neutral_model, left_model, right_model, fla
     ) |>
     cols_width(
       1 ~ pct(50)
+    ) |>
+    tab_footnote(
+      footnote = "For left hemisphere prior, the p(aOR) < 1 is shown",
+      locations = cells_column_labels(columns = 7)
     )
 
   return(prior_prediction_summary)
 }
 
+results_visual <- function(model, title) {
+  model <- model
+  subtitle <- title
+
+  draws <- model |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    summarize()
+
+  pred <- predictions(model, by = "ich_laterality") |>
+    tibble()
+
+  theme_ich <- function(base_family = "Inter",
+                        base_size = 14) {
+    theme_minimal(base_size = base_size) +
+      theme(
+        text = element_text(lineheight = 2),
+        plot.title = element_text(size = rel(1.3), margin = margin(12, 0, 8, 0)),
+        plot.subtitle = element_text(size = rel(1.1), margin = margin(4, 0, 0, 0)),
+        axis.text.y = element_text(size = rel(0.8)),
+        axis.title.y = element_text(size = 12, margin = margin(0, 4, 0, 0)),
+        axis.text.x = element_text(size = rel(2)),
+        axis.title.x = element_blank(),
+        legend.position = "bottom",
+        legend.justification = 1,
+        panel.grid = element_line(colour = "#F3F4F5"),
+        plot.caption = element_text(size = rel(0.8), margin = margin(8, 0, 0, 0)),
+        plot.margin = margin(0.25, 0.25, 0.25, 0.25, "cm")
+      )
+  }
+
+  p1 <- predictions(model, by = "ich_laterality") |>
+    posterior_draws() |>
+    ggplot(aes(x = draw, fill = ich_laterality)) +
+    geom_density(alpha = .7) +
+    scale_fill_manual(values = c("#054224", "#ff8800")) +
+    scale_x_continuous(labels = scales::percent) +
+    labs(
+      title = "Predicted Probability",
+      fill = "ICH Laterality",
+      y = NULL
+    ) +
+    theme_ich()
+
+  p2 <- avg_comparisons(model, variables = "ich_laterality") |>
+    posterior_draws() |>
+    ggplot(aes(x = draw)) +
+    geom_density(color = "#054224", fill = "#ff8800") +
+    scale_x_continuous(labels = scales::percent) +
+    labs(
+      title = "Average Difference between Left vs. Right Hemisphere",
+      y = NULL
+    ) +
+    geom_vline(
+      xintercept = 0, linetype = "dashed",
+      color = "#999999", linewidth = 1
+    ) +
+    theme_ich()
+
+  p3 <- model |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    ggplot(aes(ich_right_or)) +
+    geom_density(color = "#054224", fill = "#ff8800") +
+    # stat_halfeye(aes(fill_ramp = stat(x > 1), fill = "#E69F00", color = "#422f05")) +
+    scale_x_continuous(breaks = seq(0, 3, 0.25)) +
+    labs(
+      title = "Odds Ratio - Right Hemisphere",
+      y = NULL,
+      fill = NULL
+    ) +
+    geom_vline(
+      xintercept = 1, linetype = "dashed",
+      color = "#999999", linewidth = 1
+    ) +
+    theme_ich() +
+    theme(legend.position = "none")
+
+
+  total <- p1 / p2 / p3
+
+  final <- total +
+    plot_annotation(
+      title = glue(subtitle),
+      theme = theme(plot.title = element_text(size = rel(2), margin = margin(12, 0, 8, 0)))
+    )
+
+  return(final)
+}
+
+
 ```
 
-### Neurosurgical Intervention
+#### Neurosurgical Intervention
 
 ```{r prior predictive check - neurosurgery}
 #| echo: false
 #| warning: false
+#| fig-height: 12
 
 neutral_model <- with_dir(here(), tar_read(m_prior_neutral_neurosurgery))
 left_model <- with_dir(here(), tar_read(m_prior_left_neurosurgery))
@@ -260,10 +358,9 @@ flat_model <- with_dir(here(), tar_read(m_prior_flat_neurosurgery))
 
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
 
-
 ```
 
-### Ventriculostomy
+#### Ventriculostomy
 
 ```{r prior predictive check - evd}
 #| echo: false
@@ -276,52 +373,86 @@ flat_model <- with_dir(here(), tar_read(m_prior_flat_evd))
 
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
 
-predictions(neutral_model, by = "ich_laterality") |>
-  posterior_draws() |>
-  ggplot(aes(x = draw, fill = ich_laterality)) +
-  geom_density(alpha = .3) +
-  scale_fill_manual(values = c("#422f05", "#E69F00")) +
-  scale_x_continuous(labels = scales::percent) +
-  labs(
-    title = "Predicted Probability",
-    fill = "ICH Laterality",
-    y = NULL
-  )
 
-avg_comparisons(neutral_model, variables = "ich_laterality") |>
-  posterior_draws() |>
-  ggplot(aes(x = draw)) +
-  geom_density(color = "#422f05", fill = "#E69F00") +
-  scale_x_continuous(labels = scales::percent) +
-  labs(
-    title = "Average Difference between Left vs. Right Hemisphere",
-    y = NULL
-  ) +
-  geom_vline(
-    xintercept = 0, linetype = "dashed",
-    color = "#999999", linewidth = 1
-  )
+```
 
-neutral_model |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  ggplot(aes(ich_right_or)) +
-  geom_density(color = "#422f05", fill = "#E69F00") +
-  # stat_halfeye(aes(fill_ramp = stat(x > 1), fill = "#E69F00", color = "#422f05")) +
-  scale_x_continuous(breaks = seq(0, 3, 0.25)) +
-  labs(
-    title = "Odds Ratio - Right Hemisphere",
-    y = NULL,
-    fill = NULL
-  ) +
-  geom_vline(
-    xintercept = 1, linetype = "dashed",
-    color = "#999999", linewidth = 1
-  )
+#### Tracheostomy
+
+```{r prior predictive check - tracheostomy}
+#| echo: false
+#| warning: false
+
+neutral_model <- with_dir(here(), tar_read(m_prior_neutral_tracheostomy))
+left_model <- with_dir(here(), tar_read(m_prior_left_tracheostomy))
+right_model <- with_dir(here(), tar_read(m_prior_right_tracheostomy))
+flat_model <- with_dir(here(), tar_read(m_prior_flat_tracheostomy))
+
+f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
 
 
 ```
 
+#### Days of Mechanical Ventilation
+
+```{r prior predictive check - vent}
+#| echo: false
+#| warning: false
+
+neutral_model <- with_dir(here(), tar_read(m_prior_neutral_days_mechanical_ventilation))
+left_model <- with_dir(here(), tar_read(m_prior_left_days_mechanical_ventilation))
+right_model <- with_dir(here(), tar_read(m_prior_right_days_mechanical_ventilation))
+flat_model <- with_dir(here(), tar_read(m_prior_flat_days_mechanical_ventilation))
+
+f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
+
+```
+
+#### Comfort Care
+
+```{r prior predictive check - comfort}
+#| echo: false
+#| warning: false
+
+neutral_model <- with_dir(here(), tar_read(m_prior_neutral_comfort))
+left_model <- with_dir(here(), tar_read(m_prior_left_comfort))
+right_model <- with_dir(here(), tar_read(m_prior_right_comfort))
+flat_model <- with_dir(here(), tar_read(m_prior_flat_comfort))
+
+f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
+```
+
+
+#### Early WLST
+
+```{r prior predictive check - early wlst}
+#| echo: false
+#| warning: false
+
+neutral_model <- with_dir(here(), tar_read(m_prior_neutral_early_wlst))
+left_model <- with_dir(here(), tar_read(m_prior_left_early_wlst))
+right_model <- with_dir(here(), tar_read(m_prior_right_early_wlst))
+flat_model <- with_dir(here(), tar_read(m_prior_flat_early_wlst))
+
+f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
+```
+
+#### DNR
+
+```{r prior predictive check - dnr}
+#| echo: false
+#| warning: false
+
+neutral_model <- with_dir(here(), tar_read(m_prior_neutral_dnr_binary))
+left_model <- with_dir(here(), tar_read(m_prior_left_dnr_binary))
+right_model <- with_dir(here(), tar_read(m_prior_right_dnr_binary))
+flat_model <- with_dir(here(), tar_read(m_prior_flat_dnr_binary))
+
+f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
+```
 
 ## Posterior Simulation Diagnostics
 

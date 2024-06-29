@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|4e9bf76a6d84227c|||||||||||||||
+.Random.seed|object|416c7bd74dd66e7f|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19894.9493194027s|55f706f8f6e4d315|31110|rds|local|vector|||0.007||
 comfort_canonical_visuals|stem|a4fb43967580fe0f|e0fb3e373e95f76b|a32cab511a69989a|662216964||t19894.5677061218s|b042f2db11a3df15|29424135|rds|local|vector|||6.059||
@@ -21,62 +21,62 @@ evd_canonical_diagnostics|stem|525c60990528ab54|3cdff9e9dd982d49|68b6d18ea6c43a0
 evd_canonical_visuals|stem|7d89df8d93b71ec8|f2d54ea7f5c1734e|14ad57e522040068|1359732802||t19894.5673718497s|deada744ee4a64cd|28137903|rds|local|vector|||5.258||
 evd_minimal_diagnostics|stem|cabe4c3b10cf1c53|e17294f478192bdd|3dff69efe4c6ecf8|-1754463944||t19894.5662447848s|6987813e5b127c83|30781294|rds|local|vector|||2.794||
 evd_minimal_visuals|stem|810b79e7df31e063|22c836fae6ede3ee|a8217c8fe710b5d6|-2017772427||t19894.5661202111s|77bc6e75b02cce9c|27339879|rds|local|vector|||1.266||
-f_posterior_comfort_canonical|function|ed85b610f6ac6cd5|||||||||||||||
-f_posterior_comfort_minimal|function|ebe23466dd431e82|||||||||||||||
-f_posterior_dnr_canonical|function|a976e1c9b060d5e8|||||||||||||||
-f_posterior_dnr_minimal|function|5c17ff8f2747b9e9|||||||||||||||
-f_posterior_early_comfort_canonical|function|e8d2a7d2da89eb52|||||||||||||||
-f_posterior_early_comfort_minimal|function|f8565bd54e04a94f|||||||||||||||
-f_posterior_euro_anxiety_180_canonical|function|30cdf27895fd1c3f|||||||||||||||
-f_posterior_euro_anxiety_180_minimal|function|f3a0a3bb669319a6|||||||||||||||
-f_posterior_euro_anxiety_365_canonical|function|27bebe215d282cf2|||||||||||||||
-f_posterior_euro_anxiety_365_minimal|function|0d6e968c13e2481f|||||||||||||||
-f_posterior_euro_anxiety_90_canonical|function|7e6ed4a6f5caa639|||||||||||||||
-f_posterior_euro_anxiety_90_minimal|function|6c83da0e78d9b911|||||||||||||||
-f_posterior_euro_mobility_180_canonical|function|eb8a32cafc4cb870|||||||||||||||
-f_posterior_euro_mobility_180_minimal|function|cc2e59a48d508c93|||||||||||||||
-f_posterior_euro_mobility_365_canonical|function|c74e680b836bfa6b|||||||||||||||
-f_posterior_euro_mobility_365_minimal|function|75cc3be3109abf16|||||||||||||||
-f_posterior_euro_mobility_90_canonical|function|68da17d20eb7b277|||||||||||||||
-f_posterior_euro_mobility_90_minimal|function|1308192b7b7104c7|||||||||||||||
-f_posterior_euro_pain_180_canonical|function|d3f2514fd5835b08|||||||||||||||
-f_posterior_euro_pain_180_minimal|function|31963136249e30ab|||||||||||||||
-f_posterior_euro_pain_365_canonical|function|f533a19d0a9b3f42|||||||||||||||
-f_posterior_euro_pain_365_minimal|function|14930e7a9cbbed46|||||||||||||||
-f_posterior_euro_pain_90_canonical|function|a3b35eaf2ddc621e|||||||||||||||
-f_posterior_euro_pain_90_minimal|function|6764e6f2f549639c|||||||||||||||
-f_posterior_euro_selfcare_180_canonical|function|8c7412195735afd2|||||||||||||||
-f_posterior_euro_selfcare_180_minimal|function|69e5ac27a82b709a|||||||||||||||
-f_posterior_euro_selfcare_365_canonical|function|b882345500e639c7|||||||||||||||
-f_posterior_euro_selfcare_365_minimal|function|e247e392ca41f4fb|||||||||||||||
-f_posterior_euro_selfcare_90_canonical|function|22886e6510ce79c1|||||||||||||||
-f_posterior_euro_selfcare_90_minimal|function|f9dffec1d95d653a|||||||||||||||
-f_posterior_euro_usual_180_canonical|function|71b1c0d86546fd43|||||||||||||||
-f_posterior_euro_usual_180_minimal|function|79df15251dc8e5e1|||||||||||||||
-f_posterior_euro_usual_365_canonical|function|7a2581f23b950c22|||||||||||||||
-f_posterior_euro_usual_365_minimal|function|5e9c2e97587e5854|||||||||||||||
-f_posterior_euro_usual_90_canonical|function|1bbbf8daa8df2c70|||||||||||||||
-f_posterior_euro_usual_90_minimal|function|41cf6f6cdf0d5eb4|||||||||||||||
-f_posterior_euro_vas_180_canonical|function|0d69f7f4bf254011|||||||||||||||
-f_posterior_euro_vas_180_minimal|function|1aa6d86d3c353d88|||||||||||||||
-f_posterior_euro_vas_365_canonical|function|0d69f7f4bf254011|||||||||||||||
-f_posterior_euro_vas_365_minimal|function|1aa6d86d3c353d88|||||||||||||||
-f_posterior_euro_vas_90_canonical|function|1aa96d5816e7b706|||||||||||||||
-f_posterior_euro_vas_90_minimal|function|d3a4e6ffdae30a3c|||||||||||||||
-f_posterior_evd_canonical|function|7063d26e6eecbdbd|||||||||||||||
-f_posterior_evd_minimal|function|5c146bad25909d82|||||||||||||||
-f_posterior_mrs_180_canonical|function|8afea418b159bce1|||||||||||||||
-f_posterior_mrs_180_minimal|function|1cb6b2e9b66fad0e|||||||||||||||
-f_posterior_mrs_365_canonical|function|fb222b8b342bfa40|||||||||||||||
-f_posterior_mrs_365_minimal|function|83817d38b043325f|||||||||||||||
-f_posterior_mrs_90_canonical|function|6e0199a72f2fa64b|||||||||||||||
-f_posterior_mrs_90_minimal|function|1ff0a7c90d59e489|||||||||||||||
-f_posterior_neurosurgery_canonical|function|c675e7ad45e28ce2|||||||||||||||
-f_posterior_neurosurgery_minimal|function|65fd6acce1014f0b|||||||||||||||
-f_posterior_trach_canonical|function|7e1870da92b90ee0|||||||||||||||
-f_posterior_trach_minimal|function|e55d1c6f63ba5abc|||||||||||||||
-f_posterior_vent_canonical|function|609da182f3b2405d|||||||||||||||
-f_posterior_vent_minimal|function|89ff52a5e8f68718|||||||||||||||
+f_posterior_comfort_canonical|function|aaea3d97ffef3b0b|||||||||||||||
+f_posterior_comfort_minimal|function|1c0de68c71877a1a|||||||||||||||
+f_posterior_dnr_canonical|function|70337caf12ecb1ac|||||||||||||||
+f_posterior_dnr_minimal|function|d85c89b4f0beea62|||||||||||||||
+f_posterior_early_comfort_canonical|function|93b8a0c38aad37e0|||||||||||||||
+f_posterior_early_comfort_minimal|function|7e6b76aa0c4041db|||||||||||||||
+f_posterior_euro_anxiety_180_canonical|function|c5949191877a1d0c|||||||||||||||
+f_posterior_euro_anxiety_180_minimal|function|c1e86fea48c51d9f|||||||||||||||
+f_posterior_euro_anxiety_365_canonical|function|310614c58df7c59d|||||||||||||||
+f_posterior_euro_anxiety_365_minimal|function|5f2c9aef9d5afe07|||||||||||||||
+f_posterior_euro_anxiety_90_canonical|function|e8cb4366aece884a|||||||||||||||
+f_posterior_euro_anxiety_90_minimal|function|bdd6aadee75c9fc3|||||||||||||||
+f_posterior_euro_mobility_180_canonical|function|11d8c64bfe4effb7|||||||||||||||
+f_posterior_euro_mobility_180_minimal|function|25d201492691cebe|||||||||||||||
+f_posterior_euro_mobility_365_canonical|function|8b6abe109c5d9116|||||||||||||||
+f_posterior_euro_mobility_365_minimal|function|282470b70581dfde|||||||||||||||
+f_posterior_euro_mobility_90_canonical|function|3ca2b8d184fde651|||||||||||||||
+f_posterior_euro_mobility_90_minimal|function|446cb000252fef27|||||||||||||||
+f_posterior_euro_pain_180_canonical|function|f1fe12321ba5c65c|||||||||||||||
+f_posterior_euro_pain_180_minimal|function|36e96093b932f1f3|||||||||||||||
+f_posterior_euro_pain_365_canonical|function|9a86538b88b54ec2|||||||||||||||
+f_posterior_euro_pain_365_minimal|function|5c585ca3d3a5b8a0|||||||||||||||
+f_posterior_euro_pain_90_canonical|function|0abcbe7c4e7d2d91|||||||||||||||
+f_posterior_euro_pain_90_minimal|function|b9a4dfdd678ec720|||||||||||||||
+f_posterior_euro_selfcare_180_canonical|function|c3143b743008fab5|||||||||||||||
+f_posterior_euro_selfcare_180_minimal|function|3359de39bd7b8a35|||||||||||||||
+f_posterior_euro_selfcare_365_canonical|function|333c578e2461b796|||||||||||||||
+f_posterior_euro_selfcare_365_minimal|function|42283847618d6bdd|||||||||||||||
+f_posterior_euro_selfcare_90_canonical|function|d5e04e42adcb0d99|||||||||||||||
+f_posterior_euro_selfcare_90_minimal|function|01d5cd45b49f6dad|||||||||||||||
+f_posterior_euro_usual_180_canonical|function|1965132a76361356|||||||||||||||
+f_posterior_euro_usual_180_minimal|function|06faf568dc1ff817|||||||||||||||
+f_posterior_euro_usual_365_canonical|function|183790cbc3c76dcc|||||||||||||||
+f_posterior_euro_usual_365_minimal|function|7b7c3b0532b28139|||||||||||||||
+f_posterior_euro_usual_90_canonical|function|54aad446db39898b|||||||||||||||
+f_posterior_euro_usual_90_minimal|function|fc9cf86e9e90c5d0|||||||||||||||
+f_posterior_euro_vas_180_canonical|function|f6402a098ca6141d|||||||||||||||
+f_posterior_euro_vas_180_minimal|function|60fa4f5f9086e3a7|||||||||||||||
+f_posterior_euro_vas_365_canonical|function|f6402a098ca6141d|||||||||||||||
+f_posterior_euro_vas_365_minimal|function|60fa4f5f9086e3a7|||||||||||||||
+f_posterior_euro_vas_90_canonical|function|dfc5fdd84037c5ce|||||||||||||||
+f_posterior_euro_vas_90_minimal|function|a0b4f6c4d50d001b|||||||||||||||
+f_posterior_evd_canonical|function|c63ad133ff5eb994|||||||||||||||
+f_posterior_evd_minimal|function|4f80ec6e9e3e7885|||||||||||||||
+f_posterior_mrs_180_canonical|function|e145ff5105a48926|||||||||||||||
+f_posterior_mrs_180_minimal|function|8b750d101fa9b3c1|||||||||||||||
+f_posterior_mrs_365_canonical|function|7d048a25e2a6d013|||||||||||||||
+f_posterior_mrs_365_minimal|function|44fa96532e4909a1|||||||||||||||
+f_posterior_mrs_90_canonical|function|4fcbb23bc96a32f0|||||||||||||||
+f_posterior_mrs_90_minimal|function|7e77dcc31e73c3f0|||||||||||||||
+f_posterior_neurosurgery_canonical|function|f2227cd5f1e70952|||||||||||||||
+f_posterior_neurosurgery_minimal|function|1ccf0d13fd729261|||||||||||||||
+f_posterior_trach_canonical|function|b41c0dd69e947fd1|||||||||||||||
+f_posterior_trach_minimal|function|7b33652b3003c625|||||||||||||||
+f_posterior_vent_canonical|function|09cb2410de985321|||||||||||||||
+f_posterior_vent_minimal|function|d0218437871129dc|||||||||||||||
 f_prior_comfort_canonical|function|9c2918f3e8501b68|||||||||||||||
 f_prior_comfort_minimal|function|067e24f8e4979635|||||||||||||||
 f_prior_default_neurosurgery|function|f46a91aa09de6163|||||||||||||||
@@ -84,82 +84,82 @@ f_prior_dnr_canonical|function|91bedd4907550791|||||||||||||||
 f_prior_dnr_minimal|function|622c40d3ff0693a2|||||||||||||||
 f_prior_early_comfort_canonical|function|a7002d601741f8e9|||||||||||||||
 f_prior_early_comfort_minimal|function|26c8df2c2fba65f8|||||||||||||||
-f_prior_euro_anxiety_180_canonical|function|098c7db9f010e54e|||||||||||||||
-f_prior_euro_anxiety_180_minimal|function|d80ee45932b3215e|||||||||||||||
-f_prior_euro_anxiety_365_canonical|function|1f15bf0d293a983d|||||||||||||||
-f_prior_euro_anxiety_365_minimal|function|13c45da79e5c0578|||||||||||||||
-f_prior_euro_anxiety_90_canonical|function|ca5e8417506bd69e|||||||||||||||
-f_prior_euro_anxiety_90_minimal|function|a5b4d3648ae83344|||||||||||||||
-f_prior_euro_mobility_180_canonical|function|605e007bb783b3ee|||||||||||||||
-f_prior_euro_mobility_180_minimal|function|92d0d6d4bb1fc48c|||||||||||||||
-f_prior_euro_mobility_365_canonical|function|2023f0a92ce81543|||||||||||||||
-f_prior_euro_mobility_365_minimal|function|4b238ee04ed381bb|||||||||||||||
-f_prior_euro_mobility_90_canonical|function|0c63900a93d099ea|||||||||||||||
-f_prior_euro_mobility_90_minimal|function|f634711c0af20844|||||||||||||||
-f_prior_euro_pain_180_canonical|function|d09721337abebf44|||||||||||||||
-f_prior_euro_pain_180_minimal|function|5ab22755f62f7c42|||||||||||||||
-f_prior_euro_pain_365_canonical|function|42f38f7bac224e30|||||||||||||||
-f_prior_euro_pain_365_minimal|function|258e7cc4f51ac768|||||||||||||||
-f_prior_euro_pain_90_canonical|function|12603fad5ebcbd46|||||||||||||||
-f_prior_euro_pain_90_minimal|function|26400d645bb43817|||||||||||||||
-f_prior_euro_selfcare_180_canonical|function|ed6f101affda977b|||||||||||||||
-f_prior_euro_selfcare_180_minimal|function|3e9895982563f153|||||||||||||||
-f_prior_euro_selfcare_365_canonical|function|23d491e8fcde9a02|||||||||||||||
-f_prior_euro_selfcare_365_minimal|function|153177bef4b645e0|||||||||||||||
-f_prior_euro_selfcare_90_canonical|function|8e81dbdae20db119|||||||||||||||
-f_prior_euro_selfcare_90_minimal|function|40e357549a858b6d|||||||||||||||
-f_prior_euro_usual_180_canonical|function|b56808ce1cdd0dd1|||||||||||||||
-f_prior_euro_usual_180_minimal|function|41f664ad44d245ad|||||||||||||||
-f_prior_euro_usual_365_canonical|function|a1c35a0e29b0d3e7|||||||||||||||
-f_prior_euro_usual_365_minimal|function|b3c47ffda6512c0a|||||||||||||||
-f_prior_euro_usual_90_canonical|function|c5553c450e22c6af|||||||||||||||
-f_prior_euro_usual_90_minimal|function|57fc39a400e134ea|||||||||||||||
-f_prior_euro_vas_180_canonical|function|efa88eede8d04f2c|||||||||||||||
-f_prior_euro_vas_180_minimal|function|c6895a79b417eeab|||||||||||||||
-f_prior_euro_vas_365_canonical|function|efa88eede8d04f2c|||||||||||||||
-f_prior_euro_vas_365_minimal|function|c6895a79b417eeab|||||||||||||||
-f_prior_euro_vas_90_canonical|function|2fefaec0c7705159|||||||||||||||
-f_prior_euro_vas_90_minimal|function|53bc54eaed396883|||||||||||||||
+f_prior_euro_anxiety_180_canonical|function|8a9642cd504b8154|||||||||||||||
+f_prior_euro_anxiety_180_minimal|function|a368b3156657a2b3|||||||||||||||
+f_prior_euro_anxiety_365_canonical|function|cfad5caf736595b3|||||||||||||||
+f_prior_euro_anxiety_365_minimal|function|2ab374627c12ec3c|||||||||||||||
+f_prior_euro_anxiety_90_canonical|function|2d35459072f78e23|||||||||||||||
+f_prior_euro_anxiety_90_minimal|function|107d6c10dc6b5d2f|||||||||||||||
+f_prior_euro_mobility_180_canonical|function|9bc5b2bcdc97f88c|||||||||||||||
+f_prior_euro_mobility_180_minimal|function|ff3c941997325a00|||||||||||||||
+f_prior_euro_mobility_365_canonical|function|97480c2ab690f59c|||||||||||||||
+f_prior_euro_mobility_365_minimal|function|0478482f5d4d8ea1|||||||||||||||
+f_prior_euro_mobility_90_canonical|function|904c6fd92ab02e86|||||||||||||||
+f_prior_euro_mobility_90_minimal|function|6cb4ed4c4e450b9b|||||||||||||||
+f_prior_euro_pain_180_canonical|function|768fc83ef7432abd|||||||||||||||
+f_prior_euro_pain_180_minimal|function|7d20560fc54c71df|||||||||||||||
+f_prior_euro_pain_365_canonical|function|4f665f9de8f2c547|||||||||||||||
+f_prior_euro_pain_365_minimal|function|9342f6d458a82c6c|||||||||||||||
+f_prior_euro_pain_90_canonical|function|193c69acb7fe7ba7|||||||||||||||
+f_prior_euro_pain_90_minimal|function|0578ff6e86b8af32|||||||||||||||
+f_prior_euro_selfcare_180_canonical|function|a380e9bcadfc5145|||||||||||||||
+f_prior_euro_selfcare_180_minimal|function|5be4d831b778eb9a|||||||||||||||
+f_prior_euro_selfcare_365_canonical|function|4bb059bf2b029150|||||||||||||||
+f_prior_euro_selfcare_365_minimal|function|5ad8fd49f191203b|||||||||||||||
+f_prior_euro_selfcare_90_canonical|function|b73d27f606b8393c|||||||||||||||
+f_prior_euro_selfcare_90_minimal|function|4d0d71762893996b|||||||||||||||
+f_prior_euro_usual_180_canonical|function|6b09e2a16075c917|||||||||||||||
+f_prior_euro_usual_180_minimal|function|e4dc2a954d944763|||||||||||||||
+f_prior_euro_usual_365_canonical|function|eed30a734ee941c5|||||||||||||||
+f_prior_euro_usual_365_minimal|function|533be724dcfcbea4|||||||||||||||
+f_prior_euro_usual_90_canonical|function|362065c5a9a2bd7e|||||||||||||||
+f_prior_euro_usual_90_minimal|function|eecd8933151b671b|||||||||||||||
+f_prior_euro_vas_180_canonical|function|9ba42c2b14a9a103|||||||||||||||
+f_prior_euro_vas_180_minimal|function|dcfce3b69140c91c|||||||||||||||
+f_prior_euro_vas_365_canonical|function|9ba42c2b14a9a103|||||||||||||||
+f_prior_euro_vas_365_minimal|function|dcfce3b69140c91c|||||||||||||||
+f_prior_euro_vas_90_canonical|function|9a24b636728b8e2e|||||||||||||||
+f_prior_euro_vas_90_minimal|function|75553a86ab662d76|||||||||||||||
 f_prior_evd_canonical|function|beef56d617b5edf0|||||||||||||||
 f_prior_evd_minimal|function|609419dd9f5105c5|||||||||||||||
-f_prior_flat_comfort|function|bd99eddd1ee3ba51|||||||||||||||
-f_prior_flat_days_mechanical_ventilation|function|b09bc9c50993bb0f|||||||||||||||
-f_prior_flat_dnr_binary|function|214aaaff8de88d99|||||||||||||||
-f_prior_flat_early_wlst|function|b34329e3dcf8e0e5|||||||||||||||
-f_prior_flat_evd|function|47bf7239b4e6e653|||||||||||||||
-f_prior_flat_neurosurgery|function|7a1d0c9033a74ab2|||||||||||||||
-f_prior_flat_tracheostomy|function|921e308aa6a25808|||||||||||||||
+f_prior_flat_comfort|function|9afbf6330dbf043e|||||||||||||||
+f_prior_flat_days_mechanical_ventilation|function|3ac1ee1ca560cf0e|||||||||||||||
+f_prior_flat_dnr_binary|function|efc95871b8be44a4|||||||||||||||
+f_prior_flat_early_wlst|function|de4b42a8be3bc1fe|||||||||||||||
+f_prior_flat_evd|function|c6b548bd46c1e5c9|||||||||||||||
+f_prior_flat_neurosurgery|function|ee73b5a79f76612c|||||||||||||||
+f_prior_flat_tracheostomy|function|6a0336ef4fdbde38|||||||||||||||
 f_prior_informative_neurosurgery|function|f46a91aa09de6163|||||||||||||||
-f_prior_left_comfort|function|b72bfd8b7882b6f9|||||||||||||||
-f_prior_left_days_mechanical_ventilation|function|aade32e3f6e7d0eb|||||||||||||||
-f_prior_left_dnr_binary|function|3a696d7269516a21|||||||||||||||
-f_prior_left_early_wlst|function|4b52e7daf6601102|||||||||||||||
-f_prior_left_evd|function|09dada48ba8eddf9|||||||||||||||
-f_prior_left_neurosurgery|function|4d767c30b47b4942|||||||||||||||
-f_prior_left_tracheostomy|function|4b7a4eb32dceaa19|||||||||||||||
-f_prior_mrs_180_canonical|function|c6b9529c3402aff3|||||||||||||||
-f_prior_mrs_180_minimal|function|410a084f9e2539b4|||||||||||||||
-f_prior_mrs_365_canonical|function|4cec07ac1862d003|||||||||||||||
-f_prior_mrs_365_minimal|function|ee9f1af916de3e1e|||||||||||||||
-f_prior_mrs_90_canonical|function|1851640335caf262|||||||||||||||
-f_prior_mrs_90_minimal|function|de190fac85ea938d|||||||||||||||
+f_prior_left_comfort|function|5b4bc8e6ad773ca6|||||||||||||||
+f_prior_left_days_mechanical_ventilation|function|a4cd3d86e3c0bb2e|||||||||||||||
+f_prior_left_dnr_binary|function|f9b770e59c190b40|||||||||||||||
+f_prior_left_early_wlst|function|a9c783677a6b4eaa|||||||||||||||
+f_prior_left_evd|function|de6bc0770565e330|||||||||||||||
+f_prior_left_neurosurgery|function|282acb19b10f3f5d|||||||||||||||
+f_prior_left_tracheostomy|function|4a2b6a9e14008a15|||||||||||||||
+f_prior_mrs_180_canonical|function|7996f82bac8a29ef|||||||||||||||
+f_prior_mrs_180_minimal|function|807a074ee3895b08|||||||||||||||
+f_prior_mrs_365_canonical|function|858e769a3b977c68|||||||||||||||
+f_prior_mrs_365_minimal|function|37c88516fd0b92ae|||||||||||||||
+f_prior_mrs_90_canonical|function|05d16a0a95cecbbc|||||||||||||||
+f_prior_mrs_90_minimal|function|901f1787c1c06b3e|||||||||||||||
 f_prior_neurosurgery|function|236446dddaa8e5df|||||||||||||||
 f_prior_neurosurgery_canonical|function|214654bd320e396e|||||||||||||||
 f_prior_neurosurgery_minimal|function|d05b64682d753d08|||||||||||||||
-f_prior_neutral_comfort|function|5002dc7ae982d0dc|||||||||||||||
-f_prior_neutral_days_mechanical_ventilation|function|30a86fdcc960b46e|||||||||||||||
-f_prior_neutral_dnr_binary|function|839a89385e27d77f|||||||||||||||
-f_prior_neutral_early_wlst|function|cee294c18f27dafb|||||||||||||||
-f_prior_neutral_evd|function|a97fe1207c699812|||||||||||||||
-f_prior_neutral_neurosurgery|function|fbae7d5090a7154e|||||||||||||||
-f_prior_neutral_tracheostomy|function|17001c1674f94fd3|||||||||||||||
-f_prior_right_comfort|function|72e05e0a22bd3306|||||||||||||||
-f_prior_right_days_mechanical_ventilation|function|21973c68db1b64c6|||||||||||||||
-f_prior_right_dnr_binary|function|349f0f8d3b540fa1|||||||||||||||
-f_prior_right_early_wlst|function|b49d9c124de5fa23|||||||||||||||
-f_prior_right_evd|function|597164909f5f9970|||||||||||||||
-f_prior_right_neurosurgery|function|774c8f14c524a311|||||||||||||||
-f_prior_right_tracheostomy|function|79e1ad6a8bdfde60|||||||||||||||
+f_prior_neutral_comfort|function|fbdf44f86aa754e6|||||||||||||||
+f_prior_neutral_days_mechanical_ventilation|function|26e2ebc548767804|||||||||||||||
+f_prior_neutral_dnr_binary|function|d68420c741326ff3|||||||||||||||
+f_prior_neutral_early_wlst|function|89f3068ed6571cda|||||||||||||||
+f_prior_neutral_evd|function|115eda5ab1e93286|||||||||||||||
+f_prior_neutral_neurosurgery|function|aad3cdf61ad022b1|||||||||||||||
+f_prior_neutral_tracheostomy|function|117eb1d7e2b37c81|||||||||||||||
+f_prior_right_comfort|function|7753a45dc98d340c|||||||||||||||
+f_prior_right_days_mechanical_ventilation|function|24526504ca01e797|||||||||||||||
+f_prior_right_dnr_binary|function|e9ef1a3b7582b112|||||||||||||||
+f_prior_right_early_wlst|function|4957020e341ef40d|||||||||||||||
+f_prior_right_evd|function|fb5479dac241b95b|||||||||||||||
+f_prior_right_neurosurgery|function|20a0a85a357fbba3|||||||||||||||
+f_prior_right_tracheostomy|function|b918515e6b46a8f9|||||||||||||||
 f_prior_trach_canonical|function|1705e68f1bba860c|||||||||||||||
 f_prior_trach_minimal|function|034f7978cbe5c216|||||||||||||||
 f_prior_vent_canonical|function|ecdb12786a40bfaa|||||||||||||||
@@ -286,7 +286,7 @@ m_prior_euro_usual_90_minimal|stem|9431ab793f361ca3|dd82be0172ac2f92|0e23ffc3576
 m_prior_evd_canonical|stem|b405a0ce1d9dec1b|6d9fcc78204c5cf3|9c061395581ae307|1718623535||t19899.5723766807s|87c2e2eff1d17740|25905285|rds|local|vector|||75.091|Rows containing NAs were excluded from the model.|
 m_prior_evd_minimal|stem|6e49c7869df1ccf1|bf0fa1bb507ae08a|acdd0963c5d6f480|-107865603||t19899.5761034675s|d77fd378992c1866|25285986|rds|local|vector|||75.281||
 m_prior_flat_comfort|stem|2b82a3dd05d4e0fe|52d8da4966554131|f818698167d375f7|1488954437||t19901.5852731341s|33463851eedb37ab|981630|rds|local|vector|||16.982|Rows containing NAs were excluded from the model.|
-m_prior_flat_days_mechanical_ventilation|stem|2152f63445190b35|d7585a7b9dbe83e9|3d148681bd0f1fbd|506497317||t19901.5839747613s|4e4d4e51624c077d|2402145|rds|local|vector|||18.18|Rows containing NAs were excluded from the model.|
+m_prior_flat_days_mechanical_ventilation|stem|7805116608077d85|d7585a7b9dbe83e9|be2afbb405035b74|506497317||t19902.8313759538s|b91c1a89d54ce930|2297992|rds|local|vector|||14.208|Rows containing NAs were excluded from the model.|
 m_prior_flat_dnr_binary|stem|5a5884e355b0c789|9cde1c1f5bb11119|ca68cf7e5717006d|1940603500||t19901.5880387861s|da057f83cdc6c3e9|981776|rds|local|vector|||17.02|Rows containing NAs were excluded from the model.|
 m_prior_flat_early_wlst|stem|7f69e09a782a5189|b1ef5516af6081cd|38ba9d85a743b898|-1638765651||t19901.5867896783s|12512d0950122458|981242|rds|local|vector|||17.079|Rows containing NAs were excluded from the model.|
 m_prior_flat_evd|stem|52a78b5b28037a7a|a294dbd450d23a89|4360657bf5ccb8d7|-185387550||t19901.5811720794s|041087b4ddf7efd4|981930|rds|local|vector|||16.824|Rows containing NAs were excluded from the model.|
@@ -294,7 +294,7 @@ m_prior_flat_neurosurgery|stem|d3267ec93145f6b8|84371820683e2829|bcc1d97f54f402a
 m_prior_flat_tracheostomy|stem|5d07739a9d8b1d33|6f1b3956c8602159|7731dcb3a1c6c0e2|355994996||t19901.5824858815s|b61a678c0151f805|981056|rds|local|vector|||16.816|Rows containing NAs were excluded from the model.|
 m_prior_informative_neurosurgery|stem|21b548b419f1721b|da1da3f7c1b1b597|be70db62088595f8|-1901668035||t19899.7872512248s|e4c0ea4d4eded086|1025245|rds|local|vector|||17.378|Rows containing NAs were excluded from the model.|
 m_prior_left_comfort|stem|7f6473102a5f025d|660f71afdd2a94ec|a2c7e9fd3fa71686|-1524145444||t19901.5846148427s|4efba94696d046fb|1082713|rds|local|vector|||17.01|Rows containing NAs were excluded from the model.|
-m_prior_left_days_mechanical_ventilation|stem|1065fef3671b9265|67fa41a8e347223c|630ea16b3d58186f|-1906546705||t19901.5832477979s|35bb84598107a0e4|2463567|rds|local|vector|||18.829|Rows containing NAs were excluded from the model.|
+m_prior_left_days_mechanical_ventilation|stem|eaf010181c8dd4a6|67fa41a8e347223c|54aa64c9cf58d9aa|-1906546705||t19902.8307912734s|6231f1718d51f1f2|2363809|rds|local|vector|||14.375|Rows containing NAs were excluded from the model.|
 m_prior_left_dnr_binary|stem|6b698437452c778b|9f636ff2f55210f2|d92b5adbd4e16409|-108442655||t19901.5874260955s|850f6fdf80e9b792|1082740|rds|local|vector|||16.947|Rows containing NAs were excluded from the model.|
 m_prior_left_early_wlst|stem|fba1f768640e95d3|b62d101b7067be94|0fee834006b1d1aa|-2012415308||t19901.5859112099s|4d653d15dded1ba7|1082244|rds|local|vector|||16.926|Rows containing NAs were excluded from the model.|
 m_prior_left_evd|stem|b0f1e5e647f65977|ba23c2f5914bc879|fbc7592100120465|1539631526||t19901.5805108194s|b90db7f52e214bc2|1082926|rds|local|vector|||16.972|Rows containing NAs were excluded from the model.|
@@ -312,31 +312,31 @@ m_prior_neurosurgery_default|stem|260df3b7faf5420c|331b27f099c3a4be|6832aeb394e2
 m_prior_neurosurgery_informative|stem||668016f70fcd5b63|080d0dc8582e622f|-1908244161||t19899.7823841025s||0|rds|local|vector|||0.005||could not find function f_prior_neurosurgery_informative
 m_prior_neurosurgery_minimal|stem|9e26bf3c40741503|6ed1bbbe5d2aeefd|f4c920a08a6e4575|497813916||t19899.5593156345s|07e0ec63a0c5be4e|24193282|rds|local|vector|||76.328||
 m_prior_neutral_comfort|stem|f6b2f040f11903e4|3aa10bad2ede0fc7|0ad39487941dc11f|1219519798||t19901.5842829386s|38d5c4be7455c332|1074623|rds|local|vector|||16.823|Rows containing NAs were excluded from the model.|
-m_prior_neutral_days_mechanical_ventilation|stem|5691ed08fd054583|be37b7865ef91154|0c43299d32f76f67|-485270020||t19901.5827962961s|50ea17d20e0b667d|2599771|rds|local|vector|||18.07|Rows containing NAs were excluded from the model.|
+m_prior_neutral_days_mechanical_ventilation|stem|4eadef399c39d87c|be37b7865ef91154|485b4b378d433891|-485270020||t19902.8304485283s|7a4c9c7d89edf3d5|2514907|rds|local|vector|||13.901|Rows containing NAs were excluded from the model.|
 m_prior_neutral_dnr_binary|stem|99c4d02dd8742323|6898b55a1cfa9236|45a31339cdbc93a9|-1327135314||t19901.58709612s|189b4b00e40cbad1|1074700|rds|local|vector|||17.06|Rows containing NAs were excluded from the model.|
 m_prior_neutral_early_wlst|stem|b34edd6454f7020f|39adafa94f980acc|d882f69d584eb578|1241766550||t19901.5855666127s|9b2c3f2726bacd94|1074154|rds|local|vector|||16.894|Rows containing NAs were excluded from the model.|
-m_prior_neutral_evd|stem|bb46a046409a631f|c38a2e602d495428|628a2ea39cc12e6c|-1948767316||t19902.5406414096s|5a0fc982143c2167|897816|rds|local|vector|||13.036|Rows containing NAs were excluded from the model.|
-m_prior_neutral_neurosurgery|stem|641f1ad00982f4c3|56dd4cc9861e8d4d|5ab55edacc38ae46|-525754257||t19900.6751332067s|4f412e53738afb34|1074526|rds|local|vector|||16.927|Rows containing NAs were excluded from the model.|
-m_prior_neutral_tracheostomy|stem|3440df6aad00c18f|3075b88b26b3d65a|807957082cacaa17|-2046460357||t19901.5814745076s|a39403cb644aec7b|1073929|rds|local|vector|||16.916|Rows containing NAs were excluded from the model.|
+m_prior_neutral_evd|stem|a83590988b2c2955|c38a2e602d495428|68dfa558dbef0cbf|-1948767316||t19902.841912914s|5bdb8f5bd6c2aa6a|896151|rds|local|vector|||12.711|Rows containing NAs were excluded from the model.|
+m_prior_neutral_neurosurgery|stem|d63299509b5f4dce|56dd4cc9861e8d4d|091ea37f7d3a7a69|-525754257||t19902.8176476464s|c63d1aa767ed3725|1065380|rds|local|vector|||21.442|Rows containing NAs were excluded from the model.|
+m_prior_neutral_tracheostomy|stem|dd2873429664421c|3075b88b26b3d65a|612de19f8aff191b|-2046460357||t19902.8475595699s|aa7bb8cff9025fe8|1070631|rds|local|vector|||16.838|Rows containing NAs were excluded from the model.|
 m_prior_right_comfort|stem|9ca4ad2fac1cd144|6499dc46b74064a4|da0a1d27260068b3|-1121319276||t19901.5849638378s|1074ad94c3a3d436|1086342|rds|local|vector|||16.975|Rows containing NAs were excluded from the model.|
-m_prior_right_days_mechanical_ventilation|stem|33bf59d0b0af365f|46bc955493a8790f|b23aba711d2609ca|127127265||t19901.5836277339s|50966a7364eead52|2609783|rds|local|vector|||18.383|Rows containing NAs were excluded from the model.|
+m_prior_right_days_mechanical_ventilation|stem|10be6156400fc53c|46bc955493a8790f|49d2fd02186508c9|127127265||t19902.8310710943s|2f9f1c7106a437b6|2511434|rds|local|vector|||14.263|Rows containing NAs were excluded from the model.|
 m_prior_right_dnr_binary|stem|38fa7dc52f175d00|1674428708f6f632|89d7848f4236c190|-1159684261||t19901.5877350064s|a169b5bba15eccc3|1086394|rds|local|vector|||16.975|Rows containing NAs were excluded from the model.|
 m_prior_right_early_wlst|stem|5f212decb312321e|e592dba4b27fa26f|71e890490a7778a8|-96667772||t19901.5862171884s|0a159d4f0cce9a13|1085785|rds|local|vector|||16.91|Rows containing NAs were excluded from the model.|
 m_prior_right_evd|stem|78ac624f22d22c02|5bfbdc03e6c15be3|32921c4d6fa12184|-144028618||t19901.5808052228s|63a8ec53f0a4022d|1086498|rds|local|vector|||17.059|Rows containing NAs were excluded from the model.|
-m_prior_right_neurosurgery|stem|6e86e9c87d1810a2|ea2f7ddd867daa6d|b5859f551de48c1e|1203027695||t19901.5153895776s|5a0c70b64323ded1|1086115|rds|local|vector|||20.977|Rows containing NAs were excluded from the model.|
+m_prior_right_neurosurgery|stem|6e86e9c87d1810a2|ea2f7ddd867daa6d|a118168df9d698c0|1203027695||t19901.5153895776s||1086115|rds|local|vector|||0.044||Data must be specified using the data argument.
 m_prior_right_tracheostomy|stem|ece30e7d7475acac|786a372d6932d493|64f74ed6814ed81f|1575650651||t19901.5821407064s|8e538664f5d892d8|1085579|rds|local|vector|||16.898|Rows containing NAs were excluded from the model.|
 m_prior_trach_canonical|stem|7e1d66a1d285f529|f94ba58d3adbd86b|72e59631b738630d|-993513890||t19899.5780106898s|1af7bc1c55701ee9|26262512|rds|local|vector|||76.486|Rows containing NAs were excluded from the model.|
 m_prior_trach_minimal|stem|4055871c742ed5e6|479b34e74f33cbbf|35f837b3590e049f|-340765268||t19899.5648222278s|f83eb85e01914a75|24553448|rds|local|vector|||74.261||
 m_prior_vent_canonical|stem|e9766fa9d2254134|65923b65d2e7f3cd|89d712cfc9df7db2|1382909142||t19899.5714479496s|81781e8fb29e522f|32360750|rds|local|vector|||78.683|Rows containing NAs were excluded from the model.. There were 4 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_vent_minimal|stem|8a7458351b2d93b7|a35fb8d5b4ada18c|acf831a71a7a0ca4|195812241||t19899.5789666705s|135f44f5c484cee0|32130835|rds|local|vector|||77.632|Rows containing NAs were excluded from the model.. There were 7 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
-model_setup|function|37e6496cd4573235|||||||||||||||
+model_setup|function|6deba0c493d3202e|||||||||||||||
 neurosugery_canonical_diagnostics|stem|84fd7224ab029534|90a4a3f9739100fd|1c3207e4a4ff6564|-1246627164||t19894.5679005348s|7253ea01ae2a5008|32334520|rds|local|vector|||1.94||
 neurosugery_minimal_diagnostics|stem|baa18dd903fa8593|ced01af576ed104b|427b079fc69c8d11|154228766||t19894.5688833599s|6dc4bfcf5ff5142b|30258521|rds|local|vector|||2.006||
 neurosurgery_canonical_visuals|stem|8aa0d3c2257ae029|c99e1efb00c6c7b8|acec8cbcc9751d3a|526014170||t19894.5678114498s|2dafc272f716f85b|28151112|rds|local|vector|||5.214||
 neurosurgery_minimal_visuals|stem|80cfcac0df1b7284|172adc89ce1769b1|b661ffd2bee906e6|1064045853||t19894.5689454373s|a50f78f5e47e7641|27892739|rds|local|vector|||0.771||
 outcomes_dag_function|function|6e154598f5ab410a|||||||||||||||
 posterior_diagnostics|function|35a8ac4d3fa32822|||||||||||||||
-results_visual|function|60bfc24e70594483|||||||||||||||
+results_visual|function|6a3fd2a5dc74c12d|||||||||||||||
 select_variables|function|51eaa047f9ead67f|||||||||||||||
 selected_data|stem|0f476d661b9297b1|44280be3ad15831f|c743c3864cfa3125|-1052555108||t19894.9367709411s|6c0061a438cae8f9|158412|rds|local|vector|||0.018||
 settings|stem|4783b37f00b6477d|0d725b29fc99973a|32d06ab6a460c526|-416401554||t19901.5131133585s|4fb7122a4503ae71|200|rds|local|vector|||0||
