@@ -43,7 +43,7 @@ library(bayesplot)
 library(ggdist)
 library(patchwork)
 library(tinytable)
-library(flextable)
+library(glue)
 
 # plot stuff
 theme_ich <- function(base_family = "Figtree",
@@ -54,12 +54,13 @@ theme_ich <- function(base_family = "Figtree",
       plot.title = element_text(size = rel(1.3), margin = margin(12, 0, 8, 0)),
       plot.subtitle = element_text(size = rel(1.1), margin = margin(4, 0, 0, 0)),
       axis.text.y = element_text(size = rel(0.8)),
-      axis.title.y = element_text(size = 12, margin = margin(0, 4, 0, 0)),
-      axis.text.x = element_text(size = rel(2)),
+      axis.title.y = element_text(size = rel(0.5), margin = margin(0, 4, 0, 0)),
+      axis.text.x = element_text(size = rel(1)),
       axis.title.x = element_blank(),
       legend.position = "bottom",
       legend.justification = 1,
-      panel.grid = element_line(colour = "#F3F4F5"),
+      panel.grid = element_blank(),
+      panel.background = element_blank(),
       plot.caption = element_text(size = rel(0.8), margin = margin(8, 0, 0, 0)),
       plot.margin = margin(0.25, 0.25, 0.25, 0.25, "cm")
     )
@@ -75,13 +76,13 @@ left_hemisphere_count <- ich_aggressive |>
   count()
 
 models <- list(
-  "Neurosurgical Intervention" = with_dir(here(), tar_read(m_posterior_neurosurgery_canonical)),
-  "External Ventricular Drain" = with_dir(here(), tar_read(m_posterior_evd_canonical)),
-  "Tracheostomy" = with_dir(here(), tar_read(m_posterior_trach_canonical)),
-  "Days of Mechanical Ventilation" = with_dir(here(), tar_read(m_posterior_vent_canonical)),
-  "Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_comfort_canonical)),
-  "Early Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_early_comfort_canonical)),
-  "DNR Order" = with_dir(here(), tar_read(m_posterior_dnr_canonical))
+  "Neurosurgical Intervention" = with_dir(here(), tar_read(m_posterior_neutral_neurosurgery)),
+  "External Ventricular Drain" = with_dir(here(), tar_read(m_posterior_neutral_evd)),
+  "Tracheostomy" = with_dir(here(), tar_read(m_posterior_neutral_tracheostomy)),
+  "Days of Mechanical Ventilation" = with_dir(here(), tar_read(m_posterior_neutral_days_mechanical_ventilation)),
+  "Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_neutral_comfort)),
+  "Early Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_neutral_early_wlst)),
+  "DNR Order" = with_dir(here(), tar_read(m_posterior_neutral_dnr_binary))
 )
 
 ```
@@ -303,11 +304,68 @@ tibble_2 <- bind_cols(column_names, tibble_2) |>
     "Left Hemisphere" = "**Left**, N = 1,720",
     "Outcome" = ...1
   ) |>
-  full_join(table_almost_2, by = "Outcome")
+  full_join(table_almost_2, by = "Outcome") |>
+  gt()
 
-tt(tibble_2, digits = 4)
+tibble_2 |>
+  fmt_number(columns = 6:7, decimals = 2)
 
 
+
+
+```
+
+
+```{r figure 1}
+#| echo: false
+#| label: figure 1
+#| fig-width: 10
+
+predictions(models$"Neurosurgical Intervention", by = "ich_laterality") |>
+  posterior_draws() |>
+  ggplot(aes(x = draw, fill = ich_laterality)) +
+  geom_density(alpha = .7) +
+  scale_fill_manual(values = c("#054224", "#ff8800")) +
+  scale_y_continuous(
+    limits = c(0,100)
+  ) +
+  scale_x_continuous(
+    limits = c(0, 0.14),
+    breaks = seq(0, 0.14, 0.02),
+    labels = scales::percent
+  ) +
+  labs(
+    title = "Predicted Probability",
+    fill = "ICH Laterality",
+    y = NULL
+  ) +
+  theme_ich()
+
+```
+
+```{r figure 2}
+#| echo: false
+#| label: figure 2
+#| fig-width: 10
+
+
+predictions(models$"Neurosurgical Intervention", by = c("ich_laterality", "ich_location")) |>
+  posterior_draws() |>
+  ggplot(aes(x = draw, fill = ich_laterality)) +
+  geom_density(alpha = .7) +
+  facet_grid(~ich_location) +
+  scale_fill_manual(values = c("#054224", "#ff8800")) +
+  scale_y_continuous() +
+  scale_x_continuous(
+    limits = c(0, 0.2),
+    breaks = seq(0, 0.20, 0.05),
+    labels = scales::percent
+  ) +
+  labs(
+    fill = "ICH Laterality",
+    y = NULL
+  ) +
+  theme_ich()
 
 ```
 

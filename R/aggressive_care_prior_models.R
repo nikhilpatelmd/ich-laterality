@@ -385,7 +385,7 @@ f_prior_neutral_comfort <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(0, 0.35)", class = "b")
     ),
     sample_prior = "only",
@@ -407,7 +407,7 @@ f_prior_left_comfort <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(-0.22, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -429,7 +429,7 @@ f_prior_right_comfort <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(0.18, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -475,7 +475,7 @@ f_prior_neutral_early_wlst <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-20, 0.5)", class = "Intercept"),
       set_prior("normal(0, 0.35)", class = "b")
     ),
     sample_prior = "only",
@@ -497,7 +497,7 @@ f_prior_left_early_wlst <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-20, 0.5)", class = "Intercept"),
       set_prior("normal(-0.22, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -519,7 +519,7 @@ f_prior_right_early_wlst <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-20, 0.5)", class = "Intercept"),
       set_prior("normal(0.18, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -565,7 +565,7 @@ f_prior_neutral_dnr_binary <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(0, 0.35)", class = "b")
     ),
     sample_prior = "only",
@@ -587,7 +587,7 @@ f_prior_left_dnr_binary <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(-0.22, 0.175)", class = "b")
     ),
     sample_prior = "only",
@@ -609,7 +609,7 @@ f_prior_right_dnr_binary <- function(dat) {
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(-15, 0.5)", class = "Intercept"),
       set_prior("normal(0.18, 0.175)", class = "b")
     ),
     sample_prior = "only",

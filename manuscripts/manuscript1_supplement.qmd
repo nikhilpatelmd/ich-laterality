@@ -50,7 +50,7 @@ library(gt)
 
 # plot stuff
 theme_ich <- function(base_family = "Figtree",
-                      base_size = 14) {
+                      base_size = 10) {
   theme_minimal(base_size = base_size) +
     theme(
       text = element_text(lineheight = 2),
@@ -251,9 +251,8 @@ f_prior_predictive_check <- function(neutral_model, left_model, right_model, fla
   return(prior_prediction_summary)
 }
 
-results_visual <- function(model, title) {
+results_visual <- function(model) {
   model <- model
-  subtitle <- title
 
   draws <- model |>
     spread_draws(b_ich_lateralityRight) |>
@@ -295,50 +294,7 @@ results_visual <- function(model, title) {
     ) +
     theme_ich()
 
-  p2 <- avg_comparisons(model, variables = "ich_laterality") |>
-    posterior_draws() |>
-    ggplot(aes(x = draw)) +
-    geom_density(color = "#054224", fill = "#ff8800") +
-    scale_x_continuous(labels = scales::percent) +
-    labs(
-      title = "Average Difference between Left vs. Right Hemisphere",
-      y = NULL
-    ) +
-    geom_vline(
-      xintercept = 0, linetype = "dashed",
-      color = "#999999", linewidth = 1
-    ) +
-    theme_ich()
-
-  p3 <- model |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    ggplot(aes(ich_right_or)) +
-    geom_density(color = "#054224", fill = "#ff8800") +
-    # stat_halfeye(aes(fill_ramp = stat(x > 1), fill = "#E69F00", color = "#422f05")) +
-    scale_x_continuous(breaks = seq(0, 3, 0.25)) +
-    labs(
-      title = "Odds Ratio - Right Hemisphere",
-      y = NULL,
-      fill = NULL
-    ) +
-    geom_vline(
-      xintercept = 1, linetype = "dashed",
-      color = "#999999", linewidth = 1
-    ) +
-    theme_ich() +
-    theme(legend.position = "none")
-
-
-  total <- p1 / p2 / p3
-
-  final <- total +
-    plot_annotation(
-      title = glue(subtitle),
-      theme = theme(plot.title = element_text(size = rel(2), margin = margin(12, 0, 8, 0)))
-    )
-
-  return(final)
+  return(p1)
 }
 
 
@@ -349,14 +305,16 @@ results_visual <- function(model, title) {
 ```{r prior predictive check - neurosurgery}
 #| echo: false
 #| warning: false
-#| fig-height: 12
 
 neutral_model <- with_dir(here(), tar_read(m_prior_neutral_neurosurgery))
 left_model <- with_dir(here(), tar_read(m_prior_left_neurosurgery))
 right_model <- with_dir(here(), tar_read(m_prior_right_neurosurgery))
 flat_model <- with_dir(here(), tar_read(m_prior_flat_neurosurgery))
 
+results_visual(neutral_model)
+
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
 
 ```
 
@@ -371,7 +329,10 @@ left_model <- with_dir(here(), tar_read(m_prior_left_evd))
 right_model <- with_dir(here(), tar_read(m_prior_right_evd))
 flat_model <- with_dir(here(), tar_read(m_prior_flat_evd))
 
+results_visual(neutral_model)
+
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
 
 
 ```
@@ -386,6 +347,8 @@ neutral_model <- with_dir(here(), tar_read(m_prior_neutral_tracheostomy))
 left_model <- with_dir(here(), tar_read(m_prior_left_tracheostomy))
 right_model <- with_dir(here(), tar_read(m_prior_right_tracheostomy))
 flat_model <- with_dir(here(), tar_read(m_prior_flat_tracheostomy))
+
+results_visual(neutral_model)
 
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
 
@@ -403,7 +366,10 @@ left_model <- with_dir(here(), tar_read(m_prior_left_days_mechanical_ventilation
 right_model <- with_dir(here(), tar_read(m_prior_right_days_mechanical_ventilation))
 flat_model <- with_dir(here(), tar_read(m_prior_flat_days_mechanical_ventilation))
 
+results_visual(neutral_model)
+
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
 
 
 ```
@@ -419,7 +385,10 @@ left_model <- with_dir(here(), tar_read(m_prior_left_comfort))
 right_model <- with_dir(here(), tar_read(m_prior_right_comfort))
 flat_model <- with_dir(here(), tar_read(m_prior_flat_comfort))
 
+results_visual(neutral_model)
+
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
 
 ```
 
@@ -435,7 +404,10 @@ left_model <- with_dir(here(), tar_read(m_prior_left_early_wlst))
 right_model <- with_dir(here(), tar_read(m_prior_right_early_wlst))
 flat_model <- with_dir(here(), tar_read(m_prior_flat_early_wlst))
 
+results_visual(neutral_model)
+
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
 
 ```
 
@@ -450,17 +422,198 @@ left_model <- with_dir(here(), tar_read(m_prior_left_dnr_binary))
 right_model <- with_dir(here(), tar_read(m_prior_right_dnr_binary))
 flat_model <- with_dir(here(), tar_read(m_prior_flat_dnr_binary))
 
+results_visual(neutral_model)
+
 f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
 
 ```
 
 ## Posterior Simulation Diagnostics
 
+```{r posterior diagnostics setup}
+#| echo: false
+
+posterior_diagnostics <- function(mod) {
+  # plot code modified from Andrew Heiss (https://bayesf22-notebook.classes.andrewheiss.com/bayes-rules/13-chapter.html#simulating-the-posterior)
+
+  trace_plot <- mod |>
+    gather_draws(`^b_.*`, regex = TRUE) |>
+    ggplot(aes(x = .iteration, y = .value, color = factor(.chain))) +
+    geom_line(linewidth = 0.1) +
+    scale_color_viridis_d(option = "rocket", end = 0.85) +
+    facet_wrap(vars(.variable), scales = "free_y")
+
+  trank_plot <- mod |>
+    gather_draws(`^b_.*`, regex = TRUE) |>
+    group_by(.variable) |>
+    mutate(draw_rank = rank(.value)) |>
+    ggplot(aes(x = draw_rank, color = factor(.chain))) +
+    stat_bin(geom = "step", binwidth = 250, position = position_identity(), boundary = 0) +
+    scale_color_viridis_d(option = "rocket", end = 0.85) +
+    facet_wrap(vars(.variable), scales = "free_y") +
+    theme(axis.text.y = element_blank(), axis.title.y = element_blank(), axis.ticks.y = element_blank())
+
+  # pp_check <- pp_check(mod, ndraws = 500)
+  # pp_check_bars <- pp_check(mod, ndraws = 500, type = "bars_grouped", group = "ich_laterality")
+
+  return((trank_plot / trace_plot))
+}
+
+
+```
+
 ### MCMC Chain Convergence and Resolution
+
+#### Neurosurgical Intervention
+
+```{r posterior diagnostics neurosurgery}
+#| echo: false
+#| fig-height: 10
+
+posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_neurosurgery)))
+
+```
+
+#### Ventriculostomy
+
+```{r posterior diagnostics evd}
+#| echo: false
+#| fig-height: 10
+
+posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_evd)))
+
+```
+
+#### Tracheostomy
+
+```{r posterior diagnostics trach}
+#| echo: false
+#| fig-height: 10
+
+posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_tracheostomy)))
+
+```
+
+#### Days of Mechanical Ventilation
+
+```{r posterior diagnostics vent}
+#| echo: false
+#| fig-height: 10
+
+posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_days_mechanical_ventilation)))
+
+```
+
+#### Comfort Care
+
+```{r posterior diagnostics comfort}
+#| echo: false
+#| fig-height: 10
+
+posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_comfort)))
+
+```
+
+#### Early WLST
+
+```{r posterior diagnostics early wlst}
+#| echo: false
+#| fig-height: 10
+
+posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_early_wlst)))
+
+```
+
+#### DNR
+
+```{r posterior diagnostics dnr}
+#| echo: false
+#| fig-height: 10
+
+posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_dnr_binary)))
+
+```
 
 ### Posterior predictive checks
 
-### 
+```{r posterior prediction function}
+#| echo: false
+
+post_pred <- function(mod) {
+  pp_check <- pp_check(mod, ndraws = 500)
+
+  pp_check_bars <- pp_check(mod, ndraws = 500, type = "bars_grouped", group = "ich_laterality")
+
+  return(pp_check / pp_check_bars)
+}
+
+```
+
+### Neurosurgical Intervention
+
+```{r posterior predictions neurosurgery}
+#| echo: false
+
+post_pred(with_dir(here(), tar_read(m_posterior_neutral_neurosurgery)))
+
+```
+
+### Ventriculostomy
+
+```{r posterior predictions evd}
+#| echo: false
+
+post_pred(with_dir(here(), tar_read(m_posterior_neutral_evd)))
+
+```
+
+### Tracheostomy
+
+```{r posterior predictions trach}
+#| echo: false
+
+post_pred(with_dir(here(), tar_read(m_posterior_neutral_tracheostomy)))
+
+```
+
+### Days of Mechanical Ventilation
+
+```{r posterior predictions vent}
+#| echo: false
+
+post_pred(with_dir(here(), tar_read(m_posterior_neutral_days_mechanical_ventilation)))
+
+```
+
+### Comfort Care
+
+```{r posterior predictions comfort}
+#| echo: false
+
+post_pred(with_dir(here(), tar_read(m_posterior_neutral_comfort)))
+
+```
+
+### Early WLST
+
+```{r posterior predictions early wlst}
+#| echo: false
+
+post_pred(with_dir(here(), tar_read(m_posterior_neutral_early_wlst)))
+
+```
+
+### DNR
+
+```{r posterior predictions dnr}
+#| echo: false
+
+post_pred(with_dir(here(), tar_read(m_posterior_neutral_dnr_binary)))
+
+```
+
+
 
 ## Sensitivity Analyses
 
