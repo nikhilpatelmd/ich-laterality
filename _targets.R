@@ -14,7 +14,7 @@ suppressPackageStartupMessages(library(brms))
 options(
   mc.cores = 3,
   mc.threads = 2,
-  brms.backend = "rstan"
+  brms.backend = "cmdstanr"
 )
 
 options(
