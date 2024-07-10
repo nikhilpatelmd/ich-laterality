@@ -327,7 +327,7 @@ predictions(models$"Neurosurgical Intervention", by = "ich_laterality") |>
   geom_density(alpha = .7) +
   scale_fill_manual(values = c("#054224", "#ff8800")) +
   scale_y_continuous(
-    limits = c(0,100)
+    limits = c(0, 100)
   ) +
   scale_x_continuous(
     limits = c(0, 0.14),
