@@ -9,7 +9,10 @@ website:
   navbar:
     search: true
     right:
-      - manuscript1.qmd
+      - href: manuscript1.qmd
+        text: Manuscript
+      - href: manuscript1_supplement.qmd
+        text: Supplement
       - icon: github
         href: https://https://github.com/nikhilpatelmd/ich-laterality
         aria-label: GitHub

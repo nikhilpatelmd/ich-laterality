@@ -1,6 +1,8 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|4004211ae3bb05bb|||||||||||||||
+.Random.seed|object|f22948a24a5f9187|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
+aggressive_manuscript|stem||2f5dccf57d5ada46|ea04c99a2f1fdb01|861182658|manuscripts/manuscript1.html*manuscripts/manuscript1.qmd|t19914.6498776929s||0|file|local|vector|||||_paths_ missing files manuscriptsmanuscript1.html
+aggressive_supplement|stem||c5040f7a54df7e37|838dbe519e1cbfc2|-1635877901|manuscripts/manuscript1_supplement.html*manuscripts/manuscript1_supplement.qmd|t19914.6484719938s||0|file|local|vector|||||_paths_ missing files manuscriptsmanuscript1_supplement.html
 atach|stem|65718a495154e5c0|2e66fd6cceb96d68|6a6695351ab5b4a4|860028905||t19894.9493194027s|55f706f8f6e4d315|31110|rds|local|vector|||0.007||
 comfort_canonical_visuals|stem|a4fb43967580fe0f|e0fb3e373e95f76b|a32cab511a69989a|662216964||t19894.5677061218s|b042f2db11a3df15|29424135|rds|local|vector|||6.059||
 comfort_care_canonical_diagnostics|stem|a2bf26351df41db3|f3915461b54043c5|0dbf43aa0750e4df|-1027137305||t19894.5675837407s|d4292132670ddb92|33824979|rds|local|vector|||1.945||
@@ -413,7 +415,7 @@ settings|stem|84330e13e6f3c1bc|0d725b29fc99973a|aabb6816d7a47c7e|-416401554||t19
 table_1_aggressive|stem|779fd97a2641161b|1a2e2eefc146e3c7|23a0847c28b9c73d|-15126430||t19899.5676181274s|8dc3612c73cdb104|724561|rds|local|vector|||3.587||
 table_1_function|function|8f8fb2a03829abf2|||||||||||||||
 table_1_outcomes|stem|18b368bba66a8db3|ff32e4d6c57ce9fe|d77e08d66f26f955|-541678962||t19895.0145138393s|a7f98d81182a5304|883459|rds|local|vector|||3.961||
-table_2_aggressive|stem|5c36c36e6c6e96f2|88d16aec5bf7a342|d9fb2c6accd64b1c|-1897827915||t19899.5676365686s|e1f84bb1f33b9ce1|154541|rds|local|vector|||1.533||
+table_2_aggressive|stem|5c36c36e6c6e96f2|88d16aec5bf7a342|d9fb2c6accd64b1c|-1897827915||t19914.6299148206s|e1f84bb1f33b9ce1|154541|rds|local|vector|||1.01||
 table_2_aggressive_function|function|1fab1741f125d382|||||||||||||||
 trach_canonical_diagnostics|stem|7f2df790e751315d|e18dd856fa6012d5|8492d1ff66249852|-1818965111||t19894.5682774768s|18ed591d8429be14|31355293|rds|local|vector|||1.921||
 trach_canonical_visuals|stem|089639e6c56c4096|c67f46bc550e8cab|d04ce979fa6b318e|-36796315||t19894.5681869259s|5b86fdc6fc5541c1|28153308|rds|local|vector|||5.532||

@@ -26,34 +26,7 @@ toc-title: Contents
 ---
 
 ```{r setup}
-#| echo: false
-#| output: false
-
-library(targets)
-library(tidyverse)
-library(withr)
-library(here)
-library(formattable)
-library(gt)
-library(gtsummary)
-library(modelsummary)
-library(marginaleffects)
-library(tidybayes)
-library(bayesplot)
-library(ggdist)
-library(patchwork)
-library(tinytable)
-library(glue)
-
-# plot stuff
-theme_ich <- function(base_family = "Figtree",
-                      base_size = 14) {
-  theme_minimal(base_size = base_size) +
-    theme(
-      text = element_text(lineheight = 2),
-      plot.title = element_text(size = rel(1.3), margin = margin(12, 0, 8, 0)),
-      plot.subtitle = element_text(size = rel(1.1), margin = margin(4, 0, 0, 0)),
-      axis.text.y = element_text(size = rel(0.8)),
+#     axis.text.y = element_text(size = rel(0.8)),
       axis.title.y = element_text(size = rel(0.5), margin = margin(0, 4, 0, 0)),
       axis.text.x = element_text(size = rel(1)),
       axis.title.x = element_blank(),
@@ -78,12 +51,23 @@ left_hemisphere_count <- ich_aggressive |>
 models <- list(
   "Neurosurgical Intervention" = with_dir(here(), tar_read(m_posterior_neutral_neurosurgery)),
   "External Ventricular Drain" = with_dir(here(), tar_read(m_posterior_neutral_evd)),
-  "Tracheostomy" = with_dir(here(), tar_read(m_posterior_neutral_tracheostomy)),
   "Days of Mechanical Ventilation" = with_dir(here(), tar_read(m_posterior_neutral_days_mechanical_ventilation)),
+  "Tracheostomy" = with_dir(here(), tar_read(m_posterior_neutral_tracheostomy)),
   "Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_neutral_comfort)),
   "Early Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_neutral_early_wlst)),
   "DNR Order" = with_dir(here(), tar_read(m_posterior_neutral_dnr_binary))
 )
+
+bob <- ich_aggressive |>
+  tabyl(neurosurgery_evac, ich_laterality) |>
+  adorn_percentages("col") |>
+  adorn_pct_formatting(digits = 1) |>
+  adorn_ns(position = "front") |>
+  filter(neurosurgery_evac == "Yes")
+
+ich_aggressive |>
+  tabyl(days_mechanical_ventilation, ich_laterality)
+
 
 ```
 
@@ -146,7 +130,7 @@ with_dir(here(), tar_read(table_1_aggressive))
 
 ### Left hemispheric ICH and neurosurgical intervention
 
-```{r neurosurgery}
+```{r table 2}
 #| label: tbl-2
 #| tbl-cap: "Association between hemispheric lateralization and aggressive care"
 #| echo: false
@@ -170,8 +154,8 @@ aOR_CIs_combined <- as_tibble(summary@table_dataframe) |>
 aOR_CIs_combined[1] <- c(
   "Neurosurgical Intervention",
   "External Ventricular Drain",
-  "Tracheostomy",
   "Days of Mechanical Ventilation",
+  "Tracheostomy",
   "Withdrawal of Life-Sustaining Therapy",
   "Early Withdrawal of Life-Sustaining Therapy",
   "DNR Order"
@@ -199,16 +183,6 @@ evd <- models$"External Ventricular Drain" |>
     rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
   )
 
-trach <- models$"Tracheostomy" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    or_1 = sum(ich_right_or > 1) / n(),
-    or_1.1 = sum(ich_right_or > 1.1) / n(),
-    or_1.2 = sum(ich_right_or > 1.2) / n(),
-    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-  )
-
 vent <- models$"Days of Mechanical Ventilation" |>
   spread_draws(b_ich_lateralityRight) |>
   mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
@@ -219,7 +193,7 @@ vent <- models$"Days of Mechanical Ventilation" |>
     rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
   )
 
-dnr <- models$"DNR Order" |>
+trach <- models$"Tracheostomy" |>
   spread_draws(b_ich_lateralityRight) |>
   mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
   summarize(
@@ -249,13 +223,22 @@ early_wlst <- models$"Early Withdrawal of Life-Sustaining Therapy" |>
     rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
   )
 
+dnr <- models$"DNR Order" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  summarize(
+    or_1 = sum(ich_right_or > 1) / n(),
+    or_1.1 = sum(ich_right_or > 1.1) / n(),
+    or_1.2 = sum(ich_right_or > 1.2) / n(),
+    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  )
 
 # combine probability of OR > 1 (prob of difference)
 prob_difference <- tibble(
   "Neurosurgical Intervention" = pluck(neurosurgery, 1),
   "External Ventricular Drain" = pluck(evd, 1),
-  "Tracheostomy" = pluck(trach, 1),
   "Days of Mechanical Ventilation" = pluck(vent, 1),
+  "Tracheostomy" = pluck(trach, 1),
   "Withdrawal of Life-Sustaining Therapy" = pluck(wlst, 1),
   "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 1),
   "DNR Order" = pluck(dnr, 1)
@@ -270,8 +253,8 @@ prob_difference <- tibble(
 rope <- tibble(
   "Neurosurgical Intervention" = pluck(neurosurgery, 4),
   "External Ventricular Drain" = pluck(evd, 4),
-  "Tracheostomy" = pluck(trach, 4),
   "Days of Mechanical Ventilation" = pluck(vent, 4),
+  "Tracheostomy" = pluck(trach, 4),
   "Withdrawal of Life-Sustaining Therapy" = pluck(wlst, 4),
   "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 4),
   "DNR Order" = pluck(dnr, 4)
@@ -291,8 +274,8 @@ tibble_2 <- as_tibble(table_2) |> select(-1)
 column_names <- c(
   "Neurosurgical Intervention",
   "External Ventricular Drain",
-  "Tracheostomy",
   "Days of Mechanical Ventilation",
+  "Tracheostomy",
   "Withdrawal of Life-Sustaining Therapy",
   "Early Withdrawal of Life-Sustaining Therapy",
   "DNR Order"
@@ -308,7 +291,15 @@ tibble_2 <- bind_cols(column_names, tibble_2) |>
   gt()
 
 tibble_2 |>
-  fmt_number(columns = 6:7, decimals = 2)
+  fmt_number(columns = 6:7, decimals = 2) |>
+  tab_footnote(
+    footnote = "Adjusted for: age, admission GCS, ICH location, IVH, and study (as random intercept)",
+    locations = cells_column_labels(columns = 4)
+  ) |>
+  tab_footnote(
+    footnote = "Region of Practical Equivalence, defined as 0.95 > aOR > 1.05",
+    locations = cells_column_labels(columns = 7)
+  )
 
 
 
@@ -366,6 +357,80 @@ predictions(models$"Neurosurgical Intervention", by = c("ich_laterality", "ich_l
     y = NULL
   ) +
   theme_ich()
+
+predictions(models$"Neurosurgical Intervention", by = c("ich_laterality", "study")) |>
+  posterior_draws() |>
+  ggplot(aes(x = draw, fill = ich_laterality)) +
+  geom_density(alpha = .7) +
+  facet_grid(~study) +
+  scale_fill_manual(values = c("#054224", "#ff8800")) +
+  scale_y_continuous() +
+  scale_x_continuous(
+    limits = c(0, 0.2),
+    breaks = seq(0, 0.20, 0.05),
+    labels = scales::percent
+  ) +
+  labs(
+    fill = "ICH Laterality",
+    y = NULL
+  ) +
+  theme_ich()
+
+models$"Neurosurgical Intervention" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  ggplot(aes(ich_right_or)) +
+  # geom_density(color = "#054224", fill = "#ff8800") +
+  stat_halfeye(aes(fill_ramp = after_stat(x > 1.05 | x < 0.95), fill = "#E69F00", color = "#422f05")) +
+  scale_x_continuous(breaks = seq(0, 3, 0.25)) +
+  labs(
+    title = "aOR Neurosurgical Intervention - Right Hemisphere",
+    y = NULL,
+    fill = NULL
+  ) +
+  geom_vline(
+    xintercept = 1, linetype = "dashed",
+    color = "#999999", linewidth = 1
+  ) +
+  geom_vline(
+    xintercept = 1.05, linetype = "dotted",
+    color = "#999999", linewidth = 1
+  ) +
+  geom_vline(
+    xintercept = 0.95, linetype = "dotted",
+    color = "#999999", linewidth = 1
+  ) +
+  theme_ich() +
+  theme(legend.position = "none")
+
+models$"External Ventricular Drain" |>
+  spread_draws(b_ich_lateralityRight) |>
+  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  ggplot(aes(ich_right_or)) +
+  # geom_density(color = "#054224", fill = "#ff8800") +
+  stat_halfeye(aes(fill_ramp = after_stat(x > 1.05 | x < 0.95), fill = "#E69F00", color = "#E69F00")) +
+  scale_x_continuous(
+    breaks = seq(0, 3, 0.25)
+  ) +
+  labs(
+    title = "aOR Ventriculostomy - Right Hemisphere",
+    y = NULL,
+    fill = NULL
+  ) +
+  geom_vline(
+    xintercept = 1, linetype = "dashed",
+    color = "#999999", linewidth = 1
+  ) +
+  geom_vline(
+    xintercept = 1.05, linetype = "dotted",
+    color = "#999999", linewidth = 1
+  ) +
+  geom_vline(
+    xintercept = 0.95, linetype = "dotted",
+    color = "#999999", linewidth = 1
+  ) +
+  theme_ich() +
+  theme(legend.position = "none")
 
 ```
 

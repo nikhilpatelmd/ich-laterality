@@ -20,7 +20,7 @@ authors:
     affiliation: Department of Neurology, University of Maryland School of Medicine
 date: last-modified
 abstract: |
-  
+
 table-of-contents: true
 toc-title: Contents
 ---
@@ -36,6 +36,7 @@ library(targets)
 library(tidyverse)
 library(withr)
 library(here)
+library(ggdag)
 library(modelsummary)
 library(marginaleffects)
 library(brms)
@@ -79,8 +80,27 @@ with_dir(here(), tar_load(ich_aggressive))
 
 ```{r dags}
 #| echo: false
+#| warning: false
+#| fig-height: 8
 
-# dag_aggressive
+with_dir(here(), tar_load(dag_aggressive))
+
+status_colors <- c(exposure = "#0074D9", outcome = "#FF4136", latent = "grey50")
+
+dag_aggressive |>
+  tidy_dagitty() |>
+  node_status() |>
+  ggdag() +
+  geom_dag_edges() +
+  geom_dag_point(aes(color = status)) +
+  geom_dag_label_repel(aes(label = label, fill = status),
+    seed = 1234,
+    color = "white", fontface = "bold"
+  ) +
+  scale_color_manual(values = status_colors, na.value = "grey20") +
+  scale_fill_manual(values = status_colors, na.value = "grey20") +
+  guides(color = "none", fill = "none") +
+  theme_dag()
 
 ```
 
@@ -337,24 +357,6 @@ f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
 
 ```
 
-#### Tracheostomy
-
-```{r prior predictive check - tracheostomy}
-#| echo: false
-#| warning: false
-
-neutral_model <- with_dir(here(), tar_read(m_prior_neutral_tracheostomy))
-left_model <- with_dir(here(), tar_read(m_prior_left_tracheostomy))
-right_model <- with_dir(here(), tar_read(m_prior_right_tracheostomy))
-flat_model <- with_dir(here(), tar_read(m_prior_flat_tracheostomy))
-
-results_visual(neutral_model)
-
-f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
-
-
-```
-
 #### Days of Mechanical Ventilation
 
 ```{r prior predictive check - vent}
@@ -373,6 +375,26 @@ f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
 
 
 ```
+
+
+#### Tracheostomy
+
+```{r prior predictive check - tracheostomy}
+#| echo: false
+#| warning: false
+
+neutral_model <- with_dir(here(), tar_read(m_prior_neutral_tracheostomy))
+left_model <- with_dir(here(), tar_read(m_prior_left_tracheostomy))
+right_model <- with_dir(here(), tar_read(m_prior_right_tracheostomy))
+flat_model <- with_dir(here(), tar_read(m_prior_flat_tracheostomy))
+
+results_visual(neutral_model)
+
+f_prior_predictive_check(neutral_model, left_model, right_model, flat_model)
+
+
+```
+
 
 #### Comfort Care
 
@@ -616,4 +638,10 @@ post_pred(with_dir(here(), tar_read(m_posterior_neutral_dnr_binary)))
 
 
 ## Sensitivity Analyses
+
+### Different Priors
+
+### Alternative Adjustment Sets
+
+### Alternative Handling of Missing Data
 

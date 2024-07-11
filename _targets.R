@@ -1,5 +1,7 @@
 library(targets)
 library(tarchetypes)
+library(quarto)
+
 
 # General pipeline settings ----
 
@@ -124,24 +126,6 @@ tar_plan(
   m_posterior_right_dnr_binary = f_posterior_right_dnr_binary(ich_aggressive),
   m_posterior_flat_dnr_binary = f_posterior_flat_dnr_binary(ich_aggressive),
 
-  #### Subgroups with ERICH ----
-  m_posterior_neutral_neurosurgery_erich = f_posterior_neutral_neurosurgery(erich),
-  m_posterior_neutral_evd_erich = f_posterior_neutral_evd(erich),
-  m_posterior_neutral_tracheostomy_erich = f_posterior_neutral_tracheostomy(erich),
-  m_posterior_neutral_comfort_erich = f_posterior_neutral_comfort(erich),
-  m_posterior_neutral_early_wlst_erich = f_posterior_neutral_early_wlst(erich),
-  m_posterior_neutral_dnr_binary_erich = f_posterior_neutral_dnr_binary(erich),
-
-  #### Subgroups with ATACH ----
-  m_posterior_neutral_neurosurgery_atach = f_posterior_neutral_neurosurgery(atach),
-  m_posterior_neutral_evd_atach = f_posterior_neutral_evd(atach),
-  m_posterior_neutral_tracheostomy_atach = f_posterior_neutral_tracheostomy(atach),
-  m_posterior_neutral_days_mechanical_ventilation_atach = f_posterior_neutral_days_mechanical_ventilation(atach),
-  m_posterior_neutral_comfort_atach = f_posterior_neutral_comfort(atach),
-  m_posterior_neutral_early_wlst_atach = f_posterior_neutral_early_wlst(atach),
-  m_posterior_neutral_dnr_binary_atach = f_posterior_neutral_dnr_binary(atach),
-
-
   ## Outcomes ----
 
   ### Priors ----
@@ -221,21 +205,9 @@ tar_plan(
   # m_posterior_euro_anxiety_365_minimal = f_posterior_euro_anxiety_365_minimal(ich_all),
   # m_posterior_euro_anxiety_365_canonical = f_posterior_euro_anxiety_365_canonical(ich_all),
 
-  ## Reports ----
+  # ## Reports ----
   # tar_quarto(
-  #   aggressive,
-  #   "reports/aggressiveness.qmd"
-  # ),
-  # tar_quarto(
-  #   outcomes,
-  #   "reports/outcomes.qmd"
-  # ),
-  # tar_quarto(
-  #   prior_report,
-  #   "reports/priors.qmd"
-  # ),
-  # tar_quarto(
-  #   posterior_report,
-  #   "reports/posteriors.qmd"
+  #   aggressive_manuscript,
+  #   "manuscripts/manuscript1.qmd"
   # )
 )
