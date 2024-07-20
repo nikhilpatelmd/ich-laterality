@@ -17,8 +17,7 @@ f_posterior_mrs_90_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -39,8 +38,7 @@ f_posterior_mrs_90_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -63,8 +61,7 @@ f_posterior_mrs_180_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -85,8 +82,7 @@ f_posterior_mrs_180_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -109,8 +105,7 @@ f_posterior_mrs_365_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -131,8 +126,7 @@ f_posterior_mrs_365_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -155,8 +149,7 @@ f_posterior_euro_mobility_90_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -177,8 +170,7 @@ f_posterior_euro_mobility_90_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -201,8 +193,7 @@ f_posterior_euro_mobility_180_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -223,8 +214,7 @@ f_posterior_euro_mobility_180_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -247,8 +237,7 @@ f_posterior_euro_mobility_365_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -269,8 +258,7 @@ f_posterior_euro_mobility_365_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -293,8 +281,7 @@ f_posterior_euro_selfcare_90_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -315,8 +302,7 @@ f_posterior_euro_selfcare_90_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -339,8 +325,7 @@ f_posterior_euro_selfcare_180_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -361,8 +346,7 @@ f_posterior_euro_selfcare_180_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -385,8 +369,7 @@ f_posterior_euro_selfcare_365_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -407,8 +390,7 @@ f_posterior_euro_selfcare_365_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -431,8 +413,7 @@ f_posterior_euro_usual_90_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -453,8 +434,7 @@ f_posterior_euro_usual_90_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -477,8 +457,7 @@ f_posterior_euro_usual_180_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -499,8 +478,7 @@ f_posterior_euro_usual_180_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -523,8 +501,7 @@ f_posterior_euro_usual_365_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -545,8 +522,7 @@ f_posterior_euro_usual_365_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -569,8 +545,7 @@ f_posterior_euro_pain_90_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -591,8 +566,7 @@ f_posterior_euro_pain_90_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -615,8 +589,7 @@ f_posterior_euro_pain_180_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -637,8 +610,7 @@ f_posterior_euro_pain_180_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -661,8 +633,7 @@ f_posterior_euro_pain_365_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -683,8 +654,7 @@ f_posterior_euro_pain_365_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -707,8 +677,7 @@ f_posterior_euro_anxiety_90_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -729,8 +698,7 @@ f_posterior_euro_anxiety_90_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -753,8 +721,7 @@ f_posterior_euro_anxiety_180_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -775,8 +742,7 @@ f_posterior_euro_anxiety_180_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -799,8 +765,7 @@ f_posterior_euro_anxiety_365_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -821,8 +786,7 @@ f_posterior_euro_anxiety_365_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -844,8 +808,7 @@ f_posterior_euro_vas_90_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -865,8 +828,7 @@ f_posterior_euro_vas_90_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -888,8 +850,7 @@ f_posterior_euro_vas_180_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -909,8 +870,7 @@ f_posterior_euro_vas_180_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -932,8 +892,7 @@ f_posterior_euro_vas_365_minimal <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)
@@ -953,8 +912,7 @@ f_posterior_euro_vas_365_canonical <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed,
-    backend = "rstan"
+    seed = settings$seed
   )
 
   return(model)

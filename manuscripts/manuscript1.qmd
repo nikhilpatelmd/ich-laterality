@@ -26,14 +26,44 @@ toc-title: Contents
 ---
 
 ```{r setup}
-#     axis.text.y = element_text(size = rel(0.8)),
-      axis.title.y = element_text(size = rel(0.5), margin = margin(0, 4, 0, 0)),
-      axis.text.x = element_text(size = rel(1)),
+#| echo: false
+#| output: false
+
+#| echo: false
+#| fig-height: 12
+
+library(targets)
+library(tidyverse)
+library(withr)
+library(here)
+library(formattable)
+library(gt)
+library(gtsummary)
+library(modelsummary)
+library(marginaleffects)
+library(tidybayes)
+library(bayesplot)
+library(ggdist)
+library(patchwork)
+library(tinytable)
+library(flextable)
+
+
+# plot stuff
+theme_ich <- function(base_family = "Figtree",
+                      base_size = 10) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      text = element_text(lineheight = 2),
+      plot.title = element_text(size = rel(1.3), margin = margin(12, 0, 8, 0)),
+      plot.subtitle = element_text(size = rel(1.1), margin = margin(4, 0, 0, 0)),
+      axis.text.y = element_text(size = rel(0.8)),
+      axis.title.y = element_text(size = 12, margin = margin(0, 4, 0, 0)),
+      axis.text.x = element_text(size = rel(2)),
       axis.title.x = element_blank(),
       legend.position = "bottom",
       legend.justification = 1,
-      panel.grid = element_blank(),
-      panel.background = element_blank(),
+      panel.grid = element_line(colour = "#F3F4F5"),
       plot.caption = element_text(size = rel(0.8), margin = margin(8, 0, 0, 0)),
       plot.margin = margin(0.25, 0.25, 0.25, 0.25, "cm")
     )
@@ -57,17 +87,6 @@ models <- list(
   "Early Withdrawal of Life-Sustaining Therapy" = with_dir(here(), tar_read(m_posterior_neutral_early_wlst)),
   "DNR Order" = with_dir(here(), tar_read(m_posterior_neutral_dnr_binary))
 )
-
-bob <- ich_aggressive |>
-  tabyl(neurosurgery_evac, ich_laterality) |>
-  adorn_percentages("col") |>
-  adorn_pct_formatting(digits = 1) |>
-  adorn_ns(position = "front") |>
-  filter(neurosurgery_evac == "Yes")
-
-ich_aggressive |>
-  tabyl(days_mechanical_ventilation, ich_laterality)
-
 
 ```
 
