@@ -1,0 +1,17 @@
+---
+format: docx
+---
+
+```{r}
+#| echo: false
+#| message: false
+
+library(gt)
+library(gtsummary)
+library(withr)
+library(here)
+library(targets)
+
+with_dir(here(), tar_read(table_1_aggressive))
+
+```

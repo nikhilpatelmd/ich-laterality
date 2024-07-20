@@ -1,6 +1,7 @@
 library(targets)
 library(tarchetypes)
 library(quarto)
+library(here)
 
 
 # General pipeline settings ----
@@ -57,7 +58,6 @@ tar_plan(
   ## Exploratory data analysis ----
   table_1_aggressive = table_1_function(ich_aggressive),
   table_2_aggressive = table_2_aggressive_function(ich_aggressive),
-  table_1_outcomes = table_1_function(ich_all),
 
   ## DAGs ----
   dag_aggressive = aggressive_dag_function(x),
@@ -207,7 +207,7 @@ tar_plan(
 
   # ## Reports ----
   # tar_quarto(
-  #   aggressive_manuscript,
-  #   "manuscripts/manuscript1.qmd"
+  #   table_1,
+  #   here("manuscripts", "test.qmd")
   # )
 )

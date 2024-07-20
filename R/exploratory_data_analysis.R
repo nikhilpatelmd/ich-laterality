@@ -48,7 +48,8 @@ table_1_function <- function(x) {
     add_p(pvalue_fun = ~ style_pvalue(.x, digits = 2)) |>
     add_overall() |>
     bold_labels() |>
-    modify_header(label ~ "")
+    modify_header(label ~ "") |>
+    as_gt()
 }
 
 table_2_aggressive_function <- function(x) {
@@ -80,5 +81,6 @@ table_2_aggressive_function <- function(x) {
       )
     ) |>
     bold_labels() |>
-    modify_header(label ~ "Outcome")
+    modify_header(label ~ "Outcome") |>
+    as_gt()
 }
