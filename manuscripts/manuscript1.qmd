@@ -37,6 +37,7 @@ library(tidyverse)
 library(withr)
 library(here)
 library(formattable)
+library(janitor)
 library(gt)
 library(gtsummary)
 library(modelsummary)
@@ -321,8 +322,6 @@ tibble_2 |>
   )
 
 
-
-
 ```
 
 
@@ -452,6 +451,8 @@ models$"External Ventricular Drain" |>
   theme(legend.position = "none")
 
 ```
+
+There
 
 ## Discussion
 
