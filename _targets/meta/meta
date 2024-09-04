@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|e11a804ee9a102b4|||||||||||||||
+.Random.seed|object|d6b4a22662f30b52|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 aggressive_manuscript|stem||2f5dccf57d5ada46|ea04c99a2f1fdb01|861182658|manuscripts/manuscript1.html*manuscripts/manuscript1.qmd|t19914.6498776929s||0|file|local|vector|||||_paths_ missing files manuscriptsmanuscript1.html
 aggressive_supplement|stem||c5040f7a54df7e37|838dbe519e1cbfc2|-1635877901|manuscripts/manuscript1_supplement.html*manuscripts/manuscript1_supplement.qmd|t19914.6484719938s||0|file|local|vector|||||_paths_ missing files manuscriptsmanuscript1_supplement.html
@@ -183,6 +183,7 @@ f_prior_neutral_early_wlst|function|8ec62e2b8fc3677d|||||||||||||||
 f_prior_neutral_evd|function|115eda5ab1e93286|||||||||||||||
 f_prior_neutral_neurosurgery|function|aad3cdf61ad022b1|||||||||||||||
 f_prior_neutral_tracheostomy|function|117eb1d7e2b37c81|||||||||||||||
+f_prior_predictive_check|function|9fb9f26c4dffb03d|||||||||||||||
 f_prior_right_comfort|function|a5b20603a6c3a23a|||||||||||||||
 f_prior_right_days_mechanical_ventilation|function|24526504ca01e797|||||||||||||||
 f_prior_right_dnr_binary|function|357abbdd3686944a|||||||||||||||
@@ -408,7 +409,7 @@ neurosurgery_canonical_visuals|stem|8aa0d3c2257ae029|c99e1efb00c6c7b8|acec8cbcc9
 neurosurgery_minimal_visuals|stem|80cfcac0df1b7284|172adc89ce1769b1|b661ffd2bee906e6|1064045853||t19894.5689454373s|a50f78f5e47e7641|27892739|rds|local|vector|||0.771||
 outcomes_dag_function|function|6e154598f5ab410a|||||||||||||||
 posterior_diagnostics|function|35a8ac4d3fa32822|||||||||||||||
-results_visual|function|6a3fd2a5dc74c12d|||||||||||||||
+results_visual|function|bb91e40db32bdcfc|||||||||||||||
 select_variables|function|51eaa047f9ead67f|||||||||||||||
 selected_data|stem|0f476d661b9297b1|44280be3ad15831f|c743c3864cfa3125|-1052555108||t19894.9367709411s|6c0061a438cae8f9|158412|rds|local|vector|||0.018||
 settings|stem|84330e13e6f3c1bc|0d725b29fc99973a|aabb6816d7a47c7e|-416401554||t19904.9601150793s|4fb7122a4503ae71|200|rds|local|vector|||0||

@@ -271,51 +271,7 @@ f_prior_predictive_check <- function(neutral_model, left_model, right_model, fla
   return(prior_prediction_summary)
 }
 
-results_visual <- function(model) {
-  model <- model
 
-  draws <- model |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize()
-
-  pred <- predictions(model, by = "ich_laterality") |>
-    tibble()
-
-  theme_ich <- function(base_family = "Inter",
-                        base_size = 14) {
-    theme_minimal(base_size = base_size) +
-      theme(
-        text = element_text(lineheight = 2),
-        plot.title = element_text(size = rel(1.3), margin = margin(12, 0, 8, 0)),
-        plot.subtitle = element_text(size = rel(1.1), margin = margin(4, 0, 0, 0)),
-        axis.text.y = element_text(size = rel(0.8)),
-        axis.title.y = element_text(size = 12, margin = margin(0, 4, 0, 0)),
-        axis.text.x = element_text(size = rel(2)),
-        axis.title.x = element_blank(),
-        legend.position = "bottom",
-        legend.justification = 1,
-        panel.grid = element_line(colour = "#F3F4F5"),
-        plot.caption = element_text(size = rel(0.8), margin = margin(8, 0, 0, 0)),
-        plot.margin = margin(0.25, 0.25, 0.25, 0.25, "cm")
-      )
-  }
-
-  p1 <- predictions(model, by = "ich_laterality") |>
-    posterior_draws() |>
-    ggplot(aes(x = draw, fill = ich_laterality)) +
-    geom_density(alpha = .7) +
-    scale_fill_manual(values = c("#054224", "#ff8800")) +
-    scale_x_continuous(labels = scales::percent) +
-    labs(
-      title = "Predicted Probability",
-      fill = "ICH Laterality",
-      y = NULL
-    ) +
-    theme_ich()
-
-  return(p1)
-}
 
 
 ```

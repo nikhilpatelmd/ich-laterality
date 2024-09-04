@@ -37,8 +37,8 @@ source("R/diagnostics.R")
 source("R/results_visualization.R")
 source("R/outcomes_prior_models.R")
 source("R/outcomes_posterior_models.R")
-source("R/results_outcomes.R")
-
+# source("R/results_outcomes.R")
+source("R/predictive_checks.R")
 
 # Pipeline ----
 tar_plan(
@@ -169,6 +169,7 @@ tar_plan(
   m_prior_euro_anxiety_365_canonical = f_prior_euro_anxiety_365_canonical(ich_aggressive),
 
   ### Prior Predictive Checks ----
+  # prior_check_neurosurgery = f_prior_predictive_check(m_prior_neutral_neurosurgery, m_prior_left_neurosurgery, m_prior_right_neurosurgery, m_prior_flat_neurosurgery),
 
 
 
