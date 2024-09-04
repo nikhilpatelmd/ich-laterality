@@ -72,11 +72,11 @@ table_2_aggressive_function <- function(x) {
       missing = "no",
       label = list(
         neurosurgery_evac ~ "Neurosurgical Intervention",
-        evd ~ "Ventriculostomy",
-        days_mechanical_ventilation ~ "Mechanical Ventilation Days",
+        evd ~ "External Ventricular Drain",
+        days_mechanical_ventilation ~ "Days of Mechanical Ventilation",
         tracheostomy ~ "Tracheostomy",
         comfort_care_binary ~ "Withdrawal of Life-Sustaining Therapy",
-        early_wlst ~ "Early Withdrawal of Life-Sustaining Therapy (< 72 hours)",
+        early_wlst ~ "Early Withdrawal of Life-Sustaining Therapy",
         dnr_binary ~ "DNR Order"
       )
     ) |>

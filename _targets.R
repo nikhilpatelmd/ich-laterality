@@ -37,6 +37,8 @@ source("R/diagnostics.R")
 source("R/results_visualization.R")
 source("R/outcomes_prior_models.R")
 source("R/outcomes_posterior_models.R")
+source("R/results_outcomes.R")
+
 
 # Pipeline ----
 tar_plan(
@@ -166,8 +168,13 @@ tar_plan(
   m_prior_euro_anxiety_365_minimal = f_prior_euro_anxiety_365_minimal(ich_aggressive),
   m_prior_euro_anxiety_365_canonical = f_prior_euro_anxiety_365_canonical(ich_aggressive),
 
+  ### Prior Predictive Checks ----
 
-  # ### Posterior Simulation ----
+
+
+
+
+  #### Posterior Simulation ----
   m_posterior_mrs_90_minimal = f_posterior_mrs_90_minimal(ich_aggressive),
   m_posterior_mrs_90_canonical = f_posterior_mrs_90_canonical(ich_aggressive),
   m_posterior_mrs_180_minimal = f_posterior_mrs_180_minimal(ich_aggressive),

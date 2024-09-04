@@ -146,6 +146,7 @@ A total of `r sample_size` patients were included in the analysis, of which `r l
 
 with_dir(here(), tar_read(table_1_aggressive))
 
+
 ```
 
 ### Left hemispheric ICH and neurosurgical intervention
@@ -289,7 +290,9 @@ table_almost_2 <- left_join(aOR_CIs_combined, prob_difference, by = "Outcome") |
   left_join(rope, by = "Outcome")
 
 table_2 <- with_dir(here(), tar_read(table_2_aggressive))
-tibble_2 <- as_tibble(table_2) |> select(-1)
+
+tibble_2 <- table_2[[1]] |>
+  select(c(label, stat_1, stat_2))
 
 column_names <- c(
   "Neurosurgical Intervention",
@@ -301,11 +304,11 @@ column_names <- c(
   "DNR Order"
 )
 
-tibble_2 <- bind_cols(column_names, tibble_2) |>
+tibble_2 <- tibble_2 |>
   rename(
-    "Right Hemisphere" = "**Right**, N = 1,757",
-    "Left Hemisphere" = "**Left**, N = 1,720",
-    "Outcome" = ...1
+    "Left Hemisphere" = "stat_1",
+    "Right Hemisphere" = "stat_2",
+    "Outcome" = "label"
   ) |>
   full_join(table_almost_2, by = "Outcome") |>
   gt()
@@ -321,7 +324,6 @@ tibble_2 |>
     locations = cells_column_labels(columns = 7)
   )
 
-
 ```
 
 
@@ -329,34 +331,6 @@ tibble_2 |>
 #| echo: false
 #| label: figure 1
 #| fig-width: 10
-
-predictions(models$"Neurosurgical Intervention", by = "ich_laterality") |>
-  posterior_draws() |>
-  ggplot(aes(x = draw, fill = ich_laterality)) +
-  geom_density(alpha = .7) +
-  scale_fill_manual(values = c("#054224", "#ff8800")) +
-  scale_y_continuous(
-    limits = c(0, 100)
-  ) +
-  scale_x_continuous(
-    limits = c(0, 0.14),
-    breaks = seq(0, 0.14, 0.02),
-    labels = scales::percent
-  ) +
-  labs(
-    title = "Predicted Probability",
-    fill = "ICH Laterality",
-    y = NULL
-  ) +
-  theme_ich()
-
-```
-
-```{r figure 2}
-#| echo: false
-#| label: figure 2
-#| fig-width: 10
-
 
 predictions(models$"Neurosurgical Intervention", by = c("ich_laterality", "ich_location")) |>
   posterior_draws() |>
