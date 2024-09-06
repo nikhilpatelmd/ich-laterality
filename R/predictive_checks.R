@@ -111,7 +111,7 @@ f_prior_predictive_check <- function(neutral_model, left_model, right_model, fla
   return(prior_prediction_summary)
 }
 
-results_visual <- function(model) {
+prediction_visual <- function(model) {
   model <- model
 
   draws <- model |>
@@ -155,4 +155,12 @@ results_visual <- function(model) {
     theme_ich()
 
   return(p1)
+}
+
+f_post_predictive_check <- function(mod) {
+  pp_check <- pp_check(mod, ndraws = 500)
+
+  pp_check_bars <- pp_check(mod, ndraws = 500, type = "bars_grouped", group = "ich_laterality")
+
+  return(pp_check / pp_check_bars)
 }

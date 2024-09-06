@@ -10,6 +10,28 @@ f_prior_mrs_90_minimal <- function(dat) {
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_neutral_mrs_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
       set_prior("normal(0, 1)", class = "b")
     ),
     sample_prior = "only",
@@ -24,15 +46,59 @@ f_prior_mrs_90_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_mrs_90_canonical <- function(dat) {
+f_prior_left_mrs_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(mrs_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(mrs_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_mrs_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_mrs_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -56,6 +122,28 @@ f_prior_mrs_180_minimal <- function(dat) {
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_neutral_mrs_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
       set_prior("normal(0, 1)", class = "b")
     ),
     sample_prior = "only",
@@ -70,15 +158,59 @@ f_prior_mrs_180_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_mrs_180_canonical <- function(dat) {
+f_prior_left_mrs_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(mrs_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(mrs_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_mrs_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_mrs_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -102,6 +234,28 @@ f_prior_mrs_365_minimal <- function(dat) {
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_neutral_mrs_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
       set_prior("normal(0, 1)", class = "b")
     ),
     sample_prior = "only",
@@ -116,15 +270,59 @@ f_prior_mrs_365_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_mrs_365_canonical <- function(dat) {
+f_prior_left_mrs_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(mrs_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(mrs_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_mrs_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_mrs_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(mrs_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -140,10 +338,10 @@ f_prior_mrs_365_canonical <- function(dat) {
 
 ## euroQOL mobility 90 as outcome -----
 
-f_prior_euro_mobility_90_minimal <- function(dat) {
+f_prior_neutral_euro_mobility_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_mobility_90 ~ ich_laterality,
+  model <- brm(euro_mobility_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -162,15 +360,59 @@ f_prior_euro_mobility_90_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_mobility_90_canonical <- function(dat) {
+f_prior_left_euro_mobility_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_mobility_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_mobility_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_mobility_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_mobility_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_mobility_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_mobility_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -186,10 +428,10 @@ f_prior_euro_mobility_90_canonical <- function(dat) {
 
 ## euroQOL mobility 180 as outcome -----
 
-f_prior_euro_mobility_180_minimal <- function(dat) {
+f_prior_neutral_euro_mobility_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_mobility_180 ~ ich_laterality,
+  model <- brm(euro_mobility_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -208,15 +450,59 @@ f_prior_euro_mobility_180_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_mobility_180_canonical <- function(dat) {
+f_prior_left_euro_mobility_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_mobility_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_mobility_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_mobility_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_mobility_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_mobility_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_mobility_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -232,10 +518,10 @@ f_prior_euro_mobility_180_canonical <- function(dat) {
 
 ## euroQOL mobility 365 as outcome -----
 
-f_prior_euro_mobility_365_minimal <- function(dat) {
+f_prior_neutral_euro_mobility_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_mobility_365 ~ ich_laterality,
+  model <- brm(euro_mobility_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -254,15 +540,15 @@ f_prior_euro_mobility_365_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_mobility_365_canonical <- function(dat) {
+f_prior_left_euro_mobility_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_mobility_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_mobility_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -275,13 +561,58 @@ f_prior_euro_mobility_365_canonical <- function(dat) {
 
   return(model)
 }
+
+f_prior_right_euro_mobility_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_mobility_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_mobility_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_mobility_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
 
 ## euroQOL self-care 90 as outcome -----
 
-f_prior_euro_selfcare_90_minimal <- function(dat) {
+f_prior_neutral_euro_selfcare_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_selfcare_90 ~ ich_laterality,
+  model <- brm(euro_selfcare_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -300,15 +631,59 @@ f_prior_euro_selfcare_90_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_selfcare_90_canonical <- function(dat) {
+f_prior_left_euro_selfcare_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_selfcare_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_selfcare_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_selfcare_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_selfcare_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_selfcare_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_selfcare_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -324,10 +699,10 @@ f_prior_euro_selfcare_90_canonical <- function(dat) {
 
 ## euroQOL self-care 180 as outcome -----
 
-f_prior_euro_selfcare_180_minimal <- function(dat) {
+f_prior_neutral_euro_selfcare_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_selfcare_180 ~ ich_laterality,
+  model <- brm(euro_selfcare_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -346,15 +721,59 @@ f_prior_euro_selfcare_180_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_selfcare_180_canonical <- function(dat) {
+f_prior_left_euro_selfcare_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_selfcare_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_selfcare_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_selfcare_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_selfcare_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_selfcare_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_selfcare_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -370,10 +789,10 @@ f_prior_euro_selfcare_180_canonical <- function(dat) {
 
 ## euroQOL self-care 365 as outcome -----
 
-f_prior_euro_selfcare_365_minimal <- function(dat) {
+f_prior_neutral_euro_selfcare_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_selfcare_365 ~ ich_laterality,
+  model <- brm(euro_selfcare_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -392,15 +811,59 @@ f_prior_euro_selfcare_365_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_selfcare_365_canonical <- function(dat) {
+f_prior_left_euro_selfcare_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_selfcare_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_selfcare_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_selfcare_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_selfcare_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_selfcare_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_selfcare_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -416,10 +879,10 @@ f_prior_euro_selfcare_365_canonical <- function(dat) {
 
 ## euroQOL usual activities 90 as outcome -----
 
-f_prior_euro_usual_90_minimal <- function(dat) {
+f_prior_neutral_euro_usual_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_usual_90 ~ ich_laterality,
+  model <- brm(euro_usual_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -438,10 +901,78 @@ f_prior_euro_usual_90_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_usual_90_canonical <- function(dat) {
+f_prior_left_euro_usual_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_usual_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_usual_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_usual_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_usual_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_usual_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_usual_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+## euroQOL usual activities 180 as outcome -----
+
+f_prior_neutral_euro_usual_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_usual_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -460,12 +991,78 @@ f_prior_euro_usual_90_canonical <- function(dat) {
   return(model)
 }
 
-## euroQOL usual 180 as outcome -----
-
-f_prior_euro_usual_180_minimal <- function(dat) {
+f_prior_left_euro_usual_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_usual_180 ~ ich_laterality,
+  model <- brm(euro_usual_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_usual_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_usual_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_usual_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_usual_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+## euroQOL usual activities 365 as outcome -----
+
+f_prior_neutral_euro_usual_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_usual_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -484,15 +1081,15 @@ f_prior_euro_usual_180_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_usual_180_canonical <- function(dat) {
+f_prior_left_euro_usual_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_usual_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_usual_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -506,17 +1103,15 @@ f_prior_euro_usual_180_canonical <- function(dat) {
   return(model)
 }
 
-## euroQOL usual 365 as outcome -----
-
-f_prior_euro_usual_365_minimal <- function(dat) {
+f_prior_right_euro_usual_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_usual_365 ~ ich_laterality,
+  model <- brm(euro_usual_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(0.18, 0.175)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -530,15 +1125,15 @@ f_prior_euro_usual_365_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_usual_365_canonical <- function(dat) {
+f_prior_flat_euro_usual_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_usual_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_usual_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -554,10 +1149,10 @@ f_prior_euro_usual_365_canonical <- function(dat) {
 
 ## euroQOL pain 90 as outcome -----
 
-f_prior_euro_pain_90_minimal <- function(dat) {
+f_prior_neutral_euro_pain_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_pain_90 ~ ich_laterality,
+  model <- brm(euro_pain_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -576,15 +1171,59 @@ f_prior_euro_pain_90_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_pain_90_canonical <- function(dat) {
+f_prior_left_euro_pain_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_pain_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_pain_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_pain_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_pain_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_pain_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_pain_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -600,10 +1239,10 @@ f_prior_euro_pain_90_canonical <- function(dat) {
 
 ## euroQOL pain 180 as outcome -----
 
-f_prior_euro_pain_180_minimal <- function(dat) {
+f_prior_neutral_euro_pain_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_pain_180 ~ ich_laterality,
+  model <- brm(euro_pain_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -622,15 +1261,59 @@ f_prior_euro_pain_180_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_pain_180_canonical <- function(dat) {
+f_prior_left_euro_pain_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_pain_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_pain_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_pain_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_pain_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_pain_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_pain_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -646,10 +1329,10 @@ f_prior_euro_pain_180_canonical <- function(dat) {
 
 ## euroQOL pain 365 as outcome -----
 
-f_prior_euro_pain_365_minimal <- function(dat) {
+f_prior_neutral_euro_pain_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_pain_365 ~ ich_laterality,
+  model <- brm(euro_pain_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -668,15 +1351,59 @@ f_prior_euro_pain_365_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_pain_365_canonical <- function(dat) {
+f_prior_left_euro_pain_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_pain_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_pain_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_pain_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_pain_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_pain_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_pain_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -692,10 +1419,10 @@ f_prior_euro_pain_365_canonical <- function(dat) {
 
 ## euroQOL anxiety 90 as outcome -----
 
-f_prior_euro_anxiety_90_minimal <- function(dat) {
+f_prior_neutral_euro_anxiety_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_anxiety_90 ~ ich_laterality,
+  model <- brm(euro_anxiety_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -714,15 +1441,59 @@ f_prior_euro_anxiety_90_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_anxiety_90_canonical <- function(dat) {
+f_prior_left_euro_anxiety_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_anxiety_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_anxiety_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_anxiety_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_anxiety_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_anxiety_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_anxiety_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -738,10 +1509,10 @@ f_prior_euro_anxiety_90_canonical <- function(dat) {
 
 ## euroQOL anxiety 180 as outcome -----
 
-f_prior_euro_anxiety_180_minimal <- function(dat) {
+f_prior_neutral_euro_anxiety_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_anxiety_180 ~ ich_laterality,
+  model <- brm(euro_anxiety_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -760,15 +1531,59 @@ f_prior_euro_anxiety_180_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_anxiety_180_canonical <- function(dat) {
+f_prior_left_euro_anxiety_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_anxiety_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_anxiety_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_anxiety_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_anxiety_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_anxiety_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_anxiety_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -784,10 +1599,10 @@ f_prior_euro_anxiety_180_canonical <- function(dat) {
 
 ## euroQOL anxiety 365 as outcome -----
 
-f_prior_euro_anxiety_365_minimal <- function(dat) {
+f_prior_neutral_euro_anxiety_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_anxiety_365 ~ ich_laterality,
+  model <- brm(euro_anxiety_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
@@ -806,15 +1621,59 @@ f_prior_euro_anxiety_365_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_anxiety_365_canonical <- function(dat) {
+f_prior_left_euro_anxiety_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_anxiety_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_anxiety_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
     family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_anxiety_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_anxiety_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_anxiety_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_anxiety_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -830,10 +1689,11 @@ f_prior_euro_anxiety_365_canonical <- function(dat) {
 
 ## euroQOL vas 90 as outcome -----
 
-f_prior_euro_vas_90_minimal <- function(dat) {
+f_prior_neutral_euro_vas_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_vas_90 ~ ich_laterality,
+  model <- brm(euro_vas_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
@@ -851,14 +1711,59 @@ f_prior_euro_vas_90_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_vas_90_canonical <- function(dat) {
+f_prior_left_euro_vas_90_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_vas_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_vas_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_vas_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_vas_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_vas_90_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_vas_90 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -874,10 +1779,11 @@ f_prior_euro_vas_90_canonical <- function(dat) {
 
 ## euroQOL vas 180 as outcome -----
 
-f_prior_euro_vas_180_minimal <- function(dat) {
+f_prior_neutral_euro_vas_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_vas_180 ~ ich_laterality,
+  model <- brm(euro_vas_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
@@ -895,14 +1801,59 @@ f_prior_euro_vas_180_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_vas_180_canonical <- function(dat) {
+f_prior_left_euro_vas_180_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_vas_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_vas_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_vas_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_vas_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_vas_180_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_vas_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,
@@ -918,10 +1869,11 @@ f_prior_euro_vas_180_canonical <- function(dat) {
 
 ## euroQOL vas 365 as outcome -----
 
-f_prior_euro_vas_365_minimal <- function(dat) {
+f_prior_neutral_euro_vas_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_vas_180 ~ ich_laterality,
+  model <- brm(euro_vas_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
@@ -939,14 +1891,59 @@ f_prior_euro_vas_365_minimal <- function(dat) {
   return(model)
 }
 
-f_prior_euro_vas_365_canonical <- function(dat) {
+f_prior_left_euro_vas_365_canonical <- function(dat) {
   settings <- model_setup()
 
-  model <- brm(euro_vas_180 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed,
+  model <- brm(euro_vas_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
     data = dat,
     prior = c(
       set_prior("normal(-2.2, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 1)", class = "b")
+      set_prior("normal(-0.22, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_right_euro_vas_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_vas_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0.18, 0.175)", class = "b")
+    ),
+    sample_prior = "only",
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed
+  )
+
+  return(model)
+}
+
+f_prior_flat_euro_vas_365_canonical <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(euro_vas_365 ~ ich_laterality + age + gcs_baseline + ich_location + ich_volume_baseline + ivh + time_symptoms_to_ed ,
+    family = cumulative(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-2.2, 0.5)", class = "Intercept"),
+      set_prior("normal(0, 5)", class = "b")
     ),
     sample_prior = "only",
     cores = settings$cores,

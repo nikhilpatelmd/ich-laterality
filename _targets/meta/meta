@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|d6b4a22662f30b52|||||||||||||||
+.Random.seed|object|5b44a609af0027fa|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 aggressive_manuscript|stem||2f5dccf57d5ada46|ea04c99a2f1fdb01|861182658|manuscripts/manuscript1.html*manuscripts/manuscript1.qmd|t19914.6498776929s||0|file|local|vector|||||_paths_ missing files manuscriptsmanuscript1.html
 aggressive_supplement|stem||c5040f7a54df7e37|838dbe519e1cbfc2|-1635877901|manuscripts/manuscript1_supplement.html*manuscripts/manuscript1_supplement.qmd|t19914.6484719938s||0|file|local|vector|||||_paths_ missing files manuscriptsmanuscript1_supplement.html
@@ -10,6 +10,81 @@ comfort_care_minimal_diagnostics|stem|a66e0b2c0a126a8a|d3ea759524a003de|49901878
 comfort_minimal_visuals|stem|cd344415b68a3f6e|b2925beb29d2eeaa|36930cb7d65dc7d2|-1543084841||t19894.5672665213s|e33351618a91da80|27617997|rds|local|vector|||0.815||
 dag_aggressive|stem|f466625e621fbf47|4c5f2530d47a4a16|494adb38a275e02b|1651356463||t19894.9367686656s|c5bb5d828e920a89|506|rds|local|vector|||0.024||
 dag_outcomes|stem|b12d02c46fcefb52|35435e3659cf1296|1f323843a51566f7|2092730130||t19894.9367682799s|ab78dd2160f1066c|693|rds|local|vector|||0.069||
+diag_posterior_flat_euro_anxiety_180_canonical|stem|3a6b2ca20674b9a1|2e51a56c1b631e54|b6b0571ac954aba9|-549765303||t19971.460689729s|e9e98fc114481291|4709530|rds|local|vector|||0.077||
+diag_posterior_flat_euro_anxiety_365_canonical|stem|e8738958c140299e|bbf9b03078681864|8bf9b7102198dd76|835540460||t19971.4512033868s|5aca39942180ce28|4706392|rds|local|vector|||0.17||
+diag_posterior_flat_euro_anxiety_90_canonical|stem|b94a88333beb4be0|eabae81e707d77c9|2a81d71f23399f28|-95121540||t19971.4605704393s|d7bf62a2d83ea5fa|4775342|rds|local|vector|||0.167||
+diag_posterior_flat_euro_mobility_180_canonical|stem|f431199598079cb7|7867ef206cff70eb|8ddb4778e08b4c31|320282519||t19971.4609876059s|b3d4d42efe9e16dc|4611225|rds|local|vector|||0.078||
+diag_posterior_flat_euro_mobility_365_canonical|stem|12a90b89e37e28d7|5d793b95a4b38bc1|b72334d80dd89184|1441514121||t19971.4609394965s|2a22e7fd25563860|4635538|rds|local|vector|||0.072||
+diag_posterior_flat_euro_mobility_90_canonical|stem|8944bc15d543a7ff|f7274270daf01d16|0a94b2bb76e3b6c7|-940770011||t19971.4514897667s|0ace85cd57c31946|4610906|rds|local|vector|||0.076||
+diag_posterior_flat_euro_pain_180_canonical|stem|1ff46268f9cf94c7|ef32e8eb19ce6e11|829713ca7efdb11d|1671527802||t19971.460772599s|f3fad43504ede5d6|4733457|rds|local|vector|||0.076||
+diag_posterior_flat_euro_pain_365_canonical|stem|e92ebf98904bbf39|025a659fb45887dc|e948c2fd193f026e|232833914||t19971.4607151918s|46cf3314e01fdea7|4724658|rds|local|vector|||0.228||
+diag_posterior_flat_euro_pain_90_canonical|stem|0c64ee86e53ac18a|b795e0a1c3ae65ce|08a897fd5cd2ca35|971188310||t19971.4608559706s|4fc0d9835a9c6887|4724365|rds|local|vector|||0.085||
+diag_posterior_flat_euro_selfcare_180_canonical|stem|9056adc8ac6aa235|0aff7bfe71f04b97|9a696d79466272cb|160512945||t19971.460971788s|63450d2a14b31f22|4553663|rds|local|vector|||0.071||
+diag_posterior_flat_euro_selfcare_365_canonical|stem|f153395ea05885ea|77bb5f113dc3340c|7186132385ac5e13|-1548038349||t19971.4609796584s|d9dd490ee1fc8a4f|4588163|rds|local|vector|||0.07||
+diag_posterior_flat_euro_selfcare_90_canonical|stem|602458def217bd62|4535680dc0fdbb6a|bcceb670086fc818|-1593272558||t19971.4609954762s|58d542080ce6f889|4558796|rds|local|vector|||0.07||
+diag_posterior_flat_euro_usual_180_canonical|stem|0932f93320aac339|8d6ff556eb3d130d|36f7955324535592|-21168352||t19971.4608478688s|ff2bbe0024093e4f|4589133|rds|local|vector|||0.076||
+diag_posterior_flat_euro_usual_365_canonical|stem|7a5b351cdf41cd78|b789f155b134f328|0af1dedda947a7a4|1621878392||t19971.4606561643s|c7f6c4341fd8a744|4609138|rds|local|vector|||0.08||
+diag_posterior_flat_euro_usual_90_canonical|stem|3b1464fd62d1e9a1|59e73f2180ab5bf3|6eda4a2bc1dfee7f|-1526240887||t19971.4608071282s|b6b47d98dfa69c44|4613342|rds|local|vector|||0.254||
+diag_posterior_flat_mrs_180_canonical|stem|158b780ca13725ff|5acbb676522d34f1|6f8abe9f8e7abed8|-1755538479||t19971.4514673131s|450448b3f3577c2c|6087008|rds|local|vector|||0.088||
+diag_posterior_flat_mrs_365_canonical|stem|cb09da4bc1992ebd|e103bb131b7e829a|0be532ab7c1f1820|1017542813||t19971.4515016879s|62a2aad11f50d37e|6070673|rds|local|vector|||0.233||
+diag_posterior_flat_mrs_90_canonical|stem|f41930937a03691d|c8dda804b3a61025|eea9a151e23371f1|-1379632148||t19971.4514325524s|ac56194c6b9ba5cf|6086128|rds|local|vector|||0.125||
+diag_posterior_left_euro_anxiety_180_canonical|stem|cbab006e09f49ed7|ba46dcb29b5ad5fa|1b435c80d5268766|511945509||t19971.460705624s|1729abd3d031383f|4693211|rds|local|vector|||0.076||
+diag_posterior_left_euro_anxiety_365_canonical|stem|a28a78cd8ef7b89f|afa1db5392294413|635471132426ae51|1682043504||t19971.4606640346s|fb09d6304463e3db|4710316|rds|local|vector|||0.078||
+diag_posterior_left_euro_anxiety_90_canonical|stem|9cea1cbf385439f9|ef1235814fb49b4e|1c70492f87655a09|936856473||t19971.4609557001s|b06035c426da568b|4775324|rds|local|vector|||0.079||
+diag_posterior_left_euro_mobility_180_canonical|stem|eb358ec81c2a4e02|c9f6a596f43ecfb0|fecc18a989aaae5e|-1624703584||t19971.4608317423s|896677e09850c89b|4616017|rds|local|vector|||0.079||
+diag_posterior_left_euro_mobility_365_canonical|stem|94a7960912eee7f6|c3bc83f6d7349bf1|ec5c37f09b9ae672|1140472496||t19971.4608657314s|01c456e2a456495c|4634445|rds|local|vector|||0.24||
+diag_posterior_left_euro_mobility_90_canonical|stem|ddabdd1e63d99a3d|aed14fc14064f555|926d54bb4b1c0f92|53209498||t19971.4515222897s|61d818a1ceb29065|4610322|rds|local|vector|||0.238||
+diag_posterior_left_euro_pain_180_canonical|stem|2002d62a450ff485|5dd3c79713e53617|6b9d1637fd669e23|-1001962221||t19971.4609136864s|1ebe2d60251674f4|4733811|rds|local|vector|||0.075||
+diag_posterior_left_euro_pain_365_canonical|stem|71c88e1f2c6f5f4f|990456ed205360a5|3ddd7f9e46ef357b|43860459||t19971.4605783096s|034951997d2a43d5|4727394|rds|local|vector|||0.081||
+diag_posterior_left_euro_pain_90_canonical|stem|a836619c0ea7900e|935989956c9c2b1f|47ea1afb20906039|226902408||t19971.4607887641s|eff5978e41bdf379|4728187|rds|local|vector|||0.075||
+diag_posterior_left_euro_selfcare_180_canonical|stem|9ba7c0f7456f780c|e877453251af7d04|8eccaa4d5ef6995d|-1356974859||t19971.4607310868s|241e8dc6926069dc|4559522|rds|local|vector|||0.073||
+diag_posterior_left_euro_selfcare_365_canonical|stem|231e2f049253f947|4d3d4f0b0d6cbfec|c1ce6ec8598556c7|1935608339||t19971.4608899597s|e1ffcda09cfc0913|4583503|rds|local|vector|||0.084||
+diag_posterior_left_euro_selfcare_90_canonical|stem|3c2b55eb5e382538|f626d2789cd37246|603393e4f61cc0d3|821073646||t19971.4606227925s|ea7e322cce59e06c|4558103|rds|local|vector|||0.07||
+diag_posterior_left_euro_usual_180_canonical|stem|451e15b8bf2fec17|4eb574e7a7a3da43|7dcfdd1d25fc43cb|-139811866||t19971.4607232165s|64ba5c4a26cfd5db|4589012|rds|local|vector|||0.079||
+diag_posterior_left_euro_usual_365_canonical|stem|a8710e98d7d05d18|9ff910885d000bd3|b839b6cbf8cff702|1947537228||t19971.4606049299s|530c9b87eee0cd27|4611278|rds|local|vector|||0.083||
+diag_posterior_left_euro_usual_90_canonical|stem|e3ab7be606fa425f|bf8e8be11b72af27|d2ebfc2d5a2371ac|-568729782||t19971.4609217497s|eeb3ca41aeb0e6d9|4611961|rds|local|vector|||0.081||
+diag_posterior_left_mrs_180_canonical|stem|c5fc9b15ec46c8c1|51e3659387f33f57|5fa1cba6502baf89|222481068||t19971.4514447437s|1a885a6bd9e954d0|6083332|rds|local|vector|||0.259||
+diag_posterior_left_mrs_365_canonical|stem|22d437b1f973150a|fae55dc6f5197afb|f7e0700ed3676e34|-652961593||t19971.4514551604s|edf94ef42dcdb4ef|6069240|rds|local|vector|||0.097||
+diag_posterior_left_mrs_90_canonical|stem|43c8ac8ee6aae6d5|a7251ab835d22783|3aeb3fab88dfaacb|979829785||t19971.451583632s|5a47e64640a0f37e|6081789|rds|local|vector|||0.084||
+diag_posterior_mrs_180_minimal|stem|c5aa6cf07329de02|17237cbd7dfc92ae|ddc163d45a38a0d1|-2068148573||t19971.4515901906s|f4de19ed739c2d03|3363564|rds|local|vector|||0.081||
+diag_posterior_mrs_365_minimal|stem|9688d25a74084d4f|4761acee4bbaa9b0|a4ba8819d4d1224d|1666502422||t19971.4515288483s|4c82d2882cee0cc2|3434570|rds|local|vector|||0.066||
+diag_posterior_mrs_90_minimal|stem|4dd3e5377245f264|d68a8176833da7d2|4398f7bc8a0582ab|-1564169975||t19971.4514737174s|29788c0b10d6eb30|3264139|rds|local|vector|||0.065||
+diag_posterior_neutral_euro_anxiety_180_canonical|stem|3d4991d47915124a|98c90113c20b1dce|a6d791e52e5f96e0|954641282||t19971.4609316262s|cc8469bb05e30c25|4710159|rds|local|vector|||0.071||
+diag_posterior_neutral_euro_anxiety_365_canonical|stem|79c4d0643e5d55cd|791e39be459127c2|4dc10164f2358292|-599535738||t19971.4610112169s|4fb55543fa0153db|4711743|rds|local|vector|||0.071||
+diag_posterior_neutral_euro_anxiety_90_canonical|stem|8124573af517f592|0f4157248d625c52|71af1cc308966752|-722541385||t19971.460796943s|9a066f7db9ddaea4|4775259|rds|local|vector|||0.079||
+diag_posterior_neutral_euro_mobility_180_canonical|stem|baec85b085c9540a|728346701be37ab5|dea5cb764b940e59|-1149426224||t19971.4607807008s|3bb0535d2b15c25e|4607016|rds|local|vector|||0.073||
+diag_posterior_neutral_euro_mobility_365_canonical|stem|6f9240546b8e5036|c48cc8f3665cadcf|8eabbc5c1376f64d|-2004408065||t19971.4607566268s|6d7b5fdc87bd0c00|4635846|rds|local|vector|||0.078||
+diag_posterior_neutral_euro_mobility_90_canonical|stem|81d8a5c4238d26db|eb5a8da7234b394a|79644c1dc4435137|-949947329||t19971.4514217886s|57c080b6183504f3|4611327|rds|local|vector|||0.172||
+diag_posterior_neutral_euro_pain_180_canonical|stem|c14ca1516355ecb7|87091d9fe0b69048|27676ce87f677245|1949853226||t19971.4606975607s|583eb86a701ce8ca|4732911|rds|local|vector|||0.077||
+diag_posterior_neutral_euro_pain_365_canonical|stem|3d522e36a5eaced6|28c60352dfee3f85|bdc5298e46f39f63|399208452||t19971.4607486408s|9a9b89363237715c|4724314|rds|local|vector|||0.071||
+diag_posterior_neutral_euro_pain_90_canonical|stem|f0f2c190979165fe|336472f35c30ca54|d6232ea56f22f239|1726766292||t19971.4606737568s|643857cd2dc33b2a|4724000|rds|local|vector|||0.226||
+diag_posterior_neutral_euro_selfcare_180_canonical|stem|17b065ae7eba9678|23267f3fba8c644c|f00445483810de99|-221938768||t19971.4609057775s|3339084e398d3ee7|4563558|rds|local|vector|||0.078||
+diag_posterior_neutral_euro_selfcare_365_canonical|stem|4ab4533d5079a4fd|3cfcdcf6bd13330f|b904c81f0745d915|84085636||t19971.4606385717s|b9e51dd560f5cda2|4586711|rds|local|vector|||0.075||
+diag_posterior_neutral_euro_selfcare_90_canonical|stem|d409b8bbcbba8293|116d7a55debe8b24|e288cfdeaf3c1802|1918690315||t19971.460613186s|1d609cc24166f5fb|4556535|rds|local|vector|||0.086||
+diag_posterior_neutral_euro_usual_180_canonical|stem|1054b1ac3dd94976|20f67d2e865fac4e|9f6596be066f3e17|-1396208600||t19971.461021132s|bd9a7ee263e45b5b|4590125|rds|local|vector|||0.247||
+diag_posterior_neutral_euro_usual_365_canonical|stem|4cf3ed4c1e4d0430|7da39fc2c9e58f11|926347080e615308|663358476||t19971.4610034237s|d53ba53f14574b12|4617046|rds|local|vector|||0.083||
+diag_posterior_neutral_euro_usual_90_canonical|stem|4f821d10efd12225|b6b2f80a3bc545d8|ed2f0c3c8a94cedf|764845642||t19971.4605890735s|769498534d57a308|4612913|rds|local|vector|||0.086||
+diag_posterior_neutral_mrs_180_canonical|stem|769b92ce43c82510|7dffdb088e174042|8a83e36d8902ef61|37613504||t19971.4515614485s|8d525a290c91dad0|6082364|rds|local|vector|||0.081||
+diag_posterior_neutral_mrs_365_canonical|stem|06b17fc735aaea54|2c49e626a4afec5b|d0156367a34da3fe|173922993||t19971.4515121431s|ce8f1ee4763f4248|6069641|rds|local|vector|||0.085||
+diag_posterior_neutral_mrs_90_canonical|stem|4ebf3ff34b669867|c8231c970e88575e|bbcd9ba5db409ef5|-590227249||t19971.4515393807s|669faf3a7ad3a592|6087757|rds|local|vector|||0.085||
+diag_posterior_right_euro_anxiety_180_canonical|stem|55e55b7099971d57|f96b86c1d65a3b84|97e340abefe38d34|1170862837||t19971.4606817429s|c4ae86a64fe6f9af|4702656|rds|local|vector|||0.08||
+diag_posterior_right_euro_anxiety_365_canonical|stem|0f9e748d9bf02b21|f79fd71bc9ce2019|e1e3a15a7ce83200|138904893||t19971.4607407704s|d25447b4759c477a|4707419|rds|local|vector|||0.07||
+diag_posterior_right_euro_anxiety_90_canonical|stem|adb292aae675f72b|6e421511a69638ad|6426b34033878833|787177952||t19971.4609638791s|fdf33a2738d9d656|4774486|rds|local|vector|||0.089||
+diag_posterior_right_euro_mobility_180_canonical|stem|2f968991a71b1b60|7dd91397d954d6c5|07f68279a332290b|-1572922116||t19971.4606481782s|e0e6137953955409|4608881|rds|local|vector|||0.216||
+diag_posterior_right_euro_mobility_365_canonical|stem|0cb853a9351e178d|777ed43c714a707a|8bfc45ed168f5f1d|1544351560||t19971.4608236019s|382fdc19494c56ba|4635673|rds|local|vector|||0.088||
+diag_posterior_right_euro_mobility_90_canonical|stem|53564599f4548083|9ada51eb98a5aa88|51f09411bf7992ed|1387694030||t19971.4514817806s|bed3ea5438c5494b|4611359|rds|local|vector|||0.077||
+diag_posterior_right_euro_pain_180_canonical|stem|f9a324d899c672ec|fad2a0554b3d1f04|91d45730740ccdbd|-1712961864||t19971.4605969052s|7bf2dc3d89ba3c62|4735264|rds|local|vector|||0.069||
+diag_posterior_right_euro_pain_365_canonical|stem|19df1cc7d6347afb|7e608f1d658b8f48|031b658e0dc3e177|-485694934||t19971.4609477141s|b6edb2fe89dc8287|4727201|rds|local|vector|||0.088||
+diag_posterior_right_euro_pain_90_canonical|stem|a3bce116e6690def|8b8e2c6ba4e582eb|053264025053dc31|193042141||t19971.46063074s|81b3ccf32017c9ab|4726834|rds|local|vector|||0.076||
+diag_posterior_right_euro_selfcare_180_canonical|stem|70b4f80b7b74e5bf|3ee8f3bdd972688f|f90c2240ca6a3983|84471833||t19971.4608398827s|fad8e70f840f4702|4564044|rds|local|vector|||0.08||
+diag_posterior_right_euro_selfcare_365_canonical|stem|ecb0b23bfffff8d8|cbf1d2a0fd0670a3|ea4588f419e7c00b|400370148||t19971.4607646129s|720681534ca7263a|4585947|rds|local|vector|||0.082||
+diag_posterior_right_euro_selfcare_90_canonical|stem|83c5f077b4f4b200|8689e2eba9748aec|5b61e6ed34df1c0b|-1803404428||t19971.4608154229s|277ae91ee0d94550|4556226|rds|local|vector|||0.074||
+diag_posterior_right_euro_usual_180_canonical|stem|00d141b8abb37b12|1fed2c7e407180c3|d42efc3ee9981199|1106423706||t19971.4608819736s|d9ef6b0b2d05861b|4590946|rds|local|vector|||0.083||
+diag_posterior_right_euro_usual_365_canonical|stem|fa80cd89802b45bb|dfab851c675c3ee8|5c96d8c439313a6d|-507416277||t19971.46089783s|33cfcc66a3f347d4|4613136|rds|local|vector|||0.074||
+diag_posterior_right_euro_usual_90_canonical|stem|4d8e282a277bfa97|e3700caa4642337f|680d4eea19781a02|90596391||t19971.4608739489s|0b1a8d7b26cfa0f6|4610634|rds|local|vector|||0.078||
+diag_posterior_right_mrs_180_canonical|stem|25a6afbb1d51db7e|6eb48172988358af|42c660e6cbabf086|588978641||t19971.45160026s|f1ed9aafe8d61973|6085721|rds|local|vector|||0.077||
+diag_posterior_right_mrs_365_canonical|stem|f20b52d1f816b02a|af642e4483bea5e6|0c4374fde0d9f3f0|-1456878810||t19971.4515512247s|387ba5849cc809bb|6071006|rds|local|vector|||0.228||
+diag_posterior_right_mrs_90_canonical|stem|f30da76a5b9b774d|49769c32cf19c3ea|863236b0a7bb62d6|1400957917||t19971.4515734083s|45e0ab764772a34c|6088932|rds|local|vector|||0.236||
 dnr_canonical_diagnostics|stem|9104bae4fa8037e5|97eef9e2b6099cb7|e9eda9335712b050|-814848266||t19894.5687674228s|46c608e03e400e5d|34235006|rds|local|vector|||2.074||
 dnr_canonical_visuals|stem|3d74f8304b511227|66d2bd43b9c74cb8|69641778cefe8ac6|678247428||t19894.5686600893s|25858538ca4672d1|29588552|rds|local|vector|||5.869||
 dnr_minimal_diagnostics|stem|f86862c4b22558d1|aa442343f246d580|a7566a92a9822963|1378280447||t19894.5680787818s|55f3f4dd650fd55e|30811030|rds|local|vector|||1.922||
@@ -23,6 +98,7 @@ evd_canonical_diagnostics|stem|525c60990528ab54|3cdff9e9dd982d49|68b6d18ea6c43a0
 evd_canonical_visuals|stem|7d89df8d93b71ec8|f2d54ea7f5c1734e|14ad57e522040068|1359732802||t19894.5673718497s|deada744ee4a64cd|28137903|rds|local|vector|||5.258||
 evd_minimal_diagnostics|stem|cabe4c3b10cf1c53|e17294f478192bdd|3dff69efe4c6ecf8|-1754463944||t19894.5662447848s|6987813e5b127c83|30781294|rds|local|vector|||2.794||
 evd_minimal_visuals|stem|810b79e7df31e063|22c836fae6ede3ee|a8217c8fe710b5d6|-2017772427||t19894.5661202111s|77bc6e75b02cce9c|27339879|rds|local|vector|||1.266||
+f_post_predictive_check|function|6baf77f9bc26df66|||||||||||||||
 f_posterior_comfort_canonical|function|aaea3d97ffef3b0b|||||||||||||||
 f_posterior_comfort_minimal|function|1c0de68c71877a1a|||||||||||||||
 f_posterior_dnr_canonical|function|70337caf12ecb1ac|||||||||||||||
@@ -71,36 +147,120 @@ f_posterior_flat_comfort|function|3cf03da1012927d7|||||||||||||||
 f_posterior_flat_days_mechanical_ventilation|function|736a318b06c93113|||||||||||||||
 f_posterior_flat_dnr_binary|function|17fcb6b391191cb1|||||||||||||||
 f_posterior_flat_early_wlst|function|3db9e75138d5521e|||||||||||||||
+f_posterior_flat_euro_anxiety_180_canonical|function|39e4f0f6585b0bb7|||||||||||||||
+f_posterior_flat_euro_anxiety_365_canonical|function|824bf65adbce0746|||||||||||||||
+f_posterior_flat_euro_anxiety_90_canonical|function|7b47e065f575e6e7|||||||||||||||
+f_posterior_flat_euro_mobility_180_canonical|function|2b4464c490ae8017|||||||||||||||
+f_posterior_flat_euro_mobility_365_canonical|function|d973572fc7029599|||||||||||||||
+f_posterior_flat_euro_mobility_90_canonical|function|a95dacc0a463a760|||||||||||||||
+f_posterior_flat_euro_pain_180_canonical|function|30377299773b1122|||||||||||||||
+f_posterior_flat_euro_pain_365_canonical|function|1583a8ea56389508|||||||||||||||
+f_posterior_flat_euro_pain_90_canonical|function|84ab7cdac4cf6095|||||||||||||||
+f_posterior_flat_euro_selfcare_180_canonical|function|57049ae13e92b6cd|||||||||||||||
+f_posterior_flat_euro_selfcare_365_canonical|function|4397ef353fde43a6|||||||||||||||
+f_posterior_flat_euro_selfcare_90_canonical|function|8432cc4c476c9945|||||||||||||||
+f_posterior_flat_euro_usual_180_canonical|function|ef149e6b197defbe|||||||||||||||
+f_posterior_flat_euro_usual_365_canonical|function|5edc67a7412ac28e|||||||||||||||
+f_posterior_flat_euro_usual_90_canonical|function|f89a88a742b359c7|||||||||||||||
+f_posterior_flat_euro_vas_180_canonical|function|4158feb6d11de547|||||||||||||||
+f_posterior_flat_euro_vas_365_canonical|function|6b2f9663dcaf8aa1|||||||||||||||
+f_posterior_flat_euro_vas_90_canonical|function|a847ed0a40d7818d|||||||||||||||
 f_posterior_flat_evd|function|4a0ef0d2092f8498|||||||||||||||
+f_posterior_flat_mrs_180_canonical|function|83930d2735b68011|||||||||||||||
+f_posterior_flat_mrs_365_canonical|function|2aaa8de449ff0986|||||||||||||||
+f_posterior_flat_mrs_90_canonical|function|6fc385a830f3726c|||||||||||||||
 f_posterior_flat_neurosurgery|function|f5b6ddc6849eb3a3|||||||||||||||
 f_posterior_flat_tracheostomy|function|9abeb6f01226ee78|||||||||||||||
 f_posterior_left_comfort|function|6aa1a5a5a24f36ee|||||||||||||||
 f_posterior_left_days_mechanical_ventilation|function|31fd273851251368|||||||||||||||
 f_posterior_left_dnr_binary|function|5808acab197f509d|||||||||||||||
 f_posterior_left_early_wlst|function|0937c822378bad8a|||||||||||||||
+f_posterior_left_euro_anxiety_180_canonical|function|b9ee096e5c1caec2|||||||||||||||
+f_posterior_left_euro_anxiety_365_canonical|function|429474fa6ea47bad|||||||||||||||
+f_posterior_left_euro_anxiety_90_canonical|function|e3579ff1aad2a133|||||||||||||||
+f_posterior_left_euro_mobility_180_canonical|function|98f68e6f43b816f9|||||||||||||||
+f_posterior_left_euro_mobility_365_canonical|function|1194d7e06ff426e7|||||||||||||||
+f_posterior_left_euro_mobility_90_canonical|function|b4a613352a8511df|||||||||||||||
+f_posterior_left_euro_pain_180_canonical|function|fcd413d585cec1c2|||||||||||||||
+f_posterior_left_euro_pain_365_canonical|function|967d2d337abb989c|||||||||||||||
+f_posterior_left_euro_pain_90_canonical|function|b8d836e5bf9678ec|||||||||||||||
+f_posterior_left_euro_selfcare_180_canonical|function|95bd9ac36e3a4025|||||||||||||||
+f_posterior_left_euro_selfcare_365_canonical|function|831fa2fc56b15b4d|||||||||||||||
+f_posterior_left_euro_selfcare_90_canonical|function|aa8ea0d49b0418f2|||||||||||||||
+f_posterior_left_euro_usual_180_canonical|function|9ec05d2d19a5ea7a|||||||||||||||
+f_posterior_left_euro_usual_365_canonical|function|c33a574f0374e5e4|||||||||||||||
+f_posterior_left_euro_usual_90_canonical|function|d2890ee1370c334a|||||||||||||||
+f_posterior_left_euro_vas_180_canonical|function|699e4b0433347dbc|||||||||||||||
+f_posterior_left_euro_vas_365_canonical|function|ef401b669e4c053f|||||||||||||||
+f_posterior_left_euro_vas_90_canonical|function|d32ecaa9db7b15cd|||||||||||||||
 f_posterior_left_evd|function|56ad5ebf09c040ea|||||||||||||||
+f_posterior_left_mrs_180_canonical|function|b24b7fa97be19018|||||||||||||||
+f_posterior_left_mrs_365_canonical|function|6f0bb0ec786dc4b8|||||||||||||||
+f_posterior_left_mrs_90_canonical|function|7a1f2dc81cf12742|||||||||||||||
 f_posterior_left_neurosurgery|function|cf3423e301ff5607|||||||||||||||
 f_posterior_left_tracheostomy|function|d452ea5710aa4cb5|||||||||||||||
 f_posterior_mrs_180_canonical|function|d422c17dc2d56214|||||||||||||||
-f_posterior_mrs_180_minimal|function|3e39f275caca759a|||||||||||||||
+f_posterior_mrs_180_minimal|function|f282fcf145f3783b|||||||||||||||
 f_posterior_mrs_365_canonical|function|2243a34adb61d256|||||||||||||||
-f_posterior_mrs_365_minimal|function|06de5b06594588ce|||||||||||||||
+f_posterior_mrs_365_minimal|function|b52662ecc3d8b2bb|||||||||||||||
 f_posterior_mrs_90_canonical|function|aa33128c0aeb0b7a|||||||||||||||
-f_posterior_mrs_90_minimal|function|083c6ea6c3060b98|||||||||||||||
+f_posterior_mrs_90_minimal|function|2664db8a8be41406|||||||||||||||
 f_posterior_neurosurgery_canonical|function|f2227cd5f1e70952|||||||||||||||
 f_posterior_neurosurgery_minimal|function|1ccf0d13fd729261|||||||||||||||
 f_posterior_neutral_comfort|function|2493a69bd013c6e5|||||||||||||||
 f_posterior_neutral_days_mechanical_ventilation|function|87abf0f51f530bcf|||||||||||||||
 f_posterior_neutral_dnr_binary|function|8c5ae78998fab3f0|||||||||||||||
 f_posterior_neutral_early_wlst|function|a1c89431aa4c067a|||||||||||||||
+f_posterior_neutral_euro_anxiety_180_canonical|function|66f4abb692961980|||||||||||||||
+f_posterior_neutral_euro_anxiety_365_canonical|function|10dffcc01bf4bb4f|||||||||||||||
+f_posterior_neutral_euro_anxiety_90_canonical|function|26dcd5245847b2d1|||||||||||||||
+f_posterior_neutral_euro_mobility_180_canonical|function|1e8c6219cd7bf5cc|||||||||||||||
+f_posterior_neutral_euro_mobility_365_canonical|function|e0c4d454deb6a346|||||||||||||||
+f_posterior_neutral_euro_mobility_90_canonical|function|17578d402cddd967|||||||||||||||
+f_posterior_neutral_euro_pain_180_canonical|function|20a947f178f52c48|||||||||||||||
+f_posterior_neutral_euro_pain_365_canonical|function|d8c71b8149ce6996|||||||||||||||
+f_posterior_neutral_euro_pain_90_canonical|function|1416d9ebf759a20a|||||||||||||||
+f_posterior_neutral_euro_selfcare_180_canonical|function|6c84891b404fe28d|||||||||||||||
+f_posterior_neutral_euro_selfcare_365_canonical|function|d81cf0ea2c3a8023|||||||||||||||
+f_posterior_neutral_euro_selfcare_90_canonical|function|a2aa80e41593b519|||||||||||||||
+f_posterior_neutral_euro_usual_180_canonical|function|489f8e9cbb63975d|||||||||||||||
+f_posterior_neutral_euro_usual_365_canonical|function|597c1f6300775af7|||||||||||||||
+f_posterior_neutral_euro_usual_90_canonical|function|dacb60d117616781|||||||||||||||
+f_posterior_neutral_euro_vas_180_canonical|function|0d996504337f3f0e|||||||||||||||
+f_posterior_neutral_euro_vas_365_canonical|function|d310b4489c9462d1|||||||||||||||
+f_posterior_neutral_euro_vas_90_canonical|function|1711ae31062514ea|||||||||||||||
 f_posterior_neutral_evd|function|6fb89cd370ef3ef6|||||||||||||||
+f_posterior_neutral_mrs_180_canonical|function|d422c17dc2d56214|||||||||||||||
+f_posterior_neutral_mrs_365_canonical|function|2243a34adb61d256|||||||||||||||
+f_posterior_neutral_mrs_90_canonical|function|aa33128c0aeb0b7a|||||||||||||||
 f_posterior_neutral_neurosurgery|function|e63fea987269301d|||||||||||||||
 f_posterior_neutral_tracheostomy|function|4f94753e7a9aea6c|||||||||||||||
 f_posterior_right_comfort|function|7b37e173713b7644|||||||||||||||
 f_posterior_right_days_mechanical_ventilation|function|75d2b089a566ab81|||||||||||||||
 f_posterior_right_dnr_binary|function|a802386f4f7a0ed8|||||||||||||||
 f_posterior_right_early_wlst|function|aa2f87eba4004133|||||||||||||||
+f_posterior_right_euro_anxiety_180_canonical|function|6c58e197004ef4e4|||||||||||||||
+f_posterior_right_euro_anxiety_365_canonical|function|459ff022192c329c|||||||||||||||
+f_posterior_right_euro_anxiety_90_canonical|function|0e2f876a0048fc21|||||||||||||||
+f_posterior_right_euro_mobility_180_canonical|function|52d1e65c8ab0b159|||||||||||||||
+f_posterior_right_euro_mobility_365_canonical|function|5688856a077263f8|||||||||||||||
+f_posterior_right_euro_mobility_90_canonical|function|3995c49ba877cf80|||||||||||||||
+f_posterior_right_euro_pain_180_canonical|function|ed5988a01035f865|||||||||||||||
+f_posterior_right_euro_pain_365_canonical|function|568c41c6894b49a0|||||||||||||||
+f_posterior_right_euro_pain_90_canonical|function|09aeeb589dca3747|||||||||||||||
+f_posterior_right_euro_selfcare_180_canonical|function|6af0985afb928c3a|||||||||||||||
+f_posterior_right_euro_selfcare_365_canonical|function|ae35306c3828b2fa|||||||||||||||
+f_posterior_right_euro_selfcare_90_canonical|function|b7c1bfadff66f665|||||||||||||||
+f_posterior_right_euro_usual_180_canonical|function|e78c298fc2f3c026|||||||||||||||
+f_posterior_right_euro_usual_365_canonical|function|5abb8c4a2c44203f|||||||||||||||
+f_posterior_right_euro_usual_90_canonical|function|bc1e8979a410a453|||||||||||||||
+f_posterior_right_euro_vas_180_canonical|function|2ea4af426c011b79|||||||||||||||
+f_posterior_right_euro_vas_365_canonical|function|60d555deab6a51e6|||||||||||||||
+f_posterior_right_euro_vas_90_canonical|function|bc04c6fd435d70df|||||||||||||||
 f_posterior_right_evd|function|32ce800c45ec6e2c|||||||||||||||
+f_posterior_right_mrs_180_canonical|function|9a5be4e17611889d|||||||||||||||
+f_posterior_right_mrs_365_canonical|function|4d99b0c0dfe2ef31|||||||||||||||
+f_posterior_right_mrs_90_canonical|function|5dbdeb7699d6447d|||||||||||||||
 f_posterior_right_neurosurgery|function|3d7d1cc92d9a5fa5|||||||||||||||
 f_posterior_right_tracheostomy|function|165d391e7b8fe4c8|||||||||||||||
 f_posterior_trach_canonical|function|b41c0dd69e947fd1|||||||||||||||
@@ -156,7 +316,28 @@ f_prior_flat_comfort|function|9afbf6330dbf043e|||||||||||||||
 f_prior_flat_days_mechanical_ventilation|function|3ac1ee1ca560cf0e|||||||||||||||
 f_prior_flat_dnr_binary|function|efc95871b8be44a4|||||||||||||||
 f_prior_flat_early_wlst|function|de4b42a8be3bc1fe|||||||||||||||
+f_prior_flat_euro_anxiety_180_canonical|function|d33e26600011cdab|||||||||||||||
+f_prior_flat_euro_anxiety_365_canonical|function|516bd5b48adf2c9f|||||||||||||||
+f_prior_flat_euro_anxiety_90_canonical|function|30593eb1745e41b8|||||||||||||||
+f_prior_flat_euro_mobility_180_canonical|function|90d10ef2189b5859|||||||||||||||
+f_prior_flat_euro_mobility_365_canonical|function|c2a35c8bc006eb6a|||||||||||||||
+f_prior_flat_euro_mobility_90_canonical|function|82ef60251951b813|||||||||||||||
+f_prior_flat_euro_pain_180_canonical|function|0a3bd9f3ddcdd7f8|||||||||||||||
+f_prior_flat_euro_pain_365_canonical|function|756d01511abe1172|||||||||||||||
+f_prior_flat_euro_pain_90_canonical|function|9761f2f124d6ba32|||||||||||||||
+f_prior_flat_euro_selfcare_180_canonical|function|6e6ae388a493902a|||||||||||||||
+f_prior_flat_euro_selfcare_365_canonical|function|d5ada08c64e1cc8d|||||||||||||||
+f_prior_flat_euro_selfcare_90_canonical|function|704636c306d6eea3|||||||||||||||
+f_prior_flat_euro_usual_180_canonical|function|fb1ddaf3e15ce756|||||||||||||||
+f_prior_flat_euro_usual_365_canonical|function|8bc4ab370a4cb1b1|||||||||||||||
+f_prior_flat_euro_usual_90_canonical|function|fff84805863f27fc|||||||||||||||
+f_prior_flat_euro_vas_180_canonical|function|a69d7b1700219bba|||||||||||||||
+f_prior_flat_euro_vas_365_canonical|function|7de7b063d6961be0|||||||||||||||
+f_prior_flat_euro_vas_90_canonical|function|727c2977f3b3c2e2|||||||||||||||
 f_prior_flat_evd|function|c6b548bd46c1e5c9|||||||||||||||
+f_prior_flat_mrs_180_canonical|function|ed93153b96feb94d|||||||||||||||
+f_prior_flat_mrs_365_canonical|function|17ad9c35d0199414|||||||||||||||
+f_prior_flat_mrs_90_canonical|function|733f8656509b7613|||||||||||||||
 f_prior_flat_neurosurgery|function|ee73b5a79f76612c|||||||||||||||
 f_prior_flat_tracheostomy|function|6a0336ef4fdbde38|||||||||||||||
 f_prior_informative_neurosurgery|function|f46a91aa09de6163|||||||||||||||
@@ -164,15 +345,36 @@ f_prior_left_comfort|function|7183b564584f2275|||||||||||||||
 f_prior_left_days_mechanical_ventilation|function|a4cd3d86e3c0bb2e|||||||||||||||
 f_prior_left_dnr_binary|function|3ed8de9a78ea8a81|||||||||||||||
 f_prior_left_early_wlst|function|abe0baf470e79445|||||||||||||||
+f_prior_left_euro_anxiety_180_canonical|function|c82a89854a4c677d|||||||||||||||
+f_prior_left_euro_anxiety_365_canonical|function|3cf2a45784512e30|||||||||||||||
+f_prior_left_euro_anxiety_90_canonical|function|035c4c957433c638|||||||||||||||
+f_prior_left_euro_mobility_180_canonical|function|6b78ffe7a459e105|||||||||||||||
+f_prior_left_euro_mobility_365_canonical|function|2ab0418f2ad22416|||||||||||||||
+f_prior_left_euro_mobility_90_canonical|function|8d995be475ae2c8d|||||||||||||||
+f_prior_left_euro_pain_180_canonical|function|d647684a01888c42|||||||||||||||
+f_prior_left_euro_pain_365_canonical|function|4cb645180e8b40b7|||||||||||||||
+f_prior_left_euro_pain_90_canonical|function|8961ec566e5307f4|||||||||||||||
+f_prior_left_euro_selfcare_180_canonical|function|2506c77e23cb8065|||||||||||||||
+f_prior_left_euro_selfcare_365_canonical|function|10bf525c8e754ab8|||||||||||||||
+f_prior_left_euro_selfcare_90_canonical|function|c917f33dbf0d60fe|||||||||||||||
+f_prior_left_euro_usual_180_canonical|function|8e78925fa3de39da|||||||||||||||
+f_prior_left_euro_usual_365_canonical|function|f1b9935eecf16d55|||||||||||||||
+f_prior_left_euro_usual_90_canonical|function|aad11e34efd7a616|||||||||||||||
+f_prior_left_euro_vas_180_canonical|function|b63a273a12600bba|||||||||||||||
+f_prior_left_euro_vas_365_canonical|function|98d96cb4c9fa1492|||||||||||||||
+f_prior_left_euro_vas_90_canonical|function|b2ce4349359dbcb4|||||||||||||||
 f_prior_left_evd|function|de6bc0770565e330|||||||||||||||
+f_prior_left_mrs_180_canonical|function|1193bc650ee401b0|||||||||||||||
+f_prior_left_mrs_365_canonical|function|ee273215024b8557|||||||||||||||
+f_prior_left_mrs_90_canonical|function|69c1e5b527290a42|||||||||||||||
 f_prior_left_neurosurgery|function|282acb19b10f3f5d|||||||||||||||
 f_prior_left_tracheostomy|function|4a2b6a9e14008a15|||||||||||||||
 f_prior_mrs_180_canonical|function|a039760d20e06e6f|||||||||||||||
-f_prior_mrs_180_minimal|function|fecd897099bb7dd7|||||||||||||||
+f_prior_mrs_180_minimal|function|473ba3e486982cee|||||||||||||||
 f_prior_mrs_365_canonical|function|fda31f73be449999|||||||||||||||
-f_prior_mrs_365_minimal|function|ba93caa678b3e13a|||||||||||||||
+f_prior_mrs_365_minimal|function|0df7277fa7960c73|||||||||||||||
 f_prior_mrs_90_canonical|function|05d16a0a95cecbbc|||||||||||||||
-f_prior_mrs_90_minimal|function|901f1787c1c06b3e|||||||||||||||
+f_prior_mrs_90_minimal|function|6b38821ebad28eee|||||||||||||||
 f_prior_neurosurgery|function|236446dddaa8e5df|||||||||||||||
 f_prior_neurosurgery_canonical|function|214654bd320e396e|||||||||||||||
 f_prior_neurosurgery_minimal|function|d05b64682d753d08|||||||||||||||
@@ -180,7 +382,28 @@ f_prior_neutral_comfort|function|cffd283ff894f39b|||||||||||||||
 f_prior_neutral_days_mechanical_ventilation|function|26e2ebc548767804|||||||||||||||
 f_prior_neutral_dnr_binary|function|14f2043f594b1de5|||||||||||||||
 f_prior_neutral_early_wlst|function|8ec62e2b8fc3677d|||||||||||||||
+f_prior_neutral_euro_anxiety_180_canonical|function|a3191d9c3f76a42d|||||||||||||||
+f_prior_neutral_euro_anxiety_365_canonical|function|e443b48cac4b52b6|||||||||||||||
+f_prior_neutral_euro_anxiety_90_canonical|function|b28cab5e6aefe424|||||||||||||||
+f_prior_neutral_euro_mobility_180_canonical|function|490c54976e237d36|||||||||||||||
+f_prior_neutral_euro_mobility_365_canonical|function|9da79f5510e37956|||||||||||||||
+f_prior_neutral_euro_mobility_90_canonical|function|e2d8b45c18f08200|||||||||||||||
+f_prior_neutral_euro_pain_180_canonical|function|f647ee03a6476773|||||||||||||||
+f_prior_neutral_euro_pain_365_canonical|function|df501eb932a61360|||||||||||||||
+f_prior_neutral_euro_pain_90_canonical|function|a96ebcea4847ffcc|||||||||||||||
+f_prior_neutral_euro_selfcare_180_canonical|function|88cac84625149a6f|||||||||||||||
+f_prior_neutral_euro_selfcare_365_canonical|function|2b9bcd7d3934220d|||||||||||||||
+f_prior_neutral_euro_selfcare_90_canonical|function|28050dc3a2bba7e1|||||||||||||||
+f_prior_neutral_euro_usual_180_canonical|function|738a8728c3e2e388|||||||||||||||
+f_prior_neutral_euro_usual_365_canonical|function|dae2b2d2baa6d203|||||||||||||||
+f_prior_neutral_euro_usual_90_canonical|function|8a87aa5ad8625b71|||||||||||||||
+f_prior_neutral_euro_vas_180_canonical|function|90b113d2b2d94a33|||||||||||||||
+f_prior_neutral_euro_vas_365_canonical|function|bc2b4bb30ebb9925|||||||||||||||
+f_prior_neutral_euro_vas_90_canonical|function|cafb349dc99e0cba|||||||||||||||
 f_prior_neutral_evd|function|115eda5ab1e93286|||||||||||||||
+f_prior_neutral_mrs_180_canonical|function|a039760d20e06e6f|||||||||||||||
+f_prior_neutral_mrs_365_canonical|function|fda31f73be449999|||||||||||||||
+f_prior_neutral_mrs_90_canonical|function|05d16a0a95cecbbc|||||||||||||||
 f_prior_neutral_neurosurgery|function|aad3cdf61ad022b1|||||||||||||||
 f_prior_neutral_tracheostomy|function|117eb1d7e2b37c81|||||||||||||||
 f_prior_predictive_check|function|9fb9f26c4dffb03d|||||||||||||||
@@ -188,7 +411,28 @@ f_prior_right_comfort|function|a5b20603a6c3a23a|||||||||||||||
 f_prior_right_days_mechanical_ventilation|function|24526504ca01e797|||||||||||||||
 f_prior_right_dnr_binary|function|357abbdd3686944a|||||||||||||||
 f_prior_right_early_wlst|function|87320fda3b054007|||||||||||||||
+f_prior_right_euro_anxiety_180_canonical|function|02d5985f95dc4232|||||||||||||||
+f_prior_right_euro_anxiety_365_canonical|function|7b7ff3b4c7d84034|||||||||||||||
+f_prior_right_euro_anxiety_90_canonical|function|96bff1179d415304|||||||||||||||
+f_prior_right_euro_mobility_180_canonical|function|82c75b1a4fbcf9bf|||||||||||||||
+f_prior_right_euro_mobility_365_canonical|function|ab8dd1a9de7a17d7|||||||||||||||
+f_prior_right_euro_mobility_90_canonical|function|cc6e5af35cc9d1d4|||||||||||||||
+f_prior_right_euro_pain_180_canonical|function|2c3b6c5a67f728cb|||||||||||||||
+f_prior_right_euro_pain_365_canonical|function|b357efc2d2ea3289|||||||||||||||
+f_prior_right_euro_pain_90_canonical|function|e99a8fd7903170c6|||||||||||||||
+f_prior_right_euro_selfcare_180_canonical|function|add199ee06198bb7|||||||||||||||
+f_prior_right_euro_selfcare_365_canonical|function|20a7695139df9c1d|||||||||||||||
+f_prior_right_euro_selfcare_90_canonical|function|49e8cde0e18959e6|||||||||||||||
+f_prior_right_euro_usual_180_canonical|function|62e541c4ba0450e3|||||||||||||||
+f_prior_right_euro_usual_365_canonical|function|793ece46525c0e49|||||||||||||||
+f_prior_right_euro_usual_90_canonical|function|d56b22ffe172493d|||||||||||||||
+f_prior_right_euro_vas_180_canonical|function|da5055011f664212|||||||||||||||
+f_prior_right_euro_vas_365_canonical|function|c1489c4aca026e6d|||||||||||||||
+f_prior_right_euro_vas_90_canonical|function|dcd4f77c7c9dc68f|||||||||||||||
 f_prior_right_evd|function|fb5479dac241b95b|||||||||||||||
+f_prior_right_mrs_180_canonical|function|bd99c34772ece5b6|||||||||||||||
+f_prior_right_mrs_365_canonical|function|1a410ba97746d28d|||||||||||||||
+f_prior_right_mrs_90_canonical|function|47541d17d4b41005|||||||||||||||
 f_prior_right_neurosurgery|function|20a0a85a357fbba3|||||||||||||||
 f_prior_right_tracheostomy|function|b918515e6b46a8f9|||||||||||||||
 f_prior_trach_canonical|function|1705e68f1bba860c|||||||||||||||
@@ -258,22 +502,58 @@ m_posterior_flat_comfort|stem|18afa7610219848c|b679a2c96e23b991|b14104facd43ed63
 m_posterior_flat_days_mechanical_ventilation|stem|3e9cc0b3599e0e5e|bc0e4c52ea921ea8|5e5989d497709899|139475884||t19912.5611437016s|f3ac10b6b766aee0|31281647|rds|local|vector|||79.148|Rows containing NAs were excluded from the model.|
 m_posterior_flat_dnr_binary|stem|f82692e22f4f35a8|070bec526b395d9b|48febf1f94e9f2fb|-1722984124||t19912.5883601348s|8d461c4013a639f4|30196847|rds|local|vector|||137.989|Rows containing NAs were excluded from the model.. There were 117 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
 m_posterior_flat_early_wlst|stem|adb7949bad3cdd86|1aaa5d8fd92d1ca5|0f182b681abec1d6|251186758||t19912.6080119657s|ee9ffe7b1b4bb987|31088424|rds|local|vector|||129.483|Rows containing NAs were excluded from the model.. There were 20 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
+m_posterior_flat_euro_anxiety_180_canonical|stem|a0b09ef84cae412a|3d3a8222d7828e41|e3d131e4e29f501a|2118017698||t19970.8440420336s|bf76678f3c95bab9|1052743|rds|local|vector|||314.557|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_anxiety_365_canonical|stem|5e3cee8f10deb468|9693810c379ded16|c38c9e7f21a710fc|694591331||t19970.8803317589s|0fdac2955350ae31|1053273|rds|local|vector|||171.289|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_anxiety_90_canonical|stem|73ef7cf6bf9722c7|d2761d1858dcbe96|d5d31dd570b3d0eb|1098057542||t19970.8066778618s|1f95e7661dbbd664|1072832|rds|local|vector|||518.511|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_mobility_180_canonical|stem|cc7151789be1349e|448118b1a7532b72|c0434e154d4e53bc|1415114884||t19970.7573438281s|7a51b01637208d0d|1030801|rds|local|vector|||278.836|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_mobility_365_canonical|stem|fd1ecd1c6028549a|3ebd893bca4a0f71|056ff27f435e98ad|-1408920141||t19970.83590926s|9cdf7755f1407cb9|1045081|rds|local|vector|||111.365|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_mobility_90_canonical|stem|45d08c1ca66275f7|3477890f2e69e036|f8f83c57f6f0658e|322637060||t19970.9283143441s|b8c46cda69dadb38|1045863|rds|local|vector|||427.15|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_pain_180_canonical|stem|562873b791b39ebc|a09e3784ff3226f5|fdfd39704d548a7e|2062709972||t19970.7190025689s|25142e975bf3f8ab|1055096|rds|local|vector|||186.305|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_pain_365_canonical|stem|b9de9f7bd701ce65|704b147c878c0728|71d835f38ad3cba5|1333574006||t19970.825209055s|0b9cb33f39cd2e5d|1061289|rds|local|vector|||126.474|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_pain_90_canonical|stem|3aef1c99969bab9d|fbbc2ab72620f91c|19de6494e4540526|731828397||t19970.8404002216s|ef90682e68b39d23|1070704|rds|local|vector|||387.922|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_selfcare_180_canonical|stem|d625acf4ae1445da|281adcbc3cbb11aa|776244428d25d80f|267338570||t19970.7077664982s|71590341f5e63ea1|1022966|rds|local|vector|||344.8|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_selfcare_365_canonical|stem|ea891e3a4cbb347c|b5da09c6663cdbc6|fbd03cb3fd0453b9|110972015||t19970.7854191348s|6a10c8c6877e087e|1026885|rds|local|vector|||136.731|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_selfcare_90_canonical|stem|7d4998c5143fe76d|c329c1addfd42344|eefe6bd213546a53|298677617||t19970.886724328s|bab6f1e34733ab6d|1037134|rds|local|vector|||552.221|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_usual_180_canonical|stem|9f580482bfc847c4|993bff5d5993b5ca|14dc57c34a37e4bd|1758637608||t19970.8237442057s|841f3a9aa42ff2dc|1017680|rds|local|vector|||291.935|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_usual_365_canonical|stem|991d3f2f031feb9d|24f3ebc344d1d71b|2fc64906ec443960|-899323614||t19970.8469595416s|a90d9cbbc3f1b1b3|1024668|rds|local|vector|||120.763|Rows containing NAs were excluded from the model.|
+m_posterior_flat_euro_usual_90_canonical|stem|18cc52885dd6fcba|233d008ea9498adc|82e747e66bad8f81|-1910829731||t19970.7629552927s|b120da7c4a193e36|1043021|rds|local|vector|||484.731|Rows containing NAs were excluded from the model.|
 m_posterior_flat_evd|stem|934ebee5ba288b1f|b638858b6437f417|58ff33e6b3f9bc06|1126607986||t19912.5715038521s|61891679dd5b9246|29422750|rds|local|vector|||146.818|Rows containing NAs were excluded from the model.. There were 319 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems. The largest Rhat is 1.24, indicating chains have not mixed.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlrhat. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
+m_posterior_flat_mrs_180_canonical|stem|aab93337ca24a970|67438f25b101f59d|16c97cbd66fd905c|-1850857780||t19970.8107474469s|3678e09b8ff1f08c|1414012|rds|local|vector|||342.21|Rows containing NAs were excluded from the model.|
+m_posterior_flat_mrs_365_canonical|stem|e8849751fb6e2bbb|8e31b3b388abcf98|342688fe6c55b9a9|-751252713||t19970.8583786502s|c397ec2556ce6a41|1419699|rds|local|vector|||186.615|Rows containing NAs were excluded from the model.|
+m_posterior_flat_mrs_90_canonical|stem|cb3bb5b5baa820e7|c1de9e50feee0b8c|6f61ad35bb3b1d4f|-1333655377||t19970.8164030615s|a5d28210775d95c4|1430800|rds|local|vector|||488.531|Rows containing NAs were excluded from the model.|
 m_posterior_flat_neurosurgery|stem|b96e1cfc321d8e15|7ff81c7bb1c74b23|01aa2acdb6b838c6|-1366254606||t19912.5773331756s|39073377ba9022db|29718307|rds|local|vector|||143.157|Rows containing NAs were excluded from the model.. There were 25 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
 m_posterior_flat_tracheostomy|stem|b411ef442f141f61|4643e424f8d50cda|4b03c64947d6d959|-46543313||t19912.6047801421s|9d4c2d62b7456eda|30953924|rds|local|vector|||110.116|Rows containing NAs were excluded from the model.. There were 25 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_left_comfort|stem|983c464a15269f2f|a857c3527c1758a4|61bf1d81a9282112|-665113890||t19912.6013911798s|14438817eb9213b3|30825573|rds|local|vector|||123.684|Rows containing NAs were excluded from the model.. There were 52 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_left_days_mechanical_ventilation|stem|dd51195714214de6|10db97e4edb722a1|410f839544d6dcf0|250477648||t19912.5893468601s|2fc2bd68fa860e33|32609491|rds|local|vector|||80.338|Rows containing NAs were excluded from the model.|
 m_posterior_left_dnr_binary|stem|00cac276644af8be|f4b4ea30d978a4e4|5ab5ee67d25aa891|1720292141||t19912.6171132844s|e51e480e67bc1e23|31555401|rds|local|vector|||138.583|Rows containing NAs were excluded from the model.. There were 23 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_left_early_wlst|stem|4a5fcddd5d7409b8|42f97f92c3e4079f|3c630f40f670c6a5|1018635473||t19912.5650315397s|c293be6ef244cdcc|29221637|rds|local|vector|||105.232|Rows containing NAs were excluded from the model.. There were 63 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
+m_posterior_left_euro_anxiety_180_canonical|stem|d1c62e2cf566392f|3d3a8222d7828e41|e3d131e4e29f501a|250771967||t19970.9438979424s|689397abc092bdf2|1050955|rds|local|vector|||328.822|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_anxiety_365_canonical|stem|f144697a79bfa96c|9693810c379ded16|c38c9e7f21a710fc|468641272||t19970.7888712019s|e7c952232fb2639f|1053334|rds|local|vector|||168.537|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_anxiety_90_canonical|stem|e3fb6ee8525b69bf|d2761d1858dcbe96|d5d31dd570b3d0eb|-1382015619||t19970.8697836781s|aa3a75b940c1d4b1|1072894|rds|local|vector|||502.285|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_mobility_180_canonical|stem|7d25097ce4688b34|448118b1a7532b72|c0434e154d4e53bc|-614958064||t19970.698493384s|b46f90d88cbb88ef|1042475|rds|local|vector|||312.6|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_mobility_365_canonical|stem|f9a9bd61e5d5bcec|3ebd893bca4a0f71|056ff27f435e98ad|-1386763435||t19970.9233693348s|0669520e5702e2e2|1043355|rds|local|vector|||118.148|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_mobility_90_canonical|stem|198336766a15cd9c|3477890f2e69e036|f8f83c57f6f0658e|-1974699928||t19970.7790140196s|2f5c9a572dd3f073|1044570|rds|local|vector|||463.673|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_pain_180_canonical|stem|6e8fc923c574f6a0|a09e3784ff3226f5|fdfd39704d548a7e|1238225905||t19970.9200703075s|78a5d045be3894d1|1059331|rds|local|vector|||148.593|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_pain_365_canonical|stem|7dd348ee494a7bb2|704b147c878c0728|71d835f38ad3cba5|-1710978689||t19970.8455607026s|237d7c9e6200b34f|1061413|rds|local|vector|||131.122|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_pain_90_canonical|stem|be7580d7fa234696|fbbc2ab72620f91c|19de6494e4540526|-735468263||t19970.9487197274s|e55c00e9abd9bd66|1071734|rds|local|vector|||416.507|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_selfcare_180_canonical|stem|b12a80b015c9cc6a|281adcbc3cbb11aa|776244428d25d80f|1844522033||t19970.9400910853s|78a0acc5c055af89|1023441|rds|local|vector|||364.661|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_selfcare_365_canonical|stem|c146ca363f4d8102|b5da09c6663cdbc6|fbd03cb3fd0453b9|-1707828516||t19970.7869194744s|dca39e6f7cce323d|1026110|rds|local|vector|||129.537|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_selfcare_90_canonical|stem|170cf8c818cd7f71|c329c1addfd42344|eefe6bd213546a53|-1633613281||t19970.9035469265s|2601044ebcd0ba19|1035270|rds|local|vector|||570.638|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_usual_180_canonical|stem|1400655b4a601bc5|993bff5d5993b5ca|14dc57c34a37e4bd|828685362||t19970.8783481632s|0cf49bf797edcdf2|1018031|rds|local|vector|||304.673|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_usual_365_canonical|stem|5658294959e46ad9|24f3ebc344d1d71b|2fc64906ec443960|254835783||t19970.7541154832s|338b43560dbf33f6|1024366|rds|local|vector|||114.997|Rows containing NAs were excluded from the model.|
+m_posterior_left_euro_usual_90_canonical|stem|131db251c86d7235|233d008ea9498adc|82e747e66bad8f81|266089993||t19970.9358693376s|e04a523312a007ca|1042835|rds|local|vector|||476.86|Rows containing NAs were excluded from the model.|
 m_posterior_left_evd|stem|3cc930d8eda7e4ea|b1cada782c7e547a|424c870f8e4f526a|-671706775||t19912.6273906398s|eed8b3060386f247|31994229|rds|local|vector|||147.813|Rows containing NAs were excluded from the model.. There were 18 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
+m_posterior_left_mrs_180_canonical|stem|26d898e0815da1ae|67438f25b101f59d|16c97cbd66fd905c|538331829||t19970.8548439349s|b5b28782cbb13746|1413173|rds|local|vector|||346.732|Rows containing NAs were excluded from the model.|
+m_posterior_left_mrs_365_canonical|stem|e3aab57dcf48d2bf|8e31b3b388abcf98|342688fe6c55b9a9|-4088891||t19970.8492061794s|a143b50d0f3cd5d6|1418529|rds|local|vector|||193.994|Rows containing NAs were excluded from the model.|
+m_posterior_left_mrs_90_canonical|stem|9c66ae654aa3e1a1|c1de9e50feee0b8c|6f61ad35bb3b1d4f|225560975||t19970.7244258905s|69f58965d32eaf67|1428685|rds|local|vector|||468.462|Rows containing NAs were excluded from the model.|
 m_posterior_left_neurosurgery|stem|1b68b7c891f0d9eb|6d3e8277ca28c11a|e04ba6a93ef01ddd|1361044627||t19912.595659157s|5ef9d33630b6877c|30607350|rds|local|vector|||134.349|Rows containing NAs were excluded from the model.. There were 86 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
 m_posterior_left_tracheostomy|stem|0fc36f7ca7090d1e|cd568942a05367fb|8395d25ee2c045cc|1988927072||t19912.5940414839s|21476d11cfce6ac2|30555317|rds|local|vector|||146.21|Rows containing NAs were excluded from the model.. There were 45 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_mrs_180_canonical|stem|98ac5082111555b8|d7d216b12e214436|3248214661f2d34c|2007593764||t19923.591954838s|669b77d78e9ae1f4|1414769|rds|local|vector|||347.265|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_180_minimal|stem|7db300620bf07f3d|ddb95b35f1d36472|64a91b3aa6ee8dc2|-849030262||t19923.6256069255s|c56d8e08e1bc328f|987294|rds|local|vector|||7.674|Rows containing NAs were excluded from the model.|
+m_posterior_mrs_180_minimal|stem|f031d1f8c9a8405e|ddb95b35f1d36472|56ca8bc33eaa1a1a|-849030262||t19970.8067854232s|102dc08751b7d3c0|987149|rds|local|vector|||9.199|Rows containing NAs were excluded from the model.|
 m_posterior_mrs_365_canonical|stem|8ba7151d4067df98|ba8d1cbc0e8af502|a2077d7d4531d01a|-41222666||t19923.6117727367s|580f7c5efa5678d0|1419282|rds|local|vector|||174.806|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_365_minimal|stem|3c808c9cee3de06b|9a644bc40c0cd839|e9c7b8440aca40f3|703763794||t19923.6035170794s|c549e3351579521a|1000896|rds|local|vector|||7.189|Rows containing NAs were excluded from the model.|
+m_posterior_mrs_365_minimal|stem|d467d5c1bc00150d|9a644bc40c0cd839|cf5a3d59c968475a|703763794||t19970.7792604312s|c7a54f79200b8bf3|1013376|rds|local|vector|||21.19|Rows containing NAs were excluded from the model.|
 m_posterior_mrs_90_canonical|stem|2161a029ecb3ee58|9724f57ab076d879|5375a61e4e6c1fe1|834643700||t19923.6170250778s|e659decbce6942f9|1428144|rds|local|vector|||453.681|Rows containing NAs were excluded from the model.|
-m_posterior_mrs_90_minimal|stem|349d891a44c17bac|de47582cefd96493|68ab2ccf196b0b57|1076811092||t19923.5745923521s|9974c4c0d94adf88|966426|rds|local|vector|||24.578|Rows containing NAs were excluded from the model.|
+m_posterior_mrs_90_minimal|stem|886a7ddcb4c922bc|de47582cefd96493|a1f7f0d7a610e950|1076811092||t19970.8203642383s|f49dace89ec80465|954465|rds|local|vector|||11.986|Rows containing NAs were excluded from the model.|
 m_posterior_neurosurgery_canonical|stem|9fea023b6caec2e8|4ab162549c4c6387|b821f95b28bd2a77|-690002383||t19905.0954656349s|80a819baabbbbb82|915083|rds|local|vector|||6.688|Rows containing NAs were excluded from the model.|
 m_posterior_neurosurgery_canonical_atach|stem|931ee39002e2a5c1|7cabcda7f435c0d4|c08d9fe69cd0f54c|903043240||t19905.0930331355s|ccb1088126ceb672|761035|rds|local|vector|||4.579||
 m_posterior_neurosurgery_canonical_erich|stem|2e05fe1e5ff72468|211658dd1bd755a8|077b5d3abf2dd547|1933281405||t19905.0979921099s|80640109a5ff0095|858062|rds|local|vector|||6.405|Rows containing NAs were excluded from the model.|
@@ -292,9 +572,27 @@ m_posterior_neutral_dnr_binary_erich|stem|8b30f985efdad9b8|59b89a6206786d33|4676
 m_posterior_neutral_early_wlst|stem|ff12bf9b060b18f5|cfc61b17976af125|1256dc1c2797aada|-536818280||t19912.5848618459s|0ebe3c94ae4c802a|30078191|rds|local|vector|||99.328|Rows containing NAs were excluded from the model.. There were 86 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_neutral_early_wlst_atach|stem|97efd2b5d64cc3fe|1a2464c56501540a|2b8a6775145cbe66|1964210103||t19912.6334364557s|f2b7c0044db23305|31951263|rds|local|vector|||95.456|There were 219 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
 m_posterior_neutral_early_wlst_erich|stem|86e2cb9aab3362eb|fa6acf963fe02c6d|dd443118fc6a78bf|-1971976986||t19912.6398178037s|0bdd4d2c069cd528|32302038|rds|local|vector|||112.031|Rows containing NAs were excluded from the model.. There were 274 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems. The largest Rhat is 1.05, indicating chains have not mixed.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlrhat. Bulk Effective Samples Size ESS is too low, indicating posterior means and medians may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmlbulkess. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
+m_posterior_neutral_euro_anxiety_180_canonical|stem|af005e7313d5da8a|3d3a8222d7828e41|e3d131e4e29f501a|-2033720083||t19970.7667401818s|2273e33a5ba81746|1052485|rds|local|vector|||326.919|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_anxiety_365_canonical|stem|43a71d38bda78f95|9693810c379ded16|c38c9e7f21a710fc|1536940757||t19970.9097886964s|ab85b2295828c1c5|1053966|rds|local|vector|||171.276|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_anxiety_90_canonical|stem|c3181d2930521d7d|d2761d1858dcbe96|d5d31dd570b3d0eb|1805796975||t19970.7946717987s|9a39566163b77d0d|1072565|rds|local|vector|||501.071|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_mobility_180_canonical|stem|429df96f5cd85c14|448118b1a7532b72|c0434e154d4e53bc|-105559302||t19970.7331495475s|ea3680407fea98b1|1029498|rds|local|vector|||292.323|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_mobility_365_canonical|stem|c2c04b1acc4c28f5|3ebd893bca4a0f71|056ff27f435e98ad|401129195||t19970.751462252s|f825bb3d5da7b027|1044049|rds|local|vector|||111.908|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_mobility_90_canonical|stem|98bb542a5f984ffc|3477890f2e69e036|f8f83c57f6f0658e|-305088436||t19970.7714547681s|bfe8eeb226ac0036|1046682|rds|local|vector|||407.222|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_pain_180_canonical|stem|703bfb22ed0f4dc7|a09e3784ff3226f5|fdfd39704d548a7e|551873699||t19970.9303490602s|8cd54ffaaf1b1501|1054810|rds|local|vector|||175.706|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_pain_365_canonical|stem|d01c3535bdbba832|704b147c878c0728|71d835f38ad3cba5|-85684410||t19970.8712987593s|5079da5d76489f61|1061262|rds|local|vector|||130.811|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_pain_90_canonical|stem|ba71ec23990b9e66|fbbc2ab72620f91c|19de6494e4540526|654701396||t19970.8952829827s|8cdacd46e069f556|1071299|rds|local|vector|||400.659|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_selfcare_180_canonical|stem|51875b265298bbcd|281adcbc3cbb11aa|776244428d25d80f|634388905||t19970.9078052903s|200c88b4d127e87f|1023161|rds|local|vector|||367.825|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_selfcare_365_canonical|stem|c3ab5b741332fe4b|b5da09c6663cdbc6|fbd03cb3fd0453b9|-525208186||t19970.8508295549s|f2ced9be41ed7ea4|1027239|rds|local|vector|||140.169|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_selfcare_90_canonical|stem|c19c0b453728ec51|c329c1addfd42344|eefe6bd213546a53|1434733004||t19970.7396726337s|65f1413dfc699768|1035521|rds|local|vector|||563.5|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_usual_180_canonical|stem|c071448011f8a752|993bff5d5993b5ca|14dc57c34a37e4bd|1155969280||t19970.7111141713s|6c355793aab1e390|1018217|rds|local|vector|||289.138|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_usual_365_canonical|stem|389c1b2cdaa4d7e5|24f3ebc344d1d71b|2fc64906ec443960|-1064803215||t19970.8562174661s|8f6e7618b41f99c1|1024162|rds|local|vector|||118.579|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_euro_usual_90_canonical|stem|56f7c1e5cbd7468c|233d008ea9498adc|82e747e66bad8f81|1123416671||t19970.703774576s|ff0cc60fce0c5a9c|1044065|rds|local|vector|||456.189|Rows containing NAs were excluded from the model.|
 m_posterior_neutral_evd|stem|43a0ac126ffd7d60|e29ceb499af87930|48733603ee1d0eea|-1908877266||t19912.6284777508s|e8394af26879b06b|28149940|rds|local|vector|||86.358|Rows containing NAs were excluded from the model.|
 m_posterior_neutral_evd_atach|stem|8fd93e8d2e3b9788|d6f474879fe6fcc4|8aca03d20614bef9|-735600477||t19912.6307499278s|f52c1c5fa2403cf0|27951260|rds|local|vector|||89.034||
 m_posterior_neutral_evd_erich|stem|1635f56c1806fa18|dba0f9b5f9bd2d34|d02ddca15b7f4e49|-1161408520||t19912.6479395794s|bf5e9e6945711960|28930974|rds|local|vector|||91.644|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_mrs_180_canonical|stem|953a08590e86b357|67438f25b101f59d|16c97cbd66fd905c|910198686||t19970.9136433943s|c0a41b6cb2341de5|1415776|rds|local|vector|||332.936|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_mrs_365_canonical|stem|128cc2e103ad9ed3|8e31b3b388abcf98|342688fe6c55b9a9|471927849||t19970.7736463178s|9ac8c5a368c6e62d|1419049|rds|local|vector|||189.235|Rows containing NAs were excluded from the model.|
+m_posterior_neutral_mrs_90_canonical|stem|737742b94f51c761|c1de9e50feee0b8c|6f61ad35bb3b1d4f|-1662819943||t19970.7168451307s|3a8422c4228f23fe|1429908|rds|local|vector|||495.013|Rows containing NAs were excluded from the model.|
 m_posterior_neutral_neurosurgery|stem|6d5c88b5c5d5c46f|d3c183eb78309839|832e7718922b7179|359940109||t19912.6232762237s|b57eb95a40c2dc52|31793242|rds|local|vector|||143.477|Rows containing NAs were excluded from the model.. There were 36 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_neutral_neurosurgery_atach|stem|04399aa27934f4cc|68ea26c18f0dc286|048bdae5a9e8d5f1|2074303693||t19912.6359967882s|24ff9d96557ab466|32091247|rds|local|vector|||104.547|There were 49 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems. Tail Effective Samples Size ESS is too low, indicating posterior variances and tail quantiles may be unreliable.Running the chains for more iterations may help. Seehttpsmcstan.orgmiscwarnings.htmltailess|
 m_posterior_neutral_neurosurgery_erich|stem|0f66f4f84bde2d57|3b9bdb13dfeb0e61|bfcd8e340fc7ee73|792297287||t19912.643305217s|75dc3c0912f52dc4|32462224|rds|local|vector|||149.009|Rows containing NAs were excluded from the model.. There were 29 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
@@ -305,7 +603,25 @@ m_posterior_right_comfort|stem|378abccb9941bb80|57cec8794758d1c6|6d667611b3c8400
 m_posterior_right_days_mechanical_ventilation|stem|b6bc9c097f6b4799|87f7705f781e0126|0d1dbff5b9fa204b|185122339||t19912.6215339844s|be00d5f034b22ec0|34135953|rds|local|vector|||90.282|Rows containing NAs were excluded from the model.|
 m_posterior_right_dnr_binary|stem|0ba588245f883dd5|d33b2384ba0f82ea|7a098b055ee631e2|-816249043||t19912.5730558857s|65fdcfb66f64660f|29568636|rds|local|vector|||129.792|Rows containing NAs were excluded from the model.. There were 56 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_right_early_wlst|stem|b169a118e002d006|2bf18be2bd075dc5|b8fa5b47cc3f88b5|-126099036||t19912.5815907175s|757b8999c4103e0d|29949042|rds|local|vector|||99.5|Rows containing NAs were excluded from the model.. There were 136 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
+m_posterior_right_euro_anxiety_180_canonical|stem|5984a626e3ed0883|3d3a8222d7828e41|e3d131e4e29f501a|-212844275||t19970.8906445318s|8065724dee0da09d|1051616|rds|local|vector|||338.612|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_anxiety_365_canonical|stem|f0da63c3a8a3210f|9693810c379ded16|c38c9e7f21a710fc|-1641629385||t19970.9505610421s|61c663ae475885f9|1053884|rds|local|vector|||158.998|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_anxiety_90_canonical|stem|e0705e141d54b2f2|d2761d1858dcbe96|d5d31dd570b3d0eb|150862274||t19970.8639691086s|1e9a41b0a625b25d|1072662|rds|local|vector|||482.916|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_mobility_180_canonical|stem|e7a96a0c3a1bbbca|448118b1a7532b72|c0434e154d4e53bc|1046568782||t19970.7825148627s|b2aaa3e2dc07ddf4|1030815|rds|local|vector|||281.09|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_mobility_365_canonical|stem|363f5505f8611d9d|3ebd893bca4a0f71|056ff27f435e98ad|-1670150963||t19970.7527833892s|fb4163cf198f3b39|1042717|rds|local|vector|||114.053|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_mobility_90_canonical|stem|810f77b6cef45774|3477890f2e69e036|f8f83c57f6f0658e|-1856029506||t19970.8307527899s|97abf8c735c58797|1044854|rds|local|vector|||478.88|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_pain_180_canonical|stem|5b8e3a5619b85bf0|a09e3784ff3226f5|fdfd39704d548a7e|1935432656||t19970.9220007811s|4cdc73a79ed30e06|1056788|rds|local|vector|||166.701|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_pain_365_canonical|stem|2600dc17011ae6e6|704b147c878c0728|71d835f38ad3cba5|-1670722472||t19970.7433100821s|bb23765871b872fa|1061156|rds|local|vector|||122.727|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_pain_90_canonical|stem|f1aff56a0071e6bd|fbbc2ab72620f91c|19de6494e4540526|507408502||t19970.9183494013s|4e2fad0638b0134c|1071554|rds|local|vector|||406.503|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_selfcare_180_canonical|stem|fbff009ac1fd7c00|281adcbc3cbb11aa|776244428d25d80f|849199016||t19970.8346192552s|5d45ed5bfd8756c9|1024083|rds|local|vector|||333.97|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_selfcare_365_canonical|stem|3dc9bbfddcf93f5b|b5da09c6663cdbc6|fbd03cb3fd0453b9|-79478306||t19970.8969412341s|8df4a5a326897e8a|1026682|rds|local|vector|||143.182|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_selfcare_90_canonical|stem|6aab561ee5eb4750|c329c1addfd42344|eefe6bd213546a53|1119365562||t19970.7501658446s|e105e816690e728e|1033837|rds|local|vector|||592.229|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_usual_180_canonical|stem|1288f052b4cb7c14|993bff5d5993b5ca|14dc57c34a37e4bd|-416541319||t19970.8748207028s|0c3aa5b0671dff15|1018173|rds|local|vector|||304.205|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_usual_365_canonical|stem|4b62c865e8677bd2|24f3ebc344d1d71b|2fc64906ec443960|183116411||t19970.7838355394s|c38fede0d321ec21|1025617|rds|local|vector|||114.014|Rows containing NAs were excluded from the model.|
+m_posterior_right_euro_usual_90_canonical|stem|163225dc116ffb6c|233d008ea9498adc|82e747e66bad8f81|-1190857303||t19970.8006753696s|7165043141003df4|1043327|rds|local|vector|||518.61|Rows containing NAs were excluded from the model.|
 m_posterior_right_evd|stem|4f700be7b7fdcd54|1135ac0f776b24df|c5f642d0abf3b8cd|1700256187||t19912.566668522s|6fceef72665d27e0|29277294|rds|local|vector|||137.489|Rows containing NAs were excluded from the model.. There were 5 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
+m_posterior_right_mrs_180_canonical|stem|fc1059fd48d5ffc1|67438f25b101f59d|16c97cbd66fd905c|164861535||t19970.8202243853s|65a74ac018bf8a1d|1414125|rds|local|vector|||330.05|Rows containing NAs were excluded from the model.|
+m_posterior_right_mrs_365_canonical|stem|b2f53b9f24955c2b|8e31b3b388abcf98|342688fe6c55b9a9|834399602||t19970.741888598s|1d39eb8c47587148|1418900|rds|local|vector|||191.339|Rows containing NAs were excluded from the model.|
+m_posterior_right_mrs_90_canonical|stem|2d83127f4ecdbfef|c1de9e50feee0b8c|6f61ad35bb3b1d4f|-1739472843||t19970.7297651075s|fa6f48bf5460bda0|1429924|rds|local|vector|||461.189|Rows containing NAs were excluded from the model.|
 m_posterior_right_neurosurgery|stem|ff54dd4bc119d959|ce67cd7fa1a34446|8f322cc2439f35e2|127836530||t19912.6064452631s|971813de1de24296|31065483|rds|local|vector|||138.03|Rows containing NAs were excluded from the model.. There were 19 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_right_tracheostomy|stem|641bfcbc076727bc|f2bae6920390620e|d3c2983810956af9|-571744175||t19912.5601849463s|7d5d3cd618fe13dc|28978596|rds|local|vector|||147.712|Rows containing NAs were excluded from the model.. There were 40 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_posterior_trach_canonical|stem|697c2f06b739ea38|3a92a5d61a8fdad6|57e7054452d2b77e|892589480||t19905.095640327s|8112b87b50d88522|909120|rds|local|vector|||5.573|Rows containing NAs were excluded from the model.|
@@ -342,7 +658,7 @@ m_prior_euro_pain_180_canonical|stem|a46a6eddbd9b6989|154767ba88c1c14f|2038e55b6
 m_prior_euro_pain_180_minimal|stem|6c0b8d641bc07106|5808d0d0d19e186c|e3866d869e1ea8c0|-308748057||t19923.5688020927s|b072024a79a6c039|619200|rds|local|vector|||0.828|Rows containing NAs were excluded from the model.|
 m_prior_euro_pain_365_canonical|stem|7ffcbbb30bd3c0dd|ebe212296eec3163|2a29f8768128a2f4|-244304452||t19923.5687595388s|8d38edbe8710c555|969119|rds|local|vector|||0.864|Rows containing NAs were excluded from the model.|
 m_prior_euro_pain_365_minimal|stem|6267a728428ab207|c402e8ced1ad2f45|41bad72979374f14|-1978370333||t19923.5689676786s|2bcf9dad1356b42a|619590|rds|local|vector|||0.838|Rows containing NAs were excluded from the model.|
-m_prior_euro_pain_90_canonical|stem|285aa1fd981b85ba|b7e79d85fdc9b975|b16b875d2d153842|385575567||t19923.5689896692s|fdd7364c93425fb1|991626|rds|local|vector|||0.864|Rows containing NAs were excluded from the model.|
+m_prior_euro_pain_90_canonical|stem|285aa1fd981b85ba|b7e79d85fdc9b975|080d0dc8582e622f|385575567||t19923.5689896692s||991626|rds|local|vector|||0.005||could not find function f_prior_euro_pain_90_canonical
 m_prior_euro_pain_90_minimal|stem|69df938960942fb9|b704944302ee5189|60484570ef42c68a|100775080||t19923.56869538s|60745a2ed3cd0cef|620364|rds|local|vector|||0.825|Rows containing NAs were excluded from the model.|
 m_prior_euro_selfcare_180_canonical|stem|3938e0c316983e19|aff534897345cdda|5b4d99b3c67dd4dc|1855000105||t19923.5688921387s|ecbd3f562d75685d|970415|rds|local|vector|||0.855|Rows containing NAs were excluded from the model.|
 m_prior_euro_selfcare_180_minimal|stem|55449a50c425207c|968deeabafa1f9ab|99fd2b329ebd05a3|441143818||t19923.5690008575s|3ff0d5166e2a4623|619587|rds|local|vector|||0.888|Rows containing NAs were excluded from the model.|
@@ -362,7 +678,25 @@ m_prior_flat_comfort|stem|804a0e8ad201e550|52d8da4966554131|3dd367b3d60bcc2f|148
 m_prior_flat_days_mechanical_ventilation|stem|aa830cee606ecb63|d7585a7b9dbe83e9|be2afbb405035b74|506497317||t19912.592286115s|b46d4b618932b752|32752647|rds|local|vector|||78.682|Rows containing NAs were excluded from the model.. There were 9 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_flat_dnr_binary|stem|a755dade342f1de8|9cde1c1f5bb11119|8c9e6720c5d4507c|1940603500||t19912.6101574865s|db2f65a434b5ed36|31200435|rds|local|vector|||85.883|Rows containing NAs were excluded from the model.|
 m_prior_flat_early_wlst|stem|511a44b6972a3ba1|b1ef5516af6081cd|89928e6c9ad62b68|-1638765651||t19912.5637652617s|cc5963d5ad62d62f|29131063|rds|local|vector|||85.645|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_anxiety_180_canonical|stem|8c98d1a19165f2ee|5ca3fa69781afd01|60d39568d23e7aba|-1115066787||t19970.6154426368s|88d3b95ebbf65772|970000|rds|local|vector|||0.799|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_anxiety_365_canonical|stem|99ec80a8bff79688|7b78d18b3f5a2ba8|15deafbd940a1f0e|134909181||t19970.6151925219s|a92f0f57cce3e0d3|969025|rds|local|vector|||0.825|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_anxiety_90_canonical|stem|5df2fb119fc0b194|8b06e0597586a8ee|2d15d2d202f8fdd3|1830760486||t19970.6155910545s|10d1e50fcde5a4ab|991778|rds|local|vector|||0.8|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_mobility_180_canonical|stem|8b167d489911de01|17d363753b1cad37|e2c6a3916263f55d|-1363436817||t19970.6152805617s|aad55c78f184e629|970413|rds|local|vector|||0.851|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_mobility_365_canonical|stem|a1d3bdd8c6de9896|9413fdbba58b0315|7354bf33145d5e3d|-1979790611||t19970.6155275902s|d4cc34bc240b5c2b|969110|rds|local|vector|||0.843|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_mobility_90_canonical|stem|d30bd47286c86226|eb249d20f7e46fb3|5f2ed919551e983e|-2133977195||t19970.6153449905s|8015cdb13f8d9e0f|991812|rds|local|vector|||0.856|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_pain_180_canonical|stem|85e8f84201155d8c|3c5a3a26e43a0dd1|5391e6a4499f440a|301315978||t19970.6158241555s|d193f9ee9358fb54|970097|rds|local|vector|||0.83|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_pain_365_canonical|stem|62a5fcca90b40377|234cf649bdbb5a18|cfb102468904000f|1450961261||t19970.6152250063s|0e3d9a728481933b|969053|rds|local|vector|||0.799|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_pain_90_canonical|stem|a7c3a579b46a3dbb|3e0a23fb27b7dac7|0d51046a657ffeee|1977651066||t19970.6157718409s|36c2727446f5a26a|991508|rds|local|vector|||0.806|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_selfcare_180_canonical|stem|5896d07ed1b54093|d8dbc6391efa1af0|a41f99091990b0b9|-733718297||t19970.6152696049s|844aa868d77161f1|970426|rds|local|vector|||0.791|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_selfcare_365_canonical|stem|bd78f87016bf48cc|c6cfdeef413db7fc|5579adaf7e9790c2|572388291||t19970.6151818737s|5824898ed9ce930c|977794|rds|local|vector|||14.51|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_selfcare_90_canonical|stem|6eeea25626e7ad72|13eec8320e70ac20|2d112b8674ab12c4|1702024418||t19970.6159388157s|48e379454d5ca126|991915|rds|local|vector|||0.786|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_usual_180_canonical|stem|a1afc30c6577e9b0|007c7aa56f9b648e|45617037afb8d6ed|2035154362||t19970.6156432148s|9ca41196b7e9ceb8|970480|rds|local|vector|||0.811|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_usual_365_canonical|stem|933e7a9660255018|c79cd0fe7011d1ef|09c4217be5614a69|-141763420||t19970.6155379682s|6515af5ad138ee1f|969183|rds|local|vector|||0.804|Rows containing NAs were excluded from the model.|
+m_prior_flat_euro_usual_90_canonical|stem|e6282cea648c1d36|d94eabdccc3aeb3f|a53c1a29c6a00a67|-1633125325||t19970.6159076043s|5ea762e8d8059f81|991925|rds|local|vector|||0.775|Rows containing NAs were excluded from the model.|
 m_prior_flat_evd|stem|3deeef92a7e827a6|a294dbd450d23a89|ffa4ddc491a5d77a|-185387550||t19912.5697557572s|fb5bd331994c46e5|29419042|rds|local|vector|||85.427|Rows containing NAs were excluded from the model.|
+m_prior_flat_mrs_180_canonical|stem|2a895e6c06901ee7|610449e9f643d680|d8098e324733db83|159191418||t19970.6154958002s|1725294fd0fe2b63|1265819|rds|local|vector|||0.785|Rows containing NAs were excluded from the model.|
+m_prior_flat_mrs_365_canonical|stem|daf2fb2a4f68a1fa|f7768ec6882e298c|55799a3130ee1992|-510725153||t19970.6153229227s|be1e0c0707e23e52|1265933|rds|local|vector|||0.814|Rows containing NAs were excluded from the model.|
+m_prior_flat_mrs_90_canonical|stem|8f26a22fab4d8a9e|44443fa718ec412c|a86c12d3fa5a13a3|2013665116||t19970.6157100741s|6e73359035de6ac7|1293360|rds|local|vector|||0.818|Rows containing NAs were excluded from the model.|
 m_prior_flat_neurosurgery|stem|2da5534977a17690|84371820683e2829|4b585098b286d236|-799227157||t19912.6192495794s|8dab115a41bc5d52|31639583|rds|local|vector|||85.226|Rows containing NAs were excluded from the model.|
 m_prior_flat_tracheostomy|stem|2535fe0190876876|6f1b3956c8602159|7651c169dc3eb050|355994996||t19912.6133168154s|875afd658e7ce7fe|31351055|rds|local|vector|||89.09|Rows containing NAs were excluded from the model.|
 m_prior_informative_neurosurgery|stem|21b548b419f1721b|da1da3f7c1b1b597|be70db62088595f8|-1901668035||t19899.7872512248s|e4c0ea4d4eded086|1025245|rds|local|vector|||17.378|Rows containing NAs were excluded from the model.|
@@ -370,15 +704,33 @@ m_prior_left_comfort|stem|2968f6950a529d7a|660f71afdd2a94ec|f2746d167a88852b|-15
 m_prior_left_days_mechanical_ventilation|stem|06659fc573d706f8|67fa41a8e347223c|54aa64c9cf58d9aa|-1906546705||t19912.6111481868s|d3809b4d7dc7cc44|33584840|rds|local|vector|||79.311|Rows containing NAs were excluded from the model.. There were 6 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_left_dnr_binary|stem|5959a546ca5bd39b|9f636ff2f55210f2|7e09ec00dd4b8092|-108442655||t19912.5826056823s|573618bf9a396caa|30040246|rds|local|vector|||83.028|Rows containing NAs were excluded from the model.|
 m_prior_left_early_wlst|stem|e99afa6a3371bc68|b62d101b7067be94|59f6134693534e92|-2012415308||t19912.5903757647s|f5d84c50e8754bd7|30351663|rds|local|vector|||83.894|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_anxiety_180_canonical|stem|fa0174ab91cac4bb|5ca3fa69781afd01|60d39568d23e7aba|-485663278||t19970.615453362s|643b5ec8da67fa6e|970011|rds|local|vector|||0.831|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_anxiety_365_canonical|stem|a85a271a1c445a38|7b78d18b3f5a2ba8|15deafbd940a1f0e|-8349584||t19970.6158764316s|84f280e9e4261194|968927|rds|local|vector|||0.776|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_anxiety_90_canonical|stem|815d96ed11f1a233|8b06e0597586a8ee|2d15d2d202f8fdd3|-120557026||t19970.6152914799s|2f90f0074e6975b4|991795|rds|local|vector|||0.839|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_mobility_180_canonical|stem|dece8dca417f09bb|17d363753b1cad37|e2c6a3916263f55d|1018324397||t19970.6157924427s|aafb8d954f9c1b00|970303|rds|local|vector|||0.806|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_mobility_365_canonical|stem|d98bb5563b279d76|9413fdbba58b0315|7354bf33145d5e3d|771337222||t19970.6155167106s|36953f1325197042|969144|rds|local|vector|||0.834|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_mobility_90_canonical|stem|090fa2f3917da320|eb249d20f7e46fb3|5f2ed919551e983e|-1272720077||t19970.6153802913s|001f8f7177f96957|991815|rds|local|vector|||0.987|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_pain_180_canonical|stem|5ff1ade8f05aa4ee|3c5a3a26e43a0dd1|5391e6a4499f440a|1394636015||t19970.6156992331s|a721b972680f160e|970078|rds|local|vector|||1.046|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_pain_365_canonical|stem|87edfde248e6b58a|234cf649bdbb5a18|cfb102468904000f|987347521||t19970.6152356159s|056fcd0cb5d853a2|969079|rds|local|vector|||0.822|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_pain_90_canonical|stem|c193b0574c9195c8|3e0a23fb27b7dac7|0d51046a657ffeee|1153029087||t19970.6154008931s|f72d79e033fa1316|991583|rds|local|vector|||0.776|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_selfcare_180_canonical|stem|8df013f9a0a93cad|d8dbc6391efa1af0|a41f99091990b0b9|-2393099||t19970.6154111554s|37cd1ea76e26ec65|970392|rds|local|vector|||0.786|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_selfcare_365_canonical|stem|367e3b1a83d8a496|c6cfdeef413db7fc|5579adaf7e9790c2|1783050582||t19970.6158133531s|a4ed81901dca0ce3|969105|rds|local|vector|||0.812|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_selfcare_90_canonical|stem|929c96492acf302d|13eec8320e70ac20|2d112b8674ab12c4|878276414||t19970.615918291s|420105eceb2e8dea|991935|rds|local|vector|||0.825|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_usual_180_canonical|stem|b94a1976f0960529|007c7aa56f9b648e|45617037afb8d6ed|1666788640||t19970.6157412469s|5d9cfd070ebc7ad8|970527|rds|local|vector|||0.786|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_usual_365_canonical|stem|5cc6db0ebd247600|c79cd0fe7011d1ef|09c4217be5614a69|2048016445||t19970.6153907465s|625a1e43e53e16fd|969103|rds|local|vector|||0.809|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_usual_90_canonical|stem|6af32afd00cdf2f6|d94eabdccc3aeb3f|a53c1a29c6a00a67|1098183718||t19970.6158554826s|886b2448d56779f4|991999|rds|local|vector|||0.823|Rows containing NAs were excluded from the model.|
 m_prior_left_evd|stem|0395312f20d40198|ba23c2f5914bc879|052e9d8b7777b619|1539631526||t19912.5967233559s|f09bfcd214c1aeda|30658494|rds|local|vector|||84.587|Rows containing NAs were excluded from the model.|
+m_prior_left_mrs_180_canonical|stem|4857da116416f30b|610449e9f643d680|d8098e324733db83|-672134529||t19970.6158663236s|5b5e897dd09f0a22|1265843|rds|local|vector|||0.814|Rows containing NAs were excluded from the model.|
+m_prior_left_mrs_365_canonical|stem|1b79307d9d4fc379|f7768ec6882e298c|55799a3130ee1992|-1770977708||t19970.6152035558s|61a6817bd0543bf6|1265960|rds|local|vector|||0.832|Rows containing NAs were excluded from the model.|
+m_prior_left_mrs_90_canonical|stem|be709475175d7b12|44443fa718ec412c|a86c12d3fa5a13a3|503385740||t19970.6155485392s|ef2d71c1c9f3d3fe|1293319|rds|local|vector|||0.79|Rows containing NAs were excluded from the model.|
 m_prior_left_neurosurgery|stem|d8cc6178af058cab|ad6b35daae87c37a|28f1b918c6414689|-1072511630||t19912.5783628001s|008d6c5aef0359ef|29817540|rds|local|vector|||83.717|Rows containing NAs were excluded from the model.|
 m_prior_left_tracheostomy|stem|fcba24e843f29996|5c87cab2844cdcec|18f858499c5b4828|-1177722020||t19912.5676821672s|a437337ed984fa67|29347416|rds|local|vector|||83.575|Rows containing NAs were excluded from the model.|
 m_prior_mrs_180_canonical|stem|ae4fbd34f790fca9|b0c60b5868dc95c8|8366118829403a7d|-231073701||t19923.5686849248s|6e65f563090afea2|1277920|rds|local|vector|||14.191|Rows containing NAs were excluded from the model.|
-m_prior_mrs_180_minimal|stem|ad32f134cb123a8c|68474ea9360ed063|e56add429736703f|1206748303||t19923.5690225395s|2b3b655204d317e9|925324|rds|local|vector|||0.826|Rows containing NAs were excluded from the model.|
+m_prior_mrs_180_minimal|stem|304b80ab3f1fd798|68474ea9360ed063|677d9a37b6f08050|1206748303||t19970.598041151s|3ac67f338c36d1ac|927164|rds|local|vector|||0.808|Rows containing NAs were excluded from the model.|
 m_prior_mrs_365_canonical|stem|2fc74cde7e389c82|395ec297e4538b47|d44c6af31944296f|943777168||t19923.568847733s|a2961519c0c731a6|1265927|rds|local|vector|||0.824|Rows containing NAs were excluded from the model.|
-m_prior_mrs_365_minimal|stem|49762e661ccbe9ed|e7625bf81a157df6|cf6838b9ff04cfdd|-435941919||t19923.5688811433s|96290c876e2c1d94|925633|rds|local|vector|||0.823|Rows containing NAs were excluded from the model.|
+m_prior_mrs_365_minimal|stem|bdce629f3b5ec8df|e7625bf81a157df6|e62ff76c74b561db|-435941919||t19970.5979835123s|428bb4bb17c0077e|937221|rds|local|vector|||14.373|Rows containing NAs were excluded from the model.|
 m_prior_mrs_90_canonical|stem|83bf98052f714fc3|f7678629fe501ba5|2d20ec1ffc03f888|-1960015551||t19923.5689142837s|20a03b8daebc2139|1293332|rds|local|vector|||0.83|Rows containing NAs were excluded from the model.|
-m_prior_mrs_90_minimal|stem|db801c4e80f6478e|529e1d4edfbb9896|1e834f75094724bd|492862794||t19923.5680059145s|70c433614f4965f6|938508|rds|local|vector|||18.836|Rows containing NAs were excluded from the model.|
+m_prior_mrs_90_minimal|stem|0e6d82e296ce159c|529e1d4edfbb9896|0cb7ed296be42b99|492862794||t19970.5981306183s|63b1730df8ab7258|928902|rds|local|vector|||0.767|Rows containing NAs were excluded from the model.|
 m_prior_neurosurgery|stem|f8ea77ff2965f371|3bc8eef3da23dbc0|d6d8ffed48b45699|346779608||t19899.7771131008s||1030936|rds|local|vector|||0.099|Rows containing NAs were excluded from the model.|Sampling from priors is not possible as some parameters have no proper priors. Error occurred for parameter b.
 m_prior_neurosurgery_canonical|stem|4c8e7688c14aadff|edd9b9c3e46551bc|29232446c73636a0|114468795||t19899.7201315235s|98f8e26d931e0dfc|1031061|rds|local|vector|||17.903|Rows containing NAs were excluded from the model.|
 m_prior_neurosurgery_default|stem|260df3b7faf5420c|331b27f099c3a4be|6832aeb394e230b2|-1335069635||t19899.7811814522s|b9ce1016fc8af9ca|1035680|rds|local|vector|||17.105|Rows containing NAs were excluded from the model.|
@@ -388,14 +740,50 @@ m_prior_neutral_comfort|stem|88ed9e5e820dea66|3aa10bad2ede0fc7|87ba495df8d3d191|
 m_prior_neutral_days_mechanical_ventilation|stem|e5a7eee197eb9bcd|be37b7865ef91154|485b4b378d433891|-485270020||t19912.6034382843s|268931511704a8cf|33143787|rds|local|vector|||79.79|Rows containing NAs were excluded from the model.. There were 16 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_neutral_dnr_binary|stem|978e3bf73cfc1967|6898b55a1cfa9236|710fdda315ca6929|-1327135314||t19912.6024388255s|4f899e8060dd813b|30834456|rds|local|vector|||84.829|Rows containing NAs were excluded from the model.|
 m_prior_neutral_early_wlst|stem|86b4935f39533138|39adafa94f980acc|a3f591249bf12b02|1241766550||t19912.620408024s|4c90d28ad3e12f68|31685188|rds|local|vector|||92.919|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_anxiety_180_canonical|stem|b02b8b98067aeef7|5ca3fa69781afd01|60d39568d23e7aba|1731132726||t19970.6153120431s|cebe1d57592082d5|969982|rds|local|vector|||0.784|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_anxiety_365_canonical|stem|b82485ad619e3944|7b78d18b3f5a2ba8|15deafbd940a1f0e|2107854268||t19970.6158447959s|ec3e928d5c1276ce|968986|rds|local|vector|||0.776|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_anxiety_90_canonical|stem|7542ecf341a88120|8b06e0597586a8ee|2d15d2d202f8fdd3|-1716770143||t19970.6157205679s|ff5b9b3028d034d7|991800|rds|local|vector|||0.808|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_mobility_180_canonical|stem|41589af2b61c794a|17d363753b1cad37|e2c6a3916263f55d|1161548612||t19970.6158028593s|ecbd3f562d75685d|970415|rds|local|vector|||0.805|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_mobility_365_canonical|stem|11d6964cf3d6a31b|9413fdbba58b0315|7354bf33145d5e3d|246062285||t19970.6153339566s|05be10ed68396864|969212|rds|local|vector|||0.853|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_mobility_90_canonical|stem|a09df3ba4901d6d8|eb249d20f7e46fb3|5f2ed919551e983e|1034453374||t19970.6156327596s|4f853542feab7838|991783|rds|local|vector|||0.762|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_pain_180_canonical|stem|08014a2e29ba7425|3c5a3a26e43a0dd1|5391e6a4499f440a|2123144791||t19970.6156860001s|344870358f3a5568|970058|rds|local|vector|||0.843|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_pain_365_canonical|stem|d4e5df3b82130c36|234cf649bdbb5a18|cfb102468904000f|606715749||t19970.6152465726s|f044629aff7cd9a2|969070|rds|local|vector|||0.853|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_pain_90_canonical|stem|841796d297366c1b|3e0a23fb27b7dac7|0d51046a657ffeee|259607042||t19970.6157819875s|f7ed0b6f1556f5e5|991619|rds|local|vector|||0.778|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_selfcare_180_canonical|stem|3f7bac70be16b98c|d8dbc6391efa1af0|a41f99091990b0b9|1466846521||t19970.6154217649s|cc7297c9258e27c1|970428|rds|local|vector|||0.826|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_selfcare_365_canonical|stem|fa27d47a353e6682|c6cfdeef413db7fc|5579adaf7e9790c2|173339421||t19970.6153018965s|61b17f83ad6be4bd|969120|rds|local|vector|||0.8|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_selfcare_90_canonical|stem|c8c8db1a2195829e|13eec8320e70ac20|2d112b8674ab12c4|-938699558||t19970.6156124664s|ffaf28c489a4ccfc|991913|rds|local|vector|||0.848|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_usual_180_canonical|stem|4395a4540d346a80|007c7aa56f9b648e|45617037afb8d6ed|-700286167||t19970.6158870026s|c68e8a711ca07f70|970457|rds|local|vector|||0.816|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_usual_365_canonical|stem|cd7047ed2dacabca|c79cd0fe7011d1ef|09c4217be5614a69|563365436||t19970.6156228059s|3ac7d122b58cb260|969185|rds|local|vector|||0.794|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_usual_90_canonical|stem|e524fb1801eebcb5|d94eabdccc3aeb3f|a53c1a29c6a00a67|1293867568||t19970.6155059082s|37fbcdb28bc067f1|991960|rds|local|vector|||0.775|Rows containing NAs were excluded from the model.|
 m_prior_neutral_evd|stem|3aecd3dae308ffd2|c38a2e602d495428|68dfa558dbef0cbf|-1948767316||t19912.5913146595s|afbf3fb114ec8dd0|26305028|rds|local|vector|||76.336|Rows containing NAs were excluded from the model.|
+m_prior_neutral_mrs_180_canonical|stem|635419dd851e17ca|610449e9f643d680|d8098e324733db83|2029166198||t19970.6155699512s|4b5966665071ee4d|1265823|rds|local|vector|||0.806|Rows containing NAs were excluded from the model.|
+m_prior_neutral_mrs_365_canonical|stem|987ad2d19f977f55|f7768ec6882e298c|55799a3130ee1992|1387166607||t19970.615485345s|aec7761f2d3dd579|1265945|rds|local|vector|||0.855|Rows containing NAs were excluded from the model.|
+m_prior_neutral_mrs_90_canonical|stem|a1ed846691bea26b|44443fa718ec412c|a86c12d3fa5a13a3|1244426696||t19970.6155806764s|bb04b36d042bb6bc|1293238|rds|local|vector|||0.8|Rows containing NAs were excluded from the model.|
 m_prior_neutral_neurosurgery|stem|284bb45462873524|56dd4cc9861e8d4d|f3b662e253f15348|-525754257||t19912.6090609222s|15aff47821de707c|31131856|rds|local|vector|||84.705|Rows containing NAs were excluded from the model.|
 m_prior_neutral_tracheostomy|stem|cf6fa13739a7a5c2|3075b88b26b3d65a|e26a2cc1cc997db0|-2046460357||t19912.568717727s|a7f7136eabbb8edf|29359094|rds|local|vector|||85.346|Rows containing NAs were excluded from the model.|
 m_prior_right_comfort|stem|b83d1a69eaa6cade|6499dc46b74064a4|def959548ee2ab55|-1121319276||t19912.6143800035s|32ec50a88a09e228|31448451|rds|local|vector|||85.454|Rows containing NAs were excluded from the model.|
 m_prior_right_days_mechanical_ventilation|stem|829ca788bbc1fa59|46bc955493a8790f|49d2fd02186508c9|127127265||t19912.6154337401s|4c11f042f0fadd9a|33842438|rds|local|vector|||84.583|Rows containing NAs were excluded from the model.. There were 7 divergent transitions after warmup. Seehttpsmcstan.orgmiscwarnings.htmldivergenttransitionsafterwarmupto find out why this is a problem and how to eliminate them.. Examine the pairs plot to diagnose sampling problems|
 m_prior_right_dnr_binary|stem|369184b3096773a5|1674428708f6f632|5c23f74376059e56|-1159684261||t19912.625594812s|b783538660f6340c|31949354|rds|local|vector|||94.688|Rows containing NAs were excluded from the model.|
 m_prior_right_early_wlst|stem|24d21889fa1879fd|e592dba4b27fa26f|7b01359823c843c2|-96667772||t19912.6122109162s|6277c672a0626e94|31331462|rds|local|vector|||85.511|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_anxiety_180_canonical|stem|2bdb20045457f78a|5ca3fa69781afd01|60d39568d23e7aba|92297343||t19970.6154637015s|b3938393fa1e1277|969948|rds|local|vector|||0.799|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_anxiety_365_canonical|stem|612a0f0d74d866de|7b78d18b3f5a2ba8|15deafbd940a1f0e|-820877066||t19970.6155592259s|fdd87c3a51c69eb1|969003|rds|local|vector|||0.828|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_anxiety_90_canonical|stem|0914b2fa50b26c3f|8b06e0597586a8ee|2d15d2d202f8fdd3|357155402||t19970.6157310231s|2b9c42bf16818b84|991733|rds|local|vector|||0.805|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_mobility_180_canonical|stem|54717bbdc4f44d84|17d363753b1cad37|e2c6a3916263f55d|-1001406302||t19970.6153567188s|71ed7c94c05a1b3f|970308|rds|local|vector|||0.913|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_mobility_365_canonical|stem|9e47d214dcccc0cc|9413fdbba58b0315|7354bf33145d5e3d|-1517143230||t19970.6157613857s|78448bc22ae88f08|969096|rds|local|vector|||0.789|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_mobility_90_canonical|stem|0fd3a40478860517|eb249d20f7e46fb3|5f2ed919551e983e|-1238495505||t19970.6156540558s|5f582c8ca6d45b24|991853|rds|local|vector|||0.834|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_pain_180_canonical|stem|854ef79e030cb98f|3c5a3a26e43a0dd1|5391e6a4499f440a|-1732158418||t19970.6158347265s|27c8c88646445e8a|970095|rds|local|vector|||0.812|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_pain_365_canonical|stem|b130787f8af144b3|234cf649bdbb5a18|cfb102468904000f|-1330351845||t19970.6152593426s|b4071c4683d7d63d|969080|rds|local|vector|||1.01|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_pain_90_canonical|stem|5a3b54c68ed421a6|3e0a23fb27b7dac7|0d51046a657ffeee|-1548692028||t19970.6156646268s|bff8feef34479c6a|991620|rds|local|vector|||0.81|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_selfcare_180_canonical|stem|6f569a09fb37be66|d8dbc6391efa1af0|a41f99091990b0b9|-2112563204||t19970.6154322587s|13ca40d04a679370|970399|rds|local|vector|||0.81|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_selfcare_365_canonical|stem|457d24dd46415ef4|c6cfdeef413db7fc|5579adaf7e9790c2|-277071392||t19970.615751162s|039461aea7cf2708|969059|rds|local|vector|||0.763|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_selfcare_90_canonical|stem|3c593b2ca4ce2a34|13eec8320e70ac20|2d112b8674ab12c4|1689914559||t19970.615474041s|17e237aa7b5fe607|991900|rds|local|vector|||0.793|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_usual_180_canonical|stem|d3ccd8509af4bfeb|007c7aa56f9b648e|45617037afb8d6ed|-1566016250||t19970.6158974578s|fa3277eb6377e1d5|970499|rds|local|vector|||0.802|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_usual_365_canonical|stem|0eb2d3f281ff47be|c79cd0fe7011d1ef|09c4217be5614a69|636762269||t19970.6153677528s|58abc16cdf0f24e5|969203|rds|local|vector|||0.844|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_usual_90_canonical|stem|05ae2174ab585e60|d94eabdccc3aeb3f|a53c1a29c6a00a67|1409527329||t19970.6159284762s|c55f2d437db8cfd8|991950|rds|local|vector|||0.783|Rows containing NAs were excluded from the model.|
 m_prior_right_evd|stem|27cda2f39c5d1530|5bfbdc03e6c15be3|3f019d72d7817e1f|-144028618||t19912.5793790376s|546dbed8cc0c9286|29867000|rds|local|vector|||83.133|Rows containing NAs were excluded from the model.|
+m_prior_right_mrs_180_canonical|stem|ea4cca64ed9b9043|610449e9f643d680|d8098e324733db83|230569248||t19970.6156015097s|070ec6c39762426d|1265771|rds|local|vector|||0.779|Rows containing NAs were excluded from the model.|
+m_prior_right_mrs_365_canonical|stem|bab85b9bdd3c63d3|f7768ec6882e298c|55799a3130ee1992|-296370691||t19970.6152146669s|61a6817bd0543bf6|1265960|rds|local|vector|||0.84|Rows containing NAs were excluded from the model.|
+m_prior_right_mrs_90_canonical|stem|3802adbd01f26b55|44443fa718ec412c|a86c12d3fa5a13a3|221593693||t19970.6156751591s|3e159fc348415b0f|1293383|rds|local|vector|||0.785|Rows containing NAs were excluded from the model.|
 m_prior_right_neurosurgery|stem|579f1755bb640756|ea2f7ddd867daa6d|ccbe81e56805f3cc|1203027695||t19912.6296385113s|be123b867b98d711|32109661|rds|local|vector|||92.871|Rows containing NAs were excluded from the model.|
 m_prior_right_tracheostomy|stem|d675397727c5e89c|786a372d6932d493|b96a3ea2fd6726ec|1575650651||t19912.5740794131s|efe56c6d3ff8aedd|29631997|rds|local|vector|||84.202|Rows containing NAs were excluded from the model.|
 m_prior_trach_canonical|stem|7e1d66a1d285f529|f94ba58d3adbd86b|72e59631b738630d|-993513890||t19899.5780106898s|1af7bc1c55701ee9|26262512|rds|local|vector|||76.486|Rows containing NAs were excluded from the model.|
@@ -408,8 +796,209 @@ neurosugery_minimal_diagnostics|stem|baa18dd903fa8593|ced01af576ed104b|427b079fc
 neurosurgery_canonical_visuals|stem|8aa0d3c2257ae029|c99e1efb00c6c7b8|acec8cbcc9751d3a|526014170||t19894.5678114498s|2dafc272f716f85b|28151112|rds|local|vector|||5.214||
 neurosurgery_minimal_visuals|stem|80cfcac0df1b7284|172adc89ce1769b1|b661ffd2bee906e6|1064045853||t19894.5689454373s|a50f78f5e47e7641|27892739|rds|local|vector|||0.771||
 outcomes_dag_function|function|6e154598f5ab410a|||||||||||||||
-posterior_diagnostics|function|35a8ac4d3fa32822|||||||||||||||
-results_visual|function|bb91e40db32bdcfc|||||||||||||||
+post_pred_check_flat_euro_anxiety_180_canonical|stem|2cc1151879a60b13|97fe34c74a611bb7|3fa9bb6ad2e18ef4|-1839910314||t19971.4731992878s|86c33f48928daa0d|4762691|rds|local|vector|||2.033||
+post_pred_check_flat_euro_anxiety_365_canonical|stem|16db8a527296fd37|a22eeeffaa7407bc|c7ea0369c1dd687f|896442748||t19971.4711833232s|9f1f5092adf8447d|4548758|rds|local|vector|||1.785||
+post_pred_check_flat_euro_anxiety_90_canonical|stem|e28acf9f7cefd4f5|69b78fdcce6d7d1f|0099f2408255e075|1515963440||t19971.471252073s|9a742f3719af7ee8|6649132|rds|local|vector|||2.864||
+post_pred_check_flat_euro_mobility_180_canonical|stem|e14f574c0954560e|8c4d6d4dd824c60e|1302b25e5412a5c7|-1346890689||t19971.4738708901s|b7e6d47d11ec2b08|4663649|rds|local|vector|||2.514||
+post_pred_check_flat_euro_mobility_365_canonical|stem|a15f69cbbc4237a4|6ecee306e8274e55|375ef005f8c14c45|-1071821963||t19971.4724700853s|8961dedae0ae3e15|4561674|rds|local|vector|||1.913||
+post_pred_check_flat_euro_mobility_90_canonical|stem|e62f62639758677c|c60239e465d5b43c|d544fb6fb2096eeb|2115854858||t19971.4716393786s|ecd91eb92b215773|6626337|rds|local|vector|||2.926||
+post_pred_check_flat_euro_pain_180_canonical|stem|13e66ea359383054|a8fb1f17ab0c991b|00f0a1ae8d23c4f0|722604985||t19971.4733606297s|a0568c902838f739|4728336|rds|local|vector|||2.061||
+post_pred_check_flat_euro_pain_365_canonical|stem|5cdf3fcbc0ff4e09|2e40709464c0b4b8|a39e9a24e358eb5e|-416313765||t19971.4735208143s|3f73401a6528fd05|4595268|rds|local|vector|||1.963||
+post_pred_check_flat_euro_pain_90_canonical|stem|0fe8db5a3c578231|8fdec766b5c82c5b|6de27f51710bf4e5|-2132025272||t19971.4737496715s|c3bc64d7b0661165|6626536|rds|local|vector|||3.005||
+post_pred_check_flat_euro_selfcare_180_canonical|stem|a922a3f686afb08f|1823bcabc1485b5c|aaf707d9bf95cc46|-606046329||t19971.4715703202s|83a28577f7639232|4716814|rds|local|vector|||2.059||
+post_pred_check_flat_euro_selfcare_365_canonical|stem|2b294d58f2f42baa|04d6b88773fbd438|1299b00dce82cf4b|-2104452291||t19971.4710815103s|4254dc13bc7bca35|4539956|rds|local|vector|||2.422||
+post_pred_check_flat_euro_selfcare_90_canonical|stem|d0e63e56a370ac3a|1aa46da789a692de|6e0ad510aeaa2196|1403984475||t19971.471409364s|3adb5272d22383f3|6839953|rds|local|vector|||2.91||
+post_pred_check_flat_euro_usual_180_canonical|stem|7b4dc2c18c87de43|00f9a8daebf33c78|8e272482c60cd660|1648126502||t19971.4742451171s|d66fa08416a5086e|4804986|rds|local|vector|||2.09||
+post_pred_check_flat_euro_usual_365_canonical|stem|6ccdcc9842a92e0e|e78d30b71e54aadd|0e51224398b49cde|284030514||t19971.4705107949s|84800a3950782709|4652885|rds|local|vector|||1.701||
+post_pred_check_flat_euro_usual_90_canonical|stem|e0670a87f56e14c4|121b57189efae1f7|387ba94280d39b05|1842778468||t19971.4731543034s|b09215cca2769196|6936727|rds|local|vector|||2.964||
+post_pred_check_flat_mrs_180_canonical|stem|b73a43e68b5403b7|19492e763a0aeb4b|35a9cd0ce2913c5e|1802112855||t19971.4711425055s|a8fcec24a96b33a0|7988579|rds|local|vector|||2.865||
+post_pred_check_flat_mrs_365_canonical|stem|5924ec0083db9288|d1fe7eb827b4b843|56dd265cc6cb04cf|-570889365||t19971.470662106s|160e2f84f4107bf7|7885818|rds|local|vector|||2.7||
+post_pred_check_flat_mrs_90_canonical|stem|4d2883b7c0e8b238|71c5360b0192e06d|5ccda3be9a7cf585|1144030117||t19971.4724279558s|e45875f03098a996|11360614|rds|local|vector|||3.918||
+post_pred_check_left_euro_anxiety_180_canonical|stem|213d92c91333165b|fd76e667ce81ec51|54c5ba2253139150|1387879404||t19971.4702972154s|2d9deff2f4c49428|4758791|rds|local|vector|||2.368||
+post_pred_check_left_euro_anxiety_365_canonical|stem|11da6edfbcac6557|664c901dabf5fbd0|0341c5e79f4831bc|1497846137||t19971.4745604709s|758c5c46018a3ae2|4548852|rds|local|vector|||2.302||
+post_pred_check_left_euro_anxiety_90_canonical|stem|6a3f3fa01d98b122|7ddc588b1533398e|295737a71d9c9778|-832663150||t19971.4745139433s|c12e8fabcc3bcb75|6645304|rds|local|vector|||3.885||
+post_pred_check_left_euro_mobility_180_canonical|stem|7d4cdca58ca37650|376d6c1092433adc|3202992489835e06|223410794||t19971.4718286911s|a19bfa1fbf450683|4677265|rds|local|vector|||2.006||
+post_pred_check_left_euro_mobility_365_canonical|stem|8b9ce65edddbac0c|b1d0b0c79015c8dd|61454594f3719d7a|-722823053||t19971.4746039892s|cab07e56ceff0dcd|4563453|rds|local|vector|||2.037||
+post_pred_check_left_euro_mobility_90_canonical|stem|f3110db68d9362bc|f591d3d543a2a82c|16467c64c650f9fc|-1144029969||t19971.4708678923s|da1a6bdc0e26d0ff|6623948|rds|local|vector|||3.073||
+post_pred_check_left_euro_pain_180_canonical|stem|e140efbcbec67694|726d038640530c08|9b75ee3a2b0101c8|1940622725||t19971.4709895354s|9945ff94aa3e9b6e|4755007|rds|local|vector|||1.963||
+post_pred_check_left_euro_pain_365_canonical|stem|98781840733c137e|3d061e0b3a8d785d|bf257d9ccd051080|-1721205008||t19971.4717845555s|12418d881a535b3c|4593846|rds|local|vector|||1.881||
+post_pred_check_left_euro_pain_90_canonical|stem|080f8034bf3c98ca|ed591ee26bc196dd|6eebea8478cf7b61|-802651564||t19971.4730789564s|ca323a3273c5aa7f|6630781|rds|local|vector|||2.891||
+post_pred_check_left_euro_selfcare_180_canonical|stem|1ce5da2b01501c69|61ffd9166b94bf8a|f8c0d17f80d47099|780233155||t19971.4728122522s|77acbeeeacd0c072|4715498|rds|local|vector|||2.009||
+post_pred_check_left_euro_selfcare_365_canonical|stem|b5fc2203db0a1ba3|27a6fe7c3e4ac834|9bc48e983ad2d200|1336451876||t19971.4715221722s|3c0799d73116eebd|4536557|rds|local|vector|||1.91||
+post_pred_check_left_euro_selfcare_90_canonical|stem|82319a23c9371d77|4798dba760cb75c1|cc91e441479a00aa|-1020282900||t19971.4738209289s|f814d4c5bd3d589b|6825356|rds|local|vector|||2.993||
+post_pred_check_left_euro_usual_180_canonical|stem|7c62cadaf7408546|4747c69b1055d129|2a700958ae68ec75|-115630155||t19971.4732448509s|9ee845c44afb5928|4803539|rds|local|vector|||2.032||
+post_pred_check_left_euro_usual_365_canonical|stem|2a9c8f0b4db50942|403af95bb7f694c8|e8e1424755231f29|-405352506||t19971.4726899533s|a7fd03db2d129fb5|4651559|rds|local|vector|||2.566||
+post_pred_check_left_euro_usual_90_canonical|stem|bc8f4ebddabd5e37|82d995e324378048|1c4c9c2b09561c88|-2105149958||t19971.4729677686s|d6a27af7de5cabb3|6941414|rds|local|vector|||2.949||
+post_pred_check_left_mrs_180_canonical|stem|632727421059d028|94bf89d9e3f4311a|62a527c4b5bd70d9|878599804||t19971.4721971697s|5e64172ec7ea2b12|7985138|rds|local|vector|||2.839||
+post_pred_check_left_mrs_365_canonical|stem|1873f781921af1ed|db4e6a5799c1a4a7|80187bd2bdb9c757|-915734322||t19971.4716991392s|e5d16f9c1f453f17|7877717|rds|local|vector|||2.79||
+post_pred_check_left_mrs_90_canonical|stem|c6b6a9c48426e2d6|a3f324553c83abc5|4ce7f8b24a02dd86|-431190143||t19971.4706031171s|0e682675e17ec0d0|11353012|rds|local|vector|||4.123||
+post_pred_check_mrs_180_minimal|stem|a38b3149729d6ecf|ba32b1682d50d914|8222f34894413a3e|1132292364||t19971.4727678465s|f2bfd768a16f8fe0|9660505|rds|local|vector|||3.387||
+post_pred_check_mrs_365_minimal|stem|fed545d22c62e19a|759e147664202e1b|243a50b9b9dd1a1a|1621126145||t19971.4703797769s|5acff0f4c8955dbf|9429231|rds|local|vector|||3.836||
+post_pred_check_mrs_90_minimal|stem|54c076088335aa38|1d64cea006daf4cf|167a6a8a431e8cf0|1574025451||t19971.4720059281s|641be9037cb6b4c0|13298774|rds|local|vector|||4.841||
+post_pred_check_neutral_euro_anxiety_180_canonical|stem|754689e1e802dd24|4347e2106a609828|95c00b280dd78e1e|-1878951254||t19971.4736791085s|7fd8a9296fee9689|4764014|rds|local|vector|||2.13||
+post_pred_check_neutral_euro_anxiety_365_canonical|stem|85a80dbf6a2eb8bd|52b059cf92fcc179|b44f31ba911af67c|-1867338321||t19971.4728960868s|785e445a279f733b|4548662|rds|local|vector|||1.926||
+post_pred_check_neutral_euro_anxiety_90_canonical|stem|d437e3e245cce16e|1f8f5049a2fe013e|65f9445a00599b8d|778310837||t19971.4744335809s|946ccb7f6126bf49|6650920|rds|local|vector|||3.02||
+post_pred_check_neutral_euro_mobility_180_canonical|stem|9429adde89f72763|4e3600c025e939cb|f3135fe028da9f03|-1484646250||t19971.4722839363s|2db7db6746e3ae73|4658520|rds|local|vector|||1.984||
+post_pred_check_neutral_euro_mobility_365_canonical|stem|ef089e474922fb09|9d9e5937d8958eda|5f94df9cc53f7332|1295489595||t19971.4730098209s|82124ceb99a3c614|4564329|rds|local|vector|||1.916||
+post_pred_check_neutral_euro_mobility_90_canonical|stem|e4678ceeeea3020c|22f535ab56ee21ab|6c904713a44d8f5b|1137314994||t19971.4736329281s|d952329b7dfcae4b|6629617|rds|local|vector|||2.984||
+post_pred_check_neutral_euro_pain_180_canonical|stem|f7b3ab60eae90f3e|07721e01c8ca501a|d694c7c5d8f630ed|1865050736||t19971.4734777975s|0564c6b3e3fc9599|4732608|rds|local|vector|||2.043||
+post_pred_check_neutral_euro_pain_365_canonical|stem|490b26d4fda52abf|7288ec6d41a608f4|c6ec6641e8960537|-1843904166||t19971.4712974046s|1b02fba2a75d214e|4597213|rds|local|vector|||2.161||
+post_pred_check_neutral_euro_pain_90_canonical|stem|28b068986a818a11|6ab9a6205b0745d0|c77b565982868e83|-1989558993||t19971.4720763754s|745003bf7f267b40|6629493|rds|local|vector|||2.969||
+post_pred_check_neutral_euro_selfcare_180_canonical|stem|559c132cca4ef737|c9deed7a45a3e16b|5ddc946b964db6e9|1163238575||t19971.4739242078s|aefac1a84b2faa1c|4716699|rds|local|vector|||2.776||
+post_pred_check_neutral_euro_selfcare_365_canonical|stem|9403fde3ac096506|c1ade98de05d7a62|d24c9bffc9bca8c4|-1218282488||t19971.4728539573s|defe5e374b229316|4536821|rds|local|vector|||1.893||
+post_pred_check_neutral_euro_selfcare_90_canonical|stem|920c5f87c2f9d6fd|bed6f78aa592d533|13377b611302f955|-580115083||t19971.473315221s|07616d5f35b9baca|6824905|rds|local|vector|||2.933||
+post_pred_check_neutral_euro_usual_180_canonical|stem|6129a5694c914e00|544345060b4d968c|7039a367d3f8da58|-290250502||t19971.4725151469s|5c9e4075411e1a8e|4804141|rds|local|vector|||1.985||
+post_pred_check_neutral_euro_usual_365_canonical|stem|699716214a245f8d|eec4f0556a9ffe89|33b9b69f5d10bd43|1154275832||t19971.4722400322s|c83404ab900d4d4f|4651972|rds|local|vector|||1.894||
+post_pred_check_neutral_euro_usual_90_canonical|stem|6d809c78e33bafde|37e9cd530e881a5d|9ac321cdeba2ee6f|1662283824||t19971.4734324659s|add472c499a95620|6935123|rds|local|vector|||2.973||
+post_pred_check_neutral_mrs_180_canonical|stem|b83f96a3fc93f138|e9ef24ed308c5f77|047dfb15a1b62536|182124017||t19971.472639259s|0d82aad291c8794a|7986741|rds|local|vector|||3.199||
+post_pred_check_neutral_mrs_365_canonical|stem|0c209f360d7970f5|aef7ea622ead9b1d|1fafdb03a98b0800|727059458||t19971.4725744059s|1eef7552a0576d40|7878069|rds|local|vector|||2.766||
+post_pred_check_neutral_mrs_90_canonical|stem|16deed4f59ec93a2|7184767099f48d3b|ef9b0eabe30ef26f|-170600804||t19971.4707970592s|1d7fdc787b80c836|11356655|rds|local|vector|||3.745||
+post_pred_check_right_euro_anxiety_180_canonical|stem|46c08b09e6a52d54|ea00d1ceeb32cf86|d142e076313034f5|-859110844||t19971.4740127878s|24d59983399e2d8b|4762218|rds|local|vector|||2.085||
+post_pred_check_right_euro_anxiety_365_canonical|stem|4087c02171f5df2c|11fc9ac3a1694635|39a1e8099003295e|2057568140||t19971.4739670318s|b4ca5606501ae7bc|4548453|rds|local|vector|||1.985||
+post_pred_check_right_euro_anxiety_90_canonical|stem|5dd7f9f58670040e|6a9b340435336b77|31f41232dc51d61a|4397959||t19971.4709451297s|80d368d843a7b281|6647507|rds|local|vector|||3.577||
+post_pred_check_right_euro_mobility_180_canonical|stem|e0e6e4befa6bea6a|156bc0bdc14fe016|57301ddc6c0ebacf|-1444850621||t19971.4717425804s|dd3fe0189d064cab|4666632|rds|local|vector|||1.948||
+post_pred_check_right_euro_mobility_365_canonical|stem|9797c908a77f6356|f192a7c9d5f851fb|85844d8684ff027a|-1934039112||t19971.473563291s|07361a6fddbe9b0a|4562795|rds|local|vector|||1.956||
+post_pred_check_right_euro_mobility_90_canonical|stem|5c85aeebc96a0de4|a4dba72f059274bb|8207a26813433f85|-1633652211||t19971.4741986667s|dc0f95c134212b51|6630352|rds|local|vector|||2.961||
+post_pred_check_right_euro_pain_180_canonical|stem|244dfc41f0ed95a7|55ce0a7b68c00bd9|60c4fcb4565f57f0|1969912561||t19971.4710335167s|87829b3d03099bb8|4733100|rds|local|vector|||1.925||
+post_pred_check_right_euro_pain_365_canonical|stem|a034532143863f78|03243ed1097363f8|c53e12e20219b51d|1619034538||t19971.470709521s|7a7b30e5c3295f92|4595914|rds|local|vector|||2.337||
+post_pred_check_right_euro_pain_90_canonical|stem|3f3ce7629e97e596|261f245577ba4ef8|d4a94625569ff157|-1682572977||t19971.4741292225s|262ff02dc827b46d|6634669|rds|local|vector|||2.955||
+post_pred_check_right_euro_selfcare_180_canonical|stem|e2bff9672b2fe632|ecf05fd07b5a5755|304ab194fee816e3|1974192346||t19971.4743631336s|87c3b67c8b183599|4717589|rds|local|vector|||2.147||
+post_pred_check_right_euro_selfcare_365_canonical|stem|6c4dc0dfcc8e1d64|1bbb642fafcb3566|4bde528259dd7e22|-721204497||t19971.4713389939s|7efea7aefa1a390f|4544171|rds|local|vector|||1.88||
+post_pred_check_right_euro_selfcare_90_canonical|stem|192478b95ddd03a9|17fffd4855ce43e9|74127a01f0b40f94|-1877574941||t19971.4714801199s|a44688d959e4c8ec|6820545|rds|local|vector|||2.961||
+post_pred_check_right_euro_usual_180_canonical|stem|2313a682363ae27a|23275db1fed5f8d7|0738025784e46a5c|2065420690||t19971.4740591996s|c9d2f1bf856a87f2|4805993|rds|local|vector|||2.101||
+post_pred_check_right_euro_usual_365_canonical|stem|1cc998fdc03571a2|f683a0c83ac45968|6046fc456418d95b|1825558481||t19971.4723384886s|5eea3eb8da783528|4654947|rds|local|vector|||2.887||
+post_pred_check_right_euro_usual_90_canonical|stem|9854a47d8e7024f0|3f3d7a434cb208bd|38190e6d7b8a5063|-648339570||t19971.4743171076s|a08f5d852788d39e|6932302|rds|local|vector|||2.984||
+post_pred_check_right_mrs_180_canonical|stem|a3ab7e547a38db8a|fa8d31fb9e1b715d|18ee53ff09ffe041|333671594||t19971.4718939301s|3c999da05ff95d4c|7988446|rds|local|vector|||3.219||
+post_pred_check_right_mrs_365_canonical|stem|c9ecc69f2b93f6b0|387c10b561f41b65|118daaa7ba49f340|-1005029370||t19971.4721365603s|e15694f428dc3f6b|7887942|rds|local|vector|||2.835||
+post_pred_check_right_mrs_90_canonical|stem|441056af8ef3f784|8b9cac5d412b89ec|1eea812620047a03|1022830349||t19971.4704699771s|c6e9b9022fc4d6c6|11353403|rds|local|vector|||3.955||
+posterior_diagnostics|function|d6a1f8b8ed64abf7|||||||||||||||
+prediction_visual|function|bb91e40db32bdcfc|||||||||||||||
+prior_check_comfort|stem|06b58cd15bb6942b|48e23ab14fa9fa52|932c466c44110aac|-449456066||t19970.5599591786s|16a4f1007b443728|127621453|rds|local|vector|||3.953||
+prior_check_days_mechanical_ventilation|stem|577af27df9387555|9e12292d1f0090ca|7732b7c58ae772fe|-1098604466||t19970.5614606011s|5c331b4952a84875|147235666|rds|local|vector|||5.523|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_dnr_binary|stem|6b218d68d6ca14f8|6ffcd77fc07598cf|9b207f58d665b57e|-1113960177||t19970.5606985666s|10115b8f1abf1721|128383615|rds|local|vector|||6.385||
+prior_check_early_wlst|stem|7ceb0255928b9e2f|efba4233eb92d4d8|3945cc2e0867b648|-838944113||t19970.5582086829s|ef9ae2f2c9ca3901|126831047|rds|local|vector|||6.327||
+prior_check_euro_anxiety_180|stem|dc206a9312d8e780|9b311cf700af6abb|3f20808af2e331d9|-1687158201||t19970.6179712548s|40c0ec3ddf9cb278|5571441|rds|local|vector|||8.936|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_anxiety_365|stem|221ee02b1e9b9148|d757eab0dfc6019e|968aacb74c9416a0|1871802867||t19970.6231811134s|e5205e509d0c4063|5564397|rds|local|vector|||6.916|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_anxiety_90|stem|8dd48e7792b42205|5ae12e93c4b55559|a3c3651e851c2db6|1063159073||t19970.6213122541s|bb5b697cd588963b|5718535|rds|local|vector|||13.921|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_mobility_180|stem|a38a78cda4330d1f|52eeb5e98012486a|d9d6da41cc75f4bc|1646475895||t19970.6221750984s|03c40c4abaf97142|5575618|rds|local|vector|||9.002|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_mobility_365|stem|6a419151ded3afda|f8ef5deab882bdb3|1341e74a81377117|1353281276||t19970.6216553085s|85b4686d2d3cea16|5565648|rds|local|vector|||7.955|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_mobility_90|stem|7e20a0267f6d6550|79e5aa4fe9c2cd2d|5c4441c8297b0cef|-1795629765||t19970.6200561628s|db5ebf63c78d4fa5|5718823|rds|local|vector|||15.249|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_pain_180|stem|b3a1ce5a4a82b133|efd13a482439b431|40cb9f81957ce4ce|1762832482||t19970.6225523733s|6858c5289fbe9e2a|5573527|rds|local|vector|||9.149|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_pain_365|stem|058615a8604f7c55|e37b179b4c373c81|2480512952e87e71|677002811||t19970.6165243847s|7892368836e1a340|5565078|rds|local|vector|||7.632|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_pain_90|stem|80ccfb1dc10ddb54|2077966c6a43fac1|ba2b5caf716716af|891054758||t19970.6219272211s|7ae4d93a7bd8ee80|5717328|rds|local|vector|||14.777|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_selfcare_180|stem|360ad7c3244d0fde|bb576dd75137471b|f0ae3da47f824aa4|-517658749||t19970.6176883082s|aac088ec73873da4|5576037|rds|local|vector|||9.341|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_selfcare_365|stem|0f0bd2afea087316|aae0599abda873ca|f6c18bdeb84266bd|116323535||t19970.6223353987s|b872b30bdca3c940|5578583|rds|local|vector|||8.372|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_selfcare_90|stem|cdfd091221757558|ff6aa36210ebe099|72b9d87a005124f5|-1817000955||t19970.6240263266s|76daa75316715de3|5719563|rds|local|vector|||14.271|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_usual_180|stem|ca99f2620ba247a3|f69eaf80c3260cac|c61f0e4cd677daff|1358721723||t19970.6233724322s|82c55755d8d70aca|5576806|rds|local|vector|||7.885|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_usual_365|stem|98cb0f6b20ff9494|4f3dc092b6e787f4|4b5193d6e30b4e19|-319682685||t19970.619683286s|fdffe10a6e0417dc|5565806|rds|local|vector|||7.667|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_euro_usual_90|stem|18add146efd20633|9b53a84c35e81a8c|6d617906b86543f5|156235653||t19970.6238554553s|a9ee6d79a0652f96|5719880|rds|local|vector|||14.348|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_evd|stem|e8b391fa026ec7ef|cbb134701631e8d6|bf50313cf95c3112|309397501||t19970.5539959264s|302ddb21e4a55fdf|120192717|rds|local|vector|||5.137||
+prior_check_mrs_180|stem|45734afde2ccc58a|2fed24d61166d14b|291162535a9320e7|402242680||t19970.6229815385s|b1a614d2752756bf|7356368|rds|local|vector|||19.21|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_mrs_365|stem|153fb88cbd9d25f8|2c4fc8938abb450a|0bd8fb717beb2499|1932243047||t19970.618453159s|d9df170a09365bd0|7356619|rds|local|vector|||18.313|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_mrs_90|stem|074a5a572479f2ba|542bc1c65e5871b9|4352002e95b56786|477863642||t19970.6208830889s|7f89c5594f332213|7529899|rds|local|vector|||30.213|Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L. Values from estimate are not uniquely identified output will containlistcols. Use values_fn  list to suppress this warning. Use values_fn  summary_fun to summarise duplicates. Use the following dplyr code to identify duplicates.  data   dplyrsummarisen  dplyrn, .by  cprior, ich_laterality   dplyrfiltern  1L|
+prior_check_neurosurgery|stem|b820e13722146c1d|63482c1ae073d7fe|ea8af8c89f831163|1584755715||t19970.5361516178s|7cd3bd59bda87224|129064727|rds|local|vector|||8.404||
+prior_check_tracheostomy|stem|c7d1c11448f06753|0eb9c1010da6a0d0|645d0ceb855639e3|2144963494||t19970.5591266968s|c8e8a07ebb3b39ea|123988254|rds|local|vector|||8.457||
+prior_visual_comfort_flat|stem|ddb5ea2014d2f4c1|1ebb53c2b695da6a|7149d28976e11bea|-873110376||t19970.5596010394s|607e31eb218eaa0c|34655320|rds|local|vector|||3.779||
+prior_visual_comfort_left|stem|719d11598bae70d2|40593ceee4ff35ff|88884ed685c25ae7|-359307004||t19970.5584228026s|337caa107ebdeb44|32712612|rds|local|vector|||3.651||
+prior_visual_comfort_neutral|stem|ef70ad50fb00c9b3|8de4fd5e1b662ea8|7ff985619cc0fa76|184314726||t19970.560042666s|995e993ee894ae38|32821778|rds|local|vector|||2.11||
+prior_visual_comfort_right|stem|ea4603b8d966aaeb|bdcbc43a846a8506|146a726db7f8bb77|899722367||t19970.5586980331s|75d385466fc75024|34236476|rds|local|vector|||3.058||
+prior_visual_days_mechanical_ventilation_flat|stem|9aab03b071e2cc95|14daa987304f23f7|1e93f97dd52c53c1|-6968558||t19970.5610590592s|8df65d5512389e75|47394083|rds|local|vector|||2.908||
+prior_visual_days_mechanical_ventilation_left|stem|310b5e3879db8b65|fcf528724247af05|6e34d3ab391fd76e|1101441324||t19970.5609413898s|77a1e920b6151b61|48085775|rds|local|vector|||2.799||
+prior_visual_days_mechanical_ventilation_neutral|stem|673cacf26bcbe1f7|64850f6468d2fef6|356cc37b7bd9ce9b|-1345047618||t19970.5574743489s|b3577a059fddc1e1|47649429|rds|local|vector|||3.815||
+prior_visual_days_mechanical_ventilation_right|stem|25429fe7e400e638|1d6bba5a8b91925e|da6b688ae870f94c|-105859103||t19970.5594522359s|11a7101f51c4f418|48360298|rds|local|vector|||3.176||
+prior_visual_dnr_binary_flat|stem|e496152df769e6ae|0f1f8ea6f4cb1c68|b0d3a7d7d91746e4|1243705065||t19970.5601597567s|184d60af2a05298e|33995387|rds|local|vector|||2.022||
+prior_visual_dnr_binary_left|stem|b31854eec2ec4b78|adfe5e4a44ef6e3d|038a5f76da97c1f2|-772615126||t19970.5593120743s|153c880c66531dcd|32836614|rds|local|vector|||3.421||
+prior_visual_dnr_binary_neutral|stem|a67313b0186796f1|c137fe407c67255f|84aa966e7ff245e0|1792786596||t19970.5602725649s|702294a215746af6|33629479|rds|local|vector|||2.351||
+prior_visual_dnr_binary_right|stem|b4095da50a86b28e|07c5a6c4822d3a37|56b0c0a504033e30|-1619628305||t19970.5608073625s|f4d500989ebce0f8|34743783|rds|local|vector|||2.184||
+prior_visual_early_wlst_flat|stem|df9ef23431ed04a3|b26373c998e695b3|ba13716221cb52db|-770487275||t19970.5575686001s|2e3c8e83cd3b5172|31914448|rds|local|vector|||3.438||
+prior_visual_early_wlst_left|stem|da49697777b1fbc0|231ae34936cedb06|6d996438e2441a37|-88408924||t19970.5576789007s|a87b13ce55ad9ba7|33140569|rds|local|vector|||2.977||
+prior_visual_early_wlst_neutral|stem|534b75020c487514|aa94d2cd3567889c|8b3fb2de307bc894|-1521356227||t19970.5578273184s|f53fbfb3d975a65a|34487825|rds|local|vector|||3.934||
+prior_visual_early_wlst_right|stem|fd944e1eaedc2a82|21e7a4c0798df332|c052f0bd14e0cc3e|-1011676817||t19970.5583143538s|cdf49d9b0ed3d8cf|34123807|rds|local|vector|||2.696||
+prior_visual_euro_anxiety_180_flat|stem|6fd4a8a60445416f|d3a03f3661d3d220|b5210e2b529bd250|-1289322527||t19970.6178070964s|405d54e4e46c6702|2976100|rds|local|vector|||4.808||
+prior_visual_euro_anxiety_180_left|stem|bfa6df5ff6f4b183|1d9d9c26d122f480|19c5b36ec89bb62b|-512719557||t19970.6178623432s|6897966216f6ebe2|2976113|rds|local|vector|||4.472||
+prior_visual_euro_anxiety_180_neutral|stem|a084ba8a8de78005|93b23322c021793e|5049adcb64513b25|-173713604||t19970.6168717601s|50c06b3e8b295c80|2976066|rds|local|vector|||4.289||
+prior_visual_euro_anxiety_180_right|stem|1c77efefeb8f896d|ae853d706e615b4b|946de16c46bc1f1b|392116182||t19970.6180264244s|a5d8ca511947d1ad|2975967|rds|local|vector|||4.464||
+prior_visual_euro_anxiety_365_flat|stem|87c9355b3fff2193|b64c791679d43db3|6fe2ef80b490b198|1393452125||t19970.6160636223s|265a061241845a6e|3019645|rds|local|vector|||4.411||
+prior_visual_euro_anxiety_365_left|stem|9691dc2c9fa63d2a|5a57f7982aa5191e|3c85baede21331ad|1244647929||t19970.6232265608s|aa29ddc300025a77|3019407|rds|local|vector|||3.639||
+prior_visual_euro_anxiety_365_neutral|stem|08d2c08d0e8001c6|511ca5a7d881df96|9b2e3dccd8a2af79|73418613||t19970.622655768s|31828d5927070745|3019541|rds|local|vector|||3.859||
+prior_visual_euro_anxiety_365_right|stem|1cf60af0037919ae|1629be47b1b1e4ed|e0f38fe159a3e2cd|991838020||t19970.6190272311s|2c1fca0b73190815|3019549|rds|local|vector|||3.42||
+prior_visual_euro_anxiety_90_flat|stem|75aaeead4897d16b|ee380d7302c085e2|492e6577026922d7|215523091||t19970.6193956712s|83356ef4d4538b4a|3112230|rds|local|vector|||6.597||
+prior_visual_euro_anxiety_90_left|stem|5d09c295652c7363|22027467211fe179|53165f221eb23bfd|933275271||t19970.6167680567s|10542aef0a1cb209|3112244|rds|local|vector|||7.739||
+prior_visual_euro_anxiety_90_neutral|stem|f2d13e3be934e6f3|baaeab924d787533|b034300403b97028|1094307845||t19970.6211453951s|1bc6cbda9ea0b359|3112254|rds|local|vector|||6.817||
+prior_visual_euro_anxiety_90_right|stem|a924a987453e9a77|09decaf6d36e6d50|bd806d3f2414c5b4|-523150394||t19970.6214012584s|0e98984264526d0a|3112167|rds|local|vector|||7.39||
+prior_visual_euro_mobility_180_flat|stem|430decffd2e2b08a|d798683288f5d1ae|f57db0ff6b7f3799|-1279974909||t19970.6166749629s|bd685f6365ab78ff|2992345|rds|local|vector|||4.314||
+prior_visual_euro_mobility_180_left|stem|5a68b6b41ea11490|c3e3de5bf3887b21|e30c25491c18ae8d|1138213343||t19970.6220654151s|97d59c2fa00bca1b|2992098|rds|local|vector|||3.992||
+prior_visual_euro_mobility_180_neutral|stem|664ccb661f64c423|caa699120ede7873|c1af134c74d0057c|-1105025285||t19970.622231001s|c4702a512cc8ca4a|2992372|rds|local|vector|||4.529||
+prior_visual_euro_mobility_180_right|stem|6a8f77e1679cc0ae|1563ecc83e82798b|5ed32baa494e4f64|-1666786351||t19970.6171873454s|df7fa7dd7eb4e21a|2992122|rds|local|vector|||4.316||
+prior_visual_euro_mobility_365_flat|stem|c606033601ebaa77|b83c932c7110c8ad|705b2d3d73d31025|521071500||t19970.6187433201s|b6559c48fbf57b95|3020580|rds|local|vector|||3.723||
+prior_visual_euro_mobility_365_left|stem|3e1247ac077abd65|e2c2f06001b4d09f|8cf9f6726c42034f|-2074879071||t19970.6186968696s|9c873c17ec5ad3ae|3020637|rds|local|vector|||3.682||
+prior_visual_euro_mobility_365_neutral|stem|07d641d5b2c0255b|5e8dc67aee029d53|63bbf1ef47420c36|-1639445756||t19970.6170375002s|cc40b2faeb8d5f65|3020777|rds|local|vector|||3.895||
+prior_visual_euro_mobility_365_right|stem|9697f08cca86831b|b65f3bb8087fef69|dbef2d7d82c7fb97|923241129||t19970.621557778s|1303148d65cbc762|3020521|rds|local|vector|||4.233||
+prior_visual_euro_mobility_90_flat|stem|0b05e505580f1734|ce906eb9c6c38712|a6759c8c5d51fcfc|-1890863026||t19970.6171338734s|1349fdaab6361253|3110307|rds|local|vector|||8.02||
+prior_visual_euro_mobility_90_left|stem|ebc8cd94b7c220ee|db98fb7d0ef93430|e3bdc2a0670352bd|885262322||t19970.6173312493s|8dc96d71bc00886a|3110289|rds|local|vector|||7.941||
+prior_visual_euro_mobility_90_neutral|stem|e3edec92d94c9bbf|13ed2f6c54e8cbc9|6c54cbfdf65b95bd|-1736668699||t19970.6198242963s|91f29f3d561b746e|3110243|rds|local|vector|||7.679||
+prior_visual_euro_mobility_90_right|stem|94389ce063c9692f|ff76c1f2de65aec2|037e0d4496f83611|-617836397||t19970.6201527288s|e0411d93445e899c|3110354|rds|local|vector|||8.027||
+prior_visual_euro_pain_180_flat|stem|c83bedfb5c2d4033|15cc78ea99555ad5|8231c9b6c058950a|1535025664||t19970.6224409925s|94e5c37f13a719cc|2978437|rds|local|vector|||4.667||
+prior_visual_euro_pain_180_left|stem|3cad9d16f1533076|7d950e960691986d|ba317fecc006b252|-171344911||t19970.6205259528s|2a1a2a989afb4767|2978364|rds|local|vector|||3.71||
+prior_visual_euro_pain_180_neutral|stem|3e5d0cf5e752de7b|b2b50511c09779d2|263f1cd84957d6aa|-1673506023||t19970.6204795795s|c9cc1c9b8f738a41|2978317|rds|local|vector|||3.957||
+prior_visual_euro_pain_180_right|stem|357c6228292a05a3|880e690ee1b9b1f1|728637eb58aca7af|613205781||t19970.6226077358s|5878de5d77f695c2|2978406|rds|local|vector|||4.484||
+prior_visual_euro_pain_365_flat|stem|423c4bbe7f9b50db|9ca3bb929c6bfc26|01e6dc144209484e|-1050925736||t19970.6163395088s|41153b52399872c6|3019151|rds|local|vector|||3.64||
+prior_visual_euro_pain_365_left|stem|a1e2ff7683dce369|ea9fc5ffb4437c11|7144259bf2ecbf6d|-1092285468||t19970.6163827185s|22749a31f031dee2|3019198|rds|local|vector|||3.447||
+prior_visual_euro_pain_365_neutral|stem|7c82f0abd00b7ad0|2bef8a8b833dc7ca|4f03b1235634e00e|-368450973||t19970.6164305964s|e2269d47154ec78e|3019211|rds|local|vector|||3.848||
+prior_visual_euro_pain_365_right|stem|6503743c398de835|6e4501065581b1bc|6023e901f067704b|981999272||t19970.6165724941s|045930ca2c026388|3019195|rds|local|vector|||3.866||
+prior_visual_euro_pain_90_flat|stem|a01abd990c58213c|cd25c2a7a1371eb9|386979e714ead621|473625612||t19970.621750447s|a2aeac80cd37a3fb|3111724|rds|local|vector|||7.917||
+prior_visual_euro_pain_90_left|stem|34ad8ef8317a1729|760151bbd77e44bb|7d2f1446d28dd87d|-78934599||t19970.6174634633s|4fc6c2317c958dac|3111852|rds|local|vector|||7.147||
+prior_visual_euro_pain_90_neutral|stem|02ad243b4cbe9abe|1de0a1f3ee98d23f|222ef2a345987af3|-1595809762||t19970.6220157625s|e497233a890b4b4b|3111933|rds|local|vector|||7.347||
+prior_visual_euro_pain_90_right|stem|b8aa2a0c2cbf7653|506191afb4d528d1|94d88620b7f344c1|1279518408||t19970.620243392s|f5141a6cf2986776|3111961|rds|local|vector|||7.527||
+prior_visual_euro_selfcare_180_flat|stem|41ff85622a375e79|d1388c02e5e08dbc|305ff272aa7900da|-1286528985||t19970.616621568s|d90a899a833f1175|2992400|rds|local|vector|||3.939||
+prior_visual_euro_selfcare_180_left|stem|feb44039a43208ac|e3fe246538589b14|e26d49949fe09d0b|-1885317766||t19970.6175192502s|fc9f38d1b4007c0b|2992352|rds|local|vector|||4.514||
+prior_visual_euro_selfcare_180_neutral|stem|fc88f5c076fb99ec|92171151bbf5e725|4e5b705626b83480|-653292649||t19970.6175746512s|2183ddc3f115d6de|2992427|rds|local|vector|||4.484||
+prior_visual_euro_selfcare_180_right|stem|f6356fdc0146dad2|1acea1bc7278a960|7eacb041248c0feb|1598124855||t19970.6177479145s|518b9496dbddb2cc|2992367|rds|local|vector|||4.851||
+prior_visual_euro_selfcare_365_flat|stem|8b0a72536c0f8ce0|5ce7707d84c12d2a|01b3054f3af090a1|-783603812||t19970.616009263s|a183090c4d4e8899|3030109|rds|local|vector|||5.773||
+prior_visual_euro_selfcare_365_left|stem|f4279b149c3fdc3b|d4a116fb1bf67b1f|211ab9ae6d656dd4|1029399648||t19970.6223834696s|433d1e80c9f5a195|3020525|rds|local|vector|||3.864||
+prior_visual_euro_selfcare_365_neutral|stem|098df1f2371245aa|0dbdcfb87d621832|0d6ede0846a918a0|363967558||t19970.6168185967s|df670fbb9e7b98b4|3020557|rds|local|vector|||4.076||
+prior_visual_euro_selfcare_365_right|stem|a33278026de0c7d7|e5f91029dd71f387|4c894d378ed92fc8|-1379834718||t19970.6215054247s|58c535f952863d1d|3020449|rds|local|vector|||4.262||
+prior_visual_euro_selfcare_90_flat|stem|46d91cb78b5a7053|097ce5e21fc98251|e2caaf737bdbbcd1|1591596448||t19970.6241118973s|a9e69a6461e4c5f5|3110635|rds|local|vector|||7.086||
+prior_visual_euro_selfcare_90_left|stem|48bfaebad8f23324|dfde6e36b87ffdb5|02f06b692fa11093|1633004769||t19970.6235966984s|c98c889abe517069|3110693|rds|local|vector|||7.262||
+prior_visual_euro_selfcare_90_neutral|stem|4f852f1f9aee2cfc|e1dea6ba3e3b2819|cfa88c4055c03ba5|758836776||t19970.6195891119s|29310fc5d1229a8d|3110640|rds|local|vector|||6.806||
+prior_visual_euro_selfcare_90_right|stem|3a7bdd426436bbd1|0d93ca0fd9db89de|73844e2115be0bbe|1926060257||t19970.618119904s|199894751b4fd544|3110626|rds|local|vector|||7.771||
+prior_visual_euro_usual_180_flat|stem|7ea18187f8108587|dd21c7b188294bee|c5e524acfc228b86|-29394384||t19970.6198739103s|8d74515a4fbc3977|2992530|rds|local|vector|||3.989||
+prior_visual_euro_usual_180_left|stem|47f9ba720d077191|1a72bdbddb75dbac|ebcbaed330970e63|-544529566||t19970.6214527243s|eac7a9c744fc996d|2992629|rds|local|vector|||4.146||
+prior_visual_euro_usual_180_neutral|stem|d245331ca09288db|21d8d1f12ce090a6|ebd39e4f90e0eed2|668195823||t19970.6232757119s|eb1a87d5da804f22|2992511|rds|local|vector|||3.952||
+prior_visual_euro_usual_180_right|stem|2cb36c0cebd4bdc2|28102a4b2d177638|169710647ab90a59|1241632733||t19970.6234217376s|7a5f4b300541bf9e|2992570|rds|local|vector|||3.96||
+prior_visual_euro_usual_365_flat|stem|92d8c1b002e704eb|120b98e85f439422|3eb54974d130a185|274201652||t19970.6187941687s|53cac175a88489bf|3020797|rds|local|vector|||4.104||
+prior_visual_euro_usual_365_left|stem|e1f18e7ce770b3c6|69f4326f535ce5c7|7411139a990de776|-414285834||t19970.6173772368s|e2eba335ff787ba9|3020644|rds|local|vector|||3.679||
+prior_visual_euro_usual_365_neutral|stem|21ca52855a48a95a|b507237e62c6a74c|145be3b5f81d629b|-1164737857||t19970.6197319355s|d97ec781d5952755|3020830|rds|local|vector|||3.911||
+prior_visual_euro_usual_365_right|stem|28107cbd1a39538d|1d74e6a21d43af2b|9e7f790c83e7cf31|303808378||t19970.6172358406s|b9ea1106192d4260|3020873|rds|local|vector|||3.892||
+prior_visual_euro_usual_90_flat|stem|ad4bec39b19b523f|a73297f883a1c0f1|80948eb737a1fd3c|1536324281||t19970.6235091987s|9d0f821a7dcd1db7|3110760|rds|local|vector|||7.251||
+prior_visual_euro_usual_90_left|stem|a52584b4bec0eb20|e85d4c0fda0a2726|74b468640a5089f9|327014119||t19970.622752064s|7c7e49f4c41229c6|3110886|rds|local|vector|||8.016||
+prior_visual_euro_usual_90_neutral|stem|0a9cee8fb77732f0|803192283820e2c2|f5fca7b386ef0280|1933829367||t19970.6186508435s|1cdf5693c8fc35f4|3110817|rds|local|vector|||7.015||
+prior_visual_euro_usual_90_right|stem|f13b238de26b76f8|f189eda25a300172|116dc520d15583a9|1796571003||t19970.6236836966s|3e70455ecc5dff00|3110814|rds|local|vector|||7.211||
+prior_visual_evd_flat|stem|3e858a3de02a5f5a|4d4a1554cf7175a3|21aeeeae884892ce|-1207382619||t19970.5540792209s|487cf8b1eb65dc77|32207258|rds|local|vector|||2.873||
+prior_visual_evd_left|stem|8167b5234130ac17|d194018b5fa91a92|67af1666f2da8b1b|176390127||t19970.5536973162s|b3504b74e93440ec|33450561|rds|local|vector|||3.748||
+prior_visual_evd_neutral|stem|1600d4ca5965c169|44dfdc74b0fb8e35|e04c391888fb7f10|-2123663361||t19970.5535718923s|813f01f3b6a506fd|28489787|rds|local|vector|||2.407||
+prior_visual_evd_right|stem|bb793defd719215f|3223cfd4ca5f94ed|ee099146022f313d|-1034941099||t19970.5534693077s|c27f661eb1708fd8|32652401|rds|local|vector|||4.058||
+prior_visual_mrs_180_flat|stem|39b6c56f770d9f93|ed2ea74a0f77de8d|f94d8b6b55046476|-236602187||t19970.6185661216s|e8a2b48cbf27ea8d|4878592|rds|local|vector|||9.348||
+prior_visual_mrs_180_left|stem|0e6d2bb55857b4ce|c03965ca79378e98|ec1b80cb4a315be1|952870536||t19970.6230956585s|aa310a2ab3c177d5|4878647|rds|local|vector|||9.452||
+prior_visual_mrs_180_neutral|stem|0f52f7c2035244bf|ea06504b4e6efcb7|fa5ea7f263b74a4a|-1167486726||t19970.6191335579s|b6224d2184f400be|4878601|rds|local|vector|||8.759||
+prior_visual_mrs_180_right|stem|8bafc3e70a344634|eac10f7e1244ba4d|64296731fda1fab8|-994513059||t19970.6195068205s|5ef09e57d10683ce|4878484|rds|local|vector|||9.198||
+prior_visual_mrs_365_flat|stem|33ff73e485ff1e81|fac7d0359e6994b5|070f094ccf1ca937|-1049308750||t19970.6169890436s|59204264afc39f5d|4864458|rds|local|vector|||9.723||
+prior_visual_mrs_365_left|stem|206010d3dd7d8285|15d3a5fb8463f821|db9fb216444cb10e|-175799282||t19970.6161836065s|1dea288d54a8a960|4864543|rds|local|vector|||9.96||
+prior_visual_mrs_365_neutral|stem|71cf9f696719d005|30f23c858a67f2e9|d808b65dec75e352|1643564830||t19970.618234024s|5e13b90ce3b40719|4864502|rds|local|vector|||9.453||
+prior_visual_mrs_365_right|stem|362648e068a5be2c|2cee733a76c6bd15|bec8f3b18319269f|1604581230||t19970.6162940228s|aa77c44f8297ae86|4864512|rds|local|vector|||9.133||
+prior_visual_mrs_90_flat|stem|83fdb01670fe0cbb|34e3ca28a390ef81|51c426fd47156043|-1145466858||t19970.621062988s|07ad9c1337819183|4987400|rds|local|vector|||15.121||
+prior_visual_mrs_90_left|stem|3f31f2e5b9199f99|9f120d62030915db|91af081354c418be|-492203531||t19970.6189843686s|9eeb0b8f8fab3a79|4987257|rds|local|vector|||16.017||
+prior_visual_mrs_90_neutral|stem|de333fa97b53bd29|2dab5a72d907392e|a333ad113e461ffe|-282252130||t19970.6193156561s|d5fd97f40bffb2fa|4987071|rds|local|vector|||15.316||
+prior_visual_mrs_90_right|stem|252db01dfa66e371|04246fc9afdc0d3e|754336d700fcbb01|1185876576||t19970.6204303127s|9e04fd3c23fc45f3|4987455|rds|local|vector|||15.731||
+prior_visual_neurosurgery_flat|stem|af2cccc6a1cdbd66|9370af9afa9b0ab4|b77a4de162419622|373943690||t19970.5520570821s|d04e5aefe697f223|34435963|rds|local|vector|||3.697||
+prior_visual_neurosurgery_left|stem|9a5ce7abb3d1a52b|bcfbb450d0d08cb9|324a7aa06d3e8b90|28702045||t19970.5519060023s|820c56edf798da41|32604563|rds|local|vector|||4.095||
+prior_visual_neurosurgery_neutral|stem|3342dee42ad394de|1d517ea971df2f1e|7ab889e837630d35|1982962171||t19970.5511143766s|7d3f7e8b5edfa1ab|33922021|rds|local|vector|||4.643||
+prior_visual_neurosurgery_right|stem|f117ef6d538d19d9|b810b54a19f09e88|dbae3b37d2b90a9f|839871252||t19970.5522171896s|90afc44d8c82b43f|34914730|rds|local|vector|||3.967||
+prior_visual_tracheostomy_flat|stem|0c25c763392375a8|30739b7e64d1912b|2315464ed1973f43|-107858663||t19970.5585646617s|28fa54cd86ff4f01|34152082|rds|local|vector|||3.969||
+prior_visual_tracheostomy_left|stem|7bd86f2c58cbaa65|9fb25049fc1c12a7|993303f43dacf111|1451845938||t19970.5587900853s|7e73c932dd57c18c|32129065|rds|local|vector|||3.12||
+prior_visual_tracheostomy_neutral|stem|4c447458f95ab0d2|e59d030ae58cf388|252929c366b778cf|-566502164||t19970.5573319497s|3d2efa61aac8db3e|32140009|rds|local|vector|||3.793||
+prior_visual_tracheostomy_right|stem|f8d084d29c04a1f0|b20ba3c279546f3c|dc638e2fa79d7a3c|902296419||t19970.5592038185s|e123cfbb14e39b2c|32408742|rds|local|vector|||2.145||
+results_visual|function|6a3fd2a5dc74c12d|||||||||||||||
 select_variables|function|51eaa047f9ead67f|||||||||||||||
 selected_data|stem|0f476d661b9297b1|44280be3ad15831f|c743c3864cfa3125|-1052555108||t19894.9367709411s|6c0061a438cae8f9|158412|rds|local|vector|||0.018||
 settings|stem|84330e13e6f3c1bc|0d725b29fc99973a|aabb6816d7a47c7e|-416401554||t19904.9601150793s|4fb7122a4503ae71|200|rds|local|vector|||0||
