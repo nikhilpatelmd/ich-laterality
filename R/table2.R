@@ -1,1 +1,4 @@
-f_table2 <- 
+f_table2 <- function(models) {
+
+
+}
