@@ -166,6 +166,23 @@ tar_plan(
   m_posterior_right_dnr_binary = f_posterior_right_dnr_binary(ich_aggressive),
   m_posterior_flat_dnr_binary = f_posterior_flat_dnr_binary(ich_aggressive),
 
+  #### Posterior Diagnostics
+  diag_posterior_neutral_neurosurgery = posterior_diagnostics(m_posterior_neutral_neurosurgery),
+  diag_posterior_neutral_evd = posterior_diagnostics(m_posterior_neutral_evd),
+  diag_posterior_neutral_tracheostomy = posterior_diagnostics(m_posterior_neutral_tracheostomy),
+  diag_posterior_neutral_days_mechanical_ventilation = posterior_diagnostics(m_posterior_neutral_days_mechanical_ventilation),
+  diag_posterior_neutral_comfort = posterior_diagnostics(m_posterior_neutral_comfort),
+  diag_posterior_neutral_early_wlst = posterior_diagnostics(m_posterior_neutral_early_wlst),
+  diag_posterior_neutral_dnr_binary = posterior_diagnostics(m_posterior_neutral_dnr_binary),
+
+  #### Posterior Predictive Checks
+  post_pred_check_neurosurgery = f_post_predictive_check(m_posterior_neutral_neurosurgery),
+  post_pred_check_evd = f_post_predictive_check(m_posterior_neutral_evd),
+  post_pred_check_tracheostomy = f_post_predictive_check(m_posterior_neutral_tracheostomy),
+  post_pred_check_comfort = f_post_predictive_check(m_posterior_neutral_comfort),
+  post_pred_check_early_wlst = f_post_predictive_check(m_posterior_neutral_early_wlst),
+  post_pred_check_dnr_binary = f_post_predictive_check(m_posterior_neutral_dnr_binary),
+
   ## Outcomes ----
 
   ### Priors ----
@@ -491,6 +508,8 @@ tar_plan(
   diag_posterior_left_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_left_euro_anxiety_365_canonical),
   diag_posterior_right_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_right_euro_anxiety_365_canonical),
   diag_posterior_flat_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_flat_euro_anxiety_365_canonical),
+
+  #### Posterior Predictive Checks
   post_pred_check_mrs_90_minimal = f_post_predictive_check(m_posterior_mrs_90_minimal),
   post_pred_check_neutral_mrs_90_canonical = f_post_predictive_check(m_posterior_neutral_mrs_90_canonical),
   post_pred_check_left_mrs_90_canonical = f_post_predictive_check(m_posterior_left_mrs_90_canonical),
@@ -621,14 +640,38 @@ tar_plan(
   figure_1_png = ggsave(here("manuscripts", "figure1.png"),
     plot = figure_1, height = 20, width = 14, dpi = 600
   ),
-  neutral_outcome_models <- outcome_models_list_func(
+  neutral_outcome_90_models = outcome_models_list_func(
     m_posterior_neutral_mrs_90_canonical,
     m_posterior_neutral_euro_mobility_90_canonical,
     m_posterior_neutral_euro_selfcare_90_canonical,
     m_posterior_neutral_euro_usual_90_canonical,
     m_posterior_neutral_euro_pain_90_canonical,
     m_posterior_neutral_euro_anxiety_90_canonical
-  )
+  ),
+  neutral_outcome_180_models = outcome_models_list_func(
+    m_posterior_neutral_mrs_180_canonical,
+    m_posterior_neutral_euro_mobility_180_canonical,
+    m_posterior_neutral_euro_selfcare_180_canonical,
+    m_posterior_neutral_euro_usual_180_canonical,
+    m_posterior_neutral_euro_pain_180_canonical,
+    m_posterior_neutral_euro_anxiety_180_canonical
+  ),
+  neutral_outcome_365_models = outcome_models_list_func(
+    m_posterior_neutral_mrs_365_canonical,
+    m_posterior_neutral_euro_mobility_365_canonical,
+    m_posterior_neutral_euro_selfcare_365_canonical,
+    m_posterior_neutral_euro_usual_365_canonical,
+    m_posterior_neutral_euro_pain_365_canonical,
+    m_posterior_neutral_euro_anxiety_365_canonical
+  ),
+  table3_neutral = table_3_function(neutral_outcome_90_models),
+  table3_180 = table_3_function(neutral_outcome_180_models),
+  table3_365 = table_3_function(neutral_outcome_365_models),
+  table3_docx = gtsave(table3_neutral, here("manuscripts", "table3.docx")),
+  mrs_90_fig = mrs_figure_function(ich_aggressive, mrs_90),
+  mrs_180_fig = mrs_figure_function(ich_aggressive, mrs_180),
+  mrs_365_fig = mrs_figure_function(ich_aggressive, mrs_365)
+
 
   # tar_quarto(
   #   table_1,

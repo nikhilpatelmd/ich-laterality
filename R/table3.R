@@ -5,11 +5,11 @@ outcome_models_list_func <- function(a, b, c, d, e, f) {
     "EuroQOL - Self-Care" = c,
     "EuroQOL - Usual Activities" = d,
     "EuroQOL - Pain/Discomfort" = e,
-    "EuroQOL - Anxiety/Depression" = f,
+    "EuroQOL - Anxiety/Depression" = f
   )
 }
 
-table_3_function <- function(x, models) {
+table_3_function <- function(models) {
   models <- models
 
   mrs <- models$"Modified Rankin Score" |>
@@ -121,6 +121,34 @@ table_3_function <- function(x, models) {
     "EuroQOL - Usual Activities" = euro_usual,
     "EuroQOL - Pain/Discomfort" = euro_pain,
     "EuroQOL - Anxiety/Depression" = euro_anxiety,
-    .id = "Outcome"
-  )
+    .id = "Outcome") |>
+  gt(rowname_col = "Outcome") |>
+  tab_stubhead(label = "Outcome") |>
+  cols_label(
+    Outcome = md("**Outcome**"),
+    or_ci = md("**aOR (95% CI)**"),
+    or_1 = md("**Probability of any difference (aOR > 1)**"),
+    or_1.2 = md("**Probability of a substantial difference (aOR > 1.2)**"),
+    rope = md("**ROPE**")
+  ) |>
+  fmt_number(columns = 2:5, decimals = 2) |>
+    cols_width(
+      Outcome ~ px(375),
+      2 ~ px(200),
+      3:5 ~ px(150)
+    ) |>
+  cols_align(align = "left") |>
+  tab_style(
+      style = cell_text(weight = "bold"),
+      locations = cells_stub(rows = everything())
+    ) |>
+      tab_footnote(
+        footnote = "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, IVH, and study (as random intercept)",
+        locations = cells_column_labels(columns = or_ci)
+      ) |>
+      tab_footnote(
+        footnote = "ROPE = region of practical equivalence, defined as 0.95 > aOR > 1.05",
+        locations = cells_column_labels(columns = rope)
+      ) 
+  return(total_tibble)
 }

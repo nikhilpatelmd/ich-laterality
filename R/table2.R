@@ -10,17 +10,6 @@ models_list_func <- function(a, b, c, d, e, f, g) {
   )
 }
 
-outcome_models_list_func <- function(a, b, c, d, e, f) {
-  list(
-    "Modified Rankin Score" = a,
-    "EuroQOL - Mobility" = b,
-    "EuroQOL - Self-Care" = c,
-    "EuroQOL - Usual Activities" = d,
-    "EuroQOL - Pain/Discomfort" = e,
-    "EuroQOL - Anxiety/Depression" = f,
-  )
-}
-
 table_2_function <- function(x, models) {
   models <- models
 
