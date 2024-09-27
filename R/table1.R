@@ -19,7 +19,7 @@ table_1_function <- function(x) {
     "study"
   )
 
-  x |>
+  table_1 <- x |>
     select(all_of(table_one_vars)) |>
     tbl_summary(
       by = ich_laterality,
@@ -42,45 +42,13 @@ table_1_function <- function(x) {
         ivh ~ "IVH",
         study ~ "Study"
       ),
-      sort = list(everything() ~ "frequency"),
+      sort = all_categorical() ~ "frequency",
       digits = starts_with("gcs") ~ 0,
     ) |>
     add_p(pvalue_fun = ~ style_pvalue(.x, digits = 2)) |>
     add_overall() |>
     bold_labels() |>
-    modify_header(label ~ "") |>
     as_gt()
-}
 
-table_2_aggressive_function <- function(x) {
-  table_two_vars <- c(
-    "neurosurgery_evac",
-    "evd",
-    "days_mechanical_ventilation",
-    "tracheostomy",
-    "ich_laterality",
-    "comfort_care_binary",
-    "early_wlst",
-    "dnr_binary"
-  )
-
-  x |>
-    select(all_of(table_two_vars)) |>
-    mutate(days_mechanical_ventilation = as.numeric(days_mechanical_ventilation)) |>
-    tbl_summary(
-      by = ich_laterality,
-      missing = "no",
-      label = list(
-        neurosurgery_evac ~ "Neurosurgical Intervention",
-        evd ~ "External Ventricular Drain",
-        days_mechanical_ventilation ~ "Days of Mechanical Ventilation",
-        tracheostomy ~ "Tracheostomy",
-        comfort_care_binary ~ "Withdrawal of Life-Sustaining Therapy",
-        early_wlst ~ "Early Withdrawal of Life-Sustaining Therapy",
-        dnr_binary ~ "DNR Order"
-      )
-    ) |>
-    bold_labels() |>
-    modify_header(label ~ "Outcome") |>
-    as_gt()
+  return(table_1)
 }

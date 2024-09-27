@@ -29,17 +29,21 @@ options(
 
 source("R/packages.R")
 source("R/data_cleaning.R")
-source("R/exploratory_data_analysis.R")
 source("R/dags.R")
 source("R/aggressive_care_prior_models.R")
 source("R/aggressive_care_posterior_models.R")
 source("R/diagnostics.R")
-source("R/results_visualization.R")
+# source("R/results_visualization.R")
 source("R/outcomes_prior_models.R")
 source("R/outcomes_posterior_models.R")
 # source("R/results_outcomes.R")
 source("R/predictive_checks.R")
 source("R/posterior_diagnostics.R")
+source("R/table1.R")
+source("R/table2.R")
+source("R/table3.R")
+source("R/figures.R")
+
 
 # Pipeline ----
 tar_plan(
@@ -57,10 +61,6 @@ tar_plan(
   ich_aggressive = ich_all |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels(),
   erich = ich_all |> filter(study == "ERICH") |> droplevels(),
   atach = ich_all |> filter(study == "ATACH-2") |> droplevels(),
-
-  ## Exploratory data analysis ----
-  table_1_aggressive = table_1_function(ich_aggressive),
-  table_2_aggressive = table_2_aggressive_function(ich_aggressive),
 
   ## DAGs ----
   dag_aggressive = aggressive_dag_function(x),
@@ -171,94 +171,79 @@ tar_plan(
   ### Priors ----
   m_prior_mrs_90_minimal = f_prior_mrs_90_minimal(ich_aggressive),
   m_prior_neutral_mrs_90_canonical = f_prior_neutral_mrs_90_canonical(ich_aggressive),
-  m_prior_left_mrs_90_canonical = f_prior_neutral_mrs_90_canonical(ich_aggressive),
-  m_prior_right_mrs_90_canonical = f_prior_neutral_mrs_90_canonical(ich_aggressive),
-  m_prior_flat_mrs_90_canonical = f_prior_neutral_mrs_90_canonical(ich_aggressive),
+  m_prior_left_mrs_90_canonical = f_prior_left_mrs_90_canonical(ich_aggressive),
+  m_prior_right_mrs_90_canonical = f_prior_right_mrs_90_canonical(ich_aggressive),
+  m_prior_flat_mrs_90_canonical = f_prior_flat_mrs_90_canonical(ich_aggressive),
   m_prior_mrs_180_minimal = f_prior_mrs_180_minimal(ich_aggressive),
   m_prior_neutral_mrs_180_canonical = f_prior_neutral_mrs_180_canonical(ich_aggressive),
-  m_prior_left_mrs_180_canonical = f_prior_neutral_mrs_180_canonical(ich_aggressive),
-  m_prior_right_mrs_180_canonical = f_prior_neutral_mrs_180_canonical(ich_aggressive),
-  m_prior_flat_mrs_180_canonical = f_prior_neutral_mrs_180_canonical(ich_aggressive),
+  m_prior_left_mrs_180_canonical = f_prior_left_mrs_180_canonical(ich_aggressive),
+  m_prior_right_mrs_180_canonical = f_prior_right_mrs_180_canonical(ich_aggressive),
+  m_prior_flat_mrs_180_canonical = f_prior_flat_mrs_180_canonical(ich_aggressive),
   m_prior_mrs_365_minimal = f_prior_mrs_365_minimal(ich_aggressive),
   m_prior_neutral_mrs_365_canonical = f_prior_neutral_mrs_365_canonical(ich_aggressive),
-  m_prior_left_mrs_365_canonical = f_prior_neutral_mrs_365_canonical(ich_aggressive),
-  m_prior_right_mrs_365_canonical = f_prior_neutral_mrs_365_canonical(ich_aggressive),
-  m_prior_flat_mrs_365_canonical = f_prior_neutral_mrs_365_canonical(ich_aggressive),
-
+  m_prior_left_mrs_365_canonical = f_prior_left_mrs_365_canonical(ich_aggressive),
+  m_prior_right_mrs_365_canonical = f_prior_right_mrs_365_canonical(ich_aggressive),
+  m_prior_flat_mrs_365_canonical = f_prior_flat_mrs_365_canonical(ich_aggressive),
   m_prior_neutral_euro_mobility_90_canonical = f_prior_neutral_euro_mobility_90_canonical(ich_aggressive),
-  m_prior_left_euro_mobility_90_canonical = f_prior_neutral_euro_mobility_90_canonical(ich_aggressive),
-  m_prior_right_euro_mobility_90_canonical = f_prior_neutral_euro_mobility_90_canonical(ich_aggressive),
-  m_prior_flat_euro_mobility_90_canonical = f_prior_neutral_euro_mobility_90_canonical(ich_aggressive),
-
+  m_prior_left_euro_mobility_90_canonical = f_prior_left_euro_mobility_90_canonical(ich_aggressive),
+  m_prior_right_euro_mobility_90_canonical = f_prior_right_euro_mobility_90_canonical(ich_aggressive),
+  m_prior_flat_euro_mobility_90_canonical = f_prior_flat_euro_mobility_90_canonical(ich_aggressive),
   m_prior_neutral_euro_mobility_180_canonical = f_prior_neutral_euro_mobility_180_canonical(ich_aggressive),
-  m_prior_left_euro_mobility_180_canonical = f_prior_neutral_euro_mobility_180_canonical(ich_aggressive),
-  m_prior_right_euro_mobility_180_canonical = f_prior_neutral_euro_mobility_180_canonical(ich_aggressive),
-  m_prior_flat_euro_mobility_180_canonical = f_prior_neutral_euro_mobility_180_canonical(ich_aggressive),
-
+  m_prior_left_euro_mobility_180_canonical = f_prior_left_euro_mobility_180_canonical(ich_aggressive),
+  m_prior_right_euro_mobility_180_canonical = f_prior_right_euro_mobility_180_canonical(ich_aggressive),
+  m_prior_flat_euro_mobility_180_canonical = f_prior_flat_euro_mobility_180_canonical(ich_aggressive),
   m_prior_neutral_euro_mobility_365_canonical = f_prior_neutral_euro_mobility_365_canonical(ich_aggressive),
-  m_prior_left_euro_mobility_365_canonical = f_prior_neutral_euro_mobility_365_canonical(ich_aggressive),
-  m_prior_right_euro_mobility_365_canonical = f_prior_neutral_euro_mobility_365_canonical(ich_aggressive),
-  m_prior_flat_euro_mobility_365_canonical = f_prior_neutral_euro_mobility_365_canonical(ich_aggressive),
-
+  m_prior_left_euro_mobility_365_canonical = f_prior_left_euro_mobility_365_canonical(ich_aggressive),
+  m_prior_right_euro_mobility_365_canonical = f_prior_right_euro_mobility_365_canonical(ich_aggressive),
+  m_prior_flat_euro_mobility_365_canonical = f_prior_flat_euro_mobility_365_canonical(ich_aggressive),
   m_prior_neutral_euro_selfcare_90_canonical = f_prior_neutral_euro_selfcare_90_canonical(ich_aggressive),
-  m_prior_left_euro_selfcare_90_canonical = f_prior_neutral_euro_selfcare_90_canonical(ich_aggressive),
-  m_prior_right_euro_selfcare_90_canonical = f_prior_neutral_euro_selfcare_90_canonical(ich_aggressive),
-  m_prior_flat_euro_selfcare_90_canonical = f_prior_neutral_euro_selfcare_90_canonical(ich_aggressive),
-
+  m_prior_left_euro_selfcare_90_canonical = f_prior_left_euro_selfcare_90_canonical(ich_aggressive),
+  m_prior_right_euro_selfcare_90_canonical = f_prior_right_euro_selfcare_90_canonical(ich_aggressive),
+  m_prior_flat_euro_selfcare_90_canonical = f_prior_flat_euro_selfcare_90_canonical(ich_aggressive),
   m_prior_neutral_euro_selfcare_180_canonical = f_prior_neutral_euro_selfcare_180_canonical(ich_aggressive),
-  m_prior_left_euro_selfcare_180_canonical = f_prior_neutral_euro_selfcare_180_canonical(ich_aggressive),
-  m_prior_right_euro_selfcare_180_canonical = f_prior_neutral_euro_selfcare_180_canonical(ich_aggressive),
-  m_prior_flat_euro_selfcare_180_canonical = f_prior_neutral_euro_selfcare_180_canonical(ich_aggressive),
-
+  m_prior_left_euro_selfcare_180_canonical = f_prior_left_euro_selfcare_180_canonical(ich_aggressive),
+  m_prior_right_euro_selfcare_180_canonical = f_prior_right_euro_selfcare_180_canonical(ich_aggressive),
+  m_prior_flat_euro_selfcare_180_canonical = f_prior_flat_euro_selfcare_180_canonical(ich_aggressive),
   m_prior_neutral_euro_selfcare_365_canonical = f_prior_neutral_euro_selfcare_365_canonical(ich_aggressive),
-  m_prior_left_euro_selfcare_365_canonical = f_prior_neutral_euro_selfcare_365_canonical(ich_aggressive),
-  m_prior_right_euro_selfcare_365_canonical = f_prior_neutral_euro_selfcare_365_canonical(ich_aggressive),
-  m_prior_flat_euro_selfcare_365_canonical = f_prior_neutral_euro_selfcare_365_canonical(ich_aggressive),
-  
+  m_prior_left_euro_selfcare_365_canonical = f_prior_left_euro_selfcare_365_canonical(ich_aggressive),
+  m_prior_right_euro_selfcare_365_canonical = f_prior_right_euro_selfcare_365_canonical(ich_aggressive),
+  m_prior_flat_euro_selfcare_365_canonical = f_prior_flat_euro_selfcare_365_canonical(ich_aggressive),
   m_prior_neutral_euro_usual_90_canonical = f_prior_neutral_euro_usual_90_canonical(ich_aggressive),
-  m_prior_left_euro_usual_90_canonical = f_prior_neutral_euro_usual_90_canonical(ich_aggressive),
-  m_prior_right_euro_usual_90_canonical = f_prior_neutral_euro_usual_90_canonical(ich_aggressive),
-  m_prior_flat_euro_usual_90_canonical = f_prior_neutral_euro_usual_90_canonical(ich_aggressive),
-
+  m_prior_left_euro_usual_90_canonical = f_prior_left_euro_usual_90_canonical(ich_aggressive),
+  m_prior_right_euro_usual_90_canonical = f_prior_right_euro_usual_90_canonical(ich_aggressive),
+  m_prior_flat_euro_usual_90_canonical = f_prior_flat_euro_usual_90_canonical(ich_aggressive),
   m_prior_neutral_euro_usual_180_canonical = f_prior_neutral_euro_usual_180_canonical(ich_aggressive),
-  m_prior_left_euro_usual_180_canonical = f_prior_neutral_euro_usual_180_canonical(ich_aggressive),
-  m_prior_right_euro_usual_180_canonical = f_prior_neutral_euro_usual_180_canonical(ich_aggressive),
-  m_prior_flat_euro_usual_180_canonical = f_prior_neutral_euro_usual_180_canonical(ich_aggressive),
-
+  m_prior_left_euro_usual_180_canonical = f_prior_left_euro_usual_180_canonical(ich_aggressive),
+  m_prior_right_euro_usual_180_canonical = f_prior_right_euro_usual_180_canonical(ich_aggressive),
+  m_prior_flat_euro_usual_180_canonical = f_prior_flat_euro_usual_180_canonical(ich_aggressive),
   m_prior_neutral_euro_usual_365_canonical = f_prior_neutral_euro_usual_365_canonical(ich_aggressive),
-  m_prior_left_euro_usual_365_canonical = f_prior_neutral_euro_usual_365_canonical(ich_aggressive),
-  m_prior_right_euro_usual_365_canonical = f_prior_neutral_euro_usual_365_canonical(ich_aggressive),
-  m_prior_flat_euro_usual_365_canonical = f_prior_neutral_euro_usual_365_canonical(ich_aggressive),
-  
+  m_prior_left_euro_usual_365_canonical = f_prior_left_euro_usual_365_canonical(ich_aggressive),
+  m_prior_right_euro_usual_365_canonical = f_prior_right_euro_usual_365_canonical(ich_aggressive),
+  m_prior_flat_euro_usual_365_canonical = f_prior_flat_euro_usual_365_canonical(ich_aggressive),
   m_prior_neutral_euro_pain_90_canonical = f_prior_neutral_euro_pain_90_canonical(ich_aggressive),
-  m_prior_left_euro_pain_90_canonical = f_prior_neutral_euro_pain_90_canonical(ich_aggressive),
-  m_prior_right_euro_pain_90_canonical = f_prior_neutral_euro_pain_90_canonical(ich_aggressive),
-  m_prior_flat_euro_pain_90_canonical = f_prior_neutral_euro_pain_90_canonical(ich_aggressive),
-
+  m_prior_left_euro_pain_90_canonical = f_prior_left_euro_pain_90_canonical(ich_aggressive),
+  m_prior_right_euro_pain_90_canonical = f_prior_right_euro_pain_90_canonical(ich_aggressive),
+  m_prior_flat_euro_pain_90_canonical = f_prior_flat_euro_pain_90_canonical(ich_aggressive),
   m_prior_neutral_euro_pain_180_canonical = f_prior_neutral_euro_pain_180_canonical(ich_aggressive),
-  m_prior_left_euro_pain_180_canonical = f_prior_neutral_euro_pain_180_canonical(ich_aggressive),
-  m_prior_right_euro_pain_180_canonical = f_prior_neutral_euro_pain_180_canonical(ich_aggressive),
-  m_prior_flat_euro_pain_180_canonical = f_prior_neutral_euro_pain_180_canonical(ich_aggressive),
-
+  m_prior_left_euro_pain_180_canonical = f_prior_left_euro_pain_180_canonical(ich_aggressive),
+  m_prior_right_euro_pain_180_canonical = f_prior_right_euro_pain_180_canonical(ich_aggressive),
+  m_prior_flat_euro_pain_180_canonical = f_prior_flat_euro_pain_180_canonical(ich_aggressive),
   m_prior_neutral_euro_pain_365_canonical = f_prior_neutral_euro_pain_365_canonical(ich_aggressive),
-  m_prior_left_euro_pain_365_canonical = f_prior_neutral_euro_pain_365_canonical(ich_aggressive),
-  m_prior_right_euro_pain_365_canonical = f_prior_neutral_euro_pain_365_canonical(ich_aggressive),
-  m_prior_flat_euro_pain_365_canonical = f_prior_neutral_euro_pain_365_canonical(ich_aggressive),
-
+  m_prior_left_euro_pain_365_canonical = f_prior_left_euro_pain_365_canonical(ich_aggressive),
+  m_prior_right_euro_pain_365_canonical = f_prior_right_euro_pain_365_canonical(ich_aggressive),
+  m_prior_flat_euro_pain_365_canonical = f_prior_flat_euro_pain_365_canonical(ich_aggressive),
   m_prior_neutral_euro_anxiety_90_canonical = f_prior_neutral_euro_anxiety_90_canonical(ich_aggressive),
-  m_prior_left_euro_anxiety_90_canonical = f_prior_neutral_euro_anxiety_90_canonical(ich_aggressive),
-  m_prior_right_euro_anxiety_90_canonical = f_prior_neutral_euro_anxiety_90_canonical(ich_aggressive),
-  m_prior_flat_euro_anxiety_90_canonical = f_prior_neutral_euro_anxiety_90_canonical(ich_aggressive),
-
+  m_prior_left_euro_anxiety_90_canonical = f_prior_left_euro_anxiety_90_canonical(ich_aggressive),
+  m_prior_right_euro_anxiety_90_canonical = f_prior_right_euro_anxiety_90_canonical(ich_aggressive),
+  m_prior_flat_euro_anxiety_90_canonical = f_prior_flat_euro_anxiety_90_canonical(ich_aggressive),
   m_prior_neutral_euro_anxiety_180_canonical = f_prior_neutral_euro_anxiety_180_canonical(ich_aggressive),
-  m_prior_left_euro_anxiety_180_canonical = f_prior_neutral_euro_anxiety_180_canonical(ich_aggressive),
-  m_prior_right_euro_anxiety_180_canonical = f_prior_neutral_euro_anxiety_180_canonical(ich_aggressive),
-  m_prior_flat_euro_anxiety_180_canonical = f_prior_neutral_euro_anxiety_180_canonical(ich_aggressive),
-
+  m_prior_left_euro_anxiety_180_canonical = f_prior_left_euro_anxiety_180_canonical(ich_aggressive),
+  m_prior_right_euro_anxiety_180_canonical = f_prior_right_euro_anxiety_180_canonical(ich_aggressive),
+  m_prior_flat_euro_anxiety_180_canonical = f_prior_flat_euro_anxiety_180_canonical(ich_aggressive),
   m_prior_neutral_euro_anxiety_365_canonical = f_prior_neutral_euro_anxiety_365_canonical(ich_aggressive),
-  m_prior_left_euro_anxiety_365_canonical = f_prior_neutral_euro_anxiety_365_canonical(ich_aggressive),
-  m_prior_right_euro_anxiety_365_canonical = f_prior_neutral_euro_anxiety_365_canonical(ich_aggressive),
-  m_prior_flat_euro_anxiety_365_canonical = f_prior_neutral_euro_anxiety_365_canonical(ich_aggressive),
+  m_prior_left_euro_anxiety_365_canonical = f_prior_left_euro_anxiety_365_canonical(ich_aggressive),
+  m_prior_right_euro_anxiety_365_canonical = f_prior_right_euro_anxiety_365_canonical(ich_aggressive),
+  m_prior_flat_euro_anxiety_365_canonical = f_prior_flat_euro_anxiety_365_canonical(ich_aggressive),
 
   ### Prior Predictive Checks ----
   prior_check_mrs_90 = f_prior_predictive_check(m_prior_neutral_mrs_90_canonical, m_prior_left_mrs_90_canonical, m_prior_right_mrs_90_canonical, m_prior_flat_mrs_90_canonical),
@@ -266,388 +251,386 @@ tar_plan(
   prior_visual_mrs_90_left = prediction_visual(m_prior_left_mrs_90_canonical),
   prior_visual_mrs_90_right = prediction_visual(m_prior_right_mrs_90_canonical),
   prior_visual_mrs_90_flat = prediction_visual(m_prior_flat_mrs_90_canonical),
-
   prior_check_mrs_180 = f_prior_predictive_check(m_prior_neutral_mrs_180_canonical, m_prior_left_mrs_180_canonical, m_prior_right_mrs_180_canonical, m_prior_flat_mrs_180_canonical),
   prior_visual_mrs_180_neutral = prediction_visual(m_prior_neutral_mrs_180_canonical),
   prior_visual_mrs_180_left = prediction_visual(m_prior_left_mrs_180_canonical),
   prior_visual_mrs_180_right = prediction_visual(m_prior_right_mrs_180_canonical),
   prior_visual_mrs_180_flat = prediction_visual(m_prior_flat_mrs_180_canonical),
-
   prior_check_mrs_365 = f_prior_predictive_check(m_prior_neutral_mrs_365_canonical, m_prior_left_mrs_365_canonical, m_prior_right_mrs_365_canonical, m_prior_flat_mrs_365_canonical),
   prior_visual_mrs_365_neutral = prediction_visual(m_prior_neutral_mrs_365_canonical),
   prior_visual_mrs_365_left = prediction_visual(m_prior_left_mrs_365_canonical),
   prior_visual_mrs_365_right = prediction_visual(m_prior_right_mrs_365_canonical),
   prior_visual_mrs_365_flat = prediction_visual(m_prior_flat_mrs_365_canonical),
-
   prior_check_euro_mobility_90 = f_prior_predictive_check(m_prior_neutral_euro_mobility_90_canonical, m_prior_left_euro_mobility_90_canonical, m_prior_right_euro_mobility_90_canonical, m_prior_flat_euro_mobility_90_canonical),
   prior_visual_euro_mobility_90_neutral = prediction_visual(m_prior_neutral_euro_mobility_90_canonical),
   prior_visual_euro_mobility_90_left = prediction_visual(m_prior_left_euro_mobility_90_canonical),
   prior_visual_euro_mobility_90_right = prediction_visual(m_prior_right_euro_mobility_90_canonical),
   prior_visual_euro_mobility_90_flat = prediction_visual(m_prior_flat_euro_mobility_90_canonical),
-
   prior_check_euro_mobility_180 = f_prior_predictive_check(m_prior_neutral_euro_mobility_180_canonical, m_prior_left_euro_mobility_180_canonical, m_prior_right_euro_mobility_180_canonical, m_prior_flat_euro_mobility_180_canonical),
   prior_visual_euro_mobility_180_neutral = prediction_visual(m_prior_neutral_euro_mobility_180_canonical),
   prior_visual_euro_mobility_180_left = prediction_visual(m_prior_left_euro_mobility_180_canonical),
   prior_visual_euro_mobility_180_right = prediction_visual(m_prior_right_euro_mobility_180_canonical),
   prior_visual_euro_mobility_180_flat = prediction_visual(m_prior_flat_euro_mobility_180_canonical),
-
   prior_check_euro_mobility_365 = f_prior_predictive_check(m_prior_neutral_euro_mobility_365_canonical, m_prior_left_euro_mobility_365_canonical, m_prior_right_euro_mobility_365_canonical, m_prior_flat_euro_mobility_365_canonical),
   prior_visual_euro_mobility_365_neutral = prediction_visual(m_prior_neutral_euro_mobility_365_canonical),
   prior_visual_euro_mobility_365_left = prediction_visual(m_prior_left_euro_mobility_365_canonical),
   prior_visual_euro_mobility_365_right = prediction_visual(m_prior_right_euro_mobility_365_canonical),
   prior_visual_euro_mobility_365_flat = prediction_visual(m_prior_flat_euro_mobility_365_canonical),
-
   prior_check_euro_usual_90 = f_prior_predictive_check(m_prior_neutral_euro_usual_90_canonical, m_prior_left_euro_usual_90_canonical, m_prior_right_euro_usual_90_canonical, m_prior_flat_euro_usual_90_canonical),
   prior_visual_euro_usual_90_neutral = prediction_visual(m_prior_neutral_euro_usual_90_canonical),
   prior_visual_euro_usual_90_left = prediction_visual(m_prior_left_euro_usual_90_canonical),
   prior_visual_euro_usual_90_right = prediction_visual(m_prior_right_euro_usual_90_canonical),
   prior_visual_euro_usual_90_flat = prediction_visual(m_prior_flat_euro_usual_90_canonical),
-
   prior_check_euro_usual_180 = f_prior_predictive_check(m_prior_neutral_euro_usual_180_canonical, m_prior_left_euro_usual_180_canonical, m_prior_right_euro_usual_180_canonical, m_prior_flat_euro_usual_180_canonical),
   prior_visual_euro_usual_180_neutral = prediction_visual(m_prior_neutral_euro_usual_180_canonical),
   prior_visual_euro_usual_180_left = prediction_visual(m_prior_left_euro_usual_180_canonical),
   prior_visual_euro_usual_180_right = prediction_visual(m_prior_right_euro_usual_180_canonical),
   prior_visual_euro_usual_180_flat = prediction_visual(m_prior_flat_euro_usual_180_canonical),
-
   prior_check_euro_usual_365 = f_prior_predictive_check(m_prior_neutral_euro_usual_365_canonical, m_prior_left_euro_usual_365_canonical, m_prior_right_euro_usual_365_canonical, m_prior_flat_euro_usual_365_canonical),
   prior_visual_euro_usual_365_neutral = prediction_visual(m_prior_neutral_euro_usual_365_canonical),
   prior_visual_euro_usual_365_left = prediction_visual(m_prior_left_euro_usual_365_canonical),
   prior_visual_euro_usual_365_right = prediction_visual(m_prior_right_euro_usual_365_canonical),
   prior_visual_euro_usual_365_flat = prediction_visual(m_prior_flat_euro_usual_365_canonical),
-
   prior_check_euro_selfcare_90 = f_prior_predictive_check(m_prior_neutral_euro_selfcare_90_canonical, m_prior_left_euro_selfcare_90_canonical, m_prior_right_euro_selfcare_90_canonical, m_prior_flat_euro_selfcare_90_canonical),
   prior_visual_euro_selfcare_90_neutral = prediction_visual(m_prior_neutral_euro_selfcare_90_canonical),
   prior_visual_euro_selfcare_90_left = prediction_visual(m_prior_left_euro_selfcare_90_canonical),
   prior_visual_euro_selfcare_90_right = prediction_visual(m_prior_right_euro_selfcare_90_canonical),
   prior_visual_euro_selfcare_90_flat = prediction_visual(m_prior_flat_euro_selfcare_90_canonical),
-
   prior_check_euro_selfcare_180 = f_prior_predictive_check(m_prior_neutral_euro_selfcare_180_canonical, m_prior_left_euro_selfcare_180_canonical, m_prior_right_euro_selfcare_180_canonical, m_prior_flat_euro_selfcare_180_canonical),
   prior_visual_euro_selfcare_180_neutral = prediction_visual(m_prior_neutral_euro_selfcare_180_canonical),
   prior_visual_euro_selfcare_180_left = prediction_visual(m_prior_left_euro_selfcare_180_canonical),
   prior_visual_euro_selfcare_180_right = prediction_visual(m_prior_right_euro_selfcare_180_canonical),
   prior_visual_euro_selfcare_180_flat = prediction_visual(m_prior_flat_euro_selfcare_180_canonical),
-
   prior_check_euro_selfcare_365 = f_prior_predictive_check(m_prior_neutral_euro_selfcare_365_canonical, m_prior_left_euro_selfcare_365_canonical, m_prior_right_euro_selfcare_365_canonical, m_prior_flat_euro_selfcare_365_canonical),
   prior_visual_euro_selfcare_365_neutral = prediction_visual(m_prior_neutral_euro_selfcare_365_canonical),
   prior_visual_euro_selfcare_365_left = prediction_visual(m_prior_left_euro_selfcare_365_canonical),
   prior_visual_euro_selfcare_365_right = prediction_visual(m_prior_right_euro_selfcare_365_canonical),
   prior_visual_euro_selfcare_365_flat = prediction_visual(m_prior_flat_euro_selfcare_365_canonical),
-
   prior_check_euro_pain_90 = f_prior_predictive_check(m_prior_neutral_euro_pain_90_canonical, m_prior_left_euro_pain_90_canonical, m_prior_right_euro_pain_90_canonical, m_prior_flat_euro_pain_90_canonical),
   prior_visual_euro_pain_90_neutral = prediction_visual(m_prior_neutral_euro_pain_90_canonical),
   prior_visual_euro_pain_90_left = prediction_visual(m_prior_left_euro_pain_90_canonical),
   prior_visual_euro_pain_90_right = prediction_visual(m_prior_right_euro_pain_90_canonical),
   prior_visual_euro_pain_90_flat = prediction_visual(m_prior_flat_euro_pain_90_canonical),
-
   prior_check_euro_pain_180 = f_prior_predictive_check(m_prior_neutral_euro_pain_180_canonical, m_prior_left_euro_pain_180_canonical, m_prior_right_euro_pain_180_canonical, m_prior_flat_euro_pain_180_canonical),
   prior_visual_euro_pain_180_neutral = prediction_visual(m_prior_neutral_euro_pain_180_canonical),
   prior_visual_euro_pain_180_left = prediction_visual(m_prior_left_euro_pain_180_canonical),
   prior_visual_euro_pain_180_right = prediction_visual(m_prior_right_euro_pain_180_canonical),
   prior_visual_euro_pain_180_flat = prediction_visual(m_prior_flat_euro_pain_180_canonical),
-
   prior_check_euro_pain_365 = f_prior_predictive_check(m_prior_neutral_euro_pain_365_canonical, m_prior_left_euro_pain_365_canonical, m_prior_right_euro_pain_365_canonical, m_prior_flat_euro_pain_365_canonical),
   prior_visual_euro_pain_365_neutral = prediction_visual(m_prior_neutral_euro_pain_365_canonical),
   prior_visual_euro_pain_365_left = prediction_visual(m_prior_left_euro_pain_365_canonical),
   prior_visual_euro_pain_365_right = prediction_visual(m_prior_right_euro_pain_365_canonical),
   prior_visual_euro_pain_365_flat = prediction_visual(m_prior_flat_euro_pain_365_canonical),
-
   prior_check_euro_anxiety_90 = f_prior_predictive_check(m_prior_neutral_euro_anxiety_90_canonical, m_prior_left_euro_anxiety_90_canonical, m_prior_right_euro_anxiety_90_canonical, m_prior_flat_euro_anxiety_90_canonical),
   prior_visual_euro_anxiety_90_neutral = prediction_visual(m_prior_neutral_euro_anxiety_90_canonical),
   prior_visual_euro_anxiety_90_left = prediction_visual(m_prior_left_euro_anxiety_90_canonical),
   prior_visual_euro_anxiety_90_right = prediction_visual(m_prior_right_euro_anxiety_90_canonical),
   prior_visual_euro_anxiety_90_flat = prediction_visual(m_prior_flat_euro_anxiety_90_canonical),
-
   prior_check_euro_anxiety_180 = f_prior_predictive_check(m_prior_neutral_euro_anxiety_180_canonical, m_prior_left_euro_anxiety_180_canonical, m_prior_right_euro_anxiety_180_canonical, m_prior_flat_euro_anxiety_180_canonical),
   prior_visual_euro_anxiety_180_neutral = prediction_visual(m_prior_neutral_euro_anxiety_180_canonical),
   prior_visual_euro_anxiety_180_left = prediction_visual(m_prior_left_euro_anxiety_180_canonical),
   prior_visual_euro_anxiety_180_right = prediction_visual(m_prior_right_euro_anxiety_180_canonical),
   prior_visual_euro_anxiety_180_flat = prediction_visual(m_prior_flat_euro_anxiety_180_canonical),
-
   prior_check_euro_anxiety_365 = f_prior_predictive_check(m_prior_neutral_euro_anxiety_365_canonical, m_prior_left_euro_anxiety_365_canonical, m_prior_right_euro_anxiety_365_canonical, m_prior_flat_euro_anxiety_365_canonical),
   prior_visual_euro_anxiety_365_neutral = prediction_visual(m_prior_neutral_euro_anxiety_365_canonical),
   prior_visual_euro_anxiety_365_left = prediction_visual(m_prior_left_euro_anxiety_365_canonical),
   prior_visual_euro_anxiety_365_right = prediction_visual(m_prior_right_euro_anxiety_365_canonical),
   prior_visual_euro_anxiety_365_flat = prediction_visual(m_prior_flat_euro_anxiety_365_canonical),
 
-  #### Posterior Simulation ----
+  ### Posterior Simulation ----
   m_posterior_mrs_90_minimal = f_posterior_mrs_90_minimal(ich_aggressive),
   m_posterior_neutral_mrs_90_canonical = f_posterior_neutral_mrs_90_canonical(ich_aggressive),
-  m_posterior_left_mrs_90_canonical = f_posterior_neutral_mrs_90_canonical(ich_aggressive),
-  m_posterior_right_mrs_90_canonical = f_posterior_neutral_mrs_90_canonical(ich_aggressive),
-  m_posterior_flat_mrs_90_canonical = f_posterior_neutral_mrs_90_canonical(ich_aggressive),
+  m_posterior_left_mrs_90_canonical = f_posterior_left_mrs_90_canonical(ich_aggressive),
+  m_posterior_right_mrs_90_canonical = f_posterior_right_mrs_90_canonical(ich_aggressive),
+  m_posterior_flat_mrs_90_canonical = f_posterior_flat_mrs_90_canonical(ich_aggressive),
   m_posterior_mrs_180_minimal = f_posterior_mrs_180_minimal(ich_aggressive),
   m_posterior_neutral_mrs_180_canonical = f_posterior_neutral_mrs_180_canonical(ich_aggressive),
-  m_posterior_left_mrs_180_canonical = f_posterior_neutral_mrs_180_canonical(ich_aggressive),
-  m_posterior_right_mrs_180_canonical = f_posterior_neutral_mrs_180_canonical(ich_aggressive),
-  m_posterior_flat_mrs_180_canonical = f_posterior_neutral_mrs_180_canonical(ich_aggressive),
+  m_posterior_left_mrs_180_canonical = f_posterior_left_mrs_180_canonical(ich_aggressive),
+  m_posterior_right_mrs_180_canonical = f_posterior_right_mrs_180_canonical(ich_aggressive),
+  m_posterior_flat_mrs_180_canonical = f_posterior_flat_mrs_180_canonical(ich_aggressive),
   m_posterior_mrs_365_minimal = f_posterior_mrs_365_minimal(ich_aggressive),
   m_posterior_neutral_mrs_365_canonical = f_posterior_neutral_mrs_365_canonical(ich_aggressive),
-  m_posterior_left_mrs_365_canonical = f_posterior_neutral_mrs_365_canonical(ich_aggressive),
-  m_posterior_right_mrs_365_canonical = f_posterior_neutral_mrs_365_canonical(ich_aggressive),
-  m_posterior_flat_mrs_365_canonical = f_posterior_neutral_mrs_365_canonical(ich_aggressive),
-
+  m_posterior_left_mrs_365_canonical = f_posterior_left_mrs_365_canonical(ich_aggressive),
+  m_posterior_right_mrs_365_canonical = f_posterior_right_mrs_365_canonical(ich_aggressive),
+  m_posterior_flat_mrs_365_canonical = f_posterior_flat_mrs_365_canonical(ich_aggressive),
   m_posterior_neutral_euro_mobility_90_canonical = f_posterior_neutral_euro_mobility_90_canonical(ich_aggressive),
-  m_posterior_left_euro_mobility_90_canonical = f_posterior_neutral_euro_mobility_90_canonical(ich_aggressive),
-  m_posterior_right_euro_mobility_90_canonical = f_posterior_neutral_euro_mobility_90_canonical(ich_aggressive),
-  m_posterior_flat_euro_mobility_90_canonical = f_posterior_neutral_euro_mobility_90_canonical(ich_aggressive),
-
+  m_posterior_left_euro_mobility_90_canonical = f_posterior_left_euro_mobility_90_canonical(ich_aggressive),
+  m_posterior_right_euro_mobility_90_canonical = f_posterior_right_euro_mobility_90_canonical(ich_aggressive),
+  m_posterior_flat_euro_mobility_90_canonical = f_posterior_flat_euro_mobility_90_canonical(ich_aggressive),
   m_posterior_neutral_euro_mobility_180_canonical = f_posterior_neutral_euro_mobility_180_canonical(ich_aggressive),
-  m_posterior_left_euro_mobility_180_canonical = f_posterior_neutral_euro_mobility_180_canonical(ich_aggressive),
-  m_posterior_right_euro_mobility_180_canonical = f_posterior_neutral_euro_mobility_180_canonical(ich_aggressive),
-  m_posterior_flat_euro_mobility_180_canonical = f_posterior_neutral_euro_mobility_180_canonical(ich_aggressive),
-
+  m_posterior_left_euro_mobility_180_canonical = f_posterior_left_euro_mobility_180_canonical(ich_aggressive),
+  m_posterior_right_euro_mobility_180_canonical = f_posterior_right_euro_mobility_180_canonical(ich_aggressive),
+  m_posterior_flat_euro_mobility_180_canonical = f_posterior_flat_euro_mobility_180_canonical(ich_aggressive),
   m_posterior_neutral_euro_mobility_365_canonical = f_posterior_neutral_euro_mobility_365_canonical(ich_aggressive),
-  m_posterior_left_euro_mobility_365_canonical = f_posterior_neutral_euro_mobility_365_canonical(ich_aggressive),
-  m_posterior_right_euro_mobility_365_canonical = f_posterior_neutral_euro_mobility_365_canonical(ich_aggressive),
-  m_posterior_flat_euro_mobility_365_canonical = f_posterior_neutral_euro_mobility_365_canonical(ich_aggressive),
-
+  m_posterior_left_euro_mobility_365_canonical = f_posterior_left_euro_mobility_365_canonical(ich_aggressive),
+  m_posterior_right_euro_mobility_365_canonical = f_posterior_right_euro_mobility_365_canonical(ich_aggressive),
+  m_posterior_flat_euro_mobility_365_canonical = f_posterior_flat_euro_mobility_365_canonical(ich_aggressive),
   m_posterior_neutral_euro_selfcare_90_canonical = f_posterior_neutral_euro_selfcare_90_canonical(ich_aggressive),
-  m_posterior_left_euro_selfcare_90_canonical = f_posterior_neutral_euro_selfcare_90_canonical(ich_aggressive),
-  m_posterior_right_euro_selfcare_90_canonical = f_posterior_neutral_euro_selfcare_90_canonical(ich_aggressive),
-  m_posterior_flat_euro_selfcare_90_canonical = f_posterior_neutral_euro_selfcare_90_canonical(ich_aggressive),
-
+  m_posterior_left_euro_selfcare_90_canonical = f_posterior_left_euro_selfcare_90_canonical(ich_aggressive),
+  m_posterior_right_euro_selfcare_90_canonical = f_posterior_right_euro_selfcare_90_canonical(ich_aggressive),
+  m_posterior_flat_euro_selfcare_90_canonical = f_posterior_flat_euro_selfcare_90_canonical(ich_aggressive),
   m_posterior_neutral_euro_selfcare_180_canonical = f_posterior_neutral_euro_selfcare_180_canonical(ich_aggressive),
-  m_posterior_left_euro_selfcare_180_canonical = f_posterior_neutral_euro_selfcare_180_canonical(ich_aggressive),
-  m_posterior_right_euro_selfcare_180_canonical = f_posterior_neutral_euro_selfcare_180_canonical(ich_aggressive),
-  m_posterior_flat_euro_selfcare_180_canonical = f_posterior_neutral_euro_selfcare_180_canonical(ich_aggressive),
-
+  m_posterior_left_euro_selfcare_180_canonical = f_posterior_left_euro_selfcare_180_canonical(ich_aggressive),
+  m_posterior_right_euro_selfcare_180_canonical = f_posterior_right_euro_selfcare_180_canonical(ich_aggressive),
+  m_posterior_flat_euro_selfcare_180_canonical = f_posterior_flat_euro_selfcare_180_canonical(ich_aggressive),
   m_posterior_neutral_euro_selfcare_365_canonical = f_posterior_neutral_euro_selfcare_365_canonical(ich_aggressive),
-  m_posterior_left_euro_selfcare_365_canonical = f_posterior_neutral_euro_selfcare_365_canonical(ich_aggressive),
-  m_posterior_right_euro_selfcare_365_canonical = f_posterior_neutral_euro_selfcare_365_canonical(ich_aggressive),
-  m_posterior_flat_euro_selfcare_365_canonical = f_posterior_neutral_euro_selfcare_365_canonical(ich_aggressive),
-  
+  m_posterior_left_euro_selfcare_365_canonical = f_posterior_left_euro_selfcare_365_canonical(ich_aggressive),
+  m_posterior_right_euro_selfcare_365_canonical = f_posterior_right_euro_selfcare_365_canonical(ich_aggressive),
+  m_posterior_flat_euro_selfcare_365_canonical = f_posterior_flat_euro_selfcare_365_canonical(ich_aggressive),
   m_posterior_neutral_euro_usual_90_canonical = f_posterior_neutral_euro_usual_90_canonical(ich_aggressive),
-  m_posterior_left_euro_usual_90_canonical = f_posterior_neutral_euro_usual_90_canonical(ich_aggressive),
-  m_posterior_right_euro_usual_90_canonical = f_posterior_neutral_euro_usual_90_canonical(ich_aggressive),
-  m_posterior_flat_euro_usual_90_canonical = f_posterior_neutral_euro_usual_90_canonical(ich_aggressive),
-
+  m_posterior_left_euro_usual_90_canonical = f_posterior_left_euro_usual_90_canonical(ich_aggressive),
+  m_posterior_right_euro_usual_90_canonical = f_posterior_right_euro_usual_90_canonical(ich_aggressive),
+  m_posterior_flat_euro_usual_90_canonical = f_posterior_flat_euro_usual_90_canonical(ich_aggressive),
   m_posterior_neutral_euro_usual_180_canonical = f_posterior_neutral_euro_usual_180_canonical(ich_aggressive),
-  m_posterior_left_euro_usual_180_canonical = f_posterior_neutral_euro_usual_180_canonical(ich_aggressive),
-  m_posterior_right_euro_usual_180_canonical = f_posterior_neutral_euro_usual_180_canonical(ich_aggressive),
-  m_posterior_flat_euro_usual_180_canonical = f_posterior_neutral_euro_usual_180_canonical(ich_aggressive),
-
+  m_posterior_left_euro_usual_180_canonical = f_posterior_left_euro_usual_180_canonical(ich_aggressive),
+  m_posterior_right_euro_usual_180_canonical = f_posterior_right_euro_usual_180_canonical(ich_aggressive),
+  m_posterior_flat_euro_usual_180_canonical = f_posterior_flat_euro_usual_180_canonical(ich_aggressive),
   m_posterior_neutral_euro_usual_365_canonical = f_posterior_neutral_euro_usual_365_canonical(ich_aggressive),
-  m_posterior_left_euro_usual_365_canonical = f_posterior_neutral_euro_usual_365_canonical(ich_aggressive),
-  m_posterior_right_euro_usual_365_canonical = f_posterior_neutral_euro_usual_365_canonical(ich_aggressive),
-  m_posterior_flat_euro_usual_365_canonical = f_posterior_neutral_euro_usual_365_canonical(ich_aggressive),
-  
+  m_posterior_left_euro_usual_365_canonical = f_posterior_left_euro_usual_365_canonical(ich_aggressive),
+  m_posterior_right_euro_usual_365_canonical = f_posterior_right_euro_usual_365_canonical(ich_aggressive),
+  m_posterior_flat_euro_usual_365_canonical = f_posterior_flat_euro_usual_365_canonical(ich_aggressive),
   m_posterior_neutral_euro_pain_90_canonical = f_posterior_neutral_euro_pain_90_canonical(ich_aggressive),
-  m_posterior_left_euro_pain_90_canonical = f_posterior_neutral_euro_pain_90_canonical(ich_aggressive),
-  m_posterior_right_euro_pain_90_canonical = f_posterior_neutral_euro_pain_90_canonical(ich_aggressive),
-  m_posterior_flat_euro_pain_90_canonical = f_posterior_neutral_euro_pain_90_canonical(ich_aggressive),
-
+  m_posterior_left_euro_pain_90_canonical = f_posterior_left_euro_pain_90_canonical(ich_aggressive),
+  m_posterior_right_euro_pain_90_canonical = f_posterior_right_euro_pain_90_canonical(ich_aggressive),
+  m_posterior_flat_euro_pain_90_canonical = f_posterior_flat_euro_pain_90_canonical(ich_aggressive),
   m_posterior_neutral_euro_pain_180_canonical = f_posterior_neutral_euro_pain_180_canonical(ich_aggressive),
-  m_posterior_left_euro_pain_180_canonical = f_posterior_neutral_euro_pain_180_canonical(ich_aggressive),
-  m_posterior_right_euro_pain_180_canonical = f_posterior_neutral_euro_pain_180_canonical(ich_aggressive),
-  m_posterior_flat_euro_pain_180_canonical = f_posterior_neutral_euro_pain_180_canonical(ich_aggressive),
-
+  m_posterior_left_euro_pain_180_canonical = f_posterior_left_euro_pain_180_canonical(ich_aggressive),
+  m_posterior_right_euro_pain_180_canonical = f_posterior_right_euro_pain_180_canonical(ich_aggressive),
+  m_posterior_flat_euro_pain_180_canonical = f_posterior_flat_euro_pain_180_canonical(ich_aggressive),
   m_posterior_neutral_euro_pain_365_canonical = f_posterior_neutral_euro_pain_365_canonical(ich_aggressive),
-  m_posterior_left_euro_pain_365_canonical = f_posterior_neutral_euro_pain_365_canonical(ich_aggressive),
-  m_posterior_right_euro_pain_365_canonical = f_posterior_neutral_euro_pain_365_canonical(ich_aggressive),
-  m_posterior_flat_euro_pain_365_canonical = f_posterior_neutral_euro_pain_365_canonical(ich_aggressive),
-
+  m_posterior_left_euro_pain_365_canonical = f_posterior_left_euro_pain_365_canonical(ich_aggressive),
+  m_posterior_right_euro_pain_365_canonical = f_posterior_right_euro_pain_365_canonical(ich_aggressive),
+  m_posterior_flat_euro_pain_365_canonical = f_posterior_flat_euro_pain_365_canonical(ich_aggressive),
   m_posterior_neutral_euro_anxiety_90_canonical = f_posterior_neutral_euro_anxiety_90_canonical(ich_aggressive),
-  m_posterior_left_euro_anxiety_90_canonical = f_posterior_neutral_euro_anxiety_90_canonical(ich_aggressive),
-  m_posterior_right_euro_anxiety_90_canonical = f_posterior_neutral_euro_anxiety_90_canonical(ich_aggressive),
-  m_posterior_flat_euro_anxiety_90_canonical = f_posterior_neutral_euro_anxiety_90_canonical(ich_aggressive),
-
+  m_posterior_left_euro_anxiety_90_canonical = f_posterior_left_euro_anxiety_90_canonical(ich_aggressive),
+  m_posterior_right_euro_anxiety_90_canonical = f_posterior_right_euro_anxiety_90_canonical(ich_aggressive),
+  m_posterior_flat_euro_anxiety_90_canonical = f_posterior_flat_euro_anxiety_90_canonical(ich_aggressive),
   m_posterior_neutral_euro_anxiety_180_canonical = f_posterior_neutral_euro_anxiety_180_canonical(ich_aggressive),
-  m_posterior_left_euro_anxiety_180_canonical = f_posterior_neutral_euro_anxiety_180_canonical(ich_aggressive),
-  m_posterior_right_euro_anxiety_180_canonical = f_posterior_neutral_euro_anxiety_180_canonical(ich_aggressive),
-  m_posterior_flat_euro_anxiety_180_canonical = f_posterior_neutral_euro_anxiety_180_canonical(ich_aggressive),
-
+  m_posterior_left_euro_anxiety_180_canonical = f_posterior_left_euro_anxiety_180_canonical(ich_aggressive),
+  m_posterior_right_euro_anxiety_180_canonical = f_posterior_right_euro_anxiety_180_canonical(ich_aggressive),
+  m_posterior_flat_euro_anxiety_180_canonical = f_posterior_flat_euro_anxiety_180_canonical(ich_aggressive),
   m_posterior_neutral_euro_anxiety_365_canonical = f_posterior_neutral_euro_anxiety_365_canonical(ich_aggressive),
-  m_posterior_left_euro_anxiety_365_canonical = f_posterior_neutral_euro_anxiety_365_canonical(ich_aggressive),
-  m_posterior_right_euro_anxiety_365_canonical = f_posterior_neutral_euro_anxiety_365_canonical(ich_aggressive),
-  m_posterior_flat_euro_anxiety_365_canonical = f_posterior_neutral_euro_anxiety_365_canonical(ich_aggressive),
+  m_posterior_left_euro_anxiety_365_canonical = f_posterior_left_euro_anxiety_365_canonical(ich_aggressive),
+  m_posterior_right_euro_anxiety_365_canonical = f_posterior_right_euro_anxiety_365_canonical(ich_aggressive),
+  m_posterior_flat_euro_anxiety_365_canonical = f_posterior_flat_euro_anxiety_365_canonical(ich_aggressive),
+
+  #### Posterior Diagnostics
 
   diag_posterior_mrs_90_minimal = posterior_diagnostics(m_posterior_mrs_90_minimal),
   diag_posterior_neutral_mrs_90_canonical = posterior_diagnostics(m_posterior_neutral_mrs_90_canonical),
   diag_posterior_left_mrs_90_canonical = posterior_diagnostics(m_posterior_left_mrs_90_canonical),
   diag_posterior_right_mrs_90_canonical = posterior_diagnostics(m_posterior_right_mrs_90_canonical),
   diag_posterior_flat_mrs_90_canonical = posterior_diagnostics(m_posterior_flat_mrs_90_canonical),
-
   diag_posterior_mrs_180_minimal = posterior_diagnostics(m_posterior_mrs_180_minimal),
   diag_posterior_neutral_mrs_180_canonical = posterior_diagnostics(m_posterior_neutral_mrs_180_canonical),
   diag_posterior_left_mrs_180_canonical = posterior_diagnostics(m_posterior_left_mrs_180_canonical),
   diag_posterior_right_mrs_180_canonical = posterior_diagnostics(m_posterior_right_mrs_180_canonical),
   diag_posterior_flat_mrs_180_canonical = posterior_diagnostics(m_posterior_flat_mrs_180_canonical),
-
   diag_posterior_mrs_365_minimal = posterior_diagnostics(m_posterior_mrs_365_minimal),
   diag_posterior_neutral_mrs_365_canonical = posterior_diagnostics(m_posterior_neutral_mrs_365_canonical),
   diag_posterior_left_mrs_365_canonical = posterior_diagnostics(m_posterior_left_mrs_365_canonical),
   diag_posterior_right_mrs_365_canonical = posterior_diagnostics(m_posterior_right_mrs_365_canonical),
   diag_posterior_flat_mrs_365_canonical = posterior_diagnostics(m_posterior_flat_mrs_365_canonical),
-
   diag_posterior_neutral_euro_mobility_90_canonical = posterior_diagnostics(m_posterior_neutral_euro_mobility_90_canonical),
   diag_posterior_left_euro_mobility_90_canonical = posterior_diagnostics(m_posterior_left_euro_mobility_90_canonical),
   diag_posterior_right_euro_mobility_90_canonical = posterior_diagnostics(m_posterior_right_euro_mobility_90_canonical),
   diag_posterior_flat_euro_mobility_90_canonical = posterior_diagnostics(m_posterior_flat_euro_mobility_90_canonical),
-
   diag_posterior_neutral_euro_mobility_180_canonical = posterior_diagnostics(m_posterior_neutral_euro_mobility_180_canonical),
   diag_posterior_left_euro_mobility_180_canonical = posterior_diagnostics(m_posterior_left_euro_mobility_180_canonical),
   diag_posterior_right_euro_mobility_180_canonical = posterior_diagnostics(m_posterior_right_euro_mobility_180_canonical),
   diag_posterior_flat_euro_mobility_180_canonical = posterior_diagnostics(m_posterior_flat_euro_mobility_180_canonical),
-
   diag_posterior_neutral_euro_mobility_365_canonical = posterior_diagnostics(m_posterior_neutral_euro_mobility_365_canonical),
   diag_posterior_left_euro_mobility_365_canonical = posterior_diagnostics(m_posterior_left_euro_mobility_365_canonical),
   diag_posterior_right_euro_mobility_365_canonical = posterior_diagnostics(m_posterior_right_euro_mobility_365_canonical),
   diag_posterior_flat_euro_mobility_365_canonical = posterior_diagnostics(m_posterior_flat_euro_mobility_365_canonical),
-
   diag_posterior_neutral_euro_selfcare_90_canonical = posterior_diagnostics(m_posterior_neutral_euro_selfcare_90_canonical),
   diag_posterior_left_euro_selfcare_90_canonical = posterior_diagnostics(m_posterior_left_euro_selfcare_90_canonical),
   diag_posterior_right_euro_selfcare_90_canonical = posterior_diagnostics(m_posterior_right_euro_selfcare_90_canonical),
   diag_posterior_flat_euro_selfcare_90_canonical = posterior_diagnostics(m_posterior_flat_euro_selfcare_90_canonical),
-
   diag_posterior_neutral_euro_selfcare_180_canonical = posterior_diagnostics(m_posterior_neutral_euro_selfcare_180_canonical),
   diag_posterior_left_euro_selfcare_180_canonical = posterior_diagnostics(m_posterior_left_euro_selfcare_180_canonical),
   diag_posterior_right_euro_selfcare_180_canonical = posterior_diagnostics(m_posterior_right_euro_selfcare_180_canonical),
   diag_posterior_flat_euro_selfcare_180_canonical = posterior_diagnostics(m_posterior_flat_euro_selfcare_180_canonical),
-
   diag_posterior_neutral_euro_selfcare_365_canonical = posterior_diagnostics(m_posterior_neutral_euro_selfcare_365_canonical),
   diag_posterior_left_euro_selfcare_365_canonical = posterior_diagnostics(m_posterior_left_euro_selfcare_365_canonical),
   diag_posterior_right_euro_selfcare_365_canonical = posterior_diagnostics(m_posterior_right_euro_selfcare_365_canonical),
   diag_posterior_flat_euro_selfcare_365_canonical = posterior_diagnostics(m_posterior_flat_euro_selfcare_365_canonical),
-
   diag_posterior_neutral_euro_usual_90_canonical = posterior_diagnostics(m_posterior_neutral_euro_usual_90_canonical),
   diag_posterior_left_euro_usual_90_canonical = posterior_diagnostics(m_posterior_left_euro_usual_90_canonical),
   diag_posterior_right_euro_usual_90_canonical = posterior_diagnostics(m_posterior_right_euro_usual_90_canonical),
   diag_posterior_flat_euro_usual_90_canonical = posterior_diagnostics(m_posterior_flat_euro_usual_90_canonical),
-
   diag_posterior_neutral_euro_usual_180_canonical = posterior_diagnostics(m_posterior_neutral_euro_usual_180_canonical),
   diag_posterior_left_euro_usual_180_canonical = posterior_diagnostics(m_posterior_left_euro_usual_180_canonical),
   diag_posterior_right_euro_usual_180_canonical = posterior_diagnostics(m_posterior_right_euro_usual_180_canonical),
   diag_posterior_flat_euro_usual_180_canonical = posterior_diagnostics(m_posterior_flat_euro_usual_180_canonical),
-
   diag_posterior_neutral_euro_usual_365_canonical = posterior_diagnostics(m_posterior_neutral_euro_usual_365_canonical),
   diag_posterior_left_euro_usual_365_canonical = posterior_diagnostics(m_posterior_left_euro_usual_365_canonical),
   diag_posterior_right_euro_usual_365_canonical = posterior_diagnostics(m_posterior_right_euro_usual_365_canonical),
   diag_posterior_flat_euro_usual_365_canonical = posterior_diagnostics(m_posterior_flat_euro_usual_365_canonical),
-
   diag_posterior_neutral_euro_pain_90_canonical = posterior_diagnostics(m_posterior_neutral_euro_pain_90_canonical),
   diag_posterior_left_euro_pain_90_canonical = posterior_diagnostics(m_posterior_left_euro_pain_90_canonical),
   diag_posterior_right_euro_pain_90_canonical = posterior_diagnostics(m_posterior_right_euro_pain_90_canonical),
   diag_posterior_flat_euro_pain_90_canonical = posterior_diagnostics(m_posterior_flat_euro_pain_90_canonical),
-
   diag_posterior_neutral_euro_pain_180_canonical = posterior_diagnostics(m_posterior_neutral_euro_pain_180_canonical),
   diag_posterior_left_euro_pain_180_canonical = posterior_diagnostics(m_posterior_left_euro_pain_180_canonical),
   diag_posterior_right_euro_pain_180_canonical = posterior_diagnostics(m_posterior_right_euro_pain_180_canonical),
   diag_posterior_flat_euro_pain_180_canonical = posterior_diagnostics(m_posterior_flat_euro_pain_180_canonical),
-
   diag_posterior_neutral_euro_pain_365_canonical = posterior_diagnostics(m_posterior_neutral_euro_pain_365_canonical),
   diag_posterior_left_euro_pain_365_canonical = posterior_diagnostics(m_posterior_left_euro_pain_365_canonical),
   diag_posterior_right_euro_pain_365_canonical = posterior_diagnostics(m_posterior_right_euro_pain_365_canonical),
   diag_posterior_flat_euro_pain_365_canonical = posterior_diagnostics(m_posterior_flat_euro_pain_365_canonical),
-
   diag_posterior_neutral_euro_anxiety_90_canonical = posterior_diagnostics(m_posterior_neutral_euro_anxiety_90_canonical),
   diag_posterior_left_euro_anxiety_90_canonical = posterior_diagnostics(m_posterior_left_euro_anxiety_90_canonical),
   diag_posterior_right_euro_anxiety_90_canonical = posterior_diagnostics(m_posterior_right_euro_anxiety_90_canonical),
   diag_posterior_flat_euro_anxiety_90_canonical = posterior_diagnostics(m_posterior_flat_euro_anxiety_90_canonical),
-
   diag_posterior_neutral_euro_anxiety_180_canonical = posterior_diagnostics(m_posterior_neutral_euro_anxiety_180_canonical),
   diag_posterior_left_euro_anxiety_180_canonical = posterior_diagnostics(m_posterior_left_euro_anxiety_180_canonical),
   diag_posterior_right_euro_anxiety_180_canonical = posterior_diagnostics(m_posterior_right_euro_anxiety_180_canonical),
   diag_posterior_flat_euro_anxiety_180_canonical = posterior_diagnostics(m_posterior_flat_euro_anxiety_180_canonical),
-
   diag_posterior_neutral_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_neutral_euro_anxiety_365_canonical),
   diag_posterior_left_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_left_euro_anxiety_365_canonical),
   diag_posterior_right_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_right_euro_anxiety_365_canonical),
   diag_posterior_flat_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_flat_euro_anxiety_365_canonical),
-
   post_pred_check_mrs_90_minimal = f_post_predictive_check(m_posterior_mrs_90_minimal),
   post_pred_check_neutral_mrs_90_canonical = f_post_predictive_check(m_posterior_neutral_mrs_90_canonical),
   post_pred_check_left_mrs_90_canonical = f_post_predictive_check(m_posterior_left_mrs_90_canonical),
   post_pred_check_right_mrs_90_canonical = f_post_predictive_check(m_posterior_right_mrs_90_canonical),
   post_pred_check_flat_mrs_90_canonical = f_post_predictive_check(m_posterior_flat_mrs_90_canonical),
-
   post_pred_check_mrs_180_minimal = f_post_predictive_check(m_posterior_mrs_180_minimal),
   post_pred_check_neutral_mrs_180_canonical = f_post_predictive_check(m_posterior_neutral_mrs_180_canonical),
   post_pred_check_left_mrs_180_canonical = f_post_predictive_check(m_posterior_left_mrs_180_canonical),
   post_pred_check_right_mrs_180_canonical = f_post_predictive_check(m_posterior_right_mrs_180_canonical),
   post_pred_check_flat_mrs_180_canonical = f_post_predictive_check(m_posterior_flat_mrs_180_canonical),
-
   post_pred_check_mrs_365_minimal = f_post_predictive_check(m_posterior_mrs_365_minimal),
   post_pred_check_neutral_mrs_365_canonical = f_post_predictive_check(m_posterior_neutral_mrs_365_canonical),
   post_pred_check_left_mrs_365_canonical = f_post_predictive_check(m_posterior_left_mrs_365_canonical),
   post_pred_check_right_mrs_365_canonical = f_post_predictive_check(m_posterior_right_mrs_365_canonical),
   post_pred_check_flat_mrs_365_canonical = f_post_predictive_check(m_posterior_flat_mrs_365_canonical),
-
   post_pred_check_neutral_euro_mobility_90_canonical = f_post_predictive_check(m_posterior_neutral_euro_mobility_90_canonical),
   post_pred_check_left_euro_mobility_90_canonical = f_post_predictive_check(m_posterior_left_euro_mobility_90_canonical),
   post_pred_check_right_euro_mobility_90_canonical = f_post_predictive_check(m_posterior_right_euro_mobility_90_canonical),
   post_pred_check_flat_euro_mobility_90_canonical = f_post_predictive_check(m_posterior_flat_euro_mobility_90_canonical),
-
   post_pred_check_neutral_euro_mobility_180_canonical = f_post_predictive_check(m_posterior_neutral_euro_mobility_180_canonical),
   post_pred_check_left_euro_mobility_180_canonical = f_post_predictive_check(m_posterior_left_euro_mobility_180_canonical),
   post_pred_check_right_euro_mobility_180_canonical = f_post_predictive_check(m_posterior_right_euro_mobility_180_canonical),
   post_pred_check_flat_euro_mobility_180_canonical = f_post_predictive_check(m_posterior_flat_euro_mobility_180_canonical),
-
   post_pred_check_neutral_euro_mobility_365_canonical = f_post_predictive_check(m_posterior_neutral_euro_mobility_365_canonical),
   post_pred_check_left_euro_mobility_365_canonical = f_post_predictive_check(m_posterior_left_euro_mobility_365_canonical),
   post_pred_check_right_euro_mobility_365_canonical = f_post_predictive_check(m_posterior_right_euro_mobility_365_canonical),
   post_pred_check_flat_euro_mobility_365_canonical = f_post_predictive_check(m_posterior_flat_euro_mobility_365_canonical),
-
   post_pred_check_neutral_euro_selfcare_90_canonical = f_post_predictive_check(m_posterior_neutral_euro_selfcare_90_canonical),
   post_pred_check_left_euro_selfcare_90_canonical = f_post_predictive_check(m_posterior_left_euro_selfcare_90_canonical),
   post_pred_check_right_euro_selfcare_90_canonical = f_post_predictive_check(m_posterior_right_euro_selfcare_90_canonical),
   post_pred_check_flat_euro_selfcare_90_canonical = f_post_predictive_check(m_posterior_flat_euro_selfcare_90_canonical),
-
   post_pred_check_neutral_euro_selfcare_180_canonical = f_post_predictive_check(m_posterior_neutral_euro_selfcare_180_canonical),
   post_pred_check_left_euro_selfcare_180_canonical = f_post_predictive_check(m_posterior_left_euro_selfcare_180_canonical),
   post_pred_check_right_euro_selfcare_180_canonical = f_post_predictive_check(m_posterior_right_euro_selfcare_180_canonical),
   post_pred_check_flat_euro_selfcare_180_canonical = f_post_predictive_check(m_posterior_flat_euro_selfcare_180_canonical),
-
   post_pred_check_neutral_euro_selfcare_365_canonical = f_post_predictive_check(m_posterior_neutral_euro_selfcare_365_canonical),
   post_pred_check_left_euro_selfcare_365_canonical = f_post_predictive_check(m_posterior_left_euro_selfcare_365_canonical),
   post_pred_check_right_euro_selfcare_365_canonical = f_post_predictive_check(m_posterior_right_euro_selfcare_365_canonical),
   post_pred_check_flat_euro_selfcare_365_canonical = f_post_predictive_check(m_posterior_flat_euro_selfcare_365_canonical),
-
   post_pred_check_neutral_euro_usual_90_canonical = f_post_predictive_check(m_posterior_neutral_euro_usual_90_canonical),
   post_pred_check_left_euro_usual_90_canonical = f_post_predictive_check(m_posterior_left_euro_usual_90_canonical),
   post_pred_check_right_euro_usual_90_canonical = f_post_predictive_check(m_posterior_right_euro_usual_90_canonical),
   post_pred_check_flat_euro_usual_90_canonical = f_post_predictive_check(m_posterior_flat_euro_usual_90_canonical),
-
   post_pred_check_neutral_euro_usual_180_canonical = f_post_predictive_check(m_posterior_neutral_euro_usual_180_canonical),
   post_pred_check_left_euro_usual_180_canonical = f_post_predictive_check(m_posterior_left_euro_usual_180_canonical),
   post_pred_check_right_euro_usual_180_canonical = f_post_predictive_check(m_posterior_right_euro_usual_180_canonical),
   post_pred_check_flat_euro_usual_180_canonical = f_post_predictive_check(m_posterior_flat_euro_usual_180_canonical),
-
   post_pred_check_neutral_euro_usual_365_canonical = f_post_predictive_check(m_posterior_neutral_euro_usual_365_canonical),
   post_pred_check_left_euro_usual_365_canonical = f_post_predictive_check(m_posterior_left_euro_usual_365_canonical),
   post_pred_check_right_euro_usual_365_canonical = f_post_predictive_check(m_posterior_right_euro_usual_365_canonical),
   post_pred_check_flat_euro_usual_365_canonical = f_post_predictive_check(m_posterior_flat_euro_usual_365_canonical),
-
   post_pred_check_neutral_euro_pain_90_canonical = f_post_predictive_check(m_posterior_neutral_euro_pain_90_canonical),
   post_pred_check_left_euro_pain_90_canonical = f_post_predictive_check(m_posterior_left_euro_pain_90_canonical),
   post_pred_check_right_euro_pain_90_canonical = f_post_predictive_check(m_posterior_right_euro_pain_90_canonical),
   post_pred_check_flat_euro_pain_90_canonical = f_post_predictive_check(m_posterior_flat_euro_pain_90_canonical),
-
   post_pred_check_neutral_euro_pain_180_canonical = f_post_predictive_check(m_posterior_neutral_euro_pain_180_canonical),
   post_pred_check_left_euro_pain_180_canonical = f_post_predictive_check(m_posterior_left_euro_pain_180_canonical),
   post_pred_check_right_euro_pain_180_canonical = f_post_predictive_check(m_posterior_right_euro_pain_180_canonical),
   post_pred_check_flat_euro_pain_180_canonical = f_post_predictive_check(m_posterior_flat_euro_pain_180_canonical),
-
   post_pred_check_neutral_euro_pain_365_canonical = f_post_predictive_check(m_posterior_neutral_euro_pain_365_canonical),
   post_pred_check_left_euro_pain_365_canonical = f_post_predictive_check(m_posterior_left_euro_pain_365_canonical),
   post_pred_check_right_euro_pain_365_canonical = f_post_predictive_check(m_posterior_right_euro_pain_365_canonical),
   post_pred_check_flat_euro_pain_365_canonical = f_post_predictive_check(m_posterior_flat_euro_pain_365_canonical),
-
   post_pred_check_neutral_euro_anxiety_90_canonical = f_post_predictive_check(m_posterior_neutral_euro_anxiety_90_canonical),
   post_pred_check_left_euro_anxiety_90_canonical = f_post_predictive_check(m_posterior_left_euro_anxiety_90_canonical),
   post_pred_check_right_euro_anxiety_90_canonical = f_post_predictive_check(m_posterior_right_euro_anxiety_90_canonical),
   post_pred_check_flat_euro_anxiety_90_canonical = f_post_predictive_check(m_posterior_flat_euro_anxiety_90_canonical),
-
   post_pred_check_neutral_euro_anxiety_180_canonical = f_post_predictive_check(m_posterior_neutral_euro_anxiety_180_canonical),
   post_pred_check_left_euro_anxiety_180_canonical = f_post_predictive_check(m_posterior_left_euro_anxiety_180_canonical),
   post_pred_check_right_euro_anxiety_180_canonical = f_post_predictive_check(m_posterior_right_euro_anxiety_180_canonical),
   post_pred_check_flat_euro_anxiety_180_canonical = f_post_predictive_check(m_posterior_flat_euro_anxiety_180_canonical),
-
   post_pred_check_neutral_euro_anxiety_365_canonical = f_post_predictive_check(m_posterior_neutral_euro_anxiety_365_canonical),
   post_pred_check_left_euro_anxiety_365_canonical = f_post_predictive_check(m_posterior_left_euro_anxiety_365_canonical),
   post_pred_check_right_euro_anxiety_365_canonical = f_post_predictive_check(m_posterior_right_euro_anxiety_365_canonical),
   post_pred_check_flat_euro_anxiety_365_canonical = f_post_predictive_check(m_posterior_flat_euro_anxiety_365_canonical),
 
-  # ## Reports ----
+  ## Output and Reports ----
+  table1 = table_1_function(ich_aggressive),
+  # table1_docx <- gt::gtsave(table1, here("manuscripts", "table1.docx")), # For some reason have to MANUALLY run this!!!
+  neutral_aggressive_models = models_list_func(
+    m_posterior_neutral_neurosurgery,
+    m_posterior_neutral_evd,
+    m_posterior_neutral_days_mechanical_ventilation,
+    m_posterior_neutral_tracheostomy,
+    m_posterior_neutral_comfort,
+    m_posterior_neutral_early_wlst,
+    m_posterior_neutral_dnr_binary
+  ),
+  left_aggressive_models = models_list_func(
+    m_posterior_left_neurosurgery,
+    m_posterior_left_evd,
+    m_posterior_left_days_mechanical_ventilation,
+    m_posterior_left_tracheostomy,
+    m_posterior_left_comfort,
+    m_posterior_left_early_wlst,
+    m_posterior_left_dnr_binary
+  ),
+  right_aggressive_models = models_list_func(
+    m_posterior_right_neurosurgery,
+    m_posterior_right_evd,
+    m_posterior_right_days_mechanical_ventilation,
+    m_posterior_right_tracheostomy,
+    m_posterior_right_comfort,
+    m_posterior_right_early_wlst,
+    m_posterior_right_dnr_binary
+  ),
+  flat_aggressive_models = models_list_func(
+    m_posterior_flat_neurosurgery,
+    m_posterior_flat_evd,
+    m_posterior_flat_days_mechanical_ventilation,
+    m_posterior_flat_tracheostomy,
+    m_posterior_flat_comfort,
+    m_posterior_flat_early_wlst,
+    m_posterior_flat_dnr_binary
+  ),
+  table2_neutral = table_2_function(ich_aggressive, neutral_aggressive_models),
+  table2_left = table_2_function(ich_aggressive, left_aggressive_models),
+  table2_right = table_2_function(ich_aggressive, right_aggressive_models),
+  table2_flat = table_2_function(ich_aggressive, flat_aggressive_models),
+  table2_docx = gtsave(table2_neutral, here("manuscripts", "table2.docx")),
+  figure_1 = subgroup_figure_function(m_posterior_neutral_neurosurgery),
+  figure_1_tiff = ggsave(here("manuscripts", "figure1.tiff"),
+    plot = figure_1, height = 20, width = 14, dpi = 600
+  ),
+  figure_1_svg = ggsave(here("manuscripts", "figure1.svg"),
+    plot = figure_1, height = 20, width = 14, dpi = 600
+  ),
+  figure_1_png = ggsave(here("manuscripts", "figure1.png"),
+    plot = figure_1, height = 20, width = 14, dpi = 600
+  )
+  # ),
+  # neutral_outcome_models <- outcome_models_list_func(
+  #   m_posterior_neutral_mrs_90_canonical,
+  #   m_posterior_neutral_euro_mobility_90_canonical,
+  #   m_posterior_neutral_euro_selfcare_90_canonical,
+  #   m_posterior_neutral_euro_usual_90_canonical,
+  #   m_posterior_neutral_euro_pain_90_canonical,
+  #   m_posterior_neutral_euro_anxiety_90_canonical
+  # )
+
   # tar_quarto(
   #   table_1,
   #   here("manuscripts", "test.qmd")

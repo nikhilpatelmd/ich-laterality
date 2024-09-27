@@ -1,6 +1,0 @@
----
-title: "ICH Laterality"
-subtitle: "Project Website"
----
-
-This is the landing page for the website.

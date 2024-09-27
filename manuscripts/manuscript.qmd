@@ -49,7 +49,6 @@ library(patchwork)
 library(tinytable)
 library(flextable)
 
-
 # plot stuff
 theme_ich <- function(base_family = "Figtree",
                       base_size = 10) {
@@ -96,9 +95,9 @@ Intracerebral hemorrhage (ICH) remains a challenging disease, marked by its sudd
 
 Clinical presentations for patients with stroke are varied based on the hemisphere affected, where hemispheric dominance dictates cognitive processing, attention, language, and emotional responses. Consequently, when confronted with the occurrence of ICH, the specific hemisphere affected can profoundly influence not only the clinical presentation but also therapeutic strategies and prognostic outcomes.
 
-Previous research involving patients with ischemic stroke provide evidence that those with right hemispheric injury present later to the hospital and may not be treated as frequently with thrombolytic therapy. [@dileggeImpactLesionSide2005; @foerchDifferenceRecognitionRight2005; @portegiesLeftsidedStrokesAre2015;  @liStrokeLateralizationLarge2021] It has also been noted that there is a hesitation among some practitioners to offer decompressive craniectomy in patients with left dominant-hemispheric ischemic infarcts3 despite literature demonstrating that long-term functional outcomes and health-related quality of life (HRQoL) are equivalent if not better for patients with left hemispheric injuries. [@deb-chatterjiSideMattersDifferences2022; @leggeNeglectingDifference2006; @beuscherFunctionalLongTermOutcome2017; @satoHigherMortalityPatients2015]
+Previous research involving patients with ischemic stroke provide evidence that those with right hemispheric injury present later to the hospital and may not be treated as frequently with thrombolytic therapy. [@dileggeImpactLesionSide2005; @foerchDifferenceRecognitionRight2005; @portegiesLeftsidedStrokesAre2015;  @liStrokeLateralizationLarge2021] It has also been noted that there is a hesitation among some practitioners to offer decompressive craniectomy in patients with left dominant-hemispheric ischemic infarcts despite literature demonstrating that long-term functional outcomes and health-related quality of life (HRQoL) are equivalent if not better for patients with left hemispheric injuries. [@deb-chatterjiSideMattersDifferences2022; @leggeNeglectingDifference2006; @beuscherFunctionalLongTermOutcome2017; @satoHigherMortalityPatients2015]
 
-It is uncertain how the results of prior work in the ischemic stroke literature translate to patients experiencing acute ICH. We aimed to evaluate the effect of hemispheric lateralization of ICH on likelihood of receiving aggressive surgical intervention. 
+Previous work has demonstrated mixed results with regard to hemispheric lateralization and outcomes in ICH, and there hasn't been much research examining if patients are treated differently based on the hemisphere affected. We aimed to evaluate the effect of hemispheric lateralization of ICH on likelihood of receiving aggressive surgical intervention as well as it's association with functional outcomes. 
 
 ## Methods
 
@@ -114,6 +113,8 @@ Our exposure was hemispheric laterality (left versus right). Our primary outcome
 
 To explore differences in other aspects of aggressive care, we defined several secondary outcomes: receipt of external ventricular drain (EVD), receipt of tracheostomy, days of mechanical ventilation, receipt of do-not-resuscitate (DNR) order at any point in the hospitalization, withdrawal of life-sustaining therapy (WLST) at any point in the hospitalization, and early WLST (defined as < 72 from symptom onset).
 
+Our primary functional outcome was modified Rankin score at 90 days, examined via ordinal regression.
+
 ### Statistical Analysis
 To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models adjusted for the specified covariates below and study as a random intercept. This report follows suggestions from the Bayesian Analysis Reporting Guidelines [@kruschkeBayesianAnalysisReporting2021]. For binary endpoints, hierarchal Bayesian logistic regression models were used. For ordinal endpoints, hierarchal Bayesian ordinal logisitic regression models were used. All analyses were performed in R version 4.4.1 (R Foundation for Statistical Computing, Vienna, Austria) using the 'brms' and 'tidybayes' packages.
 
@@ -121,10 +122,10 @@ To estimate the effect of hemispheric laterality on the outcomes of interest, we
 We constructed directed acyclic graphs (DAGs) to model our causal assumptions and to appropriately select variables to minimize confounding and selection bias. Based on our specifications, we included the following covariates in our models: age, admission Glasgow coma score (GCS), ICH location (categorized as lobar, thalamic, or basal ganglia), baseline ICH volume (measured in millilters), and presence of intraventricular hemorrhage (IVH). The DAGs used in the analyses are available in the supplementary material.
 
 #### Prior Distribution Specification
-Two sets of priors were applied for all models, both assuming no association of hemispheric laterality on the outcomes of interest: 1) default, weakly informative priors as defined by the 'brms' software package; 2) priors informed from review of previous literature. A description of the reasons for these priors is available in the supplementary material.
+Four sets of priors were applied for all models: both assuming no association of hemispheric laterality on the outcomes of interest: 1) default, weakly informative priors as defined by the 'brms' software package; 2) priors informed from review of previous literature. A description of the reasons for these priors is available in the supplementary material.
 
 #### Computation and Description of the Posterior Distribution
-We report the following metrics for the effect of hemispheric laterality on the primary and secondary outcomes: 1) median odds ratio (OR) of the posterior distribution with 95% credible interval; 2) probability of any difference (P[OR] > 1); 3) probability of a large difference (P[OR] > 1.2) as defined by the study authors; 4) percent of the posterior distribution outside of the region of practical equivalence as defined by the study authors (ROPE; 0.95 > P[OR] > 1.05). A description of the reasons for these thresholds is available in the supplementary material.
+We report the following metrics for the effect of hemispheric laterality on the primary and secondary outcomes: 1) median odds ratio (OR) of the posterior distribution with 95% credible interval; 2) probability of any difference (P[OR] > 1); 3) probability of a substantial difference (P[OR] > 1.2) as defined by the study authors; 4) percent of the posterior distribution outside of the region of practical equivalence as defined by the study authors (ROPE; 0.95 > P[OR] > 1.05). A description of the reasons for these thresholds is available in the supplementary material.
 
 #### Missing value policies
 
@@ -139,200 +140,14 @@ The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, M
 
 A total of `r sample_size` patients were included in the analysis, of which `r left_hemisphere_count` (`r percent(left_hemisphere_count/sample_size, digits = 1)`) had left hemispheric ICH. They had higher NIHSS scores, lower GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH (@tbl-1).
 
-```{r table1}
-#| label: tbl-1
-#| tbl-cap: "Baseline Characteristics"
-#| echo: false
-
-with_dir(here(), tar_read(table_1_aggressive))
-
-
-```
-
 ### Left hemispheric ICH and neurosurgical intervention
-
-```{r table 2}
-#| label: tbl-2
-#| tbl-cap: "Association between hemispheric lateralization and aggressive care"
-#| echo: false
-#| warning: false
-
-# gather odds ratios and 95% credible intervals for each model
-summary <- modelsummary(models,
-  exponentiate = TRUE,
-  fmt = 2,
-  estimate = c("aOR" = "estimate"),
-  statistic = c("95% Credible Interval" = "{conf.low} - {conf.high}"),
-  coef_omit = "^(?!b_ich_lat)",
-  coef_rename = c("b_ich_lateralityRight" = "Right Hemisphere ICH"),
-  gof_map = c("none"),
-  shape = model ~ term + statistic,
-)
-
-aOR_CIs_combined <- as_tibble(summary@table_dataframe) |>
-  rename("Outcome" = " ")
-
-aOR_CIs_combined[1] <- c(
-  "Neurosurgical Intervention",
-  "External Ventricular Drain",
-  "Days of Mechanical Ventilation",
-  "Tracheostomy",
-  "Withdrawal of Life-Sustaining Therapy",
-  "Early Withdrawal of Life-Sustaining Therapy",
-  "DNR Order"
-)
-
-# gather posterior probabilities of various magnitudes of difference for each outcome
-
-neurosurgery <- models$"Neurosurgical Intervention" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    or_1 = sum(ich_right_or > 1) / n(),
-    or_1.1 = sum(ich_right_or > 1.1) / n(),
-    or_1.2 = sum(ich_right_or > 1.2) / n(),
-    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-  )
-
-evd <- models$"External Ventricular Drain" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    or_1 = sum(ich_right_or > 1) / n(),
-    or_1.1 = sum(ich_right_or > 1.1) / n(),
-    or_1.2 = sum(ich_right_or > 1.2) / n(),
-    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-  )
-
-vent <- models$"Days of Mechanical Ventilation" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    or_1 = sum(ich_right_or > 1) / n(),
-    or_1.1 = sum(ich_right_or > 1.1) / n(),
-    or_1.2 = sum(ich_right_or > 1.2) / n(),
-    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-  )
-
-trach <- models$"Tracheostomy" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    or_1 = sum(ich_right_or > 1) / n(),
-    or_1.1 = sum(ich_right_or > 1.1) / n(),
-    or_1.2 = sum(ich_right_or > 1.2) / n(),
-    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-  )
-
-wlst <- models$"Withdrawal of Life-Sustaining Therapy" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    or_1 = sum(ich_right_or > 1) / n(),
-    or_1.1 = sum(ich_right_or > 1.1) / n(),
-    or_1.2 = sum(ich_right_or > 1.2) / n(),
-    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-  )
-
-early_wlst <- models$"Early Withdrawal of Life-Sustaining Therapy" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    or_1 = sum(ich_right_or > 1) / n(),
-    or_1.1 = sum(ich_right_or > 1.1) / n(),
-    or_1.2 = sum(ich_right_or > 1.2) / n(),
-    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-  )
-
-dnr <- models$"DNR Order" |>
-  spread_draws(b_ich_lateralityRight) |>
-  mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-  summarize(
-    or_1 = sum(ich_right_or > 1) / n(),
-    or_1.1 = sum(ich_right_or > 1.1) / n(),
-    or_1.2 = sum(ich_right_or > 1.2) / n(),
-    rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-  )
-
-# combine probability of OR > 1 (prob of difference)
-prob_difference <- tibble(
-  "Neurosurgical Intervention" = pluck(neurosurgery, 1),
-  "External Ventricular Drain" = pluck(evd, 1),
-  "Days of Mechanical Ventilation" = pluck(vent, 1),
-  "Tracheostomy" = pluck(trach, 1),
-  "Withdrawal of Life-Sustaining Therapy" = pluck(wlst, 1),
-  "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 1),
-  "DNR Order" = pluck(dnr, 1)
-) |>
-  pivot_longer(
-    cols = everything(),
-    names_to = "Outcome",
-    values_to = "Probabilty of any difference (aOR > 1)"
-  )
-
-# combine % of posterior within the ROPE
-rope <- tibble(
-  "Neurosurgical Intervention" = pluck(neurosurgery, 4),
-  "External Ventricular Drain" = pluck(evd, 4),
-  "Days of Mechanical Ventilation" = pluck(vent, 4),
-  "Tracheostomy" = pluck(trach, 4),
-  "Withdrawal of Life-Sustaining Therapy" = pluck(wlst, 4),
-  "Early Withdrawal of Life-Sustaining Therapy" = pluck(early_wlst, 4),
-  "DNR Order" = pluck(dnr, 4)
-) |>
-  pivot_longer(
-    cols = everything(),
-    names_to = "Outcome",
-    values_to = "% within ROPE"
-  )
-
-table_almost_2 <- left_join(aOR_CIs_combined, prob_difference, by = "Outcome") |>
-  left_join(rope, by = "Outcome")
-
-table_2 <- with_dir(here(), tar_read(table_2_aggressive))
-
-tibble_2 <- table_2[[1]] |>
-  select(c(label, stat_1, stat_2))
-
-column_names <- c(
-  "Neurosurgical Intervention",
-  "External Ventricular Drain",
-  "Days of Mechanical Ventilation",
-  "Tracheostomy",
-  "Withdrawal of Life-Sustaining Therapy",
-  "Early Withdrawal of Life-Sustaining Therapy",
-  "DNR Order"
-)
-
-tibble_2 <- tibble_2 |>
-  rename(
-    "Left Hemisphere" = "stat_1",
-    "Right Hemisphere" = "stat_2",
-    "Outcome" = "label"
-  ) |>
-  full_join(table_almost_2, by = "Outcome") |>
-  gt()
-
-tibble_2 |>
-  fmt_number(columns = 6:7, decimals = 2) |>
-  tab_footnote(
-    footnote = "Adjusted for: age, admission GCS, ICH location, IVH, and study (as random intercept)",
-    locations = cells_column_labels(columns = 4)
-  ) |>
-  tab_footnote(
-    footnote = "Region of Practical Equivalence, defined as 0.95 > aOR > 1.05",
-    locations = cells_column_labels(columns = 7)
-  )
-
-```
-
 
 ```{r figure 1}
 #| echo: false
 #| label: figure 1
 #| fig-width: 10
 
-predictions(models$"Neurosurgical Intervention", by = c("ich_laterality", "ich_location")) |>
+predictions(models$"Neurosurgical Intervention", type = "response", by = c("ich_laterality")) |>
   posterior_draws() |>
   ggplot(aes(x = draw, fill = ich_laterality)) +
   geom_density(alpha = .7) +
@@ -348,7 +163,25 @@ predictions(models$"Neurosurgical Intervention", by = c("ich_laterality", "ich_l
     fill = "ICH Laterality",
     y = NULL
   ) +
-  theme_ich()
+  theme_minimal()
+
+predictions(models$"Neurosurgical Intervention", type = "response", by = c("ich_laterality", "ich_location")) |>
+  posterior_draws() |>
+  ggplot(aes(x = draw, fill = ich_laterality)) +
+  geom_density(alpha = .7) +
+  # facet_grid(~ich_location) +
+  scale_fill_manual(values = c("#054224", "#ff8800")) +
+  scale_y_continuous() +
+  scale_x_continuous(
+    limits = c(0, 0.2),
+    breaks = seq(0, 0.20, 0.05),
+    labels = scales::percent
+  ) +
+  labs(
+    fill = "ICH Laterality",
+    y = NULL
+  ) +
+  theme_minimal()
 
 predictions(models$"Neurosurgical Intervention", by = c("ich_laterality", "study")) |>
   posterior_draws() |>
