@@ -137,7 +137,7 @@ subgroup_figure_function <- function(model) {
   return(final_figure)
 }
 
-mrs_figure_function <- function(model) {
+mrs_figure_function <- function(x, model) {
   theme_ich <- function(base_size = 10) {
     theme_minimal(base_size = base_size) +
       theme(
@@ -168,31 +168,33 @@ mrs_figure_function <- function(model) {
 
   mod <- avg_predictions(model, by = "ich_laterality")
 
-  data <- mod |>
-    select(group, ich_laterality, estimate) |>
-    as_tibble() |>
+  data <- x |>
+    select(ich_laterality, mrs_90) |>
+    na.omit() |>
+    count(mrs_90, ich_laterality) |>
+    group_by(ich_laterality) |>
     mutate(
-      estimate_label = percent(estimate, accuracy = 1),
+      pct_n = n / sum (n),
+      pct_label = percent(pct_n, accuracy = 1),
       mrs = case_when(
-        group == 0 ~ "0: No symptoms",
-        group == 1 ~ "1: No significant disability",
-        group == 2 ~ "2: Slight disability",
-        group == 3 ~ "3: Moderate disability",
-        group == 4 ~ "4: Moderately severe disability",
-        group == 5 ~ "5: Severe disability",
-        group == 6 ~ "6: Dead"
+        mrs_90 == 0 ~ "0: No symptoms",
+        mrs_90 == 1 ~ "1: No significant disability",
+        mrs_90 == 2 ~ "2: Slight disability",
+        mrs_90 == 3 ~ "3: Moderate disability",
+        mrs_90 == 4 ~ "4: Moderately severe disability",
+        mrs_90 == 5 ~ "5: Severe disability",
+        mrs_90 == 6 ~ "6: Dead"
       ),
-      mrs = fct_rev(mrs)
-    )
+      mrs = fct_rev(mrs))
 
   data |>
     ggplot(aes(
       x = ich_laterality,
-      y = estimate,
+      y = pct_n,
       fill = mrs
     )) +
     geom_col(width = 0.5) +
-    geom_text(aes(label = estimate_label),
+    geom_text(aes(label = pct_label),
       position = position_stack(vjust = 0.5),
       color = "white",
       fontface = "bold"

@@ -9,7 +9,7 @@ outcome_models_list_func <- function(a, b, c, d, e, f) {
   )
 }
 
-table_3_function <- function(models) {
+table_3_function <- function(x, models) {
   models <- models
 
   mrs <- models$"Modified Rankin Score" |>

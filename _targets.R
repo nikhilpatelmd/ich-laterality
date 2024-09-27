@@ -620,16 +620,15 @@ tar_plan(
   ),
   figure_1_png = ggsave(here("manuscripts", "figure1.png"),
     plot = figure_1, height = 20, width = 14, dpi = 600
+  ),
+  neutral_outcome_models <- outcome_models_list_func(
+    m_posterior_neutral_mrs_90_canonical,
+    m_posterior_neutral_euro_mobility_90_canonical,
+    m_posterior_neutral_euro_selfcare_90_canonical,
+    m_posterior_neutral_euro_usual_90_canonical,
+    m_posterior_neutral_euro_pain_90_canonical,
+    m_posterior_neutral_euro_anxiety_90_canonical
   )
-  # ),
-  # neutral_outcome_models <- outcome_models_list_func(
-  #   m_posterior_neutral_mrs_90_canonical,
-  #   m_posterior_neutral_euro_mobility_90_canonical,
-  #   m_posterior_neutral_euro_selfcare_90_canonical,
-  #   m_posterior_neutral_euro_usual_90_canonical,
-  #   m_posterior_neutral_euro_pain_90_canonical,
-  #   m_posterior_neutral_euro_anxiety_90_canonical
-  # )
 
   # tar_quarto(
   #   table_1,
