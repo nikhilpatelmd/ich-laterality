@@ -164,3 +164,9 @@ f_post_predictive_check <- function(mod) {
 
   return(pp_check / pp_check_bars)
 }
+
+f_post_predictive_check_vas <- function(mod) {
+  pp_check <- pp_check(mod, ndraws = 500)
+
+  return(pp_check)
+}

@@ -43,6 +43,7 @@ source("R/table1.R")
 source("R/table2.R")
 source("R/table3.R")
 source("R/figures.R")
+source("R/vas.R")
 
 
 # Pipeline ----
@@ -262,6 +263,7 @@ tar_plan(
   m_prior_right_euro_anxiety_365_canonical = f_prior_right_euro_anxiety_365_canonical(ich_aggressive),
   m_prior_flat_euro_anxiety_365_canonical = f_prior_flat_euro_anxiety_365_canonical(ich_aggressive),
 
+
   ### Prior Predictive Checks ----
   prior_check_mrs_90 = f_prior_predictive_check(m_prior_neutral_mrs_90_canonical, m_prior_left_mrs_90_canonical, m_prior_right_mrs_90_canonical, m_prior_flat_mrs_90_canonical),
   prior_visual_mrs_90_neutral = prediction_visual(m_prior_neutral_mrs_90_canonical),
@@ -430,6 +432,10 @@ tar_plan(
   m_posterior_left_euro_anxiety_365_canonical = f_posterior_left_euro_anxiety_365_canonical(ich_aggressive),
   m_posterior_right_euro_anxiety_365_canonical = f_posterior_right_euro_anxiety_365_canonical(ich_aggressive),
   m_posterior_flat_euro_anxiety_365_canonical = f_posterior_flat_euro_anxiety_365_canonical(ich_aggressive),
+  vas_data_transformed = vas_transformation_function(ich_aggressive),
+  m_vas_90 = f_vas_90_beta(vas_data_transformed),
+  m_vas_180 = f_vas_180_beta(vas_data_transformed),
+  m_vas_365 = f_vas_365_beta(vas_data_transformed),
 
   #### Posterior Diagnostics
 
@@ -508,6 +514,10 @@ tar_plan(
   diag_posterior_left_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_left_euro_anxiety_365_canonical),
   diag_posterior_right_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_right_euro_anxiety_365_canonical),
   diag_posterior_flat_euro_anxiety_365_canonical = posterior_diagnostics(m_posterior_flat_euro_anxiety_365_canonical),
+  diag_posterior_vas_90 = posterior_diagnostics(m_vas_90),
+  diag_posterior_vas_180 = posterior_diagnostics(m_vas_180),
+  diag_posterior_vas_365 = posterior_diagnostics(m_vas_365),
+
 
   #### Posterior Predictive Checks
   post_pred_check_mrs_90_minimal = f_post_predictive_check(m_posterior_mrs_90_minimal),
@@ -585,6 +595,9 @@ tar_plan(
   post_pred_check_left_euro_anxiety_365_canonical = f_post_predictive_check(m_posterior_left_euro_anxiety_365_canonical),
   post_pred_check_right_euro_anxiety_365_canonical = f_post_predictive_check(m_posterior_right_euro_anxiety_365_canonical),
   post_pred_check_flat_euro_anxiety_365_canonical = f_post_predictive_check(m_posterior_flat_euro_anxiety_365_canonical),
+  post_pred_check_vas_90 = f_post_predictive_check_vas(m_vas_90),
+  post_pred_check_vas_180 = f_post_predictive_check_vas(m_vas_180),
+  post_pred_check_vas_365 = f_post_predictive_check_vas(m_vas_365),
 
   ## Output and Reports ----
   table1 = table_1_function(ich_aggressive),
@@ -646,7 +659,8 @@ tar_plan(
     m_posterior_neutral_euro_selfcare_90_canonical,
     m_posterior_neutral_euro_usual_90_canonical,
     m_posterior_neutral_euro_pain_90_canonical,
-    m_posterior_neutral_euro_anxiety_90_canonical
+    m_posterior_neutral_euro_anxiety_90_canonical,
+    m_vas_90
   ),
   neutral_outcome_180_models = outcome_models_list_func(
     m_posterior_neutral_mrs_180_canonical,
@@ -654,7 +668,8 @@ tar_plan(
     m_posterior_neutral_euro_selfcare_180_canonical,
     m_posterior_neutral_euro_usual_180_canonical,
     m_posterior_neutral_euro_pain_180_canonical,
-    m_posterior_neutral_euro_anxiety_180_canonical
+    m_posterior_neutral_euro_anxiety_180_canonical,
+    m_vas_180
   ),
   neutral_outcome_365_models = outcome_models_list_func(
     m_posterior_neutral_mrs_365_canonical,
@@ -662,7 +677,8 @@ tar_plan(
     m_posterior_neutral_euro_selfcare_365_canonical,
     m_posterior_neutral_euro_usual_365_canonical,
     m_posterior_neutral_euro_pain_365_canonical,
-    m_posterior_neutral_euro_anxiety_365_canonical
+    m_posterior_neutral_euro_anxiety_365_canonical,
+    m_vas_365
   ),
   table3_neutral = table_3_function(neutral_outcome_90_models),
   table3_180 = table_3_function(neutral_outcome_180_models),
@@ -670,7 +686,25 @@ tar_plan(
   table3_docx = gtsave(table3_neutral, here("manuscripts", "table3.docx")),
   mrs_90_fig = mrs_figure_function(ich_aggressive, mrs_90),
   mrs_180_fig = mrs_figure_function(ich_aggressive, mrs_180),
-  mrs_365_fig = mrs_figure_function(ich_aggressive, mrs_365)
+  mrs_365_fig = mrs_figure_function(ich_aggressive, mrs_365),
+  euro_90_mobility_fig = euro_figure_function(ich_aggressive, euro_mobility_90),
+  euro_90_selfcare_fig = euro_figure_function(ich_aggressive, euro_selfcare_90),
+  euro_90_usual_fig = euro_figure_function(ich_aggressive, euro_usual_90),
+  euro_90_pain_fig = euro_figure_function(ich_aggressive, euro_pain_90),
+  euro_90_anxiety_fig = euro_figure_function(ich_aggressive, euro_anxiety_90),
+  euro_180_mobility_fig = euro_figure_function(ich_aggressive, euro_mobility_180),
+  euro_180_selfcare_fig = euro_figure_function(ich_aggressive, euro_selfcare_180),
+  euro_180_usual_fig = euro_figure_function(ich_aggressive, euro_usual_180),
+  euro_180_pain_fig = euro_figure_function(ich_aggressive, euro_pain_180),
+  euro_180_anxiety_fig = euro_figure_function(ich_aggressive, euro_anxiety_180),
+  euro_365_mobility_fig = euro_figure_function(ich_aggressive, euro_mobility_365),
+  euro_365_selfcare_fig = euro_figure_function(ich_aggressive, euro_selfcare_365),
+  euro_365_usual_fig = euro_figure_function(ich_aggressive, euro_usual_365),
+  euro_365_pain_fig = euro_figure_function(ich_aggressive, euro_pain_365),
+  euro_365_anxiety_fig = euro_figure_function(ich_aggressive, euro_anxiety_365),
+  euro_vas_90_plot = vas_plot_function(ich_aggressive, euro_vas_90),
+  euro_vas_180_plot = vas_plot_function(ich_aggressive, euro_vas_180),
+  euro_vas_365_plot = vas_plot_function(ich_aggressive, euro_vas_365)
 
 
   # tar_quarto(

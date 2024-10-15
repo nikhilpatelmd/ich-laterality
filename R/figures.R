@@ -264,22 +264,18 @@ euro_figure_function <- function(x, var) {
     mutate(
       pct_n = n / sum (n),
       pct_label = percent(pct_n, accuracy = 1),
-      mrs = case_when(
-        {{ var }} == 0 ~ "0: No symptoms",
-        {{ var }} == 1 ~ "1: No significant disability",
-        {{ var }} == 2 ~ "2: Slight disability",
-        {{ var }} == 3 ~ "3: Moderate disability",
-        {{ var }} == 4 ~ "4: Moderately severe disability",
-        {{ var }} == 5 ~ "5: Severe disability",
-        {{ var }} == 6 ~ "6: Dead"
+      euro = case_when(
+        {{ var }} == 1 ~ "1: No Problems",
+        {{ var }} == 2 ~ "2: Some Problems",
+        {{ var }} == 3 ~ "3: Significant Problems"
       ),
-      mrs = fct_rev(mrs))
+      euro = fct_rev(euro))
 
   data |>
     ggplot(aes(
       x = ich_laterality,
       y = pct_n,
-      fill = mrs
+      fill = euro
     )) +
     geom_col(width = 0.5) +
     geom_text(aes(label = pct_label),
@@ -296,13 +292,9 @@ euro_figure_function <- function(x, var) {
     ) +
     scale_fill_manual(
       breaks = c(
-        "0: No symptoms",
-        "1: No significant disability",
-        "2: Slight disability",
-        "3: Moderate disability",
-        "4: Moderately severe disability",
-        "5: Severe disability",
-        "6: Dead"
+        "1: No Problems",
+        "2: Some Problems",
+        "3: Significant Problems"
       ),
       values = generate_palette(c(72, 198, 238),
         blend_colour = c(118, 75, 162),
@@ -312,7 +304,7 @@ euro_figure_function <- function(x, var) {
     labs(
       x = NULL,
       y = NULL,
-      fill = "mRS at 90 days"
+      fill = "EuroQOL at 90 days"
     ) +
     theme_ich()
 }

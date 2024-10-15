@@ -1,11 +1,12 @@
-outcome_models_list_func <- function(a, b, c, d, e, f) {
+outcome_models_list_func <- function(a, b, c, d, e, f, g) {
   list(
     "Modified Rankin Score" = a,
     "EuroQOL - Mobility" = b,
     "EuroQOL - Self-Care" = c,
     "EuroQOL - Usual Activities" = d,
     "EuroQOL - Pain/Discomfort" = e,
-    "EuroQOL - Anxiety/Depression" = f
+    "EuroQOL - Anxiety/Depression" = f,
+    "Euro VAS" = g
   )
 }
 
@@ -114,6 +115,23 @@ table_3_function <- function(models) {
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
+  vas <- models$"Euro VAS" |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+    summarize(
+      or = median(ich_right_or),
+      lower_95_ci = quantile(ich_right_or, 0.025),
+      upper_95_ci = quantile(ich_right_or, 0.975),
+      or_1 = sum(ich_right_or < 1) / n(),
+      or_1.1 = sum(ich_right_or < 0.9) / n(),
+      or_1.2 = sum(ich_right_or < 0.8) / n(),
+      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+    ) |>
+    mutate(
+      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+    ) |>
+    select(or_ci, or_1, or_1.2, rope)
+
   total_tibble <- bind_rows(
     "Modified Rankin Score" = mrs,
     "EuroQOL - Mobility" = euro_mobility,
@@ -121,6 +139,7 @@ table_3_function <- function(models) {
     "EuroQOL - Usual Activities" = euro_usual,
     "EuroQOL - Pain/Discomfort" = euro_pain,
     "EuroQOL - Anxiety/Depression" = euro_anxiety,
+    "Euro VAS" = vas,
     .id = "Outcome") |>
   gt(rowname_col = "Outcome") |>
   tab_stubhead(label = "Outcome") |>
@@ -149,6 +168,14 @@ table_3_function <- function(models) {
       tab_footnote(
         footnote = "ROPE = region of practical equivalence, defined as 0.95 > aOR > 1.05",
         locations = cells_column_labels(columns = rope)
-      ) 
+      ) |>
+      tab_footnote(
+        footnote = "Probability of aOR < 1",
+        locations = cells_body(columns = 3, rows = 7) 
+      )|>
+      tab_footnote(
+        footnote = "Probability of aOR < 0.8",
+        locations = cells_body(columns = 4, rows = 7))      
+      
   return(total_tibble)
 }
