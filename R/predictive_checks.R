@@ -145,7 +145,7 @@ prediction_visual <- function(model) {
     posterior_draws() |>
     ggplot(aes(x = draw, fill = ich_laterality)) +
     geom_density(alpha = .7) +
-    scale_fill_manual(values = c("#054224", "#ff8800")) +
+    scale_fill_manual(values = c("#ce4951", "#476170")) +
     scale_x_continuous(labels = scales::percent) +
     labs(
       title = "Predicted Probability",
