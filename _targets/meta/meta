@@ -1,5 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|9865ebdf9cd08713|||||||||||||||
+.Random.seed|object|c2508e4dabfd74a8|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 aggressive_manuscript|stem||2f5dccf57d5ada46|ea04c99a2f1fdb01|861182658|manuscripts/manuscript1.html*manuscripts/manuscript1.qmd|t19914.6498776929s||0|file|local|vector|||||_paths_ missing files manuscriptsmanuscript1.html
 aggressive_supplement|stem||c5040f7a54df7e37|838dbe519e1cbfc2|-1635877901|manuscripts/manuscript1_supplement.html*manuscripts/manuscript1_supplement.qmd|t19914.6484719938s||0|file|local|vector|||||_paths_ missing files manuscriptsmanuscript1_supplement.html
@@ -876,6 +876,7 @@ neutral_outcome_models|stem|3d2fc7dac373b949|5486435033ce761a|9a06d48634f304d3|1
 outcome_models_list_func|function|751f3a630c1951b6|||||||||||||||
 outcomes_dag_function|function|6e154598f5ab410a|||||||||||||||
 post_pred_check_comfort|stem|9180b6939011a694|c50f411522a8d8ca|3a7f068c79a12bd1|-1855356997||t19993.589398379s|b6298ecc962f54e1|34693554|rds|local|vector|||2.669||
+post_pred_check_days_mechanical_ventilation|stem|4ac40469152bf2d8|0da8d257e7d14360|6691cbc9e0891ee9|-1125835002||t20052.5653965678s|1f9e8c24115fa8b8|34314012|rds|local|vector|||3.419||
 post_pred_check_dnr_binary|stem|5d4690eb83b631af|f4ed868bd511c315|2b1562a452025eae|764251534||t19993.5895212953s|d44f184e77373e02|34361173|rds|local|vector|||3.39||
 post_pred_check_early_wlst|stem|fc5def6c2d560142|55d2954da68fbc7a|8fb5a46eb3a885e6|1076470814||t19993.5892772761s|664b7f5051c4563c|34097922|rds|local|vector|||3||
 post_pred_check_evd|stem|2a2ea9d81a8fdf0e|5749da651fecd219|2e377497eb22c163|-542885703||t19993.5856475435s|bed1dee2f2cd6d66|33318907|rds|local|vector|||3.434||

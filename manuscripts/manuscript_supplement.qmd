@@ -1,8 +1,12 @@
-#| echo: false
-#| warning: false
-
-with_dir(here(), tar_read(prior_check_neurosurgery))
-with_dir(here(), tar_read(prior_visual_neurosurgery_neutral))
+---
+title: Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention
+author: "Nikhil Patel, MD"
+subtitle: Supplementary Appendix
+authors:
+  - name: Nikhil Patel
+    orcid: 0000-0002-3193-8590
+    affiliation: Department of Internal Medicine, Wake Forest University School of Medicine
+    roles: data analysis, writing
     corresponding: true
   - name: Matt Jaffa
     affiliation: Department of Neurology, University of Connecticut School of Medicine
@@ -101,7 +105,9 @@ dag_aggressive |>
 
 ```
 
-## Prior Distribution Definitions
+## Priors
+
+### Prior Distribution Definitions
 
 ```{r prior definitions}
 #| echo: false
@@ -122,32 +128,26 @@ right_sd <- 0.175
 right_lower_OR <- exp(right_mean - (1.96 * right_sd))
 right_upper_OR <- exp(right_mean + (1.96 * right_sd))
 
+flat_mean <- 0
+flat_sd <- 5
+flat_lower_OR <- exp(flat_mean - (1.96 * flat_sd))
+flat_upper_OR <- exp(flat_mean + (1.96 * flat_sd))
+
 ```
 
 In defining prior distributions, we generally followed suggestions from previous literature. [@zampieriUsingBayesianMethods2021; @kruschkeBayesianAnalysisReporting2021; @gelmanBayesianWorkflow2020] Specifically, we defined 4 sets of priors for each outcome:
 
-**Neutral prior**: mean of **`r neutral_mean`** and standard deviation of **`r neutral_sd`**, centering around an OR of **`r exp(neutral_mean)`** and 95% of the the probability mass for the OR between **`r round(neutral_lower_OR, digits = 2)`** to **`r round(neutral_upper_OR, digits = 2)`**.
-    
-**Left hemisphere prior**: mean of **`r left_mean`** and standard deviation of **`r left_sd`**, centering around an OR of **`r round(exp(left_mean), digits = 2)`** and 95% of the the probability mass for the OR between **`r round(left_lower_OR, digits = 2)`** to **`r round(left_upper_OR, digits = 2)`**.
+**Neutral prior**: This prior assumed that hemispheric lateralization did not significantly affect the primary outcome and represents the **null hypothesis**. It is centered around a mean of **`r neutral_mean`** and standard deviation of **`r neutral_sd`**, corresponding to OR of **`r exp(neutral_mean)`** and 95% of the probability mass for the OR between **`r round(neutral_lower_OR, digits = 2)`** to **`r round(neutral_upper_OR, digits = 2)`**.
 
-**Right hemisphere prior**: mean of **`r right_mean`** and standard deviation of **`r right_sd`**, centering around an OR of **`r round(exp(right_mean), digits =2)`** and 95% of the the probability mass for the OR between **`r round(right_lower_OR, digits = 2)`** to **`r round(right_upper_OR, digits =2)`**.
+**Left hemisphere prior**: This prior assumes that the primary and secondary outcomes are more likely with left hemisphere injury, centering around a mean of **`r left_mean`** and standard deviation of **`r left_sd`** which corresponds to an OR of **`r round(exp(left_mean), digits = 2)`** and 95% of the probability mass for the OR between **`r round(left_lower_OR, digits = 2)`** to **`r round(left_upper_OR, digits = 2)`**.
 
-**Flat prior**: most mimics a frequentist analysis
-    
-```{r prior graphical summary}
-#| echo: false
-#| fig-height: 6
+**Right hemisphere prior**: This prior assumes that the primary and secondary outcomes are more likely with right hemisphere injury, centering around a mean of **`r right_mean`** and standard deviation of **`r right_sd`** which corresponds to an OR of **`r round(exp(right_mean), digits =2)`** and 95% of the probability mass for the OR between **`r round(right_lower_OR, digits = 2)`** to **`r round(right_upper_OR, digits =2)`**.
 
-# ggplot(data = tibble(x = -2:2), aes(x = x)) +
-#   geom_function(fun = dnorm, args = list(mean = -20, sd = 0.5), linewidth = 1) +
-#   # stat_function(fun = dnorm_limit, geom = "area", color = "orange", alpha = 0.2) +
-#   geom_vline(xintercept = -0.22, linetype = "dashed", color = "orange", linewidth = 1) +
-#   scale_x_continuous(breaks = seq(-2, 2, 0.5)) +
-#   theme_ich()
-
-```
+**Flat prior**: This prior most mimics a frequentist analysis in that the prior distribution is so wide that it essentially contributes no information to the posterior model. It is centered around a mean of **`r flat_mean`** and standard deviation of standard deviation of **`r flat_sd`** which corresponds to an OR of **`r round(exp(flat_mean), digits =2)`** and 95% of the probability mass for the OR between **`r round(flat_lower_OR, digits = 2)`** to **`r round(flat_upper_OR, digits = 20)`**.
 
 ### Prior Predictive Checks
+
+Prior predictive checks were performed to understand the implications of the prior distributions before analyzing the data and ensuring the prior distributions represented plausible information regarding each outcome.
 
 #### Neurosurgical Intervention
 
@@ -157,8 +157,6 @@ In defining prior distributions, we generally followed suggestions from previous
 
 with_dir(here(), tar_read(prior_check_neurosurgery))
 
-with_dir(here(), tar_read(prior_visual_neurosurgery_neutral))
-
 ```
 
 #### Ventriculostomy
@@ -167,8 +165,22 @@ with_dir(here(), tar_read(prior_visual_neurosurgery_neutral))
 #| echo: false
 #| warning: false
 
+with_dir(here(), tar_read(prior_check_evd))
+
 
 ```
+
+#### Tracheostomy
+
+```{r prior predictive check - tracheostomy}
+#| echo: false
+#| warning: false
+
+with_dir(here(), tar_read(prior_check_tracheostomy))
+
+
+```
+
 
 #### Days of Mechanical Ventilation
 
@@ -176,15 +188,7 @@ with_dir(here(), tar_read(prior_visual_neurosurgery_neutral))
 #| echo: false
 #| warning: false
 
-
-```
-
-
-#### Tracheostomy
-
-```{r prior predictive check - tracheostomy}
-#| echo: false
-#| warning: false
+with_dir(here(), tar_read(prior_check_days_mechanical_ventilation))
 
 
 ```
@@ -196,6 +200,8 @@ with_dir(here(), tar_read(prior_visual_neurosurgery_neutral))
 #| echo: false
 #| warning: false
 
+with_dir(here(), tar_read(prior_check_comfort))
+
 
 ```
 
@@ -206,6 +212,8 @@ with_dir(here(), tar_read(prior_visual_neurosurgery_neutral))
 #| echo: false
 #| warning: false
 
+with_dir(here(), tar_read(prior_check_early_wlst))
+
 
 ```
 
@@ -215,42 +223,12 @@ with_dir(here(), tar_read(prior_visual_neurosurgery_neutral))
 #| echo: false
 #| warning: false
 
+with_dir(here(), tar_read(prior_check_dnr_binary))
+
 
 ```
 
 ## Posterior Simulation Diagnostics
-
-```{r posterior diagnostics setup}
-#| echo: false
-
-posterior_diagnostics <- function(mod) {
-  # plot code modified from Andrew Heiss (https://bayesf22-notebook.classes.andrewheiss.com/bayes-rules/13-chapter.html#simulating-the-posterior)
-
-  trace_plot <- mod |>
-    gather_draws(`^b_.*`, regex = TRUE) |>
-    ggplot(aes(x = .iteration, y = .value, color = factor(.chain))) +
-    geom_line(linewidth = 0.1) +
-    scale_color_viridis_d(option = "rocket", end = 0.85) +
-    facet_wrap(vars(.variable), scales = "free_y")
-
-  trank_plot <- mod |>
-    gather_draws(`^b_.*`, regex = TRUE) |>
-    group_by(.variable) |>
-    mutate(draw_rank = rank(.value)) |>
-    ggplot(aes(x = draw_rank, color = factor(.chain))) +
-    stat_bin(geom = "step", binwidth = 250, position = position_identity(), boundary = 0) +
-    scale_color_viridis_d(option = "rocket", end = 0.85) +
-    facet_wrap(vars(.variable), scales = "free_y") +
-    theme(axis.text.y = element_blank(), axis.title.y = element_blank(), axis.ticks.y = element_blank())
-
-  # pp_check <- pp_check(mod, ndraws = 500)
-  # pp_check_bars <- pp_check(mod, ndraws = 500, type = "bars_grouped", group = "ich_laterality")
-
-  return((trank_plot / trace_plot))
-}
-
-
-```
 
 ### MCMC Chain Convergence and Resolution
 
@@ -260,7 +238,7 @@ posterior_diagnostics <- function(mod) {
 #| echo: false
 #| fig-height: 10
 
-posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_neurosurgery)))
+with_dir(here(), tar_read(diag_posterior_neutral_neurosurgery))
 
 ```
 
@@ -270,7 +248,7 @@ posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_neurosurgery
 #| echo: false
 #| fig-height: 10
 
-posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_evd)))
+with_dir(here(), tar_read(diag_posterior_neutral_evd))
 
 ```
 
@@ -280,7 +258,7 @@ posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_evd)))
 #| echo: false
 #| fig-height: 10
 
-posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_tracheostomy)))
+with_dir(here(), tar_read(diag_posterior_neutral_tracheostomy))
 
 ```
 
@@ -290,7 +268,7 @@ posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_tracheostomy
 #| echo: false
 #| fig-height: 10
 
-posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_days_mechanical_ventilation)))
+with_dir(here(), tar_read(diag_posterior_neutral_days_mechanical_ventilation))
 
 ```
 
@@ -300,7 +278,7 @@ posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_days_mechani
 #| echo: false
 #| fig-height: 10
 
-posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_comfort)))
+with_dir(here(), tar_read(diag_posterior_neutral_comfort))
 
 ```
 
@@ -310,7 +288,7 @@ posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_comfort)))
 #| echo: false
 #| fig-height: 10
 
-posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_early_wlst)))
+with_dir(here(), tar_read(diag_posterior_neutral_early_wlst))
 
 ```
 
@@ -320,85 +298,72 @@ posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_early_wlst))
 #| echo: false
 #| fig-height: 10
 
-posterior_diagnostics(with_dir(here(), tar_read(m_posterior_neutral_dnr_binary)))
+with_dir(here(), tar_read(diag_posterior_neutral_dnr_binary))
 
 ```
 
 ### Posterior predictive checks
 
-```{r posterior prediction function}
-#| echo: false
-
-post_pred <- function(mod) {
-  pp_check <- pp_check(mod, ndraws = 500)
-
-  pp_check_bars <- pp_check(mod, ndraws = 500, type = "bars_grouped", group = "ich_laterality")
-
-  return(pp_check / pp_check_bars)
-}
-
-```
-
-### Neurosurgical Intervention
+#### Neurosurgical Intervention
 
 ```{r posterior predictions neurosurgery}
 #| echo: false
 
-post_pred(with_dir(here(), tar_read(m_posterior_neutral_neurosurgery)))
+with_dir(here(), tar_read(post_pred_check_neurosurgery))
 
 ```
 
-### Ventriculostomy
+#### Ventriculostomy
 
 ```{r posterior predictions evd}
 #| echo: false
 
-post_pred(with_dir(here(), tar_read(m_posterior_neutral_evd)))
+with_dir(here(), tar_read(post_pred_check_evd))
 
 ```
 
-### Tracheostomy
+#### Tracheostomy
 
 ```{r posterior predictions trach}
 #| echo: false
 
-post_pred(with_dir(here(), tar_read(m_posterior_neutral_tracheostomy)))
+with_dir(here(), tar_read(post_pred_check_tracheostomy))
 
 ```
 
-### Days of Mechanical Ventilation
+#### Days of Mechanical Ventilation
 
 ```{r posterior predictions vent}
 #| echo: false
 
-post_pred(with_dir(here(), tar_read(m_posterior_neutral_days_mechanical_ventilation)))
+with_dir(here(), tar_read(post_pred_check_days_mechanical_ventilation))
 
 ```
 
-### Comfort Care
+#### Comfort Care
 
 ```{r posterior predictions comfort}
 #| echo: false
 
-post_pred(with_dir(here(), tar_read(m_posterior_neutral_comfort)))
+with_dir(here(), tar_read(post_pred_check_comfort))
 
 ```
 
-### Early WLST
+#### Early WLST
 
 ```{r posterior predictions early wlst}
 #| echo: false
 
-post_pred(with_dir(here(), tar_read(m_posterior_neutral_early_wlst)))
+with_dir(here(), tar_read(post_pred_check_early_wlst))
 
 ```
 
-### DNR
+#### DNR
 
 ```{r posterior predictions dnr}
 #| echo: false
 
-post_pred(with_dir(here(), tar_read(m_posterior_neutral_dnr_binary)))
+with_dir(here(), tar_read(post_pred_check_dnr_binary))
 
 ```
 
@@ -406,6 +371,30 @@ post_pred(with_dir(here(), tar_read(m_posterior_neutral_dnr_binary)))
 ## Sensitivity Analyses
 
 ### Different Priors
+
+#### Left Hemisphere Prior
+
+```{r}
+
+with_dir(here(), tar_read(table2_left))
+
+```
+
+#### Right Hemisphere Prior
+
+```{r}
+
+with_dir(here(), tar_read(table2_right))
+
+```
+
+#### Flat Prior
+
+```{r}
+
+with_dir(here(), tar_read(table2_flat))
+
+```
 
 ### Alternative Adjustment Sets
 

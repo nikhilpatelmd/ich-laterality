@@ -181,6 +181,7 @@ tar_plan(
   post_pred_check_neurosurgery = f_post_predictive_check(m_posterior_neutral_neurosurgery),
   post_pred_check_evd = f_post_predictive_check(m_posterior_neutral_evd),
   post_pred_check_tracheostomy = f_post_predictive_check(m_posterior_neutral_tracheostomy),
+  post_pred_check_days_mechanical_ventilation = f_post_predictive_check(m_posterior_neutral_tracheostomy),
   post_pred_check_comfort = f_post_predictive_check(m_posterior_neutral_comfort),
   post_pred_check_early_wlst = f_post_predictive_check(m_posterior_neutral_early_wlst),
   post_pred_check_dnr_binary = f_post_predictive_check(m_posterior_neutral_dnr_binary),
