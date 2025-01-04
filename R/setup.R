@@ -28,8 +28,8 @@ library(ggmosaic) # Mosaic plots with ggplot
 
 # Set some global Stan options
 CHAINS <- 4
-ITER <- 2000
-WARMUP <- 1000
+ITER <- 10000
+WARMUP <- 5000
 BAYES_SEED <- 160
 options(mc.cores = parallel::detectCores(), brms.backend = "cmdstanr")
 

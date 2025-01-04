@@ -134,7 +134,6 @@ The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, M
 ## Results
 
 ### Baseline Characteristics
-
 A total of `r sample_size` patients were included in the analysis, of which `r left_hemisphere_count` (`r percent(left_hemisphere_count/sample_size, digits = 1)`) had left hemispheric ICH. They had higher NIHSS scores, lower GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH (@tbl-1).
 
 ### Left hemispheric ICH and neurosurgical intervention
