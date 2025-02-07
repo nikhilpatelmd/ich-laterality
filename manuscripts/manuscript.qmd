@@ -38,17 +38,6 @@ library(tidyverse)
 library(withr)
 library(here)
 library(formattable)
-library(janitor)
-library(gt)
-library(gtsummary)
-library(modelsummary)
-library(marginaleffects)
-library(tidybayes)
-library(bayesplot)
-library(ggdist)
-library(patchwork)
-library(tinytable)
-library(flextable)
 
 # plot stuff
 theme_ich <- function(base_family = "Figtree",
@@ -146,10 +135,10 @@ The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, M
 ## Results
 
 ### Baseline Characteristics
-A total of `r sample_size` patients were included in the analysis, of which `r left_hemisphere_count` (`r percent(left_hemisphere_count/sample_size, digits = 1)`) had left hemispheric ICH. They had higher NIHSS scores, lower GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH. There were `r erich_count` (`r percent(erich_count/sample_size, digits = 1)`) patients in the cohort from ERICH and `r atach_count` (`r percent(atach_count/sample_size, digits = 1)`) from ATACH-2. A description of patient characteristics and unadjusted endpoints are shown in Table 1.
+A total of `r sample_size` patients were included in the analysis, of which `r left_hemisphere_count` (`r percent(left_hemisphere_count/sample_size, digits = 1)`) had left hemispheric ICH (Table 1). They had higher NIHSS scores, lower GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH. There were `r erich_count` (`r percent(erich_count/sample_size, digits = 1)`) patients in the cohort from ERICH and `r atach_count` (`r percent(atach_count/sample_size, digits = 1)`) from ATACH-2.
 
 ### Left hemispheric ICH and neurosurgical intervention
-There were 86 patients (5.0%) with left hemispheric ICH who underwent neurosurgical intervention as compared to 144 patients (8.2%) with right hemispheric ICH (aOR 1.79, 95% credible interval 1.33 - 2.41). The posterior probability of the aOR being greater than 1 was 100%, while the probability of the aOR being greater than 1.2 was 100% (Table 2). These results were robust to the different priors specified in our analysis plan.
+There were 86 patients (5.0%) with left hemispheric ICH who underwent neurosurgical intervention as compared to 144 patients (8.2%) with right hemispheric ICH (aOR 1.79, 95% credible interval 1.33 - 2.41; Table 2). The posterior probability of the aOR being greater than 1 was 100%. The posterior probability of the aOR being greater than 1.2 was 100% (Table 2). These results were robust to the different priors specified in our analysis plan.
 
 ### Left hemispheric ICH and secondary outcomes
 
