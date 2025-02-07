@@ -1,6 +1,5 @@
 ---
 title: Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention
-author: "Nikhil Patel, MD"
 subtitle: A Post Hoc Bayesian Analysis using data from ATACH-2 and ERICH
 authors:
   - name: Nikhil Patel
@@ -19,6 +18,10 @@ authors:
   - name: Nicholas Allen Morris
     affiliation: Department of Neurology, University of Maryland School of Medicine
 date: last-modified
+format:
+  html:
+    embed-resources: true
+  docx: default
 abstract: |
 bibliography: references.bib
 csl: american-heart-association.csl
@@ -29,8 +32,6 @@ toc-title: Contents
 ```{r setup}
 #| echo: false
 #| output: false
-
-#| echo: false
 #| fig-height: 12
 
 library(targets)
@@ -138,14 +139,28 @@ The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, M
 A total of `r sample_size` patients were included in the analysis, of which `r left_hemisphere_count` (`r percent(left_hemisphere_count/sample_size, digits = 1)`) had left hemispheric ICH (Table 1). They had higher NIHSS scores, lower GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH. There were `r erich_count` (`r percent(erich_count/sample_size, digits = 1)`) patients in the cohort from ERICH and `r atach_count` (`r percent(atach_count/sample_size, digits = 1)`) from ATACH-2.
 
 ### Left hemispheric ICH and neurosurgical intervention
-There were 86 patients (5.0%) with left hemispheric ICH who underwent neurosurgical intervention as compared to 144 patients (8.2%) with right hemispheric ICH (aOR 1.79, 95% credible interval 1.33 - 2.41; Table 2). The posterior probability of the aOR being greater than 1 was 100%. The posterior probability of the aOR being greater than 1.2 was 100% (Table 2). These results were robust to the different priors specified in our analysis plan.
+Associations between hemispheric laterality and primary and secondary outcomes are shown in Table 2. There were 86 patients (5.0%) with left hemispheric ICH who underwent neurosurgical intervention as compared to 144 patients (8.2%) with right hemispheric ICH (aOR 1.79, 95% credible interval 1.33 - 2.41).  The posterior probability that the aOR was greater than 1 was 100%. The posterior probability of the aOR being greater than 1.2, indicating a substantial difference, was 100%. The 95% credible interval was entirely outside of the ROPE, suggesting a clinically meaningful difference in the odds of undergoing neurosurgical intervention between the two groups.
+
+The results using the different predefined priors were consistent with the findings in the main model (Figure 1). Sensitivity analyses yielded similar results (Supplemental Appendix).
 
 ### Left hemispheric ICH and secondary outcomes
+A total of 236 patients (13.7%) with left hemispheric ICH had an external ventricular drain placed as compared to 272 patients (15.5%) with right hemispheric ICH (aOR 1.29, 95% credible interval 1.05 - 1.59). The posterior probability that the aOR was greater than 1 was 99%. The posterior probability that the aOR was greater than 1.2 was 76%. The 95% credible interval was almost entirely outside of the ROPE (defined as 0.95 > aOR > 1.05).
 
+Other secondary outcomes showed smaller and less certain associations with hemispheric laterality. 
 
 ### Left hemispheric ICH and functional outcomes
+The associations between mRS at 90 days and functional outcomes are described in Table 3. The aOR for a worse mRS score at 90 days associated with right hemispheric ICH compared to left hemispheric ICH was 1.18 (95% credible interval: 1.02 to 1.37). The posterior probability that the aOR was > 1 was 99%, with 6% of the 95% credible interval was within the ROPE. The posterior probability that the aOR was > 1.2 was 43%.
 
+When examining HRQOL, the largest differences between groups was in the Moblity and Self-Care domains. The aOR for a worse EuroQOL - Moblity score associated with right hemispheric ICH compared to left hemispheric ICH was 1.44 (95% credible interval 1.2 - 1.71) with similar results for the Self-Care domain. The posterior probability that the aOR was > 1 was 100% for both domains, with the posterior probability that the aOR was > 1.2 being 98%.
+
+Results from using different priors and sensitivity analyses are presented in the Supplementary Appendix and did not significantly alter the results.
+
+### Subgroup Analysis
+
+Basal ganglia versus lobar 
+ATACH versus ERICH
 
 ## Discussion
+In this large analysis of `r sample_size` patients with intracerebral hemorrhage (ICH), we found evidence that as compared to patients with right hemispheric ICH, those with left hemispheric ICH were substantially less likely to receive aggressive care. Specifically, they had 1.79 times lower odds of receiving a neurosurgical intervention and 1.29 times lower odds of receiving an external ventricular drain. Despite receiving less aggressive care, they were more likely to have better functional outcomes at 90 days. This was robust to various definitions of functional outcomes, from the standard mRS to various HRQOL domains.
 
 ## Conclusions

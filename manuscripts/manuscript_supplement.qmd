@@ -1,6 +1,5 @@
 ---
 title: Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention
-author: "Nikhil Patel, MD"
 subtitle: Supplementary Appendix
 authors:
   - name: Nikhil Patel
@@ -19,6 +18,10 @@ authors:
   - name: Nicholas Allen Morris
     affiliation: Department of Neurology, University of Maryland School of Medicine
 date: last-modified
+format:
+  html:
+    embed-resources: true
+  docx: default
 abstract: |
 bibliography: references.bib
 csl: american-heart-association.csl
