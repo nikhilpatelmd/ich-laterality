@@ -62,7 +62,6 @@ tar_plan(
   ich_aggressive = ich_all |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels(),
   erich = ich_all |> filter(study == "ERICH") |> droplevels(),
   atach = ich_all |> filter(study == "ATACH-2") |> droplevels(),
-  imp_ich_aggressive = mice(ich_aggressive, m = 5, maxit = 35000, nnet.MaxNWts = 40000, print = FALSE),
 
   ## DAGs ----
   dag_aggressive = aggressive_dag_function(x),
