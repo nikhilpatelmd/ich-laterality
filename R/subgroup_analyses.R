@@ -1,48 +1,87 @@
 tar_load(m_posterior_neutral_neurosurgery)
 tar_load(ich_aggressive)
 
-# Fit the Bayesian logistic regression model with interaction
-model_with_interaction <- brm(
-  neurosurgery_evac ~ ich_laterality * ich_location + age + gcs_baseline + ich_volume_baseline + ivh + (1 | study),
-  data = ich_aggressive,
-  family = bernoulli(link = "logit"),
-  prior = c(
-    set_prior("normal(0, 10)", class = "Intercept"),
-    set_prior("normal(0, 2.5)", class = "b"),
-    set_prior("exponential(1)", class = "sd")
-  ),
-  chains = 4,
-  backend = "cmdstanr",
-  iter = 4000,
-  control = list(adapt_delta = 0.95)
+x <- ich_aggressive
+
+# Subgroups for ICH Location
+
+location_predictions <- predictions(
+  m_posterior_neutral_neurosurgery,
+  by = c("ich_laterality", "ich_location")
 )
 
-# Calculate predicted probabilities
-pred <- predictions(
+mean_difference_location <- avg_comparisons(
   m_posterior_neutral_neurosurgery,
-  by = c("ich_laterality", "ich_location"),
+  variables = "ich_laterality",  # AME for ich_laterality
+  by = "ich_location",           # Stratified by ich_location
   type = "response"
-) |>
-  get_draws()
+)
 
-# Calculate odds for each draw
-pred <- pred |>
-  mutate(odds = estimate / (1 - estimate))
+location_predictions_plot <- location_predictions |>
+    posterior_draws() |>
+    ggplot(aes(x = estimate, fill = ich_laterality)) +
+    geom_density(alpha = .5) +
+    facet_grid(~ich_location) +
+    scale_x_continuous(
+      limits = c(0, 0.2),
+      breaks = seq(0, 0.2, 0.05),
+      labels = scales::percent
+    ) +
+    labs(
+      title = "ICH Location",
+      x = NULL,
+      y = NULL,
+      fill = "Hemispheric Laterality"
+    ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+  
 
-# Calculate odds ratios for each draw
-pred <- pred |>
-  group_by(ich_location, drawid)
+study_predictions <- predictions(
+  m_posterior_neutral_neurosurgery,
+  by = c("ich_laterality", "study"),
+  re_formula = NULL,     # Exclude random effects
+)
 
+mean_difference_study <- avg_predictions(
+  m_posterior_neutral_neurosurgery,
+  variables = "ich_laterality",  # AME for study
+  by = "study",
+  type = "response",    # AMEs on the probability scale
+  re_formula = NULL,     # Exclude random effects
+)
 
-bob <- m_posterior_neutral_neurosurgery |>
-  avg_comparisons(
-    variables = "ich_laterality",
+study_predictions_plot <- study_predictions |>
+    posterior_draws() |>
+    ggplot(aes(x = estimate, fill = ich_laterality)) +
+    geom_density(alpha = .5) +
+    facet_grid(~study) +
+    scale_x_continuous(
+      limits = c(0, 0.15),
+      breaks = seq(0, 0.15, 0.05),
+      labels = scales::percent
+    ) +
+    labs(
+      title = "Study",
+      x = NULL,
+      y = NULL,
+      fill = "Hemispheric Laterality"
+    ) +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+
+   # Add geom_text layer for annotations
+   geom_text(
+    data = as_tibble(mean_difference_study),
+    aes(
+      x = Inf, y = -Inf, 
+      label = paste0(
+        round(Estimate * 100, 1), "% (",
+        round(`2.5 %` * 100, 1), "% - ",
+        round(`97.5 %` * 100, 1), "%)"
+      )
+    ),
+    hjust = 1.1, vjust = -1.5,  # Adjust position as needed
+    inherit.aes = FALSE
   )
 
-  ame_or <- avg_comparisons(
-    model_with_interaction,
-    variables = "ich_laterality",  # AME for ich_laterality
-    by = "ich_location",           # Stratified by ich_location
-    type = "link",
-    transform = "exp"              # Exponentiate to get odds ratio
-  )
