@@ -3,8 +3,8 @@
 model_setup <- function() {
   # Settings
   CHAINS <- 4
-  CORES <- 4
-  THREADS <- threading(2)
+  CORES <- 6
+  THREADS <- threading(1)
   ITER <- 10000
   WARMUP <- 5000
   BAYES_SEED <- 2024 - 06 - 30

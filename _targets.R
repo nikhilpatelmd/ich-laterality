@@ -8,15 +8,7 @@ library(here)
 
 suppressPackageStartupMessages(library(brms))
 
-# Taken from Andrew Heiss (https://github.com/andrewheiss/cautioning-canary/blob/master/_targets.R)
-
-#   - If using cmdstanr, you can use within-chain threading
-#   - (https://cran.r-project.org/web/packages/brms/vignettes/brms_threading.html)
-#   - On a four-core computer, use mc.cores = 2 and threads = threading(2)
-#   - On an eight+-core computer, use mc.cores = 4 and threads = threading(2)
 options(
-  mc.cores = 3,
-  mc.threads = 2,
   brms.backend = "cmdstanr"
 )
 
@@ -41,6 +33,7 @@ source("R/predictive_checks.R")
 source("R/posterior_diagnostics.R")
 source("R/table1.R")
 source("R/table2.R")
+source("R/subgroup_analyses.R")
 source("R/table3.R")
 source("R/figures.R")
 source("R/vas.R")
@@ -599,6 +592,10 @@ tar_plan(
   post_pred_check_vas_90 = f_post_predictive_check_vas(m_vas_90),
   post_pred_check_vas_180 = f_post_predictive_check_vas(m_vas_180),
   post_pred_check_vas_365 = f_post_predictive_check_vas(m_vas_365),
+
+  ## Subgroup Analyses ----
+  subgroup_location = f_subgroup_by_location(ich_aggressive),
+  subgroup_study = f_subgroup_by_study(ich_aggressive),
 
   ## Output and Reports ----
   table1 = table_1_function(ich_aggressive),

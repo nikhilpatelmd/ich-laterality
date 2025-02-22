@@ -17,7 +17,8 @@ f_posterior_neutral_neurosurgery <- function(dat) {
     threads = settings$threads,
     warmup = settings$warmup,
     iter = settings$iter,
-    seed = settings$seed
+    seed = settings$seed,
+    control = list(adapt_delta = 0.9)
   )
 
   return(model)
