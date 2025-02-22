@@ -320,7 +320,6 @@ m_prior_right_euro_anxiety_180_canonical|stem|5730118d0e12c8c4|1b764c3d42485765|
 m_posterior_right_euro_anxiety_365_canonical|stem|129787077f00cf51|c0bc6367057c1420|45ee5091e1c5571a|-1641629385||t20124.6351212518s|s4177909b|4177909|rds|local|vector|||107.62|Rows containing NAs were excluded from the model.|
 m_prior_flat_euro_usual_180_canonical|stem|afd1c226887f9932|16eab1cc409be86a|f981239dd2099c42|2035154362||t20124.6351313377s|s3526514b|3526514|rds|local|vector|||0.667|Rows containing NAs were excluded from the model.|
 m_posterior_left_euro_selfcare_180_canonical|stem|2d5f43cc9d43a376|68b53582a98b646a|22365a07492a0428|1844522033||t20124.6384315464s|s4084510b|4084510|rds|local|vector|||284.965|Rows containing NAs were excluded from the model.|
-m_posterior_neutral_mrs_90_canonical|stem|2d1a622a6cf08951|c1de9e50feee0b8c|dc5424d19b53d630|-1662819943||t20124.6447806654s|s5660255b|5660255|rds|local|vector|||548.334|Rows containing NAs were excluded from the model.|
 m_posterior_left_mrs_180_canonical|stem|632bd54979fed18b|8a6eb60ac5671574|e294080a6980612f|538331829||t20124.6488840659s|s5731492b|5731492|rds|local|vector|||354.31|Rows containing NAs were excluded from the model.|
 m_posterior_left_euro_usual_180_canonical|stem|587ad072f0dc9f05|7c20fb8209d2c608|8cc9f272206cfe9c|828685362||t20124.6518493014s|s4021468b|4021468|rds|local|vector|||256.021|Rows containing NAs were excluded from the model.|
 m_prior_flat_euro_pain_365_canonical|stem|31a7a2948aaceab6|dc0fc8967693b44c|1ed55cacdabd501e|1450961261||t20124.6518589311s|s3524861b|3524861|rds|local|vector|||0.654|Rows containing NAs were excluded from the model.|
@@ -404,7 +403,6 @@ m_posterior_neutral_euro_mobility_90_canonical|stem|4f48d8ac73b97b00|3477890f2e6
 m_prior_left_euro_pain_90_canonical|stem|b6a101b27eade271|f7021af8d292c9e0|19f7c1d05345d131|1153029087||t20124.7732404234s|s4093713b|4093713|rds|local|vector|||0.69|Rows containing NAs were excluded from the model.|
 m_posterior_right_mrs_365_canonical|stem|e268c522dcc40a2a|6ab2c9275cb9fa88|abd2035c6067c0b5|834399602||t20124.7747397709s|s5708953b|5708953|rds|local|vector|||129.313|Rows containing NAs were excluded from the model.|
 m_posterior_neutral_euro_mobility_180_canonical|stem|92438b95711b2049|448118b1a7532b72|4e4862fe0089c983|-105559302||t20124.7774201744s|s4047247b|4047247|rds|local|vector|||231.416|Rows containing NAs were excluded from the model.|
-euro_90_usual_fig|stem|0c14c1b0c9dfe03c|23612afd9a2046c0|7fcd06aa9452053a|866270925||t20124.7774215054s|s419137b|419137|rds|local|vector|||0.014||
 m_posterior_flat_euro_selfcare_90_canonical|stem|9af9e7f929be856b|15698f1036a36658|74f5de239d45e7f8|298677617||t20124.7826700593s|s3950217b|3950217|rds|local|vector|||453.303|Rows containing NAs were excluded from the model.|
 m_posterior_flat_euro_anxiety_90_canonical|stem|a0c2ce42e653a212|dc4161fdacc110cc|e5c11f0f09fea1bf|1098057542||t20124.7871868645s|s4200600b|4200600|rds|local|vector|||390.086|Rows containing NAs were excluded from the model.|
 m_posterior_flat_euro_pain_180_canonical|stem|c6aeb26c0df3306b|eecf2abb7ffd48d8|9f574749fc186dff|2062709972||t20124.7888488752s|s4166888b|4166888|rds|local|vector|||143.431|Rows containing NAs were excluded from the model.|
@@ -875,8 +873,13 @@ erich|stem|16aaf2fe652c3dd7|3a93622e2896a8d4|206d15dc89a1586b|1934531450||t20140
 atach|stem|4ff82dc43ef97f67|2e66fd6cceb96d68|206d15dc89a1586b|860028905||t20140.6953982261s|s31111b|31111|rds|local|vector|||0.008||
 settings|stem|6a9a31b29f43d120|0d725b29fc99973a|19df406315318916|-416401554||t20141.1530935768s|s215b|215|rds|local|vector|||0.001||
 m_posterior_neutral_neurosurgery|object|499a96d06b2c24b6|||||||||||||||
-ich_aggressive|stem|35b9ab728473b527|792fce65c3b577e1|206d15dc89a1586b|-1490752604||t20141.1567947604s|s116087b|116087|rds|local|vector|||0.016||
+subgroup_location|stem|461474208119315b|a7d2b4f8191940d3|ca34b2593f42418d|1596761155||t20141.1902778113s|s448b|448|rds|local|vector|||138.686|Rows containing NAs were excluded from the model.. Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.. Rows containing NAs were excluded from the model.. Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.. Rows containing NAs were excluded from the model.. Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.|
+subgroup_study|stem|9468b7da8d036c1c|e39d32acfe2c62a5|f1d7e45e9493e347|-256593210||t20141.1906166604s|s359b|359|rds|local|vector|||29.266|Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.. Rows containing NAs were excluded from the model.. Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.|
+subgroup_table|stem|b02e634909efe664|8f40e3a1e37e5fe3|8f6c8931e0f6101d|-2123609495||t20141.1906175574s|s16307b|16307|rds|local|vector|||0.067||
+subgroup_figure_function|function|93ce246f1985d229|||||||||||||||
+ich_aggressive|stem|35b9ab728473b527|792fce65c3b577e1|206d15dc89a1586b|-1490752604||t20141.2691525016s|s116087b|116087|rds|local|vector|||0.016||
 model_setup|function|640cb4bdb9f51388|||||||||||||||
+theme_ich|function|b45be91cc74e0d08|||||||||||||||
 table_1_function|function|6f7cf181c8b29457|||||||||||||||
 f_prior_predictive_check|function|9fb9f26c4dffb03d|||||||||||||||
 f_subgroup_by_study|function|63340650275664b3|||||||||||||||
@@ -884,9 +887,11 @@ outcome_models_list_func|function|751f3a630c1951b6|||||||||||||||
 vas_transformation_function|function|5c621e996cbd2437|||||||||||||||
 select_variables|function|51eaa047f9ead67f|||||||||||||||
 table_3_function|function|1cbe2cafbdf89be6|||||||||||||||
+m_posterior_neutral_mrs_90_canonical|object|b4c5902757ebe20e|||||||||||||||
 posterior_diagnostics|function|d6a1f8b8ed64abf7|||||||||||||||
 f_subgroup_by_location|function|e2b1055b3c954ff4|||||||||||||||
 outcomes_dag_function|function|6e154598f5ab410a|||||||||||||||
+posterior_odds_plot|function|09a745732362a9e4|||||||||||||||
 models_list_func|function|6bf5f6fcf351aae6|||||||||||||||
 f_post_predictive_check_vas|function|9317df8aa37cbf8d|||||||||||||||
 euro_figure_function|function|b45e7965f6ae88e4|||||||||||||||
@@ -894,12 +899,10 @@ filter_variables|function|aab6a12635d42cbf|||||||||||||||
 table_2_function|function|f390fe27f24725d8|||||||||||||||
 prediction_visual|function|322f8ea04b818642|||||||||||||||
 f_post_predictive_check|function|6baf77f9bc26df66|||||||||||||||
-subgroup_figure_function|function|93ce246f1985d229|||||||||||||||
-.Random.seed|object|bc2eb75ef3fc9d67|||||||||||||||
+.Random.seed|object|bb9391ee4a8e6da7|||||||||||||||
 vas_plot_function|function|c6226799edb23452|||||||||||||||
 aggressive_dag_function|function|56b830b48c4ac169|||||||||||||||
 f_subgroup_table|function|1fa25c0dc69e20d8|||||||||||||||
-mrs_figure_function|function|c318a687b7ba9f1e|||||||||||||||
 f_posterior_flat_euro_mobility_90_canonical|function|416718614719b83c|||||||||||||||
 f_posterior_flat_euro_selfcare_365_canonical|function|ab9abe179375aa89|||||||||||||||
 f_posterior_neutral_tracheostomy|function|b1222b27627e4eb7|||||||||||||||
@@ -1072,8 +1075,8 @@ f_prior_flat_euro_vas_90_canonical|function|30b2d0f0fb61d5c5|||||||||||||||
 f_prior_neutral_neurosurgery|function|ff8a8747bf733e6c|||||||||||||||
 f_posterior_neutral_neurosurgery|function|e80302b48ab17199|||||||||||||||
 f_posterior_neutral_dnr_binary|function|17a148691ac4b382|||||||||||||||
-f_posterior_neutral_euro_pain_180_canonical|function|bf2bdd845c7bee25|||||||||||||||
 f_posterior_flat_early_wlst|function|fdf8692f737fd12b|||||||||||||||
+f_posterior_neutral_euro_pain_180_canonical|function|bf2bdd845c7bee25|||||||||||||||
 f_posterior_right_euro_vas_180_canonical|function|164424babad1df53|||||||||||||||
 f_prior_flat_euro_mobility_90_canonical|function|3b7b272c3f26e952|||||||||||||||
 f_posterior_neutral_euro_vas_90_canonical|function|0da3bab64115f38b|||||||||||||||
@@ -1090,9 +1093,9 @@ f_prior_neutral_euro_anxiety_365_canonical|function|ba07d0b280258e49||||||||||||
 f_prior_left_euro_usual_365_canonical|function|1070d089b120ed13|||||||||||||||
 f_posterior_neutral_euro_usual_180_canonical|function|80f088f546fa9b3e|||||||||||||||
 f_prior_mrs_90_minimal|function|98df9661a5783da6|||||||||||||||
-f_posterior_flat_euro_vas_180_canonical|function|fb91ca211e27bc8c|||||||||||||||
-f_posterior_left_euro_usual_365_canonical|function|d5c4c5883c94c059|||||||||||||||
 f_prior_neutral_euro_pain_365_canonical|function|1d6c99ae74265d4e|||||||||||||||
+f_posterior_left_euro_usual_365_canonical|function|d5c4c5883c94c059|||||||||||||||
+f_posterior_flat_euro_vas_180_canonical|function|fb91ca211e27bc8c|||||||||||||||
 f_prior_left_dnr_binary|function|295f431f5f3800d2|||||||||||||||
 f_posterior_neutral_mrs_365_canonical|function|6df0e27932a03bc9|||||||||||||||
 f_posterior_right_euro_anxiety_365_canonical|function|93a5d07f80cd4840|||||||||||||||
@@ -1133,9 +1136,9 @@ f_posterior_right_euro_vas_90_canonical|function|6ef7e8768189a76c|||||||||||||||
 f_posterior_right_early_wlst|function|abde86eaf70f9680|||||||||||||||
 f_prior_neutral_euro_usual_180_canonical|function|72b6f64c96b6bc6b|||||||||||||||
 f_posterior_left_euro_pain_180_canonical|function|d721010601aa7179|||||||||||||||
-subgroup_location|stem|461474208119315b|a7d2b4f8191940d3|ca34b2593f42418d|1596761155||t20141.1902778113s|s448b|448|rds|local|vector|||138.686|Rows containing NAs were excluded from the model.. Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.. Rows containing NAs were excluded from the model.. Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.. Rows containing NAs were excluded from the model.. Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.|
-subgroup_study|stem|9468b7da8d036c1c|e39d32acfe2c62a5|f1d7e45e9493e347|-256593210||t20141.1906166604s|s359b|359|rds|local|vector|||29.266|Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.. Rows containing NAs were excluded from the model.. Method posterior_samples is deprecated. Please see as_draws for recommended alternatives.|
-subgroup_table|stem|b02e634909efe664|8f40e3a1e37e5fe3|8f6c8931e0f6101d|-2123609495||t20141.1906175574s|s16307b|16307|rds|local|vector|||0.067||
+adjusted_mrs_function|function|1634e253cbc99700|||||||||||||||
+mrs_figure_function|function|a04e6e68664216ae|||||||||||||||
+euro_90_usual_fig|stem|0c14c1b0c9dfe03c|23612afd9a2046c0|7fcd06aa9452053a|866270925||t20141.2696294814s|s419137b|419137|rds|local|vector|||0.086||
 model_setup|function|640cb4bdb9f51388
 table_1_function|function|6f7cf181c8b29457
 f_prior_predictive_check|function|9fb9f26c4dffb03d
@@ -1147,6 +1150,7 @@ table_3_function|function|1cbe2cafbdf89be6
 posterior_diagnostics|function|d6a1f8b8ed64abf7
 f_subgroup_by_location|function|e2b1055b3c954ff4
 outcomes_dag_function|function|6e154598f5ab410a
+posterior_odds_plot|function|09a745732362a9e4
 models_list_func|function|6bf5f6fcf351aae6
 f_post_predictive_check_vas|function|9317df8aa37cbf8d
 euro_figure_function|function|b45e7965f6ae88e4
@@ -1154,12 +1158,10 @@ filter_variables|function|aab6a12635d42cbf
 table_2_function|function|f390fe27f24725d8
 prediction_visual|function|322f8ea04b818642
 f_post_predictive_check|function|6baf77f9bc26df66
-subgroup_figure_function|function|93ce246f1985d229
-.Random.seed|object|5c204dfd876f5f61
+.Random.seed|object|52ffd0cf3263e55c
 vas_plot_function|function|c6226799edb23452
 aggressive_dag_function|function|56b830b48c4ac169
 f_subgroup_table|function|1fa25c0dc69e20d8
-mrs_figure_function|function|c318a687b7ba9f1e
 f_posterior_flat_euro_mobility_90_canonical|function|416718614719b83c
 f_posterior_flat_euro_selfcare_365_canonical|function|ab9abe179375aa89
 f_posterior_neutral_tracheostomy|function|b1222b27627e4eb7
@@ -1332,8 +1334,8 @@ f_prior_flat_euro_vas_90_canonical|function|30b2d0f0fb61d5c5
 f_prior_neutral_neurosurgery|function|ff8a8747bf733e6c
 f_posterior_neutral_neurosurgery|function|e80302b48ab17199
 f_posterior_neutral_dnr_binary|function|17a148691ac4b382
-f_posterior_neutral_euro_pain_180_canonical|function|bf2bdd845c7bee25
 f_posterior_flat_early_wlst|function|fdf8692f737fd12b
+f_posterior_neutral_euro_pain_180_canonical|function|bf2bdd845c7bee25
 f_posterior_right_euro_vas_180_canonical|function|164424babad1df53
 f_prior_flat_euro_mobility_90_canonical|function|3b7b272c3f26e952
 f_posterior_neutral_euro_vas_90_canonical|function|0da3bab64115f38b
@@ -1350,9 +1352,9 @@ f_prior_neutral_euro_anxiety_365_canonical|function|ba07d0b280258e49
 f_prior_left_euro_usual_365_canonical|function|1070d089b120ed13
 f_posterior_neutral_euro_usual_180_canonical|function|80f088f546fa9b3e
 f_prior_mrs_90_minimal|function|98df9661a5783da6
-f_posterior_flat_euro_vas_180_canonical|function|fb91ca211e27bc8c
-f_posterior_left_euro_usual_365_canonical|function|d5c4c5883c94c059
 f_prior_neutral_euro_pain_365_canonical|function|1d6c99ae74265d4e
+f_posterior_left_euro_usual_365_canonical|function|d5c4c5883c94c059
+f_posterior_flat_euro_vas_180_canonical|function|fb91ca211e27bc8c
 f_prior_left_dnr_binary|function|295f431f5f3800d2
 f_posterior_neutral_mrs_365_canonical|function|6df0e27932a03bc9
 f_posterior_right_euro_anxiety_365_canonical|function|93a5d07f80cd4840
@@ -1393,3 +1395,12 @@ f_posterior_right_euro_vas_90_canonical|function|6ef7e8768189a76c
 f_posterior_right_early_wlst|function|abde86eaf70f9680
 f_prior_neutral_euro_usual_180_canonical|function|72b6f64c96b6bc6b
 f_posterior_left_euro_pain_180_canonical|function|d721010601aa7179
+adjusted_mrs_function|function|1634e253cbc99700
+mrs_figure_function|function|a04e6e68664216ae
+theme_ich|stem|fe92da9351823300|a3d381f21678b10d|2c530c1562a7fbd1|-871403137||t20141.274317526s|s1685b|1685|rds|local|vector|||0.013||
+left_fill|stem|a14170f9a1ef66d5|ee9aca5a0972b3c4|2c530c1562a7fbd1|-605812162||t20141.2743176536s|s60b|60|rds|local|vector|||0.001||
+right_fill|stem|5ff640dd2dc19dab|ae01db88ff00ae71|2c530c1562a7fbd1|-29727145||t20141.2743177348s|s60b|60|rds|local|vector|||0.001||
+m_prior_flat_euro_anxiety_365_canonical|stem|3dca146dd9e5b64e|42680689be094209|d015e30e4a574590|134909181||t20141.2745943803s|s3539308b|3539308|rds|local|vector|||23.604|Rows containing NAs were excluded from the model.|
+m_prior_left_euro_anxiety_365_canonical|stem|86c14d5fd6a0da33|23e8af2e14dcdf06|317b8f85fdb50e4c|-8349584||t20141.2748596168s|s4080021b|4080021|rds|local|vector|||22.629|Rows containing NAs were excluded from the model.|
+m_prior_neutral_euro_anxiety_365_canonical|stem|cb97800c2cb1126b|7b78d18b3f5a2ba8|90b9abcbb4c4d65f|2107854268||t20141.2751121624s|s3788381b|3788381|rds|local|vector|||21.544|Rows containing NAs were excluded from the model.|
+m_prior_right_euro_anxiety_365_canonical|stem|10ac23e04954287d|37a4121b17646ed7|4bb8130e088ce623|-820877066||t20141.275359496s|s4107166b|4107166|rds|local|vector|||21.104|Rows containing NAs were excluded from the model.|

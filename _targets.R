@@ -28,14 +28,16 @@ source("R/diagnostics.R")
 # source("R/results_visualization.R")
 source("R/outcomes_prior_models.R")
 source("R/outcomes_posterior_models.R")
-# source("R/results_outcomes.R")
 source("R/predictive_checks.R")
 source("R/posterior_diagnostics.R")
 source("R/table1.R")
 source("R/table2.R")
+source("R/figure_1.R")
 source("R/subgroup_analyses.R")
 source("R/table4.R")
 source("R/figures.R")
+source("R/mrs_figures.R")
+source("R/euro_figures.R")
 source("R/vas.R")
 
 
@@ -48,6 +50,11 @@ tar_plan(
     "data/raw_data/all.rds",
     read_rds(!!.x)
   ),
+
+  ## Figure Themes and Colors ----
+  left_fill = "#ce4951",
+  right_fill = "#476170",
+  theme_ich = theme_ich(),
 
   ## Select, filter, and clean data ----
   selected_data = select_variables(imported_data),
@@ -642,15 +649,20 @@ tar_plan(
   table2_right = table_2_function(ich_aggressive, right_aggressive_models),
   table2_flat = table_2_function(ich_aggressive, flat_aggressive_models),
   table2_docx = gtsave(table2_neutral, here("manuscripts", "table2.docx")),
-  figure_1 = subgroup_figure_function(m_posterior_neutral_neurosurgery),
+  figure_1 = posterior_odds_plot(
+    m_posterior_neutral_neurosurgery, 
+    m_posterior_left_neurosurgery,
+    m_posterior_right_neurosurgery,
+    m_posterior_flat_neurosurgery
+  ),
   figure_1_tiff = ggsave(here("manuscripts", "figure1.tiff"),
-    plot = figure_1, height = 20, width = 14, dpi = 600
+    plot = figure_1, height = 10, width = 8, dpi = 1200, scale = 1
   ),
   figure_1_svg = ggsave(here("manuscripts", "figure1.svg"),
-    plot = figure_1, height = 20, width = 14, dpi = 600
+  plot = figure_1, height = 10, width = 8, dpi = 1200, scale = 1
   ),
   figure_1_png = ggsave(here("manuscripts", "figure1.png"),
-    plot = figure_1, height = 20, width = 14, dpi = 600
+  plot = figure_1, height = 10, width = 8, dpi = 1200, scale = 1
   ),
   neutral_outcome_90_models = outcome_models_list_func(
     m_posterior_neutral_mrs_90_canonical,

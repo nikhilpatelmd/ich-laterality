@@ -1,17 +1,7 @@
-library(tidyverse)
-library(tidybayes)
-library(ggridges)
+posterior_odds_plot <- function(models) {
 
-# List of your models
-models <- list(
-  "Neutral Prior" = m_posterior_neutral_neurosurgery,
-  "Left Prior" = m_posterior_left_neurosurgery,
-  "Right Prior" = m_posterior_right_neurosurgery,
-  "Flat Prior" = m_posterior_flat_neurosurgery
-)
-
-# Function to extract and transform draws for a single model
-extract_draws <- function(model, coefficient_name, label, model_name) {
+ # Function to extract and transform draws for a single model
+ extract_draws <- function(model, coefficient_name, label, model_name) {
   model |>
     gather_draws(`^b_.*`, regex = TRUE) |>
     mutate(.value = exp(.value)) |>
@@ -46,18 +36,19 @@ aOR_CI <- all_draws %>%
   )
 
 # Plotting with ggridges
-ggplot(all_draws, aes(x =.value, y = model_name, fill = model_name)) +
+plot <- ggplot(all_draws, aes(x =.value, y = model_name, fill = model_name)) +
   geom_density_ridges(alpha = 0.5, scale = 0.9) +
   geom_rect(
     data = data.frame(x_min = rope_lower, x_max = rope_upper),
     aes(xmin = x_min, xmax = x_max, ymin = -Inf, ymax = Inf),
-    alpha = 0.3, fill = "grey",
+    alpha = 0.3,
+    fill = "grey",
     inherit.aes = FALSE
   ) +
   scale_x_log10(breaks = seq(1, 3, by = 0.5)) +
   geom_vline(xintercept = 1, linetype = "dashed") +
   scale_fill_viridis_d(option = "D") +
-  scale_y_discrete(expand = c(0.001, 0.85)) +  # Add expand for margin
+  scale_y_discrete(expand = c(0.001, 0.85)) + # Add expand for margin
   labs(
     title = "Posterior Distributions of Odds Ratios",
     x = "Odds Ratio",
@@ -72,8 +63,11 @@ ggplot(all_draws, aes(x =.value, y = model_name, fill = model_name)) +
   geom_text(
     data = aOR_CI,
     aes(x = 4, y = as.numeric(model_name) - 0.3, label = label), # Adjust position
-    hjust = 1, vjust = -4.95, size = 4
+    hjust = 1,
+    vjust = -4.95,
+    size = 4
   )
+}
 
 # Save the plot
 ggsave(
