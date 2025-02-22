@@ -87,8 +87,8 @@ joined_df <- neurosurgery_formatted %>%
   ) |>
   select(ich_location, Left, Right, or, prob_greater_1, prob_greater_1.2, rope)
   
-return(joined_df)
-  
+
+  return(joined_df)
 }
 
 # Function for stratification by study
@@ -176,4 +176,69 @@ f_subgroup_by_study <- function(ich_aggressive) {
     select(study, Left, Right, or, prob_greater_1, prob_greater_1.2, rope)
 
   return(joined_study_df)
+}
+
+f_subgroup_table <- function(subgroup_location, subgroup_study) {
+  
+  subgroup_location <- subgroup_location |>
+    mutate(source = "ICH Location")
+
+  subgroup_study <- subgroup_study |>
+    mutate(source = "Study")
+
+  combined <- bind_rows(subgroup_location, subgroup_study) |>
+    mutate(subgroup = case_when(
+      !is.na(ich_location) ~ ich_location,
+      !is.na(study) ~ study
+    )) |>
+    select(
+      subgroup, 
+      Left, 
+      Right, 
+      or, 
+      prob_greater_1,
+      prob_greater_1.2,
+      rope
+  )
+
+  table <- combined |>
+    gt(rowname_col = "subgroup") |>
+    tab_stubhead(label = "Subgroup") |>
+    tab_row_group(
+      label = "Study",
+      rows = 4:5
+    ) |>
+      tab_row_group(
+        label = "ICH Location",
+        rows = 1:3
+      ) |>
+    cols_label (
+      Left = md("**Left Hemisphere**"),
+      Right = md("**Right Hemisphere**"),
+      or = md("**aOR (95% CI)**"),
+      prob_greater_1 = md("**Probability of any difference (aOR > 1)**"),
+      prob_greater_1.2 = md("**Probability of a substantial difference (aOR > 1.2)**"),
+      rope = md("**ROPE**")
+    ) |>
+    fmt_number(columns = 5:7, decimals = 2) |>
+      cols_width(
+        subgroup ~ px(225),
+        2:3 ~ px(175),
+        4 ~ px(150),
+        5:7 ~ px(125)
+      ) |>
+    cols_align(align = "left") |>
+    tab_style(
+      style = cell_text(weight = "bold"),
+      locations = cells_stub(rows = everything())) |>
+    tab_footnote(
+      footnote = "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, IVH, and study (as random intercept)",
+      locations = cells_column_labels(columns = or)
+    ) |>
+    tab_footnote(
+      footnote = "ROPE = region of practical equivalence, defined as 0.95 > aOR > 1.05",
+      locations = cells_column_labels(columns = rope)
+    )  
+
+    return(table)
 }

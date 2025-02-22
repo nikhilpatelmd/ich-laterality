@@ -34,7 +34,7 @@ source("R/posterior_diagnostics.R")
 source("R/table1.R")
 source("R/table2.R")
 source("R/subgroup_analyses.R")
-source("R/table3.R")
+source("R/table4.R")
 source("R/figures.R")
 source("R/vas.R")
 
@@ -596,6 +596,7 @@ tar_plan(
   ## Subgroup Analyses ----
   subgroup_location = f_subgroup_by_location(ich_aggressive),
   subgroup_study = f_subgroup_by_study(ich_aggressive),
+  subgroup_table = f_subgroup_table(subgroup_location, subgroup_study),
 
   ## Output and Reports ----
   table1 = table_1_function(ich_aggressive),
@@ -678,10 +679,10 @@ tar_plan(
     m_posterior_neutral_euro_anxiety_365_canonical,
     m_vas_365
   ),
-  table3_neutral = table_3_function(neutral_outcome_90_models),
-  table3_180 = table_3_function(neutral_outcome_180_models),
-  table3_365 = table_3_function(neutral_outcome_365_models),
-  table3_docx = gtsave(table3_neutral, here("manuscripts", "table3.docx")),
+  table4_neutral = table_3_function(neutral_outcome_90_models),
+  table4_180 = table_3_function(neutral_outcome_180_models),
+  table4_365 = table_3_function(neutral_outcome_365_models),
+  table4_docx = gtsave(table4_neutral, here("manuscripts", "table4.docx")),
   left_outcome_90_models = outcome_models_list_func(
     m_posterior_left_mrs_90_canonical,
     m_posterior_left_euro_mobility_90_canonical,
@@ -709,7 +710,7 @@ tar_plan(
     m_posterior_left_euro_anxiety_365_canonical,
     m_vas_365
   ),
-  table3_left = table_3_function(left_outcome_90_models),
+  table4_left = table_3_function(left_outcome_90_models),
   right_outcome_90_models = outcome_models_list_func(
     m_posterior_right_mrs_90_canonical,
     m_posterior_right_euro_mobility_90_canonical,
@@ -737,7 +738,7 @@ tar_plan(
     m_posterior_right_euro_anxiety_365_canonical,
     m_vas_365
   ),
-  table3_right = table_3_function(right_outcome_90_models),
+  table4_right = table_3_function(right_outcome_90_models),
   flat_outcome_90_models = outcome_models_list_func(
     m_posterior_flat_mrs_90_canonical,
     m_posterior_flat_euro_mobility_90_canonical,
@@ -765,7 +766,7 @@ tar_plan(
     m_posterior_flat_euro_anxiety_365_canonical,
     m_vas_365
   ),
-  table3_flat = table_3_function(flat_outcome_90_models),
+  table4_flat = table_3_function(flat_outcome_90_models),
   mrs_90_fig = mrs_figure_function(ich_aggressive, mrs_90),
   mrs_90_png = ggsave(here("manuscripts", "mrs90.png"),
     plot = mrs_90_fig, height = 14, width = 25, dpi = 600, bg = "white",
