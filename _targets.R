@@ -650,7 +650,7 @@ tar_plan(
   table2_flat = table_2_function(ich_aggressive, flat_aggressive_models),
   table2_docx = gtsave(table2_neutral, here("manuscripts", "table2.docx")),
   figure_1 = posterior_odds_plot(
-    m_posterior_neutral_neurosurgery, 
+    m_posterior_neutral_neurosurgery,
     m_posterior_left_neurosurgery,
     m_posterior_right_neurosurgery,
     m_posterior_flat_neurosurgery
