@@ -18,7 +18,6 @@ table_1_function <- function(x) {
     "ivh",
     "study"
   )
-
   table_1 <- x |>
     select(all_of(table_one_vars)) |>
     tbl_summary(
@@ -50,5 +49,7 @@ table_1_function <- function(x) {
     bold_labels() |>
     as_gt()
 
+
   return(table_1)
 }
+

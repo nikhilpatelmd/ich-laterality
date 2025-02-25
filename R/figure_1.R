@@ -64,17 +64,7 @@ plot <- ggplot(all_draws, aes(x =.value, y = model_name, fill = model_name)) +
     data = aOR_CI,
     aes(x = 4, y = as.numeric(model_name) - 0.3, label = label), # Adjust position
     hjust = 1,
-    vjust = -4.95,
+    vjust = -6,
     size = 4
   )
 }
-
-# Save the plot
-ggsave(
-  here("manuscripts","figure_1.png"), # Replace with your desired filename
-  plot = last_plot(), # Saves the last plot generated
-  width = 10,      # Adjust width as needed
-  height = 8,     # Adjust height as needed
-  dpi = 1200,       # Set the resolution (higher value = higher resolution)
-  scale = 1        # Keep scale at 1 to preserve relative sizes
-)

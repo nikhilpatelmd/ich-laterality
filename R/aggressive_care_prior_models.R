@@ -3,7 +3,7 @@
 model_setup <- function() {
   # Settings
   CHAINS <- 4
-  CORES <- 4
+  CORES <- 8
   THREADS <- threading(2)
   ITER <- 10000
   WARMUP <- 5000

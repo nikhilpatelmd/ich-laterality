@@ -604,10 +604,11 @@ tar_plan(
   subgroup_location = f_subgroup_by_location(ich_aggressive),
   subgroup_study = f_subgroup_by_study(ich_aggressive),
   subgroup_table = f_subgroup_table(subgroup_location, subgroup_study),
+  table3_docx = gtsave(subgroup_table, here("manuscripts", "table3.docx")),
 
   ## Output and Reports ----
   table1 = table_1_function(ich_aggressive),
-  # table1_docx <- gt::gtsave(table1, here("manuscripts", "table1.docx")), # For some reason have to MANUALLY run this!!!
+  table1_docx = gtsave(table1, here("manuscripts", "table1.docx")),
   neutral_aggressive_models = models_list_func(
     m_posterior_neutral_neurosurgery,
     m_posterior_neutral_evd,
@@ -650,11 +651,12 @@ tar_plan(
   table2_flat = table_2_function(ich_aggressive, flat_aggressive_models),
   table2_docx = gtsave(table2_neutral, here("manuscripts", "table2.docx")),
   figure_1 = posterior_odds_plot(
-    m_posterior_neutral_neurosurgery,
-    m_posterior_left_neurosurgery,
-    m_posterior_right_neurosurgery,
-    m_posterior_flat_neurosurgery
-  ),
+    models = list(
+      "Neutral Prior" = m_posterior_neutral_neurosurgery,
+      "Left Prior" = m_posterior_left_neurosurgery,
+      "Right Prior" = m_posterior_right_neurosurgery,
+      "Flat Prior" = m_posterior_flat_neurosurgery
+    )),
   figure_1_tiff = ggsave(here("manuscripts", "figure1.tiff"),
     plot = figure_1, height = 10, width = 8, dpi = 1200, scale = 1
   ),
@@ -662,7 +664,7 @@ tar_plan(
   plot = figure_1, height = 10, width = 8, dpi = 1200, scale = 1
   ),
   figure_1_png = ggsave(here("manuscripts", "figure1.png"),
-  plot = figure_1, height = 10, width = 8, dpi = 1200, scale = 1
+  plot = figure_1, height = 10, width = 9, dpi = 1200, scale = 1
   ),
   neutral_outcome_90_models = outcome_models_list_func(
     m_posterior_neutral_mrs_90_canonical,
