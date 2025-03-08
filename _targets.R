@@ -21,6 +21,7 @@ options(
 
 source("R/packages.R")
 source("R/data_cleaning.R")
+source("R/mice.R")
 source("R/dags.R")
 source("R/aggressive_care_prior_models.R")
 source("R/aggressive_care_posterior_models.R")
@@ -60,8 +61,7 @@ tar_plan(
   selected_data = select_variables(imported_data),
   ich_all = filter_variables(selected_data),
   ich_aggressive = ich_all |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels(),
-  erich = ich_all |> filter(study == "ERICH") |> droplevels(),
-  atach = ich_all |> filter(study == "ATACH-2") |> droplevels(),
+  ich_imputed = f_imputed(ich_aggressive),
 
   ## DAGs ----
   dag_aggressive = aggressive_dag_function(x),
@@ -822,7 +822,12 @@ tar_plan(
     plot = euro_vas_90_plot, height = 14, width = 20, dpi = 600, bg = "white",
   ),
   euro_vas_180_plot = vas_plot_function(ich_aggressive, euro_vas_180),
-  euro_vas_365_plot = vas_plot_function(ich_aggressive, euro_vas_365)
+  euro_vas_365_plot = vas_plot_function(ich_aggressive, euro_vas_365),
+
+  neurosurgery_imp = f_posterior_neutral_neurosurgery_imp(ich_imputed),
+  evd_imp = f_posterior_neutral_evd_imp(ich_imputed),
+  mrs_imp = f_posterior_neutral_mrs_90_canonical_imp(ich_imputed)
+
 
 
   # tar_quarto(
