@@ -1,36 +1,56 @@
-aggressive_dag_function <- function(x) {
-  node_details <- tribble(
-    ~name, ~label, ~x, ~y,
-    "aggressive_care", "Aggressive Care", 5, 5,
-    "ich_laterality", "Hemispheric Laterality", 3.25, 0,
-    "age", "Age", 1, 3.75,
-    "ich_location", "ICH Location", 3, 3.75,
-    "ich_volume", "ICH Volume", 3.5, 5.5,
-    "ivh", "IVH", 3.25, 2,
-    "gcs_baseline", "Admission GCS", 3, 8,
-    "stroke", "Previous Stroke", 2, 5,
-    "hypertension", "Hypertension", 2, 2,
-    "amyloid", "Amyloid Angiopathy", 2, 7,
-  )
-
-  node_labels <- node_details$label
-  names(node_labels) <- node_details$name
-
-  dagify(
-    aggressive_care ~ ich_laterality + ivh + ich_volume + gcs_baseline + ich_location + age + stroke + amyloid,
+f_neurosurgery_dag <- function(x) {
+  dag <- dagify(
+    neurosurgery ~ ich_laterality + ivh + ich_volume + gcs_baseline + ich_location + age + stroke + amyloid,
     ivh ~ ich_location,
     gcs_baseline ~ ich_volume + age + ivh + ich_location,
     ich_location ~ amyloid + hypertension,
     amyloid ~ age,
     hypertension ~ age,
     stroke ~ hypertension + age + amyloid,
-    coords = node_details,
     exposure = "ich_laterality",
-    outcome = "aggressive_care",
+    outcome = "neurosurgery",
     latent = "amyloid",
-    labels = node_labels
-  )
+    coords = list(
+      x = c(
+        neurosurgery = 5,
+        ich_laterality = 5,
+        age = 1,
+        ich_location = 3,
+        ich_volume = 3.5,
+        ivh = 3.25,
+        gcs_baseline = 3,
+        stroke = 2,
+        hypertension = 2,
+        amyloid = 2
+      ),
+      y = c(
+        neurosurgery = 5,
+        ich_laterality = 0,
+        age = 3.75,
+        ich_location = 3.75,
+        ich_volume = 5.5,
+        ivh = 2,
+        gcs_baseline = 8,
+        stroke = 5,
+        hypertension = 2,
+        amyloid = 7
+      )
+      ),
+      labels = c(
+        neurosurgery = "Neurosurgical Intervention",
+        ich_laterality = "Hemispheric Laterality",
+        age = "Age",
+        ich_location = "ICH Location",
+        ich_volume = "ICH Volume",
+        ivh = "IVH",
+        gcs_baseline = "Admission GCS",
+        stroke = "Previous Stroke",
+        hypertension = "Hypertension",
+        amyloid = "Cerebral Amyloid Angiopathy"
+      )
+    )
 }
+
 
 outcomes_dag_function <- function(x) {
   node_details <- tribble(

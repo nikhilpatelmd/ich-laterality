@@ -64,7 +64,7 @@ tar_plan(
   ich_imputed = f_imputed(ich_aggressive),
 
   ## DAGs ----
-  dag_aggressive = aggressive_dag_function(x),
+  dag_neurosurgery = f_neurosurgery_dag(x),
   dag_outcomes = outcomes_dag_function(x),
 
   ## Aggressive Care ----
@@ -826,7 +826,7 @@ tar_plan(
 
   neurosurgery_imp = f_posterior_neutral_neurosurgery_imp(ich_imputed),
   evd_imp = f_posterior_neutral_evd_imp(ich_imputed),
-  mrs_imp = f_posterior_neutral_mrs_90_canonical_imp(ich_imputed)
+  # mrs_imp = f_posterior_neutral_mrs_90_canonical_imp(ich_imputed)
 
 
 
