@@ -67,23 +67,25 @@ outcomes_dag_function <- function(x) {
     "rehab", "Participation in Rehab", 7, 1,
     "stroke", "Previous stroke", 2, 5,
     "hypertension", "Hypertension", 2, 2,
-    "amyloid", "Amyloid Angiopathy", 2, 7
+    "amyloid", "Amyloid Angiopathy", 2, 7,
+    "time", "Time from Symptoms to ED Presentation", 5, 7
   )
 
   node_labels <- node_details$label
   names(node_labels) <- node_details$name
 
   dagify(
-    functional_outcomes ~ ich_laterality + neurosurgery + wlst + ivh + ich_volume + gcs_baseline + ich_location + age + rehab + stroke + amyloid + hypertension,
-    rehab ~ ich_laterality + age + ich_location + ich_volume + gcs_baseline + stroke + amyloid + hypertension,
+    functional_outcomes ~ ich_laterality + neurosurgery + wlst + ivh + ich_volume + gcs_baseline + ich_location + age + rehab + stroke + amyloid + hypertension + time,
+    rehab ~ ich_laterality + age + ich_location + ich_volume + gcs_baseline + stroke + amyloid + hypertension + time,
     ivh ~ ich_location + ich_volume,
-    gcs_baseline ~ ich_volume + age + ivh + ich_location,
+    gcs_baseline ~ ich_volume + age + ivh + ich_location + time,
     ich_location ~ hypertension + amyloid,
     amyloid ~ age,
     hypertension ~ age,
-    stroke ~ hypertension + age + amyloid,
-    neurosurgery ~ ich_laterality + ich_location + age + gcs_baseline + amyloid + stroke,
+    stroke ~ hypertension + age,
+    neurosurgery ~ ich_laterality + ich_location + age + gcs_baseline + amyloid + stroke + time,
     wlst ~ ich_laterality + ich_location + age + gcs_baseline + amyloid + stroke,
+    ich_laterality ~ time,
     coords = node_details,
     exposure = "ich_laterality",
     outcome = "functional_outcomes",

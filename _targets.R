@@ -826,7 +826,7 @@ tar_plan(
 
   neurosurgery_imp = f_posterior_neutral_neurosurgery_imp(ich_imputed),
   evd_imp = f_posterior_neutral_evd_imp(ich_imputed),
-  # mrs_imp = f_posterior_neutral_mrs_90_canonical_imp(ich_imputed)
+  mrs_imp = f_posterior_neutral_mrs_90_canonical_imp(ich_imputed)
 
 
 

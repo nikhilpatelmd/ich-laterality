@@ -99,7 +99,7 @@ For our primary outcome model we specified the following DAG:
 ```{r neurosurgery dag}
 #| echo: false
 #| warning: false
-#| fig-height: 8
+#| fig-height: 6
 
 library(dagitty)
 library(ggdag, warn.conflicts = FALSE)
@@ -143,6 +143,9 @@ Since we felt that there were not materially different causal structures at play
 We specified the following DAG when examining functional outcomes (e.g., modified Rankin Scale and EuroQOL measures):
 
 ```{r functional outcome dag}
+#| echo: false
+#| warning: false
+#| fig-height: 8.5
 
 with_dir(here(), tar_load(dag_outcomes))
 
@@ -161,7 +164,11 @@ dag_outcomes |>
   guides(color = "none", fill = "none") +
   theme_dag()
 
+ggdag_paths(dag_outcomes, use_labels = "label", text = FALSE, shadow = TRUE)
+
 ```
+
+Similar to above 
 
 ## Priors
 
