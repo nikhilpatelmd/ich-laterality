@@ -10,3 +10,5 @@ manuscripts/figure1.tiff
 
 data/
 !data/README.md
+
+renv/library/
