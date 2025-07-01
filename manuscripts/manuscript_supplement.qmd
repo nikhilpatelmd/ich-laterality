@@ -86,7 +86,7 @@ As mentioned in the primary manuscript, we constructed directed acyclic graphs (
 
 1. **Identify minimal adjustment sets**: Determine the smallest set of variables to control for to estimate the causal effect of an exposure on an outcome. 
 
-2. **Avoid over-adjustement**: Prevent controlling for variables that are mediators or colliders, which can bias the results.
+2. **Avoid over-adjustment**: Prevent controlling for variables that are mediators or colliders, which can bias the results.
 
 3. **Clarify causal assumptions**: Make the underlying causal assumptions explicit and transparent [@hernanSpecifyingTargetTrial2016].
 
@@ -168,8 +168,7 @@ ggdag_paths(dag_outcomes, use_labels = "label", text = FALSE, shadow = TRUE)
 
 ```
 
-Similar to above 
-
+Once again we are interested in the 
 ## Priors
 
 ### Prior Distribution Definitions
