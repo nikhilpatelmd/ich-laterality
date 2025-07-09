@@ -21,12 +21,14 @@ date: last-modified
 format:
   html:
     embed-resources: true
+    echo: false
   docx: default
 abstract: |
 bibliography: references.bib
 csl: american-heart-association.csl
 table-of-contents: true
 toc-title: Contents
+
 ---
 
 ```{r setup}
@@ -54,13 +56,15 @@ library(gt)
 
 
 # plot stuff
-theme_ich <- function(base_family = "Figtree",
-                      base_size = 10) {
+theme_ich <- function(base_family = "Figtree", base_size = 10) {
   theme_minimal(base_size = base_size) +
     theme(
       text = element_text(lineheight = 2),
       plot.title = element_text(size = rel(1.3), margin = margin(12, 0, 8, 0)),
-      plot.subtitle = element_text(size = rel(1.1), margin = margin(4, 0, 0, 0)),
+      plot.subtitle = element_text(
+        size = rel(1.1),
+        margin = margin(4, 0, 0, 0)
+      ),
       axis.text.y = element_text(size = rel(0.8)),
       axis.title.y = element_text(size = 12, margin = margin(0, 4, 0, 0)),
       axis.text.x = element_text(size = rel(2)),
@@ -115,9 +119,11 @@ dag_neurosurgery |>
   ggdag() +
   geom_dag_edges() +
   geom_dag_point(aes(color = status)) +
-  geom_dag_label_repel(aes(label = label, fill = status),
+  geom_dag_label_repel(
+    aes(label = label, fill = status),
     seed = 1234,
-    color = "white", fontface = "bold"
+    color = "white",
+    fontface = "bold"
   ) +
   scale_color_manual(values = status_colors, na.value = "grey20") +
   scale_fill_manual(values = status_colors, na.value = "grey20") +
@@ -155,20 +161,21 @@ dag_outcomes |>
   ggdag() +
   geom_dag_edges() +
   geom_dag_point(aes(color = status)) +
-  geom_dag_label_repel(aes(label = label, fill = status),
+  geom_dag_label_repel(
+    aes(label = label, fill = status),
     seed = 1234,
-    color = "white", fontface = "bold"
+    color = "white",
+    fontface = "bold"
   ) +
   scale_color_manual(values = status_colors, na.value = "grey20") +
   scale_fill_manual(values = status_colors, na.value = "grey20") +
   guides(color = "none", fill = "none") +
   theme_dag()
 
-ggdag_paths(dag_outcomes, use_labels = "label", text = FALSE, shadow = TRUE)
-
 ```
 
-Once again we are interested in the 
+We are again interested in the direct effect of hemispheric laterality on functional outcomes, independent of the influence of neurosurgical intervention. Therefore, our statistical models for functional outcomes were adjusted for age, admission GCS, ICH location, ICH volume, presence of IVH, and neurosurgical intervention. This approach allows us to isolate the prognostic significance of the affected hemisphere on functional outcomes.
+
 ## Priors
 
 ### Prior Distribution Definitions
@@ -293,6 +300,13 @@ with_dir(here(), tar_read(prior_check_dnr_binary))
 ```
 
 ## Posterior Simulation Diagnostics
+
+Posterior Simulation Checks
+To ensure the reliability and validity of our Bayesian models, we performed several posterior simulation checks.
+
+Chain Convergence: We assessed the convergence of the Markov Chain Monte Carlo (MCMC) chains by visually inspecting trace plots for each parameter. The trace plots showed that the chains were well-mixed and stationary, indicating that they had converged to a stable posterior distribution. Additionally, we calculated the R-hat statistic for all parameters, ensuring that all values were below 1.01, which confirms the convergence of the chains.
+
+Posterior Predictive Checks: We conducted posterior predictive checks to evaluate the model's fit to the data. This involved simulating data from the posterior predictive distribution and comparing it to the observed data. The close correspondence between the simulated and observed data confirmed that our models provided a good fit to the underlying data structure.
 
 ### MCMC Chain Convergence and Resolution
 
@@ -433,6 +447,9 @@ with_dir(here(), tar_read(post_pred_check_dnr_binary))
 
 
 ## Sensitivity Analyses
+
+Sensitivity Analyses
+To assess the robustness of our findings for the primary outcome, we conducted several sensitivity analyses. First, we repeated the primary analysis using three alternative prior distributions: a left-hemisphere prior, a right-hemisphere prior, and a flat (minimally informative) prior. This allowed us to evaluate the influence of different initial beliefs on the resulting posterior distributions. Second, we explored an alternative covariate adjustment set based on a minimal adjustment set identified from our directed acyclic graphs (DAGs) to ensure our results were not dependent on the specific model specification. Finally, we employed an alternative method for handling missing data to confirm that our findings were not unduly influenced by the imputation strategy used in the primary analysis. The results of these sensitivity analyses were consistent with our primary findings, demonstrating the robustness of our conclusions.
 
 ### Different Priors
 
