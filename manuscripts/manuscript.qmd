@@ -76,66 +76,74 @@ tibble4 <- table4_neutral[[1]]
 ```
 
 ## Introduction
-Intracerebral hemorrhage (ICH) remains a challenging disease, marked by its sudden onset, morbidity, and mortality. While ischemic stroke has garnered considerable attention and therapeutic advancements, the acute management of ICH remains limited to blood pressure control, coagulopathy reversal, and more recently surgical evacuation of hemorrhage [@pradillaTrialEarlyMinimally2024]. Overwhelmingly these efforts have focused on reducing mortality and preventing additional morbidity due to secondary injury.
 
-Clinical presentations for patients with stroke are varied based on the hemisphere affected, where hemispheric dominance dictates cognitive processing, attention, language, and emotional responses. Consequently, when confronted with the occurrence of ICH, the specific hemisphere affected can profoundly influence not only the clinical presentation but also therapeutic strategies and prognostic outcomes.
+Intracerebral hemorrhage (ICH) remains a challenging disease, marked by its sudden onset, morbidity, and mortality. While management of ischemic stroke has advanced considerably over the last decade, the acute management of ICH remains limited to blood pressure control, coagulopathy reversal, and more perhaps surgical evacuation of hemorrhage [@pradillaTrialEarlyMinimally2024; @bakoMinimallyInvasiveSurgery2023]. These efforts have focused on reducing mortality and preventing additional morbidity due to secondary injury.
 
-Previous research involving patients with ischemic stroke provide evidence that those with right hemispheric injury present later to the hospital and may not be treated as frequently with thrombolytic therapy. [@dileggeImpactLesionSide2005; @foerchDifferenceRecognitionRight2005a; @portegiesLeftsidedStrokesAre2015; @liStrokeLateralizationLarge2021] It has also been noted that there is a hesitation among some practitioners to offer decompressive craniectomy in patients with left dominant-hemispheric ischemic infarcts despite literature demonstrating that long-term functional outcomes and health-related quality of life (HRQoL) are equivalent if not better for patients with left hemispheric injuries. [@deb-chatterjiSideMattersDifferences2022; @leggeNeglectingDifference2006; @beuscherFunctionalLongTermOutcome2017; @satoHigherMortalityPatients2015]
+Clinical presentations for patients with stroke are varied based on the hemisphere affected, where hemispheric dominance dictates cognitive processing, attention, language, and emotional responses. Consequently, when confronted with ICH, the specific hemisphere affected can profoundly influence not only the clinical presentation but also management decisions and prognostic outcomes.
 
-Previous work has demonstrated mixed results with regard to hemispheric lateralization and outcomes in ICH, and there hasn't been much research examining if patients are treated differently based on the hemisphere affected. We aimed to evaluate the effect of hemispheric lateralization of ICH on likelihood of receiving aggressive surgical intervention as well as it's association with functional outcomes. 
+Previous research involving patients with ischemic stroke provide evidence that those with right hemispheric injury present later to the hospital and may not be treated as frequently with thrombolytic therapy. [@dileggeImpactLesionSide2005; @foerchDifferenceRecognitionRight2005; @portegiesLeftsidedStrokesAre2015; @liStrokeLateralizationLarge2021] Some practitioners hesitate to offer decompressive craniectomy in patients with left dominant-hemispheric ischemic infarcts despite literature demonstrating that long-term functional outcomes and health-related quality of life (HRQoL) are equivalent if not better for patients with left hemispheric injuries. [@deb-chatterjiSideMattersDifferences2022; @leggeNeglectingDifference2006; @beuscherFunctionalLongTermOutcome2017; @satoHigherMortalityPatients2015]
+
+Amidst an increasing enthusiasm for surgical management of ICH [@bakoMinimallyInvasiveSurgery2023; @pradillaTrialEarlyMinimally2024; @beckDecompressiveCraniectomyBest2024], it is important to understand if hemispheric lateralization affects surgical decision making, as it seems to do for ischemic stroke. We aimed to evaluate the effect of hemispheric lateralization of ICH on likelihood of receiving aggressive surgical intervention as well as it's association with functional outcomes.
 
 ## Methods
 
 ### Study Design and Participants
-We conducted a post-hoc analysis using data from 2 prospective studies: the Antihypertensive Treatment of Acute Cerebral Hemorrhage II (ATACH-2) trial [@qureshiIntensiveBloodPressureLowering2016] and the Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH) [@wooEthnicRacialVariations2013] study. ATACH-2 was a large, multicenter, international, open-label, blinded-endpoint randomized controlled trial enrolling 1000 patients with ICH and randomizing them to either intesive blood pressure control (110-139 mm Hg) or standard blood pressure control (140-179 mm Hg). ERICH was a large, multicenter, prospective observational study enrolling patients in the United States admitted with ICH. Protocols and results of both studies have been previously published.
+
+We conducted a post-hoc analysis using data from two prospective studies: the Antihypertensive Treatment of Acute Cerebral Hemorrhage II (ATACH-2) trial and the Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH) study. ATACH-2 was a large, multicenter, international, open-label, blinded-endpoint randomized controlled trial that enrolled 1000 patients with ICH and randomized them to either intensive blood pressure control (110-139 mm Hg) or standard blood pressure control (140-179 mm Hg). ERICH was a large, multicenter, prospective observational study conducted patients in the United States on patients admitted with ICH, with particular emphasis on recruitment of a racially and ethnically diverse cohort. The protocols and results of both studies have been previously published elsewhere [@qureshiIntensiveBloodPressureLowering2016; @wooEthnicRacialVariations2013].
 
 We included all patients enrolled in these two studies with supratentorial location of ICH. We excluded patients with cerebellar or brainstem ICH as well as any patient with primary intraventricular hemorrhage (IVH).
 
 The study was approved by the institutional review board of the Wake Forest School of Medicine (IRB00098198).
 
 ### Exposures and Outcomes
+
 Our exposure was hemispheric laterality (left versus right). Our primary outcome was neurosurgical intervention as a binary variable defined as receiving a hematoma evacuation, decompressive craniectomy, or other craniotomy.
 
-To explore differences in other aspects of aggressive care, we defined several secondary outcomes: receipt of external ventricular drain (EVD), receipt of tracheostomy, days of mechanical ventilation, receipt of do-not-resuscitate (DNR) order at any point in the hospitalization, withdrawal of life-sustaining therapy (WLST) at any point in the hospitalization, and early WLST (defined as < 72 from symptom onset).
+To explore differences in other aspects of aggressive care, we defined several secondary outcomes: receipt of external ventricular drain (EVD), receipt of tracheostomy, days of mechanical ventilation, receipt of do-not-resuscitate (DNR) order at any point in the hospitalization, withdrawal of life-sustaining therapy (WLST) at any point in the hospitalization, and early WLST (defined as \< 72 from symptom onset).
 
-Our primary functional outcome was modified Rankin score (mRS) at 90 days. We also examined quality of life as assessed by the European Quality of Life-5 dimensions (EQ-5D) questionnaire.
+Our primary functional outcome was modified Rankin score (mRS) at 90 days analyzed via ordinal regression. We also examined quality of life as assessed by the European Quality of Life-5 dimensions (EQ-5D) questionnaire.
 
 ### Statistical Analysis
-To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models adjusted for the specified covariates below and study as a random intercept. We employed Bayesian statistical methods for this analysis due to several advantages over traditional frequentist approaches. Bayesian methods allow for the incorporation of prior knowledge or beliefs into the analysis, which can be particularly useful in observational studies where prior information about relationships between variables may exist. This is achieved through the use of prior distributions, which are combined with the observed data to produce posterior distributions representing updated beliefs about the parameters of interest. Furthermore, Bayesian methods provide a natural framework for quantifying uncertainty through credible intervals, which offer a more intuitive interpretation than frequentist confidence intervals. Finally, Bayesian modeling facilitates the estimation of posterior probabilities, allowing for direct probabilistic statements about hypotheses, such as the probability that an odds ratio is greater than 1, which is often of greater clinical relevance than a p-value. [@dogucuBayesRulesIntroduction; @mcelreathStatisticalRethinkingBayesian2020]
+
+To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models adjusted for the specified covariates below. We also included the study that patient came from as a random intercept. We employed Bayesian statistical methods for this analysis due to several advantages over traditional frequentist approaches. Bayesian methods allow for the incorporation of prior knowledge or beliefs into the analysis, which can be particularly useful in observational studies where prior information about relationships between variables may exist. This is achieved through the use of prior distributions, which are combined with the observed data to produce posterior distributions representing updated beliefs about the parameters of interest. Furthermore, Bayesian methods provide a natural framework for quantifying uncertainty through credible intervals, which offer a more intuitive interpretation than frequentist confidence intervals. Finally, Bayesian modeling facilitates the estimation of posterior probabilities, allowing for direct probabilistic statements about hypotheses, such as the probability that an odds ratio is greater than 1, which is often of greater clinical relevance than a p-value. [@dogucuBayesRulesIntroduction; @mcelreathStatisticalRethinkingBayesian2020]
 
 This report follows suggestions from the Bayesian Analysis Reporting Guidelines. [@kruschkeBayesianAnalysisReporting2021] For binary endpoints, hierarchal Bayesian logistic regression models were used. For ordinal endpoints, hierarchal Bayesian ordinal logisitic regression models were used. All analyses were performed in R version 4.4.2 (R Foundation for Statistical Computing, Vienna, Austria) using the 'brms' and 'tidybayes' packages.
 
 #### Covariate Selection
-We constructed directed acyclic graphs (DAGs) to model our causal assumptions and to appropriately select variables to minimize confounding and selection bias. [@debertinSynthesizingSubjectmatterExpertise2024; @tennantUseDirectedAcyclic2021; @hernanSpecifyingTargetTrial2016] Based on our specifications, we included the following covariates in our models: age, admission Glasgow coma score (GCS), ICH location (categorized as lobar, thalamic, or basal ganglia), baseline ICH volume (measured in millilters), and presence of intraventricular hemorrhage (IVH). The DAGs used in the analyses are available in the supplementary material.
+
+We constructed directed acyclic graphs (DAGs) to model our causal assumptions and to appropriately select variables to minimize confounding and selection bias. [@debertinSynthesizingSubjectmatterExpertise2024; @tennantUseDirectedAcyclic2021; @hernanSpecifyingTargetTrial2016] Based on our specifications, we included the following covariates in our models: age, admission Glasgow coma score (GCS), ICH location (categorized as lobar, thalamic, or basal ganglia), baseline ICH volume (measured in milliliters), and presence of intraventricular hemorrhage (IVH). The DAGs used in the analyses are available in the supplementary material.
 
 #### Prior Distribution Specification
-Four sets of priors were applied for all models: all assuming no association of hemispheric laterality on the outcomes of interest: 1) default, weakly informative priors as defined by the 'brms' software package; 2) priors informed from review of previous literature. A description of the reasons for these priors is available in the supplementary material.
+
+We applied four sets of prior distributions for all models to assess the robustness of our findings. The first set was a neutral prior, centered on a log-odds ratio of 0, which corresponds to an odds ratio of 1 and assumes no difference in the outcome of interest between left and right hemispheric patients. The second and third sets were left hemisphere and right hemisphere priors, respectively, which were weakly informative priors that assumed a higher probability of the outcome occurring in the specified hemisphere. The final set was a flat prior, which assumes that all possible values for the model parameters are equally likely. This non-informative prior allows the data to dominate the posterior distribution and most closely approximates the assumptions of a frequentist analysis. More details on the rationale of prior specification and the specific parameters used for each prior distribution are included in the supplementary appendix.
 
 #### Computation and Description of the Posterior Distribution
-We report the following metrics for the effect of hemispheric laterality on the primary and secondary outcomes: 1) median odds ratio (OR) of the posterior distribution with 95% credible interval; 2) probability of any difference (P[OR] > 1); 3) probability of a substantial difference (P[OR] > 1.2) as defined by the study authors; 4) percent of the posterior distribution outside of the region of practical equivalence as defined by the study authors (ROPE; 0.95 > P[OR] > 1.05). A description of the rationale for these thresholds is available in the supplementary material.
 
-#### Missing Data Treatment
-MICE?
+We report the following metrics for the effect of hemispheric laterality on the primary and secondary outcomes: 1) median odds ratio (OR) of the posterior distribution with 95% credible interval; 2) probability of any difference (P\[OR\] \> 1); 3) probability of a substantial difference (P\[OR\] \> 1.2) as defined by the study authors; 4) percent of the posterior distribution outside of the region of practical equivalence as defined by the study authors (ROPE; 0.95 \> P\[OR\] \> 1.05). A description of the rationale for these thresholds is available in the supplementary material.
 
-#### Sensitivity Analyses
-1) different priors
-2) alternate adjustment sets
-3) missing data treatment?
+#### Missing Data Treatment and Sensitivity Analyses
+
+For our primary analysis, we used a complete case approach. To assess the robustness of our findings, we conducted a sensitivity analysis using multiple imputation with chained equations (MICE) to address missing data for all covariates.
+
+In addition to the missing data analysis, we performed several other sensitivity analyses to confirm the stability of our results. First, we re-analyzed our models using the four sets of prior distributions described above, which allowed us to examine the influence of prior choices on the posterior distributions. Second, we explored alternate adjustment sets for the regression models to ensure our findings were not dependent on a single set of covariates, with these alternate sets being guided by the directed acyclic graphs (DAGs) used for the primary analysis [@tennantUseDirectedAcyclic2021]. Further details on the methods and results of these sensitivity analyses are presented in the Supplementary Appendix.
 
 ### Data Availability Statement
-The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, MD, MS, NCT01202864) data and analyses presented in this manuscript are based on the research files downloaded from the Archived Clinical Research web site of the National Institute of Neurologic Disease and Stroke (NINDS). The datasets can be obtained after approval of a written proposal as outlined on the NINDS website. As outlined in the NINDS Data Request Agreement, the analysis code is publicly available at [https://github.com/nikhilpatelmd/ich-laterality](https://github.com/nikhilpatelmd/ich-laterality).
+
+The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, MD, MS, NCT01202864) data and analyses presented in this manuscript are based on the research files downloaded from the Archived Clinical Research web site of the National Institute of Neurologic Disease and Stroke (NINDS). The datasets can be obtained after approval of a written proposal as outlined on the NINDS website. As outlined in the NINDS Data Request Agreement, the analysis code is publicly available at <https://github.com/nikhilpatelmd/ich-laterality>.
 
 ## Results
 
 ### Baseline Characteristics
-A total of `r sample_size %>% pull(n)` patients were included in the analysis, of which `r left_hemisphere_count %>% pull(n)` (`r percent(left_hemisphere_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) had left hemispheric ICH (Table 1). They had higher NIHSS scores, lower GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH. There were `r erich_count %>% pull(n)` (`r percent(erich_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) patients in the cohort from ERICH and `r atach_count %>% pull(n)` (`r percent(atach_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) from ATACH-2. 
+
+A total of `r sample_size %>% pull(n)` patients were included in the analysis, of which `r left_hemisphere_count %>% pull(n)` (`r percent(left_hemisphere_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) had left hemispheric ICH (Table 1). They had higher NIHSS scores, lower GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH. There were `r erich_count %>% pull(n)` (`r percent(erich_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) patients in the cohort from ERICH and `r atach_count %>% pull(n)` (`r percent(atach_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) from ATACH-2.
 
 ### Hemispheric laterality and neurosurgical intervention
+
 ```{r neurosurgical intervention}
 
 # Extract the values for the outcome
-or_ci_values <- tibble2 %>% 
-  filter(Outcome == "Neurosurgical Intervention") %>% 
+or_ci_values <- tibble2 %>%
+  filter(Outcome == "Neurosurgical Intervention") %>%
   pull(or_ci)
 
 # Split the string using a regular expression for the combined separator
@@ -151,14 +159,15 @@ upper_bound <- upper_bound_intermediate[[3]]
 
 Associations between hemispheric laterality and primary and secondary outcomes are shown in Table 2. There were `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(Left)` with left hemispheric ICH who underwent neurosurgical intervention as compared to `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(Right)` with right hemispheric ICH (aOR `r odds_ratio_surgery`, 95% credible interval `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was greater than 1 was `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(or_1) %>% round(2) * 100`%. The posterior probability of the aOR being greater than 1.2, indicating a substantial difference, was `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(or_1.2) %>% round(2) * 100`%. A very small portion of the posterior probability was inside of the ROPE (`r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(rope) %>% round(2) * 100`%).
 
-The results using the different predefined priors were consistent with the findings in the main model (Figure 1). Sensitivity analyses yielded similar results (Supplemental Appendix).
+The results using different pre-defined priors were consistent with the findings in the main model (Figure 1). Sensitivity analyses yielded similar results (Supplemental Appendix).
 
 ### Hemispheric laterality and secondary outcomes
+
 ```{r evd}
 
 # Extract the values for the outcome
-or_ci_values <- tibble2 %>% 
-  filter(Outcome == "External Ventricular Drain") %>% 
+or_ci_values <- tibble2 %>%
+  filter(Outcome == "External Ventricular Drain") %>%
   pull(or_ci)
 
 # Split the string using a regular expression for the combined separator
@@ -174,12 +183,14 @@ upper_bound <- upper_bound_intermediate[[3]]
 
 A total of `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(Left)` with left hemispheric ICH had an external ventricular drain (EVD) placed as compared to `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(Right)` with right hemispheric ICH (aOR `r odds_ratio_evd`, 95% credible interval `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was greater than 1 was `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(or_1) %>% round(2) * 100`%. The posterior probability that the aOR was greater than 1.2 was `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(or_1.2) %>% round(2) * 100`%. About `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(rope) %>% round(2) * 100`% of the posterior distribution was inside of the ROPE.
 
-Other secondary outcomes showed smaller and less certain associations with hemispheric laterality. 
+Other secondary outcomes showed smaller and less certain associations with hemispheric laterality.
 
 ### Subgroup Analyses
+
 The results of the pre-specified subgroup analyses are shown in Table 3.
 
 #### ICH Location
+
 ```{r lobar}
 
 # Extract the values for the Lobar subgroup
@@ -198,7 +209,7 @@ upper_bound_l <- upper_bound_intermediate[[3]]
 
 ```
 
- While the probability of neurosurgical intervention in patients with right hemisphere ICH was consistent when considering different locations, the difference was greatest among patients with lobar ICH. In patients with lobar ICH, a total of `r tibble3 %>% filter(ich_location == "Lobar") %>% pull(Left)` patients with left hemispheric ICH underwent neurosurgical intervention as compared to `r tibble3 %>% filter(ich_location == "Lobar") %>% pull(Right)` patients with right hemispheric ICH (aOR `r odds_ratio_l`, 95% credible interval `r lower_bound_l` - `r upper_bound_l`). The posterior probability that the aOR was greater than 1 was `r tibble3 %>% filter(ich_location == "Lobar") %>% pull(prob_greater_1) %>% round(2) * 100`%. The posterior probability that the aOR was greater than 1.2 was `r tibble3 %>% filter(ich_location == "Lobar") %>% pull(prob_greater_1.2) %>% round(2) * 100`%. The entire posterior distribution was outside of the ROPE.
+While the probability of neurosurgical intervention in patients with right hemisphere ICH was consistent when considering different locations, the difference was greatest among patients with lobar ICH. In patients with lobar ICH, a total of `r tibble3 %>% filter(ich_location == "Lobar") %>% pull(Left)` patients with left hemispheric ICH underwent neurosurgical intervention as compared to `r tibble3 %>% filter(ich_location == "Lobar") %>% pull(Right)` patients with right hemispheric ICH (aOR `r odds_ratio_l`, 95% credible interval `r lower_bound_l` - `r upper_bound_l`). The posterior probability that the aOR was greater than 1 was `r tibble3 %>% filter(ich_location == "Lobar") %>% pull(prob_greater_1) %>% round(2) * 100`%. The posterior probability that the aOR was greater than 1.2 was `r tibble3 %>% filter(ich_location == "Lobar") %>% pull(prob_greater_1.2) %>% round(2) * 100`%. The entire posterior distribution was outside of the ROPE.
 
 #### Study
 
@@ -220,14 +231,15 @@ upper_bound <- upper_bound_intermediate[[3]]
 
 ```
 
-The effect of hemispheric laterality was bigger in the ERICH cohort as compared to the ATACH-2 cohort. A total of `r tibble3.1 %>% filter(study == "ERICH") %>% pull(Left)` patients with left hemispheric ICH underwent neurosurgical intervention as compared to `r tibble3.1 %>% filter(study == "ERICH") %>% pull(Right)` patients with right hemispheric ICH (aOR `r odds_ratio`, 95% credible interval `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was greater than 1 was `r tibble3.1 %>% filter(study == "ERICH") %>% pull(prob_greater_1) %>% round(2) * 100`%. The posterior probability that the aOR was greater than 1.2 was `r tibble3.1 %>% filter(study == "ERICH") %>% pull(prob_greater_1.2) %>% round(2) * 100`%. The entire posterior distribution was outside of the ROPE.
+The effect of hemispheric laterality was bigger in the ERICH cohort as compared to the ATACH-2 cohort. Of the patients enrolled in ERICH, `r tibble3.1 %>% filter(study == "ERICH") %>% pull(Left)` patients with left hemispheric ICH underwent neurosurgical intervention as compared to `r tibble3.1 %>% filter(study == "ERICH") %>% pull(Right)` patients with right hemispheric ICH (aOR `r odds_ratio`, 95% credible interval `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was greater than 1 was `r tibble3.1 %>% filter(study == "ERICH") %>% pull(prob_greater_1) %>% round(2) * 100`%. The posterior probability that the aOR was greater than 1.2 was `r tibble3.1 %>% filter(study == "ERICH") %>% pull(prob_greater_1.2) %>% round(2) * 100`%. The entire posterior distribution was outside of the ROPE.
 
 ### Hemispheric laterality and functional outcomes
+
 ```{r mrs}
 
 # Extract the values for the outcome
-or_ci_values <- tibble4 %>% 
-  filter(Outcome == "Modified Rankin Score") %>% 
+or_ci_values <- tibble4 %>%
+  filter(Outcome == "Modified Rankin Score") %>%
   pull(or_ci)
 
 # Split the string using a regular expression for the combined separator
@@ -241,13 +253,13 @@ upper_bound <- upper_bound_intermediate[[3]]
 
 ```
 
-The associations between mRS at 90 days and functional outcomes are described in Table 4. The aOR for a worse mRS score at 90 days associated with right hemispheric ICH compared to left hemispheric ICH was `r odds_ratio` (95% credible interval `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was > 1 was `r tibble4 %>% filter(Outcome == "Modified Rankin Score") %>% pull(or_1) %>% round(2) * 100`%. The posterior probability that the aOR was > 1.2 was `r tibble4 %>% filter(Outcome == "Modified Rankin Score") %>% pull(or_1.2) %>% round(2) * 100`%. About `r tibble4 %>% filter(Outcome == "Modified Rankin Score") %>% pull(rope) %>% round(2) * 100`% of the posterior distribution was inside of the ROPE.
+The associations between mRS at 90 days and functional outcomes are described in Table 4. The aOR for a worse mRS score at 90 days associated with right hemispheric ICH compared to left hemispheric ICH was `r odds_ratio` (95% credible interval `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was \> 1 was `r tibble4 %>% filter(Outcome == "Modified Rankin Score") %>% pull(or_1) %>% round(2) * 100`%. The posterior probability that the aOR was \> 1.2 was `r tibble4 %>% filter(Outcome == "Modified Rankin Score") %>% pull(or_1.2) %>% round(2) * 100`%. About `r tibble4 %>% filter(Outcome == "Modified Rankin Score") %>% pull(rope) %>% round(2) * 100`% of the posterior distribution was inside of the ROPE.
 
 ```{r hrqol}
 
 # Extract the values for the outcome
-or_ci_values <- tibble4 %>% 
-  filter(Outcome == "EuroQOL - Mobility") %>% 
+or_ci_values <- tibble4 %>%
+  filter(Outcome == "EuroQOL - Mobility") %>%
   pull(or_ci)
 
 # Split the string using a regular expression for the combined separator
@@ -261,18 +273,18 @@ upper_bound <- upper_bound_intermediate[[3]]
 
 ```
 
-When examining HRQOL, the largest differences between groups was in the Moblity and Self-Care domains. The aOR for a worse EuroQOL - Moblity score associated with right hemispheric ICH compared to left hemispheric ICH was `r odds_ratio` (95% credible interval `r lower_bound` - `r upper_bound`) with similar results for the Self-Care domain. The posterior probability that the aOR was > 1 was `r tibble4 %>% filter(Outcome == "EuroQOL - Mobility") %>% pull(or_1) %>% round(2) * 100`% for both domains, with the posterior probability that the aOR was > 1.2 being `r tibble4 %>% filter(Outcome == "EuroQOL - Mobility") %>% pull(or_1.2) %>% round(2) * 100`%.
+When examining HRQOL, the largest differences between groups was in the Moblity and Self-Care domains. The aOR for a worse EuroQOL - Moblity score associated with right hemispheric ICH compared to left hemispheric ICH was `r odds_ratio` (95% credible interval `r lower_bound` - `r upper_bound`) with similar results for the Self-Care domain. The posterior probability that the aOR was \> 1 was `r tibble4 %>% filter(Outcome == "EuroQOL - Mobility") %>% pull(or_1) %>% round(2) * 100`% for both domains, with the posterior probability that the aOR was \> 1.2 being `r tibble4 %>% filter(Outcome == "EuroQOL - Mobility") %>% pull(or_1.2) %>% round(2) * 100`%.
 
 Results from using different priors and sensitivity analyses are presented in the Supplementary Appendix and did not significantly alter the results.
 
 ## Discussion
-In this pooled analysis of `r sample_size` patients with ICH, we found evidence that those with right hemispheric ICH were more likely to receive aggressive care than those with left hemispheric ICH. Specifically, patients with right hemispheric ICH had `r odds_ratio_surgery` times the odds of receiving a neurosurgical intervention and `r odds_ratio_evd` times the odds of receiving an EVD. This was consistent when considering various ICH locations and within each individual study. Despite receiving less aggressive care, patients with left hemispheric ICH had better 90-day functional outcomes, a finding robust to various definitions including the mRS and HRQoL domains.
 
-While treatment bias based on hemispheric laterality is not well-characterized in ICH, a large body of research on ischemic stroke reveals that patients with right hemispheric injury tend to be diagnosed later, receive thrombolysis less often, and may also undergo mechanical thrombectomy less frequently. Our study is the first to demonstrate differences in surgical intervention for ICH based on laterality.
+In this pooled analysis of `r sample_size` patients with ICH, we found evidence that those with right hemispheric ICH were more likely to receive neurosurgical intervention than those with left hemispheric ICH. Specifically, patients with right hemispheric ICH had `r odds_ratio_surgery` times the odds of receiving a neurosurgical intervention and `r odds_ratio_evd` times the odds of receiving an EVD. This was consistent when considering various ICH locations and within each individual study. Despite receiving less aggressive surgical care, patients with left hemispheric ICH had better 90-day functional outcomes, a finding robust to various definitions including the mRS and HRQoL domains. This finding is particularly important in light of recent evidence suggesting that surgical interventions, such as hematoma evacuation and decompressive craniectomy, may improve outcomes in some ICH patients [@pradillaTrialEarlyMinimally2024; @beckDecompressiveCraniectomyBest2024]. If there is a bias against offering these interventions to patients with left hemispheric ICH, it could lead to worse outcomes for this group. This highlights the need to address potential biases in treatment decisions and ensure equitable access to life-saving and disability-improving interventions.
 
-Our findings corroborate those from a pooled analysis of the INTERACT1 and INTERACT2 trials, which showed higher mortality in patients with right hemispheric ICH. However, other literature on hemispheric lateralization and outcomes in ICH and ischemic stroke has yielded mixed results. This discrepancy may be due to the robust, prospective design of the ERICH and ATACH-2 studies, which minimizes the biases common in retrospective studies.
+Our findings corroborate those from a pooled analysis of the INTERACT1 and INTERACT2 trials, which showed higher mortality in patients with right hemispheric ICH [@satoHigherMortalityPatients2015]. Moreover, there is
 
-Our study has some limitations. The absolute number of patients undergoing surgery was relatively low, making it unclear how these findings would translate to studies with higher intervention rates. With the recent publication of several large RCTs demonstrating the benefit of hematoma evacuation and decompressive craniectomy in ICH, it will be imperative to confirm our findings with additional cohorts.
+Our study has some limitations. The absolute number of patients undergoing surgery was relatively low, making it unclear how these findings might translate to studies with higher intervention rates. We derived our cohort from two prospective studies where practice patterns may have been affected by the Hawthorne effect. With the recent publication of several large RCTs demonstrating the benefit of hematoma evacuation and decompressive craniectomy in ICH, it will be imperative to confirm our findings with additional cohorts.
 
 ## Conclusions
-We found that patients with left hemispheric ICH were less likely to receive aggressive care in the form of neurosurgical intervention and external ventricular drain placement as compared to those with right hemispheric ICH.  Despite this, patients with left hemispheric ICH were more likely to have better functional outcomes at 90 days.  These findings highlight the potential influence of hemispheric laterality on treatment decisions and outcomes in ICH, and suggest that further research is needed to understand and address potential biases in treatment allocation.
+
+We found that patients with left hemispheric ICH were less likely to receive aggressive care in the form of neurosurgical intervention and external ventricular drain placement as compared to those with right hemispheric ICH. Despite this, patients with left hemispheric ICH were more likely to have better functional outcomes at 90 days. These findings highlight the potential influence of hemispheric laterality on treatment decisions and outcomes in ICH, and suggest that further research is needed to understand and address potential biases in treatment allocation.

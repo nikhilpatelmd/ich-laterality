@@ -102,7 +102,9 @@ table_2_function <- function(x, models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -119,7 +121,9 @@ table_2_function <- function(x, models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -136,7 +140,9 @@ table_2_function <- function(x, models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -153,7 +159,9 @@ table_2_function <- function(x, models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -170,7 +178,9 @@ table_2_function <- function(x, models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -187,7 +197,9 @@ table_2_function <- function(x, models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -204,7 +216,9 @@ table_2_function <- function(x, models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -252,7 +266,7 @@ table_2_function <- function(x, models) {
       locations = cells_body(columns = 2:3, rows = 3)
     ) |>
     tab_footnote(
-      footnote = "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, IVH, and study (as random intercept)",
+      footnote = "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere Laterality",
       locations = cells_column_labels(columns = or_ci)
     ) |>
     tab_footnote(

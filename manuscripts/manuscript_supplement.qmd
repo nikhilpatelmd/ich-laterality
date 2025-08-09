@@ -299,6 +299,83 @@ with_dir(here(), tar_read(prior_check_dnr_binary))
 
 ```
 
+#### mRS 90
+
+```{r prior predictive check - mrs90}
+#| echo: false
+#| warning: false
+
+with_dir(here(), tar_read(prior_check_mrs_90))
+
+
+```
+
+#### EuroOOL Mobility 90
+
+```{r prior predictive check - euro mobility}
+#| echo: false
+#| warning: false
+
+with_dir(here(), tar_read(prior_check_euro_mobility_90))
+
+
+```
+
+#### EuroOOL Self-Care 90
+
+```{r prior predictive check - euro selfcare}
+#| echo: false
+#| warning: false
+
+with_dir(here(), tar_read(prior_check_euro_selfcare_90))
+
+
+```
+
+#### EuroOOL Usual Activities 90
+
+```{r prior predictive check - euro usual}
+#| echo: false
+#| warning: false
+
+with_dir(here(), tar_read(prior_check_euro_usual_90))
+
+
+```
+
+#### EuroOOL Pain/Discomfort 90
+
+```{r prior predictive check - euro pain}
+#| echo: false
+#| warning: false
+
+with_dir(here(), tar_read(prior_check_euro_pain_90))
+
+
+```
+
+#### EuroOOL Anxiety/Depression 90
+
+```{r prior predictive check - euro anxiety}
+#| echo: false
+#| warning: false
+
+with_dir(here(), tar_read(prior_check_euro_anxiety_90))
+
+
+```
+
+#### EuroOOL VAS 90
+
+```{r prior predictive check - vas}
+#| echo: false
+#| warning: false
+
+with_dir(here(), tar_read(prior_check_euro_anxiety_90))
+
+
+```
+
 ## Posterior Simulation Diagnostics
 
 Posterior Simulation Checks
@@ -380,6 +457,76 @@ with_dir(here(), tar_read(diag_posterior_neutral_dnr_binary))
 
 ```
 
+#### mRS 90
+
+```{r posterior diagnostics mrs}
+#| echo: false
+#| fig-height: 10
+
+with_dir(here(), tar_read(diag_posterior_mrs_90_minimal))
+
+```
+
+#### EuroQOL Mobility 90
+
+```{r posterior diagnostics euro mobility}
+#| echo: false
+#| fig-height: 10
+
+with_dir(here(), tar_read(diag_posterior_neutral_euro_mobility_90_canonical))
+
+```
+
+#### EuroQOL Self-Care 90
+
+```{r posterior diagnostics euro selfcare}
+#| echo: false
+#| fig-height: 10
+
+with_dir(here(), tar_read(diag_posterior_neutral_euro_selfcare_90_canonical))
+
+```
+
+#### EuroQOL Usual Activities 90
+
+```{r posterior diagnostics euro usual}
+#| echo: false
+#| fig-height: 10
+
+with_dir(here(), tar_read(diag_posterior_neutral_euro_usual_90_canonical))
+
+```
+
+#### EuroQOL Pain/Discomfort 90
+
+```{r posterior diagnostics euro pain}
+#| echo: false
+#| fig-height: 10
+
+with_dir(here(), tar_read(diag_posterior_neutral_euro_pain_90_canonical))
+
+```
+
+#### EuroQOL Anxiety/Depression 90
+
+```{r posterior diagnostics euro anxiety}
+#| echo: false
+#| fig-height: 10
+
+with_dir(here(), tar_read(diag_posterior_neutral_euro_anxiety_90_canonical))
+
+```
+
+#### EuroQOL VAS 90
+
+```{r posterior diagnostics euro vas}
+#| echo: false
+#| fig-height: 10
+
+with_dir(here(), tar_read(diag_posterior_vas_90))
+
+```
+
 ### Posterior predictive checks
 
 #### Neurosurgical Intervention
@@ -445,10 +592,71 @@ with_dir(here(), tar_read(post_pred_check_dnr_binary))
 
 ```
 
+#### mRS 90
+
+```{r posterior predictions mrs}
+#| echo: false
+
+with_dir(here(), tar_read(post_pred_check_neutral_mrs_90_canonical))
+
+```
+
+#### EuroQOL Moblity 90
+
+```{r posterior predictions euro mobility}
+#| echo: false
+
+with_dir(here(), tar_read(post_pred_check_neutral_euro_mobility_90_canonical))
+
+```
+
+#### EuroQOL Self-Care 90
+
+```{r posterior predictions euro selfcare}
+#| echo: false
+
+with_dir(here(), tar_read(post_pred_check_neutral_euro_selfcare_90_canonical))
+
+```
+
+#### EuroQOL Usual Activities 90
+
+```{r posterior predictions euro usual}
+#| echo: false
+
+with_dir(here(), tar_read(post_pred_check_neutral_euro_usual_90_canonical))
+
+```
+
+#### EuroQOL Pain/Discomfort 90
+
+```{r posterior predictions euro pain}
+#| echo: false
+
+with_dir(here(), tar_read(post_pred_check_neutral_euro_pain_90_canonical))
+
+```
+
+#### EuroQOL Anxiety/Despression 90
+
+```{r posterior predictions euro anxiety}
+#| echo: false
+
+with_dir(here(), tar_read(post_pred_check_neutral_euro_anxiety_90_canonical))
+
+```
+
+#### EuroQOL VAS 90
+
+```{r posterior predictions euro vas}
+#| echo: false
+
+with_dir(here(), tar_read(post_pred_check_vas_90))
+
+```
 
 ## Sensitivity Analyses
 
-Sensitivity Analyses
 To assess the robustness of our findings for the primary outcome, we conducted several sensitivity analyses. First, we repeated the primary analysis using three alternative prior distributions: a left-hemisphere prior, a right-hemisphere prior, and a flat (minimally informative) prior. This allowed us to evaluate the influence of different initial beliefs on the resulting posterior distributions. Second, we explored an alternative covariate adjustment set based on a minimal adjustment set identified from our directed acyclic graphs (DAGs) to ensure our results were not dependent on the specific model specification. Finally, we employed an alternative method for handling missing data to confirm that our findings were not unduly influenced by the imputation strategy used in the primary analysis. The results of these sensitivity analyses were consistent with our primary findings, demonstrating the robustness of our conclusions.
 
 ### Different Priors
@@ -480,3 +688,10 @@ with_dir(here(), tar_read(table2_flat))
 ### Alternative Adjustment Sets
 
 ### Alternative Handling of Missing Data
+
+The primary analysis was conducted as a complete case analysis. We performed multiple imputation to assess the outcomes...
+
+```{r imputed}
+avg_predictions(neurosurgery_imp, by = "ich_laterality")
+
+```

@@ -26,7 +26,9 @@ table_3_function <- function(models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -43,7 +45,9 @@ table_3_function <- function(models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -60,7 +64,9 @@ table_3_function <- function(models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -77,7 +83,9 @@ table_3_function <- function(models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -94,7 +102,9 @@ table_3_function <- function(models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -111,7 +121,9 @@ table_3_function <- function(models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -128,7 +140,9 @@ table_3_function <- function(models) {
       rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
     ) |>
     mutate(
-      or_ci = glue("{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})")
+      or_ci = glue(
+        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      )
     ) |>
     select(or_ci, or_1, or_1.2, rope)
 
@@ -140,42 +154,44 @@ table_3_function <- function(models) {
     "EuroQOL - Pain/Discomfort" = euro_pain,
     "EuroQOL - Anxiety/Depression" = euro_anxiety,
     "Euro VAS" = vas,
-    .id = "Outcome") |>
-  gt(rowname_col = "Outcome") |>
-  tab_stubhead(label = "Outcome") |>
-  cols_label(
-    Outcome = md("**Outcome**"),
-    or_ci = md("**aOR (95% CI)**"),
-    or_1 = md("**Probability of any difference (aOR > 1)**"),
-    or_1.2 = md("**Probability of a substantial difference (aOR > 1.2)**"),
-    rope = md("**ROPE**")
+    .id = "Outcome"
   ) |>
-  fmt_number(columns = 2:5, decimals = 2) |>
+    gt(rowname_col = "Outcome") |>
+    tab_stubhead(label = "Outcome") |>
+    cols_label(
+      Outcome = md("**Outcome**"),
+      or_ci = md("**aOR (95% CI)**"),
+      or_1 = md("**Probability of any difference (aOR > 1)**"),
+      or_1.2 = md("**Probability of a substantial difference (aOR > 1.2)**"),
+      rope = md("**ROPE**")
+    ) |>
+    fmt_number(columns = 2:5, decimals = 2) |>
     cols_width(
       Outcome ~ px(375),
       2 ~ px(200),
       3:5 ~ px(150)
     ) |>
-  cols_align(align = "left") |>
-  tab_style(
+    cols_align(align = "left") |>
+    tab_style(
       style = cell_text(weight = "bold"),
       locations = cells_stub(rows = everything())
     ) |>
-      tab_footnote(
-        footnote = "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, IVH, and study (as random intercept)",
-        locations = cells_column_labels(columns = or_ci)
-      ) |>
-      tab_footnote(
-        footnote = "ROPE = region of practical equivalence, defined as 0.95 > aOR > 1.05",
-        locations = cells_column_labels(columns = rope)
-      ) |>
-      tab_footnote(
-        footnote = "Probability of aOR < 1",
-        locations = cells_body(columns = 3, rows = 7) 
-      )|>
-      tab_footnote(
-        footnote = "Probability of aOR < 0.8",
-        locations = cells_body(columns = 4, rows = 7))      
-      
+    tab_footnote(
+      footnote = "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere Laterality",
+      locations = cells_column_labels(columns = or_ci)
+    ) |>
+    tab_footnote(
+      footnote = "ROPE = region of practical equivalence, defined as 0.95 > aOR > 1.05",
+      locations = cells_column_labels(columns = rope)
+    ) |>
+    tab_footnote(
+      footnote = "Probability of aOR < 1",
+      locations = cells_body(columns = 3, rows = 7)
+    ) |>
+    tab_footnote(
+      footnote = "Probability of aOR < 0.8",
+      locations = cells_body(columns = 4, rows = 7)
+    )
+
   return(total_tibble)
 }
