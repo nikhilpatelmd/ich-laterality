@@ -659,7 +659,7 @@ with_dir(here(), tar_read(post_pred_check_vas_90))
 
 To assess the robustness of our findings for the primary outcome, we conducted several sensitivity analyses. First, we repeated the primary analysis using three alternative prior distributions: a left-hemisphere prior, a right-hemisphere prior, and a flat (minimally informative) prior. This allowed us to evaluate the influence of different initial beliefs on the resulting posterior distributions. Second, we explored an alternative covariate adjustment set based on a minimal adjustment set identified from our directed acyclic graphs (DAGs) to ensure our results were not dependent on the specific model specification. Finally, we employed an alternative method for handling missing data to confirm that our findings were not unduly influenced by the imputation strategy used in the primary analysis. The results of these sensitivity analyses were consistent with our primary findings, demonstrating the robustness of our conclusions.
 
-### Different Priors
+### Table 2 with Different Priors
 
 #### Left Hemisphere Prior
 
@@ -685,13 +685,62 @@ with_dir(here(), tar_read(table2_flat))
 
 ```
 
+### Table 4 with Different Priors
+
+#### Left Hemisphere Prior
+
+```{r}
+
+with_dir(here(), tar_read(table4_left))
+
+```
+
+#### Right Hemisphere Prior
+
+```{r}
+
+with_dir(here(), tar_read(table4_right))
+
+```
+
+#### Flat Prior
+
+```{r}
+
+with_dir(here(), tar_read(table4_flat))
+
+```
+
 ### Alternative Adjustment Sets
+
+#### Neurosurgical Intervention
+
+```{r}
+with_dir(here(), tar_read(alternative_table_neurosurgery))
+
+```
+
+#### External Ventricular Drain
+
+```{r}
+with_dir(here(), tar_read(alternative_table_evd))
+
+```
+
+#### modified Rankin Score
+
+```{r}
+
+with_dir(here(), tar_read(alternative_table_mrs90))
+
+```
 
 ### Alternative Handling of Missing Data
 
-The primary analysis was conducted as a complete case analysis. We performed multiple imputation to assess the outcomes...
+The primary analysis was conducted as a complete case analysis. We performed multiple imputation and conducted the same analyses for the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin score at 90 days.
 
 ```{r imputed}
-avg_predictions(neurosurgery_imp, by = "ich_laterality")
+
+with_dir(here(), tar_read(table_imp))
 
 ```

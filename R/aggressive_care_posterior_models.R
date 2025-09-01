@@ -2,6 +2,36 @@
 
 ## Neurosurgery as outcome -----
 
+f_posterior_minimal_neurosurgery <- function(dat) {
+  settings <- model_setup()
+
+  model <- brm(
+    neurosurgery_evac ~
+      ich_laterality *
+        ich_location +
+        age +
+        gcs_baseline +
+        ich_volume_baseline +
+        ivh +
+        (1 | study),
+    family = bernoulli(link = "logit"),
+    data = dat,
+    prior = c(
+      set_prior("normal(-7, 0.35)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b")
+    ),
+    cores = settings$cores,
+    chains = settings$chains,
+    threads = settings$threads,
+    warmup = settings$warmup,
+    iter = settings$iter,
+    seed = settings$seed,
+    control = list(adapt_delta = 0.99)
+  )
+
+  return(model)
+}
+
 f_posterior_neutral_neurosurgery <- function(dat) {
   settings <- model_setup()
 

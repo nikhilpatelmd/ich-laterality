@@ -47,12 +47,6 @@ f_posterior_neutral_neurosurgery_imp <- function(dat) {
 }
 
 
-# Imputed models that need to be run: 
-# neurosurgery_evac, 
-# evd, 
-# mrs_90,
-# 
-
 f_posterior_neutral_evd_imp <- function(dat) {
   settings <- model_setup()
 

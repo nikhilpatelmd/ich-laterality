@@ -42,6 +42,7 @@ source("R/mrs_figures.R")
 source("R/euro_figures.R")
 source("R/vas.R")
 source("R/imputed_data.R")
+source("R/sensitivity.R")
 
 # Pipeline ----
 tar_plan(
@@ -1517,6 +1518,53 @@ tar_plan(
   subgroup_table = f_subgroup_table(subgroup_location, subgroup_study),
   table3_docx = gtsave(subgroup_table, here("manuscripts", "table3.docx")),
 
+  ## (Further) Sensitivity Analyses
+  m_posterior_minimal_neurosurgery = f_posterior_minimal_neurosurgery(
+    ich_aggressive
+  ),
+  m_posterior_alternative1_neurosurgery = f_posterior_alternative1_neurosurgery(
+    ich_aggressive
+  ),
+  m_posterior_alternative2_neurosurgery = f_posterior_alternative2_neurosurgery(
+    ich_aggressive
+  ),
+  m_posterior_alternative3_neurosurgery = f_posterior_alternative3_neurosurgery(
+    ich_aggressive
+  ),
+  m_posterior_alternative4_neurosurgery = f_posterior_alternative4_neurosurgery(
+    ich_aggressive
+  ),
+  m_posterior_minimal_evd = f_posterior_minimal_neurosurgery(
+    ich_aggressive
+  ),
+  m_posterior_alternative1_evd = f_posterior_alternative1_evd(
+    ich_aggressive
+  ),
+  m_posterior_alternative2_evd = f_posterior_alternative2_evd(
+    ich_aggressive
+  ),
+  m_posterior_alternative3_evd = f_posterior_alternative3_evd(
+    ich_aggressive
+  ),
+  m_posterior_alternative4_evd = f_posterior_alternative4_evd(
+    ich_aggressive
+  ),
+  m_posterior_alternative1_mrs_90 = f_posterior_alternative1_mrs_90(
+    ich_aggressive
+  ),
+  m_posterior_alternative2_mrs_90 = f_posterior_alternative2_mrs_90(
+    ich_aggressive
+  ),
+  m_posterior_alternative3_mrs_90 = f_posterior_alternative3_mrs_90(
+    ich_aggressive
+  ),
+  m_posterior_alternative4_mrs_90 = f_posterior_alternative4_mrs_90(
+    ich_aggressive
+  ),
+  m_posterior_alternative5_mrs_90 = f_posterior_alternative5_mrs_90(
+    ich_aggressive
+  ),
+
   ## Output and Reports ----
   table1 = table_1_function(ich_aggressive),
   table1_docx = gtsave(table1, here("manuscripts", "table1.docx")),
@@ -1801,5 +1849,27 @@ tar_plan(
   neurosurgery_imp = f_posterior_neutral_neurosurgery_imp(ich_imputed),
   evd_imp = f_posterior_neutral_evd_imp(ich_imputed),
   mrs_imp = f_posterior_neutral_mrs_90_canonical_imp(ich_imputed),
-  table_imp = f_imp_sensitivity(neurosurgery_imp, evd_imp, mrs_imp)
+  table_imp = f_imp_sensitivity(neurosurgery_imp, evd_imp, mrs_imp),
+  alternative_table_neurosurgery = f_alternative_adjustment_table(
+    m_posterior_minimal_neurosurgery,
+    m_posterior_alternative1_neurosurgery,
+    m_posterior_alternative2_neurosurgery,
+    m_posterior_alternative3_neurosurgery,
+    m_posterior_alternative4_neurosurgery
+  ),
+  alternative_table_evd = f_alternative_adjustment_table(
+    m_posterior_minimal_evd,
+    m_posterior_alternative1_evd,
+    m_posterior_alternative2_evd,
+    m_posterior_alternative3_evd,
+    m_posterior_alternative4_evd
+  ),
+  alternative_table_mrs90 = f_alternative_adjustment_table_mrs(
+    m_posterior_mrs_90_minimal,
+    m_posterior_alternative1_mrs_90,
+    m_posterior_alternative2_mrs_90,
+    m_posterior_alternative3_mrs_90,
+    m_posterior_alternative4_mrs_90,
+    m_posterior_alternative5_mrs_90
+  )
 )
