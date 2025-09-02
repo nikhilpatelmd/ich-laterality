@@ -125,7 +125,7 @@ We report the following metrics for the effect of hemispheric laterality on the 
 
 For our primary analysis, we used a complete case approach. To assess the robustness of our findings, we conducted a sensitivity analysis using multiple imputation with chained equations (MICE) to address missing data for all covariates.
 
-In addition to the missing data analysis, we performed several other sensitivity analyses to confirm the stability of our results. First, we re-analyzed our models using the four sets of prior distributions described above, which allowed us to examine the influence of prior choices on the posterior distributions. Second, we explored alternate adjustment sets for the regression models to ensure our findings were not dependent on a single set of covariates, with these alternate sets being guided by the directed acyclic graphs (DAGs) used for the primary analysis [@tennantUseDirectedAcyclic2021]. Further details on the methods and results of these sensitivity analyses are presented in the Supplementary Appendix.
+In addition to the missing data analysis, we analyzed our models using the four sets of prior distributions described above, which allowed us to examine the influence of prior choices on the posterior distributions. Further details on the methods and results of these sensitivity analyses are presented in the Supplementary Appendix.
 
 ### Data Availability Statement
 

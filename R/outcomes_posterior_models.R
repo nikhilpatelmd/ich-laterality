@@ -35,9 +35,7 @@ f_posterior_neutral_mrs_90_canonical <- function(dat) {
       ich_laterality +
         age +
         gcs_baseline +
-        ich_location +Adherence to Style: I can provide feedback on common issues, such as the proper use of abbreviations, the presentation of statistical data, and overall sentence structure, which are common points of critique in the peer-review process.
-
-
+        ich_location +
         ich_volume_baseline +
         ivh +
         time_symptoms_to_ed +

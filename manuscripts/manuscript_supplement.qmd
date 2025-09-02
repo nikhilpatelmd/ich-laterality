@@ -43,6 +43,7 @@ library(tidyverse)
 library(withr)
 library(here)
 library(ggdag)
+library(dagitty)
 library(modelsummary)
 library(marginaleffects)
 library(brms)
@@ -105,8 +106,6 @@ For our primary outcome model we specified the following DAG:
 #| warning: false
 #| fig-height: 6
 
-library(dagitty)
-library(ggdag, warn.conflicts = FALSE)
 library(ggokabeito)
 
 with_dir(here(), tar_load(dag_neurosurgery))
