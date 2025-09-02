@@ -711,33 +711,9 @@ with_dir(here(), tar_read(table4_flat))
 
 ```
 
-### Alternative Adjustment Sets
-
-#### Neurosurgical Intervention
-
-```{r}
-with_dir(here(), tar_read(alternative_table_neurosurgery))
-
-```
-
-#### External Ventricular Drain
-
-```{r}
-with_dir(here(), tar_read(alternative_table_evd))
-
-```
-
-#### modified Rankin Score
-
-```{r}
-
-with_dir(here(), tar_read(alternative_table_mrs90))
-
-```
-
 ### Alternative Handling of Missing Data
 
-The primary analysis was conducted as a complete case analysis. We performed multiple imputation and conducted the same analyses for the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin score at 90 days.
+The primary analysis was conducted as a complete case analysis. We performed multiple imputation by chained equations and created 100 imputed datasets with the `mice` package[@buurenMiceMultivariateImputation2011]. Three separate Bayesian models were fitted to the 100 imputed datasets using the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin score at 90 days. All models were fitted using Markov Chain Monte Carlo (MCMC) with 4 chains and 2,000 iterations per chain (including a warmup period of 1,000 iterations).
 
 ```{r imputed}
 
