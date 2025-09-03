@@ -26,7 +26,7 @@ format:
 abstract: |
 bibliography: references.bib
 csl: american-heart-association.csl
-table-of-contents: true
+table-of-contents: false
 toc-title: Contents
 
 ---
@@ -35,7 +35,6 @@ toc-title: Contents
 #| echo: false
 #| output: false
 
-#| echo: false
 #| fig-height: 12
 
 library(targets)
@@ -93,9 +92,9 @@ As mentioned in the primary manuscript, we constructed directed acyclic graphs (
 
 2. **Avoid over-adjustment**: Prevent controlling for variables that are mediators or colliders, which can bias the results.
 
-3. **Clarify causal assumptions**: Make the underlying causal assumptions explicit and transparent [@hernanSpecifyingTargetTrial2016].
+3. **Clarify causal assumptions**: Make the underlying causal assumptions explicit and transparent. [@hernanSpecifyingTargetTrial2016]
 
-In constructing DAGs for this project, we used guidance and recommendations from previous literature [@tennantUseDirectedAcyclic2021; @sauerUseDirectedAcyclic2013; @barrettCausalInference2025]. 
+In constructing DAGs for this project, we used guidance and recommendations from previous literature. [@tennantUseDirectedAcyclic2021; @sauerUseDirectedAcyclic2013; @barrettCausalInference2025]
 
 ### Primary and Secondary Outcomes
 
@@ -224,6 +223,8 @@ Prior predictive checks were performed to understand the implications of the pri
 ```{r prior predictive check - neurosurgery}
 #| echo: false
 #| warning: false
+#| tbl-cap: "Prior predictive check results for neurosurgery"
+#| label: "tbl-neurosurgery-prior-check"
 
 with_dir(here(), tar_read(prior_check_neurosurgery))
 
@@ -234,6 +235,8 @@ with_dir(here(), tar_read(prior_check_neurosurgery))
 ```{r prior predictive check - evd}
 #| echo: false
 #| warning: false
+#| tbl-cap: "Prior predictive check results for ventriculostomy"
+#| label: "tbl-evd-prior-check"
 
 with_dir(here(), tar_read(prior_check_evd))
 
@@ -245,6 +248,8 @@ with_dir(here(), tar_read(prior_check_evd))
 ```{r prior predictive check - tracheostomy}
 #| echo: false
 #| warning: false
+#| tbl-cap: "Prior predictive check results for tracheostomy"
+#| label: "tbl-trach-prior-check"
 
 with_dir(here(), tar_read(prior_check_tracheostomy))
 
@@ -257,6 +262,8 @@ with_dir(here(), tar_read(prior_check_tracheostomy))
 ```{r prior predictive check - vent}
 #| echo: false
 #| warning: false
+#| tbl-cap: "Prior predictive check results for days of mechanical ventilation"
+#| label: "tbl-vent-prior-check"
 
 with_dir(here(), tar_read(prior_check_days_mechanical_ventilation))
 
@@ -269,6 +276,8 @@ with_dir(here(), tar_read(prior_check_days_mechanical_ventilation))
 ```{r prior predictive check - comfort}
 #| echo: false
 #| warning: false
+#| tbl-cap: "Prior predictive check results for comfort care"
+#| label: "tbl-comfort-prior-check"
 
 with_dir(here(), tar_read(prior_check_comfort))
 
@@ -281,6 +290,8 @@ with_dir(here(), tar_read(prior_check_comfort))
 ```{r prior predictive check - early wlst}
 #| echo: false
 #| warning: false
+#| tbl-cap: "Prior predictive check results for early WLST"
+#| label: "tbl-earlywlst-prior-check"
 
 with_dir(here(), tar_read(prior_check_early_wlst))
 
@@ -292,6 +303,8 @@ with_dir(here(), tar_read(prior_check_early_wlst))
 ```{r prior predictive check - dnr}
 #| echo: false
 #| warning: false
+#| tbl-cap: "Prior predictive check results for DNR"
+#| label: "tbl-DNR-prior-check"
 
 with_dir(here(), tar_read(prior_check_dnr_binary))
 
@@ -303,6 +316,8 @@ with_dir(here(), tar_read(prior_check_dnr_binary))
 ```{r prior predictive check - mrs90}
 #| echo: false
 #| warning: false
+#| tbl-cap: "Prior predictive check results for modified Rankin score at 90 days"
+#| label: "tbl-mrs90-prior-check"
 
 with_dir(here(), tar_read(prior_check_mrs_90))
 
@@ -314,7 +329,8 @@ with_dir(here(), tar_read(prior_check_mrs_90))
 ```{r prior predictive check - euro mobility}
 #| echo: false
 #| warning: false
-
+#| tbl-cap: "Prior predictive check results for EuroQOL - Mobility at 90 days"
+#| label: "tbl-euro-mobility-prior-check"
 with_dir(here(), tar_read(prior_check_euro_mobility_90))
 
 
@@ -325,7 +341,9 @@ with_dir(here(), tar_read(prior_check_euro_mobility_90))
 ```{r prior predictive check - euro selfcare}
 #| echo: false
 #| warning: false
-
+#| tbl-cap: "Prior predictive check results for EuroQOL - Self-Care at 90 days"
+#| label: "tbl-euro-selfcare-prior-check"
+#|
 with_dir(here(), tar_read(prior_check_euro_selfcare_90))
 
 
@@ -336,7 +354,9 @@ with_dir(here(), tar_read(prior_check_euro_selfcare_90))
 ```{r prior predictive check - euro usual}
 #| echo: false
 #| warning: false
-
+#| tbl-cap: "Prior predictive check results for EuroQOL - Usual Activities at 90 days"
+#| label: "tbl-euro-usual-prior-check"
+#|
 with_dir(here(), tar_read(prior_check_euro_usual_90))
 
 
@@ -347,7 +367,9 @@ with_dir(here(), tar_read(prior_check_euro_usual_90))
 ```{r prior predictive check - euro pain}
 #| echo: false
 #| warning: false
-
+#| tbl-cap: "Prior predictive check results for EuroQOL - Pain/Discomfort at 90 days"
+#| label: "tbl-euro-pain-prior-check"
+#|
 with_dir(here(), tar_read(prior_check_euro_pain_90))
 
 
@@ -358,6 +380,8 @@ with_dir(here(), tar_read(prior_check_euro_pain_90))
 ```{r prior predictive check - euro anxiety}
 #| echo: false
 #| warning: false
+#| #| tbl-cap: "Prior predictive check results for EuroQOL - Anxiety/Depression at 90 days"
+#| label: "tbl-euro-anxiety-prior-check"
 
 with_dir(here(), tar_read(prior_check_euro_anxiety_90))
 
@@ -369,7 +393,9 @@ with_dir(here(), tar_read(prior_check_euro_anxiety_90))
 ```{r prior predictive check - vas}
 #| echo: false
 #| warning: false
-
+#| tbl-cap: "Prior predictive check results for EuroQOL - VAS at 90 days"
+#| label: "tbl-euro-vas-prior-check"
+#|
 with_dir(here(), tar_read(prior_check_euro_anxiety_90))
 
 
@@ -391,7 +417,9 @@ Posterior Predictive Checks: We conducted posterior predictive checks to evaluat
 ```{r posterior diagnostics neurosurgery}
 #| echo: false
 #| fig-height: 10
-
+#| tbl-cap: "Posterior diagnostic checks for Neurosurgical Intervention"
+#| label: "tbl-neurosurgical-posterior-diag"
+#|
 with_dir(here(), tar_read(diag_posterior_neutral_neurosurgery))
 
 ```
@@ -401,6 +429,8 @@ with_dir(here(), tar_read(diag_posterior_neutral_neurosurgery))
 ```{r posterior diagnostics evd}
 #| echo: false
 #| fig-height: 10
+#| tbl-cap: "Posterior diagnostic checks for Ventriculostomy"
+#| label: "tbl-evd-posterior-diag"
 
 with_dir(here(), tar_read(diag_posterior_neutral_evd))
 
@@ -411,6 +441,8 @@ with_dir(here(), tar_read(diag_posterior_neutral_evd))
 ```{r posterior diagnostics trach}
 #| echo: false
 #| fig-height: 10
+#| tbl-cap: "Posterior diagnostic checks for Tracheostomy"
+#| label: "tbl-trach-posterior-diag"
 
 with_dir(here(), tar_read(diag_posterior_neutral_tracheostomy))
 
@@ -421,7 +453,9 @@ with_dir(here(), tar_read(diag_posterior_neutral_tracheostomy))
 ```{r posterior diagnostics vent}
 #| echo: false
 #| fig-height: 10
-
+#| tbl-cap: "Posterior diagnostic checks for Days of Mechanical ventilation"
+#| label: "tbl-vent-posterior-diag"
+#|
 with_dir(here(), tar_read(diag_posterior_neutral_days_mechanical_ventilation))
 
 ```
@@ -431,7 +465,9 @@ with_dir(here(), tar_read(diag_posterior_neutral_days_mechanical_ventilation))
 ```{r posterior diagnostics comfort}
 #| echo: false
 #| fig-height: 10
-
+#| tbl-cap: "Posterior diagnostic checks for comfort care"
+#| label: "tbl-comfort-posterior-diag"
+#|
 with_dir(here(), tar_read(diag_posterior_neutral_comfort))
 
 ```
@@ -441,7 +477,9 @@ with_dir(here(), tar_read(diag_posterior_neutral_comfort))
 ```{r posterior diagnostics early wlst}
 #| echo: false
 #| fig-height: 10
-
+#| tbl-cap: "Posterior diagnostic checks for early WLST"
+#| label: "tbl-earlywlst-posterior-diag"
+#|
 with_dir(here(), tar_read(diag_posterior_neutral_early_wlst))
 
 ```
@@ -451,7 +489,9 @@ with_dir(here(), tar_read(diag_posterior_neutral_early_wlst))
 ```{r posterior diagnostics dnr}
 #| echo: false
 #| fig-height: 10
-
+#| tbl-cap: "Posterior diagnostic checks for DNR"
+#| label: "tbl-dnr-posterior-diag"
+#|
 with_dir(here(), tar_read(diag_posterior_neutral_dnr_binary))
 
 ```
@@ -461,7 +501,9 @@ with_dir(here(), tar_read(diag_posterior_neutral_dnr_binary))
 ```{r posterior diagnostics mrs}
 #| echo: false
 #| fig-height: 10
-
+#| tbl-cap: "Posterior diagnostic checks for modified Rankin score at 90 days"
+#| label: "tbl-mrs90-posterior-diag"
+#|
 with_dir(here(), tar_read(diag_posterior_mrs_90_minimal))
 
 ```
@@ -471,6 +513,8 @@ with_dir(here(), tar_read(diag_posterior_mrs_90_minimal))
 ```{r posterior diagnostics euro mobility}
 #| echo: false
 #| fig-height: 10
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Mobility at 90 days"
+#| label: "tbl-euro-mobility-posterior-diag"
 
 with_dir(here(), tar_read(diag_posterior_neutral_euro_mobility_90_canonical))
 
@@ -481,6 +525,8 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_mobility_90_canonical))
 ```{r posterior diagnostics euro selfcare}
 #| echo: false
 #| fig-height: 10
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Self-Care at 90 days"
+#| label: "tbl-euro-selfcaremobility-posterior-diag"
 
 with_dir(here(), tar_read(diag_posterior_neutral_euro_selfcare_90_canonical))
 
@@ -491,6 +537,8 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_selfcare_90_canonical))
 ```{r posterior diagnostics euro usual}
 #| echo: false
 #| fig-height: 10
+#| #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Usual Activities at 90 days"
+#| label: "tbl-euro-usual-posterior-diag"
 
 with_dir(here(), tar_read(diag_posterior_neutral_euro_usual_90_canonical))
 
@@ -501,6 +549,8 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_usual_90_canonical))
 ```{r posterior diagnostics euro pain}
 #| echo: false
 #| fig-height: 10
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Pain/Discomfort at 90 days"
+#| label: "tbl-euro-pain-posterior-diag"
 
 with_dir(here(), tar_read(diag_posterior_neutral_euro_pain_90_canonical))
 
@@ -511,6 +561,8 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_pain_90_canonical))
 ```{r posterior diagnostics euro anxiety}
 #| echo: false
 #| fig-height: 10
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Anxiety/Depression at 90 days"
+#| label: "tbl-euro-anxiety-posterior-diag"
 
 with_dir(here(), tar_read(diag_posterior_neutral_euro_anxiety_90_canonical))
 
@@ -521,6 +573,8 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_anxiety_90_canonical))
 ```{r posterior diagnostics euro vas}
 #| echo: false
 #| fig-height: 10
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - VAS at 90 days"
+#| label: "tbl-euro-vas-posterior-diag"
 
 with_dir(here(), tar_read(diag_posterior_vas_90))
 
@@ -532,6 +586,8 @@ with_dir(here(), tar_read(diag_posterior_vas_90))
 
 ```{r posterior predictions neurosurgery}
 #| echo: false
+#| tbl-cap: "Posterior predictive checks for neurosurgical intervention"
+#| label: "tbl-neurosurgery-posterior-checks"
 
 with_dir(here(), tar_read(post_pred_check_neurosurgery))
 
@@ -541,6 +597,8 @@ with_dir(here(), tar_read(post_pred_check_neurosurgery))
 
 ```{r posterior predictions evd}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for ventriculostomy"
+#| label: "tbl-evd-posterior-checks"
 
 with_dir(here(), tar_read(post_pred_check_evd))
 
@@ -550,6 +608,8 @@ with_dir(here(), tar_read(post_pred_check_evd))
 
 ```{r posterior predictions trach}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for tracheostomy"
+#| label: "tbl-trach-posterior-checks"
 
 with_dir(here(), tar_read(post_pred_check_tracheostomy))
 
@@ -559,6 +619,8 @@ with_dir(here(), tar_read(post_pred_check_tracheostomy))
 
 ```{r posterior predictions vent}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for days of mechanical ventilation"
+#| label: "tbl-vent-posterior-checks"
 
 with_dir(here(), tar_read(post_pred_check_days_mechanical_ventilation))
 
@@ -568,6 +630,8 @@ with_dir(here(), tar_read(post_pred_check_days_mechanical_ventilation))
 
 ```{r posterior predictions comfort}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for comfort care"
+#| label: "tbl-comfort-posterior-checks"
 
 with_dir(here(), tar_read(post_pred_check_comfort))
 
@@ -577,6 +641,8 @@ with_dir(here(), tar_read(post_pred_check_comfort))
 
 ```{r posterior predictions early wlst}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for early WLST"
+#| label: "tbl-earlywlst-posterior-checks"
 
 with_dir(here(), tar_read(post_pred_check_early_wlst))
 
@@ -586,6 +652,8 @@ with_dir(here(), tar_read(post_pred_check_early_wlst))
 
 ```{r posterior predictions dnr}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for DNR"
+#| label: "tbl-dnr-posterior-checks"
 
 with_dir(here(), tar_read(post_pred_check_dnr_binary))
 
@@ -595,6 +663,8 @@ with_dir(here(), tar_read(post_pred_check_dnr_binary))
 
 ```{r posterior predictions mrs}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for modified Rankin Score 90 days"
+#| label: "tbl-mrs90-posterior-checks"
 
 with_dir(here(), tar_read(post_pred_check_neutral_mrs_90_canonical))
 
@@ -604,6 +674,8 @@ with_dir(here(), tar_read(post_pred_check_neutral_mrs_90_canonical))
 
 ```{r posterior predictions euro mobility}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Mobility 90 days"
+#| label: "tbl-euro-mobility-checks"
 
 with_dir(here(), tar_read(post_pred_check_neutral_euro_mobility_90_canonical))
 
@@ -613,6 +685,8 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_mobility_90_canonical))
 
 ```{r posterior predictions euro selfcare}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Self-Care 90 days"
+#| label: "tbl-euro-selfcare-checks"
 
 with_dir(here(), tar_read(post_pred_check_neutral_euro_selfcare_90_canonical))
 
@@ -622,6 +696,8 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_selfcare_90_canonical))
 
 ```{r posterior predictions euro usual}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Usual Activities 90 days"
+#| label: "tbl-euro-usual-checks"
 
 with_dir(here(), tar_read(post_pred_check_neutral_euro_usual_90_canonical))
 
@@ -631,6 +707,8 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_usual_90_canonical))
 
 ```{r posterior predictions euro pain}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Pain/Discomfort 90 days"
+#| label: "tbl-euro-pain-checks"
 
 with_dir(here(), tar_read(post_pred_check_neutral_euro_pain_90_canonical))
 
@@ -640,6 +718,8 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_pain_90_canonical))
 
 ```{r posterior predictions euro anxiety}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Anxiety/Depression 90 days"
+#| label: "tbl-euro-anxiety-checks"
 
 with_dir(here(), tar_read(post_pred_check_neutral_euro_anxiety_90_canonical))
 
@@ -649,6 +729,8 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_anxiety_90_canonical))
 
 ```{r posterior predictions euro vas}
 #| echo: false
+#| tbl-cap: "Posterior diagnostic checks for EuroQOL - VAS 90 days"
+#| label: "tbl-euro-vas-checks"
 
 with_dir(here(), tar_read(post_pred_check_vas_90))
 
@@ -663,6 +745,9 @@ To assess the robustness of our findings for the primary outcome, we conducted s
 #### Left Hemisphere Prior
 
 ```{r}
+#| echo: false
+#| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Left Hemisphere Prior"
+#| label: "tbl-2-left-prior"
 
 with_dir(here(), tar_read(table2_left))
 
@@ -671,7 +756,10 @@ with_dir(here(), tar_read(table2_left))
 #### Right Hemisphere Prior
 
 ```{r}
-
+#| echo: false
+#| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Right Hemisphere Prior"
+#| label: "tbl-2-right-prior"
+#
 with_dir(here(), tar_read(table2_right))
 
 ```
@@ -679,7 +767,9 @@ with_dir(here(), tar_read(table2_right))
 #### Flat Prior
 
 ```{r}
-
+#| echo: false
+#| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Flat Prior"
+#| label: "tbl-2-flat-prior"
 with_dir(here(), tar_read(table2_flat))
 
 ```
@@ -689,7 +779,10 @@ with_dir(here(), tar_read(table2_flat))
 #### Left Hemisphere Prior
 
 ```{r}
-
+#| echo: false
+#| #| tbl-cap: "Functional  Outcomes of Interest with Left Hemisphere Prior"
+#| label: "tbl-4-left-prior"
+#|
 with_dir(here(), tar_read(table4_left))
 
 ```
@@ -697,7 +790,10 @@ with_dir(here(), tar_read(table4_left))
 #### Right Hemisphere Prior
 
 ```{r}
-
+#| echo: false
+#| #| tbl-cap: "Functional  Outcomes of Interest with Right Hemisphere Prior"
+#| label: "tbl-4-right-prior"
+#|
 with_dir(here(), tar_read(table4_right))
 
 ```
@@ -705,16 +801,23 @@ with_dir(here(), tar_read(table4_right))
 #### Flat Prior
 
 ```{r}
-
+#| echo: false
+#| #| tbl-cap: "Functional  Outcomes of Interest with Flat Prior"
+#| label: "tbl-4-flat-prior"
+#|
 with_dir(here(), tar_read(table4_flat))
 
 ```
 
 ### Alternative Handling of Missing Data
 
-The primary analysis was conducted as a complete case analysis. We performed multiple imputation by chained equations and created 100 imputed datasets with the `mice` package[@buurenMiceMultivariateImputation2011]. Three separate Bayesian models were fitted to the 100 imputed datasets using the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin score at 90 days. All models were fitted using Markov Chain Monte Carlo (MCMC) with 4 chains and 2,000 iterations per chain (including a warmup period of 1,000 iterations).
+The primary analysis was conducted as a complete case analysis. We performed multiple imputation by chained equations and created 100 imputed datasets with the `mice` package.[@buurenMiceMultivariateImputation2011] Three separate Bayesian models were fitted to the 100 imputed datasets using the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin score at 90 days. All models were fitted using Markov Chain Monte Carlo (MCMC) with 4 chains and 5,000 iterations per chain (including a warmup period of 1,000 iterations).
 
 ```{r imputed}
+#| echo: false
+#| #| #| tbl-cap: "Outcomes of Interest after Multiple Imputation"
+#| label: "mice-results"
+#|
 
 with_dir(here(), tar_read(table_imp))
 

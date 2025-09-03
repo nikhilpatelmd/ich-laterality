@@ -44,12 +44,10 @@ table_1_function <- function(x) {
       sort = all_categorical() ~ "frequency",
       digits = starts_with("gcs") ~ 0,
     ) |>
-    add_p(pvalue_fun = ~ style_pvalue(.x, digits = 2)) |>
+    add_p(pvalue_fun = label_style_pvalue(digits = 2)) |>
     add_overall() |>
     bold_labels() |>
     as_gt()
 
-
   return(table_1)
 }
-
