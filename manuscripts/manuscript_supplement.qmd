@@ -25,7 +25,7 @@ format:
   docx: default
 abstract: |
 bibliography: references.bib
-csl: american-heart-association.csl
+csl: jama.csl
 table-of-contents: false
 toc-title: Contents
 
