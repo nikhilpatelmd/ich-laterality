@@ -82,8 +82,7 @@ functional_grid <- tibble(
 base_grid <- aggressive_grid
 # base_grid <- bind_rows(aggressive_grid, functional_grid) # Uncomment when ready
 
-# 3. SPLIT GRID FOR DEPLOYMENT --------------------------------------------
-# We split the grid BEFORE the pipeline. This avoids the substitution error.
+# SPLIT GRID FOR DEPLOYMENT --------------------------------------------
 
 complete_grid <- tidyr::crossing(
   base_grid,
