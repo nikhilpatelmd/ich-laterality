@@ -40,33 +40,6 @@ m_posterior_neutral_euro_usual_90_canonical|stem|41b96bf63249aa7a|233d008ea9498a
 m_posterior_neutral_mrs_90_canonical|stem|c2e1b0370a81b741|c1de9e50feee0b8c|754fd51ea1814e05|-1662819943||t20489.4685398717s|s5688242b|5688242|rds|local|vector|||1472.257|Rows containing NAs were excluded from the model.|
 table4_neutral|stem|7c742df9930c33d2|eabb8e946d090b68|9595d76141247804|-1518882123||t20489.4686307976s|s37490372b|37490372|rds|local|vector|||0.272||
 neutral_outcome_90_models|stem|83593456479ff174|4bc44701e47bbc10|ad3ea5f442010460|1281813697||t20489.4685835913s||37434593|rds|local|vector|||0.003||could not find function 'outcome_models_list_func'
-model_setup|function|3c932c8b341572d4
-theme_ich|function|b45be91cc74e0d08
-process_vas|function|709d55dd71d9e875
-table_1_function|function|fa6b69491290a756
-f_prior_predictive_check|function|9fb9f26c4dffb03d
-f_subgroup_by_study|function|63340650275664b3
-select_variables|function|51eaa047f9ead67f
-f_prior_predictive_check_vent|function|96885132fba43ea3
-posterior_diagnostics|function|d6a1f8b8ed64abf7
-f_subgroup_by_location|function|e2b1055b3c954ff4
-outcomes_dag_function|function|c3731ba174949dbb
-posterior_odds_plot|function|c0ccd32b06d884c1
-f_neurosurgery_dag|function|940967b2aefac2e0
-f_alternative_adjustment_table|function|a2a257408e11e8fe
-process_ordinal|function|f6a3fd1f3482d103
-models_list_func|function|6bf5f6fcf351aae6
-f_post_predictive_check_vas|function|9317df8aa37cbf8d
-euro_figure_function|function|b45e7965f6ae88e4
-filter_variables|function|aab6a12635d42cbf
-table_2_function|function|66c8bf766576bffb
-prediction_visual|function|322f8ea04b818642
-f_imp_sensitivity|function|13a6e7be6ef6e9aa
-f_alternative_adjustment_table_mrs|function|67136e52afb791b3
-f_post_predictive_check|function|6baf77f9bc26df66
-.Random.seed|object|ae4c2e5ad4232339
-f_subgroup_table|function|a44300f88e1b13e4
-f_imputed|function|d0b1ef4c96c16b1f
 f_posterior_flat_euro_mobility_90_canonical|function|8a6a5ac2abcc207b
 f_posterior_flat_euro_selfcare_365_canonical|function|0729093808755e1c
 f_posterior_neutral_tracheostomy|function|0aecaae1b320ca44
@@ -130,7 +103,6 @@ f_prior_left_early_wlst|function|2cf161f8f0262c3b
 f_prior_right_euro_pain_180_canonical|function|64c2579b06a4774e
 f_posterior_flat_euro_anxiety_365_canonical|function|f5629d34d75e33d6
 f_prior_flat_euro_mobility_365_canonical|function|f430219949c63ce7
-f_posterior_alternative2_mrs_90|function|5700ade18a4782f2
 f_prior_right_mrs_180_canonical|function|18c3919bf1838fe6
 f_prior_right_mrs_365_canonical|function|a9190c83c8efd69d
 f_prior_neutral_dnr_binary|function|14912708ba261fad
@@ -157,12 +129,9 @@ f_prior_flat_euro_selfcare_180_canonical|function|d550be12f935c927
 f_posterior_left_euro_selfcare_180_canonical|function|a453f59476114f7d
 f_posterior_neutral_euro_vas_180_canonical|function|17c2e76202ca708b
 f_posterior_right_euro_usual_90_canonical|function|1e2fc4957c0627fb
-f_posterior_alternative1_neurosurgery|function|401acb0ab1f2c8fb
 f_prior_left_euro_vas_365_canonical|function|134bc572d75fffad
 f_posterior_left_euro_selfcare_365_canonical|function|c594eca2b5d77e15
 f_posterior_right_euro_selfcare_90_canonical|function|228942d6498951b4
-f_posterior_alternative1_evd|function|107c4231075d7942
-f_posterior_minimal_neurosurgery|function|25b1c5449510db7e
 f_prior_right_euro_pain_365_canonical|function|4dd86364ffa0a7a7
 f_posterior_left_mrs_365_canonical|function|4ef344adcbaa60e2
 f_prior_flat_euro_usual_90_canonical|function|e59b4dd151b2f1d1
@@ -174,11 +143,8 @@ f_prior_left_euro_mobility_180_canonical|function|904e03674e1f4ce3
 f_prior_right_euro_vas_90_canonical|function|d70dd2635c60e156
 f_prior_right_euro_mobility_365_canonical|function|348bfc24bbd4693c
 f_posterior_left_days_mechanical_ventilation|function|3be4b5a3bc1d2a37
-f_posterior_neutral_evd_imp|function|f6d58264e4bfe341
 f_posterior_mrs_365_minimal|function|37ba98f945c09431
-f_posterior_alternative4_mrs_90|function|28958c36cd9a29c8
 f_posterior_flat_euro_usual_90_canonical|function|530db06cf2fb5a74
-f_posterior_alternative2_neurosurgery|function|bb99a79a6c4f89c2
 f_posterior_right_neurosurgery|function|43e2bbe7a4c111fb
 f_posterior_flat_days_mechanical_ventilation|function|761aa9517e401883
 f_posterior_neutral_early_wlst|function|705e6d8617faf8ec
@@ -190,7 +156,6 @@ f_prior_right_euro_selfcare_90_canonical|function|c132b4b91ff8cd1a
 f_posterior_flat_euro_pain_180_canonical|function|2d871463b7c6781a
 f_posterior_left_euro_vas_180_canonical|function|94416d987b02af3c
 f_posterior_neutral_euro_usual_90_canonical|function|d195d935d1a0c00a
-f_posterior_alternative3_evd|function|e85eb0e03ead3a25
 f_prior_flat_euro_pain_365_canonical|function|bdb71b8dd6c0e6d5
 f_prior_right_comfort|function|85870c86ac4c1de3
 f_prior_left_tracheostomy|function|adca49292bb1292b
@@ -199,7 +164,6 @@ f_posterior_flat_euro_selfcare_90_canonical|function|59765ce327854ed4
 f_prior_neutral_euro_mobility_180_canonical|function|15fb90707d85aaf3
 f_prior_flat_dnr_binary|function|ce747c96d449f1dd
 f_posterior_neutral_comfort|function|952353db1c927d6d
-f_posterior_alternative3_mrs_90|function|c68c04fba186057f
 f_posterior_right_euro_selfcare_180_canonical|function|73f1c0f11b833d91
 f_posterior_neutral_euro_mobility_180_canonical|function|8cab98982585ab5f
 f_posterior_left_euro_anxiety_180_canonical|function|c7709d6630304c27
@@ -208,7 +172,6 @@ f_prior_neutral_comfort|function|2c72b9571c6de77a
 f_posterior_flat_euro_pain_90_canonical|function|d01aaeb462bc091e
 f_posterior_right_euro_mobility_90_canonical|function|01326df9514416d6
 f_prior_neutral_euro_anxiety_180_canonical|function|7e40138bfb3033f7
-f_posterior_alternative2_evd|function|fb5db915a3e2e267
 f_prior_right_euro_usual_180_canonical|function|8e3024ce2f08b9f7
 f_posterior_flat_mrs_180_canonical|function|4ee38e887d3d47e7
 f_posterior_neutral_evd|function|b1420d818a32f04a
@@ -232,13 +195,11 @@ f_posterior_neutral_euro_mobility_365_canonical|function|aef54eb3dfbc6093
 f_posterior_left_euro_anxiety_365_canonical|function|b9c7327f08d5638d
 f_prior_neutral_early_wlst|function|bce926ba4694f021
 f_prior_right_euro_selfcare_180_canonical|function|70c30232d77b3bd5
-f_posterior_alternative4_evd|function|bf78afc05fe352a9
 f_prior_left_mrs_180_canonical|function|6a79642b8e11d2db
 f_posterior_neutral_euro_selfcare_180_canonical|function|96f7e810209e3f5a
 f_posterior_left_euro_vas_90_canonical|function|519c11677afc8b0f
 f_prior_neutral_euro_usual_90_canonical|function|4f1d0ae8f7ff0735
 f_prior_left_euro_usual_90_canonical|function|090419dff9cada25
-f_posterior_alternative1_mrs_90|function|bc854146b79c5f3f
 f_prior_neutral_mrs_365_canonical|function|89d02b37a66f1960
 f_prior_flat_evd|function|25a3bd6406aebf63
 f_posterior_flat_mrs_365_canonical|function|8ac4b32dfa9f11a7
@@ -262,13 +223,11 @@ f_prior_left_euro_anxiety_180_canonical|function|8fae4bc434ca1912
 f_posterior_left_euro_pain_90_canonical|function|a0ca765ac3c2a29f
 f_posterior_right_days_mechanical_ventilation|function|77b37b7f5224d3db
 f_posterior_right_euro_selfcare_365_canonical|function|ed0f84a5a540f77d
-f_posterior_minimal_evd|function|34f7df4c3520a1ae
 f_posterior_neutral_euro_anxiety_90_canonical|function|207d41449a47f1a2
 f_prior_neutral_euro_anxiety_365_canonical|function|50a353baf2c86515
 f_posterior_neutral_euro_usual_180_canonical|function|a0cecd93a2496684
 f_prior_left_euro_usual_365_canonical|function|bdc1b2eaec0855e2
 f_prior_mrs_90_minimal|function|4af60de5448853b0
-f_posterior_neutral_neurosurgery_imp|function|4257681729624512
 f_posterior_flat_euro_vas_180_canonical|function|aa7a0a62d2fb12ef
 f_posterior_left_euro_usual_365_canonical|function|2d973a2015b54254
 f_prior_neutral_euro_pain_365_canonical|function|178f19277083930a
@@ -276,13 +235,11 @@ f_prior_left_dnr_binary|function|b3fc8e2b2e63f874
 f_posterior_neutral_mrs_365_canonical|function|0c2e64ea3a6a4fe5
 f_posterior_left_euro_vas_365_canonical|function|8720f69f8641714d
 f_posterior_right_euro_anxiety_365_canonical|function|9dc9650256c9c3b2
-f_posterior_alternative3_neurosurgery|function|7e9ef60dac314191
 f_prior_right_mrs_90_canonical|function|f1f50cf9f588fdd0
 f_posterior_left_euro_mobility_365_canonical|function|b530914b487ef814
 f_prior_neutral_euro_selfcare_180_canonical|function|0b45f3f00e30900a
 f_prior_left_euro_pain_365_canonical|function|482bcc5e933bb4ce
 f_prior_right_euro_usual_90_canonical|function|5d5cf8a3c810e70f
-f_vas_90_zoib|function|a87a4189b3f3ef43
 f_prior_left_comfort|function|6984fa1b72fcb11b
 f_posterior_left_dnr_binary|function|3aa053fd6d079d74
 f_posterior_neutral_euro_mobility_90_canonical|function|3d93adcdf8f9024d
@@ -293,13 +250,11 @@ f_posterior_flat_euro_selfcare_180_canonical|function|0146270acfb5ec9a
 f_prior_left_evd|function|87707dac29da245b
 f_posterior_neutral_euro_usual_365_canonical|function|2798b9e20a74438a
 f_posterior_right_mrs_90_canonical|function|a169859dffb02ddd
-f_posterior_alternative4_neurosurgery|function|af6bbff69001a87c
 f_prior_left_euro_usual_180_canonical|function|9d26ffecb82dcb37
 f_prior_flat_early_wlst|function|5525981b235f54b8
 f_posterior_left_early_wlst|function|f6ad8020e5b1ad47
 f_prior_flat_euro_vas_180_canonical|function|5cbfd0bb440448aa
 f_prior_neutral_euro_pain_90_canonical|function|3fbd85a98e2a3db5
-f_posterior_neutral_mrs_90_canonical_imp|function|3e7bfd2cb0dc5818
 f_posterior_flat_mrs_90_canonical|function|a3fc9e445b8f8ba1
 f_posterior_neutral_euro_pain_365_canonical|function|896545bdde31af7f
 f_prior_neutral_euro_selfcare_365_canonical|function|c29883e000804088
@@ -315,8 +270,144 @@ f_posterior_right_euro_vas_90_canonical|function|b042b16926203d43
 f_prior_neutral_euro_usual_180_canonical|function|f6c3ade9ba82a46e
 f_posterior_left_euro_pain_180_canonical|function|9467b751589bba9b
 f_posterior_right_early_wlst|function|4d117d4411a8c9dc
-f_posterior_alternative5_mrs_90|function|7d71bec4d9561e74
+table1|stem|2c7bb5bf3976905f|1a2e2eefc146e3c7|7b5f681fb6f4586d|969053063||t20490.2156008145s|s2091883b|2091883|rds|local|vector|||1.649||
+dag_neurosurgery|stem|0544e8e28fe4cda4|5e9e71bdcae07e20|8fec51f5315e7078|782792858||t20490.37401845s|s518b|518|rds|local|vector|||0.047||
+theme_ich|stem|2636494da19de0a4|a3d381f21678b10d|2c530c1562a7fbd1|-871403137||t20490.374024785s|s1871428b|1871428|rds|local|vector|||0.029||
+dag_outcomes|stem|d36a6f2ab8b305a7|35435e3659cf1296|87146d8bd15bf702|2092730130||t20490.3740250914s|s745b|745|rds|local|vector|||0.019||
+right_fill|stem|106031959d7a8bf2|ae01db88ff00ae71|2c530c1562a7fbd1|-29727145||t20490.3740251949s|s60b|60|rds|local|vector|||0.001||
+left_fill|stem|3f90a91384d0b3b1|ee9aca5a0972b3c4|2c530c1562a7fbd1|-605812162||t20490.3740252627s|s60b|60|rds|local|vector|||0.001||
+model_posterior_neurosurgery_evac_left_minimal|stem|98cc4aaa3c172b14|6fea845dbad9acd5|974ad5d2e352d761|-1005025909||t20490.3854835683s|s1671636b|1671636|rds|local|vector|||90.665|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_posterior_neurosurgery_evac_flat_minimal|stem|514198ee4b464102|fa9f06967c290fe0|974ad5d2e352d761|-1031236979||t20490.3869450933s|s1665193b|1665193|rds|local|vector|||126.02||
+model_posterior_tracheostomy_left_minimal|stem|7fb1275be666fed9|2ec503c515e700d3|974ad5d2e352d761|1287242676||t20490.388255996s|s1634559b|1634559|rds|local|vector|||112.962|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+base_grid|object|44160e6a37952036
+functional_grid|object|a40d9b43ec2d4494
+table_1_function|function|fa6b69491290a756
+filter_variables|function|aab6a12635d42cbf
+model_setup|function|507b5b77a52cf990
+posterior_odds_plot|function|c0ccd32b06d884c1
+complete_grid|object|0c60bb2d13aa100b
+grid_complex|object|eaffdd03296bcea8
+euro_figure_function|function|b45e7965f6ae88e4
+f_post_predictive_check|function|6baf77f9bc26df66
+f_imputed|function|d0b1ef4c96c16b1f
+prediction_visual|function|322f8ea04b818642
+grid_fast|object|b59677e70b41069a
+f_subgroup_table|function|a44300f88e1b13e4
+f_subgroup_by_location|function|e2b1055b3c954ff4
+select_variables|function|51eaa047f9ead67f
+process_ordinal|function|f6a3fd1f3482d103
+process_vas|function|709d55dd71d9e875
+.Random.seed|object|2cdd845a923b3501
+f_subgroup_by_study|function|63340650275664b3
+posterior_diagnostics|function|d6a1f8b8ed64abf7
+f_post_predictive_check_vas|function|9317df8aa37cbf8d
+functional_outcomes|object|9914dd3f545ddfb5
+fit_laterality_model|function|cd395c4e196519f6
+f_prior_predictive_check_vent|function|96885132fba43ea3
+models_list_func|function|6bf5f6fcf351aae6
+f_alternative_adjustment_table|function|a2a257408e11e8fe
+table_2_function|function|66c8bf766576bffb
+aggressive_grid|object|44160e6a37952036
+f_prior_predictive_check|function|9fb9f26c4dffb03d
+f_neurosurgery_dag|function|940967b2aefac2e0
+f_imp_sensitivity|function|13a6e7be6ef6e9aa
+f_alternative_adjustment_table_mrs|function|67136e52afb791b3
 adjusted_mrs_function|function|1634e253cbc99700
 mrs_figure_function|function|a04e6e68664216ae
+f_posterior_neutral_mrs_90_canonical_imp|function|757e037871187835
+f_posterior_alternative4_neurosurgery|function|9ef55403cc4a83ce
+f_posterior_alternative2_neurosurgery|function|80f22e5661c4053e
+f_posterior_alternative4_mrs_90|function|0f413a140aed937d
+f_posterior_alternative2_evd|function|aa22903a35906e96
+f_vas_90_zoib|function|a72731f4e03306fc
+f_posterior_minimal_neurosurgery|function|ccd3be3b0dcf860d
+f_posterior_alternative4_evd|function|5c72af4ac1bbf21e
+f_posterior_alternative1_mrs_90|function|92fd3d3a28f36414
+f_posterior_neutral_neurosurgery_imp|function|7eac84bc4a371ce8
+f_posterior_alternative1_evd|function|5f6973b3f9fe5de6
+f_posterior_alternative3_mrs_90|function|10009973d5af9da5
+f_posterior_alternative3_neurosurgery|function|040b1f0bc699756f
+f_posterior_minimal_evd|function|ce6dd50b00183452
+f_posterior_alternative2_mrs_90|function|4bd29e2053e818d9
+f_posterior_alternative3_evd|function|91d90c729cfc486a
+f_posterior_neutral_evd_imp|function|5e07a5924d17a1f2
+f_posterior_alternative5_mrs_90|function|504a87d87fc90767
+f_posterior_alternative1_neurosurgery|function|c3f518a4f25a4242
 table_3_updated|function|6295973766ca7348
-table1|stem|2c7bb5bf3976905f|1a2e2eefc146e3c7|7b5f681fb6f4586d|969053063||t20490.2156008145s|s2091883b|2091883|rds|local|vector|||1.649||
+outcomes_dag_function|function|4a755d76a2b875aa
+settings|stem|a3d35180f80c02bb|0d725b29fc99973a|9c085309857de1b6|-416401554||t20490.3988625228s|s142b|142|rds|local|vector|||4.888||
+model_prior_comfort_care_binary_flat_adjusted|stem|f2f087ce99e5dc44|6d1554fa95640932|2010b8bb2844c85f|1931495960||t20490.3990794912s|s2461094b|2461094|rds|local|vector|||18.797|Rows containing NAs were excluded from the model.|
+base_grid|object|44160e6a37952036
+functional_grid|object|a40d9b43ec2d4494
+table_1_function|function|fa6b69491290a756
+filter_variables|function|aab6a12635d42cbf
+model_setup|function|507b5b77a52cf990
+posterior_odds_plot|function|c0ccd32b06d884c1
+complete_grid|object|0c60bb2d13aa100b
+grid_complex|object|eaffdd03296bcea8
+euro_figure_function|function|b45e7965f6ae88e4
+f_post_predictive_check|function|6baf77f9bc26df66
+f_imputed|function|d0b1ef4c96c16b1f
+prediction_visual|function|322f8ea04b818642
+grid_fast|object|b59677e70b41069a
+f_subgroup_table|function|a44300f88e1b13e4
+f_subgroup_by_location|function|e2b1055b3c954ff4
+select_variables|function|51eaa047f9ead67f
+process_ordinal|function|f6a3fd1f3482d103
+process_vas|function|709d55dd71d9e875
+.Random.seed|object|7147cd7d23ae6fb7
+f_subgroup_by_study|function|63340650275664b3
+posterior_diagnostics|function|d6a1f8b8ed64abf7
+f_post_predictive_check_vas|function|9317df8aa37cbf8d
+functional_outcomes|object|9914dd3f545ddfb5
+fit_laterality_model|function|cd395c4e196519f6
+f_prior_predictive_check_vent|function|96885132fba43ea3
+models_list_func|function|6bf5f6fcf351aae6
+f_alternative_adjustment_table|function|a2a257408e11e8fe
+table_2_function|function|66c8bf766576bffb
+aggressive_grid|object|44160e6a37952036
+f_prior_predictive_check|function|9fb9f26c4dffb03d
+f_neurosurgery_dag|function|940967b2aefac2e0
+f_imp_sensitivity|function|13a6e7be6ef6e9aa
+f_alternative_adjustment_table_mrs|function|67136e52afb791b3
+adjusted_mrs_function|function|1634e253cbc99700
+mrs_figure_function|function|a04e6e68664216ae
+f_posterior_neutral_mrs_90_canonical_imp|function|757e037871187835
+f_posterior_alternative4_neurosurgery|function|9ef55403cc4a83ce
+f_posterior_alternative2_neurosurgery|function|80f22e5661c4053e
+f_posterior_alternative4_mrs_90|function|0f413a140aed937d
+f_posterior_alternative2_evd|function|aa22903a35906e96
+f_vas_90_zoib|function|a72731f4e03306fc
+f_posterior_minimal_neurosurgery|function|ccd3be3b0dcf860d
+f_posterior_alternative4_evd|function|5c72af4ac1bbf21e
+f_posterior_alternative1_mrs_90|function|92fd3d3a28f36414
+f_posterior_neutral_neurosurgery_imp|function|7eac84bc4a371ce8
+f_posterior_alternative1_evd|function|5f6973b3f9fe5de6
+f_posterior_alternative3_mrs_90|function|10009973d5af9da5
+f_posterior_alternative3_neurosurgery|function|040b1f0bc699756f
+f_posterior_minimal_evd|function|ce6dd50b00183452
+f_posterior_alternative2_mrs_90|function|4bd29e2053e818d9
+f_posterior_alternative3_evd|function|91d90c729cfc486a
+f_posterior_neutral_evd_imp|function|5e07a5924d17a1f2
+f_posterior_alternative5_mrs_90|function|504a87d87fc90767
+f_posterior_alternative1_neurosurgery|function|c3f518a4f25a4242
+table_3_updated|function|6295973766ca7348
+outcomes_dag_function|function|4a755d76a2b875aa
+model_posterior_neurosurgery_evac_left_minimal|stem|ef0761129283f445|2905fb25189a11d9|2010b8bb2844c85f|-1005025909||t20490.4049242248s|s1670462b|1670462|rds|local|vector|||132.213|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_posterior_neurosurgery_evac_flat_minimal|stem|aa9087e7deae1128|2d385588b00e767f|2010b8bb2844c85f|-1031236979||t20490.4055145952s|s1661869b|1661869|rds|local|vector|||181.448||
+model_posterior_days_mechanical_ventilation_left_adjusted|stem|cb4c9f6903091b8b|cf2aa4de0ee08ebb|2010b8bb2844c85f|389489591||t20490.4085712271s|s2625363b|2625363|rds|local|vector|||263.385|Rows containing NAs were excluded from the model.|
+model_prior_evd_right_adjusted|stem|1381b58266e8e177|74404c59ee0a949a|2010b8bb2844c85f|1611518298||t20490.4058700003s|s2651676b|2651676|rds|local|vector|||14.352|Rows containing NAs were excluded from the model.|
+model_posterior_tracheostomy_left_minimal|stem|0abc1f111a5a73d8|1a4c72118817880f|2010b8bb2844c85f|1287242676||t20490.4055196791s|s1628226b|1628226|rds|local|vector|||182.17|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_tracheostomy_right_minimal|stem|77cc829ce10d4afc|9e0de620b7bb1b03|2010b8bb2844c85f|-1148743116||t20490.408774921s|s1838683b|1838683|rds|local|vector|||11.095|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_tracheostomy_right_adjusted|stem|fe2365051ae16a72|5c3faf5504e09552|2010b8bb2844c85f|-2044527020||t20490.4087891307s|s2651171b|2651171|rds|local|vector|||12.07|Rows containing NAs were excluded from the model.|
+model_prior_days_mechanical_ventilation_left_adjusted|stem|80201e80f0925dde|8512f3d323c46491|2010b8bb2844c85f|453281224||t20490.4087926367s|s2610299b|2610299|rds|local|vector|||12.605|Rows containing NAs were excluded from the model.|
+model_prior_early_wlst_neutral_minimal|stem|192becb766114926|aee571c0cddabefa|2010b8bb2844c85f|-236548101||t20490.4096983467s|s1825073b|1825073|rds|local|vector|||11.873||
+model_posterior_days_mechanical_ventilation_left_minimal|stem|43114709a2c795b6|09020a663a11c434|2010b8bb2844c85f|494814770||t20490.4119628474s|s1743598b|1743598|rds|local|vector|||194.831|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_posterior_early_wlst_neutral_adjusted|stem|842ba9dc2b1e117d|a9b3ec2092b71d4d|2010b8bb2844c85f|106146779||t20490.4118679278s|s2592029b|2592029|rds|local|vector|||198.845|Rows containing NAs were excluded from the model.|
+model_posterior_dnr_binary_right_minimal|stem|a9eb8aa59240dde2|50cee61fd12ee5ab|2010b8bb2844c85f|-899600327||t20490.4117098034s|s1670132b|1670132|rds|local|vector|||187.335|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_dnr_binary_left_adjusted|stem|4d3bb3af8501dabb|3af5215d8a4b9456|2010b8bb2844c85f|822645637||t20490.4121762501s|s2648784b|2648784|rds|local|vector|||12.29|Rows containing NAs were excluded from the model.|
+model_prior_days_mechanical_ventilation_right_minimal|stem|6c7048c7fc939ecb|8fdbe8daba7f0b7e|2010b8bb2844c85f|-18243242||t20490.4124916321s|s1833586b|1833586|rds|local|vector|||16.84|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_comfort_care_binary_left_minimal|stem|9f4d654f1c0661c3|0aa7378a866d5af0|2010b8bb2844c85f|1467152814||t20490.412726599s|s1840265b|1840265|rds|local|vector|||12.828|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_days_mechanical_ventilation_left_minimal|stem|cb9d03b2f90a4aad|87439c2d404d2322|2010b8bb2844c85f|1972553941||t20490.4136606355s|s1835632b|1835632|rds|local|vector|||12.455|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_posterior_evd_left_adjusted|stem|1a4305e5ed0bfc14|bf6a8baf81fd57f3|2010b8bb2844c85f|-1399364008||t20490.4141043867s|s2562292b|2562292|rds|local|vector|||177.789|Rows containing NAs were excluded from the model.|
+model_posterior_neurosurgery_evac_flat_adjusted|stem|5e36fc7c9ea6570f|2b1113a09f530b75|2010b8bb2844c85f|1440495686||t20490.4144586807s|s2519284b|2519284|rds|local|vector|||209.811|Rows containing NAs were excluded from the model.|

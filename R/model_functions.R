@@ -1,77 +1,120 @@
+model_setup <- function(complexity = "fast") {
+  # Hardware Constants for YOUR Ryzen AI 9
+  # We cap at 20 threads total to keep the system responsive.
+
+  if (complexity == "fast") {
+    # Strategy: Throughput
+    # We will run multiple of these at once via 'future' plan
+    # Each model takes 4 cores (1 per chain)
+    return(list(
+      chains = 4,
+      cores = 4,
+      threads = NULL, # No within-chain threading
+      iter = 5000,
+      warmup = 1000,
+      seed = 75832
+    ))
+  } else if (complexity == "complex") {
+    # Strategy: Deep Focus
+    # These will run sequentially (1 worker)
+    # We give them 4 threads PER CHAIN (16 threads total)
+    return(list(
+      chains = 4,
+      cores = 4,
+      threads = threading(4), # <--- The Speed Boost for Ordinal Models
+      iter = 5000,
+      warmup = 1000,
+      seed = 75832
+    ))
+  }
+}
+
 fit_laterality_model <- function(
   data,
   outcome_col,
   family,
   prior_scenario,
+  adjustment_set = "adjusted",
+  int_mean = 0,
+  int_sd = 0.5,
   sample_prior = "no",
   settings
 ) {
-  # Base predictors
-  predictors <- "ich_laterality * ich_location + age + gcs_baseline + ich_volume_baseline + ivh + (1 | study)"
+  # -------------------------------------------------------------------------
+  # Define Formula
+  # -------------------------------------------------------------------------
 
-  # Mechanical ventilation Specification
-  if (outcome_col == "days_mechanical_ventilation") {
-    form_string <- paste0(outcome_col, " | trunc(lb = 1) ~ ", predictors)
-  } else {
-    form_string <- paste0(outcome_col, " ~ ", predictors)
+  # Define the "Aggressive Care" list
+  aggressive_outcomes <- c(
+    "neurosurgery_evac",
+    "evd",
+    "tracheostomy",
+    "days_mechanical_ventilation",
+    "comfort_care_binary",
+    "early_wlst",
+    "dnr_binary"
+  )
+
+  # Construct the Left Hand Side
+  # Handle special truncation syntax for ventilation
+  lhs_string <- if_else(
+    outcome_col == "days_mechanical_ventilation",
+    paste0(outcome_col, " | trunc(lb = 1)"),
+    outcome_col
+  )
+
+  # Construct the Right Hand Side
+
+  # Scenario: Minimal
+  base_formula <- as.formula(paste(
+    lhs_string,
+    "~ ich_laterality + (1 | study)"
+  ))
+
+  # Define the formula updates based on logic
+  if (adjustment_set == "minimal") {
+    final_formula <- base_formula
+  } else if (adjustment_set == "adjusted") {
+    # CHANGED: Used '*' to ensure ich_location main effect is included
+    f <- update(
+      base_formula,
+      ~ . +
+        ich_laterality * ich_location +
+        age +
+        gcs_baseline +
+        ich_volume_baseline +
+        ivh
+    )
+
+    # Conditionally add time-to-ED if it is NOT an aggressive outcome
+    if (!outcome_col %in% aggressive_outcomes) {
+      f <- update(f, ~ . + time_symptoms_to_ed)
+    }
+
+    final_formula <- f
   }
 
-  model_formula <- as.formula(form_string)
+  # -------------------------------------------------------------------------
+  # Define Priors
+  # -------------------------------------------------------------------------
 
-  # Prior specification
-  base_priors <- c()
-
-  # Intercept Priors (vary by outcome AND scenario)
-  # You might want to pass specific intercept means as an argument,
-  # but here is a simplified logic block based on your code:
-
-  intercept_mean <- 0
-  intercept_sd <- 0.5
-
-  if (prior_scenario == "flat") {
-    intercept_mean <- 0
-    intercept_sd <- 1
-  } else {
-    # Logic derived from your existing code
-    if (outcome_col == "neurosurgery_evac") {
-      intercept_mean <- -7
-    }
-    if (outcome_col == "tracheostomy") {
-      intercept_mean <- -15
-    }
-    if (outcome_col == "days_mechanical_ventilation") {
-      intercept_mean <- 2
-      intercept_sd <- 1
-    }
-    if (outcome_col == "early_wlst") {
-      intercept_mean <- -20
-    }
-    if (outcome_col %in% c("comfort_care_binary", "dnr_binary")) {
-      intercept_mean <- -15
-    }
-  }
-
-  base_priors <- c(
-    base_priors,
+  # 1. Intercept Prior (From Function Arguments)
+  my_priors <- c(
     set_prior(
-      paste0("normal(", intercept_mean, ", ", intercept_sd, ")"),
+      paste0("normal(", int_mean, ", ", int_sd, ")"),
       class = "Intercept"
     )
   )
 
-  # Coefficient Priors (The 'b' class)
+  # 2. Coefficient Priors (Scenario Logic)
   if (prior_scenario == "flat") {
-    base_priors <- c(base_priors, set_prior("normal(0, 5)", class = "b"))
+    my_priors <- c(my_priors, set_prior("normal(0, 5)", class = "b"))
   } else if (prior_scenario == "neutral") {
-    base_priors <- c(base_priors, set_prior("normal(0, 0.5)", class = "b"))
+    my_priors <- c(my_priors, set_prior("normal(0, 0.5)", class = "b"))
   } else if (prior_scenario == "left") {
-    # Left implies bias: usually specific coefs.
-    base_priors <- c(
-      base_priors,
-      set_prior(
-        "normal(0, 0.5)",
-        class = "b"
-      ),
+    my_priors <- c(
+      my_priors,
+      set_prior("normal(0, 0.5)", class = "b"),
       set_prior(
         "normal(-0.22, 0.175)",
         class = "b",
@@ -79,12 +122,9 @@ fit_laterality_model <- function(
       )
     )
   } else if (prior_scenario == "right") {
-    base_priors <- c(
-      base_priors,
-      set_prior(
-        "normal(0, 0.5)",
-        class = "b"
-      ),
+    my_priors <- c(
+      my_priors,
+      set_prior("normal(0, 0.5)", class = "b"),
       set_prior(
         "normal(0.18, 0.175)",
         class = "b",
@@ -93,19 +133,22 @@ fit_laterality_model <- function(
     )
   }
 
-  # Run Model
+  # -------------------------------------------------------------------------
+  # Fit Model
+  # -------------------------------------------------------------------------
   brm(
-    formula = model_formula,
-    data = data,
+    formula = bf(final_formula),
     family = family,
-    prior = base_priors,
+    data = data,
+    prior = my_priors,
     sample_prior = sample_prior,
-    chains = settings$chains,
     cores = settings$cores,
+    chains = settings$chains,
     threads = settings$threads,
-    iter = settings$iter,
     warmup = settings$warmup,
+    iter = settings$iter,
     seed = settings$seed,
-    backend = "cmdstanr"
+    backend = "cmdstanr",
+    control = list(adapt_delta = 0.99)
   )
 }
