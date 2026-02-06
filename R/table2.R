@@ -1,3 +1,5 @@
+# R/table2.R
+
 # Main Table Generation Function
 table_2_function <- function(x, models) {
   # --- 1. Gather Raw Counts (Descriptive Stats) ---
