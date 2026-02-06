@@ -1,6 +1,3 @@
-tar_load(m_posterior_neutral_mrs_90_canonical)
-tar_load(ich_aggressive)
-
 adjusted_mrs_function <- function(m_posterior_neutral_mrs_90_canonical) {
 
   pred <- avg_predictions(

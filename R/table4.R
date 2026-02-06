@@ -1,197 +1,141 @@
-outcome_models_list_func <- function(a, b, c, d, e, f, g) {
-  list(
-    "Modified Rankin Score" = a,
-    "EuroQOL - Mobility" = b,
-    "EuroQOL - Self-Care" = c,
-    "EuroQOL - Usual Activities" = d,
-    "EuroQOL - Pain/Discomfort" = e,
-    "EuroQOL - Anxiety/Depression" = f,
-    "Euro VAS" = g
-  )
+library(tidyverse)
+library(brms)
+library(tidybayes)
+library(marginaleffects)
+library(gt)
+library(glue)
+
+# 1. Helper function for Ordinal Models (Odds Ratios)
+process_ordinal <- function(model, label) {
+  model |>
+    spread_draws(b_ich_lateralityRight) |>
+    mutate(
+      # Exponentiate to get Odds Ratio
+      estim = exp(b_ich_lateralityRight),
+      # Define what "Substantial" means for OR (e.g. OR > 1.2)
+      # Assuming "Right" is the risk factor we are testing
+      is_diff = estim > 1,
+      is_substantial = estim > 1.2,
+      in_rope = estim < 1.05 & estim > 0.95
+    ) |>
+    summarize(
+      est_median = median(estim),
+      lower = quantile(estim, 0.025),
+      upper = quantile(estim, 0.975),
+      prob_diff = mean(is_diff),
+      prob_sub = mean(is_substantial),
+      prob_rope = mean(in_rope)
+    ) |>
+    mutate(
+      outcome = label,
+      type = "OR",
+      est_label = glue(
+        "{sprintf('%.2f', est_median)} ({sprintf('%.2f', lower)} - {sprintf('%.2f', upper)})"
+      )
+    )
 }
 
-table_3_function <- function(models) {
-  models <- models
+# 2. Helper function for VAS ZOIB Model (Mean Difference)
+process_vas <- function(model, label) {
+  # Use marginaleffects to get the Expected Value difference (Right - Left)
+  # type = "response" integrates mu, phi, zoi, and coi into one mean score (0-1)
+  comp <- avg_comparisons(
+    model,
+    variables = "ich_laterality",
+    type = "response"
+  )
 
-  mrs <- models$"Modified Rankin Score" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
+  # Extract posterior draws of this difference
+  posterior_draws(comp) |>
+    mutate(
+      # Convert 0-1 scale to 0-100 points
+      estim = draw * 100,
+
+      # VAS LOGIC: Negative diff means Right is WORSE (Lower score).
+      # Adjust these inequalities if you want to test "Right is Better"
+      is_diff = estim < 0, # Prob that Right is worse than Left
+      is_substantial = estim < -5, # Prob that Right is >5 points worse (MCID)
+      in_rope = estim > -2 & estim < 2 # Region of Practical Equivalence (+/- 2 pts)
+    ) |>
     summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+      est_median = median(estim),
+      lower = quantile(estim, 0.025),
+      upper = quantile(estim, 0.975),
+      prob_diff = mean(is_diff),
+      prob_sub = mean(is_substantial),
+      prob_rope = mean(in_rope)
     ) |>
     mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
+      outcome = label,
+      type = "Diff",
+      est_label = glue(
+        "{sprintf('%.1f', est_median)} ({sprintf('%.1f', lower)} - {sprintf('%.1f', upper)})"
       )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
+    )
+}
 
-  euro_anxiety <- models$"EuroQOL - Anxiety/Depression" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
+# 3. Main Table Function
+table_3_updated <- function(models) {
+  # A. Process Ordinal Models
+  # (List your specific model objects here mapped to names)
+  df_mrs <- process_ordinal(
+    models$"Modified Rankin Score",
+    "Modified Rankin Score"
+  )
+  df_mob <- process_ordinal(models$"EuroQOL - Mobility", "EuroQOL - Mobility")
+  df_self <- process_ordinal(
+    models$"EuroQOL - Self-Care",
+    "EuroQOL - Self-Care"
+  )
+  df_act <- process_ordinal(
+    models$"EuroQOL - Usual Activities",
+    "EuroQOL - Usual Activities"
+  )
+  df_pain <- process_ordinal(
+    models$"EuroQOL - Pain/Discomfort",
+    "EuroQOL - Pain/Discomfort"
+  )
+  df_anx <- process_ordinal(
+    models$"EuroQOL - Anxiety/Depression",
+    "EuroQOL - Anxiety/Depression"
+  )
 
-  euro_mobility <- models$"EuroQOL - Mobility" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
+  # B. Process VAS Model (The ZOIB model)
+  df_vas <- process_vas(models$"Euro VAS", "Euro VAS")
 
-  euro_pain <- models$"EuroQOL - Pain/Discomfort" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
-
-  euro_selfcare <- models$"EuroQOL - Self-Care" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
-
-  euro_usual <- models$"EuroQOL - Usual Activities" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
-
-  vas <- models$"Euro VAS" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or < 1) / n(),
-      or_1.1 = sum(ich_right_or < 0.9) / n(),
-      or_1.2 = sum(ich_right_or < 0.8) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
-
-  total_tibble <- bind_rows(
-    "Modified Rankin Score" = mrs,
-    "EuroQOL - Mobility" = euro_mobility,
-    "EuroQOL - Self-Care" = euro_selfcare,
-    "EuroQOL - Usual Activities" = euro_usual,
-    "EuroQOL - Pain/Discomfort" = euro_pain,
-    "EuroQOL - Anxiety/Depression" = euro_anxiety,
-    "Euro VAS" = vas,
-    .id = "Outcome"
-  ) |>
-    gt(rowname_col = "Outcome") |>
-    tab_stubhead(label = "Outcome") |>
+  # C. Combine
+  bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
+    select(outcome, est_label, prob_diff, prob_sub, prob_rope, type) |>
+    gt() |>
     cols_label(
-      Outcome = md("**Outcome**"),
-      or_ci = md("**aOR (95% CI)**"),
-      or_1 = md("**Probability of any difference (aOR > 1)**"),
-      or_1.2 = md("**Probability of a substantial difference (aOR > 1.2)**"),
-      rope = md("**ROPE**")
+      outcome = md("**Outcome**"),
+      est_label = md("**Effect Estimate (95% CI)**"),
+      prob_diff = md("**Prob. Any Diff**"),
+      prob_sub = md("**Prob. Substantial**"),
+      prob_rope = md("**ROPE**")
     ) |>
-    fmt_number(columns = 2:5, decimals = 2) |>
-    cols_width(
-      Outcome ~ px(375),
-      2 ~ px(200),
-      3:5 ~ px(150)
-    ) |>
-    cols_align(align = "left") |>
+    fmt_number(columns = c(prob_diff, prob_sub, prob_rope), decimals = 2) |>
+    cols_align(align = "left", columns = outcome) |>
+
+    # D. Formatting & Footnotes
     tab_style(
       style = cell_text(weight = "bold"),
-      locations = cells_stub(rows = everything())
+      locations = cells_column_labels()
     ) |>
     tab_footnote(
-      footnote = "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere Laterality",
-      locations = cells_column_labels(columns = or_ci)
+      footnote = "For Ordinal Outcomes: Adjusted Odds Ratio (aOR). For Euro VAS: Mean Difference in points (0-100).",
+      locations = cells_column_labels(columns = est_label)
     ) |>
     tab_footnote(
-      footnote = "ROPE = region of practical equivalence, defined as 0.95 > aOR > 1.05",
-      locations = cells_column_labels(columns = rope)
+      footnote = "Any Diff: Prob(aOR > 1) or Prob(VAS Diff < 0)",
+      locations = cells_column_labels(columns = prob_diff)
     ) |>
     tab_footnote(
-      footnote = "Probability of aOR < 1",
-      locations = cells_body(columns = 3, rows = 7)
+      footnote = "Substantial: Prob(aOR > 1.2) or Prob(VAS Diff < -5 points)",
+      locations = cells_column_labels(columns = prob_sub)
     ) |>
     tab_footnote(
-      footnote = "Probability of aOR < 0.8",
-      locations = cells_body(columns = 4, rows = 7)
+      footnote = "ROPE: Region of Practical Equivalence. aOR (0.95-1.05) or VAS (+/- 2 points).",
+      locations = cells_column_labels(columns = prob_rope)
     )
-
-  return(total_tibble)
 }

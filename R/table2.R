@@ -88,141 +88,51 @@ table_2_function <- function(x, models) {
     .id = "Outcome"
   )
 
-  # gather OR, 95% credible intervals, and probabilities of OR's for each model
-  neurosurgery_post <- models$"Neurosurgical Intervention" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
+  # marginal effects
 
-  evd_post <- models$"External Ventricular Drain" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
+  # Helper function to run marginaleffects for any model
+  get_marginal_stats <- function(model, comparison_type = "ratio") {
+    marginaleffects::avg_comparisons(
+      model,
+      variables = "ich_laterality",
+      comparison = function(hi, lo) hi / lo # Explicit Ratio: Right / Left
     ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
+      marginaleffects::posterior_draws() |>
+      rename(effect_ratio = draw) |>
+      summarize(
+        or = median(effect_ratio),
+        lower_95_ci = quantile(effect_ratio, 0.025),
+        upper_95_ci = quantile(effect_ratio, 0.975),
+        or_1 = sum(effect_ratio > 1) / n(), # Prob > 1
+        or_1.2 = sum(effect_ratio > 1.2) / n(), # Prob > 1.2
+        rope = sum(effect_ratio < 1.05 & effect_ratio > 0.95) / n() # ROPE
+      ) |>
+      mutate(
+        or_ci = glue(
+          "{round(or, 2)} ({round(lower_95_ci, 2)} - {round(upper_95_ci, 2)})"
+        )
+      ) |>
+      select(or_ci, or_1, or_1.2, rope)
+  }
 
-  days_mechanical_ventilation_post <- models$"Days of Mechanical Ventilation" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
+  # Apply to all binary models (calculates Marginal OR)
+  neurosurgery_post <- get_marginal_stats(models$"Neurosurgical Intervention")
+  evd_post <- get_marginal_stats(models$"External Ventricular Drain")
+  tracheostomy_post <- get_marginal_stats(models$"Tracheostomy")
+  comfort_care_binary_post <- get_marginal_stats(
+    models$"Withdrawal of Life-Sustaining Therapy"
+  )
+  early_wlst_post <- get_marginal_stats(
+    models$"Early Withdrawal of Life-Sustaining Therapy"
+  )
+  dnr_binary_post <- get_marginal_stats(models$"DNR Order")
 
-  tracheostomy_post <- models$"Tracheostomy" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
+  # Apply to count model (calculates Marginal IRR)
+  days_mechanical_ventilation_post <- get_marginal_stats(
+    models$"Days of Mechanical Ventilation"
+  )
 
-  comfort_care_binary_post <- models$"Withdrawal of Life-Sustaining Therapy" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
-
-  early_wlst_post <- models$"Early Withdrawal of Life-Sustaining Therapy" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
-
-  dnr_binary_post <- models$"DNR Order" |>
-    spread_draws(b_ich_lateralityRight) |>
-    mutate(ich_right_or = exp(b_ich_lateralityRight)) |>
-    summarize(
-      or = median(ich_right_or),
-      lower_95_ci = quantile(ich_right_or, 0.025),
-      upper_95_ci = quantile(ich_right_or, 0.975),
-      or_1 = sum(ich_right_or > 1) / n(),
-      or_1.1 = sum(ich_right_or > 1.1) / n(),
-      or_1.2 = sum(ich_right_or > 1.2) / n(),
-      rope = sum(ich_right_or < 1.05 & ich_right_or > 0.95) / n()
-    ) |>
-    mutate(
-      or_ci = glue(
-        "{round(or, digits = 2)} ({round(lower_95_ci, digits = 2)} - {round(upper_95_ci, digits = 2)})"
-      )
-    ) |>
-    select(or_ci, or_1, or_1.2, rope)
-
-  # Combine stats into a single table before combining with raw counts
+  # Combine stats
   total_stats <- bind_rows(
     "Neurosurgical Intervention" = neurosurgery_post,
     "External Ventricular Drain" = evd_post,
@@ -234,8 +144,7 @@ table_2_function <- function(x, models) {
     .id = "Outcome"
   )
 
-  # Combine raw counts and stats into final table
-
+  # --- 3. Final Table Construction ---
   table_2 <- total_n |>
     left_join(total_stats, by = "Outcome") |>
     gt(rowname_col = "Outcome") |>
@@ -244,18 +153,13 @@ table_2_function <- function(x, models) {
       Outcome = md("**Outcome**"),
       Left = md("**Left Hemisphere**"),
       Right = md("**Right Hemisphere**"),
-      or_ci = md("**aOR (95% CI)**"),
-      or_1 = md("**Probability of any difference (aOR > 1)**"),
-      or_1.2 = md("**Probability of a substantial difference (aOR > 1.2)**"),
+      or_ci = md("**aOR / IRR (95% CI)**"),
+      or_1 = md("**Probability of difference (Est > 1)**"),
+      or_1.2 = md("**Probability of substantial difference (Est > 1.2)**"),
       rope = md("**ROPE**")
     ) |>
     fmt_number(columns = 5:7, decimals = 2) |>
-    cols_width(
-      Outcome ~ px(375),
-      2:3 ~ px(175),
-      4 ~ px(150),
-      5:7 ~ px(125)
-    ) |>
+    cols_width(Outcome ~ px(375), 2:3 ~ px(175), 4 ~ px(150), 5:7 ~ px(125)) |>
     cols_align(align = "left") |>
     tab_style(
       style = cell_text(weight = "bold"),
@@ -266,12 +170,13 @@ table_2_function <- function(x, models) {
       locations = cells_body(columns = 2:3, rows = 3)
     ) |>
     tab_footnote(
-      footnote = "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere Laterality",
+      footnote = "Values represent Average Marginal Effects (Odds Ratios for binary, Rate Ratios for counts). Adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study.",
       locations = cells_column_labels(columns = or_ci)
     ) |>
     tab_footnote(
-      footnote = "ROPE = region of practical equivalence, defined as 0.95 > aOR > 1.05",
+      footnote = "ROPE = region of practical equivalence (0.95 to 1.05)",
       locations = cells_column_labels(columns = rope)
     )
+
   return(table_2)
 }

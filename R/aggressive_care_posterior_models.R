@@ -8,12 +8,12 @@ f_posterior_minimal_neurosurgery <- function(dat) {
   model <- brm(
     neurosurgery_evac ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -38,12 +38,12 @@ f_posterior_neutral_neurosurgery <- function(dat) {
   model <- brm(
     neurosurgery_evac ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -68,12 +68,12 @@ f_posterior_left_neurosurgery <- function(dat) {
   model <- brm(
     neurosurgery_evac ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -98,12 +98,12 @@ f_posterior_right_neurosurgery <- function(dat) {
   model <- brm(
     neurosurgery_evac ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -128,12 +128,12 @@ f_posterior_flat_neurosurgery <- function(dat) {
   model <- brm(
     neurosurgery_evac ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -160,11 +160,11 @@ f_posterior_neutral_evd <- function(dat) {
   model <- brm(
     evd ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh,
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh,
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -189,12 +189,12 @@ f_posterior_left_evd <- function(dat) {
   model <- brm(
     evd ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -219,12 +219,12 @@ f_posterior_right_evd <- function(dat) {
   model <- brm(
     evd ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -249,12 +249,12 @@ f_posterior_flat_evd <- function(dat) {
   model <- brm(
     evd ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -281,12 +281,12 @@ f_posterior_neutral_tracheostomy <- function(dat) {
   model <- brm(
     tracheostomy ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -311,12 +311,12 @@ f_posterior_left_tracheostomy <- function(dat) {
   model <- brm(
     tracheostomy ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -341,12 +341,12 @@ f_posterior_right_tracheostomy <- function(dat) {
   model <- brm(
     tracheostomy ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -371,12 +371,12 @@ f_posterior_flat_tracheostomy <- function(dat) {
   model <- brm(
     tracheostomy ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -401,17 +401,17 @@ f_posterior_neutral_days_mechanical_ventilation <- function(dat) {
   settings <- model_setup()
 
   model <- brm(
-    days_mechanical_ventilation ~
+    days_mechanical_ventilation | trunc(lb = 1) ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh,
-    family = cumulative(link = "logit"),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh,
+    family = brms::negbinomial(link = "log"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
+      set_prior("normal(2, 1)", class = "Intercept"),
       set_prior("normal(0, 0.35)", class = "b")
     ),
     cores = settings$cores,
@@ -430,18 +430,23 @@ f_posterior_left_days_mechanical_ventilation <- function(dat) {
   settings <- model_setup()
 
   model <- brm(
-    days_mechanical_ventilation ~
+    days_mechanical_ventilation | trunc(lb = 1) ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh,
-    family = cumulative(link = "logit"),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh,
+    family = brms::negbinomial(link = "log"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
-      set_prior("normal(-0.22, 0.175)", class = "b")
+      set_prior("normal(2, 1)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b"),
+      set_prior(
+        "normal(-0.22, 0.175)",
+        class = "b",
+        coef = "ich_lateralityRight"
+      )
     ),
     cores = settings$cores,
     chains = settings$chains,
@@ -459,18 +464,23 @@ f_posterior_right_days_mechanical_ventilation <- function(dat) {
   settings <- model_setup()
 
   model <- brm(
-    days_mechanical_ventilation ~
+    days_mechanical_ventilation | trunc(lb = 1) ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh,
-    family = cumulative(link = "logit"),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh,
+    family = brms::negbinomial(link = "log"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
-      set_prior("normal(0.18, 0.175)", class = "b")
+      set_prior("normal(2, 1)", class = "Intercept"),
+      set_prior("normal(0, 0.5)", class = "b"),
+      set_prior(
+        "normal(0.18, 0.175)",
+        class = "b",
+        coef = "ich_lateralityRight"
+      )
     ),
     cores = settings$cores,
     chains = settings$chains,
@@ -488,18 +498,18 @@ f_posterior_flat_days_mechanical_ventilation <- function(dat) {
   settings <- model_setup()
 
   model <- brm(
-    days_mechanical_ventilation ~
+    days_mechanical_ventilation | trunc(lb = 1) ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh,
-    family = cumulative(link = "logit"),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh,
+    family = brms::negbinomial(link = "log"),
     data = dat,
     prior = c(
-      set_prior("normal(-5, 0.5)", class = "Intercept"),
-      set_prior("normal(0, 5)", class = "b")
+      set_prior("normal(0, 5)", class = "Intercept"),
+      set_prior("normal(0, 2)", class = "b")
     ),
     cores = settings$cores,
     chains = settings$chains,
@@ -521,12 +531,12 @@ f_posterior_neutral_comfort <- function(dat) {
   model <- brm(
     comfort_care_binary ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -551,12 +561,12 @@ f_posterior_left_comfort <- function(dat) {
   model <- brm(
     comfort_care_binary ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -581,12 +591,12 @@ f_posterior_right_comfort <- function(dat) {
   model <- brm(
     comfort_care_binary ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -611,12 +621,12 @@ f_posterior_flat_comfort <- function(dat) {
   model <- brm(
     comfort_care_binary ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -643,12 +653,12 @@ f_posterior_neutral_early_wlst <- function(dat) {
   model <- brm(
     early_wlst ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -673,12 +683,12 @@ f_posterior_left_early_wlst <- function(dat) {
   model <- brm(
     early_wlst ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -703,12 +713,12 @@ f_posterior_right_early_wlst <- function(dat) {
   model <- brm(
     early_wlst ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -733,12 +743,12 @@ f_posterior_flat_early_wlst <- function(dat) {
   model <- brm(
     early_wlst ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -765,12 +775,12 @@ f_posterior_neutral_dnr_binary <- function(dat) {
   model <- brm(
     dnr_binary ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -795,12 +805,12 @@ f_posterior_left_dnr_binary <- function(dat) {
   model <- brm(
     dnr_binary ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -825,12 +835,12 @@ f_posterior_right_dnr_binary <- function(dat) {
   model <- brm(
     dnr_binary ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(
@@ -855,12 +865,12 @@ f_posterior_flat_dnr_binary <- function(dat) {
   model <- brm(
     dnr_binary ~
       ich_laterality *
-        ich_location +
-        age +
-        gcs_baseline +
-        ich_volume_baseline +
-        ivh +
-        (1 | study),
+      ich_location +
+      age +
+      gcs_baseline +
+      ich_volume_baseline +
+      ivh +
+      (1 | study),
     family = bernoulli(link = "logit"),
     data = dat,
     prior = c(

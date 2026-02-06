@@ -1,3 +1,7 @@
+library(gtsummary)
+library(dplyr)
+library(smd) # Ensure this is installed
+
 table_1_function <- function(x) {
   table_one_vars <- c(
     "age",
@@ -18,6 +22,7 @@ table_1_function <- function(x) {
     "ivh",
     "study"
   )
+
   table_1 <- x |>
     select(all_of(table_one_vars)) |>
     tbl_summary(
@@ -44,7 +49,45 @@ table_1_function <- function(x) {
       sort = all_categorical() ~ "frequency",
       digits = starts_with("gcs") ~ 0,
     ) |>
-    add_p(pvalue_fun = label_style_pvalue(digits = 2)) |>
+    # --- CHANGED SECTION START ---
+    add_stat(
+      fns = everything() ~ function(data, variable, ...) {
+        # 1. Safely extract x and y
+        x <- data[[variable]]
+        y <- data$ich_laterality
+
+        # 2. Handle 'difftime' (Time objects) specifically
+        # smd() can choke on these or return weird types
+        if (inherits(x, "difftime")) {
+          x <- as.numeric(x, units = "mins")
+        }
+
+        # 3. Calculate SMD safely
+        smd_res <- tryCatch(
+          {
+            smd::smd(x = x, g = y)$estimate
+          },
+          error = function(e) NA_real_ # Return NA number on error
+        )
+
+        # 4. Handle NaNs or NAs (e.g., if a variable has 0 variance)
+        if (
+          is.null(smd_res) ||
+            length(smd_res) == 0 ||
+            is.nan(smd_res) ||
+            is.na(smd_res)
+        ) {
+          return("NA") # Return a CHARACTER string "NA"
+        }
+
+        # 5. Format and FORCE character output
+        # This guarantees variable 5 (Time) looks like variable 1 (Age)
+        return(as.character(style_sigfig(smd_res, digits = 2)))
+      },
+      location = everything() ~ "label"
+    ) |>
+    modify_header(add_stat_1 ~ "**SMD**") |>
+    # --- CHANGED SECTION END ---
     add_overall() |>
     bold_labels() |>
     as_gt()

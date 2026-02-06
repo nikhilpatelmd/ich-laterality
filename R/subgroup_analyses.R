@@ -1,6 +1,3 @@
-tar_load(m_posterior_neutral_neurosurgery)
-tar_load(ich_aggressive)
-
 # Function for stratification by ich_location
 f_subgroup_by_location <- function(ich_aggressive) {
   # Raw Numbers and Percentages

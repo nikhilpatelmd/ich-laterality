@@ -1046,8 +1046,7 @@ tar_plan(
   m_posterior_flat_euro_anxiety_365_canonical = f_posterior_flat_euro_anxiety_365_canonical(
     ich_aggressive
   ),
-  vas_data_transformed = vas_transformation_function(ich_aggressive),
-  m_vas_90 = f_vas_90_beta(vas_data_transformed),
+  m_vas_90 = f_vas_90_zoib(ich_aggressive),
   m_vas_180 = f_vas_180_beta(vas_data_transformed),
   m_vas_365 = f_vas_365_beta(vas_data_transformed),
 
@@ -1668,7 +1667,7 @@ tar_plan(
     m_posterior_neutral_euro_anxiety_365_canonical,
     m_vas_365
   ),
-  table4_neutral = table_3_function(neutral_outcome_90_models),
+  table4_neutral = table_3_updated(neutral_outcome_90_models),
   table4_180 = table_3_function(neutral_outcome_180_models),
   table4_365 = table_3_function(neutral_outcome_365_models),
   table4_docx = gtsave(table4_neutral, here("manuscripts", "table4.docx")),
