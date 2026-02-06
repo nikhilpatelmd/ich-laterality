@@ -1,27 +1,18 @@
 model_setup <- function(complexity = "fast") {
-  # Hardware Constants for YOUR Ryzen AI 9
-  # We cap at 20 threads total to keep the system responsive.
-
   if (complexity == "fast") {
-    # Strategy: Throughput
-    # We will run multiple of these at once via 'future' plan
-    # Each model takes 4 cores (1 per chain)
     return(list(
       chains = 4,
       cores = 4,
-      threads = NULL, # No within-chain threading
+      threads = NULL,
       iter = 5000,
       warmup = 1000,
       seed = 75832
     ))
   } else if (complexity == "complex") {
-    # Strategy: Deep Focus
-    # These will run sequentially (1 worker)
-    # We give them 4 threads PER CHAIN (16 threads total)
     return(list(
       chains = 4,
       cores = 4,
-      threads = threading(4), # <--- The Speed Boost for Ordinal Models
+      threads = threading(4),
       iter = 5000,
       warmup = 1000,
       seed = 75832
