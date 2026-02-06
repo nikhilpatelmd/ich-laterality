@@ -1,19 +1,7 @@
-models_list_func <- function(a, b, c, d, e, f, g) {
-  list(
-    "Neurosurgical Intervention" = a,
-    "External Ventricular Drain" = b,
-    "Days of Mechanical Ventilation" = c,
-    "Tracheostomy" = d,
-    "Withdrawal of Life-Sustaining Therapy" = e,
-    "Early Withdrawal of Life-Sustaining Therapy" = f,
-    "DNR Order" = g
-  )
-}
-
+# Main Table Generation Function
 table_2_function <- function(x, models) {
-  models <- models
+  # --- 1. Gather Raw Counts (Descriptive Stats) ---
 
-  # gather raw counts for each outcome
   neurosurgery_n <- x |>
     tabyl(ich_laterality, neurosurgery_evac) |>
     adorn_percentages("row") |>
@@ -39,7 +27,7 @@ table_2_function <- function(x, models) {
       upper_75 = round(quantile(as.numeric(days_mechanical_ventilation), 0.75))
     ) |>
     mutate(
-      iqr = glue("{median} ({lower_25} - {upper_75})")
+      iqr = glue::glue("{median} ({lower_25} - {upper_75})")
     ) |>
     select(ich_laterality, iqr) |>
     pivot_wider(names_from = ich_laterality, values_from = iqr)
@@ -76,7 +64,7 @@ table_2_function <- function(x, models) {
     select(!No) |>
     pivot_wider(names_from = ich_laterality, values_from = Yes)
 
-  # convert counts to proper formatting before adding stats
+  # Combine descriptive stats
   total_n <- bind_rows(
     "Neurosurgical Intervention" = neurosurgery_n,
     "External Ventricular Drain" = evd_n,
@@ -88,14 +76,14 @@ table_2_function <- function(x, models) {
     .id = "Outcome"
   )
 
-  # marginal effects
+  # --- 2. Calculate Marginal Effects ---
 
-  # Helper function to run marginaleffects for any model
+  # Helper function for marginal effects extraction
   get_marginal_stats <- function(model, comparison_type = "ratio") {
     marginaleffects::avg_comparisons(
       model,
       variables = "ich_laterality",
-      comparison = function(hi, lo) hi / lo # Explicit Ratio: Right / Left
+      comparison = function(hi, lo) hi / lo # Ratio: Right / Left
     ) |>
       marginaleffects::posterior_draws() |>
       rename(effect_ratio = draw) |>
@@ -108,14 +96,14 @@ table_2_function <- function(x, models) {
         rope = sum(effect_ratio < 1.05 & effect_ratio > 0.95) / n() # ROPE
       ) |>
       mutate(
-        or_ci = glue(
+        or_ci = glue::glue(
           "{round(or, 2)} ({round(lower_95_ci, 2)} - {round(upper_95_ci, 2)})"
         )
       ) |>
       select(or_ci, or_1, or_1.2, rope)
   }
 
-  # Apply to all binary models (calculates Marginal OR)
+  # Apply to models (Using the Pretty Names from the list)
   neurosurgery_post <- get_marginal_stats(models$"Neurosurgical Intervention")
   evd_post <- get_marginal_stats(models$"External Ventricular Drain")
   tracheostomy_post <- get_marginal_stats(models$"Tracheostomy")
@@ -127,7 +115,7 @@ table_2_function <- function(x, models) {
   )
   dnr_binary_post <- get_marginal_stats(models$"DNR Order")
 
-  # Apply to count model (calculates Marginal IRR)
+  # Count model (IRR)
   days_mechanical_ventilation_post <- get_marginal_stats(
     models$"Days of Mechanical Ventilation"
   )
@@ -144,7 +132,7 @@ table_2_function <- function(x, models) {
     .id = "Outcome"
   )
 
-  # --- 3. Final Table Construction ---
+  # --- 3. Final GT Table Construction ---
   table_2 <- total_n |>
     left_join(total_stats, by = "Outcome") |>
     gt(rowname_col = "Outcome") |>
@@ -179,4 +167,47 @@ table_2_function <- function(x, models) {
     )
 
   return(table_2)
+}
+
+# --- HELPER: Subset Models for Table 2 ---
+# This function plucks the correct models from the massive tar_combine list
+subset_models_for_table2 <- function(all_models, scenario) {
+  # 1. Map: Machine Name (Grid Outcome) -> Human Name (Table 2 Row)
+  target_map <- list(
+    "neurosurgery_evac" = "Neurosurgical Intervention",
+    "evd" = "External Ventricular Drain",
+    "days_mechanical_ventilation" = "Days of Mechanical Ventilation",
+    "tracheostomy" = "Tracheostomy",
+    "comfort_care_binary" = "Withdrawal of Life-Sustaining Therapy",
+    "early_wlst" = "Early Withdrawal of Life-Sustaining Therapy",
+    "dnr_binary" = "DNR Order"
+  )
+
+  # 2. Define the suffix pattern based on targets naming convention
+  # Format: model_posterior_OUTCOME_SCENARIO_ADJUSTMENT
+  # We assume we always want the "adjusted" models for Table 2
+  suffix <- paste0("_", scenario, "_adjusted")
+
+  # 3. Build the list
+  selected_models <- list()
+
+  for (outcome_col in names(target_map)) {
+    # Reconstruct the target name
+    target_name <- paste0("model_posterior_", outcome_col, suffix)
+
+    # Validation
+    if (!target_name %in% names(all_models)) {
+      stop(paste(
+        "Error in Table 2 creation: Could not find target",
+        target_name,
+        "in the combined list. Check if the model ran."
+      ))
+    }
+
+    # Assign using the "Pretty Name" required by table_2_function
+    pretty_name <- target_map[[outcome_col]]
+    selected_models[[pretty_name]] <- all_models[[target_name]]
+  }
+
+  return(selected_models)
 }

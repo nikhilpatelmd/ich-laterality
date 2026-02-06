@@ -9,7 +9,7 @@ library(future)
 library(future.callr)
 
 # PARALLEL PLAN --------------------------------------------------------
-plan(callr, workers = 3)
+plan(callr, workers = 4)
 
 # General pipeline settings ----
 suppressPackageStartupMessages(library(brms))
@@ -163,7 +163,7 @@ tar_plan(
     values = grid_complex,
     names = c("outcome_col", "prior_scenario", "adjustment_set"),
 
-    # 1. Posterior (Complex -> Main)
+    # 1. Posterior
     tar_target(
       model_posterior,
       fit_laterality_model(
@@ -177,11 +177,10 @@ tar_plan(
         sample_prior = "no",
         settings = model_setup("complex")
       ),
-      deployment = "main" # <--- Hardcoded, Safe
+      deployment = "main"
     ),
 
-    # 2. Prior Check (Always Fast -> Worker)
-    # Even for complex outcomes, the prior check is fast, so we can send it to a worker.
+    # 2. Prior Check
     tar_target(
       model_prior,
       fit_laterality_model(
@@ -194,6 +193,31 @@ tar_plan(
         settings = model_setup("fast")
       ),
       deployment = "worker"
+    )
+  ),
+
+  # -------------------------------------------------------------------------
+  # 3. GATHER RESULTS
+  # -------------------------------------------------------------------------
+  # Combine all posterior models into one large list
+  tar_combine(
+    all_posterior_models,
+    model_posterior
+  ),
+
+  # -------------------------------------------------------------------------
+  # 4. GENERATE TABLES
+  # -------------------------------------------------------------------------
+  # Create a separate Table 2 for each prior scenario
+  tar_map(
+    values = table_scenarios,
+
+    tar_target(
+      table_2,
+      table_2_function(
+        x = ich_aggressive,
+        models = subset_models_for_table2(all_posterior_models, scenario)
+      )
     )
   )
 )
