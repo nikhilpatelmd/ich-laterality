@@ -7,7 +7,7 @@ fit_laterality_model <- function(
   settings
 ) {
   # Base predictors
-  predictors <- "ich_laterality * ich_location + age + gcs_baseline + ich_volume_baseline + ivh + (1 | study) "
+  predictors <- "ich_laterality * ich_location + age + gcs_baseline + ich_volume_baseline + ivh + (1 | study)"
 
   # Mechanical ventilation Specification
   if (outcome_col == "days_mechanical_ventilation") {
