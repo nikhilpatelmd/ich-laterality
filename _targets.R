@@ -1,6 +1,8 @@
 library(targets)
 library(tarchetypes)
 library(quarto)
+library(tibble)
+library(dplyr)
 library(here)
 
 
@@ -27,6 +29,7 @@ source("R/aggressive_care_prior_models.R")
 source("R/aggressive_care_posterior_models.R")
 source("R/diagnostics.R")
 # source("R/results_visualization.R")
+source("R/model_functions.R")
 source("R/outcomes_prior_models.R")
 source("R/outcomes_posterior_models.R")
 source("R/predictive_checks.R")
@@ -43,6 +46,19 @@ source("R/euro_figures.R")
 source("R/vas.R")
 source("R/imputed_data.R")
 source("R/sensitivity.R")
+
+# Model grid
+
+model_grid <- tibble::tribble(
+  ~outcome_col                  , ~family                          , ~prior_scenario ,
+  "neurosurgery_evac"           , quote(bernoulli(link = "logit")) ,
+  "evd"                         , quote(bernoulli(link = "logit")) ,
+  "tracheostomy"                , quote(bernoulli(link = "logit")) ,
+  "days_mechanical_ventilation" , quote(negbinomial(link = "log")) ,
+  "comfort_care_binary"         , quote(bernoulli(link = "logit")) ,
+  "early_wlst"                  , quote(bernoulli(link = "logit")) ,
+  "dnr_binary"                  , quote(bernoulli(link = "logit"))
+)
 
 # Pipeline ----
 tar_plan(

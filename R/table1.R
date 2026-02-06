@@ -1,6 +1,6 @@
 library(gtsummary)
 library(dplyr)
-library(smd) # Ensure this is installed
+library(smd)
 
 table_1_function <- function(x) {
   table_one_vars <- c(
@@ -57,31 +57,35 @@ table_1_function <- function(x) {
         y <- data$ich_laterality
 
         # 2. Handle 'difftime' (Time objects) specifically
-        # smd() can choke on these or return weird types
         if (inherits(x, "difftime")) {
           x <- as.numeric(x, units = "mins")
         }
 
-        # 3. Calculate SMD safely
+        # 3. CRITICAL FIX: Remove Missing Data
+        # smd() propagates NAs, so we must filter them out before calculation
+        valid_idx <- !is.na(x) & !is.na(y)
+        x_clean <- x[valid_idx]
+        y_clean <- y[valid_idx]
+
+        # 4. Calculate SMD safely using the CLEAN vectors
         smd_res <- tryCatch(
           {
-            smd::smd(x = x, g = y)$estimate
+            smd::smd(x = x_clean, g = y_clean)$estimate
           },
-          error = function(e) NA_real_ # Return NA number on error
+          error = function(e) NA_real_
         )
 
-        # 4. Handle NaNs or NAs (e.g., if a variable has 0 variance)
+        # 5. Handle NaNs or NAs (e.g., zero variance or empty vectors)
         if (
           is.null(smd_res) ||
             length(smd_res) == 0 ||
             is.nan(smd_res) ||
             is.na(smd_res)
         ) {
-          return("NA") # Return a CHARACTER string "NA"
+          return("NA")
         }
 
-        # 5. Format and FORCE character output
-        # This guarantees variable 5 (Time) looks like variable 1 (Age)
+        # 6. Format output
         return(as.character(style_sigfig(smd_res, digits = 2)))
       },
       location = everything() ~ "label"
