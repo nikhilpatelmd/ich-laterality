@@ -14,7 +14,6 @@ suppressPackageStartupMessages({
 plan(callr, workers = 4)
 
 # General pipeline settings ----
-suppressPackageStartupMessages(library(brms))
 options(brms.backend = "cmdstanr")
 options(tidyverse.quiet = TRUE, dplyr.summarise.inform = FALSE)
 
