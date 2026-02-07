@@ -81,13 +81,33 @@ table_2_function <- function(x, models) {
   # --- 2. Calculate Marginal Effects ---
 
   # Helper function for marginal effects extraction
-  get_marginal_stats <- function(model, comparison_type = "ratio") {
-    marginaleffects::avg_comparisons(
+  get_marginal_stats <- function(model) {
+    # Detect Family to switch between OR and IRR
+    fam <- stats::family(model)$family
+
+    if (fam %in% c("bernoulli", "binomial")) {
+      # For Binary: Calculate Odds Ratio
+      # ln_oravg = Average Marginal Log-Odds Ratio
+      cmp <- "ln_oravg"
+    } else {
+      # For Count (NegBin): Calculate Rate Ratio (IRR)
+      # Ratio of expectations (Right / Left)
+      cmp <- function(hi, lo) hi / lo
+    }
+
+    draws <- marginaleffects::avg_comparisons(
       model,
       variables = "ich_laterality",
-      comparison = function(hi, lo) hi / lo # Ratio: Right / Left
+      comparison = cmp
     ) |>
-      marginaleffects::posterior_draws() |>
+      marginaleffects::posterior_draws()
+
+    # If we used ln_oravg, we must exponentiate the draws to get OR
+    if (fam %in% c("bernoulli", "binomial")) {
+      draws <- draws |> mutate(draw = exp(draw))
+    }
+
+    draws |>
       rename(effect_ratio = draw) |>
       summarize(
         or = median(effect_ratio),
@@ -160,7 +180,7 @@ table_2_function <- function(x, models) {
       locations = cells_body(columns = 2:3, rows = 3)
     ) |>
     tab_footnote(
-      footnote = "Values represent Average Marginal Effects (Odds Ratios for binary, Rate Ratios for counts). Adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study.",
+      footnote = "Values represent Average Marginal Effects (Odds Ratios for binary outcomes, Incidence Rate Ratios for counts). Adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study.",
       locations = cells_column_labels(columns = or_ci)
     ) |>
     tab_footnote(

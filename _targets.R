@@ -11,7 +11,7 @@ suppressPackageStartupMessages({
 })
 
 # 1. PARALLEL PLAN --------------------------------------------------------
-plan(callr, workers = 4)
+plan(callr, workers = 5)
 
 # General pipeline settings ----
 suppressPackageStartupMessages(library(brms))
@@ -109,16 +109,18 @@ map_fast <- tar_map(
   # Posterior
   tar_target(
     model_posterior,
-    fit_laterality_model(
-      data = ich_aggressive,
-      outcome_col = outcome_col,
-      family = family,
-      prior_scenario = prior_scenario,
-      adjustment_set = adjustment_set,
-      int_mean = int_mean,
-      int_sd = int_sd,
-      sample_prior = "no",
-      settings = model_setup("fast")
+    list(
+      fit_laterality_model(
+        data = ich_aggressive,
+        outcome_col = outcome_col,
+        family = family,
+        prior_scenario = prior_scenario,
+        adjustment_set = adjustment_set,
+        int_mean = int_mean,
+        int_sd = int_sd,
+        sample_prior = "no",
+        settings = model_setup("fast")
+      )
     ),
     deployment = "worker"
   ),
@@ -147,16 +149,19 @@ map_complex <- tar_map(
   # Posterior
   tar_target(
     model_posterior,
-    fit_laterality_model(
-      data = ich_aggressive,
-      outcome_col = outcome_col,
-      family = family,
-      prior_scenario = prior_scenario,
-      adjustment_set = adjustment_set,
-      int_mean = int_mean,
-      int_sd = int_sd,
-      sample_prior = "no",
-      settings = model_setup("complex")
+    list(
+      # <--- FIX: Wrap in list() to hide S3 class from vctrs
+      fit_laterality_model(
+        data = ich_aggressive,
+        outcome_col = outcome_col,
+        family = family,
+        prior_scenario = prior_scenario,
+        adjustment_set = adjustment_set,
+        int_mean = int_mean,
+        int_sd = int_sd,
+        sample_prior = "no",
+        settings = model_setup("complex")
+      )
     ),
     deployment = "main"
   ),
@@ -212,7 +217,8 @@ tar_plan(
   tar_combine(
     all_posterior_models,
     posteriors_fast,
-    posteriors_complex
+    posteriors_complex,
+    command = c(!!!.x)
   ),
 
   # Generate Tables
