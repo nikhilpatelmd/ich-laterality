@@ -280,7 +280,6 @@ model_prior_early_wlst_flat_minimal|stem|e5759caa17ecb79a|7ccd8f6866dd1b12|2010b
 model_prior_neurosurgery_evac_flat_adjusted|stem|826cd355300830f0|0777021d3776ce9e|2010b8bb2844c85f|-2076621438||t20490.418319538s|s2460949b|2460949|rds|local|vector|||12.776|Rows containing NAs were excluded from the model.|
 model_prior_tracheostomy_neutral_adjusted|stem|e4379bf42304b399|4840f5b2e5f1c047|2010b8bb2844c85f|403598409||t20490.4214070023s|s2642277b|2642277|rds|local|vector|||11.936|Rows containing NAs were excluded from the model.|
 model_prior_tracheostomy_flat_minimal|stem|5b328ad4051c2c54|2ff1bd6856792373|2010b8bb2844c85f|-415727679||t20490.4214237963s|s1788854b|1788854|rds|local|vector|||11.8||
-ich_imputed|stem|42f78d7b32305d2b|8d1f7791e1f35128|984cbb8f36c6fb23|-1992575325||t20490.422207905s|s216724b|216724|rds|local|vector|||58.576|Number of logged events: 3|
 model_prior_evd_neutral_adjusted|stem|350931ded5861797|64f5f2f992e9517d|2010b8bb2844c85f|571766693||t20490.4235230439s|s2642682b|2642682|rds|local|vector|||15.009|Rows containing NAs were excluded from the model.|
 model_prior_dnr_binary_left_minimal|stem|a26850277a96dabe|1b2cbe0e61776e62|2010b8bb2844c85f|-486299327||t20490.424751035s|s1840330b|1840330|rds|local|vector|||12.11|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
 model_prior_evd_flat_minimal|stem|27dcbdb4b167c522|761f0db2ffb474a5|2010b8bb2844c85f|1477899090||t20490.4293443632s|s1789384b|1789384|rds|local|vector|||13.148||
@@ -317,14 +316,8 @@ model_prior_days_mechanical_ventilation_right_adjusted|stem|1e96c3de5e221491|64b
 right_fill|stem|106031959d7a8bf2|ae01db88ff00ae71|2c530c1562a7fbd1|-29727145||t20490.3740251949s|s60b|60|rds|local|vector|||3.554||
 dag_neurosurgery|stem|0544e8e28fe4cda4|5e9e71bdcae07e20|8fec51f5315e7078|782792858||t20490.37401845s|s518b|518|rds|local|vector|||4.014||
 left_fill|stem|3f90a91384d0b3b1|ee9aca5a0972b3c4|2c530c1562a7fbd1|-605812162||t20490.3740252627s|s60b|60|rds|local|vector|||3.685||
-imported_data_file|stem|74717bc52a61f32e|5def87000f2374d5|2c530c1562a7fbd1|623732428|data/raw_data/all.rds|t20489.2716677699s|s7103607b|7103607|file|local|vector|||3.11||
 dag_outcomes|stem|d36a6f2ab8b305a7|35435e3659cf1296|87146d8bd15bf702|2092730130||t20490.3740250914s|s745b|745|rds|local|vector|||3.808||
 settings|stem|a3d35180f80c02bb|0d725b29fc99973a|9c085309857de1b6|-416401554||t20490.3988625228s|s142b|142|rds|local|vector|||3.81||
-imported_data|stem|37a93fa66610c1e6|be64c3e532f8d964|5f2a4c28cd0f8fcf|-1154221612||t20489.2725040595s|s373769b|373769|rds|local|vector|||0.071||
-selected_data|stem|b97721da3e8f8a7f|44280be3ad15831f|4420373906c65df7|-1052555108||t20489.272505014s|s164901b|164901|rds|local|vector|||0.026||
-ich_all|stem|06ec82c090f740f1|aa517dc5f415ced9|b74c442cc637ab52|-1013614662||t20489.2725058358s|s144303b|144303|rds|local|vector|||0.069||
-ich_aggressive|stem|2c0579247db0b5d5|792fce65c3b577e1|c2fae996d563973a|-1490752604||t20489.2725063023s|s121198b|121198|rds|local|vector|||0.064||
-theme_ich|stem|5cbc350f5f8e969c|a3d381f21678b10d|2c530c1562a7fbd1|-871403137||t20490.6199925713s|s1794593b|1794593|rds|local|vector|||2.783||
 model_prior_dnr_binary_right_minimal|stem|7c40c193365168e6|8e86f3667cf1e798|2010b8bb2844c85f|-1501715230||t20490.6201417248s|s1839073b|1839073|rds|local|vector|||12.567|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
 model_prior_early_wlst_neutral_adjusted|stem|b9f208295a3bf992|e17dcc5a662be030|2010b8bb2844c85f|-776718841||t20490.620150289s|s2642351b|2642351|rds|local|vector|||13.619|Rows containing NAs were excluded from the model.|
 model_prior_days_mechanical_ventilation_right_minimal|stem|91bcc36f4cb3481f|8fdbe8daba7f0b7e|2010b8bb2844c85f|-18243242||t20490.620154684s|s1833572b|1833572|rds|local|vector|||14.175|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
@@ -522,63 +515,6 @@ model_posterior_euro_pain_180_left_minimal|stem|6119217541d2721a|14c715aeea678cc
 model_posterior_mrs_90_neutral_adjusted|stem|31cb25ea8ef36e67|b93acf553a23e33c|2010b8bb2844c85f|908054749||t20491.5151859212s|s3516894b|3516894|rds|local|vector|||1941.403|Rows containing NAs were excluded from the model.|
 model_posterior_early_wlst_left_adjusted|stem|05dc1dacdf059a46|d083975571074bcc|2010b8bb2844c85f|1711811932||t20491.4899123788s|s2589400b|2589400|rds|local|vector|||357.855|Rows containing NAs were excluded from the model.|
 model_prior_euro_anxiety_90_flat_adjusted|stem|6c81742da8661770|d63747f7508f73fd|2010b8bb2844c85f|1157067144||t20491.4859936106s|s3557278b|3557278|rds|local|vector|||17.622|Rows containing NAs were excluded from the model.|
-model_setup|function|507b5b77a52cf990
-f_post_predictive_check_vas|function|9317df8aa37cbf8d
-posterior_diagnostics|function|d6a1f8b8ed64abf7
-base_grid|object|44160e6a37952036
-functional_outcomes|object|9914dd3f545ddfb5
-grid_complex|object|eaffdd03296bcea8
-f_alternative_adjustment_table_mrs|function|67136e52afb791b3
-process_vas|function|709d55dd71d9e875
-complete_grid|object|0c60bb2d13aa100b
-select_variables|function|51eaa047f9ead67f
-table_scenarios|object|e7184c0941837e07
-.Random.seed|object|49d990124afa64ee
-grid_fast|object|b59677e70b41069a
-filter_variables|function|aab6a12635d42cbf
-f_subgroup_table|function|a44300f88e1b13e4
-table_2_function|function|44ca1b6ad25176e8
-fit_laterality_model|function|cd395c4e196519f6
-prediction_visual|function|322f8ea04b818642
-table_1_function|function|fa6b69491290a756
-f_prior_predictive_check_vent|function|96885132fba43ea3
-euro_figure_function|function|b45e7965f6ae88e4
-f_alternative_adjustment_table|function|a2a257408e11e8fe
-aggressive_grid|object|44160e6a37952036
-posterior_odds_plot|function|c0ccd32b06d884c1
-f_prior_predictive_check|function|9fb9f26c4dffb03d
-f_post_predictive_check|function|6baf77f9bc26df66
-functional_grid|object|a40d9b43ec2d4494
-process_ordinal|function|f6a3fd1f3482d103
-f_subgroup_by_location|function|e2b1055b3c954ff4
-f_neurosurgery_dag|function|940967b2aefac2e0
-f_subgroup_by_study|function|63340650275664b3
-f_imp_sensitivity|function|13a6e7be6ef6e9aa
-f_imputed|function|d0b1ef4c96c16b1f
-subset_models_for_table2|function|97a16d4a52362206
-f_posterior_neutral_neurosurgery_imp|function|7eac84bc4a371ce8
-f_posterior_alternative1_neurosurgery|function|c3f518a4f25a4242
-f_posterior_alternative2_mrs_90|function|4bd29e2053e818d9
-f_posterior_minimal_evd|function|ce6dd50b00183452
-f_posterior_alternative1_evd|function|5f6973b3f9fe5de6
-f_posterior_neutral_evd_imp|function|5e07a5924d17a1f2
-f_posterior_neutral_mrs_90_canonical_imp|function|757e037871187835
-f_posterior_alternative1_mrs_90|function|92fd3d3a28f36414
-f_posterior_alternative5_mrs_90|function|504a87d87fc90767
-f_posterior_alternative2_neurosurgery|function|80f22e5661c4053e
-f_posterior_alternative4_evd|function|5c72af4ac1bbf21e
-f_posterior_minimal_neurosurgery|function|ccd3be3b0dcf860d
-f_posterior_alternative4_mrs_90|function|0f413a140aed937d
-f_posterior_alternative3_neurosurgery|function|040b1f0bc699756f
-f_posterior_alternative3_evd|function|91d90c729cfc486a
-f_vas_90_zoib|function|a72731f4e03306fc
-f_posterior_alternative3_mrs_90|function|10009973d5af9da5
-f_posterior_alternative4_neurosurgery|function|9ef55403cc4a83ce
-f_posterior_alternative2_evd|function|aa22903a35906e96
-outcomes_dag_function|function|4a755d76a2b875aa
-mrs_figure_function|function|a04e6e68664216ae
-adjusted_mrs_function|function|1634e253cbc99700
-table_3_updated|function|6295973766ca7348
 model_posterior_days_mechanical_ventilation_flat_adjusted|stem|c5c809a57f671f13|43ddffa0645a0ec0|2010b8bb2844c85f|-525539000||t20491.5255911522s|s2608871b|2608871|rds|local|vector|||239.962|Rows containing NAs were excluded from the model.|
 model_posterior_comfort_care_binary_right_minimal|stem|3705fb278f677fb6|cff2a4bb091a6ba7|2010b8bb2844c85f|-1789669130||t20491.5294485921s|s1676270b|1676270|rds|local|vector|||326.834|The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
 model_posterior_days_mechanical_ventilation_left_adjusted|stem|3ddbafe090fb75ef|a3f131cc299f475a|2010b8bb2844c85f|389489591||t20491.5353294541s|s2625367b|2625367|rds|local|vector|||505.929|Rows containing NAs were excluded from the model.|
@@ -591,3 +527,103 @@ model_posterior_dnr_binary_left_minimal|stem|ba0efc74c42469e4|99d303d6edccfb1f|2
 model_posterior_tracheostomy_left_adjusted|stem|c62ea2006a3c0149|3e3853e8c01c523b|2010b8bb2844c85f|-314154473||t20491.5398522767s|s2518599b|2518599|rds|local|vector|||384.753|Rows containing NAs were excluded from the model.|
 all_posterior_models|stem|8e246c4c103eca0c|7c5892fa82f1834c|3260940a2a0ab9bc|83923668||t20491.5401635068s|s118570534b|118570534|rds|local|vector|||0||
 table_2_flat|stem||2e758e1ee0140854|63073356779a8758|1407879700||t20491.5403569405s||0|rds|local|vector|||1.559||Assertion failed. One of the following must apply:   checkmate::check_choice(comparison): Must be element of set   {'difference','differenceavg','dydx','eyex','eydx','dyex','dydxavg','eyexavg','eydxavg','dyexavg','ratio','ratioavg','lnratio','lnratioavg','lnor','lnoravg','lift','liftavg','expdydx','expdydxavg'},   but is 'ln_oravg'   checkmate::check_function(comparison): Must be a function, not   'character'
+imported_data_file|stem|ed98456f21f9ec46|5def87000f2374d5|2c530c1562a7fbd1|623732428|data/raw_data/all.rds|t20491.9516341916s|s8509896b|8509896|file|local|vector|||0.001||
+imported_data|stem|bf7bf2317261b200|be64c3e532f8d964|3e87dc08fede24b1|-1154221612||t20491.952099673s|s411050b|411050|rds|local|vector|||0.02||
+selected_data|stem|9513d758b6f6702a|44280be3ad15831f|62ee2cc13ed9a65d|-1052555108||t20491.952101223s|s166174b|166174|rds|local|vector|||0.019||
+ich_all|stem|a98d34c16320ff33|aa517dc5f415ced9|fb3e9908c76c496f|-1013614662||t20491.9550606437s|s145767b|145767|rds|local|vector|||0.011||
+ich_aggressive|stem|e0e86e594ead51fd|792fce65c3b577e1|8980bda775384329|-1490752604||t20491.9550614662s|s123466b|123466|rds|local|vector|||0.006||
+missing_data_by_laterality|stem|87585d0a514df357|7dfc9cb944dbdcf6|054cd87ccc77f975|-168938076||t20491.9901240199s|s2781480b|2781480|rds|local|vector|||0.171||
+missing_data_by_study|stem|e0fe1f8bb2e58dc0|642dcd844d5a1521|99c0769737b6a3f4|522530672||t20492.0032530861s|s2779382b|2779382|rds|local|vector|||0.28||
+missing_data_by_ich_laterality|stem|e36a9dddbeac29cb|7dfc9cb944dbdcf6|99c0769737b6a3f4|1927306172||t20492.0032685269s|s2781577b|2781577|rds|local|vector|||0.106||
+missingness_check_ich_volume_baseline_euro_vas_90|stem|2186493b59ff5c86|d809cc185a6dc013|9409fcbac9ba8199|240023419||t20492.0225291863s|s2954561b|2954561|rds|local|vector|||0.132||
+missingness_check_ich_volume_baseline_euro_usual_90|stem|573aa136fa66b50c|768d201c05952aee|9409fcbac9ba8199|477409170||t20492.0225439655s|s2954564b|2954564|rds|local|vector|||0.054||
+missingness_check_gcs_baseline_euro_usual_90|stem|14ea790bc65bdee7|2af993e86008f3ba|9409fcbac9ba8199|-401174121||t20492.0225609053s|s2892046b|2892046|rds|local|vector|||0.059||
+missingness_check_ich_volume_baseline_mrs_90|stem|78bf34f6e1e2511d|1e0809e1f9c69181|9409fcbac9ba8199|-41408483||t20492.0225745124s|s2954523b|2954523|rds|local|vector|||0.049||
+missingness_check_gcs_baseline_euro_vas_90|stem|3e3427179c741240|d98a7bf7f068ffe7|9409fcbac9ba8199|-1045965078||t20492.0225881657s|s2892046b|2892046|rds|local|vector|||0.048||
+missingness_check_gcs_baseline_euro_mobility_90|stem|76f26cd9a0e6ab9c|cddd74c693bbdedf|9409fcbac9ba8199|-598122164||t20492.0226020658s|s2892068b|2892068|rds|local|vector|||0.059||
+missingness_check_age_euro_usual_90|stem|90b6601ec041b096|af2ba92f35dac707|9409fcbac9ba8199|331493121||t20492.0226159298s|s2903709b|2903709|rds|local|vector|||0.051||
+missingness_check_gcs_baseline_mrs_90|stem|2e7ac2d8d0948b68|3d0bbfd7a4c372f3|9409fcbac9ba8199|-1024795435||t20492.0226297855s|s2892011b|2892011|rds|local|vector|||0.058||
+missingness_check_age_euro_anxiety_90|stem|c9d6114ef7a5a9a7|1285aa39e5b3fd19|9409fcbac9ba8199|-1440840008||t20492.0226436413s|s2903725b|2903725|rds|local|vector|||0.059||
+missingness_check_ich_volume_baseline_euro_mobility_90|stem|afa7f4f986cc9e2f|f3e8d83550a57232|9409fcbac9ba8199|-2138308780||t20492.0226576112s|s2954582b|2954582|rds|local|vector|||0.051||
+missingness_check_age_euro_mobility_90|stem|a91cf226fa12960c|84805048476c3ce1|9409fcbac9ba8199|-665705009||t20492.0226715348s|s2903726b|2903726|rds|local|vector|||0.06||
+missingness_check_age_euro_pain_90|stem|644767910f9bc70c|296b357d482c0cbe|9409fcbac9ba8199|480610322||t20492.0226855194s|s2903712b|2903712|rds|local|vector|||0.051||
+missingness_check_ich_volume_baseline_euro_anxiety_90|stem|32b705d52d0766b5|18c065d4db738a65|9409fcbac9ba8199|-656807126||t20492.0227002141s|s2954578b|2954578|rds|local|vector|||0.052||
+missingness_check_age_mrs_90|stem|ffe875f39cfbb07f|8b810bb4591546bd|9409fcbac9ba8199|-368328980||t20492.0227145987s|s2903680b|2903680|rds|local|vector|||0.055||
+missingness_check_gcs_baseline_euro_pain_90|stem|27fcdc377123f03d|549ecf38a37ef97b|9409fcbac9ba8199|-811944912||t20492.0227289422s|s2892048b|2892048|rds|local|vector|||0.05||
+missingness_check_ich_volume_baseline_euro_pain_90|stem|c9de4f4283ec6c76|4d04ba0bcad6e941|9409fcbac9ba8199|-1193187095||t20492.0227435949s|s2954567b|2954567|rds|local|vector|||0.064||
+missingness_check_gcs_baseline_euro_anxiety_90|stem|30d1ee24c8fd2796|03939036971dc171|9409fcbac9ba8199|-567469944||t20492.02275807s|s2892064b|2892064|rds|local|vector|||0.059||
+missingness_check_age_euro_vas_90|stem|29952f0d5c44877a|f8c87fa9f1dc12b0|9409fcbac9ba8199|-589283001||t20492.022772382s|s2903709b|2903709|rds|local|vector|||0.055||
+f_posterior_neutral_neurosurgery_imp|function|7eac84bc4a371ce8
+f_posterior_neutral_evd_imp|function|5e07a5924d17a1f2
+f_posterior_neutral_mrs_90_canonical_imp|function|757e037871187835
+missingness_check_time_symptoms_to_ed_mrs_90|stem|48180e725e491f87|0f165f0005137429|9409fcbac9ba8199|1815087117||t20492.0269979479s|s2900794b|2900794|rds|local|vector|||0.124||
+missingness_check_time_symptoms_to_ed_euro_mobility_90|stem|f18a19b772562e8b|2812d47999750d23|9409fcbac9ba8199|-362069827||t20492.0270127672s|s2900840b|2900840|rds|local|vector|||0.062||
+missingness_check_time_symptoms_to_ed_euro_pain_90|stem|7d38ab77bd89bcb6|08422ed0c53b9e40|9409fcbac9ba8199|242806681||t20492.0270304292s|s2900828b|2900828|rds|local|vector|||0.064||
+missingness_check_time_symptoms_to_ed_euro_anxiety_90|stem|2d350325e0db50a0|1226d5812c2bf2a1|9409fcbac9ba8199|572154488||t20492.0270448081s|s2900840b|2900840|rds|local|vector|||0.053||
+missingness_check_time_symptoms_to_ed_euro_vas_90|stem|0e90f0f0694ade15|96d8b5d5897bb398|9409fcbac9ba8199|1150151704||t20492.0270592023s|s2900827b|2900827|rds|local|vector|||0.059||
+missingness_check_time_symptoms_to_ed_euro_usual_90|stem|db5932ca4501848b|aef9494d528769c1|9409fcbac9ba8199|-1373305652||t20492.0270739129s|s2900827b|2900827|rds|local|vector|||0.055||
+ich_imputed|stem|89f28331fcd9701d|8d1f7791e1f35128|90b6c3da1d42b588|-1992575325||t20492.6483791066s|s780602b|780602|rds|local|vector|||229.757|Number of logged events: 1. Number of logged events: 1|
+imputed_visualizations|stem|7f0863e1a0ea2452|ade647148a6fbbfc|a562cae8488256f1|645898383||t20492.6519294591s|s42884083b|42884083|rds|local|vector|||1.602|Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0. ℹ Please use `linewidth` instead.|
+f_plot_imputations|function|2ca0fbd2c2714afd
+missing_data_object|stem|34b6889721c4c694|ad944b0888be93f0|99b46e68f6bddb86|556303029||t20492.6601059694s|s56475b|56475|rds|local|vector|||0.094||
+base_grid|object|44160e6a37952036
+covariates_of_interest|object|74b51222a9fac354
+functional_grid|object|a40d9b43ec2d4494
+theme_ich|function|b45be91cc74e0d08
+f_missing_data_filter|function|3c890f806395f324
+table_1_function|function|fa6b69491290a756
+filter_variables|function|22e3e97d7e95dd63
+posterior_odds_plot|function|c0ccd32b06d884c1
+complete_grid|object|0c60bb2d13aa100b
+grid_complex|object|eaffdd03296bcea8
+model_setup|function|507b5b77a52cf990
+euro_figure_function|function|b45e7965f6ae88e4
+f_post_predictive_check|function|6baf77f9bc26df66
+f_imputed|function|8e4a19fd5b63d0b5
+f_percent_missing_visual_stratified|function|8f110cf803d9ecb0
+f_shadow_plots|function|10a9581b3605c051
+table_scenarios|object|e7184c0941837e07
+prediction_visual|function|322f8ea04b818642
+grid_fast|object|b59677e70b41069a
+f_subgroup_table|function|a44300f88e1b13e4
+f_subgroup_by_location|function|e2b1055b3c954ff4
+select_variables|function|ee7ab43c89c4a69e
+process_ordinal|function|f6a3fd1f3482d103
+process_vas|function|709d55dd71d9e875
+.Random.seed|object|192911c30d5d2d8c
+f_subgroup_by_study|function|63340650275664b3
+posterior_diagnostics|function|d6a1f8b8ed64abf7
+f_post_predictive_check_vas|function|9317df8aa37cbf8d
+functional_outcomes|object|9914dd3f545ddfb5
+fit_laterality_model|function|cd395c4e196519f6
+f_prior_predictive_check_vent|function|96885132fba43ea3
+f_alternative_adjustment_table|function|a2a257408e11e8fe
+table_2_function|function|44ca1b6ad25176e8
+aggressive_grid|object|44160e6a37952036
+f_prior_predictive_check|function|9fb9f26c4dffb03d
+f_plot_imputations_detailed|function|915c23e739892e94
+outcomes_of_interest|object|4394e3abfcb17d82
+f_neurosurgery_dag|function|940967b2aefac2e0
+f_imp_sensitivity|function|13a6e7be6ef6e9aa
+subset_models_for_table2|function|97a16d4a52362206
+f_alternative_adjustment_table_mrs|function|67136e52afb791b3
+adjusted_mrs_function|function|1634e253cbc99700
+mrs_figure_function|function|a04e6e68664216ae
+f_posterior_alternative4_neurosurgery|function|9ef55403cc4a83ce
+f_posterior_alternative2_neurosurgery|function|80f22e5661c4053e
+f_posterior_alternative2_evd|function|aa22903a35906e96
+f_posterior_alternative4_mrs_90|function|0f413a140aed937d
+f_vas_90_zoib|function|a72731f4e03306fc
+f_posterior_minimal_neurosurgery|function|ccd3be3b0dcf860d
+f_posterior_alternative4_evd|function|5c72af4ac1bbf21e
+f_posterior_alternative1_mrs_90|function|92fd3d3a28f36414
+f_posterior_alternative3_mrs_90|function|10009973d5af9da5
+f_posterior_alternative1_evd|function|5f6973b3f9fe5de6
+f_posterior_alternative3_neurosurgery|function|040b1f0bc699756f
+f_posterior_alternative2_mrs_90|function|4bd29e2053e818d9
+f_posterior_minimal_evd|function|ce6dd50b00183452
+f_posterior_alternative3_evd|function|91d90c729cfc486a
+f_posterior_alternative5_mrs_90|function|504a87d87fc90767
+f_posterior_alternative1_neurosurgery|function|c3f518a4f25a4242
+table_3_updated|function|6295973766ca7348
+outcomes_dag_function|function|4a755d76a2b875aa

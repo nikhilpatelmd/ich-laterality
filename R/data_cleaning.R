@@ -2,6 +2,7 @@ select_variables <- function(x) {
   x |>
     select(
       study,
+      site_id,
       age,
       sex,
       race,
@@ -71,7 +72,11 @@ select_variables <- function(x) {
 
 filter_variables <- function(x) {
   x |>
-    filter(ich_location == "Basal Ganglia" | ich_location == "Thalamus" | ich_location == "Lobar") |>
+    # 1. Row Filters
+    filter(ich_location %in% c("Basal Ganglia", "Thalamus", "Lobar")) |>
     drop_na(ich_laterality) |>
-    droplevels()
+    droplevels() |>
+    mutate(
+      site_id = as.character(site_id)
+    )
 }
