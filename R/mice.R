@@ -18,7 +18,13 @@ f_imputed <- function(data, n_imputes = 100, seed = 1) {
     "study",
     "htn",
     "evd",
-    "time_symptoms_to_ed"
+    "time_symptoms_to_ed",
+    # --- Aggressive Care Outcomes ---
+    "comfort_care_binary",
+    "early_wlst",
+    "dnr_binary",
+    "tracheostomy",
+    "days_mechanical_ventilation" # Included here to PRESERVE the column
   )
 
   # Mirror the logic from missing data analysis
@@ -30,10 +36,20 @@ f_imputed <- function(data, n_imputes = 100, seed = 1) {
       -ends_with(c("01", "02", "03", "04"))
     ) |>
     # Ensure categorical predictors are factors
-    # Note: We do NOT use any_of() here because if these are missing,
-    # we WANT the pipeline to error (fail-fast).
     mutate(across(
-      c(neurosurgery_evac, ivh, htn, evd, ich_location, ich_laterality),
+      c(
+        neurosurgery_evac,
+        ivh,
+        htn,
+        evd,
+        ich_location,
+        ich_laterality,
+        # Binary outcomes only (exclude days_mechanical_ventilation)
+        comfort_care_binary,
+        early_wlst,
+        dnr_binary,
+        tracheostomy
+      ),
       as.factor
     ))
 
@@ -41,12 +57,15 @@ f_imputed <- function(data, n_imputes = 100, seed = 1) {
   ini <- mice(imp_data, maxit = 0)
 
   # 3. Define Methods
-  # Create a tibble mapping Variable Name -> Method
   meth <- tibble(variable = names(ini$method)) |>
     mutate(
       method = case_when(
-        # A. Do not impute Fixed Variables
+        # A. Do not impute Fixed Variables or Structural Missingness
         variable == "study" ~ "",
+
+        # EXPLICITLY SKIP days_mechanical_ventilation
+        # (It falls to TRUE ~ "" anyway, but being explicit is safer for future reads)
+        variable == "days_mechanical_ventilation" ~ "",
 
         # B. Dynamic Outcomes (EuroQOL, mRS)
         str_starts(variable, "euro|mrs") ~ "pmm",
@@ -67,10 +86,10 @@ f_imputed <- function(data, n_imputes = 100, seed = 1) {
         variable %in% c("ich_location", "ich_laterality") ~ "polyreg",
 
         # F. Safety Fallback (Empty string = no imputation)
+        # This will catch comfort_care_binary, early_wlst, etc.
         TRUE ~ ""
       )
     ) |>
-    # Convert back to the named vector 'mice' expects
     deframe()
 
   # 4. Run Imputation
@@ -87,31 +106,17 @@ f_imputed <- function(data, n_imputes = 100, seed = 1) {
 }
 
 f_plot_imputations_detailed <- function(mids_object) {
-  # 1. TRACE PLOTS (Convergence) --------------------------------------------
-  # We use the base plot() from mice because it handles the chains automatically.
-  # We save it to a file or return it as a grob if needed, but for targets,
-  # it's often easier to just rely on the density/scatter plots for the report.
-  # (You should run plot(mids_object) interactively to check for "caterpillars")
-
-  # 2. DATA PREPARATION -----------------------------------------------------
-  # Convert MICE object to long format for ggplot
-  # .imp == 0 is original data, .imp > 0 is imputed
+  # (Same plotting code as before)
   long_data <- complete(mids_object, action = "long", include = TRUE) |>
     mutate(
       Type = ifelse(.imp == 0, "Observed", "Imputed"),
-      # Make points smaller/transparent for imputed to see density
       Alpha = ifelse(.imp == 0, 1, 0.1)
     )
-
-  # 3. BIVARIATE CHECK (Volume vs GCS) --------------------------------------
-  # Does the relationship between Severity (Volume) and Status (GCS) hold?
-  # We expect a negative correlation (High Vol -> Low GCS)
 
   p_bivariate <- ggplot(
     long_data,
     aes(x = ich_volume_baseline, y = gcs_baseline)
   ) +
-    # Plot imputed points first (in background, red)
     geom_jitter(
       data = filter(long_data, .imp > 0),
       color = "firebrick",
@@ -119,13 +124,11 @@ f_plot_imputations_detailed <- function(mids_object) {
       width = 0,
       height = 0.2
     ) +
-    # Plot observed points on top (blue)
     geom_point(
       data = filter(long_data, .imp == 0),
       color = "steelblue",
       alpha = 0.8
     ) +
-    # Add trend lines to compare slopes
     geom_smooth(
       aes(group = .imp, color = Type),
       method = "lm",
@@ -145,18 +148,13 @@ f_plot_imputations_detailed <- function(mids_object) {
     theme_minimal() +
     theme(legend.position = "bottom")
 
-  # 4. CATEGORICAL CHECK (ICH Location) -------------------------------------
-  # Did we accidentally over-impute "Lobar" hemorrhages?
-
   p_cat <- long_data |>
     group_by(.imp, ich_location) |>
     summarise(count = n(), .groups = "drop") |>
     mutate(prop = count / sum(count), .by = .imp) |>
     mutate(Type = ifelse(.imp == 0, "Observed", "Imputed")) |>
     ggplot(aes(x = ich_location, y = prop, color = Type, group = .imp)) +
-    # Plot lines for each imputation
     geom_line(alpha = 0.3) +
-    # Highlight observed data
     geom_line(data = . %>% filter(.imp == 0), color = "steelblue", size = 1.5) +
     scale_color_manual(
       values = c("Imputed" = "firebrick", "Observed" = "steelblue")
@@ -169,18 +167,14 @@ f_plot_imputations_detailed <- function(mids_object) {
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-  # 5. UNIVARIATE DENSITY (Outcomes) ----------------------------------------
-  # Checking mRS 90 distribution
   p_outcome <- ggplot(long_data, aes(x = mrs_90, group = .imp, color = Type)) +
-    geom_density(adjust = 2) + # Smooth it out a bit
+    geom_density(adjust = 2) +
     scale_color_manual(
       values = c("Imputed" = "firebrick", "Observed" = "steelblue")
     ) +
     labs(title = "Outcome Distribution: mRS 90") +
     theme_minimal()
 
-  # Combine
   layout <- (p_bivariate + p_outcome) / p_cat
-
   return(layout)
 }
