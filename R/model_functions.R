@@ -1,3 +1,37 @@
+# R/model_functions.R
+
+model_setup <- function(complexity = "complex") {
+  if (complexity == "complex") {
+    # --- MANUSCRIPT PRODUCTION MODE ---
+    # Optimized for AMD Ryzen AI 9 (24 threads)
+    # Strategy: Run 4 chains on 4 separate cores.
+    # Disable within-chain threading (it adds overhead for N < 10k).
+    list(
+      chains = 4,
+      cores = 4, # 1 core per chain
+      threads = NULL, # Disable threading
+      iter = 4000,
+      warmup = 2000,
+      control = list(adapt_delta = 0.99),
+      seed = 20240630,
+      backend = "cmdstanr"
+    )
+  } else {
+    # --- FAST / DEBUG MODE ---
+    # Strategy: Minimum viability to check pipeline mechanics.
+    list(
+      chains = 1,
+      cores = 1,
+      threads = NULL,
+      iter = 100,
+      warmup = 50,
+      control = list(adapt_delta = 0.80),
+      seed = 20240630,
+      backend = "cmdstanr"
+    )
+  }
+}
+
 fit_laterality_model <- function(
   data,
   outcome_col,
@@ -68,7 +102,7 @@ fit_laterality_model <- function(
     # Note: We check if the interaction variable is already in the confounder list
     # to avoid duplication, though update() usually handles it.
     confounders <- c(
-      "ich_location", # We will handle this carefully below
+      "ich_location",
       "age",
       "gcs_baseline",
       "ich_volume_baseline",
@@ -87,11 +121,6 @@ fit_laterality_model <- function(
     # Only add interaction between laterality and location IF we are NOT
     # already testing location as the main interaction variable.
     if (is.null(interaction_var) || interaction_var != "ich_location") {
-      # Keep original behavior: laterality * location interaction is standard
-      # But if we are explicitly testing that interaction, it's already in base_formula
-      # so we don't want to add it again here.
-      # However, your original code had `ich_laterality * ich_location` as a standard adjustment.
-      # If we are just running the standard model, we keep it.
       update_str <- paste(update_str, "+ ich_laterality:ich_location")
     }
 
@@ -151,13 +180,13 @@ fit_laterality_model <- function(
       data = data,
       prior = my_priors,
       sample_prior = sample_prior,
-      chains = 1,
+      chains = 1, # brm_multiple runs 1 chain per imputed dataset
       cores = settings$cores,
       warmup = settings$warmup,
       iter = settings$iter,
       seed = settings$seed,
       backend = "cmdstanr",
-      control = list(adapt_delta = 0.99)
+      control = settings$control
     )
   } else {
     brm(
@@ -173,7 +202,7 @@ fit_laterality_model <- function(
       iter = settings$iter,
       seed = settings$seed,
       backend = "cmdstanr",
-      control = list(adapt_delta = 0.99)
+      control = settings$control
     )
   }
 }

@@ -12,7 +12,9 @@ suppressPackageStartupMessages({
 })
 
 # 1. PARALLEL PLAN --------------------------------------------------------
-plan(callr, workers = 5)
+# We rely on callr to manage workers dynamically.
+# Run tar_make_future(workers = 5) for manuscript runs.
+plan(callr)
 
 # General pipeline settings ----
 options(brms.backend = "cmdstanr")
@@ -48,7 +50,7 @@ aggressive_grid <- tibble::tribble(
   ~outcome_col                  , ~family                          , ~int_mean , ~int_sd , ~complexity ,
   "neurosurgery_evac"           , quote(bernoulli(link = "logit")) ,        -7 , 0.35    , "fast"      ,
   "evd"                         , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "fast"      ,
-  "days_mechanical_ventilation" , quote(negbinomial(link = "log")) ,         0 , 0.5     , "complex"   ,
+  "days_mechanical_ventilation" , quote(negbinomial(link = "log")) ,         0 , 0.5     , "fast"      ,
   "dnr_binary"                  , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "fast"      ,
   "comfort_care_binary"         , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "fast"      ,
   "early_wlst"                  , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "fast"      ,
@@ -78,52 +80,89 @@ functional_grid <- tibble(
   ),
   int_mean = -2.2,
   int_sd = 0.5,
-  complexity = "complex"
+  complexity = "fast"
 )
 
-# Combine
-base_grid <- aggressive_grid
-
-# Cross with Scenarios
+# Combine and Cross
 complete_grid <- tidyr::crossing(
-  base_grid,
+  aggressive_grid,
   prior_scenario = c("neutral", "left", "right", "flat"),
   adjustment_set = c("minimal", "adjusted")
 )
 
-# SPLIT THE GRID
 grid_fast <- complete_grid |> filter(complexity == "fast")
 grid_complex <- complete_grid |> filter(complexity == "complex")
 
-# Table Scenarios
+# ATACH Sensitivity Grid
+grid_atach_sens <- aggressive_grid |>
+  filter(outcome_col == "neurosurgery_evac") |>
+  tidyr::crossing(prior_scenario = "neutral", adjustment_set = "adjusted")
+
+# Interaction Grid
+grid_interactions <- tibble(
+  outcome_col = "neurosurgery_evac",
+  interaction_var = c("ich_location", "study"),
+  family = rep(list(quote(bernoulli(link = "logit"))), 2),
+  prior_scenario = "neutral",
+  adjustment_set = "adjusted"
+)
+
 table_scenarios <- tibble(scenario = c("neutral", "left", "right", "flat"))
 
+# 3. DEFINE TARGET LISTS (STEP-BY-STEP) -----------------------------------
 
-# 3. DEFINE MAPS (Outside of tar_plan) ------------------------------------
+# --- A. Data & Setup Targets ---
+t_data <- list(
+  tar_file_read(imported_data, "data/raw_data/all.rds", read_rds(!!.x)),
+  tar_target(left_fill, "#ce4951"),
+  tar_target(right_fill, "#476170"),
 
-# --- TRACK A: MAIN ANALYSIS (Imputed) ---
+  tar_target(selected_data, select_variables(imported_data)),
+  tar_target(ich_all, filter_variables(selected_data)),
+
+  # Main Dataset
+  tar_target(
+    ich_aggressive,
+    ich_all |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels()
+  ),
+
+  # ATACH-2 Only Dataset
+  tar_target(
+    ich_atach,
+    ich_aggressive |> filter(study == "ATACH-2") |> droplevels()
+  ),
+
+  tar_target(ich_imputed, f_imputed(ich_aggressive)),
+  tar_target(imputed_visualizations, f_plot_imputations_detailed(ich_imputed)),
+
+  tar_target(dag_neurosurgery, f_neurosurgery_dag(ich_aggressive)),
+  tar_target(dag_outcomes, outcomes_dag_function(ich_aggressive)),
+  tar_target(settings, model_setup())
+)
+
+# --- B. Map Definitions ---
+# Note: We define these as R objects first.
+
+# Track A: Main Analysis
 map_main_fast <- tar_map(
   values = grid_fast,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
-
   tar_target(
     model_main,
-    list(
-      fit_laterality_model(
-        data = ich_imputed,
-        use_imputation = TRUE,
-        outcome_col = outcome_col,
-        family = family,
-        prior_scenario = prior_scenario,
-        adjustment_set = adjustment_set,
-        int_mean = int_mean,
-        int_sd = int_sd,
-        sample_prior = "no",
-        settings = model_setup("fast"),
-        random_effect_str = "(1 | study)" # Default behavior
-      )
-    ),
+    list(fit_laterality_model(
+      data = ich_imputed,
+      use_imputation = TRUE,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+      sample_prior = "no",
+      settings = model_setup("fast"),
+      random_effect_str = "(1 | study)"
+    )),
     deployment = "worker"
   )
 )
@@ -132,51 +171,45 @@ map_main_complex <- tar_map(
   values = grid_complex,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
-
   tar_target(
     model_main,
-    list(
-      fit_laterality_model(
-        data = ich_imputed,
-        use_imputation = TRUE,
-        outcome_col = outcome_col,
-        family = family,
-        prior_scenario = prior_scenario,
-        adjustment_set = adjustment_set,
-        int_mean = int_mean,
-        int_sd = int_sd,
-        sample_prior = "no",
-        settings = model_setup("complex"),
-        random_effect_str = "(1 | study)"
-      )
-    ),
+    list(fit_laterality_model(
+      data = ich_imputed,
+      use_imputation = TRUE,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+      sample_prior = "no",
+      settings = model_setup("complex"),
+      random_effect_str = "(1 | study)"
+    )),
     deployment = "main"
   )
 )
 
-# --- TRACK B: SENSITIVITY ANALYSIS (Complete Case) ---
+# Track B: Sensitivity Analysis
 map_sens_fast <- tar_map(
   values = grid_fast,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
-
   tar_target(
     model_sens,
-    list(
-      fit_laterality_model(
-        data = ich_aggressive,
-        use_imputation = FALSE,
-        outcome_col = outcome_col,
-        family = family,
-        prior_scenario = prior_scenario,
-        adjustment_set = adjustment_set,
-        int_mean = int_mean,
-        int_sd = int_sd,
-        sample_prior = "no",
-        settings = model_setup("fast"),
-        random_effect_str = "(1 | study)"
-      )
-    ),
+    list(fit_laterality_model(
+      data = ich_aggressive,
+      use_imputation = FALSE,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+      sample_prior = "no",
+      settings = model_setup("fast"),
+      random_effect_str = "(1 | study)"
+    )),
     deployment = "worker"
   )
 )
@@ -185,202 +218,116 @@ map_sens_complex <- tar_map(
   values = grid_complex,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
-
   tar_target(
     model_sens,
-    list(
-      fit_laterality_model(
-        data = ich_aggressive,
-        use_imputation = FALSE,
-        outcome_col = outcome_col,
-        family = family,
-        prior_scenario = prior_scenario,
-        adjustment_set = adjustment_set,
-        int_mean = int_mean,
-        int_sd = int_sd,
-        sample_prior = "no",
-        settings = model_setup("complex"),
-        random_effect_str = "(1 | study)"
-      )
-    ),
+    list(fit_laterality_model(
+      data = ich_aggressive,
+      use_imputation = FALSE,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+      sample_prior = "no",
+      settings = model_setup("complex"),
+      random_effect_str = "(1 | study)"
+    )),
     deployment = "main"
   )
 )
 
-# --- TRACK C: SITE CLUSTERING SENSITIVITY (ATACH-2 Only) ---
-grid_atach_sens <- aggressive_grid |>
-  filter(outcome_col == "neurosurgery_evac") |> # Primary outcome only
-  tidyr::crossing(
-    prior_scenario = "neutral",
-    adjustment_set = "adjusted"
-  )
-
+# Track C: Site Sensitivity
 map_atach_sens <- tar_map(
   values = grid_atach_sens,
   names = "outcome_col",
   unlist = FALSE,
-
-  # Model A: ATACH-2 Only, NO Random Effects (Base)
   tar_target(
     model_atach_base,
-    list(
-      fit_laterality_model(
-        data = ich_aggressive |> filter(study == "ATACH-2"),
-        outcome_col = outcome_col,
-        family = family,
-        prior_scenario = prior_scenario,
-        adjustment_set = adjustment_set,
-        int_mean = int_mean,
-        int_sd = int_sd,
-        sample_prior = "no",
-        settings = model_setup("fast"),
-        use_imputation = FALSE,
-        random_effect_str = NULL
-      )
-    ),
+    list(fit_laterality_model(
+      data = ich_atach,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+      sample_prior = "no",
+      settings = model_setup("fast"),
+      use_imputation = FALSE,
+      random_effect_str = NULL
+    )),
     deployment = "worker"
   ),
-
-  # Model B: ATACH-2 Only, WITH Site Random Effects
   tar_target(
     model_atach_site,
-    list(
-      fit_laterality_model(
-        data = ich_aggressive |> filter(study == "ATACH-2"),
-        outcome_col = outcome_col,
-        family = family,
-        prior_scenario = prior_scenario,
-        adjustment_set = adjustment_set,
-        int_mean = int_mean,
-        int_sd = int_sd,
-        sample_prior = "no",
-        settings = model_setup("fast"),
-        use_imputation = FALSE,
-        random_effect_str = "(1 | site_id)" # <--- ENSURE COL NAME MATCHES
-      )
-    ),
+    list(fit_laterality_model(
+      data = ich_atach,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+      sample_prior = "no",
+      settings = model_setup("fast"),
+      use_imputation = FALSE,
+      random_effect_str = "(1 | site_id)"
+    )),
     deployment = "worker"
   )
 )
 
-# --- TRACK D: INTERACTION CHECKS (Formal Tests) ---
-# Testing if Laterality effect varies by Location or Study
-grid_interactions <- tibble(
-  outcome_col = "neurosurgery_evac", # Primary outcome only
-  interaction_var = c("ich_location", "study"),
-  family = rep(list(quote(bernoulli(link = "logit"))), 2),
-  prior_scenario = "neutral",
-  adjustment_set = "adjusted"
-)
-
+# Track D: Interactions
 map_interactions <- tar_map(
   values = grid_interactions,
   names = "interaction_var",
   unlist = FALSE,
-
   tar_target(
     model_interaction,
-    list(
-      fit_laterality_model(
-        data = ich_aggressive, # Use raw data for simplicity
-        use_imputation = FALSE,
-        outcome_col = outcome_col,
-        family = family,
-        prior_scenario = prior_scenario,
-        adjustment_set = adjustment_set,
-        interaction_var = interaction_var, # Trigger interaction term
-        settings = model_setup("fast")
-      )
-    ),
+    list(fit_laterality_model(
+      data = ich_aggressive,
+      use_imputation = FALSE,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      interaction_var = interaction_var,
+      settings = model_setup("fast")
+    )),
     deployment = "worker"
   )
 )
 
-
-# 4. FILTER FOR COMBINATION -----------------------------------------------
-
-# Gather Main Models
-posteriors_main <- c(
-  map_main_fast[grep("^model_main", names(map_main_fast))],
-  map_main_complex[grep("^model_main", names(map_main_complex))]
-)
-
-# Gather Sensitivity Models
-posteriors_sens <- c(
-  map_sens_fast[grep("^model_sens", names(map_sens_fast))],
-  map_sens_complex[grep("^model_sens", names(map_sens_complex))]
-)
-
-# Gather Site Sensitivity Models
-posteriors_site_sens <- c(
-  map_atach_sens[grep("^model_atach", names(map_atach_sens))]
-)
-
-# Gather Interaction Models
-posteriors_interaction <- c(
-  map_interactions[grep("^model_interaction", names(map_interactions))]
-)
-
-
-# 5. PIPELINE -------------------------------------------------------------
-tar_plan(
-  ## Data & Setup ----
-  tar_file_read(imported_data, "data/raw_data/all.rds", read_rds(!!.x)),
-  left_fill = "#ce4951",
-  right_fill = "#476170",
-
-  selected_data = select_variables(imported_data),
-  ich_all = filter_variables(selected_data),
-  ich_aggressive = ich_all |>
-    filter(study == "ERICH" | study == "ATACH-2") |>
-    droplevels(),
-
-  # Imputation Targets
-  ich_imputed = f_imputed(ich_aggressive),
-  imputed_visualizations = f_plot_imputations_detailed(ich_imputed),
-
-  # DAGs
-  dag_neurosurgery = f_neurosurgery_dag(ich_aggressive),
-  dag_outcomes = outcomes_dag_function(ich_aggressive),
-  settings = model_setup(),
-
-  # Include the Model Maps
-  map_main_fast,
-  map_main_complex,
-  map_sens_fast,
-  map_sens_complex,
-  map_atach_sens, # Track C
-  map_interactions, # Track D
-
-  # Combine Results - Main Analysis
+# --- C. Combination & Results Targets ---
+t_combine <- list(
   tar_combine(
     all_main_models,
-    posteriors_main,
+    map_main_fast[["model_main"]],
+    map_main_complex[["model_main"]],
     command = c(!!!.x)
   ),
 
-  # Combine Results - Sensitivity Analysis
   tar_combine(
     all_sens_models,
-    posteriors_sens,
+    map_sens_fast[["model_sens"]],
+    map_sens_complex[["model_sens"]],
     command = c(!!!.x)
   ),
 
-  # Combine Results - Site Sensitivity
   tar_combine(
     all_site_sens_models,
-    posteriors_site_sens,
+    map_atach_sens[["model_atach_base"]],
+    map_atach_sens[["model_atach_site"]],
     command = c(!!!.x)
   ),
 
-  # Combine Results - Interaction Checks
   tar_combine(
     all_interaction_models,
-    posteriors_interaction,
+    map_interactions[["model_interaction"]],
     command = c(!!!.x)
   ),
 
-  # Comparison Table: ATACH-2 Sensitivity
   tar_target(
     table_site_comparison,
     tibble(
@@ -401,7 +348,6 @@ tar_plan(
       select(model_name, term, estimate, conf.low, conf.high)
   ),
 
-  # Comparison Table: Interaction Results
   tar_target(
     table_interaction_results,
     tibble(
@@ -413,41 +359,38 @@ tar_plan(
           model_list,
           ~ {
             fit <- .x[[1]]
-            # We want to see the interaction term specifically
             broom.mixed::tidy(fit, effects = "fixed", conf.int = TRUE) |>
-              filter(grepl(":", term)) # Filter for interaction terms
+              filter(grepl(":", term))
           }
         )
       ) |>
       tidyr::unnest(estimates) |>
       select(model_name, term, estimate, conf.low, conf.high)
-  ),
+  )
+)
 
-  # Generate Table 2 (Using Main Models)
-  tar_map(
-    values = table_scenarios,
-    tar_target(
-      table_2,
-      table_2_function(
-        x = ich_aggressive,
-        models = subset_models_for_table2(all_main_models, scenario)
-      )
+# --- D. Table 2 Map ---
+map_table2 <- tar_map(
+  values = table_scenarios,
+  tar_target(
+    table_2,
+    table_2_function(
+      x = ich_aggressive,
+      models = subset_models_for_table2(all_main_models, scenario)
     )
-  ),
+  )
+)
 
-  # --------------------
-  # Missing Data Analysis
-  # --------------------
+# --- E. Missing Data Targets ---
+t_missing <- list(
   tar_target(
     name = missing_data_object,
     command = f_missing_data_filter(ich_aggressive)
   ),
 
-  # Stratified Missingness
   tar_map(
     values = tibble(variable_name = c("ich_laterality", "study")),
     names = "variable_name",
-
     tar_target(
       name = missing_data_by,
       command = f_percent_missing_visual_stratified(
@@ -457,7 +400,6 @@ tar_plan(
     )
   ),
 
-  # Shadow Plots
   tar_map(
     values = tidyr::crossing(
       plotting_variable = c(
@@ -476,7 +418,6 @@ tar_plan(
       )
     ),
     names = c("plotting_variable", "missing_variable"),
-
     tar_target(
       name = missingness_check,
       command = f_shadow_plots(
@@ -486,4 +427,18 @@ tar_plan(
       )
     )
   )
+)
+
+# 4. FINAL PLAN -----------------------------------------------------------
+list(
+  t_data,
+  map_main_fast,
+  map_main_complex,
+  map_sens_fast,
+  map_sens_complex,
+  map_atach_sens,
+  map_interactions,
+  t_combine,
+  map_table2,
+  t_missing
 )

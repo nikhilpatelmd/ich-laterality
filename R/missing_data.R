@@ -101,10 +101,3 @@ f_shadow_plots <- function(data, plotting_variable, missing_variable) {
       axis.title.x = element_blank()
     )
 }
-
-
-
-ich_aggressive |>
-  group_by(ich_laterality) |>
-  naniar::miss_var_summary() |>
-  filter(variable == "mrs_90")
