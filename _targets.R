@@ -13,7 +13,7 @@ suppressPackageStartupMessages({
 
 # 1. PARALLEL PLAN --------------------------------------------------------
 # We rely on callr to manage workers dynamically.
-# Run tar_make_future(workers = 5) for manuscript runs.
+# Run tar_make_future(workers = 20) for full parallel usage.
 plan(callr)
 
 # General pipeline settings ----
@@ -83,9 +83,12 @@ functional_grid <- tibble(
   complexity = "fast"
 )
 
-# Combine and Cross
+# Combine the base grids first
+combined_base <- bind_rows(aggressive_grid, functional_grid)
+
+# THEN cross with scenarios
 complete_grid <- tidyr::crossing(
-  aggressive_grid,
+  combined_base,
   prior_scenario = c("neutral", "left", "right", "flat"),
   adjustment_set = c("minimal", "adjusted")
 )
@@ -141,7 +144,6 @@ t_data <- list(
 )
 
 # --- B. Map Definitions ---
-# Note: We define these as R objects first.
 
 # Track A: Main Analysis
 map_main_fast <- tar_map(
@@ -299,35 +301,73 @@ map_interactions <- tar_map(
   )
 )
 
+# Track E: Prior Predictive Checks
+# We map over 'complete_grid' here (instead of just grid_fast) to ensure
+# we get priors for every scenario, even if we are running the main model as complex.
+map_priors <- tar_map(
+  values = complete_grid,
+  names = c("outcome_col", "prior_scenario", "adjustment_set"),
+  unlist = FALSE,
+  tar_target(
+    model_prior,
+    list(fit_laterality_model(
+      data = ich_aggressive,
+      use_imputation = FALSE,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+
+      # CRITICAL: Turn off likelihood to sample priors only
+      sample_prior = "only",
+
+      # Use fast settings (no data likelihood = very fast)
+      settings = model_setup("fast"),
+      random_effect_str = "(1 | study)"
+    )),
+    deployment = "worker"
+  )
+)
+
+
 # --- C. Combination & Results Targets ---
 t_combine <- list(
   tar_combine(
     all_main_models,
-    map_main_fast[["model_main"]],
-    map_main_complex[["model_main"]],
+    map_main_fast,
+    map_main_complex,
     command = c(!!!.x)
   ),
 
   tar_combine(
     all_sens_models,
-    map_sens_fast[["model_sens"]],
-    map_sens_complex[["model_sens"]],
+    map_sens_fast,
+    map_sens_complex,
     command = c(!!!.x)
   ),
 
   tar_combine(
     all_site_sens_models,
-    map_atach_sens[["model_atach_base"]],
-    map_atach_sens[["model_atach_site"]],
+    map_atach_sens,
     command = c(!!!.x)
   ),
 
   tar_combine(
     all_interaction_models,
-    map_interactions[["model_interaction"]],
+    map_interactions,
     command = c(!!!.x)
   ),
 
+  # Combine Prior Models
+  tar_combine(
+    all_prior_models,
+    map_priors,
+    command = c(!!!.x)
+  ),
+
+  # Site Comparison Table
   tar_target(
     table_site_comparison,
     tibble(
@@ -338,7 +378,7 @@ t_combine <- list(
         estimates = purrr::map(
           model_list,
           ~ {
-            fit <- .x[[1]]
+            fit <- .x
             broom.mixed::tidy(fit, effects = "fixed", conf.int = TRUE) |>
               filter(grepl("laterality", term))
           }
@@ -348,6 +388,7 @@ t_combine <- list(
       select(model_name, term, estimate, conf.low, conf.high)
   ),
 
+  # Interaction Results Table
   tar_target(
     table_interaction_results,
     tibble(
@@ -358,7 +399,7 @@ t_combine <- list(
         estimates = purrr::map(
           model_list,
           ~ {
-            fit <- .x[[1]]
+            fit <- .x
             broom.mixed::tidy(fit, effects = "fixed", conf.int = TRUE) |>
               filter(grepl(":", term))
           }
@@ -438,6 +479,7 @@ list(
   map_sens_complex,
   map_atach_sens,
   map_interactions,
+  map_priors,
   t_combine,
   map_table2,
   t_missing
