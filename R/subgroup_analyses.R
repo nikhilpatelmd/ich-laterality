@@ -69,11 +69,11 @@ f_subgroup_by_location <- function(ich_aggressive) {
         model <- brm(
           neurosurgery_evac ~
             ich_laterality +
-              age +
-              gcs_baseline +
-              ich_volume_baseline +
-              ivh +
-              (1 | study),
+            age +
+            gcs_baseline +
+            ich_volume_baseline +
+            ivh +
+            (1 | study),
           family = bernoulli(link = "logit"),
           data = .,
           prior = c(
@@ -149,11 +149,11 @@ f_subgroup_by_study <- function(ich_aggressive) {
         model <- brm(
           neurosurgery_evac ~
             ich_laterality +
-              age +
-              gcs_baseline +
-              ich_volume_baseline +
-              ivh +
-              ich_location,
+            age +
+            gcs_baseline +
+            ich_volume_baseline +
+            ivh +
+            ich_location,
           family = bernoulli(link = "logit"),
           data = .,
           prior = c(

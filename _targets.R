@@ -67,7 +67,7 @@ functional_outcomes <- tidyr::expand_grid(
     "euro_pain",
     "euro_anxiety"
   ),
-  time = c("90", "180", "365")
+  time = c("90")
 ) |>
   mutate(outcome_col = paste0(domain, "_", time)) |>
   pull(outcome_col)

@@ -88,7 +88,7 @@ table_2_function <- function(x, models) {
     if (fam %in% c("bernoulli", "binomial")) {
       # For Binary: Calculate Odds Ratio
       # ln_oravg = Average Marginal Log-Odds Ratio
-      cmp <- "ln_oravg"
+      cmp <- "lnoravg"
     } else {
       # For Count (NegBin): Calculate Rate Ratio (IRR)
       # Ratio of expectations (Right / Left)
@@ -215,7 +215,7 @@ subset_models_for_table2 <- function(all_models, scenario) {
 
   for (outcome_col in names(target_map)) {
     # Reconstruct the target name
-    target_name <- paste0("model_posterior_", outcome_col, suffix)
+    target_name <- paste0("model_main_", outcome_col, suffix)
 
     # Validation
     if (!target_name %in% names(all_models)) {
