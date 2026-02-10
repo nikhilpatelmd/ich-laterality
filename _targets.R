@@ -48,13 +48,13 @@ source("R/sensitivity.R")
 # Aggressive Care Outcomes
 aggressive_grid <- tibble::tribble(
   ~outcome_col                  , ~family                          , ~int_mean , ~int_sd , ~complexity ,
-  "neurosurgery_evac"           , quote(bernoulli(link = "logit")) ,        -7 , 0.35    , "fast"      ,
-  "evd"                         , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "fast"      ,
-  "days_mechanical_ventilation" , quote(negbinomial(link = "log")) ,         0 , 0.5     , "fast"      ,
-  "dnr_binary"                  , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "fast"      ,
-  "comfort_care_binary"         , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "fast"      ,
-  "early_wlst"                  , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "fast"      ,
-  "tracheostomy"                , quote(bernoulli(link = "logit")) ,       -15 , 0.5     , "fast"
+  "neurosurgery_evac"           , quote(bernoulli(link = "logit")) ,        -7 , 0.35    , "complex"   ,
+  "evd"                         , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "complex"   ,
+  "days_mechanical_ventilation" , quote(negbinomial(link = "log")) ,         0 , 0.5     , "complex"   ,
+  "dnr_binary"                  , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "complex"   ,
+  "comfort_care_binary"         , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "complex"   ,
+  "early_wlst"                  , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "complex"   ,
+  "tracheostomy"                , quote(bernoulli(link = "logit")) ,       -15 , 0.5     , "complex"
 )
 
 # Functional Outcomes
@@ -80,7 +80,7 @@ functional_grid <- tibble(
   ),
   int_mean = -2.2,
   int_sd = 0.5,
-  complexity = "fast"
+  complexity = "complex"
 )
 
 # Combine the base grids first
