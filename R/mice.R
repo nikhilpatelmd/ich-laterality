@@ -5,7 +5,7 @@ library(dplyr)
 library(stringr)
 library(tibble)
 
-f_imputed <- function(data, n_imputes = 100, seed = 1) {
+f_imputed <- function(data, n_imputes = 20, seed = 1) {
   # 1. Select Variables for Imputation
   fixed_vars <- c(
     "neurosurgery_evac",

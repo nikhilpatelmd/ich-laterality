@@ -16,6 +16,11 @@ suppressPackageStartupMessages({
 # Run tar_make_future(workers = 20) for full parallel usage.
 plan(callr)
 
+tar_option_set(
+  garbage_collection = TRUE,
+  memory = "transient"
+)
+
 # General pipeline settings ----
 options(brms.backend = "cmdstanr")
 options(tidyverse.quiet = TRUE, dplyr.summarise.inform = FALSE)
@@ -123,20 +128,40 @@ t_data <- list(
   tar_target(selected_data, select_variables(imported_data)),
   tar_target(ich_all, filter_variables(selected_data)),
 
-  # Main Dataset
   tar_target(
     ich_aggressive,
     ich_all |> filter(study == "ERICH" | study == "ATACH-2") |> droplevels()
   ),
 
-  # ATACH-2 Only Dataset
   tar_target(
     ich_atach,
     ich_aggressive |> filter(study == "ATACH-2") |> droplevels()
   ),
 
-  tar_target(ich_imputed, f_imputed(ich_aggressive)),
-  tar_target(imputed_visualizations, f_plot_imputations_detailed(ich_imputed)),
+  # --- MODIFIED TARGET: File-Based Imputation ---
+  tar_target(
+    ich_imputed_file,
+    command = {
+      # CRITICAL: Force n_imputes = 20 here to override the default 100
+      imp_obj <- f_imputed(ich_aggressive, n_imputes = 20)
+
+      # Save to disk
+      path <- "data/proc/ich_imputed.rds"
+      dir.create(dirname(path), showWarnings = FALSE, recursive = TRUE)
+      saveRDS(imp_obj, path)
+
+      # Return the path
+      return(path)
+    },
+    format = "file" # Tracks the file hash, not the object in RAM
+  ),
+
+  # Note: You might need to update this visualization function to read the file too
+  # or just create a separate non-file target for visualization if needed.
+  tar_target(
+    imputed_visualizations,
+    f_plot_imputations_detailed(readRDS(ich_imputed_file))
+  ),
 
   tar_target(dag_neurosurgery, f_neurosurgery_dag(ich_aggressive)),
   tar_target(dag_outcomes, outcomes_dag_function(ich_aggressive)),
@@ -153,7 +178,7 @@ map_main_fast <- tar_map(
   tar_target(
     model_main,
     list(fit_laterality_model(
-      data = ich_imputed,
+      data = ich_imputed_file,
       use_imputation = TRUE,
       outcome_col = outcome_col,
       family = family,
@@ -176,7 +201,7 @@ map_main_complex <- tar_map(
   tar_target(
     model_main,
     list(fit_laterality_model(
-      data = ich_imputed,
+      data = ich_imputed_file, # <--- PASS THE FILE PATH HERE
       use_imputation = TRUE,
       outcome_col = outcome_col,
       family = family,

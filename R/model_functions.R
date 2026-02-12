@@ -8,8 +8,8 @@ model_setup <- function(complexity = "complex") {
     # Disable within-chain threading (it adds overhead for N < 10k).
     list(
       chains = 4,
-      cores = 4, # 1 core per chain
-      threads = NULL, # Disable threading
+      cores = 1,
+      threads = NULL,
       iter = 4000,
       warmup = 2000,
       control = list(adapt_delta = 0.99),
@@ -43,9 +43,14 @@ fit_laterality_model <- function(
   sample_prior = "no",
   settings,
   use_imputation = FALSE,
-  random_effect_str = "(1 | study)", # Default random effect
-  interaction_var = NULL # <--- NEW ARGUMENT for interactions
+  random_effect_str = "(1 | study)",
+  interaction_var = NULL
 ) {
+  # --- NEW: LOAD DATA FROM FILE IF NEEDED ---
+  # This prevents passing massive objects through parallel workers
+  if (is.character(data) && length(data) == 1 && file.exists(data)) {
+    data <- readRDS(data)
+  }
   # -------------------------------------------------------------------------
   # Define Formula
   # -------------------------------------------------------------------------
