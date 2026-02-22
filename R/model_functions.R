@@ -185,7 +185,7 @@ fit_laterality_model <- function(
       data = data,
       prior = my_priors,
       sample_prior = sample_prior,
-      chains = 1, # brm_multiple runs 1 chain per imputed dataset
+      chains = 1,
       cores = settings$cores,
       warmup = settings$warmup,
       iter = settings$iter,

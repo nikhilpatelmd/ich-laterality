@@ -24,7 +24,7 @@ f_imputed <- function(data, n_imputes = 20, seed = 1) {
     "early_wlst",
     "dnr_binary",
     "tracheostomy",
-    "days_mechanical_ventilation" # Included here to PRESERVE the column
+    "days_mechanical_ventilation"
   )
 
   # Mirror the logic from missing data analysis
@@ -44,7 +44,7 @@ f_imputed <- function(data, n_imputes = 20, seed = 1) {
         evd,
         ich_location,
         ich_laterality,
-        # Binary outcomes only (exclude days_mechanical_ventilation)
+        # Binary outcomes
         comfort_care_binary,
         early_wlst,
         dnr_binary,
@@ -63,8 +63,7 @@ f_imputed <- function(data, n_imputes = 20, seed = 1) {
         # A. Do not impute Fixed Variables or Structural Missingness
         variable == "study" ~ "",
 
-        # EXPLICITLY SKIP days_mechanical_ventilation
-        # (It falls to TRUE ~ "" anyway, but being explicit is safer for future reads)
+        # Keep skipping days_mech_vent if you are not using it as a predictor
         variable == "days_mechanical_ventilation" ~ "",
 
         # B. Dynamic Outcomes (EuroQOL, mRS)
@@ -79,14 +78,24 @@ f_imputed <- function(data, n_imputes = 20, seed = 1) {
             "time_symptoms_to_ed"
           ) ~ "pmm",
 
-        # D. Binary Predictors
-        variable %in% c("neurosurgery_evac", "ivh", "htn", "evd") ~ "logreg",
+        # D. Binary Predictors AND Aggressive Care Outcomes
+        # --- CRITICAL CHANGE: Added outcomes here so they get imputed ---
+        variable %in%
+          c(
+            "neurosurgery_evac",
+            "ivh",
+            "htn",
+            "evd",
+            "comfort_care_binary", # Added
+            "early_wlst", # Added
+            "dnr_binary", # Added
+            "tracheostomy" # Added
+          ) ~ "logreg",
 
         # E. Polytomous Predictors
         variable %in% c("ich_location", "ich_laterality") ~ "polyreg",
 
-        # F. Safety Fallback (Empty string = no imputation)
-        # This will catch comfort_care_binary, early_wlst, etc.
+        # F. Safety Fallback
         TRUE ~ ""
       )
     ) |>
@@ -99,7 +108,12 @@ f_imputed <- function(data, n_imputes = 20, seed = 1) {
     m = n_imputes,
     maxit = 20,
     seed = seed,
-    print = FALSE
+    print = FALSE,
+
+    # --- CRITICAL CHANGE: Ridge Regression ---
+    # This prevents the "loggedEvents" drops due to collinearity
+    ridge = 0.01,
+    threshold = 0.999
   )
 
   return(imp)

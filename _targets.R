@@ -33,6 +33,7 @@ source("R/dags.R")
 source("R/missing_data.R")
 source("R/diagnostics.R")
 source("R/model_functions.R")
+source("R/sidecar_models.R")
 source("R/predictive_checks.R")
 source("R/predictive_checks_ventilation.R")
 source("R/posterior_diagnostics.R")
@@ -52,14 +53,14 @@ source("R/sensitivity.R")
 
 # Aggressive Care Outcomes
 aggressive_grid <- tibble::tribble(
-  ~outcome_col                  , ~family                          , ~int_mean , ~int_sd , ~complexity ,
-  "neurosurgery_evac"           , quote(bernoulli(link = "logit")) ,        -7 , 0.35    , "complex"   ,
-  "evd"                         , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "complex"   ,
-  "days_mechanical_ventilation" , quote(negbinomial(link = "log")) ,         0 , 0.5     , "complex"   ,
-  "dnr_binary"                  , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "complex"   ,
-  "comfort_care_binary"         , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "complex"   ,
-  "early_wlst"                  , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "complex"   ,
-  "tracheostomy"                , quote(bernoulli(link = "logit")) ,       -15 , 0.5     , "complex"
+  ~outcome_col          , ~family                          , ~int_mean , ~int_sd , ~complexity ,
+  "neurosurgery_evac"   , quote(bernoulli(link = "logit")) ,        -7 , 0.35    , "complex"   ,
+  "evd"                 , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "complex"   ,
+  # "days_mechanical_ventilation" , quote(negbinomial(link = "log")) ,         0 , 0.5     , "complex"   ,
+  "dnr_binary"          , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "complex"   ,
+  "comfort_care_binary" , quote(bernoulli(link = "logit")) ,        -5 , 0.5     , "complex"   ,
+  "early_wlst"          , quote(bernoulli(link = "logit")) ,         0 , 0.5     , "complex"   ,
+  "tracheostomy"        , quote(bernoulli(link = "logit")) ,       -15 , 0.5     , "complex"
 )
 
 # Functional Outcomes
@@ -100,6 +101,16 @@ complete_grid <- tidyr::crossing(
 
 grid_fast <- complete_grid |> filter(complexity == "fast")
 grid_complex <- complete_grid |> filter(complexity == "complex")
+
+# --- 2. ADD VENTILATION GRID ---
+grid_ventilation <- tibble::tribble(
+  ~outcome_col                  , ~family                                        , ~int_mean , ~int_sd , ~complexity ,
+  "days_mechanical_ventilation" , quote(zero_inflated_negbinomial(link = "log")) ,         0 , 0.5     , "complex"
+) |>
+  tidyr::crossing(
+    prior_scenario = c("neutral", "left", "right", "flat"),
+    adjustment_set = c("minimal", "adjusted")
+  )
 
 # ATACH Sensitivity Grid
 grid_atach_sens <- aggressive_grid |>
@@ -205,6 +216,30 @@ map_main_complex <- tar_map(
       use_imputation = TRUE,
       outcome_col = outcome_col,
       family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+      sample_prior = "no",
+      settings = model_setup("complex"),
+      random_effect_str = "(1 | study)"
+    )),
+    deployment = "main"
+  )
+)
+
+# --- 3. ADD VENTILATION MAP ---
+map_main_ventilation <- tar_map(
+  values = grid_ventilation,
+  names = c("outcome_col", "prior_scenario", "adjustment_set"),
+  unlist = FALSE,
+  tar_target(
+    model_main,
+    list(fit_ventilation_zinb(
+      data = ich_aggressive, # Unimputed dataset
+      use_imputation = FALSE, # Keep imputation off
+      outcome_col = outcome_col,
+      family = family, # Now passing the ZINB family
       prior_scenario = prior_scenario,
       adjustment_set = adjustment_set,
       int_mean = int_mean,
@@ -363,6 +398,7 @@ t_combine <- list(
     all_main_models,
     map_main_fast,
     map_main_complex,
+    map_main_ventilation,
     command = c(!!!.x)
   ),
 
@@ -502,6 +538,7 @@ list(
   map_main_complex,
   map_sens_fast,
   map_sens_complex,
+  map_main_ventilation,
   map_atach_sens,
   map_interactions,
   map_priors,
