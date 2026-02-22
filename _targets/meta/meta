@@ -354,6 +354,15 @@ all_sens_models|stem|8098661528ce0fc4|78bf14938e244f13|b7cee068873b7b63|-2085513
 all_site_sens_models|stem|646a5499a3da4c59|35003e22a01dae74|965baba2cb5ff4c3|182072964||t20506.076493633s|s505159b|505159|rds|local|vector|||0.001||
 table_site_comparison|stem|9da6eec228b9aadc|f78e86ad95df0243|b07757c11f5ddd35|-1593142531||t20506.0765904186s|s474b|474|rds|local|vector|||0.684|There were 2 warnings in `mutate()`. The first warning was: ℹ In argument: `estimates = purrr::map(...)`. Caused by warning in `tidy.brmsfit()`: ! some parameter names contain underscores: term naming may be unreliable! ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.|
 all_prior_models|stem|483d5acd1d55c185|59a1e3b58dde1bc3|36e651d82b17730d|2069460952||t20506.0766680515s|s40839947b|40839947|rds|local|vector|||0||
+model_main_days_mechanical_ventilation_left_minimal|stem|36f4240df6441e0a|b8dafae2c01779c2|868e28b192b6420c|564105366||t20506.1186335871s|s947816b|947816|rds|local|vector|||674.662|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_main_days_mechanical_ventilation_right_adjusted|stem|65a0faa42b44e223|c9744567c52a7d99|868e28b192b6420c|-1550295736||t20506.1280176835s|s1415481b|1415481|rds|local|vector|||810.214|Rows containing NAs were excluded from the model.|
+model_main_days_mechanical_ventilation_neutral_adjusted|stem|0dd990ba61b213f8|b967852c21913316|868e28b192b6420c|-1290943713||t20506.137206074s|s1412303b|1412303|rds|local|vector|||793.218|Rows containing NAs were excluded from the model.|
+model_main_days_mechanical_ventilation_right_minimal|stem|61c85b0975bd5dc2|fd1907b43bdba674|868e28b192b6420c|-776471797||t20506.1470495389s|s952186b|952186|rds|local|vector|||849.926|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_main_days_mechanical_ventilation_neutral_minimal|stem|f1f8f57585f78ef9|d0863c480a89d24a|868e28b192b6420c|-994630772||t20506.1552078002s|s937939b|937939|rds|local|vector|||704.279|Rows containing NAs were excluded from the model.|
+model_main_days_mechanical_ventilation_left_adjusted|stem|37184680de6e23fb|18c1d2e818eb9322|868e28b192b6420c|451830749||t20506.1654522293s|s1425464b|1425464|rds|local|vector|||884.561|Rows containing NAs were excluded from the model.|
+model_main_days_mechanical_ventilation_flat_minimal|stem|2e6d2f518c2872ad|64cff1dc16192d1a|868e28b192b6420c|2005906282||t20506.1744196536s|s947801b|947801|rds|local|vector|||774.251|Rows containing NAs were excluded from the model.|
+model_main_days_mechanical_ventilation_flat_adjusted|stem|f91fd1ffdbaea63b|ab1b8e39dd4d3a4d|868e28b192b6420c|1118072841||t20506.1823724933s|s1366590b|1366590|rds|local|vector|||686.552|Rows containing NAs were excluded from the model.|
+all_main_models|stem|fbd6d5f745d567ab|f429d98d52abc1b9|b2db5df2d1e96dbd|-980375836||t20506.1829659488s|s521284057b|521284057|rds|local|vector|||0.001||
 f_post_predictive_check_vas|function|9317df8aa37cbf8d
 posterior_diagnostics|function|d6a1f8b8ed64abf7
 grid_atach_sens|object|95bb29224723aceb
@@ -365,7 +374,7 @@ process_vas|function|709d55dd71d9e875
 complete_grid|object|ba4efe212f13d911
 select_variables|function|ee7ab43c89c4a69e
 table_scenarios|object|e7184c0941837e07
-.Random.seed|object|8d2a7ec865a18b3a
+.Random.seed|object|576bbe675ffd260e
 grid_fast|object|b46035733911368d
 filter_variables|function|22e3e97d7e95dd63
 fit_ventilation_zinb|function|13ae1670882d60ff
@@ -417,13 +426,7 @@ outcomes_dag_function|function|4404d355b4d6147a
 mrs_figure_function|function|a04e6e68664216ae
 adjusted_mrs_function|function|1634e253cbc99700
 table_3_updated|function|6295973766ca7348
-model_main_days_mechanical_ventilation_left_minimal|stem|36f4240df6441e0a|b8dafae2c01779c2|868e28b192b6420c|564105366||t20506.1186335871s|s947816b|947816|rds|local|vector|||674.662|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
-model_main_days_mechanical_ventilation_right_adjusted|stem|65a0faa42b44e223|c9744567c52a7d99|868e28b192b6420c|-1550295736||t20506.1280176835s|s1415481b|1415481|rds|local|vector|||810.214|Rows containing NAs were excluded from the model.|
-model_main_days_mechanical_ventilation_neutral_adjusted|stem|0dd990ba61b213f8|b967852c21913316|868e28b192b6420c|-1290943713||t20506.137206074s|s1412303b|1412303|rds|local|vector|||793.218|Rows containing NAs were excluded from the model.|
-model_main_days_mechanical_ventilation_right_minimal|stem|61c85b0975bd5dc2|fd1907b43bdba674|868e28b192b6420c|-776471797||t20506.1470495389s|s952186b|952186|rds|local|vector|||849.926|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
-model_main_days_mechanical_ventilation_neutral_minimal|stem|f1f8f57585f78ef9|d0863c480a89d24a|868e28b192b6420c|-994630772||t20506.1552078002s|s937939b|937939|rds|local|vector|||704.279|Rows containing NAs were excluded from the model.|
-model_main_days_mechanical_ventilation_left_adjusted|stem|37184680de6e23fb|18c1d2e818eb9322|868e28b192b6420c|451830749||t20506.1654522293s|s1425464b|1425464|rds|local|vector|||884.561|Rows containing NAs were excluded from the model.|
-model_main_days_mechanical_ventilation_flat_minimal|stem|2e6d2f518c2872ad|64cff1dc16192d1a|868e28b192b6420c|2005906282||t20506.1744196536s|s947801b|947801|rds|local|vector|||774.251|Rows containing NAs were excluded from the model.|
-model_main_days_mechanical_ventilation_flat_adjusted|stem|f91fd1ffdbaea63b|ab1b8e39dd4d3a4d|868e28b192b6420c|1118072841||t20506.1823724933s|s1366590b|1366590|rds|local|vector|||686.552|Rows containing NAs were excluded from the model.|
-all_main_models|stem|fbd6d5f745d567ab|f429d98d52abc1b9|b2db5df2d1e96dbd|-980375836||t20506.1829659488s|s521284057b|521284057|rds|local|vector|||0.001||
-table_2_flat|stem||2cdacc9cd4a47339|fc1b4a2511f884ed|1407879700||t20506.0770098582s||0|rds|local|vector|||2.788||Package `collapse` required for this function to work.   Please install it by running `install.packages('collapse')`.
+table_2_right|stem|44bcf2ccdda159b3|27602ea6ab10f6e3|fc1b4a2511f884ed|-471899895||t20506.4905833435s|s32122192b|32122192|rds|local|vector|||234.278||
+table_2_flat|stem|8b98704fe873532c|2cdacc9cd4a47339|fc1b4a2511f884ed|1407879700||t20506.4906220407s|s31652925b|31652925|rds|local|vector|||238.184||
+table_2_left|stem|9b031f19efbf46f4|f233bde4bfa519cd|fc1b4a2511f884ed|591254865||t20506.4906531517s|s32189404b|32189404|rds|local|vector|||240.049||
+table_2_neutral|stem|83bcd1e00121473b|a97674cc484506bb|fc1b4a2511f884ed|1511039990||t20506.4906756285s|s32108946b|32108946|rds|local|vector|||242.74||
