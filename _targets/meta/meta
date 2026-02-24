@@ -363,6 +363,10 @@ model_main_days_mechanical_ventilation_left_adjusted|stem|37184680de6e23fb|18c1d
 model_main_days_mechanical_ventilation_flat_minimal|stem|2e6d2f518c2872ad|64cff1dc16192d1a|868e28b192b6420c|2005906282||t20506.1744196536s|s947801b|947801|rds|local|vector|||774.251|Rows containing NAs were excluded from the model.|
 model_main_days_mechanical_ventilation_flat_adjusted|stem|f91fd1ffdbaea63b|ab1b8e39dd4d3a4d|868e28b192b6420c|1118072841||t20506.1823724933s|s1366590b|1366590|rds|local|vector|||686.552|Rows containing NAs were excluded from the model.|
 all_main_models|stem|fbd6d5f745d567ab|f429d98d52abc1b9|b2db5df2d1e96dbd|-980375836||t20506.1829659488s|s521284057b|521284057|rds|local|vector|||0.001||
+table_2_right|stem|44bcf2ccdda159b3|27602ea6ab10f6e3|fc1b4a2511f884ed|-471899895||t20506.4905833435s|s32122192b|32122192|rds|local|vector|||234.278||
+table_2_flat|stem|8b98704fe873532c|2cdacc9cd4a47339|fc1b4a2511f884ed|1407879700||t20506.4906220407s|s31652925b|31652925|rds|local|vector|||238.184||
+table_2_left|stem|9b031f19efbf46f4|f233bde4bfa519cd|fc1b4a2511f884ed|591254865||t20506.4906531517s|s32189404b|32189404|rds|local|vector|||240.049||
+table_2_neutral|stem|83bcd1e00121473b|a97674cc484506bb|fc1b4a2511f884ed|1511039990||t20506.4906756285s|s32108946b|32108946|rds|local|vector|||242.74||
 f_post_predictive_check_vas|function|9317df8aa37cbf8d
 posterior_diagnostics|function|d6a1f8b8ed64abf7
 grid_atach_sens|object|95bb29224723aceb
@@ -374,7 +378,7 @@ process_vas|function|709d55dd71d9e875
 complete_grid|object|ba4efe212f13d911
 select_variables|function|ee7ab43c89c4a69e
 table_scenarios|object|e7184c0941837e07
-.Random.seed|object|576bbe675ffd260e
+.Random.seed|object|406dd2e374ab4a17
 grid_fast|object|b46035733911368d
 filter_variables|function|22e3e97d7e95dd63
 fit_ventilation_zinb|function|13ae1670882d60ff
@@ -426,7 +430,3 @@ outcomes_dag_function|function|4404d355b4d6147a
 mrs_figure_function|function|a04e6e68664216ae
 adjusted_mrs_function|function|1634e253cbc99700
 table_3_updated|function|6295973766ca7348
-table_2_right|stem|44bcf2ccdda159b3|27602ea6ab10f6e3|fc1b4a2511f884ed|-471899895||t20506.4905833435s|s32122192b|32122192|rds|local|vector|||234.278||
-table_2_flat|stem|8b98704fe873532c|2cdacc9cd4a47339|fc1b4a2511f884ed|1407879700||t20506.4906220407s|s31652925b|31652925|rds|local|vector|||238.184||
-table_2_left|stem|9b031f19efbf46f4|f233bde4bfa519cd|fc1b4a2511f884ed|591254865||t20506.4906531517s|s32189404b|32189404|rds|local|vector|||240.049||
-table_2_neutral|stem|83bcd1e00121473b|a97674cc484506bb|fc1b4a2511f884ed|1511039990||t20506.4906756285s|s32108946b|32108946|rds|local|vector|||242.74||
