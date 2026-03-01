@@ -34,6 +34,7 @@ source("R/missing_data.R")
 source("R/diagnostics.R")
 source("R/model_functions.R")
 source("R/sidecar_models.R")
+source("R/vas.R")
 source("R/predictive_checks.R")
 source("R/predictive_checks_ventilation.R")
 source("R/posterior_diagnostics.R")
@@ -45,7 +46,6 @@ source("R/table4.R")
 source("R/figures.R")
 source("R/mrs_figures.R")
 source("R/euro_figures.R")
-source("R/vas.R")
 source("R/imputed_data.R")
 source("R/sensitivity.R")
 
@@ -102,10 +102,20 @@ complete_grid <- tidyr::crossing(
 grid_fast <- complete_grid |> filter(complexity == "fast")
 grid_complex <- complete_grid |> filter(complexity == "complex")
 
-# --- 2. ADD VENTILATION GRID ---
+# --- 2a. ADD Ventilation Grid ---
 grid_ventilation <- tibble::tribble(
   ~outcome_col                  , ~family                                        , ~int_mean , ~int_sd , ~complexity ,
   "days_mechanical_ventilation" , quote(zero_inflated_negbinomial(link = "log")) ,         0 , 0.5     , "complex"
+) |>
+  tidyr::crossing(
+    prior_scenario = c("neutral", "left", "right", "flat"),
+    adjustment_set = c("minimal", "adjusted")
+  )
+
+# --- 2b. ADD VAS GRID ---
+grid_vas <- tibble::tibble(
+  outcome_col = "euro_vas_90",
+  family = list(quote(zero_one_inflated_beta()))
 ) |>
   tidyr::crossing(
     prior_scenario = c("neutral", "left", "right", "flat"),
@@ -212,7 +222,7 @@ map_main_complex <- tar_map(
   tar_target(
     model_main,
     list(fit_laterality_model(
-      data = ich_imputed_file, # <--- PASS THE FILE PATH HERE
+      data = ich_imputed_file,
       use_imputation = TRUE,
       outcome_col = outcome_col,
       family = family,
@@ -245,6 +255,25 @@ map_main_ventilation <- tar_map(
       int_mean = int_mean,
       int_sd = int_sd,
       sample_prior = "no",
+      settings = model_setup("complex"),
+      random_effect_str = "(1 | study)"
+    )),
+    deployment = "main"
+  )
+)
+
+# --- VAS Main Map (Imputed Data) ---
+map_main_vas <- tar_map(
+  values = grid_vas,
+  names = c("outcome_col", "prior_scenario", "adjustment_set"),
+  unlist = FALSE,
+  tar_target(
+    model_main,
+    list(fit_vas_zoib(
+      data = ich_imputed_file,
+      use_imputation = TRUE,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
       settings = model_setup("complex"),
       random_effect_str = "(1 | study)"
     )),
@@ -292,6 +321,25 @@ map_sens_complex <- tar_map(
       int_mean = int_mean,
       int_sd = int_sd,
       sample_prior = "no",
+      settings = model_setup("complex"),
+      random_effect_str = "(1 | study)"
+    )),
+    deployment = "main"
+  )
+)
+
+# --- VAS Sensitivity Map (Complete Case) ---
+map_sens_vas <- tar_map(
+  values = grid_vas,
+  names = c("outcome_col", "prior_scenario", "adjustment_set"),
+  unlist = FALSE,
+  tar_target(
+    model_sens,
+    list(fit_vas_zoib(
+      data = ich_aggressive,
+      use_imputation = FALSE,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
       settings = model_setup("complex"),
       random_effect_str = "(1 | study)"
     )),
@@ -391,6 +439,50 @@ map_priors <- tar_map(
   )
 )
 
+# --- Ventilation Prior Predictive Checks ---
+map_priors_ventilation <- tar_map(
+  values = grid_ventilation,
+  names = c("outcome_col", "prior_scenario", "adjustment_set"),
+  unlist = FALSE,
+  tar_target(
+    model_prior,
+    list(fit_ventilation_zinb(
+      data = ich_aggressive,
+      use_imputation = FALSE,
+      outcome_col = outcome_col,
+      family = family,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      int_mean = int_mean,
+      int_sd = int_sd,
+      settings = model_setup("fast"),
+      random_effect_str = "(1 | study)",
+      sample_prior = "only"
+    )),
+    deployment = "worker"
+  )
+)
+
+# --- VAS Prior Predictive Checks ---
+map_priors_vas <- tar_map(
+  values = grid_vas,
+  names = c("outcome_col", "prior_scenario", "adjustment_set"),
+  unlist = FALSE,
+  tar_target(
+    model_prior,
+    list(fit_vas_zoib_prior_only(
+      data = ich_aggressive, # Use complete-case data for priors to save computation
+      use_imputation = FALSE,
+      prior_scenario = prior_scenario,
+      adjustment_set = adjustment_set,
+      settings = model_setup("fast"), # Fast settings since we ignore the data
+      random_effect_str = "(1 | study)",
+      sample_prior = "only" # CRITICAL: Sample priors only
+    )),
+    deployment = "worker"
+  )
+)
+
 
 # --- C. Combination & Results Targets ---
 t_combine <- list(
@@ -399,6 +491,7 @@ t_combine <- list(
     map_main_fast,
     map_main_complex,
     map_main_ventilation,
+    map_main_vas,
     command = c(!!!.x)
   ),
 
@@ -406,6 +499,7 @@ t_combine <- list(
     all_sens_models,
     map_sens_fast,
     map_sens_complex,
+    map_sens_vas,
     command = c(!!!.x)
   ),
 
@@ -425,6 +519,8 @@ t_combine <- list(
   tar_combine(
     all_prior_models,
     map_priors,
+    map_priors_ventilation,
+    map_priors_vas,
     command = c(!!!.x)
   ),
 
@@ -479,6 +575,39 @@ map_table2 <- tar_map(
     table_2_function(
       x = ich_aggressive,
       models = subset_models_for_table2(all_main_models, scenario)
+    )
+  )
+)
+
+# --- D2. Table 2 Priors Map ---
+map_table2_priors <- tar_map(
+  values = table_scenarios,
+  tar_target(
+    table_2_priors,
+    table_2_priors_function(
+      models = subset_prior_models_for_table2(all_prior_models, scenario)
+    )
+  )
+)
+
+# --- D3. Table 4 Map ---
+map_table4 <- tar_map(
+  values = table_scenarios,
+  tar_target(
+    table_4,
+    table_4_function(
+      models = subset_models_for_table4(all_main_models, scenario)
+    )
+  )
+)
+
+# --- D4. Table 4 Priors Map ---
+map_table4_priors <- tar_map(
+  values = table_scenarios,
+  tar_target(
+    table_4_priors,
+    table_4_priors_function(
+      models = subset_prior_models_for_table4(all_prior_models, scenario)
     )
   )
 )
@@ -539,10 +668,17 @@ list(
   map_sens_fast,
   map_sens_complex,
   map_main_ventilation,
+  map_main_vas,
+  map_sens_vas,
   map_atach_sens,
   map_interactions,
   map_priors,
+  map_priors_ventilation,
+  map_priors_vas,
   t_combine,
   map_table2,
+  map_table2_priors,
+  map_table4,
+  map_table4_priors,
   t_missing
 )

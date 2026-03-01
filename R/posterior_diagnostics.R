@@ -1,25 +1,53 @@
-posterior_diagnostics <- function(mod) {
-  # plot code modified from Andrew Heiss (https://bayesf22-notebook.classes.andrewheiss.com/bayes-rules/13-chapter.html#simulating-the-posterior)
+library(ggplot2)
+library(tidybayes)
+library(dplyr)
+library(stringr)
+library(patchwork)
 
-  trace_plot <- mod |>
-    gather_draws(`^b_.*`, regex = TRUE) |>
+f_posterior_diagnostics <- function(mod, param_regex = "ich_lateralityRight") {
+  # 1. Grab all fixed effects (b_) and random effect SDs (sd_),
+  # then filter down to the specific parameter(s) you care about.
+  draws <- mod |>
+    tidybayes::gather_draws(`^b_.*`, `^sd_.*`, regex = TRUE) |>
+    dplyr::filter(stringr::str_detect(.variable, param_regex))
+
+  if (nrow(draws) == 0) {
+    warning(paste("No parameters matched the regex:", param_regex))
+    return(NULL)
+  }
+
+  # 2. Trace Plot
+  trace_plot <- draws |>
     ggplot(aes(x = .iteration, y = .value, color = factor(.chain))) +
-    geom_line(linewidth = 0.1) +
-    scale_color_viridis_d(option = "rocket", end = 0.85) +
-    facet_wrap(vars(.variable), scales = "free_y")
+    geom_line(linewidth = 0.2, alpha = 0.8) +
+    scale_color_viridis_d(option = "rocket", end = 0.85, name = "Chain") +
+    facet_wrap(vars(.variable), scales = "free_y", ncol = 1) +
+    theme_minimal() +
+    labs(x = "Iteration", y = "Parameter Value", title = "Trace Plots") +
+    theme(legend.position = "none") # Hide legend to save space
 
-  trank_plot <- mod |>
-    gather_draws(`^b_.*`, regex = TRUE) |>
+  # 3. Trank Plot
+  trank_plot <- draws |>
     group_by(.variable) |>
     mutate(draw_rank = rank(.value)) |>
     ggplot(aes(x = draw_rank, color = factor(.chain))) +
-    stat_bin(geom = "step", binwidth = 250, position = position_identity(), boundary = 0) +
-    scale_color_viridis_d(option = "rocket", end = 0.85) +
-    facet_wrap(vars(.variable), scales = "free_y") +
-    theme(axis.text.y = element_blank(), axis.title.y = element_blank(), axis.ticks.y = element_blank())
+    stat_bin(
+      geom = "step",
+      binwidth = 200,
+      position = position_identity(),
+      boundary = 0,
+      linewidth = 0.6
+    ) +
+    scale_color_viridis_d(option = "rocket", end = 0.85, name = "Chain") +
+    facet_wrap(vars(.variable), scales = "free_y", ncol = 1) +
+    theme_minimal() +
+    labs(x = "Rank", y = "Count", title = "Rank Histograms") +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.ticks.y = element_blank()
+    )
 
-  # pp_check <- pp_check(mod, ndraws = 500)
-  # pp_check_bars <- pp_check(mod, ndraws = 500, type = "bars_grouped", group = "ich_laterality")
-
-  return((trank_plot / trace_plot))
+  # 4. Combine side-by-side
+  return(trace_plot | trank_plot)
 }

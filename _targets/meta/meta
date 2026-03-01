@@ -1,21 +1,13 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 model_sens_days_mechanical_ventilation_left_adjusted|stem|3ad6a44948aa408c|177ce1b91d83d0d8|cf21ed699a9e8627|-1639801811||t20494.1446513186s|s1748388b|1748388|rds|local|vector|||675.827|Rows containing NAs were excluded from the model.|
 model_sens_days_mechanical_ventilation_left_minimal|stem|6b1c1a7c79af7200|fe689ea4407d59ef|cf21ed699a9e8627|1315933986||t20494.2835510325s|s1304125b|1304125|rds|local|vector|||602.184|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
-model_prior_days_mechanical_ventilation_right_minimal|stem|202822ec124564be|71dc0324012d6d37|cf21ed699a9e8627|-18243242||t20494.2837540771s|s831161b|831161|rds|local|vector|||11.517|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
 model_sens_days_mechanical_ventilation_flat_adjusted|stem|0e1f75343d839832|30bc03c097e4ae2c|cf21ed699a9e8627|-2053830769||t20494.5542107563s|s1745758b|1745758|rds|local|vector|||663.15|Rows containing NAs were excluded from the model.|
-model_prior_days_mechanical_ventilation_left_adjusted|stem|d3ddd13d1c58d7cb|0946c862851cc762|cf21ed699a9e8627|453281224||t20494.6079327696s|s837736b|837736|rds|local|vector|||11.677|Rows containing NAs were excluded from the model.|
 model_sens_days_mechanical_ventilation_flat_minimal|stem|454e1e04c63ca5aa|a2f254e67d78504c|cf21ed699a9e8627|249265044||t20494.7923072572s|s1294919b|1294919|rds|local|vector|||522.925|Rows containing NAs were excluded from the model.|
-model_prior_days_mechanical_ventilation_flat_adjusted|stem|776d5e898b3b473e|653798feab80d2c5|cf21ed699a9e8627|-1400309396||t20494.8514027858s|s836783b|836783|rds|local|vector|||11.012|Rows containing NAs were excluded from the model.|
-model_prior_days_mechanical_ventilation_neutral_minimal|stem|12b9eafcedae4bed|9d77909aceead93f|cf21ed699a9e8627|1908643985||t20494.907808207s|s831076b|831076|rds|local|vector|||10.549|Rows containing NAs were excluded from the model.|
 model_sens_days_mechanical_ventilation_neutral_adjusted|stem|844fc01bd71042ee|3d8196bb329aa02f|cf21ed699a9e8627|-646643824||t20495.2641573591s|s1758170b|1758170|rds|local|vector|||661.328|Rows containing NAs were excluded from the model.|
 model_sens_days_mechanical_ventilation_neutral_minimal|stem|253d370d9a562cb9|0fd99ae906c2735e|cf21ed699a9e8627|688714959||t20495.7568084068s|s1300659b|1300659|rds|local|vector|||461.314|Rows containing NAs were excluded from the model.|
 ich_imputed|stem|99da5ada31763073|8d1f7791e1f35128|45f96e9a62b181e7|-1992575325||t20495.7665952581s|s269367b|269367|rds|local|vector|||118.015|Number of logged events: 1. Number of logged events: 12001|
-model_prior_days_mechanical_ventilation_right_adjusted|stem|516083f4db81629f|9d728c61141b30b7|cf21ed699a9e8627|507499410||t20495.8738569253s|s837765b|837765|rds|local|vector|||10.222|Rows containing NAs were excluded from the model.|
-model_prior_days_mechanical_ventilation_left_minimal|stem|43b6559ff3cdc064|7a774a68d1f1518b|cf21ed699a9e8627|1972553941||t20496.1753503489s|s831200b|831200|rds|local|vector|||11.295|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
 model_sens_days_mechanical_ventilation_right_minimal|stem|2a1379e2f4253061|de83646f135b39b9|cf21ed699a9e8627|-108844051||t20496.2437630146s|s1310141b|1310141|rds|local|vector|||513.376|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
 model_sens_days_mechanical_ventilation_right_adjusted|stem|8fddf5ac207fb9c4|bed6653e41c67a60|cf21ed699a9e8627|-1811683789||t20496.3029924663s|s1763667b|1763667|rds|local|vector|||578.092|Rows containing NAs were excluded from the model.|
-model_prior_days_mechanical_ventilation_flat_minimal|stem|e9fde1b7dcd7d5c1|40b8ddf20251cb1b|cf21ed699a9e8627|364591936||t20496.2921747032s|s831044b|831044|rds|local|vector|||11.429|Rows containing NAs were excluded from the model.|
-model_prior_days_mechanical_ventilation_neutral_adjusted|stem|f106829420bafcf4|43e56f7a8ed554c0|cf21ed699a9e8627|1453010266||t20496.4783246828s|s837227b|837227|rds|local|vector|||11.82|Rows containing NAs were excluded from the model.|
 imported_data_file|stem|ed98456f21f9ec46|5def87000f2374d5|2c530c1562a7fbd1|623732428|data/raw_data/all.rds|t20491.9516341916s|s8509896b|8509896|file|local|vector|||0||
 imported_data|stem|bf7bf2317261b200|be64c3e532f8d964|3e87dc08fede24b1|-1154221612||t20496.939692197s|s411050b|411050|rds|local|vector|||0.02||
 selected_data|stem|9513d758b6f6702a|44280be3ad15831f|62ee2cc13ed9a65d|-1052555108||t20496.9396966298s|s166174b|166174|rds|local|vector|||0.017||
@@ -350,10 +342,8 @@ model_atach_base_neurosurgery_evac|stem|04d2861eabc23e22|27ca855a2b031d05|ed8df2
 table_interaction_results|stem|67ab587a066df5da|f7896e1535ec3318|8143a53151dccf90|1998685690||t20506.0763413043s|s436b|436|rds|local|vector|||0.747|There were 2 warnings in `mutate()`. The first warning was: ℹ In argument: `estimates = purrr::map(...)`. Caused by warning in `tidy.brmsfit()`: ! some parameter names contain underscores: term naming may be unreliable! ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.|
 model_prior_mrs_90_neutral_minimal|stem|554f8d8205873695|cb2886446c12e905|6e22ba43caf4e79c|877530234||t20506.0763670687s|s427708b|427708|rds|local|vector|||18.341|Rows containing NAs were excluded from the model.|
 model_atach_site_neurosurgery_evac|stem|7e0eb4aa41a31f31|c356440a91a70479|ed8df297ae95879e|-1749029700||t20506.0763913101s|s277799b|277799|rds|local|vector|||17.905||
-all_sens_models|stem|8098661528ce0fc4|78bf14938e244f13|b7cee068873b7b63|-2085513787||t20506.0764894862s|s129742841b|129742841|rds|local|vector|||0.001||
 all_site_sens_models|stem|646a5499a3da4c59|35003e22a01dae74|965baba2cb5ff4c3|182072964||t20506.076493633s|s505159b|505159|rds|local|vector|||0.001||
 table_site_comparison|stem|9da6eec228b9aadc|f78e86ad95df0243|b07757c11f5ddd35|-1593142531||t20506.0765904186s|s474b|474|rds|local|vector|||0.684|There were 2 warnings in `mutate()`. The first warning was: ℹ In argument: `estimates = purrr::map(...)`. Caused by warning in `tidy.brmsfit()`: ! some parameter names contain underscores: term naming may be unreliable! ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.|
-all_prior_models|stem|483d5acd1d55c185|59a1e3b58dde1bc3|36e651d82b17730d|2069460952||t20506.0766680515s|s40839947b|40839947|rds|local|vector|||0||
 model_main_days_mechanical_ventilation_left_minimal|stem|36f4240df6441e0a|b8dafae2c01779c2|868e28b192b6420c|564105366||t20506.1186335871s|s947816b|947816|rds|local|vector|||674.662|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
 model_main_days_mechanical_ventilation_right_adjusted|stem|65a0faa42b44e223|c9744567c52a7d99|868e28b192b6420c|-1550295736||t20506.1280176835s|s1415481b|1415481|rds|local|vector|||810.214|Rows containing NAs were excluded from the model.|
 model_main_days_mechanical_ventilation_neutral_adjusted|stem|0dd990ba61b213f8|b967852c21913316|868e28b192b6420c|-1290943713||t20506.137206074s|s1412303b|1412303|rds|local|vector|||793.218|Rows containing NAs were excluded from the model.|
@@ -362,71 +352,125 @@ model_main_days_mechanical_ventilation_neutral_minimal|stem|f1f8f57585f78ef9|d08
 model_main_days_mechanical_ventilation_left_adjusted|stem|37184680de6e23fb|18c1d2e818eb9322|868e28b192b6420c|451830749||t20506.1654522293s|s1425464b|1425464|rds|local|vector|||884.561|Rows containing NAs were excluded from the model.|
 model_main_days_mechanical_ventilation_flat_minimal|stem|2e6d2f518c2872ad|64cff1dc16192d1a|868e28b192b6420c|2005906282||t20506.1744196536s|s947801b|947801|rds|local|vector|||774.251|Rows containing NAs were excluded from the model.|
 model_main_days_mechanical_ventilation_flat_adjusted|stem|f91fd1ffdbaea63b|ab1b8e39dd4d3a4d|868e28b192b6420c|1118072841||t20506.1823724933s|s1366590b|1366590|rds|local|vector|||686.552|Rows containing NAs were excluded from the model.|
-all_main_models|stem|fbd6d5f745d567ab|f429d98d52abc1b9|b2db5df2d1e96dbd|-980375836||t20506.1829659488s|s521284057b|521284057|rds|local|vector|||0.001||
 table_2_right|stem|44bcf2ccdda159b3|27602ea6ab10f6e3|fc1b4a2511f884ed|-471899895||t20506.4905833435s|s32122192b|32122192|rds|local|vector|||234.278||
 table_2_flat|stem|8b98704fe873532c|2cdacc9cd4a47339|fc1b4a2511f884ed|1407879700||t20506.4906220407s|s31652925b|31652925|rds|local|vector|||238.184||
 table_2_left|stem|9b031f19efbf46f4|f233bde4bfa519cd|fc1b4a2511f884ed|591254865||t20506.4906531517s|s32189404b|32189404|rds|local|vector|||240.049||
 table_2_neutral|stem|83bcd1e00121473b|a97674cc484506bb|fc1b4a2511f884ed|1511039990||t20506.4906756285s|s32108946b|32108946|rds|local|vector|||242.74||
+f_vas_90_zoib|function|c79ae3ce3dfebf07
 f_post_predictive_check_vas|function|9317df8aa37cbf8d
-posterior_diagnostics|function|d6a1f8b8ed64abf7
-grid_atach_sens|object|95bb29224723aceb
-model_setup|function|14d9e669f0466566
-functional_outcomes|object|6cbc8907a98424b7
-grid_complex|object|c493948d62439ce7
-f_alternative_adjustment_table_mrs|function|67136e52afb791b3
-process_vas|function|709d55dd71d9e875
-complete_grid|object|ba4efe212f13d911
-select_variables|function|ee7ab43c89c4a69e
-table_scenarios|object|e7184c0941837e07
-.Random.seed|object|406dd2e374ab4a17
-grid_fast|object|b46035733911368d
-filter_variables|function|22e3e97d7e95dd63
-fit_ventilation_zinb|function|13ae1670882d60ff
-f_subgroup_table|function|a44300f88e1b13e4
-table_2_function|function|a026dc78c7f6498d
-fit_laterality_model|function|22440050776daf3e
 prediction_visual|function|322f8ea04b818642
-table_1_function|function|fa6b69491290a756
-theme_ich|function|b45be91cc74e0d08
-f_prior_predictive_check_vent|function|96885132fba43ea3
-grid_ventilation|object|e3588badf5e52297
-f_missing_data_filter|function|3c890f806395f324
-euro_figure_function|function|b45e7965f6ae88e4
-f_alternative_adjustment_table|function|a2a257408e11e8fe
-f_shadow_plots|function|10a9581b3605c051
-aggressive_grid|object|f40497373a46ac62
-f_percent_missing_visual_stratified|function|8f110cf803d9ecb0
-posterior_odds_plot|function|c0ccd32b06d884c1
 f_prior_predictive_check|function|9fb9f26c4dffb03d
 f_post_predictive_check|function|6baf77f9bc26df66
-functional_grid|object|a6015ef473c2f7fe
-process_ordinal|function|f6a3fd1f3482d103
-f_subgroup_by_location|function|e2b1055b3c954ff4
+table_3_updated|function|6295973766ca7348
+model_sens_euro_vas_90_neutral_adjusted|stem|345cdd83f6f1d9cf|ba3d97c9546e15c5|2f535ba6068fb48b|-828982968||t20511.5151364559s|s3249516b|3249516|rds|local|vector|||8793.61|Rows containing NAs were excluded from the model.|
+model_sens_euro_vas_90_flat_adjusted|stem|565563ba0c404d44|22ccc28faa7daa9b|2f535ba6068fb48b|1508079831||t20511.6262967286s|s3256916b|3256916|rds|local|vector|||9603.6|Rows containing NAs were excluded from the model.|
+model_sens_euro_vas_90_left_minimal|stem|4b97feef7b1a8cb5|a999901966a913e9|2f535ba6068fb48b|-1843371406||t20511.6292943438s|s2354094b|2354094|rds|local|vector|||258.357|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_sens_euro_vas_90_left_adjusted|stem|c6254051544c3e56|dd810cc7d7847fde|2f535ba6068fb48b|682843842||t20511.7149066562s|s3253472b|3253472|rds|local|vector|||7039.029|Rows containing NAs were excluded from the model.|
+model_sens_euro_vas_90_flat_minimal|stem|48ca5e7d2d836c9c|1c8ece303863bb13|2f535ba6068fb48b|1662179848||t20511.7179401408s|s2345429b|2345429|rds|local|vector|||261.485|Rows containing NAs were excluded from the model.|
+model_sens_euro_vas_90_neutral_minimal|stem|2310348d69697457|4fe6ff8da954809f|2f535ba6068fb48b|263018113||t20511.7208922522s|s2352527b|2352527|rds|local|vector|||254.42|Rows containing NAs were excluded from the model.|
+model_sens_euro_vas_90_right_minimal|stem|1761d490a13bc580|cc834fea14d4b6d3|2f535ba6068fb48b|1938598358||t20511.7239059457s|s2354841b|2354841|rds|local|vector|||259.789|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_sens_euro_vas_90_right_adjusted|stem|c92bb53170a0432b|79aa7c89765159f0|2f535ba6068fb48b|1999067940||t20511.8104216093s|s3250583b|3250583|rds|local|vector|||7474.36|Rows containing NAs were excluded from the model.|
+model_main_euro_vas_90_left_minimal|stem|1f6d1e1051eb6d3c|9328443b5ea7f761|603dd9ae0aef06f4|-1709887672||t20511.8818112101s|s11769018b|11769018|rds|local|vector|||6157.117|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. E-BFMI not computed because it is undefined for posterior chains of length less than 3.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more d|
+model_main_euro_vas_90_flat_minimal|stem|8cc913f8afc72de9|ba4e513a0e1662ea|603dd9ae0aef06f4|722855334||t20511.8825103773s|s11675125b|11675125|rds|local|vector|||6217.502|Rows containing NAs were excluded from the model.. E-BFMI not computed because it is undefined for posterior chains of length less than 3.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.|
+all_sens_models|stem|1d572beffc075d59|a180f905bd7eab08|0f36124845052eed|-2085513787||t20511.8825950185s|s152103224b|152103224|rds|local|vector|||0.001||
+model_main_euro_vas_90_right_minimal|stem|81f78b33d22e7834|5174068edaea6a04|603dd9ae0aef06f4|-1596718417||t20511.882789602s|s11790407b|11790407|rds|local|vector|||6240.269|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. E-BFMI not computed because it is undefined for posterior chains of length less than 3.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.. Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more d|
+model_prior_euro_vas_90_flat_minimal|stem|b57fc55a2d232af5|f63e8c31208a3316|053527debd170440|-247629307||t20511.9589254759s|s592863b|592863|rds|local|vector|||16.531|Rows containing NAs were excluded from the model.|
+model_prior_euro_vas_90_neutral_minimal|stem|60062a8c1993877b|9ff95689d2f0043d|053527debd170440|-660224096||t20511.9589313601s|s593029b|593029|rds|local|vector|||16.501|Rows containing NAs were excluded from the model.|
+model_prior_euro_vas_90_right_minimal|stem|eb2b89500902497d|bc1addcaa18e20ed|053527debd170440|-1413164308||t20511.9589531495s|s593143b|593143|rds|local|vector|||16.029|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_euro_vas_90_left_minimal|stem|a37b4a779b4e84f0|2124530e37fce8d5|053527debd170440|488573404||t20511.9589447236s|s593056b|593056|rds|local|vector|||16.126|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_euro_vas_90_neutral_adjusted|stem|f00fbd90d7a81624|a431d0e0a75df0f4|053527debd170440|790071192||t20511.9590050155s|s626089b|626089|rds|local|vector|||22.251|Rows containing NAs were excluded from the model.|
+model_prior_euro_vas_90_flat_adjusted|stem|88d41accd4381046|195d996b25902617|053527debd170440|1655891532||t20511.959012698s|s625691b|625691|rds|local|vector|||22.287|Rows containing NAs were excluded from the model.|
+model_prior_euro_vas_90_left_adjusted|stem|566e1d76ab898e55|1d7b36a531cb0f70|053527debd170440|-214572908||t20511.9590043994s|s626521b|626521|rds|local|vector|||23.254|Rows containing NAs were excluded from the model.|
+model_prior_euro_vas_90_right_adjusted|stem|77380aef88414a87|8932820cf4751545|053527debd170440|50321230||t20511.9590390983s|s626624b|626624|rds|local|vector|||23.754|Rows containing NAs were excluded from the model.|
+model_prior_days_mechanical_ventilation_left_minimal|stem|aa03b9e9af493aec|488e5f2e8706d5ec|868e28b192b6420c|1972553941||t20511.9620071729s|s423256b|423256|rds|local|vector|||18.569|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_days_mechanical_ventilation_left_adjusted|stem|4591f10f77248c79|261ea883e82df7d4|868e28b192b6420c|453281224||t20511.9620180267s|s437931b|437931|rds|local|vector|||19.133|Rows containing NAs were excluded from the model.|
+model_prior_days_mechanical_ventilation_right_minimal|stem|2064ebae02328053|dad342584408bba8|868e28b192b6420c|-18243242||t20511.9620237007s|s423268b|423268|rds|local|vector|||18.752|Rows containing NAs were excluded from the model.. The global prior 'normal(0, 0.5)' of class 'b' will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See ?set_prior and ?default_prior for more details.|
+model_prior_days_mechanical_ventilation_neutral_adjusted|stem|4c5e12e3cb33a2e0|3fec4c94688bc696|868e28b192b6420c|1453010266||t20511.9620277979s|s437540b|437540|rds|local|vector|||18.9|Rows containing NAs were excluded from the model.|
+model_prior_days_mechanical_ventilation_right_adjusted|stem|254540c5f12b7ca7|7ef82d49549d41c5|868e28b192b6420c|507499410||t20511.9620118604s|s437899b|437899|rds|local|vector|||18.86|Rows containing NAs were excluded from the model.|
+model_prior_days_mechanical_ventilation_neutral_minimal|stem|da637ddfca2ec54e|f195df5520699c31|868e28b192b6420c|1908643985||t20511.9620326243s|s423145b|423145|rds|local|vector|||18.421|Rows containing NAs were excluded from the model.|
+model_prior_days_mechanical_ventilation_flat_adjusted|stem|0986296a0d6c899c|73d47aa3cfc9ee51|868e28b192b6420c|-1400309396||t20511.962038747s|s437085b|437085|rds|local|vector|||18.813|Rows containing NAs were excluded from the model.|
+model_prior_days_mechanical_ventilation_flat_minimal|stem|db2ecbd8270bb066|92f3a49c359eafb7|868e28b192b6420c|364591936||t20511.9620458187s|s423076b|423076|rds|local|vector|||18.923|Rows containing NAs were excluded from the model.|
+all_prior_models|stem|de20715c26c0a7d1|4130c7d16fa5d8aa|9e33dceaa1aeebb1|2069460952||t20511.9625411191s|s49019940b|49019940|rds|local|vector|||0.001||
+table_4_priors_flat|stem|0dddad8623ec6c59|acf780feac9953e1|762b7de607ccf51b|1790707508||t20511.9629722876s|s3311403b|3311403|rds|local|vector|||3.092||
+table_4_priors_right|stem|048189d637a21c8d|5659c6ff854fba07|762b7de607ccf51b|-233145155||t20511.9630223994s|s3318603b|3318603|rds|local|vector|||3.192||
+table_2_priors_left|stem|5b1bd39bb2bfb4de|05f997f70e65f46c|3dccdabc957771b6|1662499209||t20511.9630920864s|s3116576b|3116576|rds|local|vector|||12.773||
+table_2_priors_neutral|stem|88b51f95f44e6f8d|79a65f7bc59edb8e|3dccdabc957771b6|111892306||t20511.9635578519s|s3113161b|3113161|rds|local|vector|||11.87||
+table_2_priors_flat|stem|6d29a306210ae85d|3a7debfbb9dd477b|3dccdabc957771b6|1827672107||t20511.963579214s|s3111056b|3111056|rds|local|vector|||11.09||
+table_2_priors_right|stem|af9195a31ccbe17b|d92fc400a27cdd51|3dccdabc957771b6|-723109148||t20511.963707715s|s3116523b|3116523|rds|local|vector|||12.519||
+table_4_priors_left|stem|2e46f91f84d19717|3043878fc9e002d1|762b7de607ccf51b|2140138367||t20511.9640412148s|s3317819b|3317819|rds|local|vector|||2.862||
+table_4_priors_neutral|stem|52722caeae9897b3|77b17d5c55104429|762b7de607ccf51b|-843445770||t20511.964056592s|s3314093b|3314093|rds|local|vector|||2.807||
+model_main_euro_vas_90_neutral_minimal|stem|9ad58c1cac281c13|3de86244fdb9021c|603dd9ae0aef06f4|-1526524657||t20511.9894133405s|s11772865b|11772865|rds|local|vector|||2355.988|Rows containing NAs were excluded from the model.. E-BFMI not computed because it is undefined for posterior chains of length less than 3.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.|
+process_ordinal|function|e42ec9e5cdc1b3bc
+f_subgroup_table|function|a44300f88e1b13e4
+process_vas|function|c48e6c4c775d6e1d
+fit_ventilation_zinb|function|13ae1670882d60ff
+grid_vas|object|38d1bb38bc95d3e0
+table_2_function|function|a026dc78c7f6498d
+f_posterior_diagnostics|function|8d8d51c55b8e2501
+f_general_pp_check|function|7e80525a06890a5b
+model_setup|function|14d9e669f0466566
 f_plot_imputations_detailed|function|915c23e739892e94
-f_neurosurgery_dag|function|940967b2aefac2e0
+functional_grid|object|a6015ef473c2f7fe
+fit_vas_zoib_prior_only|function|f333f83db3872f76
 f_subgroup_by_study|function|63340650275664b3
-grid_interactions|object|f1a9a5614b2a919f
-f_imp_sensitivity|function|13a6e7be6ef6e9aa
-f_imputed|function|dcd7a65ec249491c
-combined_base|object|aa098bea61ebad0e
+fit_laterality_model|function|22440050776daf3e
 subset_models_for_table2|function|d1ae21ea039dad70
-f_posterior_alternative1_neurosurgery|function|097a77c4c4930eb9
+f_percent_missing_visual_stratified|function|8f110cf803d9ecb0
+.Random.seed|object|e39748846e4f057c
+subset_models_for_table4|function|1d44993ef49e4cc8
+table_scenarios|object|e7184c0941837e07
+f_imputed|function|dcd7a65ec249491c
+posterior_odds_plot|function|c0ccd32b06d884c1
+grid_fast|object|b46035733911368d
+f_alternative_adjustment_table|function|a2a257408e11e8fe
+select_variables|function|ee7ab43c89c4a69e
+aggressive_grid|object|f40497373a46ac62
+grid_complex|object|c493948d62439ce7
+subset_prior_models_for_table2|function|39382df954f763c0
+euro_figure_function|function|b45e7965f6ae88e4
+table_2_priors_function|function|ff367d67f9f31303
+f_shadow_plots|function|10a9581b3605c051
+subset_prior_models_for_table4|function|3b69f3a81594e96a
+theme_ich|function|b45be91cc74e0d08
+f_missing_data_filter|function|3c890f806395f324
+grid_interactions|object|f1a9a5614b2a919f
+f_alternative_adjustment_table_mrs|function|67136e52afb791b3
+filter_variables|function|22e3e97d7e95dd63
+f_subgroup_by_location|function|e2b1055b3c954ff4
+posterior_diagnostics|function|35a8ac4d3fa32822
+grid_atach_sens|object|95bb29224723aceb
+table_1_function|function|fa6b69491290a756
+f_neurosurgery_dag|function|940967b2aefac2e0
+combined_base|object|aa098bea61ebad0e
+complete_grid|object|ba4efe212f13d911
+functional_outcomes|object|6cbc8907a98424b7
+f_prior_predictive_check_vent|function|96885132fba43ea3
+f_imp_sensitivity|function|13a6e7be6ef6e9aa
+grid_ventilation|object|e3588badf5e52297
+fit_vas_zoib|function|24791e575bb17178
+table_4_function|function|7682c9f659532ad1
+table_4_priors_function|function|0369b2ccfd932548
 f_posterior_alternative2_mrs_90|function|fe944dec72494d18
 f_posterior_minimal_evd|function|777a37c5e0c6a3e4
-f_posterior_alternative1_evd|function|6f83e3cff70655fe
-f_posterior_alternative1_mrs_90|function|04b34e8ba800056b
-f_posterior_alternative5_mrs_90|function|f08a847f6f278851
-f_posterior_alternative2_neurosurgery|function|a0e32afb16fbe23f
-f_posterior_alternative4_evd|function|cb033b441aec0074
-f_posterior_minimal_neurosurgery|function|e3db9d123c9f4c08
-f_posterior_alternative4_mrs_90|function|a3a3628dd5ac0e1e
-f_posterior_alternative3_neurosurgery|function|87da6a7a241fb8c9
-f_posterior_alternative3_evd|function|362a36bbb7e6bfe1
-f_vas_90_zoib|function|c79ae3ce3dfebf07
-f_posterior_alternative3_mrs_90|function|c2a3e272a65aa1ff
-f_posterior_alternative4_neurosurgery|function|5486a149ab5b9fdb
 f_posterior_alternative2_evd|function|9374ffd1ba408d2c
-outcomes_dag_function|function|4404d355b4d6147a
-mrs_figure_function|function|a04e6e68664216ae
+f_posterior_alternative1_neurosurgery|function|097a77c4c4930eb9
+f_posterior_alternative4_evd|function|cb033b441aec0074
+f_posterior_alternative5_mrs_90|function|f08a847f6f278851
+f_posterior_alternative4_mrs_90|function|a3a3628dd5ac0e1e
+f_posterior_alternative2_neurosurgery|function|a0e32afb16fbe23f
+f_posterior_alternative1_mrs_90|function|04b34e8ba800056b
+f_posterior_alternative3_neurosurgery|function|87da6a7a241fb8c9
+f_posterior_minimal_neurosurgery|function|e3db9d123c9f4c08
+f_posterior_alternative1_evd|function|6f83e3cff70655fe
+f_posterior_alternative3_mrs_90|function|c2a3e272a65aa1ff
+f_posterior_alternative3_evd|function|362a36bbb7e6bfe1
+f_posterior_alternative4_neurosurgery|function|5486a149ab5b9fdb
 adjusted_mrs_function|function|1634e253cbc99700
-table_3_updated|function|6295973766ca7348
+mrs_figure_function|function|a04e6e68664216ae
+outcomes_dag_function|function|4404d355b4d6147a
+model_main_euro_vas_90_left_adjusted|stem|f779e66403c2449d|19d81c109c7e8c22|603dd9ae0aef06f4|1759654053||t20513.0370889118s|s9803307b|9803307|rds|local|vector|||33613.152|Rows containing NAs were excluded from the model.. E-BFMI not computed because it is undefined for posterior chains of length less than 3.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.|
+model_main_euro_vas_90_flat_adjusted|stem|5d0888a294bba334|12e9624582a6e5a4|603dd9ae0aef06f4|196297076||t20513.3458533182s|s9816409b|9816409|rds|local|vector|||26675.937|Rows containing NAs were excluded from the model.. E-BFMI not computed because it is undefined for posterior chains of length less than 3.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.|
+model_main_euro_vas_90_right_adjusted|stem|83e53a8c8931668a|94cd97917b88870a|603dd9ae0aef06f4|-25409749||t20513.6231570646s|s9805365b|9805365|rds|local|vector|||23957.772|Rows containing NAs were excluded from the model.. E-BFMI not computed because it is undefined for posterior chains of length less than 3.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.|
+model_main_euro_vas_90_neutral_adjusted|stem|de604c1ae1a89b6a|10c48e6a772804d0|603dd9ae0aef06f4|2105135490||t20513.8967792724s|s9802150b|9802150|rds|local|vector|||23639.722|Rows containing NAs were excluded from the model.. E-BFMI not computed because it is undefined for posterior chains of length less than 3.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.|
+all_main_models|stem|e8237a18b36c809a|b406c9e9afef9be6|5878e4754031b193|-980375836||t20513.8974537445s|s607489474b|607489474|rds|local|vector|||0||
+table_4_flat|stem||c22a2fa6a2566a32|e5050f8de1ded5a0|380514854||t20513.8978013479s||0|rds|local|vector|||3.497|Variable(s) not found in `newdata`: ich_laterality.|There is no valid predictor variable. Please change the `variables` argument or supply an alternative data frame to the `newdata` argument.
