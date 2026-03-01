@@ -596,6 +596,7 @@ map_table4 <- tar_map(
   tar_target(
     table_4,
     table_4_function(
+      x = ich_aggressive,
       models = subset_models_for_table4(all_main_models, scenario)
     )
   )
@@ -607,6 +608,7 @@ map_table4_priors <- tar_map(
   tar_target(
     table_4_priors,
     table_4_priors_function(
+      x = ich_aggressive,
       models = subset_prior_models_for_table4(all_prior_models, scenario)
     )
   )

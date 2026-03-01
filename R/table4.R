@@ -62,10 +62,12 @@ process_ordinal <- function(model, label) {
 }
 
 # --- 2. Helper function for VAS ZOIB Model (Mean Difference) ---
-process_vas <- function(model, label) {
+process_vas <- function(model, label, data) {
+  # <--- 'data' parameter added here
   comp <- marginaleffects::avg_comparisons(
     model,
     variables = "ich_laterality",
+    newdata = data, # <--- Now references the parameter
     type = "response"
   )
 
@@ -94,7 +96,7 @@ process_vas <- function(model, label) {
 }
 
 # --- 3. Main Table Function ---
-table_4_function <- function(models) {
+table_4_function <- function(x, models) {
   df_mrs <- process_ordinal(
     models$"Modified Rankin Score",
     "Modified Rankin Score"
@@ -117,7 +119,7 @@ table_4_function <- function(models) {
     "EuroQOL - Anxiety/Depression"
   )
 
-  df_vas <- process_vas(models$"Euro VAS", "Euro VAS")
+  df_vas <- process_vas(models$"Euro VAS", "Euro VAS", data = x)
 
   bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
     select(outcome, est_label, prob_diff, prob_sub, prob_rope, type) |>
@@ -187,7 +189,7 @@ subset_prior_models_for_table4 <- function(all_prior_models, scenario) {
 }
 
 # --- Main Prior Table 4 Function ---
-table_4_priors_function <- function(models) {
+table_4_priors_function <- function(x, models) {
   # We can perfectly recycle your existing process_ordinal and process_vas functions!
   df_mrs <- process_ordinal(
     models$"Modified Rankin Score",
@@ -211,7 +213,7 @@ table_4_priors_function <- function(models) {
     "EuroQOL - Anxiety/Depression"
   )
 
-  df_vas <- process_vas(models$"Euro VAS", "Euro VAS")
+  df_vas <- process_vas(models$"Euro VAS", "Euro VAS", data = x)
 
   bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
     select(outcome, est_label, prob_diff, prob_sub, prob_rope, type) |>
