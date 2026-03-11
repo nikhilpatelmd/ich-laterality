@@ -36,11 +36,12 @@ source("R/vas.R")
 source("R/atach_sensitivity.R")
 source("R/predictive_checks.R")
 source("R/posterior_diagnostics.R")
-source("R/table1.R")
-source("R/table2.R")
-source("R/figure_1.R")
-source("R/table4.R")
+source("R/table_1.R")
+source("R/table_2.R")
 source("R/table_subgroups.R")
+source("R/table_4.R")
+source("R/figure_1.R")
+source("R/figure_2.R")
 source("R/figures.R")
 source("R/mrs_figures.R")
 source("R/euro_figures.R")
@@ -635,6 +636,19 @@ t_presentation_subgroups <- list(
   )
 )
 
+t_presentation_figures <- list(
+  tar_target(
+    figure_2,
+    make_figure_2(
+      model = all_main_models[[
+        "model_main_neurosurgery_evac_neutral_adjusted"
+      ]],
+      outcome_label = "Neurosurgical Intervention"
+    ),
+    deployment = "main"
+  )
+)
+
 map_table2 <- tar_map(
   values = table_scenarios,
   tar_target(
@@ -754,6 +768,7 @@ list(
   # Presentation
   t_presentation_misc,
   t_presentation_subgroups,
+  t_presentation_figures,
   map_table2,
   map_table2_sens,
   map_table2_priors,

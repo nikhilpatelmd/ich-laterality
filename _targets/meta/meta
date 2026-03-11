@@ -436,6 +436,21 @@ model_atach_site_neurosurgery_evac|stem|77d0353437ff1f92|30b7a123c7c772ab|0a9a8b
 all_site_sens_models|stem|29b5b8715b9f8c89|35003e22a01dae74|c3b05dba531ac02d|182072964||t20514.2948546249s|s2062091b|2062091|rds|local|vector|||0.001||
 table_site_comparison|stem|2f22186b988565f7|ae95cea7ce04fc94|d27bf8b1ef50bf4a|-1593142531||t20514.2949544043s|s475b|475|rds|local|vector|||0.855|There were 2 warnings in `mutate()`. The first warning was: ℹ In argument: `estimates = purrr::map(...)`. Caused by warning in `tidy.brmsfit()`: ! some parameter names contain underscores: term naming may be unreliable! ℹ Run `dplyr::last_dplyr_warnings()` to see the 1 remaining warning.|
 table_2_atach|stem|a9608797a2cbedcd|791c2404d7f21f0e|722d73f228dc428e|-691632517||t20514.2949765111s|s2121665b|2121665|rds|local|vector|||2.762||
+all_sens_models|stem|51473909e70cc41d|4535693562b397a8|5f75fc5b3981ad7b|-2085513787||t20514.3107005053s|s161459970b|161459970|rds|local|vector|||0.001||
+table_2_flat|stem|e7727c3b531c5089|610a4579bca09efb|8ff7148ba11ec5cb|1407879700||t20514.3125047386s|s31655145b|31655145|rds|local|vector|||169.905||
+table_2_neutral|stem|abaf47114c1fda58|158fcad13829718f|8ff7148ba11ec5cb|1511039990||t20514.3129164263s|s32113105b|32113105|rds|local|vector|||167.492||
+table_2_left|stem|e847391d2ce9cc02|095fdb9a8cffdf80|8ff7148ba11ec5cb|591254865||t20514.314751995s|s32196073b|32196073|rds|local|vector|||169.522||
+table_2_right|stem|be1bc5d05da4f507|e8825faf0d9c6696|8ff7148ba11ec5cb|-471899895||t20514.3151200878s|s32126831b|32126831|rds|local|vector|||166.378||
+table_2_sens_neutral|stem|6d6667324c85f3a6|6228fe6c8714b37d|bc4b5ba87bcc5ec4|-1531451454||t20514.3154787064s|s9487179b|9487179|rds|local|vector|||44.506||
+table_2_sens_left|stem|d1d862346fdef79e|c8ad90804162d520|bc4b5ba87bcc5ec4|2005514291||t20514.3161766504s|s9535188b|9535188|rds|local|vector|||44.074||
+table_2_sens_right|stem|61551281dee52de7|04580d527c2db911|bc4b5ba87bcc5ec4|-1657680158||t20514.3168615043s|s9496035b|9496035|rds|local|vector|||42.791||
+sens_diagnostics|stem|4e6326175184e1a7|6ba91c31c7fff42a|d585688fb2393576|-441854318||t20514.3184044407s|s405798456b|405798456|rds|local|vector|||15.088||
+table_4_sens_flat|stem|cfa85d007fd25c9f|8c195f8e5177bf59|01dcaee0c6b57be6|2073183405||t20514.3187102858s|s14695220b|14695220|rds|local|vector|||9.741||
+table_4_sens_right|stem|8cd306a01188cc7b|f0aef5772ef2525f|01dcaee0c6b57be6|-761168854||t20514.3190125719s|s14743239b|14743239|rds|local|vector|||10.049||
+table_2_sens_flat|stem|c5fe4c283d33d2af|83ed87e8a8341c17|bc4b5ba87bcc5ec4|-2058064111||t20514.3197214732s|s9353905b|9353905|rds|local|vector|||44.365||
+table_4_sens_left|stem|e8845dd6d91bc001|916ff1c5f2127798|01dcaee0c6b57be6|1829775728||t20514.3200264068s|s14755748b|14755748|rds|local|vector|||9.97||
+table_4_sens_neutral|stem|f82b20a8f7d20d0f|bbbc4749911c4b09|01dcaee0c6b57be6|864328859||t20514.320338699s|s14719310b|14719310|rds|local|vector|||10.441||
+sens_pp_checks|stem|a97f36c5de20717c|596cf2b681a84513|81781112ab3724bf|152738851||t20514.3221469056s|s614292435b|614292435|rds|local|vector|||269.897||
 subset_models_for_table4|function|e6cc356719842052
 table_2_priors_function|function|ff367d67f9f31303
 grid_atach_sens|object|95bb29224723aceb
@@ -447,7 +462,8 @@ complete_grid|object|ba4efe212f13d911
 select_variables|function|ee7ab43c89c4a69e
 f_imputed_atach|function|9f2e14d13c7ef93f
 table_scenarios|object|e7184c0941837e07
-.Random.seed|object|ae94041f5dc57c71
+make_figure_2|function|327f62a855408b8d
+.Random.seed|object|7cfcd1b8be8673a5
 grid_fast|object|b46035733911368d
 filter_variables|function|22e3e97d7e95dd63
 fit_ventilation_zinb|function|b6244bf10affd7a1
@@ -482,18 +498,4 @@ outcomes_dag_function|function|4404d355b4d6147a
 mrs_figure_function|function|a04e6e68664216ae
 adjusted_mrs_function|function|1634e253cbc99700
 table_4_function|function|3b1cda93aa139a2f
-all_sens_models|stem|51473909e70cc41d|4535693562b397a8|5f75fc5b3981ad7b|-2085513787||t20514.3107005053s|s161459970b|161459970|rds|local|vector|||0.001||
-table_2_flat|stem|e7727c3b531c5089|610a4579bca09efb|8ff7148ba11ec5cb|1407879700||t20514.3125047386s|s31655145b|31655145|rds|local|vector|||169.905||
-table_2_neutral|stem|abaf47114c1fda58|158fcad13829718f|8ff7148ba11ec5cb|1511039990||t20514.3129164263s|s32113105b|32113105|rds|local|vector|||167.492||
-table_2_left|stem|e847391d2ce9cc02|095fdb9a8cffdf80|8ff7148ba11ec5cb|591254865||t20514.314751995s|s32196073b|32196073|rds|local|vector|||169.522||
-table_2_right|stem|be1bc5d05da4f507|e8825faf0d9c6696|8ff7148ba11ec5cb|-471899895||t20514.3151200878s|s32126831b|32126831|rds|local|vector|||166.378||
-table_2_sens_neutral|stem|6d6667324c85f3a6|6228fe6c8714b37d|bc4b5ba87bcc5ec4|-1531451454||t20514.3154787064s|s9487179b|9487179|rds|local|vector|||44.506||
-table_2_sens_left|stem|d1d862346fdef79e|c8ad90804162d520|bc4b5ba87bcc5ec4|2005514291||t20514.3161766504s|s9535188b|9535188|rds|local|vector|||44.074||
-table_2_sens_right|stem|61551281dee52de7|04580d527c2db911|bc4b5ba87bcc5ec4|-1657680158||t20514.3168615043s|s9496035b|9496035|rds|local|vector|||42.791||
-sens_diagnostics|stem|4e6326175184e1a7|6ba91c31c7fff42a|d585688fb2393576|-441854318||t20514.3184044407s|s405798456b|405798456|rds|local|vector|||15.088||
-table_4_sens_flat|stem|cfa85d007fd25c9f|8c195f8e5177bf59|01dcaee0c6b57be6|2073183405||t20514.3187102858s|s14695220b|14695220|rds|local|vector|||9.741||
-table_4_sens_right|stem|8cd306a01188cc7b|f0aef5772ef2525f|01dcaee0c6b57be6|-761168854||t20514.3190125719s|s14743239b|14743239|rds|local|vector|||10.049||
-table_2_sens_flat|stem|c5fe4c283d33d2af|83ed87e8a8341c17|bc4b5ba87bcc5ec4|-2058064111||t20514.3197214732s|s9353905b|9353905|rds|local|vector|||44.365||
-table_4_sens_left|stem|e8845dd6d91bc001|916ff1c5f2127798|01dcaee0c6b57be6|1829775728||t20514.3200264068s|s14755748b|14755748|rds|local|vector|||9.97||
-table_4_sens_neutral|stem|f82b20a8f7d20d0f|bbbc4749911c4b09|01dcaee0c6b57be6|864328859||t20514.320338699s|s14719310b|14719310|rds|local|vector|||10.441||
-sens_pp_checks|stem|a97f36c5de20717c|596cf2b681a84513|81781112ab3724bf|152738851||t20514.3221469056s|s614292435b|614292435|rds|local|vector|||269.897||
+figure_2|stem|edc705f1eca6bcbd|27fa205fd70c90b0|f4cf3b094e24c178|-356367554||t20523.6337433709s|s631190370b|631190370|rds|local|vector|||12.961|Vectorized input to `element_text()` is not officially supported. ℹ Results may be unexpected or may change in future versions of ggplot2.|
