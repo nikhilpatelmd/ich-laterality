@@ -31,14 +31,19 @@ fit_ventilation_zinb <- function(
 
   final_formula <- as.formula(f_str)
 
-  # 3. Define Priors (Identical to main function)
-  my_priors <- c(set_prior(
-    paste0("normal(", int_mean, ", ", int_sd, ")"),
-    class = "Intercept"
-  ))
+  # 3. Define Priors (Now with shape and zi regularization)
+  my_priors <- c(
+    set_prior(
+      paste0("normal(", int_mean, ", ", int_sd, ")"),
+      class = "Intercept"
+    ),
+    set_prior("exponential(1)", class = "shape"), # Prevents infinite variance blowouts
+    set_prior("beta(1, 1)", class = "zi") # Keeps structural zero probability stable
+  )
 
   if (prior_scenario == "flat") {
-    my_priors <- c(my_priors, set_prior("normal(0, 5)", class = "b"))
+    # Tightened from 5 to 2. e^2 allows for a huge 7.4x increase, but stops exponential blowouts.
+    my_priors <- c(my_priors, set_prior("normal(0, 2)", class = "b"))
   } else if (prior_scenario == "neutral") {
     my_priors <- c(my_priors, set_prior("normal(0, 0.5)", class = "b"))
   } else if (prior_scenario == "left") {
@@ -63,11 +68,11 @@ fit_ventilation_zinb <- function(
     )
   }
 
-  # 4. Call brm() directly (No imputation loop, as this is complete-case aggressive care)
+  # 4. Call brm() directly
   brms::brm(
     formula = brms::bf(final_formula),
-    family = family, # This will successfully receive the ZINB family
-    data = data, # Retains the 0s perfectly
+    family = family,
+    data = data,
     prior = my_priors,
     sample_prior = sample_prior,
     cores = settings$cores,

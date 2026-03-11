@@ -1,38 +1,95 @@
-# R/atach_sensitivity.R
-# Sensitivity analysis adding ATACH-2-specific imaging confounders
-# (midline_shift, hydrocephalus) that drive surgical decision-making
-# but are unavailable in ERICH. Run on ich_atach only.
+library(mice)
+library(dplyr)
+library(stringr)
+library(tibble)
 
-fit_atach_confounder_model <- function(
-  data,
-  random_effect_str = NULL,
-  settings = model_setup("fast")
-) {
-  # Build random effect term — NULL means no clustering
-  re_term <- if (!is.null(random_effect_str)) random_effect_str else ""
-
-  formula <- as.formula(paste(
-    "neurosurgery_evac ~ ich_laterality +",
-    "ich_location + age + gcs_baseline + ich_volume_baseline + ivh +",
-    "midline_shift + hydrocephalus +", # The new confounders
-    "ich_laterality:ich_location", # Keep the laterality×location interaction
-    if (nchar(re_term) > 0) paste("+", re_term) else ""
-  ))
-
-  brm(
-    formula,
-    family = bernoulli(link = "logit"),
-    data = data,
-    prior = c(
-      set_prior("normal(-7, 0.35)", class = "Intercept"),
-      set_prior("normal(0, 0.5)", class = "b")
-    ),
-    cores = settings$cores,
-    chains = settings$chains,
-    threads = settings$threads,
-    warmup = settings$warmup,
-    iter = settings$iter,
-    seed = settings$seed,
-    control = list(adapt_delta = 0.99)
+# --- 1. Dedicated ATACH Imputation Function ---
+f_imputed_atach <- function(data, n_imputes = 20, seed = 1) {
+  fixed_vars <- c(
+    "neurosurgery_evac",
+    "ich_laterality",
+    "ich_location",
+    "age",
+    "ivh",
+    "gcs_baseline",
+    "ich_volume_baseline",
+    "htn",
+    "evd",
+    "time_symptoms_to_ed",
+    "site_id",
+    "comfort_care_binary",
+    "early_wlst",
+    "dnr_binary",
+    "tracheostomy",
+    "days_mechanical_ventilation"
   )
+
+  imp_data <- data |>
+    select(
+      any_of(fixed_vars),
+      starts_with(c("mrs", "euro")),
+      -ends_with(c("180", "365")),
+      -ends_with(c("01", "02", "03", "04"))
+    ) |>
+    mutate(across(
+      any_of(c(
+        "neurosurgery_evac",
+        "ivh",
+        "htn",
+        "evd",
+        "ich_location",
+        "ich_laterality",
+        "comfort_care_binary",
+        "early_wlst",
+        "dnr_binary",
+        "tracheostomy",
+        "site_id" # Ensure site_id is a factor
+      )),
+      as.factor
+    ))
+
+  ini <- mice(imp_data, maxit = 0)
+
+  meth <- tibble(variable = names(ini$method)) |>
+    mutate(
+      method = case_when(
+        # THE FIX: Tell mice to skip imputing site_id
+        variable %in% c("site_id", "days_mechanical_ventilation") ~ "",
+        str_starts(variable, "euro|mrs") ~ "pmm",
+        variable %in%
+          c(
+            "age",
+            "gcs_baseline",
+            "ich_volume_baseline",
+            "time_symptoms_to_ed"
+          ) ~ "pmm",
+        variable %in%
+          c(
+            "neurosurgery_evac",
+            "ivh",
+            "htn",
+            "evd",
+            "comfort_care_binary",
+            "early_wlst",
+            "dnr_binary",
+            "tracheostomy"
+          ) ~ "logreg",
+        variable %in% c("ich_location", "ich_laterality") ~ "polyreg",
+        TRUE ~ ""
+      )
+    ) |>
+    deframe()
+
+  imp <- mice(
+    imp_data,
+    method = meth,
+    m = n_imputes,
+    maxit = 20,
+    seed = seed,
+    print = FALSE,
+    ridge = 0.01,
+    threshold = 0.999
+  )
+
+  return(imp)
 }

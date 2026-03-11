@@ -192,9 +192,11 @@ table_2_function <- function(x, models) {
 }
 
 # --- HELPER: Subset Models for Table 2 ---
-# This function plucks the correct models from the massive tar_combine list
-subset_models_for_table2 <- function(all_models, scenario) {
-  # 1. Map: Machine Name (Grid Outcome) -> Human Name (Table 2 Row)
+subset_models_for_table2 <- function(
+  all_models,
+  scenario,
+  prefix = "model_main_"
+) {
   target_map <- list(
     "neurosurgery_evac" = "Neurosurgical Intervention",
     "evd" = "External Ventricular Drain",
@@ -205,28 +207,26 @@ subset_models_for_table2 <- function(all_models, scenario) {
     "dnr_binary" = "DNR Order"
   )
 
-  # 2. Define the suffix pattern based on targets naming convention
-  # Format: model_posterior_OUTCOME_SCENARIO_ADJUSTMENT
-  # We assume we always want the "adjusted" models for Table 2
   suffix <- paste0("_", scenario, "_adjusted")
-
-  # 3. Build the list
   selected_models <- list()
 
   for (outcome_col in names(target_map)) {
-    # Reconstruct the target name
-    target_name <- paste0("model_main_", outcome_col, suffix)
+    target_name <- paste0(prefix, outcome_col, suffix)
 
-    # Validation
+    if (
+      outcome_col == "days_mechanical_ventilation" && prefix == "model_sens_"
+    ) {
+      target_name <- paste0("model_main_", outcome_col, suffix)
+    }
+
     if (!target_name %in% names(all_models)) {
       stop(paste(
         "Error in Table 2 creation: Could not find target",
         target_name,
-        "in the combined list. Check if the model ran."
+        "in the combined list."
       ))
     }
 
-    # Assign using the "Pretty Name" required by table_2_function
     pretty_name <- target_map[[outcome_col]]
     selected_models[[pretty_name]] <- all_models[[target_name]]
   }

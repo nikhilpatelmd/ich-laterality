@@ -3,20 +3,26 @@ library(tidybayes)
 library(dplyr)
 library(stringr)
 library(patchwork)
+library(rlang) # Added for the injection operator
 
 f_posterior_diagnostics <- function(mod, param_regex = "ich_lateralityRight") {
-  # 1. Grab all fixed effects (b_) and random effect SDs (sd_),
-  # then filter down to the specific parameter(s) you care about.
-  draws <- mod |>
-    tidybayes::gather_draws(`^b_.*`, `^sd_.*`, regex = TRUE) |>
-    dplyr::filter(stringr::str_detect(.variable, param_regex))
+  # 1. Get all available variable names directly from the brms object
+  all_vars <- tidybayes::get_variables(mod)
 
-  if (nrow(draws) == 0) {
+  # 2. Filter down to only the exact string names that match your regex
+  target_vars <- all_vars[stringr::str_detect(all_vars, param_regex)]
+
+  # 3. Safely exit if no parameters match
+  if (length(target_vars) == 0) {
     warning(paste("No parameters matched the regex:", param_regex))
     return(NULL)
   }
 
-  # 2. Trace Plot
+  # 4. THE FIX: Inject the target variables directly as bare names using !!!rlang::syms()
+  draws <- mod |>
+    tidybayes::gather_draws(!!!rlang::syms(target_vars))
+
+  # 5. Trace Plot
   trace_plot <- draws |>
     ggplot(aes(x = .iteration, y = .value, color = factor(.chain))) +
     geom_line(linewidth = 0.2, alpha = 0.8) +
@@ -24,9 +30,9 @@ f_posterior_diagnostics <- function(mod, param_regex = "ich_lateralityRight") {
     facet_wrap(vars(.variable), scales = "free_y", ncol = 1) +
     theme_minimal() +
     labs(x = "Iteration", y = "Parameter Value", title = "Trace Plots") +
-    theme(legend.position = "none") # Hide legend to save space
+    theme(legend.position = "none")
 
-  # 3. Trank Plot
+  # 6. Trank Plot
   trank_plot <- draws |>
     group_by(.variable) |>
     mutate(draw_rank = rank(.value)) |>
@@ -48,6 +54,6 @@ f_posterior_diagnostics <- function(mod, param_regex = "ich_lateralityRight") {
       axis.ticks.y = element_blank()
     )
 
-  # 4. Combine side-by-side
+  # 7. Combine side-by-side
   return(trace_plot | trank_plot)
 }
