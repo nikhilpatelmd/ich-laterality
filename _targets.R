@@ -26,6 +26,7 @@ options(tidyverse.quiet = TRUE, dplyr.summarise.inform = FALSE)
 
 # Source all R functions
 source("R/packages.R")
+source("R/utils.R")
 source("R/data_cleaning.R")
 source("R/mice.R")
 source("R/dags.R")

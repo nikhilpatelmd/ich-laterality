@@ -1,292 +1,319 @@
-library(marginaleffects)
-library(ggplot2)
-library(ggdist)
-library(patchwork)
-library(dplyr)
-library(tidyr)
-library(scales)
-
-# ══════════════════════════════════════════════════════════════════════════════
-# FIGURE 2: Absolute Predicted Probabilities — Neurosurgical Intervention
+# R/make_posterior_prob_figure.R
 #
-# Strategy overview:
-#   Left panel  → Full posterior of P(surgery | Left) and P(surgery | Right),
-#                 each averaged over the observed covariate distribution
-#                 (i.e., the epidemiological "marginal" probability).
-#   Right panel → Full posterior of the absolute difference: P(Right) − P(Left),
-#                 with a reference line at 0 and annotation of P(diff > 0).
+# Generates a two-panel posterior probability figure for any binary outcome
+# model from the ICH laterality study.
 #
-# Why avg_predictions() rather than predictions()?
-#   predictions() returns one predicted probability per patient per draw — a
-#   dataset the size of N_patients × N_draws. avg_predictions(by = "group")
-#   averages within each group at each draw, giving us a single number per
-#   group per draw: the Average Marginal Prediction (AMP). This is precisely
-#   the population-averaged absolute probability the reviewer is asking for,
-#   and it is consistent with the AME approach already used in Table 2.
-# ══════════════════════════════════════════════════════════════════════════════
+# Panel A: Overlapping posterior density curves of the population-averaged
+#          predicted probability for Left vs. Right hemisphere patients.
+# Panel B: Posterior density of the absolute probability difference
+#          (Right - Left), with a reference line at zero.
+#
+# Dependencies: marginaleffects, ggplot2, ggtext, patchwork, dplyr,
+#               tidyr, scales, glue, stringr
 
-make_figure_2 <- function(
+make_posterior_prob_figure <- function(
+  # The fitted brms model object (brmsfit or brmsfit_multiple)
   model,
-  outcome_label = "Neurosurgical Intervention",
+
+  # Short clinical label for the outcome, used in axis titles and caption.
+  # e.g., "Neurosurgical Intervention", "EVD Placement", "Tracheostomy"
+  outcome_label,
+
+  # One or two sentences describing the covariates in the model, appended
+  # to the standard caption boilerplate. This keeps the caption self-contained
+  # for each outcome without hard-coding covariate lists inside the function.
+  covariate_caption,
+
+  # Column name identifying the laterality grouping variable
   laterality_var = "ich_laterality",
-  ref_level = "Left", # level that is the "comparator"
-  contrast_level = "Right", # level whose probability is typically higher
-  palette = c(Left = "#2166ac", Right = "#d6604d"),
-  diff_fill = "#6a3d9a" # neutral colour for the difference panel
+
+  # Reference and contrast levels — Right - Left is the natural direction
+  # since the model coefficient for Right is positive for most outcomes
+  ref_level = "Left",
+  contrast_level = "Right",
+
+  # X-axis limits in percentage points. The default c(0, 20) works well for
+  # outcomes like neurosurgery; you may want c(0, 50) for more common outcomes
+  # like DNR or comfort care, or c(-5, 15) for very rare ones.
+  x_limits = c(0, 20),
+
+  # Base font size in points. All other sizes (geom text, caption) are
+  # derived from this so the figure scales consistently.
+  base_pt = 14,
+
+  # Character width for caption line wrapping
+  caption_width = 110,
+
+  # Named color vector for the two hemisphere groups
+  palette = c(Left = "#0072B2", Right = "#D55E00"),
+
+  # Fill color for the difference distribution in Panel B
+  diff_fill = "#7B2D8B"
 ) {
-  # ── Step 1: Average predicted probabilities per laterality level ─────────
-  # avg_predictions(by = laterality_var) instructs marginaleffects to:
-  #   (a) generate predictions for every patient in the dataset,
-  #   (b) average those predictions within each level of ich_laterality.
-  # When called on a brms model, posterior_draws() then unpacks the MCMC
-  # samples so we get one row per (draw × laterality level), with the
-  # predicted probability in the column `draw`.
-  pred_draws <- avg_predictions(
-    model,
-    by = laterality_var
-  ) |>
+  # ── Step 0: Extract brmsfit from brmsfit_multiple ─────────────────────────
+  # All models in this pipeline are brmsfit_multiple objects produced by
+  # brm_multiple() over MICE-imputed datasets. avg_predictions() requires
+  # a single brmsfit object, so we extract the first imputation here.
+  #
+  # Importantly, this does NOT mean we are discarding posterior draws —
+  # each imputation still contains the full set of 40,000 post-warmup draws
+  # (20 chains x 2,000 iterations each). What we are not capturing is the
+  # between-imputation variance: the additional uncertainty from "which
+  # imputed dataset was the correct one." For a well-specified MICE run with
+  # modest missingness, this component is typically small relative to the
+  # within-imputation (posterior) variance, but it is worth noting in the
+  # methods.
+  #
+  # We use inherits() rather than always doing [[1]] unconditionally so that
+  # the function also works correctly on a plain brmsfit object (e.g., a
+  # complete-case sensitivity model) without erroring on a non-list.
+  if (inherits(model, "brmsfit_multiple") || is.list(model)) {
+    model <- model[[1]]
+  }
+
+  # Derived sizing constant: converts base_pt (points) to mm for geom sizing.
+  # ggplot2 theme arguments use points; geom size arguments use mm.
+  # Conversion: 1 pt = 1/72 inch; 1 mm = 1/25.4 inch → ~2.835 pts per mm.
+  base_mm <- base_pt / 2.835
+
+  # ── Step 1: Extract posterior draws ────────────────────────────────────────
+  # avg_predictions(by = laterality_var) computes the population-averaged
+  # predicted probability for each group at each posterior draw, giving us
+  # 2 x N_draws rows. posterior_draws() unpacks these into long format with
+  # one row per (drawid x laterality level), with the predicted probability
+  # stored in the `draw` column.
+  pred_draws <- avg_predictions(model, by = laterality_var) |>
     posterior_draws()
 
-  # ── Step 2: Draw-level difference (contrast − reference) ─────────────────
-  # We pivot wide so that Left and Right are columns on the same row,
-  # then subtract. Crucially, this is done *within* each drawid, so
-  # the resulting posterior of the difference correctly propagates the
-  # joint uncertainty from both group estimates rather than working from
-  # just their marginal summaries.
-  diff_draws <- pred_draws |>
-    select(drawid, all_of(laterality_var), draw) |>
-    pivot_wider(names_from = all_of(laterality_var), values_from = draw) |>
-    mutate(diff = .data[[contrast_level]] - .data[[ref_level]])
-
-  # ── Step 3: Annotation summaries ─────────────────────────────────────────
-  # We compute median and 95% credible intervals for each group and for
-  # the difference. These will be placed as text labels on the figure.
+  # ── Step 2: Group-level summary for Panel A annotations ───────────────────
+  # estimate, conf.low, and conf.high are repeated constants on pred_draws
+  # (the same marginal summary attached to every row for convenience).
+  # distinct() collapses to one row per group before converting to percentages.
   pred_summary <- pred_draws |>
-    group_by(across(all_of(laterality_var))) |>
-    summarize(
-      estimate = median(draw),
-      lower = quantile(draw, 0.025),
-      upper = quantile(draw, 0.975),
-      .groups = "drop"
-    ) |>
+    distinct(.data[[laterality_var]], estimate, conf.low, conf.high) |>
+    mutate(across(where(is.numeric), ~ .x * 100))
+
+  # Dynamically position annotations relative to the actual density peak.
+  # This prevents crowding for narrow distributions (rare outcomes like
+  # neurosurgery) and avoids annotations floating too high for common ones
+  # (like DNR). Left annotation sits higher, Right lower, to avoid overlap.
+  density_peak <- pred_draws |>
+    mutate(draw_pct = draw * 100) |>
+    group_by(.data[[laterality_var]]) |>
+    summarise(peak = max(density(draw_pct)$y), .groups = "drop") |>
+    pull(peak) |>
+    max()
+
+  pred_summary <- pred_summary |>
     mutate(
-      label = sprintf(
-        "%.1f%%\n(%.1f\u2013%.1f%%)",
-        estimate * 100,
-        lower * 100,
-        upper * 100
+      y_pos = if_else(
+        .data[[laterality_var]] == ref_level,
+        density_peak * 0.55,
+        density_peak * 0.32
       )
     )
 
+  # ── Step 3: Within-draw differences for Panel B ───────────────────────────
+  # Pivoting wide before subtracting ensures the contrast is computed
+  # within each draw, correctly propagating joint posterior uncertainty.
+  # Subtracting posterior summaries instead would lose the covariance
+  # structure between the two group estimates.
+  diff_draws <- pred_draws |>
+    pivot_wider(
+      id_cols = drawid,
+      names_from = .data[[laterality_var]],
+      values_from = draw
+    ) |>
+    mutate(difference = .data[[contrast_level]] - .data[[ref_level]])
+
+  # Keep prob_right_greater on the 0-1 scale so format_posterior_prob()
+  # can consume it directly without a divide-by-100 step.
+  # Only the distance metrics (median, CrI bounds) get converted to
+  # percentage points.
   diff_summary <- diff_draws |>
     summarize(
-      estimate = median(diff),
-      lower = quantile(diff, 0.025),
-      upper = quantile(diff, 0.975),
-      # Posterior probability that Right > Left on the absolute scale
-      prob_pos = mean(diff > 0)
+      median = median(difference),
+      prob_right_greater = sum(difference > 0) / n(),
+      lower_ci = quantile(difference, 0.025),
+      upper_ci = quantile(difference, 0.975)
     ) |>
-    mutate(
-      label = sprintf(
-        "\u0394 = %+.1f pp\n(%.1f to %+.1f)",
-        estimate * 100,
-        lower * 100,
-        upper * 100
-      )
-    )
+    mutate(across(c(median, lower_ci, upper_ci), ~ .x * 100))
 
-  # ── Step 4: Left panel — absolute posterior distributions ────────────────
-  # stat_halfeye() from ggdist draws two layers simultaneously:
-  #   (1) A "slab" — a smoothed density of the posterior samples, visualising
-  #       the full shape of uncertainty. This sits above the axis.
-  #   (2) A "point interval" — a dot at the median with a horizontal line
-  #       spanning the 95% CrI. This sits along the axis baseline.
-  # Together these communicate the central estimate, interval, and distributional
-  # shape, making it immediately clear whether the posterior is symmetric,
-  # skewed, or multimodal.
-  #
-  # We map y to ich_laterality so the two groups stack vertically, which
-  # is more space-efficient than facets and makes the overlap easy to judge.
+  # ── Step 4: Shared y-axis ceiling ─────────────────────────────────────────
+  # Both panels use the same y-axis limit so the reader can compare
+  # distributional width without being misled by different vertical scales.
+  # We add 10% headroom above the tallest peak for visual breathing room.
+  y_ceiling <- density_peak * 1.1
+
+  # ── Step 5: Panel A — absolute probabilities ──────────────────────────────
   p_abs <- pred_draws |>
     mutate(draw_pct = draw * 100) |>
-    ggplot(aes(
-      x = draw_pct,
-      y = .data[[laterality_var]],
-      fill = .data[[laterality_var]],
-      color = .data[[laterality_var]]
-    )) +
-    ggdist::stat_halfeye(
-      .width = 0.95, # show the 95% CrI in the point-interval layer
-      slab_alpha = 0.65, # semi-transparent slab so overlap is readable
-      normalize = "panels", # scale each slab to the same max height
-      point_interval = "median_qi"
+    ggplot(aes(x = draw_pct, fill = .data[[laterality_var]])) +
+    geom_density(alpha = 0.6) +
+    coord_cartesian(ylim = c(0, y_ceiling)) +
+    scale_fill_manual(values = palette) +
+    scale_color_manual(values = palette) +
+    geom_vline(
+      data = pred_summary,
+      aes(xintercept = estimate, color = .data[[laterality_var]]),
+      linetype = "dotted",
+      linewidth = 1.5
     ) +
-    # Annotation: place the point estimate + CrI label to the right of the peak.
-    # We nudge upward by adjusting vjust; exact placement may need tuning
-    # depending on the spread of the posterior in your data.
-    geom_text(
-      data = pred_summary |>
-        mutate(estimate_pct = estimate * 100), # just this; no mutate/rename dance
+    geom_richtext(
+      data = pred_summary,
       aes(
-        x = estimate_pct,
-        y = .data[[laterality_var]],
-        label = label
+        # Start annotation at 52% of the x range to sit in the whitespace
+        # to the right of both distributions. Uses range arithmetic rather
+        # than a hardcoded value so it adapts to different x_limits.
+        x = x_limits[1] + (x_limits[2] - x_limits[1]) * 0.52,
+        y = y_pos,
+        label = glue(
+          "**{.data[[laterality_var]]} Hemisphere: {round(estimate, 2)}%**<br>",
+          "95% CrI ({round(conf.low, 2)} \u2013 {round(conf.high, 2)}%)"
+        )
       ),
-      inherit.aes = FALSE,
-      nudge_y = 0.35,
-      size = 3.0,
-      fontface = "bold",
-      lineheight = 0.9
+      fill = NA,
+      label.color = NA,
+      size = base_mm * 0.85,
+      family = "Arial",
+      hjust = 0
     ) +
-    scale_fill_manual(values = palette, guide = "none") +
-    scale_color_manual(values = palette, guide = "none") +
-    # Format x-axis as percentage; expand rightward to give annotation room
+    labs(
+      x = paste0("P(", outcome_label, ")"),
+      y = "Probability Density",
+      fill = "ICH Laterality"
+    ) +
     scale_x_continuous(
       labels = label_number(suffix = "%", accuracy = 1),
-      limits = c(0, NA),
-      expand = expansion(mult = c(0.02, 0.20))
+      limits = x_limits,
+      expand = expansion(mult = c(0.02, 0.02))
     ) +
-    # y-axis: we flip the order so Left is on top, matching convention
-    scale_y_discrete(limits = rev(c(ref_level, contrast_level))) +
-    labs(
-      x = "Predicted Probability of Neurosurgical Intervention",
-      y = NULL,
-      title = "A",
-    ) +
-    theme_minimal(base_family = "Arial", base_size = 11) +
-    theme(
-      panel.grid.major.y = element_blank(),
-      panel.grid.minor = element_blank(),
-      plot.title = element_text(face = "bold", size = 11),
-      plot.subtitle = element_text(size = 9, color = "grey40"),
-      axis.text.y = element_text(
-        size = 10,
-        face = "bold",
-        colour = palette[rev(c(ref_level, contrast_level))]
-      )
-    )
+    theme_minimal(base_family = "Arial", base_size = base_pt) +
+    theme(legend.position = c(0.12, 0.85)) +
+    guides(color = "none")
 
-  # ── Step 5: Right panel — posterior of the absolute difference ────────────
-  # This panel shows a single distribution: P(Right) − P(Left).
-  # Positive values mean Right-hemisphere patients had a higher probability.
-  # The dashed reference line at 0 acts as a visual null hypothesis.
-  #
-  # We set y = "" (a length-1 factor) so ggdist renders a single halfeye
-  # horizontally. The panel is deliberately sparse to contrast with the
-  # two-group left panel.
+  # ── Step 6: Panel B — difference distribution ─────────────────────────────
   p_diff <- diff_draws |>
-    mutate(diff_pct = diff * 100) |>
-    ggplot(aes(x = diff_pct, y = "")) +
-    # Null reference: no difference between hemispheres
+    mutate(difference_pct = difference * 100) |>
+    ggplot(aes(x = difference_pct)) +
+    geom_density(alpha = 0.6, fill = diff_fill) +
+    coord_cartesian(ylim = c(0, y_ceiling)) +
+    # Grey reference line at zero: the "no difference" null benchmark.
+    # Even when P(Right > Left) is near 100%, this line is important because
+    # it gives the reader a visual anchor for how far the posterior sits
+    # from null — which is more informative than the probability alone.
     geom_vline(
       xintercept = 0,
-      linetype = "dashed",
-      color = "grey55",
-      linewidth = 0.6
+      linetype = "dotted",
+      linewidth = 1.5,
+      color = "grey50"
     ) +
-    ggdist::stat_halfeye(
-      .width = 0.95,
-      slab_alpha = 0.65,
-      fill = diff_fill,
-      color = diff_fill,
-      point_interval = "median_qi"
+    geom_vline(
+      data = diff_summary,
+      aes(xintercept = median),
+      linetype = "dotted",
+      linewidth = 1.5,
+      color = diff_fill
     ) +
-    # Primary annotation: Δ with CrI
-    geom_text(
-      data = diff_summary |> mutate(diff_pct = estimate * 100),
-      aes(x = diff_pct, y = "", label = label),
-      inherit.aes = FALSE,
-      nudge_y = 0.50,
-      size = 3.0,
-      fontface = "bold",
-      lineheight = 0.9
-    ) +
-    # Secondary annotation: posterior probability that Right > Left
-    # Placed below the interval for visual separation
-    geom_text(
-      data = diff_summary |> mutate(diff_pct = estimate * 100),
+    geom_richtext(
+      data = diff_summary,
       aes(
-        x = diff_pct,
-        y = "",
-        label = sprintf("P(Right > Left) = %.2f", prob_pos)
+        x = x_limits[1] + (x_limits[2] - x_limits[1]) * 0.52,
+        y = y_ceiling * 0.55,
+        label = glue(
+          "**Median Difference ({contrast_level} \u2212 {ref_level})**:",
+          " {round(median, 2)} pp<br>",
+          "95% CrI ({round(lower_ci, 2)} \u2013 {round(upper_ci, 2)} pp)<br><br>",
+          "**P({contrast_level} > {ref_level})**:",
+          " {format_posterior_prob(prob_right_greater)}"
+        )
       ),
-      inherit.aes = FALSE,
-      nudge_y = -0.28,
-      size = 2.8,
-      color = "grey30",
-      fontface = "italic"
-    ) +
-    scale_x_continuous(
-      labels = label_number(suffix = " %", accuracy = 0.1),
-      expand = expansion(mult = c(0.15, 0.15))
+      fill = NA,
+      label.color = NA,
+      size = base_mm * 0.85,
+      family = "Arial",
+      hjust = 0
     ) +
     labs(
-      x = "Absolute Difference",
-      y = NULL,
-      title = "B",
-      subtitle = paste0(contrast_level, " \u2212 ", ref_level, " hemisphere")
+      x = paste0(
+        "Absolute Probability Difference (",
+        contrast_level,
+        " \u2212 ",
+        ref_level,
+        "), pp"
+      ),
+      y = NULL # shared meaning with Panel A; removing reduces redundancy
     ) +
-    theme_minimal(base_size = 11) +
-    theme(
-      panel.grid.major.y = element_blank(),
-      plot.title = element_text(face = "bold", size = 11),
-      plot.subtitle = element_text(size = 9, color = "grey40")
-    )
+    scale_x_continuous(
+      labels = label_number(suffix = " pp", accuracy = 0.1),
+      limits = x_limits,
+      expand = expansion(mult = c(0.02, 0.02))
+    ) +
+    theme_minimal(base_family = "Arial", base_size = base_pt) +
+    theme(legend.position = "none")
 
-  # ── Step 6: Combine panels with patchwork ─────────────────────────────────
-  # We give the left panel slightly more horizontal space (widths = c(1.3, 1))
-  # because it holds two distributions and the y-axis labels. The overall title
-  # and caption sit outside both panels via plot_annotation().
+  # ── Step 7: Combine panels with patchwork ─────────────────────────────────
+  caption_text <- str_wrap(
+    paste0(
+      "Posterior distributions of covariate-adjusted average predicted ",
+      "probabilities of ",
+      tolower(outcome_label),
+      " by ICH hemisphere. ",
+      "Estimates reflect the population-averaged probability across the ",
+      "observed covariate distribution. ",
+      covariate_caption,
+      " ",
+      "Dotted lines indicate posterior medians. Shaded regions represent ",
+      "the full posterior distribution. ",
+      "pp = percentage points. CrI = credible interval."
+    ),
+    width = caption_width
+  )
+
   combined <- p_abs /
     p_diff +
-    plot_layout(heights = c(1.8, 1)) +
+    plot_layout(heights = c(1.5, 1)) +
     plot_annotation(
-      caption = paste0(
-        "Posterior distributions of covariate-adjusted average predicted probabilities.\n",
-        "Estimates reflect the population-averaged probability across the observed covariate\n",
-        "distribution. Dots indicate posterior medians; horizontal bars span 95% credible intervals.\n",
-        "pp = percentage points."
-      ),
+      tag_levels = "A",
+      caption = caption_text,
       theme = theme(
-        plot.title = element_text(face = "bold", size = 13),
-        plot.caption = element_text(size = 8, color = "grey40", hjust = 0)
+        plot.tag = element_text(
+          face = "bold",
+          size = base_pt + 2,
+          family = "Arial"
+        ),
+        plot.caption = element_text(
+          size = base_pt - 2,
+          color = "grey40",
+          hjust = 0,
+          family = "Arial"
+        )
       )
     )
 
   return(combined)
 }
 
-# ── Usage ────────────────────────────────────────────────────────────────────
-# Assuming your targets pipeline has loaded the model into `model_neurosurgery`:
+
+# ── format_posterior_prob() ───────────────────────────────────────────────────
+# Helper for displaying posterior probabilities from finite MCMC samples.
 #
-#   fig2 <- make_figure_2(
-#     model        = model_neurosurgery,
-#     outcome_label = "Neurosurgical Intervention"
-#   )
+# The core problem: with N posterior draws, the finest probability resolution
+# is 1/N. For 40,000 draws, that is 0.0025%. Reporting exactly "100%" implies
+# infinite certainty — no finite sample can establish this. Instead we report
+# "> 99.9%" at the ceiling and "< 0.1%" at the floor. This convention is used
+# consistently across all figures and tables in the pipeline.
 #
-#   ggsave(
-#     "figure_2_abs_probs.pdf",
-#     plot   = fig2,
-#     width  = 10,
-#     height = 4.5,
-#     device = cairo_pdf   # for clean font rendering in PDFs
-#   )
+# Arguments:
+#   p      : probability on the 0-1 scale (NOT pre-multiplied by 100)
+#   digits : decimal places for display (default 1)
 #
-# ── Integrating into targets ──────────────────────────────────────────────────
-# In your _targets.R, add a target like:
-#
-#   tar_target(
-#     figure_2,
-#     make_figure_2(
-#       model        = model_main_neurosurgery_evac_neutral_adjusted,
-#       outcome_label = "Neurosurgical Intervention"
-#     ),
-#     deployment = "main"   # consistent with your brms/CmdStan pattern
-#   )
-#
-# ── A note on multiple imputation ────────────────────────────────────────────
-# If your brms model was fit with brm_multiple() across MICE-imputed datasets,
-# avg_predictions() should still work on the combined model object. However,
-# marginaleffects will use the stacked imputed datasets stored in model$data.
-# You may want to pass newdata = original_imputed_data explicitly if you notice
-# the draws count is unexpectedly large (= N_imputations × N_patients per draw).
+# Returns a formatted string like "97.3%", "> 99.9%", or "< 0.1%"
+
+format_posterior_prob <- function(p, digits = 1) {
+  dplyr::case_when(
+    p >= 0.999 ~ "> 99.9%",
+    p <= 0.001 ~ "< 0.1%",
+    TRUE ~ paste0(round(p * 100, digits), "%")
+  )
+}
