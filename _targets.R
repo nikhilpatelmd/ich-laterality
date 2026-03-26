@@ -83,7 +83,6 @@ t_data <- list(
   tar_target(
     ich_atach_imputed_file,
     command = {
-      # Calls the isolated function from atach_sensitivity.R
       imp_obj <- f_imputed_atach(ich_atach, n_imputes = 20)
       path <- "data/proc/ich_atach_imputed.rds"
       dir.create(dirname(path), showWarnings = FALSE, recursive = TRUE)
@@ -231,6 +230,56 @@ grid_interactions <- tibble(
 )
 
 table_scenarios <- tibble(scenario = c("neutral", "left", "right", "flat"))
+
+# ── Figure scenarios metadata ─────────────────────────────────────────────────
+# outcome_col must exactly match aggressive_grid values — these strings are
+# used to construct model_key, which is used to subset all_main_models.
+#
+# model_key is pre-computed here rather than constructed inside the tar_map
+# expression. tar_map substitutes column values as bare symbols; building
+# a string with paste0() inside the target expression is unreliable because
+# tar_map evaluates the expression before substitution is complete.
+#
+# x_limits stored as list() so tibble doesn't expand the vector into rows.
+# Tune per outcome by inspecting avg_predictions() on the neutral model first.
+figure_scenarios <- tibble::tribble(
+  ~outcome_col                                                                                                                                                                                                   , ~outcome_label               , ~x_limits      , ~covariate_caption ,
+
+  "neurosurgery_evac"                                                                                                                                                                                            , "Neurosurgical Intervention" , list(c(0, 20)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, an ICH laterality-by-location interaction, and a random intercept for study center." ,
+
+  "evd"                                                                                                                                                                                                          , "EVD Placement"              , list(c(0, 20)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, an ICH laterality-by-location interaction, and a random intercept for study center." ,
+
+  "tracheostomy"                                                                                                                                                                                                 , "Tracheostomy"               , list(c(0, 30)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, neurosurgical intervention, and a random intercept for study center."                ,
+
+  # Must be "comfort_care_binary" to match aggressive_grid exactly.
+  "comfort_care_binary"                                                                                                                                                                                          , "Comfort Care"               , list(c(0, 50)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for study center."                                            ,
+
+  "early_wlst"                                                                                                                                                                                                   , "Early WLST"                 , list(c(0, 50)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for study center."                                            ,
+
+  "dnr_binary"                                                                                                                                                                                                   , "DNR Order"                  , list(c(0, 70)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for study center."
+)
+
+# Cross with priors and pre-compute model_key so tar_map can substitute it
+# as a single clean symbol rather than building a string at expression time.
+figure_values <- tidyr::crossing(
+  figure_scenarios,
+  prior_scenario = c("neutral", "left", "right", "flat")
+) |>
+  mutate(
+    model_key = paste0(
+      "model_main_",
+      outcome_col,
+      "_",
+      prior_scenario,
+      "_adjusted"
+    )
+  )
 
 
 # =========================================================================
@@ -560,11 +609,9 @@ t_combine_fits <- list(
 # EVALUATING FIT & DIAGNOSTICS
 # =========================================================================
 t_diagnostics <- list(
-  # Posterior Predictive Checks
   tar_target(main_pp_checks, purrr::map(all_main_models, f_general_pp_check)),
   tar_target(sens_pp_checks, purrr::map(all_sens_models, f_general_pp_check)),
 
-  # MCMC Trace and Rank Diagnostics
   tar_target(
     main_diagnostics,
     purrr::map(all_main_models, f_posterior_diagnostics)
@@ -637,6 +684,8 @@ t_presentation_subgroups <- list(
   )
 )
 
+# Original figure_2 target — calls make_figure_2() from R/figure_2.R,
+# separate from the generalized make_posterior_prob_figure().
 t_presentation_figures <- list(
   tar_target(
     figure_2,
@@ -650,6 +699,53 @@ t_presentation_figures <- list(
   )
 )
 
+# ── Generalized posterior probability figures (all outcomes x all priors) ────
+# Produces two targets per row of figure_values (6 outcomes x 4 priors = 24):
+#
+#   figure_posterior_{outcome_col}_{prior_scenario}      — the ggplot object
+#   figure_posterior_file_{outcome_col}_{prior_scenario} — the saved PDF path
+#
+# model_key is a pre-computed column in figure_values, substituted by tar_map
+# as a single bare symbol. This avoids the unreliable pattern of building
+# strings with paste0() inside a tar_map target expression.
+map_posterior_figures <- tar_map(
+  values = figure_values,
+  names = c(outcome_col, prior_scenario),
+
+  tar_target(
+    figure_posterior,
+    make_posterior_prob_figure(
+      model = all_main_models[[model_key]],
+      outcome_label = outcome_label,
+      covariate_caption = covariate_caption,
+      x_limits = unlist(x_limits)
+    ),
+    deployment = "main"
+  ),
+
+  tar_target(
+    figure_posterior_file,
+    {
+      dir.create("figures", showWarnings = FALSE, recursive = TRUE)
+      path <- file.path(
+        "figures",
+        paste0("figure_posterior_", outcome_col, "_", prior_scenario, ".pdf")
+      )
+      ggsave(
+        filename = path,
+        plot = figure_posterior,
+        width = 9,
+        height = 9,
+        units = "in",
+        device = cairo_pdf
+      )
+      path # return path so targets tracks the file, not just the string
+    },
+    format = "file",
+    deployment = "main"
+  )
+)
+
 map_table2 <- tar_map(
   values = table_scenarios,
   tar_target(
@@ -659,7 +755,7 @@ map_table2 <- tar_map(
       models = subset_models_for_table2(
         all_main_models,
         scenario,
-        prefix = "model_main_" # Explicitly set prefix
+        prefix = "model_main_"
       )
     )
   )
@@ -674,7 +770,7 @@ map_table2_sens <- tar_map(
       models = subset_models_for_table2(
         all_sens_models,
         scenario,
-        prefix = "model_sens_" # Pull from sensitivity models
+        prefix = "model_sens_"
       )
     )
   )
@@ -738,6 +834,7 @@ map_table4_priors <- tar_map(
   )
 )
 
+
 # =========================================================================
 # FINAL PIPELINE ASSEMBLY
 # =========================================================================
@@ -770,6 +867,7 @@ list(
   t_presentation_misc,
   t_presentation_subgroups,
   t_presentation_figures,
+  map_posterior_figures,
   map_table2,
   map_table2_sens,
   map_table2_priors,
