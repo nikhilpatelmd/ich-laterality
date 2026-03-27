@@ -335,6 +335,18 @@ figure_values <- tidyr::crossing(
     )
   )
 
+# ── Prior sensitivity figure metadata ─────────────────────────────────────────
+# Reuses figure_scenarios rows (same 6 binary outcomes, same metadata).
+# Four model keys are pre-computed as separate columns so tar_map can
+# substitute them as bare symbols without any paste0() in the expression.
+figure_sensitivity_scenarios <- figure_scenarios |>
+  mutate(
+    key_neutral = paste0("model_main_", outcome_col, "_neutral_adjusted"),
+    key_left = paste0("model_main_", outcome_col, "_left_adjusted"),
+    key_right = paste0("model_main_", outcome_col, "_right_adjusted"),
+    key_flat = paste0("model_main_", outcome_col, "_flat_adjusted")
+  )
+
 
 # =========================================================================
 # PRIORS & PRIOR PREDICTIVE CHECKS
@@ -786,6 +798,49 @@ map_posterior_figures <- tar_map(
   )
 )
 
+map_sensitivity_figures <- tar_map(
+  values = figure_sensitivity_scenarios,
+  names = outcome_col,
+
+  tar_target(
+    figure_sensitivity,
+    make_prior_sensitivity_figure(
+      models_by_prior = list(
+        neutral = all_main_models[[key_neutral]],
+        left = all_main_models[[key_left]],
+        right = all_main_models[[key_right]],
+        flat = all_main_models[[key_flat]]
+      ),
+      outcome_label = outcome_label,
+      covariate_caption = covariate_caption,
+      x_limits = unlist(x_limits)
+    ),
+    deployment = "main"
+  ),
+
+  tar_target(
+    figure_sensitivity_file,
+    {
+      dir.create("figures", showWarnings = FALSE, recursive = TRUE)
+      path <- file.path(
+        "figures",
+        paste0("figure_sensitivity_", outcome_col, ".pdf")
+      )
+      ggsave(
+        filename = path,
+        plot = figure_sensitivity,
+        width = 9,
+        height = 9,
+        units = "in",
+        device = cairo_pdf
+      )
+      path
+    },
+    format = "file",
+    deployment = "main"
+  )
+)
+
 map_table2 <- tar_map(
   values = table_scenarios,
   tar_target(
@@ -907,6 +962,7 @@ list(
   t_presentation_misc,
   t_presentation_subgroups,
   map_posterior_figures,
+  map_sensitivity_figures,
   map_table2,
   map_table2_sens,
   map_table2_priors,
