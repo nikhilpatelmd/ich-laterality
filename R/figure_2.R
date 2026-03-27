@@ -38,18 +38,6 @@ make_posterior_prob_figure <- function(
   diff_fill = "#7B2D8B"
 ) {
   # ── Model extraction ───────────────────────────────────────────────────────
-  # tar_combine delivers a brmsfit_multiple directly from all_main_models.
-  # avg_predictions() requires a single brmsfit, so we extract the first
-  # imputation via model$models[[1]].
-  #
-  # This does NOT discard posterior draws — the chosen imputation retains
-  # all 40,000 post-warmup draws (20 chains x 2,000 iterations). What is
-  # not captured is between-imputation variance from the MICE procedure,
-  # which is typically small relative to within-imputation posterior variance
-  # for a well-specified imputation model. This is noted in the methods.
-  if (inherits(model, "brmsfit_multiple")) {
-    model <- model$models[[1]]
-  }
 
   # ggplot2 theme uses points; geom size arguments use mm.
   # Conversion: 1 pt = 1/72 inch; 1 mm = 1/25.4 inch → ~2.835 pts per mm.

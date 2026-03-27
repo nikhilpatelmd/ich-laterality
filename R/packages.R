@@ -21,4 +21,5 @@ suppressPackageStartupMessages({
   library(viridis)
   library(mice)
   library(ggridges)
+  library(ggtext)
 })

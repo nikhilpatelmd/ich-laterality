@@ -117,6 +117,30 @@ t_missing <- list(
         missing_data_object,
         variable_name
       )
+    ),
+    tar_target(
+      name = missing_data_by_file,
+      command = {
+        dir.create(
+          "figures/missing_data",
+          showWarnings = FALSE,
+          recursive = TRUE
+        )
+        path <- file.path(
+          "figures/missing_data",
+          paste0("missing_pct_by_", variable_name, ".pdf")
+        )
+        ggsave(
+          filename = path,
+          plot = missing_data_by,
+          width = 8,
+          height = 6,
+          units = "in",
+          device = cairo_pdf
+        )
+        path # Return the path so targets tracks the file
+      },
+      format = "file"
     )
   ),
 
@@ -145,6 +169,36 @@ t_missing <- list(
         plotting_variable,
         missing_variable
       )
+    ),
+    tar_target(
+      name = missingness_check_file,
+      command = {
+        dir.create(
+          "figures/missing_data",
+          showWarnings = FALSE,
+          recursive = TRUE
+        )
+        path <- file.path(
+          "figures/missing_data",
+          paste0(
+            "shadow_plot_",
+            plotting_variable,
+            "_by_",
+            missing_variable,
+            ".pdf"
+          )
+        )
+        ggsave(
+          filename = path,
+          plot = missingness_check,
+          width = 8,
+          height = 6,
+          units = "in",
+          device = cairo_pdf
+        )
+        path # Return the path so targets tracks the file
+      },
+      format = "file"
     )
   )
 )
@@ -684,21 +738,6 @@ t_presentation_subgroups <- list(
   )
 )
 
-# Original figure_2 target — calls make_figure_2() from R/figure_2.R,
-# separate from the generalized make_posterior_prob_figure().
-t_presentation_figures <- list(
-  tar_target(
-    figure_2,
-    make_figure_2(
-      model = all_main_models[[
-        "model_main_neurosurgery_evac_neutral_adjusted"
-      ]],
-      outcome_label = "Neurosurgical Intervention"
-    ),
-    deployment = "main"
-  )
-)
-
 # ── Generalized posterior probability figures (all outcomes x all priors) ────
 # Produces two targets per row of figure_values (6 outcomes x 4 priors = 24):
 #
@@ -708,6 +747,7 @@ t_presentation_figures <- list(
 # model_key is a pre-computed column in figure_values, substituted by tar_map
 # as a single bare symbol. This avoids the unreliable pattern of building
 # strings with paste0() inside a tar_map target expression.
+
 map_posterior_figures <- tar_map(
   values = figure_values,
   names = c(outcome_col, prior_scenario),
@@ -866,7 +906,6 @@ list(
   # Presentation
   t_presentation_misc,
   t_presentation_subgroups,
-  t_presentation_figures,
   map_posterior_figures,
   map_table2,
   map_table2_sens,
