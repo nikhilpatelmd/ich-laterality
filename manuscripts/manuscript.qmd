@@ -24,7 +24,7 @@ format:
   docx: default
 abstract: |
 bibliography: references.bib
-csl: jama.csl
+csl: stroke.csl
 table-of-contents: true
 toc-title: Contents
 echo: false
