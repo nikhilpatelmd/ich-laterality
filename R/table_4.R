@@ -36,19 +36,8 @@ subset_models_for_table4 <- function(
   return(selected_models)
 }
 
-# --- 1. Helper function for Ordinal Models (Odds Ratios) ---
 # --- 1. Helper function for Ordinal Models (Population-Averaged Odds Ratios) ---
 process_ordinal <- function(model, label) {
-  # avg_comparisons with "lnoravg" gives the population-averaged log-OR,
-  # marginalizing over random effects and the observed covariate distribution.
-  # This is the correct estimand for multilevel models — the raw coefficient
-  # b_ich_lateralityRight is cluster-conditional (random effects = 0) and
-  # would understate the population-averaged effect in a non-linear model.
-  #
-  # For cumulative (ordinal) family, marginaleffects returns one row per
-  # response level. We average the log-ORs within each MCMC draw before
-  # exponentiating — consistent with the proportional-odds assumption that
-  # a single coefficient describes the relationship at all thresholds.
   marginaleffects::avg_comparisons(
     model,
     variables = "ich_laterality",
@@ -56,7 +45,10 @@ process_ordinal <- function(model, label) {
   ) |>
     marginaleffects::posterior_draws() |>
     group_by(drawid) |>
-    summarize(log_or = mean(draw), .groups = "drop") |> # average across response levels within draw
+    summarize(log_or = mean(draw, na.rm = TRUE), .groups = "drop") |>
+    # Drop draws where marginaleffects couldn't compute the contrast
+    # (can occur in brmsfit_multiple objects for some imputed datasets)
+    filter(!is.na(log_or)) |>
     mutate(estim = exp(log_or)) |>
     summarize(
       est_median = median(estim),
