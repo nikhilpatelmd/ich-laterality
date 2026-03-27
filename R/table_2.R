@@ -22,14 +22,18 @@ table_2_function <- function(x, models) {
 
   days_mechanical_ventilation_n <- x |>
     drop_na(days_mechanical_ventilation) |>
+    filter(days_mechanical_ventilation > 0) |> # among ventilated patients only
     group_by(ich_laterality) |>
     summarize(
-      median = median(as.numeric(days_mechanical_ventilation)),
-      lower_25 = quantile(as.numeric(days_mechanical_ventilation), 0.25),
+      n = n(),
+      median = round(median(as.numeric(days_mechanical_ventilation))),
+      lower_25 = round(quantile(as.numeric(days_mechanical_ventilation), 0.25)),
       upper_75 = round(quantile(as.numeric(days_mechanical_ventilation), 0.75))
     ) |>
     mutate(
-      iqr = glue::glue("{median} ({lower_25} - {upper_75})")
+      iqr = glue::glue(
+        "{n} ventilated; {median} ({lower_25} – {upper_75}) days"
+      )
     ) |>
     select(ich_laterality, iqr) |>
     pivot_wider(names_from = ich_laterality, values_from = iqr)
@@ -186,6 +190,10 @@ table_2_function <- function(x, models) {
     tab_footnote(
       footnote = "ROPE = region of practical equivalence (0.95 to 1.05)",
       locations = cells_column_labels(columns = rope)
+    ) |>
+    tab_footnote(
+      footnote = "Median (IQR) days among patients receiving mechanical ventilation; excludes patients with zero ventilator days. Data from ATACH-2 only.",
+      locations = cells_body(columns = 2:3, rows = 3)
     )
 
   return(table_2)
