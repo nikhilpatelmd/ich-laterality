@@ -23,6 +23,8 @@ select_variables <- function(x) {
       ich_volume_baseline,
       ivh,
       ivh_volume_baseline,
+      starts_with("midline"),
+      hydrocephalus,
       neurosurgery_evac,
       neurosurgery_evac_day,
       evd,
@@ -77,6 +79,30 @@ filter_variables <- function(x) {
     drop_na(ich_laterality) |>
     droplevels() |>
     mutate(
-      site_id = as.character(site_id)
+      site_id = as.character(site_id),
+      across(
+        c(
+          euro_mobility_90,
+          euro_mobility_180,
+          euro_mobility_365,
+          euro_selfcare_90,
+          euro_selfcare_180,
+          euro_selfcare_365,
+          euro_usual_90,
+          euro_usual_180,
+          euro_usual_365,
+          euro_pain_90,
+          euro_pain_180,
+          euro_pain_365,
+          euro_anxiety_90,
+          euro_anxiety_180,
+          euro_anxiety_365
+        ),
+        ~ factor(
+          if_else(as.integer(.) == 8L, NA_integer_, as.integer(.)),
+          levels = 1:3,
+          ordered = TRUE
+        )
+      )
     )
 }

@@ -895,7 +895,7 @@ map_mrs_figures_main <- tar_map(
       ggsave(
         filename = path,
         plot = figure_mrs_main,
-        width = 12,
+        width = 14,
         height = 9,
         units = "in",
         device = cairo_pdf
@@ -1069,8 +1069,8 @@ list(
   t_presentation_subgroups,
   map_posterior_figures,
   map_sensitivity_figures,
-  map_mrs_figures_main, # mRS figures — main (imputed) models
-  map_mrs_figures_sens, # mRS figures — sensitivity (complete case) models
+  map_mrs_figures_main,
+  map_mrs_figures_sens,
   map_table2,
   map_table2_sens,
   map_table2_priors,
