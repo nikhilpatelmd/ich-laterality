@@ -138,7 +138,7 @@ t_missing <- list(
           units = "in",
           device = cairo_pdf
         )
-        path # Return the path so targets tracks the file
+        path
       },
       format = "file"
     )
@@ -196,7 +196,7 @@ t_missing <- list(
           units = "in",
           device = cairo_pdf
         )
-        path # Return the path so targets tracks the file
+        path
       },
       format = "file"
     )
@@ -285,17 +285,11 @@ grid_interactions <- tibble(
 
 table_scenarios <- tibble(scenario = c("neutral", "left", "right", "flat"))
 
-# ── Figure scenarios metadata ─────────────────────────────────────────────────
-# outcome_col must exactly match aggressive_grid values — these strings are
-# used to construct model_key, which is used to subset all_main_models.
-#
+
+# ── Figure scenarios metadata (binary outcomes) ────────────────────────────────
 # model_key is pre-computed here rather than constructed inside the tar_map
-# expression. tar_map substitutes column values as bare symbols; building
-# a string with paste0() inside the target expression is unreliable because
-# tar_map evaluates the expression before substitution is complete.
-#
-# x_limits stored as list() so tibble doesn't expand the vector into rows.
-# Tune per outcome by inspecting avg_predictions() on the neutral model first.
+# expression — tar_map substitutes column values as bare symbols, so building
+# strings with paste0() inside the expression is unreliable.
 figure_scenarios <- tibble::tribble(
   ~outcome_col                                                                                                                                                                                                   , ~outcome_label               , ~x_limits      , ~covariate_caption ,
 
@@ -308,7 +302,6 @@ figure_scenarios <- tibble::tribble(
   "tracheostomy"                                                                                                                                                                                                 , "Tracheostomy"               , list(c(0, 30)) ,
   "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, neurosurgical intervention, and a random intercept for study center."                ,
 
-  # Must be "comfort_care_binary" to match aggressive_grid exactly.
   "comfort_care_binary"                                                                                                                                                                                          , "Comfort Care"               , list(c(0, 50)) ,
   "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for study center."                                            ,
 
@@ -319,8 +312,6 @@ figure_scenarios <- tibble::tribble(
   "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for study center."
 )
 
-# Cross with priors and pre-compute model_key so tar_map can substitute it
-# as a single clean symbol rather than building a string at expression time.
 figure_values <- tidyr::crossing(
   figure_scenarios,
   prior_scenario = c("neutral", "left", "right", "flat")
@@ -336,15 +327,51 @@ figure_values <- tidyr::crossing(
   )
 
 # ── Prior sensitivity figure metadata ─────────────────────────────────────────
-# Reuses figure_scenarios rows (same 6 binary outcomes, same metadata).
-# Four model keys are pre-computed as separate columns so tar_map can
-# substitute them as bare symbols without any paste0() in the expression.
 figure_sensitivity_scenarios <- figure_scenarios |>
   mutate(
     key_neutral = paste0("model_main_", outcome_col, "_neutral_adjusted"),
     key_left = paste0("model_main_", outcome_col, "_left_adjusted"),
     key_right = paste0("model_main_", outcome_col, "_right_adjusted"),
     key_flat = paste0("model_main_", outcome_col, "_flat_adjusted")
+  )
+
+
+# ── mRS figure scenarios ───────────────────────────────────────────────────────
+# Cross mrs_90 with all prior x adjustment combinations, producing one row per
+# figure to generate. Two separate tibbles are needed — one pointing into
+# all_main_models (imputed), one into all_sens_models (complete case) — because
+# tar_map cannot parameterise which list to index into at expression-substitution
+# time. figure_key drives both target naming (via `names =`) and the output
+# filename, kept as a separate column from model_key so either can be changed
+# independently without breaking the other.
+mrs_figure_scenarios_main <- tidyr::crossing(
+  tibble(outcome_col = "mrs_90"),
+  prior_scenario = c("neutral", "left", "right", "flat"),
+  adjustment_set = c("minimal", "adjusted")
+) |>
+  mutate(
+    model_key = paste0(
+      "model_main_mrs_90_",
+      prior_scenario,
+      "_",
+      adjustment_set
+    ),
+    figure_key = paste0("main_", prior_scenario, "_", adjustment_set)
+  )
+
+mrs_figure_scenarios_sens <- tidyr::crossing(
+  tibble(outcome_col = "mrs_90"),
+  prior_scenario = c("neutral", "left", "right", "flat"),
+  adjustment_set = c("minimal", "adjusted")
+) |>
+  mutate(
+    model_key = paste0(
+      "model_sens_mrs_90_",
+      prior_scenario,
+      "_",
+      adjustment_set
+    ),
+    figure_key = paste0("sens_", prior_scenario, "_", adjustment_set)
   )
 
 
@@ -750,16 +777,8 @@ t_presentation_subgroups <- list(
   )
 )
 
-# ── Generalized posterior probability figures (all outcomes x all priors) ────
-# Produces two targets per row of figure_values (6 outcomes x 4 priors = 24):
-#
-#   figure_posterior_{outcome_col}_{prior_scenario}      — the ggplot object
-#   figure_posterior_file_{outcome_col}_{prior_scenario} — the saved PDF path
-#
-# model_key is a pre-computed column in figure_values, substituted by tar_map
-# as a single bare symbol. This avoids the unreliable pattern of building
-# strings with paste0() inside a tar_map target expression.
-
+# ── Posterior probability figures (all binary outcomes x all priors) ──────────
+# Produces figure_posterior_{outcome_col}_{prior_scenario} and a saved PDF.
 map_posterior_figures <- tar_map(
   values = figure_values,
   names = c(outcome_col, prior_scenario),
@@ -791,13 +810,14 @@ map_posterior_figures <- tar_map(
         units = "in",
         device = cairo_pdf
       )
-      path # return path so targets tracks the file, not just the string
+      path
     },
     format = "file",
     deployment = "main"
   )
 )
 
+# ── Prior sensitivity figures (all binary outcomes, all 4 priors overlaid) ────
 map_sensitivity_figures <- tar_map(
   values = figure_sensitivity_scenarios,
   names = outcome_col,
@@ -841,6 +861,92 @@ map_sensitivity_figures <- tar_map(
   )
 )
 
+# ── mRS Grotta + uncertainty figures (main imputed models) ────────────────────
+# Produces one two-panel figure per combination of prior x adjustment set,
+# using models from all_main_models (fitted on MICE-imputed data).
+#
+# Target naming: figure_mrs_main_{prior_scenario}_{adjustment_set}
+# File naming:   figures/mrs/figure_mrs_main_{prior}_{adjustment}.pdf
+#
+# 4 priors x 2 adjustment sets = 8 figure targets + 8 file targets = 16 total.
+# Each is cached independently — re-fitting one model invalidates only its
+# corresponding figure, not the other 15.
+map_mrs_figures_main <- tar_map(
+  values = mrs_figure_scenarios_main,
+  names = c("prior_scenario", "adjustment_set"),
+
+  tar_target(
+    figure_mrs_main,
+    # all_main_models is a flat named list after tar_combine; indexing with
+    # [[model_key]] gives the brmsfit_multiple directly (no [[1]] needed here,
+    # unlike when accessing individual tar_map targets directly)
+    make_mrs_figure(all_main_models[[model_key]]),
+    deployment = "main"
+  ),
+
+  tar_target(
+    figure_mrs_main_file,
+    {
+      dir.create("figures/mrs", showWarnings = FALSE, recursive = TRUE)
+      path <- file.path(
+        "figures/mrs",
+        paste0("figure_mrs_", figure_key, ".pdf")
+      )
+      ggsave(
+        filename = path,
+        plot = figure_mrs_main,
+        width = 12,
+        height = 9,
+        units = "in",
+        device = cairo_pdf
+      )
+      path
+    },
+    format = "file",
+    deployment = "main"
+  )
+)
+
+# ── mRS Grotta + uncertainty figures (sensitivity complete-case models) ────────
+# Same structure as map_mrs_figures_main but indexes into all_sens_models
+# (fitted on complete cases without MICE imputation).
+#
+# Target naming: figure_mrs_sens_{prior_scenario}_{adjustment_set}
+# File naming:   figures/mrs/figure_mrs_sens_{prior}_{adjustment}.pdf
+map_mrs_figures_sens <- tar_map(
+  values = mrs_figure_scenarios_sens,
+  names = c("prior_scenario", "adjustment_set"),
+
+  tar_target(
+    figure_mrs_sens,
+    make_mrs_figure(all_sens_models[[model_key]]),
+    deployment = "main"
+  ),
+
+  tar_target(
+    figure_mrs_sens_file,
+    {
+      dir.create("figures/mrs", showWarnings = FALSE, recursive = TRUE)
+      path <- file.path(
+        "figures/mrs",
+        paste0("figure_mrs_", figure_key, ".pdf")
+      )
+      ggsave(
+        filename = path,
+        plot = figure_mrs_sens,
+        width = 12,
+        height = 9,
+        units = "in",
+        device = cairo_pdf
+      )
+      path
+    },
+    format = "file",
+    deployment = "main"
+  )
+)
+
+# ── Tables ────────────────────────────────────────────────────────────────────
 map_table2 <- tar_map(
   values = table_scenarios,
   tar_target(
@@ -963,6 +1069,8 @@ list(
   t_presentation_subgroups,
   map_posterior_figures,
   map_sensitivity_figures,
+  map_mrs_figures_main, # mRS figures — main (imputed) models
+  map_mrs_figures_sens, # mRS figures — sensitivity (complete case) models
   map_table2,
   map_table2_sens,
   map_table2_priors,
