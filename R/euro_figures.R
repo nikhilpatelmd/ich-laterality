@@ -1,80 +1,39 @@
-euro_figure_function <- function(x, var) {
-  theme_ich <- function(base_size = 16) {
-    theme_minimal(base_size = base_size) +
-      theme(
-        text = element_text(size = 20, lineheight = 2),
-        plot.title = element_text(size = rel(2), margin = margin(12, 0, 8, 0)),
-        plot.subtitle = element_text(size = rel(1.1), margin = margin(4, 0, 0, 0)),
-        axis.text.y = element_text(size = rel(1.5)),
-        axis.title.y = element_text(
-          size = rel(2),
-          margin = margin(0, 40, 0, 0),
-          vjust = 0.5
-        ),
-        axis.text.x = element_text(size = rel(1.5)),
-        axis.title.x = element_text(size = rel(1.5), margin = margin(10, 0, 0, 0)),
-        strip.text.x = element_text(
-          size = rel(3),
-          margin = margin(20, 0, 20, 0),
-          vjust = 0.5
-        ),
-        legend.title = element_text(margin = margin(0, 20, 0, 0)),
-        legend.position = "bottom",
-        legend.justification = 0.5,
-        panel.grid = element_blank(),
-        plot.caption = element_text(size = rel(1), margin = margin(8, 0, 0, 0)),
-        plot.margin = margin(0.5, 0.5, 0.5, 0.5, "cm")
-      )
-  }
+library(tidyverse)
+library(marginaleffects)
+library(patchwork)
 
-  data <- x |>
-    select(ich_laterality, {{ var }}) |>
-    na.omit() |>
-    count({{ var }}, ich_laterality) |>
-    group_by(ich_laterality) |>
+make_euroqol_facet_plot <- function(model, title_label) {
+  # 1. Extract posterior probabilities for all 3 levels
+  # Level 1: No, 2: Some, 3: Significant
+  plot_data <- avg_predictions(
+    model,
+    by = c("ich_laterality", "group"),
+    conf_level = 0.95
+  ) |>
+    as_tibble() |>
     mutate(
-      pct_n = n / sum(n),
-      pct_label = percent(pct_n, accuracy = 1),
-      euro = case_when(
-        {{ var }} == 1 ~ "1: No Problems",
-        {{ var }} == 2 ~ "2: Some Problems",
-        {{ var }} == 3 ~ "3: Significant Problems"
+      level_label = case_when(
+        group == 1 ~ "1: No Problems",
+        group == 2 ~ "2: Some Problems",
+        group == 3 ~ "3: Significant Problems"
       ),
-      euro = fct_rev(euro)
+      # Ensure levels are in order for faceting
+      level_label = fct_reorder(level_label, as.numeric(as.character(group)))
     )
 
-  data |>
-    ggplot(aes(
-      x = ich_laterality,
-      y = pct_n,
-      fill = euro
-    )) +
-    geom_col(width = 0.5) +
-    geom_text(aes(label = pct_label),
-      position = position_stack(vjust = 0.5),
-      color = "white",
-      fontface = "bold",
-      size = 10
+  # 2. Generate the faceted plot
+  ggplot(
+    plot_data,
+    aes(x = estimate, y = ich_laterality, color = ich_laterality)
+  ) +
+    geom_pointrange(aes(xmin = conf.low, xmax = conf.high), size = 0.8) +
+    facet_wrap(~level_label, scales = "free_x") +
+    scale_x_continuous(
+      labels = scales::percent,
+      name = "Predicted Probability"
     ) +
-    coord_flip() +
-    scale_x_discrete() +
-    scale_y_continuous(
-      limits = c(0, 1),
-      breaks = seq(0, 1, 0.1),
-      labels = scales::percent
-    ) +
-    scale_fill_manual(
-      breaks = c(
-        "1: No Problems",
-        "2: Some Problems",
-        "3: Significant Problems"
-      ),
-      values = c("#eec6a2", "#d98174", "#ce4950")
-    ) +
-    labs(
-      x = NULL,
-      y = NULL,
-      fill = "EuroQOL at 90 days"
-    ) +
-    theme_ich()
+    scale_color_manual(values = c("Left" = "#ce4951", "Right" = "#476170")) + # Using your project colors
+    labs(title = title_label, y = NULL) +
+    theme_minimal() +
+    theme(legend.position = "none")
 }
