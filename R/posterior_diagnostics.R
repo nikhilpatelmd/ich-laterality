@@ -1,9 +1,3 @@
-library(ggplot2)
-library(tidybayes)
-library(dplyr)
-library(stringr)
-library(patchwork)
-library(rlang) # Added for the injection operator
 
 f_posterior_diagnostics <- function(mod, param_regex = "ich_lateralityRight") {
   # 1. Get all available variable names directly from the brms object

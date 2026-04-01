@@ -1,8 +1,4 @@
-library(dplyr)
-library(tidyr)
-library(marginaleffects)
-library(gt)
-library(glue)
+
 
 # --- 1. Interaction Subgroup Table (Recreating "Table 3") ---
 table_subgroups_function <- function(data, loc_model, study_model) {

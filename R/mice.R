@@ -1,9 +1,4 @@
-library(mice)
-library(ggplot2)
-library(patchwork)
-library(dplyr)
-library(stringr)
-library(tibble)
+
 
 f_imputed <- function(data, n_imputes = 20, seed = 1) {
   # 1. Select Variables for Imputation

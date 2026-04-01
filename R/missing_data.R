@@ -1,9 +1,5 @@
 f_missing_data_filter <- function(ich_aggressive) {
-  library(naniar)
-  library(dplyr)
-  library(ggplot2)
-  library(showtext)
-  library(stringr)
+
 
   variables <- c(
     "site_id",

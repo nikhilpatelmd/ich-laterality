@@ -1,8 +1,3 @@
-library(mice)
-library(dplyr)
-library(stringr)
-library(tibble)
-
 # --- 1. Dedicated ATACH Imputation Function ---
 f_imputed_atach <- function(data, n_imputes = 20, seed = 1) {
   fixed_vars <- c(

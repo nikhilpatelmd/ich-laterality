@@ -25,27 +25,7 @@ options(brms.backend = "cmdstanr")
 options(tidyverse.quiet = TRUE, dplyr.summarise.inform = FALSE)
 
 # Source all R functions
-source("R/packages.R")
-source("R/utils.R")
-source("R/data_cleaning.R")
-source("R/mice.R")
-source("R/dags.R")
-source("R/missing_data.R")
-source("R/model_functions.R")
-source("R/sidecar_models.R")
-source("R/vas.R")
-source("R/atach_sensitivity.R")
-source("R/predictive_checks.R")
-source("R/posterior_diagnostics.R")
-source("R/table_1.R")
-source("R/table_2.R")
-source("R/table_subgroups.R")
-source("R/table_4.R")
-source("R/figure_1.R")
-source("R/figure_2.R")
-source("R/figures.R")
-source("R/mrs_figures.R")
-source("R/euro_figures.R")
+tar_source("R/")
 
 
 # =========================================================================
@@ -97,8 +77,8 @@ t_data <- list(
     f_plot_imputations_detailed(readRDS(ich_imputed_file))
   ),
 
-  tar_target(dag_neurosurgery, f_neurosurgery_dag(ich_aggressive)),
-  tar_target(dag_outcomes, outcomes_dag_function(ich_aggressive)),
+  tar_target(dag_neurosurgery, f_neurosurgery_dag()),
+  tar_target(dag_outcomes, outcomes_dag_function()),
   tar_target(settings, model_setup())
 )
 
@@ -777,6 +757,61 @@ t_presentation_subgroups <- list(
   )
 )
 
+# ── Supplement DAG figures ─────────────────────────────────────────────────────
+# These depend only on the dagitty objects constructed in t_data, not on any
+# fitted models, so they are cheap to (re-)build and won't be invalidated by
+# model re-runs. Each figure is a patchwork of a main DAG panel (Panel A) and
+# a minimal-adjustment-set panel (Panel B), saved as cairo_pdf for clean text
+# rendering in the supplement.
+t_presentation_dags <- list(
+  tar_target(
+    figure_dag_neurosurgery,
+    make_neurosurgery_dag_figure(dag_neurosurgery)
+  ),
+
+  tar_target(
+    figure_dag_neurosurgery_file,
+    {
+      dir.create("figures/supplement", showWarnings = FALSE, recursive = TRUE)
+      path <- "figures/supplement/sfig_dag_neurosurgery.pdf"
+      ggsave(
+        filename = path,
+        plot = figure_dag_neurosurgery,
+        device = cairo_pdf,
+        width = 9,
+        height = 9,
+        units = "in"
+      )
+      path
+    },
+    format = "file"
+  ),
+
+  tar_target(
+    figure_dag_outcomes,
+    make_outcomes_dag_figure(dag_outcomes)
+  ),
+
+  tar_target(
+    figure_dag_outcomes_file,
+    {
+      dir.create("figures/supplement", showWarnings = FALSE, recursive = TRUE)
+      path <- "figures/supplement/sfig_dag_outcomes.pdf"
+      ggsave(
+        filename = path,
+        plot = figure_dag_outcomes,
+        device = cairo_pdf,
+        # Wider than the neurosurgery DAG — more nodes, more latent variables
+        width = 11,
+        height = 10,
+        units = "in"
+      )
+      path
+    },
+    format = "file"
+  )
+)
+
 # ── Posterior probability figures (all binary outcomes x all priors) ──────────
 # Produces figure_posterior_{outcome_col}_{prior_scenario} and a saved PDF.
 map_posterior_figures <- tar_map(
@@ -1067,6 +1102,7 @@ list(
   # Presentation
   t_presentation_misc,
   t_presentation_subgroups,
+  t_presentation_dags,
   map_posterior_figures,
   map_sensitivity_figures,
   map_mrs_figures_main,

@@ -1,6 +1,4 @@
-library(gtsummary)
-library(dplyr)
-library(smd)
+
 
 table_1_function <- function(x) {
   table_one_vars <- c(

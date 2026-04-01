@@ -1,6 +1,4 @@
-library(brms)
-library(ggplot2)
-library(patchwork)
+
 
 f_general_pp_check <- function(model, ndraws = 100) {
   # 1. Extract the model family

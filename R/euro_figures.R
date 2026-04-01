@@ -11,10 +11,6 @@
 #
 # Sub-functions are exported for independent use (e.g., supplemental figures).
 
-library(marginaleffects)
-library(tidyverse)
-library(patchwork)
-library(ggtext) # geom_richtext() for Panel A label backgrounds
 
 
 # ── Shared constants ───────────────────────────────────────────────────────────
