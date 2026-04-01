@@ -433,6 +433,72 @@ t_combine_priors <- list(
   )
 )
 
+# ── Prior predictive check forest plots (supplement) ──────────────────────────
+# Visual analogues of map_table2_priors and map_table4_priors. Each figure
+# receives the full all_prior_models list and returns a single plot covering
+# all outcomes × all 4 prior scenarios, so these are plain tar_target calls
+# rather than tar_map.
+#
+# figure_ppc_forest_functional additionally receives ich_aggressive because the
+# VAS G-computation needs a covariate grid from the observed data, exactly as
+# process_vas() in table_4.R does — no outcome values are consumed.
+#
+# Both targets depend on all_prior_models (via tar_combine), so they will only
+# build once all prior-only models have finished sampling.
+t_presentation_ppc <- list(
+  tar_target(
+    figure_ppc_forest_aggressive,
+    make_ppc_forest_aggressive(all_prior_models),
+    deployment = "main"
+  ),
+
+  tar_target(
+    figure_ppc_forest_aggressive_file,
+    {
+      dir.create("figures/supplement", showWarnings = FALSE, recursive = TRUE)
+      path <- "figures/supplement/sfig_ppc_forest_aggressive.pdf"
+      ggsave(
+        filename = path,
+        plot = figure_ppc_forest_aggressive,
+        width = 9,
+        height = 7, # 7 outcomes + legend fits comfortably at this height
+        units = "in",
+        device = cairo_pdf
+      )
+      path
+    },
+    format = "file",
+    deployment = "main"
+  ),
+
+  tar_target(
+    figure_ppc_forest_functional,
+    make_ppc_forest_functional(all_prior_models, ich_aggressive),
+    deployment = "main"
+  ),
+
+  tar_target(
+    figure_ppc_forest_functional_file,
+    {
+      dir.create("figures/supplement", showWarnings = FALSE, recursive = TRUE)
+      path <- "figures/supplement/sfig_ppc_forest_functional.pdf"
+      ggsave(
+        filename = path,
+        plot = figure_ppc_forest_functional,
+        width = 9,
+        # patchwork heights = c(6, 1.5) → ~8.5 in gives the ordinal panel room
+        # without compressing the dodged VAS panel into illegibility
+        height = 8.5,
+        units = "in",
+        device = cairo_pdf
+      )
+      path
+    },
+    format = "file",
+    deployment = "main"
+  )
+)
+
 
 # =========================================================================
 # FITTING THE MODELS
@@ -1102,7 +1168,7 @@ list(
   # Presentation
   t_presentation_misc,
   t_presentation_subgroups,
-  t_presentation_dags,
+  t_presentation_ppc,
   map_posterior_figures,
   map_sensitivity_figures,
   map_mrs_figures_main,
