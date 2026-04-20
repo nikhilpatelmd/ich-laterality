@@ -1114,6 +1114,11 @@ map_mrs_figures_sens <- tar_map(
 )
 
 # ── Tables ────────────────────────────────────────────────────────────────────
+t_table1 <- tar_target(
+  table_1,
+  table_1_function(ich_aggressive)
+)
+
 # Main and prior tables iterate over all 4 prior scenarios.
 # Sensitivity tables iterate over neutral only, matching the models that exist.
 map_table2 <- tar_map(
@@ -1242,6 +1247,7 @@ list(
   map_sensitivity_figures,
   map_mrs_figures_main,
   map_mrs_figures_sens,
+  t_table1,
   map_table2,
   map_table2_sens,
   map_table2_priors,
