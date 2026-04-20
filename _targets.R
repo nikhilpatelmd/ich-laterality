@@ -185,8 +185,24 @@ t_missing <- list(
 
 
 # =========================================================================
-# CANDIDATE MODELS (Grid Definitions)
+# CANDIDATE MODEL GRIDS
+#
+# The grid definitions encode the scientific design of the pipeline. The
+# key principle is that each sensitivity analysis varies exactly one thing
+# relative to the primary (MICE-imputed, neutral-prior, adjusted) analysis:
+#
+#   - Main models:        all 4 priors × 2 adjustment sets (full factorial —
+#                         both dimensions have independent scientific meaning)
+#   - Prior predictive:   all 4 priors × adjusted only (checking prior
+#                         plausibility; adjustment set doesn't change the
+#                         intercept or laterality priors being examined)
+#   - Complete-case sens: neutral prior × adjusted only (one thing changes:
+#                         imputation strategy; everything else held constant)
+#   - ATACH-2 sens:       neutral prior × adjusted only (one thing changes:
+#                         population; same logic)
+#   - Interaction models: neutral prior × adjusted (exploratory, not primary)
 # =========================================================================
+
 aggressive_grid <- tibble::tribble(
   ~outcome_col          , ~family                          , ~int_mean , ~int_sd , ~complexity ,
   "neurosurgery_evac"   , quote(bernoulli(link = "logit")) ,        -7 , 0.35    , "complex"   ,
@@ -224,6 +240,7 @@ functional_grid <- tibble(
 
 combined_base <- bind_rows(aggressive_grid, functional_grid)
 
+# ── Main model grids: full 4-prior × 2-adjustment-set factorial ───────────────
 complete_grid <- tidyr::crossing(
   combined_base,
   prior_scenario = c("neutral", "left", "right", "flat"),
@@ -251,6 +268,54 @@ grid_vas <- tibble::tibble(
     adjustment_set = c("minimal", "adjusted")
   )
 
+# ── Prior predictive grids: all 4 priors × adjusted only ─────────────────────
+# The adjustment set does not affect the intercept or laterality priors being
+# checked, so running minimal-adjusted prior predictives is redundant.
+grid_priors <- complete_grid |> filter(adjustment_set == "adjusted")
+grid_priors_fast <- grid_priors |> filter(complexity == "fast")
+grid_priors_complex <- grid_priors |> filter(complexity == "complex")
+
+grid_priors_ventilation <- tibble::tribble(
+  ~outcome_col                  , ~family                                        , ~int_mean , ~int_sd , ~complexity ,
+  "days_mechanical_ventilation" , quote(zero_inflated_negbinomial(link = "log")) ,         0 , 0.5     , "complex"
+) |>
+  tidyr::crossing(
+    prior_scenario = c("neutral", "left", "right", "flat"),
+    adjustment_set = "adjusted"
+  )
+
+grid_priors_vas <- tibble::tibble(
+  outcome_col = "euro_vas_90",
+  family = list(quote(zero_one_inflated_beta()))
+) |>
+  tidyr::crossing(
+    prior_scenario = c("neutral", "left", "right", "flat"),
+    adjustment_set = "adjusted"
+  )
+
+# ── Complete-case sensitivity grids: neutral prior × adjusted only ────────────
+# These models answer one question: does MICE imputation materially change
+# results vs. a complete-case approach? Only neutral-prior + adjusted models
+# are needed — varying the prior or adjustment set simultaneously would blur
+# the interpretation of the sensitivity analysis.
+grid_fast_sens <- combined_base |>
+  filter(complexity == "fast") |>
+  tidyr::crossing(prior_scenario = "neutral", adjustment_set = "adjusted")
+
+grid_complex_sens <- combined_base |>
+  filter(complexity == "complex") |>
+  tidyr::crossing(prior_scenario = "neutral", adjustment_set = "adjusted")
+
+grid_vas_sens <- tibble::tibble(
+  outcome_col = "euro_vas_90",
+  family = list(quote(zero_one_inflated_beta()))
+) |>
+  tidyr::crossing(prior_scenario = "neutral", adjustment_set = "adjusted")
+
+# ── Other sensitivity grids ───────────────────────────────────────────────────
+# grid_atach_sens and grid_interactions follow the same single-dimension logic:
+# each varies only population (ATACH-2 only) or model structure (interaction
+# term), holding prior and adjustment constant at the primary analysis values.
 grid_atach_sens <- aggressive_grid |>
   filter(outcome_col == "neurosurgery_evac") |>
   tidyr::crossing(prior_scenario = "neutral", adjustment_set = "adjusted")
@@ -263,7 +328,11 @@ grid_interactions <- tibble(
   adjustment_set = "adjusted"
 )
 
+# ── Table iteration scenarios ─────────────────────────────────────────────────
+# Main and prior tables iterate over all 4 priors; the sensitivity table only
+# needs neutral, since the complete-case models were only fit under that prior.
 table_scenarios <- tibble(scenario = c("neutral", "left", "right", "flat"))
+table_scenarios_sens <- tibble(scenario = "neutral")
 
 
 # ── Figure scenarios metadata (binary outcomes) ────────────────────────────────
@@ -317,13 +386,17 @@ figure_sensitivity_scenarios <- figure_scenarios |>
 
 
 # ── mRS figure scenarios ───────────────────────────────────────────────────────
-# Cross mrs_90 with all prior x adjustment combinations, producing one row per
-# figure to generate. Two separate tibbles are needed — one pointing into
-# all_main_models (imputed), one into all_sens_models (complete case) — because
-# tar_map cannot parameterise which list to index into at expression-substitution
-# time. figure_key drives both target naming (via `names =`) and the output
-# filename, kept as a separate column from model_key so either can be changed
-# independently without breaking the other.
+# Main mRS figures: full 4-prior × 2-adjustment-set factorial, matching the
+# main model grid — both dimensions are scientifically meaningful here.
+#
+# Sensitivity mRS figures: all 4 priors but adjusted only, because the
+# complete-case sensitivity models were only fit under the adjusted set.
+# This lets the reader compare the mRS distribution across priors while
+# holding imputation strategy as the only changed dimension vs. the main figures.
+#
+# Two separate tibbles are needed because tar_map cannot parameterise which
+# list to index into (all_main_models vs. all_sens_models) at substitution time.
+# figure_key drives both target naming (via `names =`) and the output filename.
 mrs_figure_scenarios_main <- tidyr::crossing(
   tibble(outcome_col = "mrs_90"),
   prior_scenario = c("neutral", "left", "right", "flat"),
@@ -341,25 +414,23 @@ mrs_figure_scenarios_main <- tidyr::crossing(
 
 mrs_figure_scenarios_sens <- tidyr::crossing(
   tibble(outcome_col = "mrs_90"),
-  prior_scenario = c("neutral", "left", "right", "flat"),
-  adjustment_set = c("minimal", "adjusted")
+  prior_scenario = "neutral",
+  adjustment_set = "adjusted"
 ) |>
   mutate(
-    model_key = paste0(
-      "model_sens_mrs_90_",
-      prior_scenario,
-      "_",
-      adjustment_set
-    ),
-    figure_key = paste0("sens_", prior_scenario, "_", adjustment_set)
+    model_key = paste0("model_sens_mrs_90_", prior_scenario, "_adjusted"),
+    figure_key = paste0("sens_", prior_scenario, "_adjusted")
   )
 
 
 # =========================================================================
 # PRIORS & PRIOR PREDICTIVE CHECKS
 # =========================================================================
+# All 4 priors × adjusted only — the adjustment set does not affect the
+# intercept or laterality priors, so minimal-adjusted prior predictives
+# would be redundant and expensive.
 map_priors <- tar_map(
-  values = complete_grid,
+  values = grid_priors,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
   tar_target(
@@ -382,7 +453,7 @@ map_priors <- tar_map(
 )
 
 map_priors_ventilation <- tar_map(
-  values = grid_ventilation,
+  values = grid_priors_ventilation,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
   tar_target(
@@ -405,7 +476,7 @@ map_priors_ventilation <- tar_map(
 )
 
 map_priors_vas <- tar_map(
-  values = grid_vas,
+  values = grid_priors_vas,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
   tar_target(
@@ -434,17 +505,10 @@ t_combine_priors <- list(
 )
 
 # ── Prior predictive check forest plots (supplement) ──────────────────────────
-# Visual analogues of map_table2_priors and map_table4_priors. Each figure
-# receives the full all_prior_models list and returns a single plot covering
-# all outcomes × all 4 prior scenarios, so these are plain tar_target calls
-# rather than tar_map.
-#
-# figure_ppc_forest_functional additionally receives ich_aggressive because the
-# VAS G-computation needs a covariate grid from the observed data, exactly as
-# process_vas() in table_4.R does — no outcome values are consumed.
-#
-# Both targets depend on all_prior_models (via tar_combine), so they will only
-# build once all prior-only models have finished sampling.
+# Each figure receives the full all_prior_models list and returns a single plot
+# covering all outcomes × all 4 prior scenarios. Both targets depend on
+# all_prior_models (via tar_combine), so they only build once all prior-only
+# models have finished sampling.
 t_presentation_ppc <- list(
   tar_target(
     figure_ppc_forest_aggressive,
@@ -461,7 +525,7 @@ t_presentation_ppc <- list(
         filename = path,
         plot = figure_ppc_forest_aggressive,
         width = 9,
-        height = 7, # 7 outcomes + legend fits comfortably at this height
+        height = 7,
         units = "in",
         device = cairo_pdf
       )
@@ -486,8 +550,6 @@ t_presentation_ppc <- list(
         filename = path,
         plot = figure_ppc_forest_functional,
         width = 9,
-        # patchwork heights = c(6, 1.5) → ~8.5 in gives the ordinal panel room
-        # without compressing the dodged VAS panel into illegibility
         height = 8.5,
         units = "in",
         device = cairo_pdf
@@ -503,6 +565,8 @@ t_presentation_ppc <- list(
 # =========================================================================
 # FITTING THE MODELS
 # =========================================================================
+
+# ── Primary analysis: MICE-imputed, all 4 priors × 2 adjustment sets ──────────
 map_main_fast <- tar_map(
   values = grid_fast,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
@@ -590,8 +654,17 @@ map_main_vas <- tar_map(
   )
 )
 
+# ── Complete-case sensitivity: neutral prior × adjusted only ──────────────────
+# Each of these maps varies exactly one thing vs. the primary analysis:
+# complete cases rather than MICE-imputed data.
+#
+# Note on ventilation: days_mechanical_ventilation is structurally missing in
+# ERICH (not collected), so a complete-case sensitivity is not meaningful —
+# the primary ventilation model already uses complete cases. For that reason
+# map_main_ventilation (neutral + adjusted) is included in all_sens_models
+# below so tables have a consistent row, but no new model is fit.
 map_sens_fast <- tar_map(
-  values = grid_fast,
+  values = grid_fast_sens,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
   tar_target(
@@ -614,7 +687,7 @@ map_sens_fast <- tar_map(
 )
 
 map_sens_complex <- tar_map(
-  values = grid_complex,
+  values = grid_complex_sens,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
   tar_target(
@@ -637,7 +710,7 @@ map_sens_complex <- tar_map(
 )
 
 map_sens_vas <- tar_map(
-  values = grid_vas,
+  values = grid_vas_sens,
   names = c("outcome_col", "prior_scenario", "adjustment_set"),
   unlist = FALSE,
   tar_target(
@@ -654,6 +727,7 @@ map_sens_vas <- tar_map(
   )
 )
 
+# ── ATACH-2 population restriction sensitivity: neutral prior × adjusted ───────
 map_atach_sens <- tar_map(
   values = grid_atach_sens,
   names = "outcome_col",
@@ -694,6 +768,7 @@ map_atach_sens <- tar_map(
   )
 )
 
+# ── Interaction models: neutral prior × adjusted ───────────────────────────────
 map_interactions <- tar_map(
   values = grid_interactions,
   names = "interaction_var",
@@ -723,6 +798,10 @@ t_combine_fits <- list(
     map_main_vas,
     command = c(!!!.x)
   ),
+  # Ventilation is included from map_main_ventilation (neutral + adjusted) because
+  # it is structurally missing in ERICH — there is no complete-case analogue to fit.
+  # Its keys will have the model_main_ prefix; subset_models_for_table4() must
+  # handle this mixed prefix when ventilation rows are extracted.
   tar_combine(
     all_sens_models,
     map_sens_fast,
@@ -824,11 +903,6 @@ t_presentation_subgroups <- list(
 )
 
 # ── Supplement DAG figures ─────────────────────────────────────────────────────
-# These depend only on the dagitty objects constructed in t_data, not on any
-# fitted models, so they are cheap to (re-)build and won't be invalidated by
-# model re-runs. Each figure is a patchwork of a main DAG panel (Panel A) and
-# a minimal-adjustment-set panel (Panel B), saved as cairo_pdf for clean text
-# rendering in the supplement.
 t_presentation_dags <- list(
   tar_target(
     figure_dag_neurosurgery,
@@ -867,7 +941,6 @@ t_presentation_dags <- list(
         filename = path,
         plot = figure_dag_outcomes,
         device = cairo_pdf,
-        # Wider than the neurosurgery DAG — more nodes, more latent variables
         width = 11,
         height = 10,
         units = "in"
@@ -878,8 +951,7 @@ t_presentation_dags <- list(
   )
 )
 
-# ── Posterior probability figures (all binary outcomes x all priors) ──────────
-# Produces figure_posterior_{outcome_col}_{prior_scenario} and a saved PDF.
+# ── Posterior probability figures (all binary outcomes × all priors) ──────────
 map_posterior_figures <- tar_map(
   values = figure_values,
   names = c(outcome_col, prior_scenario),
@@ -963,24 +1035,17 @@ map_sensitivity_figures <- tar_map(
 )
 
 # ── mRS Grotta + uncertainty figures (main imputed models) ────────────────────
-# Produces one two-panel figure per combination of prior x adjustment set,
-# using models from all_main_models (fitted on MICE-imputed data).
+# Full 4-prior × 2-adjustment-set factorial: both dimensions are meaningful
+# for the primary analysis and warrant independent figures.
 #
 # Target naming: figure_mrs_main_{prior_scenario}_{adjustment_set}
 # File naming:   figures/mrs/figure_mrs_main_{prior}_{adjustment}.pdf
-#
-# 4 priors x 2 adjustment sets = 8 figure targets + 8 file targets = 16 total.
-# Each is cached independently — re-fitting one model invalidates only its
-# corresponding figure, not the other 15.
 map_mrs_figures_main <- tar_map(
   values = mrs_figure_scenarios_main,
   names = c("prior_scenario", "adjustment_set"),
 
   tar_target(
     figure_mrs_main,
-    # all_main_models is a flat named list after tar_combine; indexing with
-    # [[model_key]] gives the brmsfit_multiple directly (no [[1]] needed here,
-    # unlike when accessing individual tar_map targets directly)
     make_mrs_figure(all_main_models[[model_key]]),
     deployment = "main"
   ),
@@ -1008,12 +1073,13 @@ map_mrs_figures_main <- tar_map(
   )
 )
 
-# ── mRS Grotta + uncertainty figures (sensitivity complete-case models) ────────
-# Same structure as map_mrs_figures_main but indexes into all_sens_models
-# (fitted on complete cases without MICE imputation).
+# ── mRS Grotta + uncertainty figures (complete-case sensitivity models) ────────
+# All 4 priors × adjusted only — complete-case models were only fit under the
+# adjusted set, so these figures allow prior comparison while holding the
+# imputation strategy as the single varying dimension vs. the main figures.
 #
-# Target naming: figure_mrs_sens_{prior_scenario}_{adjustment_set}
-# File naming:   figures/mrs/figure_mrs_sens_{prior}_{adjustment}.pdf
+# Target naming: figure_mrs_sens_{prior_scenario}_adjusted
+# File naming:   figures/mrs/figure_mrs_sens_{prior}_adjusted.pdf
 map_mrs_figures_sens <- tar_map(
   values = mrs_figure_scenarios_sens,
   names = c("prior_scenario", "adjustment_set"),
@@ -1048,6 +1114,8 @@ map_mrs_figures_sens <- tar_map(
 )
 
 # ── Tables ────────────────────────────────────────────────────────────────────
+# Main and prior tables iterate over all 4 prior scenarios.
+# Sensitivity tables iterate over neutral only, matching the models that exist.
 map_table2 <- tar_map(
   values = table_scenarios,
   tar_target(
@@ -1064,7 +1132,7 @@ map_table2 <- tar_map(
 )
 
 map_table2_sens <- tar_map(
-  values = table_scenarios,
+  values = table_scenarios_sens,
   tar_target(
     table_2_sens,
     table_2_function(
@@ -1105,7 +1173,7 @@ map_table4 <- tar_map(
 )
 
 map_table4_sens <- tar_map(
-  values = table_scenarios,
+  values = table_scenarios_sens,
   tar_target(
     table_4_sens,
     table_4_function(
@@ -1149,6 +1217,7 @@ list(
   map_priors_ventilation,
   map_priors_vas,
   t_combine_priors,
+  t_presentation_ppc,
 
   # Model Fitting
   map_main_fast,
@@ -1168,7 +1237,7 @@ list(
   # Presentation
   t_presentation_misc,
   t_presentation_subgroups,
-  t_presentation_ppc,
+  t_presentation_dags,
   map_posterior_figures,
   map_sensitivity_figures,
   map_mrs_figures_main,

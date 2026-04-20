@@ -3,8 +3,6 @@
 # Produces two figures: the neurosurgery DAG and the functional outcomes DAG,
 # each with a companion adjustment-set panel.
 
-
-
 # ---------------------------------------------------------------------------
 # Shared aesthetic constants
 # Consistent with manuscript Okabe-Ito palette and cairo_pdf conventions.
@@ -185,11 +183,17 @@ plot_adjustment_set <- function(
 
 # ---------------------------------------------------------------------------
 # Figure assembly functions.
-# Each returns a patchwork-composed plot ready for ggsave().
+# Each accepts a pre-built dagitty object as its argument rather than calling
+# the dag constructor internally. This is the correct targets pattern: by
+# receiving the dag as a function argument, targets can register it as an
+# explicit upstream dependency and will correctly invalidate the figure target
+# whenever the dag definition changes. A function that builds its own dag
+# internally is opaque to the pipeline graph.
 # ---------------------------------------------------------------------------
 
-make_neurosurgery_dag_figure <- function() {
-  dag_obj <- f_neurosurgery_dag()
+make_neurosurgery_dag_figure <- function(dag) {
+  # Use the dag object passed in from the targets pipeline (dag_neurosurgery).
+  dag_obj <- dag
 
   main_panel <- plot_dag(
     dag_obj,
@@ -210,8 +214,11 @@ make_neurosurgery_dag_figure <- function() {
 }
 
 
-make_outcomes_dag_figure <- function() {
-  dag_obj <- outcomes_dag_function()
+make_outcomes_dag_figure <- function(dag) {
+  # Use the dag object passed in from the targets pipeline (dag_outcomes).
+  # Previously this ignored its argument and called outcomes_dag_function()
+  # internally, which broke the targets dependency graph.
+  dag_obj <- dag
 
   main_panel <- plot_dag(
     dag_obj,
@@ -235,17 +242,24 @@ make_outcomes_dag_figure <- function() {
 # cairo_pdf preserves text as proper glyphs and handles Unicode correctly —
 # important if any labels contain special characters.
 # Dimensions are set wide to give the outcome DAG (more nodes) room to breathe.
+#
+# Note: because this function is called outside the targets pipeline (e.g.,
+# interactively), it is responsible for building the dag objects itself before
+# passing them to the assembly functions. Inside the pipeline, targets handles
+# this by passing the pre-built dag_neurosurgery and dag_outcomes targets.
 # ---------------------------------------------------------------------------
 
 save_dag_figures <- function(output_dir = "figures/supplement") {
   dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
-  base_pt <- 14
-  base_mm <- base_pt / 2.835 # convert pt to mm for ggplot2 base_size
+  # Build dag objects here for standalone/interactive use. In the targets
+  # pipeline these are constructed as separate upstream targets instead.
+  neuro_dag <- f_neurosurgery_dag()
+  outcomes_dag <- outcomes_dag_function()
 
   ggsave(
     filename = file.path(output_dir, "sfig_dag_neurosurgery.pdf"),
-    plot = make_neurosurgery_dag_figure(),
+    plot = make_neurosurgery_dag_figure(neuro_dag),
     device = cairo_pdf,
     width = 9,
     height = 9,
@@ -256,7 +270,7 @@ save_dag_figures <- function(output_dir = "figures/supplement") {
   # so it gets extra width.
   ggsave(
     filename = file.path(output_dir, "sfig_dag_outcomes.pdf"),
-    plot = make_outcomes_dag_figure(),
+    plot = make_outcomes_dag_figure(outcomes_dag),
     device = cairo_pdf,
     width = 11,
     height = 10,
@@ -264,7 +278,7 @@ save_dag_figures <- function(output_dir = "figures/supplement") {
   )
 
   invisible(list(
-    neurosurgery = make_neurosurgery_dag_figure(),
-    outcomes = make_outcomes_dag_figure()
+    neurosurgery = make_neurosurgery_dag_figure(neuro_dag),
+    outcomes = make_outcomes_dag_figure(outcomes_dag)
   ))
 }
