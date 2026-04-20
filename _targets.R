@@ -800,7 +800,7 @@ t_combine_fits <- list(
   ),
   # Ventilation is included from map_main_ventilation (neutral + adjusted) because
   # it is structurally missing in ERICH — there is no complete-case analogue to fit.
-  # Its keys will have the model_main_ prefix; subset_models_for_table4() must
+  # Its keys will have the model_main_ prefix; subset_models_for_table3() must
   # handle this mixed prefix when ventilation rows are extracted.
   tar_combine(
     all_sens_models,
@@ -1161,13 +1161,13 @@ map_table2_priors <- tar_map(
   )
 )
 
-map_table4 <- tar_map(
+map_table3 <- tar_map(
   values = table_scenarios,
   tar_target(
-    table_4,
-    table_4_function(
+    table_3,
+    table_3_function(
       x = ich_aggressive,
-      models = subset_models_for_table4(
+      models = subset_models_for_table3(
         all_main_models,
         scenario,
         prefix = "model_main_"
@@ -1177,13 +1177,13 @@ map_table4 <- tar_map(
   )
 )
 
-map_table4_sens <- tar_map(
+map_table3_sens <- tar_map(
   values = table_scenarios_sens,
   tar_target(
-    table_4_sens,
-    table_4_function(
+    table_3_sens,
+    table_3_function(
       x = ich_aggressive,
-      models = subset_models_for_table4(
+      models = subset_models_for_table3(
         all_sens_models,
         scenario,
         prefix = "model_sens_"
@@ -1193,13 +1193,13 @@ map_table4_sens <- tar_map(
   )
 )
 
-map_table4_priors <- tar_map(
+map_table3_priors <- tar_map(
   values = table_scenarios,
   tar_target(
-    table_4_priors,
-    table_4_function(
+    table_3_priors,
+    table_3_function(
       x = ich_aggressive,
-      models = subset_models_for_table4(
+      models = subset_models_for_table3(
         all_prior_models,
         scenario,
         prefix = "model_prior_"
@@ -1251,7 +1251,7 @@ list(
   map_table2,
   map_table2_sens,
   map_table2_priors,
-  map_table4,
-  map_table4_sens,
-  map_table4_priors
+  map_table3,
+  map_table3_sens,
+  map_table3_priors
 )

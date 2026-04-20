@@ -9,7 +9,7 @@
 # Each figure shows outcomes on the y-axis with four dodged point-range rows
 # per outcome (one per prior specification), making cross-prior comparison
 # scannable at a glance. The computational path for extracting medians and
-# 95% CIs mirrors table_2.R and table_4.R exactly so the numbers are
+# 95% CIs mirrors table_2.R and table_3.R exactly so the numbers are
 # consistent between the tables and their visual summaries.
 
 # ── Shared constants ───────────────────────────────────────────────────────────
@@ -82,7 +82,7 @@
 }
 
 # Extract median + 95% CI for one ordinal cumulative prior model.
-# Mirrors process_ordinal() in table_4.R: within-draw averaging over drawid
+# Mirrors process_ordinal() in table_3.R: within-draw averaging over drawid
 # collapses threshold-specific contrasts to a single population-averaged OR.
 .summarize_ordinal_prior <- function(model) {
   marginaleffects::avg_comparisons(
@@ -103,7 +103,7 @@
 }
 
 # Extract median + 95% CI for the VAS ZOIB prior model as a mean difference.
-# Mirrors process_vas() in table_4.R: G-computation via posterior_epred.
+# Mirrors process_vas() in table_3.R: G-computation via posterior_epred.
 # `data` is ich_aggressive — covariates only, no outcome data consumed.
 .summarize_vas_prior <- function(model, data) {
   used_vars <- setdiff(all.vars(stats::formula(model)$formula), "euro_vas_90")
@@ -295,7 +295,7 @@ make_ppc_forest_aggressive <- function(all_prior_models) {
 #'
 #' Ordinal outcomes (OR scale) and Euro VAS (mean difference in points) require
 #' different x-axes, so they are combined via patchwork rather than facets.
-#' This mirrors the two-estimand structure of table_4.R.
+#' This mirrors the two-estimand structure of table_3.R.
 #'
 #' @param all_prior_models Named list from tar_combine(all_prior_models, ...).
 #' @param data ich_aggressive data frame; needed for the VAS G-computation

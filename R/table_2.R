@@ -32,7 +32,7 @@ table_2_function <- function(x, models) {
     ) |>
     mutate(
       iqr = glue::glue(
-        "{n} ventilated; {median} ({lower_25} – {upper_75}) days"
+        "{median} ({lower_25} – {upper_75})"
       )
     ) |>
     select(ich_laterality, iqr) |>
@@ -86,16 +86,11 @@ table_2_function <- function(x, models) {
 
   # Helper function for marginal effects extraction
   get_marginal_stats <- function(model) {
-    # Detect Family to switch between OR and IRR
     fam <- stats::family(model)$family
 
     if (fam %in% c("bernoulli", "binomial")) {
-      # For Binary: Calculate Odds Ratio
-      # ln_oravg = Average Marginal Log-Odds Ratio
       cmp <- "lnoravg"
     } else {
-      # For Count (NegBin): Calculate Rate Ratio (IRR)
-      # Ratio of expectations (Right / Left)
       cmp <- function(hi, lo) hi / lo
     }
 
@@ -106,7 +101,6 @@ table_2_function <- function(x, models) {
     ) |>
       marginaleffects::posterior_draws()
 
-    # If we used ln_oravg, we must exponentiate the draws to get OR
     if (fam %in% c("bernoulli", "binomial")) {
       draws <- draws |> mutate(draw = exp(draw))
     }
@@ -117,36 +111,30 @@ table_2_function <- function(x, models) {
         or = median(effect_ratio),
         lower_95_ci = quantile(effect_ratio, 0.025),
         upper_95_ci = quantile(effect_ratio, 0.975),
-        or_1 = sum(effect_ratio > 1) / n(), # Prob > 1
-        or_1.2 = sum(effect_ratio > 1.2) / n(), # Prob > 1.2
-        rope = sum(effect_ratio < 1.05 & effect_ratio > 0.95) / n() # ROPE
+        or_1 = sum(effect_ratio > 1) / n(), 
+        or_1.2 = sum(effect_ratio > 1.2) / n(), 
+        rope = sum(effect_ratio < 1.05 & effect_ratio > 0.95) / n() 
       ) |>
       mutate(
         or_ci = glue::glue(
           "{round(or, 2)} ({round(lower_95_ci, 2)} - {round(upper_95_ci, 2)})"
-        )
+        ),
+        # Apply the new formatting function here
+        or_1 = format_posterior_prob(or_1),
+        or_1.2 = format_posterior_prob(or_1.2),
+        rope = format_posterior_prob(rope)
       ) |>
       select(or_ci, or_1, or_1.2, rope)
   }
 
-  # Apply to models (Using the Pretty Names from the list)
   neurosurgery_post <- get_marginal_stats(models$"Neurosurgical Intervention")
   evd_post <- get_marginal_stats(models$"External Ventricular Drain")
   tracheostomy_post <- get_marginal_stats(models$"Tracheostomy")
-  comfort_care_binary_post <- get_marginal_stats(
-    models$"Withdrawal of Life-Sustaining Therapy"
-  )
-  early_wlst_post <- get_marginal_stats(
-    models$"Early Withdrawal of Life-Sustaining Therapy"
-  )
+  comfort_care_binary_post <- get_marginal_stats(models$"Withdrawal of Life-Sustaining Therapy")
+  early_wlst_post <- get_marginal_stats(models$"Early Withdrawal of Life-Sustaining Therapy")
   dnr_binary_post <- get_marginal_stats(models$"DNR Order")
+  days_mechanical_ventilation_post <- get_marginal_stats(models$"Days of Mechanical Ventilation")
 
-  # Count model (IRR)
-  days_mechanical_ventilation_post <- get_marginal_stats(
-    models$"Days of Mechanical Ventilation"
-  )
-
-  # Combine stats
   total_stats <- bind_rows(
     "Neurosurgical Intervention" = neurosurgery_post,
     "External Ventricular Drain" = evd_post,
@@ -172,28 +160,15 @@ table_2_function <- function(x, models) {
       or_1.2 = md("**Probability of substantial difference (Est > 1.2)**"),
       rope = md("**ROPE**")
     ) |>
-    fmt_number(columns = 5:7, decimals = 2) |>
+    # Removed fmt_number() since values are now pre-formatted strings (e.g. "> 99.9%")
     cols_width(Outcome ~ px(375), 2:3 ~ px(175), 4 ~ px(150), 5:7 ~ px(125)) |>
     cols_align(align = "left") |>
     tab_style(
       style = cell_text(weight = "bold"),
       locations = cells_stub(rows = everything())
     ) |>
-    tab_footnote(
-      footnote = "median (IQR)",
-      locations = cells_body(columns = 2:3, rows = 3)
-    ) |>
-    tab_footnote(
-      footnote = "Values represent Average Marginal Effects (Odds Ratios for binary outcomes, Incidence Rate Ratios for counts). Adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study.",
-      locations = cells_column_labels(columns = or_ci)
-    ) |>
-    tab_footnote(
-      footnote = "ROPE = region of practical equivalence (0.95 to 1.05)",
-      locations = cells_column_labels(columns = rope)
-    ) |>
-    tab_footnote(
-      footnote = "Median (IQR) days among patients receiving mechanical ventilation; excludes patients with zero ventilator days. Data from ATACH-2 only.",
-      locations = cells_body(columns = 2:3, rows = 3)
+    tab_source_note(
+      source_note = "Values represent Average Marginal Effects (Odds Ratios for binary outcomes, Incidence Rate Ratios for counts). Models are adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study. Days of mechanical ventilation represent median (IQR) days among patients receiving mechanical ventilation; excludes patients with zero ventilator days (data from ATACH-2 only). ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; CI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; IQR, interquartile range; and IVH, intraventricular hemorrhage."
     )
 
   return(table_2)
@@ -254,7 +229,6 @@ subset_prior_models_for_table2 <- function(all_prior_models, scenario) {
     "dnr_binary" = "DNR Order"
   )
 
-  # For priors, we extract from model_prior_ instead of model_main_
   suffix <- paste0("_", scenario, "_adjusted")
   selected_models <- list()
 
@@ -278,17 +252,14 @@ subset_prior_models_for_table2 <- function(all_prior_models, scenario) {
 
 # --- Main Prior Table Generation Function ---
 table_2_priors_function <- function(models) {
-  # Helper function to extract both predictions and comparisons from the prior model
   get_prior_stats <- function(model) {
     fam <- stats::family(model)$family
     is_binary <- fam %in% c("bernoulli", "binomial")
 
-    # 1. Prior Predictions (Expected Left vs Right)
     preds <- marginaleffects::avg_predictions(model, by = "ich_laterality") |>
-      marginaleffects::posterior_draws() # Works identically for prior draws
+      marginaleffects::posterior_draws() 
 
     if (!is_binary) {
-      # Count Formatting: Median (IQR)
       pred_summary <- preds |>
         group_by(ich_laterality) |>
         summarize(
@@ -299,7 +270,6 @@ table_2_priors_function <- function(models) {
         ) |>
         pivot_wider(names_from = ich_laterality, values_from = val)
     } else {
-      # Binary Formatting: Expected % (95% CI)
       pred_summary <- preds |>
         group_by(ich_laterality) |>
         summarize(
@@ -311,7 +281,6 @@ table_2_priors_function <- function(models) {
         pivot_wider(names_from = ich_laterality, values_from = val)
     }
 
-    # 2. Prior Marginal Comparisons (aOR / IRR)
     cmp <- if (is_binary) "lnoravg" else function(hi, lo) hi / lo
 
     comps <- marginaleffects::avg_comparisons(
@@ -338,32 +307,24 @@ table_2_priors_function <- function(models) {
       mutate(
         or_ci = glue::glue(
           "{round(or, 2)} ({round(lower_95_ci, 2)} - {round(upper_95_ci, 2)})"
-        )
+        ),
+        # Apply the new formatting function here as well
+        or_1 = format_posterior_prob(or_1),
+        or_1.2 = format_posterior_prob(or_1.2),
+        rope = format_posterior_prob(rope)
       ) |>
       select(or_ci, or_1, or_1.2, rope)
 
-    # Combine Predictions and Comparisons into a single row
     bind_cols(pred_summary, comp_summary)
   }
 
-  # Apply helper to all models and combine
   total_stats <- bind_rows(
-    "Neurosurgical Intervention" = get_prior_stats(
-      models$"Neurosurgical Intervention"
-    ),
-    "External Ventricular Drain" = get_prior_stats(
-      models$"External Ventricular Drain"
-    ),
-    "Days of Mechanical Ventilation" = get_prior_stats(
-      models$"Days of Mechanical Ventilation"
-    ),
+    "Neurosurgical Intervention" = get_prior_stats(models$"Neurosurgical Intervention"),
+    "External Ventricular Drain" = get_prior_stats(models$"External Ventricular Drain"),
+    "Days of Mechanical Ventilation" = get_prior_stats(models$"Days of Mechanical Ventilation"),
     "Tracheostomy" = get_prior_stats(models$"Tracheostomy"),
-    "Withdrawal of Life-Sustaining Therapy" = get_prior_stats(
-      models$"Withdrawal of Life-Sustaining Therapy"
-    ),
-    "Early Withdrawal of Life-Sustaining Therapy" = get_prior_stats(
-      models$"Early Withdrawal of Life-Sustaining Therapy"
-    ),
+    "Withdrawal of Life-Sustaining Therapy" = get_prior_stats(models$"Withdrawal of Life-Sustaining Therapy"),
+    "Early Withdrawal of Life-Sustaining Therapy" = get_prior_stats(models$"Early Withdrawal of Life-Sustaining Therapy"),
     "DNR Order" = get_prior_stats(models$"DNR Order"),
     .id = "Outcome"
   )
@@ -381,20 +342,15 @@ table_2_priors_function <- function(models) {
       or_1.2 = md("**Probability of substantial difference (aOR > 1.2)**"),
       rope = md("**ROPE**")
     ) |>
-    fmt_number(columns = 5:7, decimals = 2) |>
+    # Removed fmt_number() here too
     cols_width(Outcome ~ px(375), 2:3 ~ px(200), 4 ~ px(150), 5:7 ~ px(125)) |>
     cols_align(align = "left") |>
     tab_style(
       style = cell_text(weight = "bold"),
       locations = cells_stub(rows = everything())
     ) |>
-    tab_footnote(
-      footnote = "Values represent expected values simulated purely from the prior distributions before encountering the data.",
-      locations = cells_column_labels(columns = c(Left, Right))
-    ) |>
-    tab_footnote(
-      footnote = "ROPE = region of practical equivalence (0.95 to 1.05)",
-      locations = cells_column_labels(columns = rope)
+    tab_source_note(
+      source_note = "Values represent expected values simulated purely from the prior distributions before encountering the data. ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; and CI, credible interval."
     )
 
   return(table_2_priors)

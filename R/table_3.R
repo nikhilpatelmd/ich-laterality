@@ -1,5 +1,5 @@
 # --- HELPER: Universal Subset Models ---
-subset_models_for_table4 <- function(
+subset_models_for_table3 <- function(
   all_models,
   scenario,
   prefix = "model_main_"
@@ -56,7 +56,11 @@ process_ordinal <- function(model, label) {
       outcome = label,
       est_label = as.character(glue::glue(
         "{sprintf('%.2f', est_median)} ({sprintf('%.2f', lower)} - {sprintf('%.2f', upper)})"
-      ))
+      )),
+      # Apply formatting function to probabilities
+      prob_diff = format_posterior_prob(prob_diff),
+      prob_sub = format_posterior_prob(prob_sub),
+      prob_rope = format_posterior_prob(prob_rope)
     )
 }
 
@@ -75,7 +79,6 @@ process_vas <- function(model, label, data) {
   data_right$ich_laterality <- factor("Right", levels = c("Left", "Right"))
 
   # 3. Native G-Computation: Get expected posterior predictions directly from brms
-  # This flawlessly handles brmsfit_multiple (imputed) objects!
   pred_left <- brms::posterior_epred(model, newdata = data_left)
   pred_right <- brms::posterior_epred(model, newdata = data_right)
 
@@ -95,55 +98,36 @@ process_vas <- function(model, label, data) {
     est_label = as.character(glue::glue(
       "{sprintf('%.1f', est_median)} ({sprintf('%.1f', lower)} - {sprintf('%.1f', upper)})"
     )),
-    prob_diff = prob_diff,
-    prob_sub = prob_sub,
-    prob_rope = prob_rope
+    # Apply formatting function to probabilities
+    prob_diff = format_posterior_prob(prob_diff),
+    prob_sub = format_posterior_prob(prob_sub),
+    prob_rope = format_posterior_prob(prob_rope)
   )
 }
 
 # --- 3. Unified Table Function ---
-table_4_function <- function(x, models, is_prior = FALSE) {
-  df_mrs <- process_ordinal(
-    models$"Modified Rankin Score",
-    "Modified Rankin Score"
-  )
+table_3_function <- function(x, models, is_prior = FALSE) {
+  df_mrs <- process_ordinal(models$"Modified Rankin Score", "Modified Rankin Score")
   df_mob <- process_ordinal(models$"EuroQOL - Mobility", "EuroQOL - Mobility")
-  df_self <- process_ordinal(
-    models$"EuroQOL - Self-Care",
-    "EuroQOL - Self-Care"
-  )
-  df_act <- process_ordinal(
-    models$"EuroQOL - Usual Activities",
-    "EuroQOL - Usual Activities"
-  )
-  df_pain <- process_ordinal(
-    models$"EuroQOL - Pain/Discomfort",
-    "EuroQOL - Pain/Discomfort"
-  )
-  df_anx <- process_ordinal(
-    models$"EuroQOL - Anxiety/Depression",
-    "EuroQOL - Anxiety/Depression"
-  )
-
+  df_self <- process_ordinal(models$"EuroQOL - Self-Care", "EuroQOL - Self-Care")
+  df_act <- process_ordinal(models$"EuroQOL - Usual Activities", "EuroQOL - Usual Activities")
+  df_pain <- process_ordinal(models$"EuroQOL - Pain/Discomfort", "EuroQOL - Pain/Discomfort")
+  df_anx <- process_ordinal(models$"EuroQOL - Anxiety/Depression", "EuroQOL - Anxiety/Depression")
+  
   df_vas <- process_vas(models$"Euro VAS", "Euro VAS", data = x)
 
   # Dynamic labels based on whether it's a prior predictive check or posterior
-  est_col_label <- ifelse(
-    is_prior,
-    "Prior Effect Estimate (95% CI)",
-    "aOR (95% CI)"
-  )
-  prob_diff_label <- ifelse(
-    is_prior,
-    "Prior Prob. of any diff (aOR > 1)",
-    "Probability of any difference (aOR > 1)"
-  )
-  prob_sub_label <- ifelse(
-    is_prior,
-    "Prior Prob. of substantial diff (aOR > 1.2)",
-    "Probability of a substantial difference (aOR > 1.2)"
-  )
+  est_col_label <- ifelse(is_prior, "Prior Effect Estimate (95% CI)", "aOR (95% CI)")
+  prob_diff_label <- ifelse(is_prior, "Prior Prob. of any diff", "Probability of any difference")
+  prob_sub_label <- ifelse(is_prior, "Prior Prob. of substantial diff", "Probability of a substantial difference")
   prob_rope_label <- ifelse(is_prior, "Prior ROPE", "ROPE")
+
+  # Consolidated Source Note perfectly matching the Style of Table 1 & 2
+  source_note_text <- ifelse(
+    is_prior,
+    "Values represent expected effects simulated purely from the prior distributions before encountering the data. Estimates are Prior Odds Ratios (aOR) for ordinal outcomes and Mean Differences for Euro VAS. ROPE indicates region of practical equivalence (0.95 to 1.05 for aOR; ± 2 points for Euro VAS).",
+    "Values represent Average Marginal Effects (Odds Ratios for ordinal outcomes; Mean Difference in points [0–100] for Euro VAS). Models are adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere. ROPE indicates region of practical equivalence (0.95 to 1.05 for ordinal; ± 2 points for Euro VAS). For Euro VAS, probability of difference is defined as Mean Difference < 0, and substantial difference as < -5 points. aOR indicates adjusted odds ratio; CI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; and IVH, intraventricular hemorrhage."
+  )
 
   bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
     select(outcome, est_label, prob_diff, prob_sub, prob_rope) |>
@@ -155,53 +139,18 @@ table_4_function <- function(x, models, is_prior = FALSE) {
       prob_sub = prob_sub_label,
       prob_rope = prob_rope_label
     ) |>
-    gt::fmt_number(
-      columns = c("prob_diff", "prob_sub", "prob_rope"),
-      decimals = 2
-    ) |>
     gt::cols_align(align = "left", columns = "outcome") |>
     gt::tab_style(
       style = gt::cell_text(weight = "bold"),
       locations = gt::cells_column_labels()
     ) |>
-    gt::tab_footnote(
-      footnote = ifelse(
-        is_prior,
-        "Values represent expected effects simulated purely from the prior distributions before encountering the data. Estimates are Prior Odds Ratios (aOR).",
-        "aOR = adjusted odds ratio, CI = 95% credible interval; adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere Laterality"
-      ),
-      locations = gt::cells_column_labels(columns = "est_label")
+    # Bold the text in the outcome column body cells
+    gt::tab_style(
+      style = gt::cell_text(weight = "bold"),
+      locations = gt::cells_body(columns = "outcome")
     ) |>
-    gt::tab_footnote(
-      footnote = "ROPE = region of practical equivalence, defined as 0.95 to 1.05",
-      locations = gt::cells_column_labels(columns = "prob_rope")
-    ) |>
-    gt::tab_footnote(
-      footnote = "For Euro VAS: Estimate is Mean Difference in points (0-100).",
-      locations = gt::cells_body(
-        columns = "est_label",
-        rows = outcome == "Euro VAS"
-      )
-    ) |>
-    gt::tab_footnote(
-      footnote = "Probability of Mean Difference < 0",
-      locations = gt::cells_body(
-        columns = "prob_diff",
-        rows = outcome == "Euro VAS"
-      )
-    ) |>
-    gt::tab_footnote(
-      footnote = "Probability of Mean Difference < -5 points",
-      locations = gt::cells_body(
-        columns = "prob_sub",
-        rows = outcome == "Euro VAS"
-      )
-    ) |>
-    gt::tab_footnote(
-      footnote = "ROPE for Mean Difference defined as +/- 2 points",
-      locations = gt::cells_body(
-        columns = "prob_rope",
-        rows = outcome == "Euro VAS"
-      )
+    # The single unified source note
+    gt::tab_source_note(
+      source_note = source_note_text
     )
 }
