@@ -146,8 +146,7 @@ table_2_function <- function(x, models) {
     .id = "Outcome"
   )
 
-  # --- 3. Final GT Table Construction ---
-  table_2 <- total_n |>
+table_2 <- total_n |>
     left_join(total_stats, by = "Outcome") |>
     gt(rowname_col = "Outcome") |>
     tab_stubhead(label = "Outcome") |>
@@ -160,11 +159,13 @@ table_2_function <- function(x, models) {
       or_1.2 = md("**Probability of substantial difference (Est > 1.2)**"),
       rope = md("**ROPE**")
     ) |>
-    # Removed fmt_number() since values are now pre-formatted strings (e.g. "> 99.9%")
     cols_width(Outcome ~ px(375), 2:3 ~ px(175), 4 ~ px(150), 5:7 ~ px(125)) |>
-    cols_align(align = "left") |>
+    # 1. Align all columns left explicitly
+    cols_align(align = "left", columns = everything()) |>
+    # 2. Align the overall table left on the page
+    tab_options(table.align = "left") |>
     tab_style(
-      style = cell_text(weight = "bold"),
+      style = cell_text(weight = "bold", align = "left"),
       locations = cells_stub(rows = everything())
     ) |>
     tab_source_note(
@@ -342,16 +343,17 @@ table_2_priors_function <- function(models) {
       or_1.2 = md("**Probability of substantial difference (aOR > 1.2)**"),
       rope = md("**ROPE**")
     ) |>
-    # Removed fmt_number() here too
     cols_width(Outcome ~ px(375), 2:3 ~ px(200), 4 ~ px(150), 5:7 ~ px(125)) |>
-    cols_align(align = "left") |>
+    # 1. Align all columns left explicitly
+    cols_align(align = "left", columns = everything()) |>
+    # 2. Align the overall table left on the page
+    tab_options(table.align = "left") |>
     tab_style(
-      style = cell_text(weight = "bold"),
+      style = cell_text(weight = "bold", align = "left"),
       locations = cells_stub(rows = everything())
     ) |>
     tab_source_note(
       source_note = "Values represent expected values simulated purely from the prior distributions before encountering the data. ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; and CI, credible interval."
     )
 
-  return(table_2_priors)
 }

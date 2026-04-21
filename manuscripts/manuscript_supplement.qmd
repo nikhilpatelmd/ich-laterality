@@ -1,33 +1,126 @@
 ---
-title: Patients with Left Hemispheric Intracerebral Hemorrhage are Less Likely to Receive Neurosurgical Intervention
-subtitle: Supplementary Appendix
+title: "Association of Hemispheric Laterality with Neurosurgery in ICH: A Post-Hoc Bayesian Analysis of ATACH-2 and ERICH"
 authors:
-  - name: Nikhil Patel
+  - name: Nikhil M. Patel
+    degrees: MD, MBA
     orcid: 0000-0002-3193-8590
-    affiliation: Department of Internal Medicine, Wake Forest University School of Medicine
-    roles: data analysis, writing
+    affiliations:
+      - ref: wfsom-int-med
+      - ref: wfsom-neuro
     corresponding: true
-  - name: Matt Jaffa
-    affiliation: Department of Neurology, University of Connecticut School of Medicine
-  - name: Rahul Karamchandani
-    affiliation: Department of Neurology, Wake Forest University School of Medicine
-  - name: Andrew Asimos
-    affiliation: Department of Emergency Medicine, Wake Forest University School of Medicine
-  - name: Jonathan Parish
-    affiliation: Carolina Neurosurgery & Spine Associates
-  - name: Nicholas Allen Morris
-    affiliation: Department of Neurology, University of Maryland School of Medicine
-date: last-modified
+    email: nikhil.m.patel@wfusm.edu
+  - name: Rahul R. Karamchandani
+    degrees: MD
+    affiliations:
+      - ref: wfsom-neuro
+  - name: Matthew N. Jaffa
+    degrees: DO
+    affiliations:
+      - ref: hartford-neuro
+  - name: Liang Wang
+    degrees: PhD
+    affiliations:
+      - ref: advocate-analytics
+  - name: Hongmei Yang
+    degrees: PhD
+    affiliations:
+      - ref: advocate-analytics
+  - name: Rhonda Cadena
+    degrees: MD
+    affiliations:
+      - ref: wfsom-int-med
+  - name: Christa Swisher
+    degrees: MD
+    affiliations:
+      - ref: wfsom-neuro
+  - name: Joe D. Bernard
+    degrees: MD
+    affiliations:
+      - ref: cnsa
+  - name: Jonathan M. Parish
+    degrees: MD
+    affiliations:
+      - ref: cnsa
+  - name: William R. Stetler
+    degrees: MD
+    affiliations:
+      - ref: cnsa
+  - name: Rick Magun
+    degrees: MD
+    affiliations:
+      - ref: buffalo-neuro
+  - name: Aaron Taylor
+    degrees: MD
+    affiliations:
+      - ref: buffalo-neuro
+  - name: Daniel Woo
+    degrees: MD
+    affiliations:
+      - ref: buffalo-neuro
+  - name: Adnan Qureshi
+    degrees: MD
+    affiliations:
+      - ref: missouri-neuro
+  - name: Andrew W. Asimos
+    degrees: MD
+    affiliations:
+      - ref: wfsom-em
+  - name: Nicholas A. Morris
+    degrees: MD
+    affiliations:
+      - ref: umaryland-neuro
+
+affiliations:
+  - id: wfsom-int-med
+    name: Department of Internal Medicine, Wake Forest School of Medicine, Advocate Health
+    city: Charlotte
+    state: NC
+    country: USA
+  - id: wfsom-neuro
+    name: Department of Neurology, Neurosciences Institute, Wake Forest School of Medicine, Advocate Health
+    city: Charlotte
+    state: NC
+    country: USA
+  - id: hartford-neuro
+    name: Division of Neurocritical Care, Department of Neurology, Ayer Neuroscience Institute, Hartford Hospital
+    city: Hartford
+    state: CT
+    country: USA
+  - id: advocate-analytics
+    name: Clinical Quality Analytics, Advocate Health
+    city: Charlotte
+    state: NC
+    country: USA
+  - id: cnsa
+    name: Carolina Neurosurgery & Spine Associates, Department of Neurosurgery, Neurosciences Institute, Wake Forest University School of Medicine, Advocate Health
+    city: Charlotte
+    state: NC
+    country: USA
+  - id: buffalo-neuro
+    name: Department of Neurology, University at Buffalo Jacobs School of Medicine & Biomedical Sciences
+    city: Buffalo
+    state: NY
+    country: USA
+  - id: missouri-neuro
+    name: Zeenat Qureshi Stroke Institute and Department of Neurology, University of Missouri-Columbia
+    city: Columbia
+    state: MO
+    country: USA
+  - id: wfsom-em
+    name: Department of Emergency Medicine, Neurosciences Institute, Advocate Health
+    city: Charlotte
+    state: NC
+    country: USA
+  - id: umaryland-neuro
+    name: Department of Neurology, Program in Trauma, University of Maryland School of Medicine
+    city: Baltimore
+    state: MD
+    country: USA
 format:
-  html:
-    embed-resources: true
-    echo: false
-  docx: default
-abstract: |
+  docx:
+    reference-doc: custom-reference.docx
 bibliography: references.bib
-csl: jama.csl
-table-of-contents: false
-toc-title: Contents
+csl: stroke.csl
 
 ---
 

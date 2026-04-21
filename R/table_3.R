@@ -117,7 +117,7 @@ table_3_function <- function(x, models, is_prior = FALSE) {
   df_vas <- process_vas(models$"Euro VAS", "Euro VAS", data = x)
 
   # Dynamic labels based on whether it's a prior predictive check or posterior
-  est_col_label <- ifelse(is_prior, "Prior Effect Estimate (95% CI)", "aOR (95% CI)")
+  est_col_label <- ifelse(is_prior, "Prior Effect Estimate (95% CI)", "aOR / Mean Diff (95% CI)")
   prob_diff_label <- ifelse(is_prior, "Prior Prob. of any diff", "Probability of any difference")
   prob_sub_label <- ifelse(is_prior, "Prior Prob. of substantial diff", "Probability of a substantial difference")
   prob_rope_label <- ifelse(is_prior, "Prior ROPE", "ROPE")
@@ -129,7 +129,7 @@ table_3_function <- function(x, models, is_prior = FALSE) {
     "Values represent Average Marginal Effects (Odds Ratios for ordinal outcomes; Mean Difference in points [0–100] for Euro VAS). Models are adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere. ROPE indicates region of practical equivalence (0.95 to 1.05 for ordinal; ± 2 points for Euro VAS). For Euro VAS, probability of difference is defined as Mean Difference < 0, and substantial difference as < -5 points. aOR indicates adjusted odds ratio; CI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; and IVH, intraventricular hemorrhage."
   )
 
-  bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
+bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
     select(outcome, est_label, prob_diff, prob_sub, prob_rope) |>
     gt::gt() |>
     gt::cols_label(
@@ -139,17 +139,18 @@ table_3_function <- function(x, models, is_prior = FALSE) {
       prob_sub = prob_sub_label,
       prob_rope = prob_rope_label
     ) |>
-    gt::cols_align(align = "left", columns = "outcome") |>
+    # 1. Align all columns left
+    gt::cols_align(align = "left", columns = gt::everything()) |>
+    # 2. Align the overall table left on the page
+    gt::tab_options(table.align = "left") |>
     gt::tab_style(
       style = gt::cell_text(weight = "bold"),
       locations = gt::cells_column_labels()
     ) |>
-    # Bold the text in the outcome column body cells
     gt::tab_style(
       style = gt::cell_text(weight = "bold"),
       locations = gt::cells_body(columns = "outcome")
     ) |>
-    # The single unified source note
     gt::tab_source_note(
       source_note = source_note_text
     )

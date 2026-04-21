@@ -84,7 +84,7 @@ make_grotta_bars <- function(model) {
       color = "grey20",
       label.color = NA,
       fontface = "bold",
-      size = (BASE_PT / 0.75) / 2.835, # convert pt → ggplot size units
+      size = (BASE_PT / 0.6) / 2.835, # convert pt → ggplot size units
       family = "Arial",
       label.padding = unit(c(0.15, 0.2, 0.15, 0.2), "lines")
     ) +

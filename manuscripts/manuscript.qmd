@@ -116,14 +116,9 @@ affiliations:
     city: Baltimore
     state: MD
     country: USA
-date: last-modified
-preview:
-  port: 4200
 format:
-  html:
-    embed-resources: true
-  docx: default
-abstract: |
+  docx:
+    reference-doc: custom-reference.docx
 bibliography: references.bib
 csl: stroke.csl
 table-of-contents: false
@@ -201,9 +196,9 @@ Our primary functional outcome was modified Rankin score (mRS) at 90 days analyz
 
 ### Statistical Analysis
 
-To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models adjusted for the specified covariates below. We also included the study that patient came from as a random intercept. We employed Bayesian statistical methods for this analysis due to several advantages over traditional frequentist approaches. Bayesian methods allow for the incorporation of prior knowledge or beliefs into the analysis, which can be particularly useful in observational studies where prior information about relationships between variables may exist. This is achieved through the use of prior distributions, which are combined with the observed data to produce posterior distributions representing updated beliefs about the parameters of interest. Furthermore, Bayesian methods provide a natural framework for quantifying uncertainty through credible intervals, which offer a more intuitive interpretation than frequentist confidence intervals. Finally, Bayesian modeling facilitates the estimation of posterior probabilities, allowing for direct probabilistic statements about hypotheses, such as the probability that an odds ratio is greater than 1, which is often of greater clinical relevance than a p-value. [@dogucuBayesRulesIntroduction; @mcelreathStatisticalRethinkingBayesian2020]
+To estimate the effect of hemispheric laterality on the outcomes of interest, we fitted hierarchal Bayesian regression models adjusted for the specified covariates below. We also included the study that patient came from as a random intercept. We employed Bayesian statistical methods for this analysis due to several advantages over traditional frequentist approaches. Bayesian methods allow for the incorporation of prior knowledge or beliefs into the analysis, which can be particularly useful in observational studies where prior information about relationships between variables may exist. This is achieved through the use of prior distributions, which are combined with the observed data to produce posterior distributions representing updated beliefs about the parameters of interest. Furthermore, Bayesian methods provide a natural framework for quantifying uncertainty through credible intervals, which offer a more intuitive interpretation than frequentist confidence intervals. Finally, Bayesian modeling facilitates the estimation of posterior probabilities, allowing for direct probabilistic statements about hypotheses, such as the probability that an effect size (e.g., odds ratio [OR] or incidence rate ratio [IRR]) is greater than 1, which is often of greater clinical relevance than a p-value. [@dogucuBayesRulesIntroduction; @mcelreathStatisticalRethinkingBayesian2020] This report adheres to the Bayesian Analysis Reporting Guidelines. [@kruschkeBayesianAnalysisReporting2021] 
 
-This report follows suggestions from the Bayesian Analysis Reporting Guidelines. [@kruschkeBayesianAnalysisReporting2021] For binary endpoints, hierarchal Bayesian logistic regression models were used. For ordinal endpoints, hierarchal Bayesian ordinal logisitic regression models were used. All analyses were performed in R version 4.4.2 (R Foundation for Statistical Computing, Vienna, Austria) using the 'brms' and 'tidybayes' packages.
+For binary and ordinal endpoints, we utilized hierarchical Bayesian logistic and ordinal logistic regression models, respectively. For non-binary outcomes, we employed specialized distributional models to avoid data dichotomization and accurately reflect the underlying data generating processes. Specifically, days of mechanical ventilation, a count-based outcome characterized by excess zeros, was modeled using a hierarchical Bayesian zero-inflated negative binomial regression. Exponentiated coefficients for the count component of this model are reported as incidence rate ratios (IRR). The European Quality of Life Visual Analog Scale (EQ-VAS), a bounded continuous measure, was scaled to a proportion and modeled using a hierarchical Bayesian zero-one inflated beta (ZOIB) regression. To maximize clinical interpretability, we applied G-computation to derive the average marginal expected mean difference on the original 0–100 point scale, rather than reporting proportional odds. All analyses were performed in R version 4.4.2 (R Foundation for Statistical Computing, Vienna, Austria). ALl packages used for the analysis are listed in the Supplementary Appendix.
 
 #### Covariate Selection
 
@@ -215,7 +210,7 @@ We applied four sets of prior distributions for all models to assess the robustn
 
 #### Computation and Description of the Posterior Distribution
 
-We report the following metrics for the effect of hemispheric laterality on the primary and secondary outcomes: 1) median odds ratio (OR) of the posterior distribution with 95% credible interval; 2) probability of any difference (P\[OR\] \> 1); 3) probability of a substantial difference (P\[OR\] \> 1.2) as defined by the study authors; 4) percent of the posterior distribution outside of the region of practical equivalence as defined by the study authors (ROPE; 0.95 \> P\[OR\] \> 1.05). A description of the rationale for these thresholds is available in the supplementary material.
+We report the following metrics for the effect of hemispheric laterality: 1) median posterior effect size (OR, IRR, or mean difference) with 95% credible intervals; 2) probability of any directional difference (e.g., P\[OR\] \> 1 or P\[Mean Difference\] \< 0); 3) probability of a substantial difference defined *a priori* (e.g., P\[OR\] \> 1.2 or P\[Mean Difference\] \< -5 points); and 4) percentage of the posterior distribution falling outside a predefined region of practical equivalence (ROPE; e.g., 0.95 \< OR \< 1.05, or ±2 points for mean differences). The rationale for these thresholds is detailed in the supplementary material.
 
 #### Missing Data Treatment and Sensitivity Analyses
 
@@ -350,8 +345,6 @@ We found that patients with left hemispheric ICH were less likely to receive agg
 
 ## Tables
 
-### Table 1 - Baseline Characteristics
-
 ```{r}
 #| echo: false
 #| output: true
@@ -360,6 +353,9 @@ We found that patients with left hemispheric ICH were less likely to receive agg
 
 table_1
 ```
+
+{{< pagebreak >}}
+
 
 ```{r}
 #| echo: false
@@ -370,6 +366,9 @@ table_1
 table_2_neutral
 ```
 
+{{< pagebreak >}}
+
+
 ```{r}
 #| echo: false
 #| output: true
@@ -378,3 +377,10 @@ table_2_neutral
 
 table_3_neutral
 ```
+
+{{< pagebreak >}}
+
+## Figures
+
+![Prior Sensitivity Analysis for Neurosurgical Intervention](../figures/figure_sensitivity_neurosurgery_evac.pdf){#fig-1}
+
