@@ -127,9 +127,7 @@ csl: stroke.csl
 ```{r setup}
 #| echo: false
 #| output: false
-
 #| fig-height: 12
-
 library(targets)
 library(tidyverse)
 library(withr)
@@ -172,7 +170,6 @@ theme_ich <- function(base_family = "Figtree", base_size = 10) {
 
 # load data and models
 with_dir(here(), tar_load(ich_aggressive))
-
 ```
 
 # Details of Statistical Analysis
@@ -197,7 +194,6 @@ For our primary outcome model we specified the following DAG:
 #| echo: false
 #| warning: false
 #| fig-height: 6
-
 library(ggokabeito)
 
 with_dir(here(), tar_load(dag_neurosurgery))
@@ -220,7 +216,6 @@ dag_neurosurgery |>
   scale_fill_manual(values = status_colors, na.value = "grey20") +
   guides(color = "none", fill = "none") +
   theme_dag()
-
 ```
 
 Before considering if covariate adjustment is indicated for our outcome of interest, we need to establish the difference between the total, direct, and indirect effect of hemispheric laterality on neurosurgical intervention and the effect with which we are interested. [@tennantUseDirectedAcyclic2021]
@@ -243,7 +238,6 @@ We specified the following DAG when examining functional outcomes (e.g., modifie
 #| echo: false
 #| warning: false
 #| fig-height: 8.5
-
 with_dir(here(), tar_load(dag_outcomes))
 
 dag_outcomes |>
@@ -262,10 +256,11 @@ dag_outcomes |>
   scale_fill_manual(values = status_colors, na.value = "grey20") +
   guides(color = "none", fill = "none") +
   theme_dag()
-
 ```
 
-We are again interested in the direct effect of hemispheric laterality on functional outcomes, independent of the influence of neurosurgical intervention. Therefore, our statistical models for functional outcomes were adjusted for age, admission GCS, ICH location, ICH volume, presence of IVH, and neurosurgical intervention. This approach allows us to isolate the prognostic significance of the affected hemisphere on functional outcomes.
+In contrast to the primary outcome analysis, where the target estimand was the direct effect of laterality on treatment decisions, the target estimand for functional outcomes was the **total effect** of hemispheric laterality. This total effect encompasses all causal pathways from laterality to functional outcome, including those mediated through neurosurgical intervention, withdrawal of life-sustaining therapy, and participation in rehabilitation. This estimand was selected because it captures the overall prognostic significance of hemispheric laterality as encountered in clinical practice — reflecting both the intrinsic biological consequences of the affected hemisphere and any downstream differences in management.
+
+Conditioning on neurosurgical intervention — a mediator on the causal pathway from laterality to functional outcome — would block part of this clinically relevant pathway and could introduce collider stratification bias by opening non-causal associations between laterality and outcome within strata of the mediator. Furthermore, valid estimation of the controlled direct effect would require adjustment for all confounders of the mediator–outcome relationship, some of which (e.g., hematoma expansion, clinical deterioration) may themselves be influenced by the exposure, creating intermediate confounding that cannot be resolved through standard regression adjustment. Accordingly, our functional outcome models were adjusted for age, admission GCS, ICH location, ICH volume, presence of IVH, and time from symptom onset to emergency department arrival, but did not include neurosurgical intervention or other post-baseline treatment variables as covariates.
 
 ## Priors
 
@@ -274,7 +269,6 @@ We are again interested in the direct effect of hemispheric laterality on functi
 ```{r prior definitions}
 #| echo: false
 #| output: false
-
 neutral_mean <- 0
 neutral_sd <- 0.35
 neutral_lower_OR <- exp(neutral_mean - (1.96 * neutral_sd))
@@ -294,7 +288,6 @@ flat_mean <- 0
 flat_sd <- 5
 flat_lower_OR <- exp(flat_mean - (1.96 * flat_sd))
 flat_upper_OR <- exp(flat_mean + (1.96 * flat_sd))
-
 ```
 
 In defining prior distributions, we generally followed suggestions from previous literature. [@zampieriUsingBayesianMethods2021; @kruschkeBayesianAnalysisReporting2021; @gelmanBayesianWorkflow2020] Specifically, we defined 4 sets of priors for each outcome:
@@ -318,9 +311,7 @@ Prior predictive checks were performed to understand the implications of the pri
 #| warning: false
 #| tbl-cap: "Prior predictive check results for neurosurgery"
 #| label: "tbl-neurosurgery-prior-check"
-
 with_dir(here(), tar_read(prior_check_neurosurgery))
-
 ```
 
 #### Ventriculostomy
@@ -330,10 +321,7 @@ with_dir(here(), tar_read(prior_check_neurosurgery))
 #| warning: false
 #| tbl-cap: "Prior predictive check results for ventriculostomy"
 #| label: "tbl-evd-prior-check"
-
 with_dir(here(), tar_read(prior_check_evd))
-
-
 ```
 
 #### Tracheostomy
@@ -343,10 +331,7 @@ with_dir(here(), tar_read(prior_check_evd))
 #| warning: false
 #| tbl-cap: "Prior predictive check results for tracheostomy"
 #| label: "tbl-trach-prior-check"
-
 with_dir(here(), tar_read(prior_check_tracheostomy))
-
-
 ```
 
 
@@ -357,10 +342,7 @@ with_dir(here(), tar_read(prior_check_tracheostomy))
 #| warning: false
 #| tbl-cap: "Prior predictive check results for days of mechanical ventilation"
 #| label: "tbl-vent-prior-check"
-
 with_dir(here(), tar_read(prior_check_days_mechanical_ventilation))
-
-
 ```
 
 
@@ -371,10 +353,7 @@ with_dir(here(), tar_read(prior_check_days_mechanical_ventilation))
 #| warning: false
 #| tbl-cap: "Prior predictive check results for comfort care"
 #| label: "tbl-comfort-prior-check"
-
 with_dir(here(), tar_read(prior_check_comfort))
-
-
 ```
 
 
@@ -385,10 +364,7 @@ with_dir(here(), tar_read(prior_check_comfort))
 #| warning: false
 #| tbl-cap: "Prior predictive check results for early WLST"
 #| label: "tbl-earlywlst-prior-check"
-
 with_dir(here(), tar_read(prior_check_early_wlst))
-
-
 ```
 
 #### DNR
@@ -398,10 +374,7 @@ with_dir(here(), tar_read(prior_check_early_wlst))
 #| warning: false
 #| tbl-cap: "Prior predictive check results for DNR"
 #| label: "tbl-DNR-prior-check"
-
 with_dir(here(), tar_read(prior_check_dnr_binary))
-
-
 ```
 
 #### mRS 90
@@ -411,10 +384,7 @@ with_dir(here(), tar_read(prior_check_dnr_binary))
 #| warning: false
 #| tbl-cap: "Prior predictive check results for modified Rankin score at 90 days"
 #| label: "tbl-mrs90-prior-check"
-
 with_dir(here(), tar_read(prior_check_mrs_90))
-
-
 ```
 
 #### EuroOOL Mobility 90
@@ -425,8 +395,6 @@ with_dir(here(), tar_read(prior_check_mrs_90))
 #| tbl-cap: "Prior predictive check results for EuroQOL - Mobility at 90 days"
 #| label: "tbl-euro-mobility-prior-check"
 with_dir(here(), tar_read(prior_check_euro_mobility_90))
-
-
 ```
 
 #### EuroOOL Self-Care 90
@@ -438,8 +406,6 @@ with_dir(here(), tar_read(prior_check_euro_mobility_90))
 #| label: "tbl-euro-selfcare-prior-check"
 #|
 with_dir(here(), tar_read(prior_check_euro_selfcare_90))
-
-
 ```
 
 #### EuroOOL Usual Activities 90
@@ -451,8 +417,6 @@ with_dir(here(), tar_read(prior_check_euro_selfcare_90))
 #| label: "tbl-euro-usual-prior-check"
 #|
 with_dir(here(), tar_read(prior_check_euro_usual_90))
-
-
 ```
 
 #### EuroOOL Pain/Discomfort 90
@@ -464,8 +428,6 @@ with_dir(here(), tar_read(prior_check_euro_usual_90))
 #| label: "tbl-euro-pain-prior-check"
 #|
 with_dir(here(), tar_read(prior_check_euro_pain_90))
-
-
 ```
 
 #### EuroOOL Anxiety/Depression 90
@@ -475,10 +437,7 @@ with_dir(here(), tar_read(prior_check_euro_pain_90))
 #| warning: false
 #| #| tbl-cap: "Prior predictive check results for EuroQOL - Anxiety/Depression at 90 days"
 #| label: "tbl-euro-anxiety-prior-check"
-
 with_dir(here(), tar_read(prior_check_euro_anxiety_90))
-
-
 ```
 
 #### EuroOOL VAS 90
@@ -490,8 +449,169 @@ with_dir(here(), tar_read(prior_check_euro_anxiety_90))
 #| label: "tbl-euro-vas-prior-check"
 #|
 with_dir(here(), tar_read(prior_check_euro_anxiety_90))
+```
 
+## Missing Data Assessment
 
+As described in the primary manuscript, the primary analysis used multiple imputation by chained equations (MICE) under a Missing at Random (MAR) assumption. This section provides detailed reporting of missingness patterns across the analytic cohort, assessments supporting the MAR assumption, and diagnostics evaluating the quality of the imputed datasets.
+
+### Missingness for 90-Day Outcomes by Laterality Group
+
+Baseline covariates used in model adjustment (age, GCS, ICH volume, ICH location, IVH) had minimal missingness (<1%). However, 90-day follow-up outcomes had more substantial missingness due to loss to follow-up and differences in outcome ascertainment between the ATACH-2 and ERICH study protocols. The table below summarizes missingness for each 90-day outcome by hemispheric laterality group.
+
+```{r missingness-summary-table}
+#| echo: false
+#| output: true
+#| tbl-cap: "Missingness for 90-Day Outcomes by Hemispheric Laterality"
+#| label: "tbl-missingness-summary"
+outcome_vars <- c(
+  "mrs_90", "euro_vas_90", "euro_mobility_90", "euro_selfcare_90",
+  "euro_usual_90", "euro_pain_90", "euro_anxiety_90"
+)
+
+outcome_labels <- c(
+  "mrs_90" = "mRS at 90 Days",
+  "euro_vas_90" = "EQ-VAS at 90 Days",
+  "euro_mobility_90" = "EQ-5D Mobility",
+  "euro_selfcare_90" = "EQ-5D Self-Care",
+  "euro_usual_90" = "EQ-5D Usual Activities",
+  "euro_pain_90" = "EQ-5D Pain/Discomfort",
+  "euro_anxiety_90" = "EQ-5D Anxiety/Depression"
+)
+
+missingness_long <- ich_aggressive |>
+  tidyr::pivot_longer(
+    cols = all_of(outcome_vars),
+    names_to = "outcome",
+    values_to = "value"
+  ) |>
+  group_by(ich_laterality, outcome) |>
+  summarise(
+    n = n(),
+    missing = sum(is.na(value)),
+    available = sum(!is.na(value)),
+    .groups = "drop"
+  ) |>
+  mutate(
+    pct_missing = scales::percent(missing / n, accuracy = 0.1),
+    display = paste0(missing, "/", n, " (", pct_missing, ")"),
+    outcome = outcome_labels[outcome]
+  )
+
+missingness_long |>
+  select(outcome, ich_laterality, display) |>
+  tidyr::pivot_wider(
+    names_from = ich_laterality,
+    values_from = display
+  ) |>
+  gt::gt() |>
+  gt::cols_label(
+    outcome = "Outcome",
+    Left = "Left Hemisphere",
+    Right = "Right Hemisphere"
+  ) |>
+  gt::tab_source_note(
+    source_note = "Values are n missing / N total (%). mRS indicates modified Rankin Scale; EQ-VAS, European Quality of Life Visual Analog Scale; EQ-5D, European Quality of Life-5 Dimensions."
+  )
+```
+
+### Missingness Patterns by Laterality and Study
+
+The following figures show the percentage of missing data across all analysis variables, stratified by hemispheric laterality and by study. Missingness patterns were largely driven by differences between the ATACH-2 and ERICH study protocols rather than by hemispheric laterality.
+
+```{r missing-data-by-laterality}
+#| echo: false
+#| output: true
+#| fig-cap: "Percentage of missing data by hemispheric laterality"
+#| label: "fig-missing-by-laterality"
+#| fig-height: 8
+with_dir(here(), tar_read(missing_data_by_ich_laterality))
+```
+
+```{r missing-data-by-study}
+#| echo: false
+#| output: true
+#| fig-cap: "Percentage of missing data by study"
+#| label: "fig-missing-by-study"
+#| fig-height: 8
+with_dir(here(), tar_read(missing_data_by_study))
+```
+
+### Assessment of Missing at Random Assumption
+
+To assess whether missingness in 90-day outcomes was associated with key baseline covariates, we generated shadow plots comparing the distribution of each covariate among patients with observed versus missing values. If the distributions are similar, this supports the MAR assumption — that missingness is conditionally independent of the unobserved outcome given the observed covariates.
+
+#### mRS at 90 Days
+
+```{r shadow-age-mrs}
+#| echo: false
+#| output: true
+#| fig-height: 6
+with_dir(here(), tar_read(missingness_check_age_mrs_90))
+```
+
+```{r shadow-gcs-mrs}
+#| echo: false
+#| output: true
+#| fig-height: 6
+with_dir(here(), tar_read(missingness_check_gcs_baseline_mrs_90))
+```
+
+```{r shadow-volume-mrs}
+#| echo: false
+#| output: true
+#| fig-height: 6
+with_dir(here(), tar_read(missingness_check_ich_volume_baseline_mrs_90))
+```
+
+```{r shadow-time-mrs}
+#| echo: false
+#| output: true
+#| fig-height: 6
+with_dir(here(), tar_read(missingness_check_time_symptoms_to_ed_mrs_90))
+```
+
+#### EQ-VAS at 90 Days
+
+```{r shadow-age-vas}
+#| echo: false
+#| output: true
+#| fig-height: 6
+with_dir(here(), tar_read(missingness_check_age_euro_vas_90))
+```
+
+```{r shadow-gcs-vas}
+#| echo: false
+#| output: true
+#| fig-height: 6
+with_dir(here(), tar_read(missingness_check_gcs_baseline_euro_vas_90))
+```
+
+```{r shadow-volume-vas}
+#| echo: false
+#| output: true
+#| fig-height: 6
+with_dir(here(), tar_read(missingness_check_ich_volume_baseline_euro_vas_90))
+```
+
+```{r shadow-time-vas}
+#| echo: false
+#| output: true
+#| fig-height: 6
+with_dir(here(), tar_read(missingness_check_time_symptoms_to_ed_euro_vas_90))
+```
+
+### Imputation Diagnostics
+
+The following figure presents diagnostic checks for the MICE imputation procedure, comparing the distributions of observed data against imputed values across the 20 imputed datasets. Consistency between the observed and imputed distributions supports the plausibility of the imputation model.
+
+```{r imputation-diagnostics}
+#| echo: false
+#| output: true
+#| fig-cap: "Imputation diagnostic plots comparing observed and imputed distributions"
+#| label: "fig-imputation-diagnostics"
+#| fig-height: 12
+with_dir(here(), tar_read(imputed_visualizations))
 ```
 
 ## Posterior Simulation Diagnostics
@@ -514,7 +634,6 @@ Posterior Predictive Checks: We conducted posterior predictive checks to evaluat
 #| label: "tbl-neurosurgical-posterior-diag"
 #|
 with_dir(here(), tar_read(diag_posterior_neutral_neurosurgery))
-
 ```
 
 #### Ventriculostomy
@@ -524,9 +643,7 @@ with_dir(here(), tar_read(diag_posterior_neutral_neurosurgery))
 #| fig-height: 10
 #| tbl-cap: "Posterior diagnostic checks for Ventriculostomy"
 #| label: "tbl-evd-posterior-diag"
-
 with_dir(here(), tar_read(diag_posterior_neutral_evd))
-
 ```
 
 #### Tracheostomy
@@ -536,9 +653,7 @@ with_dir(here(), tar_read(diag_posterior_neutral_evd))
 #| fig-height: 10
 #| tbl-cap: "Posterior diagnostic checks for Tracheostomy"
 #| label: "tbl-trach-posterior-diag"
-
 with_dir(here(), tar_read(diag_posterior_neutral_tracheostomy))
-
 ```
 
 #### Days of Mechanical Ventilation
@@ -550,7 +665,6 @@ with_dir(here(), tar_read(diag_posterior_neutral_tracheostomy))
 #| label: "tbl-vent-posterior-diag"
 #|
 with_dir(here(), tar_read(diag_posterior_neutral_days_mechanical_ventilation))
-
 ```
 
 #### Comfort Care
@@ -562,7 +676,6 @@ with_dir(here(), tar_read(diag_posterior_neutral_days_mechanical_ventilation))
 #| label: "tbl-comfort-posterior-diag"
 #|
 with_dir(here(), tar_read(diag_posterior_neutral_comfort))
-
 ```
 
 #### Early WLST
@@ -574,7 +687,6 @@ with_dir(here(), tar_read(diag_posterior_neutral_comfort))
 #| label: "tbl-earlywlst-posterior-diag"
 #|
 with_dir(here(), tar_read(diag_posterior_neutral_early_wlst))
-
 ```
 
 #### DNR
@@ -586,7 +698,6 @@ with_dir(here(), tar_read(diag_posterior_neutral_early_wlst))
 #| label: "tbl-dnr-posterior-diag"
 #|
 with_dir(here(), tar_read(diag_posterior_neutral_dnr_binary))
-
 ```
 
 #### mRS 90
@@ -598,7 +709,6 @@ with_dir(here(), tar_read(diag_posterior_neutral_dnr_binary))
 #| label: "tbl-mrs90-posterior-diag"
 #|
 with_dir(here(), tar_read(diag_posterior_mrs_90_minimal))
-
 ```
 
 #### EuroQOL Mobility 90
@@ -608,9 +718,7 @@ with_dir(here(), tar_read(diag_posterior_mrs_90_minimal))
 #| fig-height: 10
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Mobility at 90 days"
 #| label: "tbl-euro-mobility-posterior-diag"
-
 with_dir(here(), tar_read(diag_posterior_neutral_euro_mobility_90_canonical))
-
 ```
 
 #### EuroQOL Self-Care 90
@@ -620,9 +728,7 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_mobility_90_canonical))
 #| fig-height: 10
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Self-Care at 90 days"
 #| label: "tbl-euro-selfcaremobility-posterior-diag"
-
 with_dir(here(), tar_read(diag_posterior_neutral_euro_selfcare_90_canonical))
-
 ```
 
 #### EuroQOL Usual Activities 90
@@ -632,9 +738,7 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_selfcare_90_canonical))
 #| fig-height: 10
 #| #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Usual Activities at 90 days"
 #| label: "tbl-euro-usual-posterior-diag"
-
 with_dir(here(), tar_read(diag_posterior_neutral_euro_usual_90_canonical))
-
 ```
 
 #### EuroQOL Pain/Discomfort 90
@@ -644,9 +748,7 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_usual_90_canonical))
 #| fig-height: 10
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Pain/Discomfort at 90 days"
 #| label: "tbl-euro-pain-posterior-diag"
-
 with_dir(here(), tar_read(diag_posterior_neutral_euro_pain_90_canonical))
-
 ```
 
 #### EuroQOL Anxiety/Depression 90
@@ -656,9 +758,7 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_pain_90_canonical))
 #| fig-height: 10
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Anxiety/Depression at 90 days"
 #| label: "tbl-euro-anxiety-posterior-diag"
-
 with_dir(here(), tar_read(diag_posterior_neutral_euro_anxiety_90_canonical))
-
 ```
 
 #### EuroQOL VAS 90
@@ -668,9 +768,7 @@ with_dir(here(), tar_read(diag_posterior_neutral_euro_anxiety_90_canonical))
 #| fig-height: 10
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - VAS at 90 days"
 #| label: "tbl-euro-vas-posterior-diag"
-
 with_dir(here(), tar_read(diag_posterior_vas_90))
-
 ```
 
 ### Posterior predictive checks
@@ -681,9 +779,7 @@ with_dir(here(), tar_read(diag_posterior_vas_90))
 #| echo: false
 #| tbl-cap: "Posterior predictive checks for neurosurgical intervention"
 #| label: "tbl-neurosurgery-posterior-checks"
-
 with_dir(here(), tar_read(post_pred_check_neurosurgery))
-
 ```
 
 #### Ventriculostomy
@@ -692,9 +788,7 @@ with_dir(here(), tar_read(post_pred_check_neurosurgery))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for ventriculostomy"
 #| label: "tbl-evd-posterior-checks"
-
 with_dir(here(), tar_read(post_pred_check_evd))
-
 ```
 
 #### Tracheostomy
@@ -703,9 +797,7 @@ with_dir(here(), tar_read(post_pred_check_evd))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for tracheostomy"
 #| label: "tbl-trach-posterior-checks"
-
 with_dir(here(), tar_read(post_pred_check_tracheostomy))
-
 ```
 
 #### Days of Mechanical Ventilation
@@ -714,9 +806,7 @@ with_dir(here(), tar_read(post_pred_check_tracheostomy))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for days of mechanical ventilation"
 #| label: "tbl-vent-posterior-checks"
-
 with_dir(here(), tar_read(post_pred_check_days_mechanical_ventilation))
-
 ```
 
 #### Comfort Care
@@ -725,9 +815,7 @@ with_dir(here(), tar_read(post_pred_check_days_mechanical_ventilation))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for comfort care"
 #| label: "tbl-comfort-posterior-checks"
-
 with_dir(here(), tar_read(post_pred_check_comfort))
-
 ```
 
 #### Early WLST
@@ -736,9 +824,7 @@ with_dir(here(), tar_read(post_pred_check_comfort))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for early WLST"
 #| label: "tbl-earlywlst-posterior-checks"
-
 with_dir(here(), tar_read(post_pred_check_early_wlst))
-
 ```
 
 #### DNR
@@ -747,9 +833,7 @@ with_dir(here(), tar_read(post_pred_check_early_wlst))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for DNR"
 #| label: "tbl-dnr-posterior-checks"
-
 with_dir(here(), tar_read(post_pred_check_dnr_binary))
-
 ```
 
 #### mRS 90
@@ -758,9 +842,7 @@ with_dir(here(), tar_read(post_pred_check_dnr_binary))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for modified Rankin Score 90 days"
 #| label: "tbl-mrs90-posterior-checks"
-
 with_dir(here(), tar_read(post_pred_check_neutral_mrs_90_canonical))
-
 ```
 
 #### EuroQOL Moblity 90
@@ -769,9 +851,7 @@ with_dir(here(), tar_read(post_pred_check_neutral_mrs_90_canonical))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Mobility 90 days"
 #| label: "tbl-euro-mobility-checks"
-
 with_dir(here(), tar_read(post_pred_check_neutral_euro_mobility_90_canonical))
-
 ```
 
 #### EuroQOL Self-Care 90
@@ -780,9 +860,7 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_mobility_90_canonical))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Self-Care 90 days"
 #| label: "tbl-euro-selfcare-checks"
-
 with_dir(here(), tar_read(post_pred_check_neutral_euro_selfcare_90_canonical))
-
 ```
 
 #### EuroQOL Usual Activities 90
@@ -791,9 +869,7 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_selfcare_90_canonical))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Usual Activities 90 days"
 #| label: "tbl-euro-usual-checks"
-
 with_dir(here(), tar_read(post_pred_check_neutral_euro_usual_90_canonical))
-
 ```
 
 #### EuroQOL Pain/Discomfort 90
@@ -802,9 +878,7 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_usual_90_canonical))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Pain/Discomfort 90 days"
 #| label: "tbl-euro-pain-checks"
-
 with_dir(here(), tar_read(post_pred_check_neutral_euro_pain_90_canonical))
-
 ```
 
 #### EuroQOL Anxiety/Despression 90
@@ -813,9 +887,7 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_pain_90_canonical))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Anxiety/Depression 90 days"
 #| label: "tbl-euro-anxiety-checks"
-
 with_dir(here(), tar_read(post_pred_check_neutral_euro_anxiety_90_canonical))
-
 ```
 
 #### EuroQOL VAS 90
@@ -824,14 +896,31 @@ with_dir(here(), tar_read(post_pred_check_neutral_euro_anxiety_90_canonical))
 #| echo: false
 #| tbl-cap: "Posterior diagnostic checks for EuroQOL - VAS 90 days"
 #| label: "tbl-euro-vas-checks"
-
 with_dir(here(), tar_read(post_pred_check_vas_90))
-
 ```
 
 ## Sensitivity Analyses
 
-To assess the robustness of our findings for the primary outcome, we conducted several sensitivity analyses. First, we repeated the primary analysis using three alternative prior distributions: a left-hemisphere prior, a right-hemisphere prior, and a flat (minimally informative) prior. This allowed us to evaluate the influence of different initial beliefs on the resulting posterior distributions. Second, we explored an alternative covariate adjustment set based on a minimal adjustment set identified from our directed acyclic graphs (DAGs) to ensure our results were not dependent on the specific model specification. Finally, we employed an alternative method for handling missing data to confirm that our findings were not unduly influenced by the imputation strategy used in the primary analysis. The results of these sensitivity analyses were consistent with our primary findings, demonstrating the robustness of our conclusions.
+To assess the robustness of our findings for the primary outcome, we conducted several sensitivity analyses. First, we repeated the primary analysis using three alternative prior distributions: a left-hemisphere prior, a right-hemisphere prior, and a flat (minimally informative) prior. This allowed us to evaluate the influence of different initial beliefs on the resulting posterior distributions. Second, we explored an alternative covariate adjustment set based on a minimal adjustment set identified from our directed acyclic graphs (DAGs) to ensure our results were not dependent on the specific model specification. Third, as described in the primary manuscript, the primary analysis used MICE-imputed data; we performed a complete-case sensitivity analysis (excluding patients with missing outcomes) to confirm that our findings were not unduly influenced by the imputation assumptions. Finally, to evaluate the potential impact of center-level clustering, we performed a site-level random-effect sensitivity analysis restricted to the ATACH-2 cohort, where hospital site identifiers were available. The results of these sensitivity analyses were consistent with our primary findings, demonstrating the robustness of our conclusions.
+
+### Exploratory Subgroup Interaction Analysis
+
+To evaluate whether the association between hemispheric laterality and neurosurgical intervention varied across clinically relevant subgroups, we fitted Bayesian logistic regression models that included formal interaction terms between ICH laterality and each subgroup variable. Two interaction models were fitted: (1) laterality × ICH location (basal ganglia, lobar, thalamic) and (2) laterality × study (ATACH-2, ERICH). Both models used the neutral prior under the adjusted covariate set and were fitted to complete-case data.
+
+For each subgroup, we report: the subgroup-specific adjusted odds ratio (aOR) for the laterality association with 95% CrI, posterior probabilities of the aOR exceeding 1 and 1.2, the proportion of the posterior within the ROPE, and — critically — the formal interaction effect expressed as a Ratio of Odds Ratios (ROR). The ROR quantifies how many times larger (or smaller) the laterality effect is in a given subgroup compared to the reference subgroup. An ROR of 1 indicates no difference in the laterality association across subgroups, while values substantially above or below 1 suggest effect modification.
+
+This approach avoids the well-known pitfalls of comparing isolated subgroup point estimates, which can yield misleading conclusions about heterogeneity. Instead, the interaction ROR directly tests whether the laterality effect differs between subgroups and provides a formal probabilistic assessment of the degree of heterogeneity.
+
+```{r subgroup-interaction-analysis}
+#| echo: false
+#| output: true
+#| tbl-cap: "Subgroup Analysis of Hemispheric Laterality and Neurosurgical Intervention with Formal Interaction Tests"
+#| label: "tbl-subgroup-interactions"
+
+with_dir(here(), tar_read(table_subgroups))
+```
+
+The laterality association with neurosurgical intervention was directionally consistent across ICH location and study subgroups. While the point estimates suggested a potentially larger laterality effect for lobar hemorrhages relative to basal ganglia hemorrhages, the interaction ROR credible intervals were wide and included 1, indicating that the observed subgroup differences were not statistically distinguishable. Similarly, the laterality effect was consistent between the ATACH-2 and ERICH cohorts, with no evidence of meaningful effect modification by study source.
 
 ### Table 2 with Different Priors
 
@@ -841,9 +930,7 @@ To assess the robustness of our findings for the primary outcome, we conducted s
 #| echo: false
 #| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Left Hemisphere Prior"
 #| label: "tbl-2-left-prior"
-
 with_dir(here(), tar_read(table2_left))
-
 ```
 
 #### Right Hemisphere Prior
@@ -854,7 +941,6 @@ with_dir(here(), tar_read(table2_left))
 #| label: "tbl-2-right-prior"
 #
 with_dir(here(), tar_read(table2_right))
-
 ```
 
 #### Flat Prior
@@ -864,7 +950,6 @@ with_dir(here(), tar_read(table2_right))
 #| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Flat Prior"
 #| label: "tbl-2-flat-prior"
 with_dir(here(), tar_read(table2_flat))
-
 ```
 
 ### Table 4 with Different Priors
@@ -877,7 +962,6 @@ with_dir(here(), tar_read(table2_flat))
 #| label: "tbl-4-left-prior"
 #|
 with_dir(here(), tar_read(table4_left))
-
 ```
 
 #### Right Hemisphere Prior
@@ -888,7 +972,6 @@ with_dir(here(), tar_read(table4_left))
 #| label: "tbl-4-right-prior"
 #|
 with_dir(here(), tar_read(table4_right))
-
 ```
 
 #### Flat Prior
@@ -899,19 +982,38 @@ with_dir(here(), tar_read(table4_right))
 #| label: "tbl-4-flat-prior"
 #|
 with_dir(here(), tar_read(table4_flat))
-
 ```
 
-### Alternative Handling of Missing Data
+### Complete-Case Sensitivity Analysis
 
-The primary analysis was conducted as a complete case analysis. We performed multiple imputation by chained equations and created 100 imputed datasets with the `mice` package.[@buurenMiceMultivariateImputation2011] Three separate Bayesian models were fitted to the 100 imputed datasets using the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin score at 90 days. All models were fitted using Markov Chain Monte Carlo (MCMC) with 4 chains and 5,000 iterations per chain (including a warmup period of 1,000 iterations).
+The primary analysis used multiple imputation by chained equations (MICE) with 20 imputed datasets, as described in the main manuscript. As a sensitivity analysis, we repeated the primary models using a complete-case approach (excluding patients with missing outcomes) under the neutral prior with the adjusted covariate set. Three models were fitted to the complete-case data using the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin score at 90 days. All models were fitted using Markov Chain Monte Carlo (MCMC) with 4 chains and 5,000 iterations per chain (including a warmup period of 1,000 iterations).
 
 ```{r imputed}
 #| echo: false
-#| #| #| tbl-cap: "Outcomes of Interest after Multiple Imputation"
-#| label: "mice-results"
+#| tbl-cap: "Outcomes of Interest Using Complete-Case Analysis (Sensitivity)"
+#| label: "tbl-complete-case-sensitivity"
 #|
-
 with_dir(here(), tar_read(table_imp))
-
 ```
+
+### Site-Level Clustering Sensitivity Analysis
+
+Neurosurgical decision-making is highly influenced by local practice patterns, institutional resources, and surgeon availability. Our primary models included a random intercept for study (ATACH-2 versus ERICH) to account for systematic differences between the two cohorts, but this two-level random effect is unlikely to fully capture the heterogeneity in clinical practice across the many individual hospital sites within each study.
+
+Ideally, we would have included a random intercept for hospital site in all models. However, site-level identifiers were only available for the ATACH-2 cohort and were not included in the ERICH dataset. To assess the potential impact of site-level clustering on our primary finding, we performed a sensitivity analysis restricted to the ATACH-2 cohort, where we fitted two versions of the primary model for neurosurgical intervention:
+
+1. **Base model**: The same model specification as the primary analysis (adjusted for ICH location, age, GCS, ICH volume, IVH, and an ICH laterality-by-location interaction) but without any random intercept, since ATACH-2 is a single study.
+
+2. **Site random-effect model**: The same model specification with the addition of a random intercept for hospital site, allowing the baseline probability of neurosurgical intervention to vary across sites.
+
+Both models were fitted using multiple imputation (20 imputed datasets) with the neutral prior under the adjusted covariate set. The table below compares the posterior estimates for the association between hemispheric laterality and neurosurgical intervention from both models.
+
+```{r atach-site-sensitivity}
+#| echo: false
+#| output: true
+#| tbl-cap: "ATACH-2 Sensitivity Analysis: Association of Hemispheric Laterality with Neurosurgical Intervention With and Without Site-Level Random Intercept"
+#| label: "tbl-atach-site-sensitivity"
+with_dir(here(), tar_read(table_2_atach))
+```
+
+Inclusion of the site-level random intercept slightly attenuated the point estimate for the laterality association and widened the credible interval, which is expected given the additional variance component and the smaller sample size of the ATACH-2 cohort alone. However, the direction, magnitude, and posterior probability of the association remained consistent with the primary analysis, suggesting that site-level clustering does not materially alter the principal finding.
