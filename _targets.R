@@ -386,41 +386,37 @@ figure_sensitivity_scenarios <- figure_scenarios |>
 
 
 # ── mRS figure scenarios ───────────────────────────────────────────────────────
-# Main mRS figures: full 4-prior × 2-adjustment-set factorial, matching the
-# main model grid — both dimensions are scientifically meaningful here.
-#
-# Sensitivity mRS figures: all 4 priors but adjusted only, because the
-# complete-case sensitivity models were only fit under the adjusted set.
-# This lets the reader compare the mRS distribution across priors while
-# holding imputation strategy as the only changed dimension vs. the main figures.
-#
-# Two separate tibbles are needed because tar_map cannot parameterise which
-# list to index into (all_main_models vs. all_sens_models) at substitution time.
-# figure_key drives both target naming (via `names =`) and the output filename.
-mrs_figure_scenarios_main <- tidyr::crossing(
-  tibble(outcome_col = "mrs_90"),
-  prior_scenario = c("neutral", "left", "right", "flat"),
-  adjustment_set = c("minimal", "adjusted")
+mrs_figure_scenarios <- tibble::tibble(
+  outcome_col    = "mrs_90",
+  prior_scenario = "neutral",
+  adjustment_set = "adjusted",
+  model_key      = "model_main_mrs_90_neutral_adjusted",
+  figure_key     = "main_neutral_adjusted"
+)
+
+# ── EuroQOL figure scenarios ───────────────────────────────────────────────────
+euro_figure_scenarios <- tibble::tibble(
+  outcome_col = c(
+    "euro_mobility_90", "euro_selfcare_90", "euro_usual_90",
+    "euro_pain_90",     "euro_anxiety_90"
+  ),
+  dimension = c("mobility", "selfcare", "usual", "pain", "anxiety")
 ) |>
   mutate(
-    model_key = paste0(
-      "model_main_mrs_90_",
-      prior_scenario,
-      "_",
-      adjustment_set
-    ),
-    figure_key = paste0("main_", prior_scenario, "_", adjustment_set)
+    prior_scenario = "neutral",
+    adjustment_set = "adjusted",
+    model_key      = paste0("model_main_", outcome_col, "_neutral_adjusted"),
+    figure_key     = paste0("main_", dimension, "_neutral_adjusted")
   )
 
-mrs_figure_scenarios_sens <- tidyr::crossing(
-  tibble(outcome_col = "mrs_90"),
+# ── VAS figure scenarios ───────────────────────────────────────────────────────
+vas_figure_scenarios <- tibble::tibble(
+  outcome_col    = "euro_vas_90",
   prior_scenario = "neutral",
-  adjustment_set = "adjusted"
-) |>
-  mutate(
-    model_key = paste0("model_sens_mrs_90_", prior_scenario, "_adjusted"),
-    figure_key = paste0("sens_", prior_scenario, "_adjusted")
-  )
+  adjustment_set = "adjusted",
+  model_key      = "model_main_euro_vas_90_neutral_adjusted",
+  figure_key     = "main_neutral_adjusted"
+)
 
 
 # =========================================================================
@@ -1034,24 +1030,19 @@ map_sensitivity_figures <- tar_map(
   )
 )
 
-# ── mRS Grotta + uncertainty figures (main imputed models) ────────────────────
-# Full 4-prior × 2-adjustment-set factorial: both dimensions are meaningful
-# for the primary analysis and warrant independent figures.
-#
-# Target naming: figure_mrs_main_{prior_scenario}_{adjustment_set}
-# File naming:   figures/mrs/figure_mrs_main_{prior}_{adjustment}.pdf
-map_mrs_figures_main <- tar_map(
-  values = mrs_figure_scenarios_main,
-  names = c("prior_scenario", "adjustment_set"),
+# ── mRS figure (neutral + adjusted, main imputed model) ───────────────────────
+map_mrs_figures <- tar_map(
+  values = mrs_figure_scenarios,
+  names  = c("prior_scenario", "adjustment_set"),
 
   tar_target(
-    figure_mrs_main,
+    figure_mrs,
     make_mrs_figure(all_main_models[[model_key]]),
     deployment = "main"
   ),
 
   tar_target(
-    figure_mrs_main_file,
+    figure_mrs_file,
     {
       dir.create("figures/mrs", showWarnings = FALSE, recursive = TRUE)
       path <- file.path(
@@ -1059,57 +1050,70 @@ map_mrs_figures_main <- tar_map(
         paste0("figure_mrs_", figure_key, ".pdf")
       )
       ggsave(
-        filename = path,
-        plot = figure_mrs_main,
-        width = 14,
-        height = 9,
-        units = "in",
-        device = cairo_pdf
+        filename = path, plot = figure_mrs,
+        width = 14, height = 9, units = "in", device = cairo_pdf
       )
       path
     },
-    format = "file",
-    deployment = "main"
+    format = "file", deployment = "main"
   )
 )
 
-# ── mRS Grotta + uncertainty figures (complete-case sensitivity models) ────────
-# All 4 priors × adjusted only — complete-case models were only fit under the
-# adjusted set, so these figures allow prior comparison while holding the
-# imputation strategy as the single varying dimension vs. the main figures.
-#
-# Target naming: figure_mrs_sens_{prior_scenario}_adjusted
-# File naming:   figures/mrs/figure_mrs_sens_{prior}_adjusted.pdf
-map_mrs_figures_sens <- tar_map(
-  values = mrs_figure_scenarios_sens,
-  names = c("prior_scenario", "adjustment_set"),
+# ── EuroQOL figures (neutral + adjusted, main imputed models) ─────────────────
+map_euro_figures <- tar_map(
+  values = euro_figure_scenarios,
+  names  = c("outcome_col", "prior_scenario", "adjustment_set"),
 
   tar_target(
-    figure_mrs_sens,
-    make_mrs_figure(all_sens_models[[model_key]]),
+    figure_euro,
+    make_euro_figure(all_main_models[[model_key]], dimension),
     deployment = "main"
   ),
 
   tar_target(
-    figure_mrs_sens_file,
+    figure_euro_file,
     {
-      dir.create("figures/mrs", showWarnings = FALSE, recursive = TRUE)
+      dir.create("figures/euro", showWarnings = FALSE, recursive = TRUE)
       path <- file.path(
-        "figures/mrs",
-        paste0("figure_mrs_", figure_key, ".pdf")
+        "figures/euro",
+        paste0("figure_euro_", figure_key, ".pdf")
       )
       ggsave(
-        filename = path,
-        plot = figure_mrs_sens,
-        width = 12,
-        height = 9,
-        units = "in",
-        device = cairo_pdf
+        filename = path, plot = figure_euro,
+        width = 14, height = 9, units = "in", device = cairo_pdf
       )
       path
     },
-    format = "file",
+    format = "file", deployment = "main"
+  )
+)
+
+# ── VAS figure (neutral + adjusted, main imputed model) ───────────────────────
+map_vas_figures <- tar_map(
+  values = vas_figure_scenarios,
+  names  = c("prior_scenario", "adjustment_set"),
+
+  tar_target(
+    figure_vas,
+    make_vas_figure(all_main_models[[model_key]], ich_aggressive),
     deployment = "main"
+  ),
+
+  tar_target(
+    figure_vas_file,
+    {
+      dir.create("figures/euro", showWarnings = FALSE, recursive = TRUE)
+      path <- file.path(
+        "figures/euro",
+        paste0("figure_vas_", figure_key, ".pdf")
+      )
+      ggsave(
+        filename = path, plot = figure_vas,
+        width = 10, height = 10, units = "in", device = cairo_pdf
+      )
+      path
+    },
+    format = "file", deployment = "main"
   )
 )
 
@@ -1245,8 +1249,9 @@ list(
   t_presentation_dags,
   map_posterior_figures,
   map_sensitivity_figures,
-  map_mrs_figures_main,
-  map_mrs_figures_sens,
+  map_mrs_figures,
+  map_euro_figures,
+  map_vas_figures,
   t_table1,
   map_table2,
   map_table2_sens,
