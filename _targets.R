@@ -252,7 +252,7 @@ grid_complex <- complete_grid |> filter(complexity == "complex")
 
 grid_ventilation <- tibble::tribble(
   ~outcome_col                  , ~family                                        , ~int_mean , ~int_sd , ~complexity ,
-  "days_mechanical_ventilation" , quote(zero_inflated_negbinomial(link = "log")) ,         0 , 0.5     , "complex"
+  "days_mechanical_ventilation" , quote(zero_inflated_negbinomial(link = "log")) , 1.95      , 0.5     , "complex"
 ) |>
   tidyr::crossing(
     prior_scenario = c("neutral", "left", "right", "flat"),
@@ -277,7 +277,7 @@ grid_priors_complex <- grid_priors |> filter(complexity == "complex")
 
 grid_priors_ventilation <- tibble::tribble(
   ~outcome_col                  , ~family                                        , ~int_mean , ~int_sd , ~complexity ,
-  "days_mechanical_ventilation" , quote(zero_inflated_negbinomial(link = "log")) ,         0 , 0.5     , "complex"
+  "days_mechanical_ventilation" , quote(zero_inflated_negbinomial(link = "log")) , 1.95      , 0.5     , "complex"
 ) |>
   tidyr::crossing(
     prior_scenario = c("neutral", "left", "right", "flat"),
@@ -387,35 +387,38 @@ figure_sensitivity_scenarios <- figure_scenarios |>
 
 # ── mRS figure scenarios ───────────────────────────────────────────────────────
 mrs_figure_scenarios <- tibble::tibble(
-  outcome_col    = "mrs_90",
+  outcome_col = "mrs_90",
   prior_scenario = "neutral",
   adjustment_set = "adjusted",
-  model_key      = "model_main_mrs_90_neutral_adjusted",
-  figure_key     = "main_neutral_adjusted"
+  model_key = "model_main_mrs_90_neutral_adjusted",
+  figure_key = "main_neutral_adjusted"
 )
 
 # ── EuroQOL figure scenarios ───────────────────────────────────────────────────
 euro_figure_scenarios <- tibble::tibble(
   outcome_col = c(
-    "euro_mobility_90", "euro_selfcare_90", "euro_usual_90",
-    "euro_pain_90",     "euro_anxiety_90"
+    "euro_mobility_90",
+    "euro_selfcare_90",
+    "euro_usual_90",
+    "euro_pain_90",
+    "euro_anxiety_90"
   ),
   dimension = c("mobility", "selfcare", "usual", "pain", "anxiety")
 ) |>
   mutate(
     prior_scenario = "neutral",
     adjustment_set = "adjusted",
-    model_key      = paste0("model_main_", outcome_col, "_neutral_adjusted"),
-    figure_key     = paste0("main_", dimension, "_neutral_adjusted")
+    model_key = paste0("model_main_", outcome_col, "_neutral_adjusted"),
+    figure_key = paste0("main_", dimension, "_neutral_adjusted")
   )
 
 # ── VAS figure scenarios ───────────────────────────────────────────────────────
 vas_figure_scenarios <- tibble::tibble(
-  outcome_col    = "euro_vas_90",
+  outcome_col = "euro_vas_90",
   prior_scenario = "neutral",
   adjustment_set = "adjusted",
-  model_key      = "model_main_euro_vas_90_neutral_adjusted",
-  figure_key     = "main_neutral_adjusted"
+  model_key = "model_main_euro_vas_90_neutral_adjusted",
+  figure_key = "main_neutral_adjusted"
 )
 
 
@@ -1033,7 +1036,7 @@ map_sensitivity_figures <- tar_map(
 # ── mRS figure (neutral + adjusted, main imputed model) ───────────────────────
 map_mrs_figures <- tar_map(
   values = mrs_figure_scenarios,
-  names  = c("prior_scenario", "adjustment_set"),
+  names = c("prior_scenario", "adjustment_set"),
 
   tar_target(
     figure_mrs,
@@ -1050,19 +1053,24 @@ map_mrs_figures <- tar_map(
         paste0("figure_mrs_", figure_key, ".pdf")
       )
       ggsave(
-        filename = path, plot = figure_mrs,
-        width = 14, height = 9, units = "in", device = cairo_pdf
+        filename = path,
+        plot = figure_mrs,
+        width = 14,
+        height = 9,
+        units = "in",
+        device = cairo_pdf
       )
       path
     },
-    format = "file", deployment = "main"
+    format = "file",
+    deployment = "main"
   )
 )
 
 # ── EuroQOL figures (neutral + adjusted, main imputed models) ─────────────────
 map_euro_figures <- tar_map(
   values = euro_figure_scenarios,
-  names  = c("outcome_col", "prior_scenario", "adjustment_set"),
+  names = c("outcome_col", "prior_scenario", "adjustment_set"),
 
   tar_target(
     figure_euro,
@@ -1079,19 +1087,24 @@ map_euro_figures <- tar_map(
         paste0("figure_euro_", figure_key, ".pdf")
       )
       ggsave(
-        filename = path, plot = figure_euro,
-        width = 14, height = 9, units = "in", device = cairo_pdf
+        filename = path,
+        plot = figure_euro,
+        width = 14,
+        height = 9,
+        units = "in",
+        device = cairo_pdf
       )
       path
     },
-    format = "file", deployment = "main"
+    format = "file",
+    deployment = "main"
   )
 )
 
 # ── VAS figure (neutral + adjusted, main imputed model) ───────────────────────
 map_vas_figures <- tar_map(
   values = vas_figure_scenarios,
-  names  = c("prior_scenario", "adjustment_set"),
+  names = c("prior_scenario", "adjustment_set"),
 
   tar_target(
     figure_vas,
@@ -1108,12 +1121,17 @@ map_vas_figures <- tar_map(
         paste0("figure_vas_", figure_key, ".pdf")
       )
       ggsave(
-        filename = path, plot = figure_vas,
-        width = 10, height = 10, units = "in", device = cairo_pdf
+        filename = path,
+        plot = figure_vas,
+        width = 10,
+        height = 10,
+        units = "in",
+        device = cairo_pdf
       )
       path
     },
-    format = "file", deployment = "main"
+    format = "file",
+    deployment = "main"
   )
 )
 
@@ -1213,10 +1231,35 @@ map_table3_priors <- tar_map(
   )
 )
 
+# =========================================================================
+# MANUSCRIPT RENDERING
+#
+# tar_quarto() parses each .qmd for tar_read()/tar_load() calls and
+# registers those as upstream dependencies automatically. The manuscripts
+# will only re-render when their declared upstream targets (figures, tables,
+# models) actually change — not on every tar_make() run.
+#
+# `execute_params` passes the project root so here::here() works correctly
+# when Quarto renders from within the manuscripts/ subdirectory.
+# =========================================================================
+t_manuscripts <- list(
+  tar_quarto(
+    name = manuscript,
+    path = "manuscripts/manuscript.qmd",
+    quiet = FALSE
+  ),
+
+  tar_quarto(
+    name = manuscript_supplement,
+    path = "manuscripts/manuscript_supplement.qmd",
+    quiet = FALSE
+  )
+)
+
 
 # =========================================================================
 # FINAL PIPELINE ASSEMBLY
-# =========================================================================
+#tar =========================================================================
 list(
   t_data,
   t_missing,
@@ -1258,5 +1301,8 @@ list(
   map_table2_priors,
   map_table3,
   map_table3_sens,
-  map_table3_priors
+  map_table3_priors,
+
+  # Manuscripts
+  t_manuscripts
 )

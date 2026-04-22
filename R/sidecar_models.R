@@ -37,19 +37,20 @@ fit_ventilation_zinb <- function(
       paste0("normal(", int_mean, ", ", int_sd, ")"),
       class = "Intercept"
     ),
-    set_prior("exponential(1)", class = "shape"), # Prevents infinite variance blowouts
-    set_prior("beta(1, 1)", class = "zi") # Keeps structural zero probability stable
+    set_prior("gamma(2, 0.1)", class = "shape"), # Mean shape = 20; prevents near-zero draws
+    set_prior("beta(1, 1)", class = "zi")
   )
 
   if (prior_scenario == "flat") {
-    # Tightened from 5 to 2. e^2 allows for a huge 7.4x increase, but stops exponential blowouts.
-    my_priors <- c(my_priors, set_prior("normal(0, 2)", class = "b"))
+    # Still wider than neutral, but bounded to prevent exponential blowup.
+    # normal(0, 0.2) on the log scale: 2 SD = 0.4 → exp(0.4) ≈ 1.5x per unit.
+    my_priors <- c(my_priors, set_prior("normal(0, 0.2)", class = "b"))
   } else if (prior_scenario == "neutral") {
-    my_priors <- c(my_priors, set_prior("normal(0, 0.5)", class = "b"))
+    my_priors <- c(my_priors, set_prior("normal(0, 0.05)", class = "b"))
   } else if (prior_scenario == "left") {
     my_priors <- c(
       my_priors,
-      set_prior("normal(0, 0.5)", class = "b"),
+      set_prior("normal(0, 0.05)", class = "b"),
       set_prior(
         "normal(-0.22, 0.175)",
         class = "b",
@@ -59,7 +60,7 @@ fit_ventilation_zinb <- function(
   } else if (prior_scenario == "right") {
     my_priors <- c(
       my_priors,
-      set_prior("normal(0, 0.5)", class = "b"),
+      set_prior("normal(0, 0.05)", class = "b"),
       set_prior(
         "normal(0.18, 0.175)",
         class = "b",

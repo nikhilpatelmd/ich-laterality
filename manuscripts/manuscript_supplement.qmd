@@ -195,36 +195,46 @@ Conditioning on neurosurgical intervention — a mediator on the causal pathway 
 ```{r prior definitions}
 #| echo: false
 #| output: false
+#| 
 neutral_mean <- 0
-neutral_sd <- 0.35
-neutral_lower_OR <- exp(neutral_mean - (1.96 * neutral_sd))
-neutral_upper_OR <- exp(neutral_mean + (1.96 * neutral_sd))
+neutral_sd <- 0.5 # normal(0, 0.5) on class "b" in model_functions.R
+neutral_lower_OR <- exp(neutral_mean - 1.96 * neutral_sd)
+neutral_upper_OR <- exp(neutral_mean + 1.96 * neutral_sd)
 
-left_mean <- -0.22
+left_mean <- -0.22 # coef-specific prior on ich_lateralityRight
 left_sd <- 0.175
-left_lower_OR <- exp(left_mean - (1.96 * left_sd))
-left_upper_OR <- exp(left_mean + (1.96 * left_sd))
+left_lower_OR <- exp(left_mean - 1.96 * left_sd)
+left_upper_OR <- exp(left_mean + 1.96 * left_sd)
 
 right_mean <- 0.18
 right_sd <- 0.175
-right_lower_OR <- exp(right_mean - (1.96 * right_sd))
-right_upper_OR <- exp(right_mean + (1.96 * right_sd))
+right_lower_OR <- exp(right_mean - 1.96 * right_sd)
+right_upper_OR <- exp(right_mean + 1.96 * right_sd)
 
 flat_mean <- 0
-flat_sd <- 5
-flat_lower_OR <- exp(flat_mean - (1.96 * flat_sd))
-flat_upper_OR <- exp(flat_mean + (1.96 * flat_sd))
+flat_sd <- 5 # normal(0, 5) on class "b"; see text for exception
+flat_lower_OR <- exp(flat_mean - 1.96 * flat_sd)
+flat_upper_OR <- exp(flat_mean + 1.96 * flat_sd)
 ```
 
-In defining prior distributions, we generally followed suggestions from previous literature. [@zampieriUsingBayesianMethods2021; @kruschkeBayesianAnalysisReporting2021; @gelmanBayesianWorkflow2020] Specifically, we defined 4 sets of priors for each outcome:
+In defining prior distributions, we generally followed suggestions from previous literature. [@zampieriUsingBayesianMethods2021; @kruschkeBayesianAnalysisReporting2021; @gelmanBayesianWorkflow2020] Specifically, we defined four sets of prior distributions for the
+hemispheric laterality coefficient (i.e., the log-odds or log-incidence rate ratio assigned to right vs. left hemisphere ICH in each model) across all outcomes. Because our models include multiple covariates and a random study intercept, the priors below describe the *conditional*
+laterality effect — the association between hemispheric laterality and each outcome holding all adjustment covariates constant. The implications of these priors at the data level (i.e., the
+population-averaged marginal effect they imply before observing outcomes) are characterized empirically through prior predictive checks reported in **Table 2**.
 
-**Neutral prior**: This prior assumed that hemispheric lateralization did not significantly affect the primary outcome and represents the **null hypothesis**. It is centered around a mean of **`r neutral_mean`** and standard deviation of **`r neutral_sd`**, corresponding to OR of **`r exp(neutral_mean)`** and 95% of the probability mass for the OR between **`r round(neutral_lower_OR, digits = 2)`** to **`r round(neutral_upper_OR, digits = 2)`**.
+**Neutral prior**: This prior encodes the assumption that hemispheric lateralization does not meaningfully affect the outcome — it represents the **null hypothesis** on the coefficient scale. The laterality coefficient is assigned a prior of **`r neutral_mean`** $\pm$
+**`r neutral_sd`** (mean $\pm$ SD on the log scale), placing the conditional OR at **`r round(exp(neutral_mean), digits = 2)`** with 95% of the prior probability mass between
+**`r round(neutral_lower_OR, digits = 2)`** and **`r round(neutral_upper_OR, digits = 2)`** on the OR scale.
 
-**Left hemisphere prior**: This prior assumes that the primary and secondary outcomes are more likely with left hemisphere injury, centering around a mean of **`r left_mean`** and standard deviation of **`r left_sd`** which corresponds to an OR of **`r round(exp(left_mean), digits = 2)`** and 95% of the probability mass for the OR between **`r round(left_lower_OR, digits = 2)`** to **`r round(left_upper_OR, digits = 2)`**.
+**Left hemisphere prior**: This prior encodes the assumption that outcomes are more likely following left hemisphere ICH. A coefficient-specific prior is placed directly on the
+`ich_lateralityRight` term, with mean **`r left_mean`** and SD **`r left_sd`**, placing the conditional OR for right hemisphere (relative to left) at **`r round(exp(left_mean), digits = 2)`** with 95% of the prior probability mass between **`r round(left_lower_OR, digits = 2)`** and
+**`r round(left_upper_OR, digits = 2)`**.
 
-**Right hemisphere prior**: This prior assumes that the primary and secondary outcomes are more likely with right hemisphere injury, centering around a mean of **`r right_mean`** and standard deviation of **`r right_sd`** which corresponds to an OR of **`r round(exp(right_mean), digits =2)`** and 95% of the probability mass for the OR between **`r round(right_lower_OR, digits = 2)`** to **`r round(right_upper_OR, digits =2)`**.
+**Right hemisphere prior**: This prior encodes the assumption that outcomes are more likely following right hemisphere ICH. A coefficient-specific prior is placed on the `ich_lateralityRight` term, with mean **`r right_mean`** and SD **`r right_sd`**, placing the
+conditional OR for right hemisphere at **`r round(exp(right_mean), digits = 2)`** with 95% of the prior probability mass between **`r round(right_lower_OR, digits = 2)`** and **`r round(right_upper_OR, digits = 2)`**.
 
-**Flat prior**: This prior most mimics a frequentist analysis in that the prior distribution is so wide that it essentially contributes no information to the posterior model. It is centered around a mean of **`r flat_mean`** and standard deviation of standard deviation of **`r flat_sd`** which corresponds to an OR of **`r round(exp(flat_mean), digits =2)`** and 95% of the probability mass for the OR between **`r round(flat_lower_OR, digits = 2)`** to **`r round(flat_upper_OR, digits = 20)`**.
+**Flat prior**: This prior most closely approximates a frequentist analysis, in that the distribution is sufficiently wide to contribute minimal information to the posterior. The laterality coefficient is assigned a prior with mean **`r flat_mean`** and SD **`r flat_sd`**,
+corresponding to a conditional OR of **`r round(exp(flat_mean), digits = 2)`** with 95% of the prior probability mass spanning **`r round(flat_lower_OR, digits = 2)`** to **`r round(flat_upper_OR, digits = 2)`** — a range wide enough to be consistent with nearly any plausible effect size. An exception applies to the Days of Mechanical Ventilation model, where the flat prior SD was reduced to 2 on the log scale; because this outcome is modeled with a log-link negative binomial and continuous predictors are on their natural scales, a SD of 5 produces prior predictive counts many orders of magnitude outside any plausible clinical range.
 
 ### Prior Predictive Checks
 
