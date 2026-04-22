@@ -127,49 +127,20 @@ csl: stroke.csl
 ```{r setup}
 #| echo: false
 #| output: false
-#| fig-height: 12
 library(targets)
 library(tidyverse)
 library(withr)
 library(here)
-library(ggdag)
-library(dagitty)
-library(modelsummary)
-library(marginaleffects)
-library(brms)
-library(tidybayes)
-library(bayesplot)
-library(glue)
-library(ggdist)
-library(patchwork)
-library(tinytable)
 library(gt)
 
-
-# plot stuff
-theme_ich <- function(base_family = "Figtree", base_size = 10) {
-  theme_minimal(base_size = base_size) +
-    theme(
-      text = element_text(lineheight = 2),
-      plot.title = element_text(size = rel(1.3), margin = margin(12, 0, 8, 0)),
-      plot.subtitle = element_text(
-        size = rel(1.1),
-        margin = margin(4, 0, 0, 0)
-      ),
-      axis.text.y = element_text(size = rel(0.8)),
-      axis.title.y = element_text(size = 12, margin = margin(0, 4, 0, 0)),
-      axis.text.x = element_text(size = rel(2)),
-      axis.title.x = element_blank(),
-      legend.position = "bottom",
-      legend.justification = 1,
-      panel.grid = element_line(colour = "#F3F4F5"),
-      plot.caption = element_text(size = rel(0.8), margin = margin(8, 0, 0, 0)),
-      plot.margin = margin(0.25, 0.25, 0.25, 0.25, "cm")
-    )
-}
-
-# load data and models
-with_dir(here(), tar_load(ich_aggressive))
+# Load all targets needed across the supplement in one place.
+# Adding targets here (rather than inside individual chunks) keeps chunks
+# focused on rendering and makes the full set of dependencies easy to audit.
+with_dir(here(), {
+  tar_load(ich_aggressive)
+  tar_load(figure_dag_neurosurgery)
+  tar_load(figure_dag_outcomes)
+})
 ```
 
 # Details of Statistical Analysis
@@ -190,77 +161,32 @@ In constructing DAGs for this project, we used guidance and recommendations from
 
 For our primary outcome model we specified the following DAG:
 
-```{r neurosurgery dag}
+```{r neurosurgery-dag}
 #| echo: false
 #| warning: false
-#| fig-height: 6
-library(ggokabeito)
-
-with_dir(here(), tar_load(dag_neurosurgery))
-
-status_colors <- c(exposure = "#6f86d6", outcome = "#764ba2", latent = "grey50")
-
-dag_neurosurgery |>
-  tidy_dagitty() |>
-  node_status() |>
-  ggdag() +
-  geom_dag_edges() +
-  geom_dag_point(aes(color = status)) +
-  geom_dag_label_repel(
-    aes(label = label, fill = status),
-    seed = 1234,
-    color = "white",
-    fontface = "bold"
-  ) +
-  scale_color_manual(values = status_colors, na.value = "grey20") +
-  scale_fill_manual(values = status_colors, na.value = "grey20") +
-  guides(color = "none", fill = "none") +
-  theme_dag()
+#| fig-height: 9
+#| fig-width: 9
+figure_dag_neurosurgery
 ```
 
-Before considering if covariate adjustment is indicated for our outcome of interest, we need to establish the difference between the total, direct, and indirect effect of hemispheric laterality on neurosurgical intervention and the effect with which we are interested. [@tennantUseDirectedAcyclic2021]
-
-The **total effect** of hemispheric laterality (X) on neurosurgical intervention (Y) refers to the overall influence of X on Y, regardless of the mechanisms through which that influence operates. It is the effect we would observe if we simply compared outcomes between patients with left vs. right hemispheric ICH without controlling for any variables.
-
-The **direct effect** of X on Y refers to the influence of X on Y that is not mediated by any other variables in the DAG. It is the effect of hemispheric laterality on neurosurgical intervention that remains after holding all mediating variables constant.
-
-The **indirect effect** of X on Y refers to the influence of X on Y that is mediated by one or more intermediate variables. It is the effect of hemispheric laterality on neurosurgical intervention that operates through other variables in the DAG.
-
-We were interested in the direct effect of hemispheric laterality on neurosurgical intervention. We hypothesized that this relationship could be mediated by other variables that are commonly used to determine if a patient will undergo neurosurgical intervention. To estimate this effect, we included to the following covariates in our statistical model for the primary outcome: age, admission GCS, ICH location, ICH volume, and presence of IVH.
-
-Since we felt that there were not materially different causal structures at play with our secondary outcomes, we used a similar DAG for the following outcomes: receipt of external ventricular drain (EVD), receipt of tracheostomy, days of mechanical ventilation, receipt of do-not-resuscitate (DNR) order at any point in the hospitalization, withdrawal of life-sustaining therapy (WLST) at any point in the hospitalization, and early WLST (defined as < 72 from symptom onset). We included the same covariates in our statistical models for all secondary outcomes specified above.
+For neurosurgical intervention and all acute care secondary outcomes, the target estimand was the total effect of hemispheric laterality — the overall causal effect of laterality on the outcome, encompassing all pathways through which it operates. To reduce bias from measured confounding, we adjusted for baseline variables that independently influence both the clinical presentation associated with hemispheric laterality and the likelihood of intervention: age, admission Glasgow Coma Scale (GCS) score, ICH location, baseline ICH volume, and presence of intraventricular hemorrhage (IVH). These covariates act as confounders in the causal structure and were included to block backdoor paths, not to decompose direct and indirect effects.
+Variables that lie downstream of ICH characteristics and on the causal pathway to surgical decisions — specifically midline shift, hydrocephalus, and eloquent-area involvement — were recognized as mediators and were deliberately excluded from the adjustment set. Conditioning on these variables would partially block the causal path under study and introduce over-adjustment bias. Because these variables are only measured in the ATACH-2 cohort, their role as mediators (rather than confounders) is further examined in a population-restricted sensitivity analysis described below. [@tennantUseDirectedAcyclic2021]
 
 ### Functional Outcomes
 
 We specified the following DAG when examining functional outcomes (e.g., modified Rankin Scale and EuroQOL measures):
 
-```{r functional outcome dag}
+```{r functional-outcome-dag}
 #| echo: false
 #| warning: false
-#| fig-height: 8.5
-with_dir(here(), tar_load(dag_outcomes))
-
-dag_outcomes |>
-  tidy_dagitty() |>
-  node_status() |>
-  ggdag() +
-  geom_dag_edges() +
-  geom_dag_point(aes(color = status)) +
-  geom_dag_label_repel(
-    aes(label = label, fill = status),
-    seed = 1234,
-    color = "white",
-    fontface = "bold"
-  ) +
-  scale_color_manual(values = status_colors, na.value = "grey20") +
-  scale_fill_manual(values = status_colors, na.value = "grey20") +
-  guides(color = "none", fill = "none") +
-  theme_dag()
+#| fig-height: 10
+#| fig-width: 11
+figure_dag_outcomes
 ```
 
-In contrast to the primary outcome analysis, where the target estimand was the direct effect of laterality on treatment decisions, the target estimand for functional outcomes was the **total effect** of hemispheric laterality. This total effect encompasses all causal pathways from laterality to functional outcome, including those mediated through neurosurgical intervention, withdrawal of life-sustaining therapy, and participation in rehabilitation. This estimand was selected because it captures the overall prognostic significance of hemispheric laterality as encountered in clinical practice — reflecting both the intrinsic biological consequences of the affected hemisphere and any downstream differences in management.
+For functional outcomes, the target estimand was likewise the total effect of hemispheric laterality on 90-day modified Rankin Scale (mRS) and EuroQOL scores. This total effect encompasses all causal pathways from laterality to functional outcome, including those mediated through neurosurgical intervention, withdrawal of life-sustaining therapy, and participation in rehabilitation. These downstream treatment pathways are intrinsic to the clinical significance of hemispheric laterality and should not be blocked by conditioning on post-baseline treatment variables.
 
-Conditioning on neurosurgical intervention — a mediator on the causal pathway from laterality to functional outcome — would block part of this clinically relevant pathway and could introduce collider stratification bias by opening non-causal associations between laterality and outcome within strata of the mediator. Furthermore, valid estimation of the controlled direct effect would require adjustment for all confounders of the mediator–outcome relationship, some of which (e.g., hematoma expansion, clinical deterioration) may themselves be influenced by the exposure, creating intermediate confounding that cannot be resolved through standard regression adjustment. Accordingly, our functional outcome models were adjusted for age, admission GCS, ICH location, ICH volume, presence of IVH, and time from symptom onset to emergency department arrival, but did not include neurosurgical intervention or other post-baseline treatment variables as covariates.
+Conditioning on neurosurgical intervention — a mediator on the causal pathway from laterality to functional outcome — would partially block this clinically relevant pathway and could introduce collider stratification bias by opening non-causal associations between laterality and outcome within strata of the mediator. Valid estimation of a controlled direct effect (i.e., the effect of laterality holding surgical management constant) would additionally require adjustment for all confounders of the mediator–outcome relationship, some of which may themselves be affected by the exposure, creating intermediate confounding that cannot be resolved through standard regression adjustment. Accordingly, functional outcome models were adjusted for age, admission GCS score, ICH location, baseline ICH volume, presence of IVH, and time from symptom onset to emergency department arrival, but did not include neurosurgical intervention or other post-baseline treatment variables as covariates. [@tennantUseDirectedAcyclic2021]
 
 ## Priors
 
@@ -304,158 +230,83 @@ In defining prior distributions, we generally followed suggestions from previous
 
 Prior predictive checks were performed to understand the implications of the prior distributions before analyzing the data and ensuring the prior distributions represented plausible information regarding each outcome.
 
-#### Neurosurgical Intervention
+#### Neutral Prior
 
-```{r prior predictive check - neurosurgery}
+```{r prior predictive check - neutral table 2}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for neurosurgery"
-#| label: "tbl-neurosurgery-prior-check"
-with_dir(here(), tar_read(prior_check_neurosurgery))
+#| tbl-cap: "Prior predictive check results for neutral prior — aggressive care outcomes"
+#| label: "tbl-2-neutral-prior-check"
+with_dir(here(), tar_read(table_2_priors_neutral))
 ```
 
-#### Ventriculostomy
-
-```{r prior predictive check - evd}
+```{r prior predictive check - neutral table 3}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for ventriculostomy"
-#| label: "tbl-evd-prior-check"
-with_dir(here(), tar_read(prior_check_evd))
+#| tbl-cap: "Prior predictive check results for neutral prior — functional outcomes"
+#| label: "tbl-3-neutral-prior-check"
+with_dir(here(), tar_read(table_3_priors_neutral))
 ```
 
-#### Tracheostomy
+#### Left Hemisphere Prior
 
-```{r prior predictive check - tracheostomy}
+```{r prior predictive check - left table 2}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for tracheostomy"
-#| label: "tbl-trach-prior-check"
-with_dir(here(), tar_read(prior_check_tracheostomy))
+#| tbl-cap: "Prior predictive check results for left hemisphere prior — aggressive care outcomes"
+#| label: "tbl-2-left-prior-check"
+with_dir(here(), tar_read(table_2_priors_left))
 ```
 
-
-#### Days of Mechanical Ventilation
-
-```{r prior predictive check - vent}
+```{r prior predictive check - left table 3}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for days of mechanical ventilation"
-#| label: "tbl-vent-prior-check"
-with_dir(here(), tar_read(prior_check_days_mechanical_ventilation))
+#| tbl-cap: "Prior predictive check results for left hemisphere prior — functional outcomes"
+#| label: "tbl-3-left-prior-check"
+with_dir(here(), tar_read(table_3_priors_left))
 ```
 
+#### Right Hemisphere Prior
 
-#### Comfort Care
-
-```{r prior predictive check - comfort}
+```{r prior predictive check - right table 2}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for comfort care"
-#| label: "tbl-comfort-prior-check"
-with_dir(here(), tar_read(prior_check_comfort))
+#| tbl-cap: "Prior predictive check results for right hemisphere prior — aggressive care outcomes"
+#| label: "tbl-2-right-prior-check"
+with_dir(here(), tar_read(table_2_priors_right))
 ```
 
-
-#### Early WLST
-
-```{r prior predictive check - early wlst}
+```{r prior predictive check - right table 3}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for early WLST"
-#| label: "tbl-earlywlst-prior-check"
-with_dir(here(), tar_read(prior_check_early_wlst))
+#| tbl-cap: "Prior predictive check results for right hemisphere prior — functional outcomes"
+#| label: "tbl-3-right-prior-check"
+with_dir(here(), tar_read(table_3_priors_right))
 ```
 
-#### DNR
+#### Flat Prior
 
-```{r prior predictive check - dnr}
+```{r prior predictive check - flat table 2}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for DNR"
-#| label: "tbl-DNR-prior-check"
-with_dir(here(), tar_read(prior_check_dnr_binary))
+#| tbl-cap: "Prior predictive check results for flat prior — aggressive care outcomes"
+#| label: "tbl-2-flat-prior-check"
+with_dir(here(), tar_read(table_2_priors_flat))
 ```
 
-#### mRS 90
-
-```{r prior predictive check - mrs90}
+```{r prior predictive check - flat table 3}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for modified Rankin score at 90 days"
-#| label: "tbl-mrs90-prior-check"
-with_dir(here(), tar_read(prior_check_mrs_90))
-```
-
-#### EuroOOL Mobility 90
-
-```{r prior predictive check - euro mobility}
-#| echo: false
-#| warning: false
-#| tbl-cap: "Prior predictive check results for EuroQOL - Mobility at 90 days"
-#| label: "tbl-euro-mobility-prior-check"
-with_dir(here(), tar_read(prior_check_euro_mobility_90))
-```
-
-#### EuroOOL Self-Care 90
-
-```{r prior predictive check - euro selfcare}
-#| echo: false
-#| warning: false
-#| tbl-cap: "Prior predictive check results for EuroQOL - Self-Care at 90 days"
-#| label: "tbl-euro-selfcare-prior-check"
-#|
-with_dir(here(), tar_read(prior_check_euro_selfcare_90))
-```
-
-#### EuroOOL Usual Activities 90
-
-```{r prior predictive check - euro usual}
-#| echo: false
-#| warning: false
-#| tbl-cap: "Prior predictive check results for EuroQOL - Usual Activities at 90 days"
-#| label: "tbl-euro-usual-prior-check"
-#|
-with_dir(here(), tar_read(prior_check_euro_usual_90))
-```
-
-#### EuroOOL Pain/Discomfort 90
-
-```{r prior predictive check - euro pain}
-#| echo: false
-#| warning: false
-#| tbl-cap: "Prior predictive check results for EuroQOL - Pain/Discomfort at 90 days"
-#| label: "tbl-euro-pain-prior-check"
-#|
-with_dir(here(), tar_read(prior_check_euro_pain_90))
-```
-
-#### EuroOOL Anxiety/Depression 90
-
-```{r prior predictive check - euro anxiety}
-#| echo: false
-#| warning: false
-#| #| tbl-cap: "Prior predictive check results for EuroQOL - Anxiety/Depression at 90 days"
-#| label: "tbl-euro-anxiety-prior-check"
-with_dir(here(), tar_read(prior_check_euro_anxiety_90))
-```
-
-#### EuroOOL VAS 90
-
-```{r prior predictive check - vas}
-#| echo: false
-#| warning: false
-#| tbl-cap: "Prior predictive check results for EuroQOL - VAS at 90 days"
-#| label: "tbl-euro-vas-prior-check"
-#|
-with_dir(here(), tar_read(prior_check_euro_anxiety_90))
+#| tbl-cap: "Prior predictive check results for flat prior — functional outcomes"
+#| label: "tbl-3-flat-prior-check"
+with_dir(here(), tar_read(table_3_priors_flat))
 ```
 
 ## Missing Data Assessment
 
 As described in the primary manuscript, the primary analysis used multiple imputation by chained equations (MICE) under a Missing at Random (MAR) assumption. This section provides detailed reporting of missingness patterns across the analytic cohort, assessments supporting the MAR assumption, and diagnostics evaluating the quality of the imputed datasets.
 
-### Missingness for 90-Day Outcomes by Laterality Group
+### Missingness for 90-Day Functional Outcomes by Laterality Group
 
 Baseline covariates used in model adjustment (age, GCS, ICH volume, ICH location, IVH) had minimal missingness (<1%). However, 90-day follow-up outcomes had more substantial missingness due to loss to follow-up and differences in outcome ascertainment between the ATACH-2 and ERICH study protocols. The table below summarizes missingness for each 90-day outcome by hemispheric laterality group.
 
@@ -465,8 +316,13 @@ Baseline covariates used in model adjustment (age, GCS, ICH volume, ICH location
 #| tbl-cap: "Missingness for 90-Day Outcomes by Hemispheric Laterality"
 #| label: "tbl-missingness-summary"
 outcome_vars <- c(
-  "mrs_90", "euro_vas_90", "euro_mobility_90", "euro_selfcare_90",
-  "euro_usual_90", "euro_pain_90", "euro_anxiety_90"
+  "mrs_90",
+  "euro_vas_90",
+  "euro_mobility_90",
+  "euro_selfcare_90",
+  "euro_usual_90",
+  "euro_pain_90",
+  "euro_anxiety_90"
 )
 
 outcome_labels <- c(
@@ -483,7 +339,11 @@ missingness_long <- ich_aggressive |>
   tidyr::pivot_longer(
     cols = all_of(outcome_vars),
     names_to = "outcome",
-    values_to = "value"
+    values_to = "value",
+    # Convert all pivoted columns to a common type before stacking.
+    # We only use is.na(value) below, so character is fine and avoids
+    # the ordered-factor vs double type conflict vctrs would otherwise throw.
+    values_transform = list(value = as.character)
   ) |>
   group_by(ich_laterality, outcome) |>
   summarise(
@@ -623,152 +483,157 @@ Chain Convergence: We assessed the convergence of the Markov Chain Monte Carlo (
 
 Posterior Predictive Checks: We conducted posterior predictive checks to evaluate the model's fit to the data. This involved simulating data from the posterior predictive distribution and comparing it to the observed data. The close correspondence between the simulated and observed data confirmed that our models provided a good fit to the underlying data structure.
 
+``` {r}
+#| label: diag-setup
+#| echo: false
+#| include: false
+# Read the diagnostic lists once; all downstream chunks index into these.
+# Keys follow the pattern: model_main_{outcome_col}_{prior_scenario}_{adjustment_set}
+# Supplement always shows neutral + adjusted (the primary analysis model).
+main_diagnostics <- with_dir(here(), tar_read(main_diagnostics))
+main_pp_checks <- with_dir(here(), tar_read(main_pp_checks))
+```
+
 ### MCMC Chain Convergence and Resolution
 
 #### Neurosurgical Intervention
 
 ```{r posterior diagnostics neurosurgery}
+#| label: tbl-neurosurgical-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for Neurosurgical Intervention"
-#| label: "tbl-neurosurgical-posterior-diag"
-#|
-with_dir(here(), tar_read(diag_posterior_neutral_neurosurgery))
+#| fig-cap: "Posterior diagnostic checks for Neurosurgical Intervention"
+main_diagnostics[["model_main_neurosurgery_evac_neutral_adjusted"]]
 ```
 
 #### Ventriculostomy
 
 ```{r posterior diagnostics evd}
+#| label: tbl-evd-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for Ventriculostomy"
-#| label: "tbl-evd-posterior-diag"
-with_dir(here(), tar_read(diag_posterior_neutral_evd))
+#| fig-cap: "Posterior diagnostic checks for Ventriculostomy"
+main_diagnostics[["model_main_evd_neutral_adjusted"]]
 ```
 
 #### Tracheostomy
 
 ```{r posterior diagnostics trach}
+#| label: tbl-trach-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for Tracheostomy"
-#| label: "tbl-trach-posterior-diag"
-with_dir(here(), tar_read(diag_posterior_neutral_tracheostomy))
+#| fig-cap: "Posterior diagnostic checks for Tracheostomy"
+main_diagnostics[["model_main_tracheostomy_neutral_adjusted"]]
 ```
 
 #### Days of Mechanical Ventilation
 
 ```{r posterior diagnostics vent}
+#| label: tbl-vent-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for Days of Mechanical ventilation"
-#| label: "tbl-vent-posterior-diag"
-#|
-with_dir(here(), tar_read(diag_posterior_neutral_days_mechanical_ventilation))
+#| fig-cap: "Posterior diagnostic checks for Days of Mechanical Ventilation"
+main_diagnostics[["model_main_days_mechanical_ventilation_neutral_adjusted"]]
 ```
 
 #### Comfort Care
 
 ```{r posterior diagnostics comfort}
+#| label: tbl-comfort-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for comfort care"
-#| label: "tbl-comfort-posterior-diag"
-#|
-with_dir(here(), tar_read(diag_posterior_neutral_comfort))
+#| fig-cap: "Posterior diagnostic checks for Comfort Care"
+main_diagnostics[["model_main_comfort_care_binary_neutral_adjusted"]]
 ```
 
 #### Early WLST
 
 ```{r posterior diagnostics early wlst}
+#| label: tbl-earlywlst-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for early WLST"
-#| label: "tbl-earlywlst-posterior-diag"
-#|
-with_dir(here(), tar_read(diag_posterior_neutral_early_wlst))
+#| fig-cap: "Posterior diagnostic checks for Early WLST"
+main_diagnostics[["model_main_early_wlst_neutral_adjusted"]]
 ```
 
 #### DNR
 
 ```{r posterior diagnostics dnr}
+#| label: tbl-dnr-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for DNR"
-#| label: "tbl-dnr-posterior-diag"
-#|
-with_dir(here(), tar_read(diag_posterior_neutral_dnr_binary))
+#| fig-cap: "Posterior diagnostic checks for DNR"
+main_diagnostics[["model_main_dnr_binary_neutral_adjusted"]]
 ```
 
 #### mRS 90
 
 ```{r posterior diagnostics mrs}
+#| label: tbl-mrs90-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for modified Rankin score at 90 days"
-#| label: "tbl-mrs90-posterior-diag"
-#|
-with_dir(here(), tar_read(diag_posterior_mrs_90_minimal))
+#| fig-cap: "Posterior diagnostic checks for Modified Rankin Score at 90 Days"
+main_diagnostics[["model_main_mrs_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Mobility 90
 
 ```{r posterior diagnostics euro mobility}
+#| label: tbl-euro-mobility-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Mobility at 90 days"
-#| label: "tbl-euro-mobility-posterior-diag"
-with_dir(here(), tar_read(diag_posterior_neutral_euro_mobility_90_canonical))
+#| fig-cap: "Posterior diagnostic checks for EuroQOL — Mobility at 90 Days"
+main_diagnostics[["model_main_euro_mobility_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Self-Care 90
 
 ```{r posterior diagnostics euro selfcare}
+#| label: tbl-euro-selfcare-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Self-Care at 90 days"
-#| label: "tbl-euro-selfcaremobility-posterior-diag"
-with_dir(here(), tar_read(diag_posterior_neutral_euro_selfcare_90_canonical))
+#| fig-cap: "Posterior diagnostic checks for EuroQOL — Self-Care at 90 Days"
+main_diagnostics[["model_main_euro_selfcare_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Usual Activities 90
 
 ```{r posterior diagnostics euro usual}
+#| label: tbl-euro-usual-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| #| tbl-cap: "Posterior diagnostic checks for EuroQOL - Usual Activities at 90 days"
-#| label: "tbl-euro-usual-posterior-diag"
-with_dir(here(), tar_read(diag_posterior_neutral_euro_usual_90_canonical))
+#| fig-cap: "Posterior diagnostic checks for EuroQOL — Usual Activities at 90 Days"
+main_diagnostics[["model_main_euro_usual_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Pain/Discomfort 90
 
 ```{r posterior diagnostics euro pain}
+#| label: tbl-euro-pain-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Pain/Discomfort at 90 days"
-#| label: "tbl-euro-pain-posterior-diag"
-with_dir(here(), tar_read(diag_posterior_neutral_euro_pain_90_canonical))
+#| fig-cap: "Posterior diagnostic checks for EuroQOL — Pain/Discomfort at 90 Days"
+main_diagnostics[["model_main_euro_pain_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Anxiety/Depression 90
 
 ```{r posterior diagnostics euro anxiety}
+#| label: tbl-euro-anxiety-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Anxiety/Depression at 90 days"
-#| label: "tbl-euro-anxiety-posterior-diag"
-with_dir(here(), tar_read(diag_posterior_neutral_euro_anxiety_90_canonical))
+#| fig-cap: "Posterior diagnostic checks for EuroQOL — Anxiety/Depression at 90 Days"
+main_diagnostics[["model_main_euro_anxiety_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL VAS 90
 
 ```{r posterior diagnostics euro vas}
+#| label: tbl-euro-vas-posterior-diag
 #| echo: false
 #| fig-height: 10
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - VAS at 90 days"
-#| label: "tbl-euro-vas-posterior-diag"
-with_dir(here(), tar_read(diag_posterior_vas_90))
+#| fig-cap: "Posterior diagnostic checks for EuroQOL — VAS at 90 Days"
+main_diagnostics[["model_main_euro_vas_90_neutral_adjusted"]]
 ```
 
 ### Posterior predictive checks
@@ -776,127 +641,127 @@ with_dir(here(), tar_read(diag_posterior_vas_90))
 #### Neurosurgical Intervention
 
 ```{r posterior predictions neurosurgery}
+#| label: tbl-neurosurgery-posterior-checks
 #| echo: false
-#| tbl-cap: "Posterior predictive checks for neurosurgical intervention"
-#| label: "tbl-neurosurgery-posterior-checks"
-with_dir(here(), tar_read(post_pred_check_neurosurgery))
+#| fig-cap: "Posterior predictive checks for Neurosurgical Intervention"
+main_pp_checks[["model_main_neurosurgery_evac_neutral_adjusted"]]
 ```
 
 #### Ventriculostomy
 
 ```{r posterior predictions evd}
+#| label: tbl-evd-posterior-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for ventriculostomy"
-#| label: "tbl-evd-posterior-checks"
-with_dir(here(), tar_read(post_pred_check_evd))
+#| fig-cap: "Posterior predictive checks for Ventriculostomy"
+main_pp_checks[["model_main_evd_neutral_adjusted"]]
 ```
 
 #### Tracheostomy
 
 ```{r posterior predictions trach}
+#| label: tbl-trach-posterior-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for tracheostomy"
-#| label: "tbl-trach-posterior-checks"
-with_dir(here(), tar_read(post_pred_check_tracheostomy))
+#| fig-cap: "Posterior predictive checks for Tracheostomy"
+main_pp_checks[["model_main_tracheostomy_neutral_adjusted"]]
 ```
 
 #### Days of Mechanical Ventilation
 
 ```{r posterior predictions vent}
+#| label: tbl-vent-posterior-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for days of mechanical ventilation"
-#| label: "tbl-vent-posterior-checks"
-with_dir(here(), tar_read(post_pred_check_days_mechanical_ventilation))
+#| fig-cap: "Posterior predictive checks for Days of Mechanical Ventilation"
+main_pp_checks[["model_main_days_mechanical_ventilation_neutral_adjusted"]]
 ```
 
 #### Comfort Care
 
 ```{r posterior predictions comfort}
+#| label: tbl-comfort-posterior-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for comfort care"
-#| label: "tbl-comfort-posterior-checks"
-with_dir(here(), tar_read(post_pred_check_comfort))
+#| fig-cap: "Posterior predictive checks for Comfort Care"
+main_pp_checks[["model_main_comfort_care_binary_neutral_adjusted"]]
 ```
 
 #### Early WLST
 
 ```{r posterior predictions early wlst}
+#| label: tbl-earlywlst-posterior-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for early WLST"
-#| label: "tbl-earlywlst-posterior-checks"
-with_dir(here(), tar_read(post_pred_check_early_wlst))
+#| fig-cap: "Posterior predictive checks for Early WLST"
+main_pp_checks[["model_main_early_wlst_neutral_adjusted"]]
 ```
 
 #### DNR
 
 ```{r posterior predictions dnr}
+#| label: tbl-dnr-posterior-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for DNR"
-#| label: "tbl-dnr-posterior-checks"
-with_dir(here(), tar_read(post_pred_check_dnr_binary))
+#| fig-cap: "Posterior predictive checks for DNR"
+main_pp_checks[["model_main_dnr_binary_neutral_adjusted"]]
 ```
 
 #### mRS 90
 
 ```{r posterior predictions mrs}
+#| label: tbl-mrs90-posterior-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for modified Rankin Score 90 days"
-#| label: "tbl-mrs90-posterior-checks"
-with_dir(here(), tar_read(post_pred_check_neutral_mrs_90_canonical))
+#| fig-cap: "Posterior predictive checks for Modified Rankin Score at 90 Days"
+main_pp_checks[["model_main_mrs_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Moblity 90
 
 ```{r posterior predictions euro mobility}
+#| label: tbl-euro-mobility-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Mobility 90 days"
-#| label: "tbl-euro-mobility-checks"
-with_dir(here(), tar_read(post_pred_check_neutral_euro_mobility_90_canonical))
+#| fig-cap: "Posterior predictive checks for EuroQOL — Mobility at 90 Days"
+main_pp_checks[["model_main_euro_mobility_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Self-Care 90
 
 ```{r posterior predictions euro selfcare}
+#| label: tbl-euro-selfcare-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Self-Care 90 days"
-#| label: "tbl-euro-selfcare-checks"
-with_dir(here(), tar_read(post_pred_check_neutral_euro_selfcare_90_canonical))
+#| fig-cap: "Posterior predictive checks for EuroQOL — Self-Care at 90 Days"
+main_pp_checks[["model_main_euro_selfcare_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Usual Activities 90
 
 ```{r posterior predictions euro usual}
+#| label: tbl-euro-usual-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Usual Activities 90 days"
-#| label: "tbl-euro-usual-checks"
-with_dir(here(), tar_read(post_pred_check_neutral_euro_usual_90_canonical))
+#| fig-cap: "Posterior predictive checks for EuroQOL — Usual Activities at 90 Days"
+main_pp_checks[["model_main_euro_usual_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Pain/Discomfort 90
 
 ```{r posterior predictions euro pain}
+#| label: tbl-euro-pain-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Pain/Discomfort 90 days"
-#| label: "tbl-euro-pain-checks"
-with_dir(here(), tar_read(post_pred_check_neutral_euro_pain_90_canonical))
+#| fig-cap: "Posterior predictive checks for EuroQOL — Pain/Discomfort at 90 Days"
+main_pp_checks[["model_main_euro_pain_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL Anxiety/Despression 90
 
 ```{r posterior predictions euro anxiety}
+#| label: tbl-euro-anxiety-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - Anxiety/Depression 90 days"
-#| label: "tbl-euro-anxiety-checks"
-with_dir(here(), tar_read(post_pred_check_neutral_euro_anxiety_90_canonical))
+#| fig-cap: "Posterior predictive checks for EuroQOL — Anxiety/Depression at 90 Days"
+main_pp_checks[["model_main_euro_anxiety_90_neutral_adjusted"]]
 ```
 
 #### EuroQOL VAS 90
 
 ```{r posterior predictions euro vas}
+#| label: tbl-euro-vas-checks
 #| echo: false
-#| tbl-cap: "Posterior diagnostic checks for EuroQOL - VAS 90 days"
-#| label: "tbl-euro-vas-checks"
-with_dir(here(), tar_read(post_pred_check_vas_90))
+#| fig-cap: "Posterior predictive checks for EuroQOL — VAS at 90 Days"
+main_pp_checks[["model_main_euro_vas_90_neutral_adjusted"]]
 ```
 
 ## Sensitivity Analyses
@@ -916,7 +781,6 @@ This approach avoids the well-known pitfalls of comparing isolated subgroup poin
 #| output: true
 #| tbl-cap: "Subgroup Analysis of Hemispheric Laterality and Neurosurgical Intervention with Formal Interaction Tests"
 #| label: "tbl-subgroup-interactions"
-
 with_dir(here(), tar_read(table_subgroups))
 ```
 
@@ -930,7 +794,7 @@ The laterality association with neurosurgical intervention was directionally con
 #| echo: false
 #| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Left Hemisphere Prior"
 #| label: "tbl-2-left-prior"
-with_dir(here(), tar_read(table2_left))
+with_dir(here(), tar_read(table_2_left))
 ```
 
 #### Right Hemisphere Prior
@@ -940,7 +804,7 @@ with_dir(here(), tar_read(table2_left))
 #| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Right Hemisphere Prior"
 #| label: "tbl-2-right-prior"
 #
-with_dir(here(), tar_read(table2_right))
+with_dir(here(), tar_read(table_2_right))
 ```
 
 #### Flat Prior
@@ -949,10 +813,10 @@ with_dir(here(), tar_read(table2_right))
 #| echo: false
 #| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Flat Prior"
 #| label: "tbl-2-flat-prior"
-with_dir(here(), tar_read(table2_flat))
+with_dir(here(), tar_read(table_2_flat))
 ```
 
-### Table 4 with Different Priors
+### Table 3 with Different Priors
 
 #### Left Hemisphere Prior
 
@@ -961,7 +825,7 @@ with_dir(here(), tar_read(table2_flat))
 #| #| tbl-cap: "Functional  Outcomes of Interest with Left Hemisphere Prior"
 #| label: "tbl-4-left-prior"
 #|
-with_dir(here(), tar_read(table4_left))
+with_dir(here(), tar_read(table_3_left))
 ```
 
 #### Right Hemisphere Prior
@@ -971,7 +835,7 @@ with_dir(here(), tar_read(table4_left))
 #| #| tbl-cap: "Functional  Outcomes of Interest with Right Hemisphere Prior"
 #| label: "tbl-4-right-prior"
 #|
-with_dir(here(), tar_read(table4_right))
+with_dir(here(), tar_read(table_3_right))
 ```
 
 #### Flat Prior
@@ -981,7 +845,7 @@ with_dir(here(), tar_read(table4_right))
 #| #| tbl-cap: "Functional  Outcomes of Interest with Flat Prior"
 #| label: "tbl-4-flat-prior"
 #|
-with_dir(here(), tar_read(table4_flat))
+with_dir(here(), tar_read(table_3_flat))
 ```
 
 ### Complete-Case Sensitivity Analysis
@@ -993,7 +857,7 @@ The primary analysis used multiple imputation by chained equations (MICE) with 2
 #| tbl-cap: "Outcomes of Interest Using Complete-Case Analysis (Sensitivity)"
 #| label: "tbl-complete-case-sensitivity"
 #|
-with_dir(here(), tar_read(table_imp))
+with_dir(here(), tar_read(table_2_sens_neutral))
 ```
 
 ### Site-Level Clustering Sensitivity Analysis

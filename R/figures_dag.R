@@ -1,7 +1,6 @@
 # R/figures_dag.R
 # DAG visualization functions for supplement figures.
-# Produces two figures: the neurosurgery DAG and the functional outcomes DAG,
-# each with a companion adjustment-set panel.
+# Produces two figures: the neurosurgery DAG and the functional outcomes DAG.
 
 # ---------------------------------------------------------------------------
 # Shared aesthetic constants
@@ -9,10 +8,10 @@
 # ---------------------------------------------------------------------------
 
 DAG_PALETTE <- c(
-  "exposure" = "#0072B2", # Okabe-Ito blue  — hemispheric laterality
+  "exposure" = "#0072B2", # Okabe-Ito blue   — hemispheric laterality
   "outcome" = "#D55E00", # Okabe-Ito orange — outcome node
   "latent" = "#BBBBBB", # gray             — unmeasured / latent
-  "covariate" = "#E8E8E8" # light gray       — measured covariate
+  "covariate" = "#E8E8E8" # light gray        — measured covariate
 )
 
 # Slightly darker colors for node borders (stroke), derived manually to avoid
@@ -22,14 +21,6 @@ DAG_BORDER <- c(
   "outcome" = "#9A4200",
   "latent" = "#888888",
   "covariate" = "#AAAAAA"
-)
-
-# Text colors: white on dark fills, dark on light fills.
-DAG_TEXT <- c(
-  "exposure" = "white",
-  "outcome" = "white",
-  "latent" = "#444444",
-  "covariate" = "#333333"
 )
 
 # ---------------------------------------------------------------------------
@@ -73,22 +64,17 @@ plot_dag <- function(
 
   ggplot(tidy_dag, aes(x = x, y = y, xend = xend, yend = yend)) +
 
-    # --- Edges (drawn first, so they appear behind node circles) ---
+    # Edges drawn first so they appear behind node circles.
     # geom_dag_edges_arc() handles curved edges cleanly when many paths
     # run between the same region of the graph.
     geom_dag_edges_arc(
       curvature = edge_curvature,
       edge_colour = "grey45",
       edge_width = 0.5,
-      arrow = grid::arrow(
-        length = unit(0.12, "cm"),
-        type = "closed"
-      )
+      arrow = grid::arrow(length = unit(0.12, "cm"), type = "closed")
     ) +
 
-    # --- Node circles ---
-    # shape = 21 gives a filled circle with a separate stroke color,
-    # which is how we get the two-tone exposure/outcome appearance.
+    # shape = 21 gives a filled circle with a separate stroke color.
     geom_dag_point(
       aes(fill = node_type, color = node_type),
       size = 16,
@@ -96,13 +82,12 @@ plot_dag <- function(
       stroke = 1.1
     ) +
 
-    # --- Node labels (repelled to reduce overlap with long label strings) ---
-    # We pass fill through aes() so the label box matches the node color —
-    # this visually "connects" label to node even when repelled far away.
+    # Label box fill matches node color, visually linking label to node
+    # even when repelled away from it.
     geom_dag_label_repel(
       aes(label = label, fill = node_type),
       color = "grey10",
-      size = base_size * 0.22, # scales with base_size
+      size = base_size * 0.22,
       label.padding = unit(0.12, "cm"),
       box.padding = unit(0.4, "cm"),
       max.overlaps = 20,
@@ -110,7 +95,6 @@ plot_dag <- function(
       seed = 42 # reproducible repulsion layout
     ) +
 
-    # --- Scales ---
     scale_fill_manual(
       values = DAG_PALETTE,
       labels = c("Exposure", "Outcome", "Unmeasured", "Covariate"),
@@ -123,7 +107,6 @@ plot_dag <- function(
       drop = FALSE
     ) +
 
-    # --- Theme ---
     theme_dag(base_size = base_size) +
     theme(
       legend.position = "bottom",
@@ -144,116 +127,37 @@ plot_dag <- function(
 }
 
 # ---------------------------------------------------------------------------
-# Adjustment set visualization.
-# Uses ggdag::ggdag_adjustment_set() as the base, then re-styles to match
-# plot_dag(). Shows which covariates must be conditioned on for each
-# minimal valid adjustment set.
-# ---------------------------------------------------------------------------
-
-plot_adjustment_set <- function(
-  dag_obj,
-  title = "Minimal Adjustment Sets",
-  base_size = 11
-) {
-  # ggdag_adjustment_set() facets by adjustment set and colors nodes by role
-  # (exposure, outcome, adjusted, unadjusted). We override its color scale.
-  ggdag_adjustment_set(
-    dag_obj,
-    node_size = 14,
-    text = FALSE, # we'll add our own labels via geom_dag_label_repel
-    use_labels = "label",
-    shadow = TRUE
-  ) +
-    scale_fill_manual(
-      values = c(
-        "exposure" = "#0072B2",
-        "outcome" = "#D55E00",
-        "adjusted" = "#009E73", # Okabe-Ito green = in adjustment set
-        "unadjusted" = "#E8E8E8"
-      ),
-      name = NULL
-    ) +
-    theme_dag(base_size = base_size) +
-    theme(
-      legend.position = "bottom",
-      strip.text = element_text(face = "bold", size = base_size * 0.85)
-    ) +
-    labs(title = title)
-}
-
-# ---------------------------------------------------------------------------
 # Figure assembly functions.
-# Each accepts a pre-built dagitty object as its argument rather than calling
-# the dag constructor internally. This is the correct targets pattern: by
-# receiving the dag as a function argument, targets can register it as an
-# explicit upstream dependency and will correctly invalidate the figure target
-# whenever the dag definition changes. A function that builds its own dag
-# internally is opaque to the pipeline graph.
+# Each accepts a pre-built dagitty object as its argument so that targets
+# can register it as an explicit upstream dependency and invalidate the
+# figure target whenever the DAG definition changes.
 # ---------------------------------------------------------------------------
 
 make_neurosurgery_dag_figure <- function(dag) {
-  # Use the dag object passed in from the targets pipeline (dag_neurosurgery).
-  dag_obj <- dag
-
-  main_panel <- plot_dag(
-    dag_obj,
-    title = "A  Neurosurgical Intervention",
+  plot_dag(
+    dag,
+    title = "Neurosurgical Intervention",
     subtitle = "Directed acyclic graph for the primary surgical outcome"
   )
-
-  adj_panel <- plot_adjustment_set(
-    dag_obj,
-    title = "B  Minimal adjustment sets"
-  )
-
-  # Stack vertically; main DAG gets more height than adjustment set panel.
-  main_panel /
-    adj_panel +
-    plot_layout(heights = c(2, 1)) &
-    theme(plot.margin = margin(8, 8, 8, 8))
 }
 
-
 make_outcomes_dag_figure <- function(dag) {
-  # Use the dag object passed in from the targets pipeline (dag_outcomes).
-  # Previously this ignored its argument and called outcomes_dag_function()
-  # internally, which broke the targets dependency graph.
-  dag_obj <- dag
-
-  main_panel <- plot_dag(
-    dag_obj,
-    title = "A  Functional Outcomes",
+  plot_dag(
+    dag,
+    title = "Functional Outcomes",
     subtitle = "Directed acyclic graph for mRS and EuroQOL outcomes"
   )
-
-  adj_panel <- plot_adjustment_set(
-    dag_obj,
-    title = "B  Minimal adjustment sets"
-  )
-
-  main_panel /
-    adj_panel +
-    plot_layout(heights = c(2, 1)) &
-    theme(plot.margin = margin(8, 8, 8, 8))
 }
 
 # ---------------------------------------------------------------------------
-# Export function.
-# cairo_pdf preserves text as proper glyphs and handles Unicode correctly —
-# important if any labels contain special characters.
-# Dimensions are set wide to give the outcome DAG (more nodes) room to breathe.
-#
-# Note: because this function is called outside the targets pipeline (e.g.,
-# interactively), it is responsible for building the dag objects itself before
-# passing them to the assembly functions. Inside the pipeline, targets handles
-# this by passing the pre-built dag_neurosurgery and dag_outcomes targets.
+# Standalone export helper (interactive / non-pipeline use).
+# In the targets pipeline, ggsave is called inside the file targets in
+# _targets.R instead; this function is provided for convenience only.
 # ---------------------------------------------------------------------------
 
 save_dag_figures <- function(output_dir = "figures/supplement") {
   dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
-  # Build dag objects here for standalone/interactive use. In the targets
-  # pipeline these are constructed as separate upstream targets instead.
   neuro_dag <- f_neurosurgery_dag()
   outcomes_dag <- outcomes_dag_function()
 
@@ -266,8 +170,6 @@ save_dag_figures <- function(output_dir = "figures/supplement") {
     units = "in"
   )
 
-  # The outcomes DAG has more nodes and two latent social variables,
-  # so it gets extra width.
   ggsave(
     filename = file.path(output_dir, "sfig_dag_outcomes.pdf"),
     plot = make_outcomes_dag_figure(outcomes_dag),
