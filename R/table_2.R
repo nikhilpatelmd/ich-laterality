@@ -169,7 +169,7 @@ table_2 <- total_n |>
       locations = cells_stub(rows = everything())
     ) |>
     tab_source_note(
-      source_note = "Values represent Average Marginal Effects (Odds Ratios for binary outcomes, Incidence Rate Ratios for counts). Models are adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study. Days of mechanical ventilation represent median (IQR) days among patients receiving mechanical ventilation; excludes patients with zero ventilator days (data from ATACH-2 only). ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; CI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; IQR, interquartile range; and IVH, intraventricular hemorrhage."
+      source_note = "Values represent Average Marginal Effects (Odds Ratios for binary outcomes, Incidence Rate Ratios for counts). Models are adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study. Days of mechanical ventilation represent median (IQR) days (data from ATACH-2 only). ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; CI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; IQR, interquartile range; and IVH, intraventricular hemorrhage."
     )
 
   return(table_2)

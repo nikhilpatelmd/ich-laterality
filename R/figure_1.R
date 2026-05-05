@@ -229,7 +229,7 @@ make_posterior_prob_figure <- function(
 # Takes a named list of four fitted models (one per prior) for a single outcome
 # and produces a two-panel figure suitable for the main manuscript.
 #
-# models_by_prior: named list with elements "neutral", "left", "right", "flat"
+# models_by_prior: named list with elements "neutral", "left", "right", "diffuse"
 #   e.g. list(
 #     neutral = all_main_models[["model_main_neurosurgery_evac_neutral_adjusted"]],
 #     left    = all_main_models[["model_main_neurosurgery_evac_left_adjusted"]],
@@ -264,7 +264,7 @@ make_prior_sensitivity_figure <- function(
     neutral = "Neutral Prior",
     left = "Left Hemisphere Prior",
     right = "Right Hemisphere Prior",
-    flat = "Flat Prior"
+    flat = "Diffuse Prior"
   )
 ) {
   base_mm <- base_pt / 2.835
@@ -467,7 +467,7 @@ make_prior_sensitivity_figure <- function(
       " by ICH hemisphere under the neutral prior. ",
       "Panel B: Overlaid posterior distributions of the absolute probability ",
       "difference (Right \u2212 Left hemisphere) across four prior specifications ",
-      "(neutral, left-hemisphere, right-hemisphere, and flat). ",
+      "(neutral, left-hemisphere, right-hemisphere, and diffuse). ",
       "All four priors yield consistent findings, demonstrating robustness of ",
       "the primary result to prior choice. ",
       covariate_caption,

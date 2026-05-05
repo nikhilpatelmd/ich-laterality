@@ -199,14 +199,41 @@ make_mrs_uncertainty <- function(model) {
     )
 }
 
-
 # ── Combined two-panel figure ─────────────────────────────────────────────────
 
-make_mrs_figure <- function(model) {
+make_mrs_figure <- function(model, covariate_caption = "", caption_width = 110) {
   panel_a <- make_grotta_bars(model)
   panel_b <- make_mrs_uncertainty(model)
 
+  # 1. Build the wrapped caption string
+  caption_text <- str_wrap(
+    paste0(
+      "Panel A: Covariate-adjusted posterior marginal mean predicted probabilities ",
+      "of 90-day modified Rankin Scale (mRS) scores by ICH hemisphere under the neutral prior. ",
+      "Percentages inside the bars represent posterior mean probabilities \u22653%. ",
+      "Panel B: Posterior density distributions of the predicted probabilities for each individual ",
+      "mRS category, stratified by left versus right hemisphere. ",
+      covariate_caption,
+      " ",
+      "Dotted lines indicate posterior medians. ",
+      "mRS = modified Rankin Scale. ICH = intracerebral hemorrhage."
+    ),
+    width = caption_width
+  )
+
+  # 2. Stitch together and annotate
   (panel_a / panel_b) +
-    plot_annotation(tag_levels = "A") +
+    plot_annotation(
+      tag_levels = "A",
+      caption = caption_text,
+      theme = theme(
+        plot.caption = element_text(
+          hjust = 0,             # Left-align the paragraph
+          size = BASE_PT - 4,    # Scale caption text slightly smaller than base text
+          family = "Arial",
+          margin = margin(t = 15) # Add space between the bottom plot and caption
+        )
+      )
+    ) +
     plot_layout(heights = c(1, 1), guides = "keep")
 }

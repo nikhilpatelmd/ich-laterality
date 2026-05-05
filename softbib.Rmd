@@ -1,0 +1,8 @@
+---
+bibliography: softbib.bib
+nocite: |
+  @base, @bayesplot1, @bayesplot2, @brms1, @brms2, @brms3, @broom, @broom.mixed, @cmdstanr, @dagitty, @dplyr, @future, @future.callr, @ggdag, @ggdist1, @ggdist2, @gghalves, @ggplot2, @ggridges, @ggtext, @glue, @grid, @gt, @gtsummary, @here, @janitor, @marginaleffects, @MetBrewer, @mice, @modelsummary, @monochromeR, @naniar, @patchwork, @purrr, @quarto, @renv, @rlang, @rmarkdown1, @rmarkdown2, @rmarkdown3, @scales, @showtext, @skimr, @smd, @stats, @stringr, @systemfonts, @tarchetypes, @targets, @tibble, @tidybayes, @tidyr, @tidyverse, @viridis, @withr
+---
+
+# Software Bibliography
+

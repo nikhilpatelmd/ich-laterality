@@ -119,9 +119,14 @@ affiliations:
 format:
   docx:
     reference-doc: custom-reference.docx
-bibliography: references.bib
+table-of-contents: true
+toc-title: Contents
+bibliography: 
+  - references.bib
+  - softbib.bib
 csl: stroke.csl
-
+message: false
+warning: false
 ---
 
 ```{r setup}
@@ -147,16 +152,6 @@ with_dir(here(), {
 
 ## Covariate Selection
 
-As mentioned in the primary manuscript, we constructed directed acyclic graphs (DAGs) to facilitate covariate selection. DAGs are graphical models used to represent causal relationships between variables. They consist of nodes (representing variables) and directed arrows (representing causal influences). DAGs can help minimize several sources of bias that are inherent in many observational studies, such as confounding bias and selection bias. When constructed with subject-matter knowledge, they can provide a framework for making causal inferences from observational data. Specifically, they can help researchers with three key benefits:
-
-1. **Identify minimal adjustment sets**: Determine the smallest set of variables to control for to estimate the causal effect of an exposure on an outcome. 
-
-2. **Avoid over-adjustment**: Prevent controlling for variables that are mediators or colliders, which can bias the results.
-
-3. **Clarify causal assumptions**: Make the underlying causal assumptions explicit and transparent. [@hernanSpecifyingTargetTrial2016]
-
-In constructing DAGs for this project, we used guidance and recommendations from previous literature. [@tennantUseDirectedAcyclic2021; @sauerUseDirectedAcyclic2013; @barrettCausalInference2025]
-
 ### Primary and Secondary Outcomes
 
 For our primary outcome model we specified the following DAG:
@@ -170,7 +165,7 @@ figure_dag_neurosurgery
 ```
 
 For neurosurgical intervention and all acute care secondary outcomes, the target estimand was the total effect of hemispheric laterality — the overall causal effect of laterality on the outcome, encompassing all pathways through which it operates. To reduce bias from measured confounding, we adjusted for baseline variables that independently influence both the clinical presentation associated with hemispheric laterality and the likelihood of intervention: age, admission Glasgow Coma Scale (GCS) score, ICH location, baseline ICH volume, and presence of intraventricular hemorrhage (IVH). These covariates act as confounders in the causal structure and were included to block backdoor paths, not to decompose direct and indirect effects.
-Variables that lie downstream of ICH characteristics and on the causal pathway to surgical decisions — specifically midline shift, hydrocephalus, and eloquent-area involvement — were recognized as mediators and were deliberately excluded from the adjustment set. Conditioning on these variables would partially block the causal path under study and introduce over-adjustment bias. Because these variables are only measured in the ATACH-2 cohort, their role as mediators (rather than confounders) is further examined in a population-restricted sensitivity analysis described below. [@tennantUseDirectedAcyclic2021]
+Variables that lie downstream of ICH characteristics and on the causal pathway to surgical decisions — specifically midline shift, hydrocephalus, and eloquent-area involvement — were recognized as mediators and were deliberately excluded from the adjustment set. Conditioning on these variables would partially block the causal path under study and introduce over-adjustment bias. [@tennantUseDirectedAcyclic2021]
 
 ### Functional Outcomes
 
@@ -186,7 +181,7 @@ figure_dag_outcomes
 
 For functional outcomes, the target estimand was likewise the total effect of hemispheric laterality on 90-day modified Rankin Scale (mRS) and EuroQOL scores. This total effect encompasses all causal pathways from laterality to functional outcome, including those mediated through neurosurgical intervention, withdrawal of life-sustaining therapy, and participation in rehabilitation. These downstream treatment pathways are intrinsic to the clinical significance of hemispheric laterality and should not be blocked by conditioning on post-baseline treatment variables.
 
-Conditioning on neurosurgical intervention — a mediator on the causal pathway from laterality to functional outcome — would partially block this clinically relevant pathway and could introduce collider stratification bias by opening non-causal associations between laterality and outcome within strata of the mediator. Valid estimation of a controlled direct effect (i.e., the effect of laterality holding surgical management constant) would additionally require adjustment for all confounders of the mediator–outcome relationship, some of which may themselves be affected by the exposure, creating intermediate confounding that cannot be resolved through standard regression adjustment. Accordingly, functional outcome models were adjusted for age, admission GCS score, ICH location, baseline ICH volume, presence of IVH, and time from symptom onset to emergency department arrival, but did not include neurosurgical intervention or other post-baseline treatment variables as covariates. [@tennantUseDirectedAcyclic2021]
+Conditioning on neurosurgical intervention — a mediator on the causal pathway from laterality to functional outcome — would partially block this clinically relevant pathway and could introduce collider stratification bias by opening non-causal associations between laterality and outcome within strata of the mediator. Valid estimation of a controlled direct effect (i.e., the effect of laterality holding surgical management constant) would additionally require adjustment for all confounders of the mediator–outcome relationship, some of which may themselves be affected by the exposure, creating intermediate confounding that cannot be resolved through standard regression adjustment. Accordingly, functional outcome models were adjusted for age, admission GCS score, ICH location, baseline ICH volume, and presence of IVH, but did not include neurosurgical intervention or other post-baseline treatment variables as covariates. [@tennantUseDirectedAcyclic2021]
 
 ## Priors
 
@@ -217,24 +212,15 @@ flat_lower_OR <- exp(flat_mean - 1.96 * flat_sd)
 flat_upper_OR <- exp(flat_mean + 1.96 * flat_sd)
 ```
 
-In defining prior distributions, we generally followed suggestions from previous literature. [@zampieriUsingBayesianMethods2021; @kruschkeBayesianAnalysisReporting2021; @gelmanBayesianWorkflow2020] Specifically, we defined four sets of prior distributions for the
-hemispheric laterality coefficient (i.e., the log-odds or log-incidence rate ratio assigned to right vs. left hemisphere ICH in each model) across all outcomes. Because our models include multiple covariates and a random study intercept, the priors below describe the *conditional*
-laterality effect — the association between hemispheric laterality and each outcome holding all adjustment covariates constant. The implications of these priors at the data level (i.e., the
-population-averaged marginal effect they imply before observing outcomes) are characterized empirically through prior predictive checks reported in **Table 2**.
+In defining prior distributions, we followed established recommendations for Bayesian modeling in critical care and clinical research. [@zampieriUsingBayesianMethods2021; @kruschkeBayesianAnalysisReporting2021; @gelmanBayesianWorkflow2020] We defined four sets of prior distributions for the hemispheric laterality coefficient (i.e., the log-odds or log-incidence rate ratio assigned to right versus left hemisphere ICH) across all outcomes. Because the models include multiple covariates and a random study intercept, the priors describe the conditional laterality effect. The implications of these priors at the data level are characterized empirically through prior predictive checks, reported below.
 
-**Neutral prior**: This prior encodes the assumption that hemispheric lateralization does not meaningfully affect the outcome — it represents the **null hypothesis** on the coefficient scale. The laterality coefficient is assigned a prior of **`r neutral_mean`** $\pm$
-**`r neutral_sd`** (mean $\pm$ SD on the log scale), placing the conditional OR at **`r round(exp(neutral_mean), digits = 2)`** with 95% of the prior probability mass between
-**`r round(neutral_lower_OR, digits = 2)`** and **`r round(neutral_upper_OR, digits = 2)`** on the OR scale.
+* **Neutral prior:** A weakly informative prior representing the null hypothesis of no laterality effect. The coefficient is assigned a Normal(`r neutral_mean`, `r neutral_sd`) distribution. This places the expected conditional OR at `r round(exp(neutral_mean), digits = 2)`, with 95% of the prior probability mass between `r round(neutral_lower_OR, digits = 2)` and `r round(neutral_upper_OR, digits = 2)`.
 
-**Left hemisphere prior**: This prior encodes the assumption that outcomes are more likely following left hemisphere ICH. A coefficient-specific prior is placed directly on the
-`ich_lateralityRight` term, with mean **`r left_mean`** and SD **`r left_sd`**, placing the conditional OR for right hemisphere (relative to left) at **`r round(exp(left_mean), digits = 2)`** with 95% of the prior probability mass between **`r round(left_lower_OR, digits = 2)`** and
-**`r round(left_upper_OR, digits = 2)`**.
+* **Left hemisphere prior:** An informative prior assuming outcomes are more likely following left hemisphere ICH. A Normal(`r left_mean`, `r left_sd`) distribution is placed on the `ich_lateralityRight` coefficient. This corresponds to an expected conditional OR of `r round(exp(left_mean), digits = 2)` (95% prior probability mass: `r round(left_lower_OR, digits = 2)` to `r round(left_upper_OR, digits = 2)`).
 
-**Right hemisphere prior**: This prior encodes the assumption that outcomes are more likely following right hemisphere ICH. A coefficient-specific prior is placed on the `ich_lateralityRight` term, with mean **`r right_mean`** and SD **`r right_sd`**, placing the
-conditional OR for right hemisphere at **`r round(exp(right_mean), digits = 2)`** with 95% of the prior probability mass between **`r round(right_lower_OR, digits = 2)`** and **`r round(right_upper_OR, digits = 2)`**.
+* **Right hemisphere prior:** An informative prior assuming outcomes are more likely following right hemisphere ICH. A Normal(`r right_mean`, `r right_sd`) distribution is placed on the `ich_lateralityRight` coefficient. This corresponds to an expected conditional OR of `r round(exp(right_mean), digits = 2)` (95% prior probability mass: `r round(right_lower_OR, digits = 2)` to `r round(right_upper_OR, digits = 2)`).
 
-**Flat prior**: This prior most closely approximates a frequentist analysis, in that the distribution is sufficiently wide to contribute minimal information to the posterior. The laterality coefficient is assigned a prior with mean **`r flat_mean`** and SD **`r flat_sd`**,
-corresponding to a conditional OR of **`r round(exp(flat_mean), digits = 2)`** with 95% of the prior probability mass spanning **`r round(flat_lower_OR, digits = 2)`** to **`r round(flat_upper_OR, digits = 2)`** — a range wide enough to be consistent with nearly any plausible effect size. An exception applies to the Days of Mechanical Ventilation model, where the flat prior SD was reduced to 2 on the log scale; because this outcome is modeled with a log-link negative binomial and continuous predictors are on their natural scales, a SD of 5 produces prior predictive counts many orders of magnitude outside any plausible clinical range.
+* **Diffuse prior:** A vague prior intended to provide minimal information to the posterior. The coefficient is assigned a Normal(`r flat_mean`, `r flat_sd`) distribution, corresponding to a conditional OR of `r round(exp(flat_mean), digits = 2)` (95% prior probability mass: `r round(flat_lower_OR, digits = 2)` to `r round(flat_upper_OR, digits = 2)`). An exception applies to the zero-truncated negative binomial model (days of mechanical ventilation), where the diffuse prior standard deviation was restricted to 2 on the log scale to prevent prior predictive counts outside of plausible clinical ranges.
 
 ### Prior Predictive Checks
 
@@ -294,12 +280,12 @@ with_dir(here(), tar_read(table_2_priors_right))
 with_dir(here(), tar_read(table_3_priors_right))
 ```
 
-#### Flat Prior
+#### Diffuse Prior
 
 ```{r prior predictive check - flat table 2}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for flat prior — aggressive care outcomes"
+#| tbl-cap: "Prior predictive check results for diffuse prior — aggressive care outcomes"
 #| label: "tbl-2-flat-prior-check"
 with_dir(here(), tar_read(table_2_priors_flat))
 ```
@@ -307,7 +293,7 @@ with_dir(here(), tar_read(table_2_priors_flat))
 ```{r prior predictive check - flat table 3}
 #| echo: false
 #| warning: false
-#| tbl-cap: "Prior predictive check results for flat prior — functional outcomes"
+#| tbl-cap: "Prior predictive check results for diffuse prior — functional outcomes"
 #| label: "tbl-3-flat-prior-check"
 with_dir(here(), tar_read(table_3_priors_flat))
 ```
@@ -434,13 +420,6 @@ with_dir(here(), tar_read(missingness_check_gcs_baseline_mrs_90))
 with_dir(here(), tar_read(missingness_check_ich_volume_baseline_mrs_90))
 ```
 
-```{r shadow-time-mrs}
-#| echo: false
-#| output: true
-#| fig-height: 6
-with_dir(here(), tar_read(missingness_check_time_symptoms_to_ed_mrs_90))
-```
-
 #### EQ-VAS at 90 Days
 
 ```{r shadow-age-vas}
@@ -462,13 +441,6 @@ with_dir(here(), tar_read(missingness_check_gcs_baseline_euro_vas_90))
 #| output: true
 #| fig-height: 6
 with_dir(here(), tar_read(missingness_check_ich_volume_baseline_euro_vas_90))
-```
-
-```{r shadow-time-vas}
-#| echo: false
-#| output: true
-#| fig-height: 6
-with_dir(here(), tar_read(missingness_check_time_symptoms_to_ed_euro_vas_90))
 ```
 
 ### Imputation Diagnostics
@@ -817,11 +789,11 @@ with_dir(here(), tar_read(table_2_left))
 with_dir(here(), tar_read(table_2_right))
 ```
 
-#### Flat Prior
+#### Diffuse Prior
 
 ```{r}
 #| echo: false
-#| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Flat Prior"
+#| #| tbl-cap: "Primary and Secondary Outcomes of Interest with Diffuse Prior"
 #| label: "tbl-2-flat-prior"
 with_dir(here(), tar_read(table_2_flat))
 ```
@@ -848,11 +820,11 @@ with_dir(here(), tar_read(table_3_left))
 with_dir(here(), tar_read(table_3_right))
 ```
 
-#### Flat Prior
+#### Diffuse Prior
 
 ```{r}
 #| echo: false
-#| #| tbl-cap: "Functional  Outcomes of Interest with Flat Prior"
+#| #| tbl-cap: "Functional  Outcomes of Interest with Diffuse Prior"
 #| label: "tbl-4-flat-prior"
 #|
 with_dir(here(), tar_read(table_3_flat))
@@ -891,3 +863,16 @@ with_dir(here(), tar_read(table_2_atach))
 ```
 
 Inclusion of the site-level random intercept slightly attenuated the point estimate for the laterality association and widened the credible interval, which is expected given the additional variance component and the smaller sample size of the ATACH-2 cohort alone. However, the direction, magnitude, and posterior probability of the association remained consistent with the primary analysis, suggesting that site-level clustering does not materially alter the principal finding.
+
+{{< pagebreak >}}
+
+## References
+
+::: {#refs}
+:::
+
+{{< pagebreak >}}
+
+## Software Bibliography
+
+The statistical analysis and data processing for this manuscript were conducted using the R programming language. To facilitate reproducibility and to credit the developers of the open-source tools utilized in this research, a complete software bibliography was automatically generated using the `softbib` package.
