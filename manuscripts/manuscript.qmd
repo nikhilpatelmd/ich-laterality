@@ -236,89 +236,100 @@ The ATACH-2 (PI: Adnan I. Qureshi, MD, NCT01176565) and ERICH (PI: Daniel Woo, M
 
 A total of `r sample_size %>% pull(n)` patients were included in the analysis, of which `r left_hemisphere_count %>% pull(n)` (`r percent(left_hemisphere_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) had left hemispheric ICH (Table 1). They had higher National Institutes of Health Stroke Scale (NIHSS) scores, lower GCS scores, and lower rates of hypertension as compared to those with right hemispheric ICH. There were `r erich_count %>% pull(n)` (`r percent(erich_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) patients in the cohort from ERICH and `r atach_count %>% pull(n)` (`r percent(atach_count %>% pull(n) / sample_size %>% pull(n), digits = 1)`) from ATACH-2.
 
-### Hemispheric laterality and neurosurgical intervention
+### Hemispheric Laterality and Neurosurgical Intervention
 
-```{r neurosurgical intervention}
-# Extract the values for the outcome
-or_ci_values <- tibble2 %>%
+```{r neurosurgical-intervention}
+# Extract the values for the neurosurgical intervention outcome
+or_ci_values_surg <- tibble2 %>%
   filter(Outcome == "Neurosurgical Intervention") %>%
   pull(or_ci)
 
-# Split the string using a regular expression for the combined separator
-or_ci_split <- str_split(or_ci_values, " \\(| - ", simplify = TRUE)
+or_ci_split_surg <- str_split(or_ci_values_surg, " \\(| - ", simplify = TRUE)
 
-# Extract the odds ratio and CI bounds
-odds_ratio_surgery <- or_ci_split[[1]]
-lower_bound <- or_ci_split[[2]]
-upper_bound_intermediate <- str_remove(or_ci_split, "\\)")
-upper_bound <- upper_bound_intermediate[[3]]
+odds_ratio_surgery <- or_ci_split_surg[[1]]
+lower_bound_surg <- or_ci_split_surg[[2]]
+upper_bound_surg <- str_remove(or_ci_split_surg[[3]], "\\)")
 ```
 
-Associations between hemispheric laterality and primary and secondary outcomes are shown in Table 2. There were `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(Left)` with left hemispheric ICH who underwent neurosurgical intervention as compared to `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(Right)` with right hemispheric ICH (aOR `r odds_ratio_surgery`, 95% CrI `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was greater than 1 was `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(or_1)`. The posterior probability of the aOR being greater than 1.2, indicating a substantial difference, was `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(or_1.2)`. A very small portion of the posterior probability was inside of the ROPE (`r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(rope)`).
+Associations between hemispheric laterality and primary and secondary outcomes are shown in Table 2. `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(Left)` patients with left hemispheric ICH underwent neurosurgical intervention, compared to `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(Right)` with right hemispheric ICH (aOR `r odds_ratio_surgery`, 95% CrI `r lower_bound_surg`–`r upper_bound_surg`). The posterior probability that the aOR exceeded 1 was `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(or_1)`, and the posterior probability of a substantial difference (aOR > 1.2) was `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(or_1.2)`. Fewer than `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(rope)` of the posterior distribution fell within the ROPE.
 
-Figure 1 displays the prior sensitivity analysis for neurosurgical intervention. Panel A shows the posterior distributions of covariate-adjusted predicted probabilities of neurosurgical intervention for left and right hemispheric ICH under the neutral prior, illustrating the separation in absolute risk between groups (left hemisphere: 4.86%, 95% CrI 3.98–5.84%; right hemisphere: 8.04%, 95% CrI 6.93–9.23%). Panel B overlays the posterior distributions of the absolute probability difference (Right − Left) across all four prior specifications (neutral, left-hemisphere, right-hemisphere, and flat). All four priors yielded nearly identical posterior distributions, with P(Right > Left) exceeding 99.9% under every specification. The most skeptical prior (left-hemisphere) shifted the median probability difference from 3.18 to 2.21 percentage points but did not materially alter the conclusion, demonstrating that the primary finding is robust to prior choice. In a sensitivity analysis restricted to the ATACH-2 cohort, inclusion of a random intercept for hospital site slightly attenuated the point estimate and widened the credible interval but did not materially alter the direction or strength of the association. Additional sensitivity analyses, including alternative priors, complete-case analyses, and site-level clustering results, are presented in the Supplementary Appendix.
+Figure 1 displays the covariate-adjusted marginal predicted probabilities of neurosurgical intervention and the prior sensitivity analysis. Panel A shows the posterior distributions of covariate-adjusted absolute predicted probabilities of neurosurgical intervention for left and right hemispheric ICH under the neutral prior (left hemisphere: 4.86%, 95% CrI 3.98–5.84%; right hemisphere: 8.04%, 95% CrI 6.93–9.23%). Panel B shows the posterior distributions of the absolute probability difference (Right − Left) across all four prior specifications. Under the neutral prior, the median probability difference was 3.18 percentage points (95% CrI 1.75–4.62), with P(Right > Left) exceeding 99.9%. Corresponding estimates were 2.21 percentage points (95% CrI 0.97–3.45) under the left-hemisphere prior, 2.84 percentage points (95% CrI 1.60–4.09) under the right-hemisphere prior, and 3.38 percentage points (95% CrI 1.90–4.89) under the flat prior, with P(Right > Left) exceeding 99.9% under all specifications.
 
-### Hemispheric laterality and secondary outcomes
+In a sensitivity analysis restricted to the ATACH-2 cohort, inclusion of a random intercept for hospital site modestly attenuated the point estimate and shifted the credible interval toward the null but did not materially alter the direction or strength of the association. Details are available in the Supplementary Appendix.
 
-```{r evd}
-# Extract the values for the outcome
-or_ci_values <- tibble2 %>%
+### Hemispheric Laterality and Secondary Outcomes
+
+```{r secondary-outcomes}
+# EVD
+or_ci_values_evd <- tibble2 %>%
   filter(Outcome == "External Ventricular Drain") %>%
   pull(or_ci)
 
-# Split the string using a regular expression for the combined separator
-or_ci_split <- str_split(or_ci_values, " \\(| - ", simplify = TRUE)
+or_ci_split_evd <- str_split(or_ci_values_evd, " \\(| - ", simplify = TRUE)
 
-# Extract the odds ratio and CI bounds
-odds_ratio_evd <- or_ci_split[[1]]
-lower_bound <- or_ci_split[[2]]
-upper_bound_intermediate <- str_remove(or_ci_split, "\\)")
-upper_bound <- upper_bound_intermediate[[3]]
+odds_ratio_evd <- or_ci_split_evd[[1]]
+lower_bound_evd <- or_ci_split_evd[[2]]
+upper_bound_evd <- str_remove(or_ci_split_evd[[3]], "\\)")
+
+# Mechanical ventilation (count outcome; reported as IRR)
+irr_ci_values_mv <- tibble2 %>%
+  filter(Outcome == "Days of Mechanical Ventilation") %>%
+  pull(or_ci)
+
+irr_ci_split_mv <- str_split(irr_ci_values_mv, " \\(| - ", simplify = TRUE)
+
+irr_mv <- irr_ci_split_mv[[1]]
+lower_bound_mv <- irr_ci_split_mv[[2]]
+upper_bound_mv <- str_remove(irr_ci_split_mv[[3]], "\\)")
 ```
 
-A total of `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(Left)` with left hemispheric ICH had an external ventricular drain (EVD) placed as compared to `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(Right)` with right hemispheric ICH (aOR `r odds_ratio_evd`, 95% CrI `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was greater than 1 was `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(or_1)`. The posterior probability that the aOR was greater than 1.2 was `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(or_1.2)`. About `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(rope)` of the posterior distribution was inside of the ROPE.
+A total of `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(Left)` with left hemispheric ICH had an EVD placed as compared to `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(Right)` with right hemispheric ICH (aOR `r odds_ratio_evd`, 95% CrI `r lower_bound_evd`–`r upper_bound_evd`). The posterior probability that the aOR exceeded 
+1 was `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(or_1)`, and the posterior probability of a substantial difference (aOR > 1.2) was `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(or_1.2)`. `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(rope)` of the posterior distribution fell within the ROPE.
 
-Other secondary outcomes showed smaller and less certain associations with hemispheric laterality.
+Median days on mechanical ventilation were `r tibble2 %>% filter(Outcome == "Days of Mechanical Ventilation") %>% pull(Left)` and `r tibble2 %>% filter(Outcome == "Days of Mechanical Ventilation") %>% pull(Right)` for left and right hemispheric ICH, respectively (IRR `r irr_mv`, 95% CrI `r lower_bound_mv`–`r upper_bound_mv`). The posterior probability that the IRR exceeded 1 was `r tibble2 %>% filter(Outcome == "Days of Mechanical Ventilation") %>% pull(or_1)`, and `r tibble2 %>% filter(Outcome == "Days of Mechanical Ventilation") %>% pull(rope)` of the posterior distribution fell within the ROPE.
 
-### Hemispheric laterality and functional outcomes
+Rates of tracheostomy were similar between groups (`r tibble2 %>% filter(Outcome == "Tracheostomy") %>% pull(Left)` left vs. `r tibble2 %>% filter(Outcome == "Tracheostomy") %>% pull(Right)` right; aOR `r tibble2 %>% filter(Outcome == "Tracheostomy") %>% pull(or_ci)`), with a posterior probability that the aOR exceeded 1 of `r tibble2 %>% filter(Outcome == "Tracheostomy") %>% pull(or_1)` and `r tibble2 %>% filter(Outcome == "Tracheostomy") %>% pull(rope)` of the posterior distribution within the ROPE. Rates of WLST (`r tibble2 %>% filter(Outcome == "Withdrawal of Life-Sustaining Therapy") %>% pull(Left)` left vs. `r tibble2 %>% filter(Outcome == "Withdrawal of Life-Sustaining Therapy") %>% pull(Right)` right; aOR `r tibble2 %>% filter(Outcome == "Withdrawal of Life-Sustaining Therapy") %>% pull(or_ci)`), early WLST (`r tibble2 %>% filter(Outcome == "Early Withdrawal of Life-Sustaining Therapy") %>% pull(Left)` left vs. `r tibble2 %>% filter(Outcome == "Early Withdrawal of Life-Sustaining Therapy") %>% pull(Right)` right; aOR `r tibble2 %>% filter(Outcome == "Early Withdrawal of Life-Sustaining Therapy") %>% pull(or_ci)`), and DNR orders (`r tibble2 %>% filter(Outcome == "DNR Order") %>% pull(Left)` left vs. `r tibble2 %>% filter(Outcome == "DNR Order") %>% pull(Right)` right; aOR `r tibble2 %>% filter(Outcome == "DNR Order") %>% pull(or_ci)`) were also similar across hemispheres, with P(aOR > 1) of `r tibble2 %>% filter(Outcome == "Withdrawal of Life-Sustaining Therapy") %>% pull(or_1)`, `r tibble2 %>% filter(Outcome == "Early Withdrawal of Life-Sustaining Therapy") %>% pull(or_1)`, and `r tibble2 %>% filter(Outcome == "DNR Order") %>% pull(or_1)`, respectively.
 
-```{r mrs}
-# Extract the values for the outcome
-or_ci_values <- tibble3 %>%
+### Hemispheric Laterality and Functional Outcomes
+
+```{r functional-outcomes}
+# mRS
+or_ci_values_mrs <- tibble3 %>%
   filter(outcome == "Modified Rankin Score") %>%
   pull(est_label)
 
-# Split the string using a regular expression for the combined separator
-or_ci_split <- str_split(or_ci_values, " \\(| - ", simplify = TRUE)
+or_ci_split_mrs <- str_split(or_ci_values_mrs, " \\(| - ", simplify = TRUE)
 
-# Extract the odds ratio and CI bounds
-odds_ratio <- or_ci_split[[1]]
-lower_bound <- or_ci_split[[2]]
-upper_bound_intermediate <- str_remove(or_ci_split, "\\)")
-upper_bound <- upper_bound_intermediate[[3]]
-```
+odds_ratio_mrs <- or_ci_split_mrs[[1]]
+lower_bound_mrs <- or_ci_split_mrs[[2]]
+upper_bound_mrs <- str_remove(or_ci_split_mrs[[3]], "\\)")
 
-The associations between mRS at 90 days and functional outcomes are described in Table 3. The aOR for a worse mRS score at 90 days associated with right hemispheric ICH compared to left hemispheric ICH was `r odds_ratio` (95% CrI `r lower_bound` - `r upper_bound`). The posterior probability that the aOR was \> 1 was `r tibble3 %>% filter(outcome == "Modified Rankin Score") %>% pull(prob_diff)`. The posterior probability that the aOR was \> 1.2 was `r tibble3 %>% filter(outcome == "Modified Rankin Score") %>% pull(prob_sub)`. About `r tibble3 %>% filter(outcome == "Modified Rankin Score") %>% pull(prob_rope)` of the posterior distribution was inside of the ROPE.
-
-```{r hrqol}
-# Extract the values for the outcome
-or_ci_values <- tibble3 %>%
+# EuroQOL - Mobility
+or_ci_values_mob <- tibble3 %>%
   filter(outcome == "EuroQOL - Mobility") %>%
   pull(est_label)
 
-# Split the string using a regular expression for the combined separator
-or_ci_split <- str_split(or_ci_values, " \\(| - ", simplify = TRUE)
+or_ci_split_mob <- str_split(or_ci_values_mob, " \\(| - ", simplify = TRUE)
 
-# Extract the odds ratio and CI bounds
-odds_ratio <- or_ci_split[[1]]
-lower_bound <- or_ci_split[[2]]
-upper_bound_intermediate <- str_remove(or_ci_split, "\\)")
-upper_bound <- upper_bound_intermediate[[3]]
+odds_ratio_mob <- or_ci_split_mob[[1]]
+lower_bound_mob <- or_ci_split_mob[[2]]
+upper_bound_mob <- str_remove(or_ci_split_mob[[3]], "\\)")
+
+# Euro VAS
+or_ci_values_vas <- tibble3 %>%
+  filter(outcome == "Euro VAS") %>%
+  pull(est_label)
+
+or_ci_split_vas <- str_split(or_ci_values_vas, " \\(| - ", simplify = TRUE)
+
+mean_diff_vas <- or_ci_split_vas[[1]]
+lower_bound_vas <- or_ci_split_vas[[2]]
+upper_bound_vas <- str_remove(or_ci_split_vas[[3]], "\\)")
 ```
 
-When examining HRQoL domains, we observed similar functional outcomes between groups. The aOR for a worse EuroQOL - Mobility score associated with right hemispheric ICH compared to left hemispheric ICH was `r odds_ratio` (95% CrI `r lower_bound` - `r upper_bound`) with similar results for the Self-Care domain. The posterior probability that the aOR was \> 1 was `r tibble3 %>% filter(outcome == "EuroQOL - Mobility") %>% pull(prob_diff)` for both domains, with the posterior probability that the aOR was \> 1.2 being `r tibble3 %>% filter(outcome == "EuroQOL - Mobility") %>% pull(prob_sub)`.
+Associations between hemispheric laterality and functional outcomes are shown in Table 3. The aOR for a worse mRS score at 90 days for right hemispheric ICH compared to left hemispheric ICH was `r odds_ratio_mrs` (95% CrI `r lower_bound_mrs`–`r upper_bound_mrs`), with a posterior probability that the aOR exceeded 1 of `r tibble3 %>% filter(outcome == "Modified Rankin Score") %>% pull(prob_diff)` and `r tibble3 %>% filter(outcome == "Modified Rankin Score") %>% pull(prob_rope)` of the posterior distribution within the ROPE. Figure 3 displays the covariate-adjusted absolute marginal predicted cumulative distributions of mRS at 90 days for left and right hemispheric ICH under the neutral prior.
 
-Results from using different priors and sensitivity analyses are presented in the Supplementary Appendix and were consistent with the primary findings.
+For Mobility and Self-Care, the posterior probability that the aOR exceeded 1 was `r tibble3 %>% filter(outcome == "EuroQOL - Mobility") %>% pull(prob_diff)` for both domains (aOR `r odds_ratio_mob`, 95% CrI `r lower_bound_mob`–`r upper_bound_mob` for Mobility; aOR `r tibble3 %>% filter(outcome == "EuroQOL - Self-Care") %>% pull(est_label)` for Self-Care), with a posterior probability of a substantial difference (aOR > 1.2) of `r tibble3 %>% filter(outcome == "EuroQOL - Mobility") %>% pull(prob_sub)` for both, and `r tibble3 %>% filter(outcome == "EuroQOL - Mobility") %>% pull(prob_rope)` and `r tibble3 %>% filter(outcome == "EuroQOL - Self-Care") %>% pull(prob_rope)` of the posterior distributions within the ROPE, respectively. For Pain/Discomfort, the aOR was `r tibble3 %>% filter(outcome == "EuroQOL - Pain/Discomfort") %>% pull(est_label)` with P(aOR > 1) of `r tibble3 %>% filter(outcome == "EuroQOL - Pain/Discomfort") %>% pull(prob_diff)` and `r tibble3 %>% filter(outcome == "EuroQOL - Pain/Discomfort") %>% pull(prob_rope)` of the posterior distribution within the ROPE. For Anxiety/Depression, the aOR was `r tibble3 %>% filter(outcome == "EuroQOL - Anxiety/Depression") %>% pull(est_label)` with P(aOR > 1) of `r tibble3 %>% filter(outcome == "EuroQOL - Anxiety/Depression") %>% pull(prob_diff)` and `r tibble3 %>% filter(outcome == "EuroQOL - Anxiety/Depression") %>% pull(prob_rope)` of the posterior distribution within the ROPE. For Usual Activities, the aOR was `r tibble3 %>% filter(outcome == "EuroQOL - Usual Activities") %>% pull(est_label)` with P(aOR > 1) of `r tibble3 %>% filter(outcome == "EuroQOL - Usual Activities") %>% pull(prob_diff)` and `r tibble3 %>% filter(outcome == "EuroQOL - Usual Activities") %>% pull(prob_rope)` of the posterior distribution within the ROPE. For the Euro VAS, the estimated mean difference was `r mean_diff_vas` points (95% CrI `r lower_bound_vas`–`r upper_bound_vas`), with a posterior probability of `r tibble3 %>% filter(outcome == "Euro VAS") %>% pull(prob_diff)` that right hemispheric ICH was associated with a lower score, `r tibble3 %>% filter(outcome == "Euro VAS") %>% pull(prob_rope)` of the posterior distribution within the ROPE, and a posterior probability of a substantial difference (mean difference < −5 points) of `r tibble3 %>% filter(outcome == "Euro VAS") %>% pull(prob_sub)`. Results from sensitivity analyses using alternative priors are presented in the Supplementary Appendix and are consistent with these results.
 
 ## Discussion
 
