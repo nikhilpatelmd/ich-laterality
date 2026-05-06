@@ -166,6 +166,43 @@ with_dir(here(), tar_load(table_3_neutral))
 tibble3 <- table_3_neutral[["_data"]]
 ```
 
+```{r neurosurgical-intervention}
+# Extract the values for the neurosurgical intervention outcome
+or_ci_values_surg <- tibble2 %>%
+  filter(Outcome == "Neurosurgical Intervention") %>%
+  pull(or_ci)
+
+or_ci_split_surg <- str_split(or_ci_values_surg, " \\(| - ", simplify = TRUE)
+
+odds_ratio_surgery <- or_ci_split_surg[[1]]
+lower_bound_surg <- or_ci_split_surg[[2]]
+upper_bound_surg <- str_remove(or_ci_split_surg[[3]], "\\)")
+```
+
+```{r secondary-outcomes}
+# EVD
+or_ci_values_evd <- tibble2 %>%
+  filter(Outcome == "External Ventricular Drain") %>%
+  pull(or_ci)
+
+or_ci_split_evd <- str_split(or_ci_values_evd, " \\(| - ", simplify = TRUE)
+
+odds_ratio_evd <- or_ci_split_evd[[1]]
+lower_bound_evd <- or_ci_split_evd[[2]]
+upper_bound_evd <- str_remove(or_ci_split_evd[[3]], "\\)")
+
+# Mechanical ventilation (count outcome; reported as IRR)
+irr_ci_values_mv <- tibble2 %>%
+  filter(Outcome == "Days of Mechanical Ventilation") %>%
+  pull(or_ci)
+
+irr_ci_split_mv <- str_split(irr_ci_values_mv, " \\(| - ", simplify = TRUE)
+
+irr_mv <- irr_ci_split_mv[[1]]
+lower_bound_mv <- irr_ci_split_mv[[2]]
+upper_bound_mv <- str_remove(irr_ci_split_mv[[3]], "\\)")
+```
+
 ## Abstract
 
 **Background**: Hemispheric laterality influences clinical management in stroke. Given the increasing enthusiasm for surgical management of intracerebral hemorrhage (ICH), we evaluated the association of hemispheric lateralization with the likelihood of receiving neurosurgical intervention and subsequent 90-day functional outcomes.
@@ -258,18 +295,6 @@ A total of `r sample_size %>% pull(n)` patients were included in the analysis, o
 
 ### Hemispheric Laterality and Neurosurgical Intervention
 
-```{r neurosurgical-intervention}
-# Extract the values for the neurosurgical intervention outcome
-or_ci_values_surg <- tibble2 %>%
-  filter(Outcome == "Neurosurgical Intervention") %>%
-  pull(or_ci)
-
-or_ci_split_surg <- str_split(or_ci_values_surg, " \\(| - ", simplify = TRUE)
-
-odds_ratio_surgery <- or_ci_split_surg[[1]]
-lower_bound_surg <- or_ci_split_surg[[2]]
-upper_bound_surg <- str_remove(or_ci_split_surg[[3]], "\\)")
-```
 
 Associations between hemispheric laterality and primary and secondary outcomes are shown in Table 2. `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(Left)` patients with left hemispheric ICH underwent neurosurgical intervention, compared to `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(Right)` with right hemispheric ICH (aOR `r odds_ratio_surgery`, 95% CrI `r lower_bound_surg`–`r upper_bound_surg`). The posterior probability that the aOR exceeded 1 was `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(or_1)`, and the posterior probability of a substantial difference (aOR > 1.2) was `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(or_1.2)`. Fewer than `r tibble2 %>% filter(Outcome == "Neurosurgical Intervention") %>% pull(rope)` of the posterior distribution fell within the ROPE.
 
@@ -280,30 +305,6 @@ Figure 1 displays the covariate-adjusted marginal predicted probabilities of neu
 In a sensitivity analysis restricted to the ATACH-2 cohort, a random intercept for the enrolling hospital was included to account for site-level clustering. The base model yielded an adjusted odds ratio of 2.23 (95% CrI: 1.31–3.76). With the inclusion of the site-level random effect, the adjusted odds ratio was 1.86 (95% CrI: 1.10–3.16). For this hierarchical model, the posterior probability of any directional effect (aOR > 1) was 99%, the posterior probability of an aOR > 1.2 was 95%, and 1% of the posterior distribution fell within the region of practical equivalence (Supplementary Table 46)
 
 ### Hemispheric Laterality and Secondary Outcomes
-
-```{r secondary-outcomes}
-# EVD
-or_ci_values_evd <- tibble2 %>%
-  filter(Outcome == "External Ventricular Drain") %>%
-  pull(or_ci)
-
-or_ci_split_evd <- str_split(or_ci_values_evd, " \\(| - ", simplify = TRUE)
-
-odds_ratio_evd <- or_ci_split_evd[[1]]
-lower_bound_evd <- or_ci_split_evd[[2]]
-upper_bound_evd <- str_remove(or_ci_split_evd[[3]], "\\)")
-
-# Mechanical ventilation (count outcome; reported as IRR)
-irr_ci_values_mv <- tibble2 %>%
-  filter(Outcome == "Days of Mechanical Ventilation") %>%
-  pull(or_ci)
-
-irr_ci_split_mv <- str_split(irr_ci_values_mv, " \\(| - ", simplify = TRUE)
-
-irr_mv <- irr_ci_split_mv[[1]]
-lower_bound_mv <- irr_ci_split_mv[[2]]
-upper_bound_mv <- str_remove(irr_ci_split_mv[[3]], "\\)")
-```
 
 A total of `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(Left)` with left hemispheric ICH had an EVD placed as compared to `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(Right)` with right hemispheric ICH (aOR `r odds_ratio_evd`, 95% CrI `r lower_bound_evd`–`r upper_bound_evd`). The posterior probability that the aOR exceeded 
 1 was `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(or_1)`, and the posterior probability of a substantial difference (aOR > 1.2) was `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(or_1.2)`. `r tibble2 %>% filter(Outcome == "External Ventricular Drain") %>% pull(rope)` of the posterior distribution fell within the ROPE.
