@@ -163,6 +163,9 @@ figure_dag_neurosurgery
 ```
 
 For neurosurgical intervention and all acute care secondary outcomes, the target estimand was the total effect of hemispheric laterality — the overall causal effect of laterality on the outcome, encompassing all pathways through which it operates. To reduce bias from measured confounding, we adjusted for baseline variables that independently influence both the clinical presentation associated with hemispheric laterality and the likelihood of intervention: age, admission Glasgow Coma Scale (GCS) score, ICH location, baseline ICH volume, and presence of intraventricular hemorrhage (IVH). These covariates act as confounders in the causal structure and were included to block backdoor paths, not to decompose direct and indirect effects.
+
+We chose not to adjust for National Institutes of Health Stroke Scale (NIHSS) for 2 reasons: 1) it is co-linear to GCS as both represent quantitative representations of the neurological exam, and 2) NIHSS is partly determined by lateralized deficits such as aphasia and neglect.
+
 Variables that lie downstream of ICH characteristics and on the causal pathway to surgical decisions — specifically midline shift, hydrocephalus, and eloquent-area involvement — were recognized as mediators and were deliberately excluded from the adjustment set. Conditioning on these variables would partially block the causal path under study and introduce over-adjustment bias. [@tennantUseDirectedAcyclic2021]
 
 ### Functional Outcomes

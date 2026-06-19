@@ -117,7 +117,7 @@ table_3_function <- function(x, models, is_prior = FALSE) {
   df_vas <- process_vas(models$"Euro VAS", "Euro VAS", data = x)
 
   # Dynamic labels based on whether it's a prior predictive check or posterior
-  est_col_label <- ifelse(is_prior, "Prior Effect Estimate (95% CI)", "aOR / Mean Diff (95% CI)")
+  est_col_label <- ifelse(is_prior, "Prior Effect Estimate (95% CrI)", "aOR / Mean Diff (95% CrI)")
   prob_diff_label <- ifelse(is_prior, "Prior Prob. of any diff", "Probability of any difference")
   prob_sub_label <- ifelse(is_prior, "Prior Prob. of substantial diff", "Probability of a substantial difference")
   prob_rope_label <- ifelse(is_prior, "Prior ROPE", "ROPE")
@@ -126,7 +126,7 @@ table_3_function <- function(x, models, is_prior = FALSE) {
   source_note_text <- ifelse(
     is_prior,
     "Values represent expected effects simulated purely from the prior distributions before encountering the data. Estimates are Prior Odds Ratios (aOR) for ordinal outcomes and Mean Differences for Euro VAS. ROPE indicates region of practical equivalence (0.95 to 1.05 for aOR; ± 2 points for Euro VAS).",
-    "Values represent Average Marginal Effects (Odds Ratios for ordinal outcomes; Mean Difference in points [0–100] for Euro VAS). Models are adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere. ROPE indicates region of practical equivalence (0.95 to 1.05 for ordinal; ± 2 points for Euro VAS). For Euro VAS, probability of difference is defined as Mean Difference < 0, and substantial difference as < -5 points. aOR indicates adjusted odds ratio; CI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; and IVH, intraventricular hemorrhage."
+    "Values represent Average Marginal Effects (Odds Ratios for ordinal outcomes; Mean Difference in points [0–100] for Euro VAS). Models are adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere. ROPE indicates region of practical equivalence (0.95 to 1.05 for ordinal; ± 2 points for Euro VAS). For Euro VAS, probability of difference is defined as Mean Difference < 0, and substantial difference as < -5 points. aOR indicates adjusted odds ratio; CrI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; and IVH, intraventricular hemorrhage."
   )
 
 bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>

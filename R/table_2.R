@@ -154,7 +154,7 @@ table_2 <- total_n |>
       Outcome = md("**Outcome**"),
       Left = md("**Left Hemisphere**"),
       Right = md("**Right Hemisphere**"),
-      or_ci = md("**aOR / IRR (95% CI)**"),
+      or_ci = md("**aOR / IRR (95% CrI)**"),
       or_1 = md("**Probability of difference (Est > 1)**"),
       or_1.2 = md("**Probability of substantial difference (Est > 1.2)**"),
       rope = md("**ROPE**")
@@ -169,7 +169,7 @@ table_2 <- total_n |>
       locations = cells_stub(rows = everything())
     ) |>
     tab_source_note(
-      source_note = "Values represent Average Marginal Effects (Odds Ratios for binary outcomes, Incidence Rate Ratios for counts). Models are adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study. Days of mechanical ventilation represent median (IQR) days (data from ATACH-2 only). ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; CI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; IQR, interquartile range; and IVH, intraventricular hemorrhage."
+      source_note = "Values represent Average Marginal Effects (Odds Ratios for binary outcomes, Incidence Rate Ratios for counts). Models are adjusted for age, admission GCS, ICH location (interaction), ICH volume, IVH, and study. Days of mechanical ventilation represent median (IQR) days (data from ATACH-2 only). ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; CrI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; IQR, interquartile range; and IVH, intraventricular hemorrhage."
     )
 
   return(table_2)
@@ -338,7 +338,7 @@ table_2_priors_function <- function(models) {
       Outcome = md("**Outcome**"),
       Left = md("**Left Hemisphere (Prior expected)**"),
       Right = md("**Right Hemisphere (Prior expected)**"),
-      or_ci = md("**Prior aOR / IRR (95% CI)**"),
+      or_ci = md("**Prior aOR / IRR (95% CrI)**"),
       or_1 = md("**Probability of difference (aOR > 1)**"),
       or_1.2 = md("**Probability of substantial difference (aOR > 1.2)**"),
       rope = md("**ROPE**")
@@ -353,7 +353,7 @@ table_2_priors_function <- function(models) {
       locations = cells_stub(rows = everything())
     ) |>
     tab_source_note(
-      source_note = "Values represent expected values simulated purely from the prior distributions before encountering the data. ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; and CI, credible interval."
+      source_note = "Values represent expected values simulated purely from the prior distributions before encountering the data. ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; and CrI, credible interval."
     )
 
 }
