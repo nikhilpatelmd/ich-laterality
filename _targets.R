@@ -340,25 +340,25 @@ table_scenarios_sens <- tibble(scenario = "neutral")
 # expression — tar_map substitutes column values as bare symbols, so building
 # strings with paste0() inside the expression is unreliable.
 figure_scenarios <- tibble::tribble(
-  ~outcome_col                                                                                                                                                                                                   , ~outcome_label               , ~x_limits      , ~covariate_caption ,
+  ~outcome_col                                                                                                                                                                                                      , ~outcome_label               , ~x_limits      , ~covariate_caption ,
 
-  "neurosurgery_evac"                                                                                                                                                                                            , "Neurosurgical Intervention" , list(c(0, 20)) ,
-  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, an ICH laterality-by-location interaction, and a random intercept for study center." ,
+  "neurosurgery_evac"                                                                                                                                                                                               , "Neurosurgical Intervention" , list(c(0, 20)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, an ICH laterality-by-location interaction, and a random intercept for enrolling study." ,
 
-  "evd"                                                                                                                                                                                                          , "EVD Placement"              , list(c(0, 20)) ,
-  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, an ICH laterality-by-location interaction, and a random intercept for study center." ,
+  "evd"                                                                                                                                                                                                             , "EVD Placement"              , list(c(0, 20)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, an ICH laterality-by-location interaction, and a random intercept for enrolling study." ,
 
-  "tracheostomy"                                                                                                                                                                                                 , "Tracheostomy"               , list(c(0, 30)) ,
-  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, neurosurgical intervention, and a random intercept for study center."                ,
+  "tracheostomy"                                                                                                                                                                                                    , "Tracheostomy"               , list(c(0, 30)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, neurosurgical intervention, and a random intercept for enrolling study."                ,
 
-  "comfort_care_binary"                                                                                                                                                                                          , "Comfort Care"               , list(c(0, 50)) ,
-  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for study center."                                            ,
+  "comfort_care_binary"                                                                                                                                                                                             , "Comfort Care"               , list(c(0, 50)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for enrolling study."                                            ,
 
-  "early_wlst"                                                                                                                                                                                                   , "Early WLST"                 , list(c(0, 50)) ,
-  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for study center."                                            ,
+  "early_wlst"                                                                                                                                                                                                      , "Early WLST"                 , list(c(0, 50)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for enrolling study."                                            ,
 
-  "dnr_binary"                                                                                                                                                                                                   , "DNR Order"                  , list(c(0, 70)) ,
-  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for study center."
+  "dnr_binary"                                                                                                                                                                                                      , "DNR Order"                  , list(c(0, 70)) ,
+  "Models were adjusted for ICH location, age, admission Glasgow Coma Scale score, ICH volume, intraventricular hemorrhage, and a random intercept for enrolling study."
 )
 
 figure_values <- tidyr::crossing(
