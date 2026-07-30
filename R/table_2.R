@@ -111,9 +111,9 @@ table_2_function <- function(x, models) {
         or = median(effect_ratio),
         lower_95_ci = quantile(effect_ratio, 0.025),
         upper_95_ci = quantile(effect_ratio, 0.975),
-        or_1 = sum(effect_ratio > 1) / n(), 
-        or_1.2 = sum(effect_ratio > 1.2) / n(), 
-        rope = sum(effect_ratio < 1.05 & effect_ratio > 0.95) / n() 
+        or_1 = sum(effect_ratio > 1) / n(),
+        or_1.2 = sum(effect_ratio > 1.2) / n(),
+        rope = sum(effect_ratio < 1.05 & effect_ratio > 0.95) / n()
       ) |>
       mutate(
         or_ci = glue::glue(
@@ -130,10 +130,16 @@ table_2_function <- function(x, models) {
   neurosurgery_post <- get_marginal_stats(models$"Neurosurgical Intervention")
   evd_post <- get_marginal_stats(models$"External Ventricular Drain")
   tracheostomy_post <- get_marginal_stats(models$"Tracheostomy")
-  comfort_care_binary_post <- get_marginal_stats(models$"Withdrawal of Life-Sustaining Therapy")
-  early_wlst_post <- get_marginal_stats(models$"Early Withdrawal of Life-Sustaining Therapy")
+  comfort_care_binary_post <- get_marginal_stats(
+    models$"Withdrawal of Life-Sustaining Therapy"
+  )
+  early_wlst_post <- get_marginal_stats(
+    models$"Early Withdrawal of Life-Sustaining Therapy"
+  )
   dnr_binary_post <- get_marginal_stats(models$"DNR Order")
-  days_mechanical_ventilation_post <- get_marginal_stats(models$"Days of Mechanical Ventilation")
+  days_mechanical_ventilation_post <- get_marginal_stats(
+    models$"Days of Mechanical Ventilation"
+  )
 
   total_stats <- bind_rows(
     "Neurosurgical Intervention" = neurosurgery_post,
@@ -146,7 +152,7 @@ table_2_function <- function(x, models) {
     .id = "Outcome"
   )
 
-table_2 <- total_n |>
+  table_2 <- total_n |>
     left_join(total_stats, by = "Outcome") |>
     gt(rowname_col = "Outcome") |>
     tab_stubhead(label = "Outcome") |>
@@ -258,7 +264,7 @@ table_2_priors_function <- function(models) {
     is_binary <- fam %in% c("bernoulli", "binomial")
 
     preds <- marginaleffects::avg_predictions(model, by = "ich_laterality") |>
-      marginaleffects::posterior_draws() 
+      marginaleffects::posterior_draws()
 
     if (!is_binary) {
       pred_summary <- preds |>
@@ -320,12 +326,22 @@ table_2_priors_function <- function(models) {
   }
 
   total_stats <- bind_rows(
-    "Neurosurgical Intervention" = get_prior_stats(models$"Neurosurgical Intervention"),
-    "External Ventricular Drain" = get_prior_stats(models$"External Ventricular Drain"),
-    "Days of Mechanical Ventilation" = get_prior_stats(models$"Days of Mechanical Ventilation"),
+    "Neurosurgical Intervention" = get_prior_stats(
+      models$"Neurosurgical Intervention"
+    ),
+    "External Ventricular Drain" = get_prior_stats(
+      models$"External Ventricular Drain"
+    ),
+    "Days of Mechanical Ventilation" = get_prior_stats(
+      models$"Days of Mechanical Ventilation"
+    ),
     "Tracheostomy" = get_prior_stats(models$"Tracheostomy"),
-    "Withdrawal of Life-Sustaining Therapy" = get_prior_stats(models$"Withdrawal of Life-Sustaining Therapy"),
-    "Early Withdrawal of Life-Sustaining Therapy" = get_prior_stats(models$"Early Withdrawal of Life-Sustaining Therapy"),
+    "Withdrawal of Life-Sustaining Therapy" = get_prior_stats(
+      models$"Withdrawal of Life-Sustaining Therapy"
+    ),
+    "Early Withdrawal of Life-Sustaining Therapy" = get_prior_stats(
+      models$"Early Withdrawal of Life-Sustaining Therapy"
+    ),
     "DNR Order" = get_prior_stats(models$"DNR Order"),
     .id = "Outcome"
   )
@@ -341,7 +357,7 @@ table_2_priors_function <- function(models) {
       or_ci = md("**Prior aOR / IRR (95% CrI)**"),
       or_1 = md("**Probability of difference (aOR > 1)**"),
       or_1.2 = md("**Probability of substantial difference (aOR > 1.2)**"),
-      rope = md("**ROPE**")
+      rope = md("**Percentage of posterior within ROPE**")
     ) |>
     cols_width(Outcome ~ px(375), 2:3 ~ px(200), 4 ~ px(150), 5:7 ~ px(125)) |>
     # 1. Align all columns left explicitly
@@ -355,5 +371,4 @@ table_2_priors_function <- function(models) {
     tab_source_note(
       source_note = "Values represent expected values simulated purely from the prior distributions before encountering the data. ROPE indicates region of practical equivalence (0.95 to 1.05); aOR, adjusted odds ratio; IRR, incidence rate ratio; and CrI, credible interval."
     )
-
 }

@@ -107,20 +107,51 @@ process_vas <- function(model, label, data) {
 
 # --- 3. Unified Table Function ---
 table_3_function <- function(x, models, is_prior = FALSE) {
-  df_mrs <- process_ordinal(models$"Modified Rankin Score", "Modified Rankin Score")
+  df_mrs <- process_ordinal(
+    models$"Modified Rankin Score",
+    "Modified Rankin Score"
+  )
   df_mob <- process_ordinal(models$"EuroQOL - Mobility", "EuroQOL - Mobility")
-  df_self <- process_ordinal(models$"EuroQOL - Self-Care", "EuroQOL - Self-Care")
-  df_act <- process_ordinal(models$"EuroQOL - Usual Activities", "EuroQOL - Usual Activities")
-  df_pain <- process_ordinal(models$"EuroQOL - Pain/Discomfort", "EuroQOL - Pain/Discomfort")
-  df_anx <- process_ordinal(models$"EuroQOL - Anxiety/Depression", "EuroQOL - Anxiety/Depression")
-  
+  df_self <- process_ordinal(
+    models$"EuroQOL - Self-Care",
+    "EuroQOL - Self-Care"
+  )
+  df_act <- process_ordinal(
+    models$"EuroQOL - Usual Activities",
+    "EuroQOL - Usual Activities"
+  )
+  df_pain <- process_ordinal(
+    models$"EuroQOL - Pain/Discomfort",
+    "EuroQOL - Pain/Discomfort"
+  )
+  df_anx <- process_ordinal(
+    models$"EuroQOL - Anxiety/Depression",
+    "EuroQOL - Anxiety/Depression"
+  )
+
   df_vas <- process_vas(models$"Euro VAS", "Euro VAS", data = x)
 
   # Dynamic labels based on whether it's a prior predictive check or posterior
-  est_col_label <- ifelse(is_prior, "Prior Effect Estimate (95% CrI)", "aOR / Mean Diff (95% CrI)")
-  prob_diff_label <- ifelse(is_prior, "Prior Prob. of any diff", "Probability of any difference")
-  prob_sub_label <- ifelse(is_prior, "Prior Prob. of substantial diff", "Probability of a substantial difference")
-  prob_rope_label <- ifelse(is_prior, "Prior ROPE", "ROPE")
+  est_col_label <- ifelse(
+    is_prior,
+    "Prior Effect Estimate (95% CrI)",
+    "aOR / Mean Diff (95% CrI)"
+  )
+  prob_diff_label <- ifelse(
+    is_prior,
+    "Prior Prob. of any diff",
+    "Probability of any difference"
+  )
+  prob_sub_label <- ifelse(
+    is_prior,
+    "Prior Prob. of substantial diff",
+    "Probability of a substantial difference"
+  )
+  prob_rope_label <- ifelse(
+    is_prior,
+    "Percentage of prior within ROPE",
+    "Percentage of posterior within ROPE"
+  )
 
   # Consolidated Source Note perfectly matching the Style of Table 1 & 2
   source_note_text <- ifelse(
@@ -129,7 +160,7 @@ table_3_function <- function(x, models, is_prior = FALSE) {
     "Values represent Average Marginal Effects (Odds Ratios for ordinal outcomes; Mean Difference in points [0–100] for Euro VAS). Models are adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere. ROPE indicates region of practical equivalence (0.95 to 1.05 for ordinal; ± 2 points for Euro VAS). For Euro VAS, probability of difference is defined as Mean Difference < 0, and substantial difference as < -5 points. aOR indicates adjusted odds ratio; CrI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; and IVH, intraventricular hemorrhage."
   )
 
-bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
+  bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
     select(outcome, est_label, prob_diff, prob_sub, prob_rope) |>
     gt::gt() |>
     gt::cols_label(
