@@ -170,7 +170,7 @@ Data on midline shift, hydrocephalus, and eloquent-area involvement were not ava
 
 ### Functional Outcomes
 
-We specified the following DAG when examining functional outcomes (e.g., modified Rankin scale and EuroQOL measures):
+We specified the following DAG when examining functional outcomes (e.g., modified Rankin scale score and EuroQOL measures):
 
 ```{r functional-outcome-dag}
 #| echo: false
