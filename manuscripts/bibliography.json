@@ -27149,6 +27149,7 @@
 		"issue": "10",
 		"journalAbbreviation": "Stroke",
 		"language": "en",
+		"page": "e120-e125",
 		"source": "DOI.org (Crossref)",
 		"title": "The Ethnic/Racial Variations of Intracerebral Hemorrhage (ERICH) Study Protocol",
 		"URL": "https://www.ahajournals.org/doi/10.1161/STROKEAHA.113.002332",
@@ -28956,10 +28957,10 @@
 		}
 	},
 	{
-		"id": "johnsonBayesRulesIntroduction2022",
+		"id": "dogucuBayesRulesIntroduction2022",
 		"type": "book",
 		"abstract": "An introduction to applied Bayesian modeling.",
-		"citation-key": "johnsonBayesRulesIntroduction2022",
+		"citation-key": "dogucuBayesRulesIntroduction2022",
 		"edition": "1",
 		"ISBN": "0-367-25539-1",
 		"publisher": "CRC Press",
@@ -58194,6 +58195,483 @@
 				[
 					"2022",
 					7
+				]
+			]
+		}
+	},
+	{
+		"id": "beckDecompressiveCraniectomyBest2024",
+		"type": "article-journal",
+		"citation-key": "beckDecompressiveCraniectomyBest2024",
+		"container-title": "The Lancet",
+		"DOI": "10.1016/S0140-6736(24)00702-5",
+		"ISSN": "01406736",
+		"issue": "10442",
+		"journalAbbreviation": "The Lancet",
+		"language": "en",
+		"page": "2395-2404",
+		"source": "DOI.org (Crossref)",
+		"title": "Decompressive craniectomy plus best medical treatment versus best medical treatment alone for spontaneous severe deep supratentorial intracerebral haemorrhage: a randomised controlled clinical trial",
+		"title-short": "Decompressive craniectomy plus best medical treatment versus best medical treatment alone for spontaneous severe deep supratentorial intracerebral haemorrhage",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S0140673624007025",
+		"volume": "403",
+		"author": [
+			{
+				"family": "Beck",
+				"given": "Jürgen"
+			},
+			{
+				"family": "Fung",
+				"given": "Christian"
+			},
+			{
+				"family": "Strbian",
+				"given": "Daniel"
+			},
+			{
+				"family": "Bütikofer",
+				"given": "Lukas"
+			},
+			{
+				"family": "Z'Graggen",
+				"given": "Werner J"
+			},
+			{
+				"family": "Lang",
+				"given": "Matthias F"
+			},
+			{
+				"family": "Beyeler",
+				"given": "Seraina"
+			},
+			{
+				"family": "Gralla",
+				"given": "Jan"
+			},
+			{
+				"family": "Ringel",
+				"given": "Florian"
+			},
+			{
+				"family": "Schaller",
+				"given": "Karl"
+			},
+			{
+				"family": "Plesnila",
+				"given": "Nikolaus"
+			},
+			{
+				"family": "Arnold",
+				"given": "Marcel"
+			},
+			{
+				"family": "Hacke",
+				"given": "Werner"
+			},
+			{
+				"family": "Jüni",
+				"given": "Peter"
+			},
+			{
+				"family": "Mendelow",
+				"given": "Alexander David"
+			},
+			{
+				"family": "Stapf",
+				"given": "Christian"
+			},
+			{
+				"family": "Al-Shahi Salman",
+				"given": "Rustam"
+			},
+			{
+				"family": "Bressan",
+				"given": "Jenny"
+			},
+			{
+				"family": "Lerch",
+				"given": "Stefanie"
+			},
+			{
+				"family": "Hakim",
+				"given": "Arsany"
+			},
+			{
+				"family": "Martinez-Majander",
+				"given": "Nicolas"
+			},
+			{
+				"family": "Piippo-Karjalainen",
+				"given": "Anna"
+			},
+			{
+				"family": "Vajkoczy",
+				"given": "Peter"
+			},
+			{
+				"family": "Wolf",
+				"given": "Stefan"
+			},
+			{
+				"family": "Schubert",
+				"given": "Gerrit A"
+			},
+			{
+				"family": "Höllig",
+				"given": "Anke"
+			},
+			{
+				"family": "Veldeman",
+				"given": "Michael"
+			},
+			{
+				"family": "Roelz",
+				"given": "Roland"
+			},
+			{
+				"family": "Gruber",
+				"given": "Andreas"
+			},
+			{
+				"family": "Rauch",
+				"given": "Philip"
+			},
+			{
+				"family": "Mielke",
+				"given": "Dorothee"
+			},
+			{
+				"family": "Rohde",
+				"given": "Veit"
+			},
+			{
+				"family": "Kerz",
+				"given": "Thomas"
+			},
+			{
+				"family": "Uhl",
+				"given": "Eberhard"
+			},
+			{
+				"family": "Thanasi",
+				"given": "Enea"
+			},
+			{
+				"family": "Huttner",
+				"given": "Hagen B"
+			},
+			{
+				"family": "Kallmünzer",
+				"given": "Bernd"
+			},
+			{
+				"family": "Jaap Kappelle",
+				"given": "L"
+			},
+			{
+				"family": "Deinsberger",
+				"given": "Wolfgang"
+			},
+			{
+				"family": "Roth",
+				"given": "Christian"
+			},
+			{
+				"family": "Lemmens",
+				"given": "Robin"
+			},
+			{
+				"family": "Leppert",
+				"given": "Jan"
+			},
+			{
+				"family": "Sanmillan",
+				"given": "Jose L"
+			},
+			{
+				"family": "Coutinho",
+				"given": "Jonathan M"
+			},
+			{
+				"family": "Hackenberg",
+				"given": "Katharina A M"
+			},
+			{
+				"family": "Reimann",
+				"given": "Gernot"
+			},
+			{
+				"family": "Mazighi",
+				"given": "Mikael"
+			},
+			{
+				"family": "Bassetti",
+				"given": "Claudio L A"
+			},
+			{
+				"family": "Mattle",
+				"given": "Heinrich P"
+			},
+			{
+				"family": "Raabe",
+				"given": "Andreas"
+			},
+			{
+				"family": "Fischer",
+				"given": "Urs"
+			},
+			{
+				"family": "Andereggen",
+				"given": "Lukas"
+			},
+			{
+				"family": "Beseoglu",
+				"given": "Kerim"
+			},
+			{
+				"family": "Cereda",
+				"given": "Carlo"
+			},
+			{
+				"family": "Coluccia",
+				"given": "Daniel"
+			},
+			{
+				"family": "Desfontaines",
+				"given": "Philippe"
+			},
+			{
+				"family": "Alonso De Leciñana",
+				"given": "Maria"
+			},
+			{
+				"family": "Freyschlag",
+				"given": "Christian"
+			},
+			{
+				"family": "Gaberel",
+				"given": "Thomas"
+			},
+			{
+				"family": "Gerlach",
+				"given": "Rüdiger"
+			},
+			{
+				"family": "Gessler",
+				"given": "Florian"
+			},
+			{
+				"family": "Güresir",
+				"given": "Erdem"
+			},
+			{
+				"family": "Muñoz",
+				"given": "Fernando"
+			},
+			{
+				"family": "Jabbarli",
+				"given": "Ramazan"
+			},
+			{
+				"family": "Minnerup",
+				"given": "Jens"
+			},
+			{
+				"family": "Moniche",
+				"given": "Francisco"
+			},
+			{
+				"family": "Peeters",
+				"given": "Andre"
+			},
+			{
+				"family": "Pfeilschifter",
+				"given": "Waltraud"
+			},
+			{
+				"family": "Tatlisumak",
+				"given": "Turgut"
+			},
+			{
+				"family": "Weiland",
+				"given": "Judith"
+			},
+			{
+				"family": "Woitzik",
+				"given": "Johannes"
+			},
+			{
+				"family": "Wostrack",
+				"given": "Maria"
+			},
+			{
+				"family": "Wunderlich",
+				"given": "Silke"
+			},
+			{
+				"family": "Vandertop",
+				"given": "W.P."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					7,
+					30
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					6
+				]
+			]
+		}
+	},
+	{
+		"id": "pradillaTrialEarlyMinimally2024",
+		"type": "article-journal",
+		"citation-key": "pradillaTrialEarlyMinimally2024",
+		"container-title": "New England Journal of Medicine",
+		"DOI": "10.1056/NEJMoa2308440",
+		"ISSN": "0028-4793, 1533-4406",
+		"issue": "14",
+		"journalAbbreviation": "N Engl J Med",
+		"language": "en",
+		"license": "http://www.nejmgroup.org/legal/terms-of-use.htm",
+		"page": "1277-1289",
+		"source": "DOI.org (Crossref)",
+		"title": "Trial of Early Minimally Invasive Removal of Intracerebral Hemorrhage",
+		"URL": "http://www.nejm.org/doi/10.1056/NEJMoa2308440",
+		"volume": "390",
+		"author": [
+			{
+				"family": "Pradilla",
+				"given": "Gustavo"
+			},
+			{
+				"family": "Ratcliff",
+				"given": "Jonathan J."
+			},
+			{
+				"family": "Hall",
+				"given": "Alex J."
+			},
+			{
+				"family": "Saville",
+				"given": "Benjamin R."
+			},
+			{
+				"family": "Allen",
+				"given": "Jason W."
+			},
+			{
+				"family": "Paulon",
+				"given": "Giorgio"
+			},
+			{
+				"family": "McGlothlin",
+				"given": "Anna"
+			},
+			{
+				"family": "Lewis",
+				"given": "Roger J."
+			},
+			{
+				"family": "Fitzgerald",
+				"given": "Mark"
+			},
+			{
+				"family": "Caveney",
+				"given": "Angela F."
+			},
+			{
+				"family": "Li",
+				"given": "Xiao T."
+			},
+			{
+				"family": "Bain",
+				"given": "Mark"
+			},
+			{
+				"family": "Gomes",
+				"given": "Joao"
+			},
+			{
+				"family": "Jankowitz",
+				"given": "Brain"
+			},
+			{
+				"family": "Zenonos",
+				"given": "Georgios"
+			},
+			{
+				"family": "Molyneaux",
+				"given": "Bradley J."
+			},
+			{
+				"family": "Davies",
+				"given": "Jason"
+			},
+			{
+				"family": "Siddiqui",
+				"given": "Adnan"
+			},
+			{
+				"family": "Chicoine",
+				"given": "Michael R."
+			},
+			{
+				"family": "Keyrouz",
+				"given": "Salah G."
+			},
+			{
+				"family": "Grossberg",
+				"given": "Jonathan A."
+			},
+			{
+				"family": "Shah",
+				"given": "Mitesh V."
+			},
+			{
+				"family": "Singh",
+				"given": "Ranjeet"
+			},
+			{
+				"family": "Bohnstedt",
+				"given": "Bradley N."
+			},
+			{
+				"family": "Frankel",
+				"given": "Michael"
+			},
+			{
+				"family": "Wright",
+				"given": "David W."
+			},
+			{
+				"family": "Barrow",
+				"given": "Daniel L."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					7,
+					30
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					4,
+					11
 				]
 			]
 		}

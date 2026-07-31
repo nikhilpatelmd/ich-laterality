@@ -1,4 +1,10 @@
-
+fmt_prob <- function(x) {
+  vapply(
+    x,
+    function(p) if (is.na(p)) NA_character_ else format_posterior_prob(p),
+    character(1)
+  )
+}
 
 # --- 1. Interaction Subgroup Table (Recreating "Table 3") ---
 table_subgroups_function <- function(data, loc_model, study_model) {
@@ -89,7 +95,7 @@ table_subgroups_function <- function(data, loc_model, study_model) {
         interaction_ci = as.character(glue::glue(
           "{sprintf('%.2f', ror_median)} ({sprintf('%.2f', ror_lower)} - {sprintf('%.2f', ror_upper)})"
         )),
-        interaction_prob = sprintf('%.2f', prob_ror_greater),
+        interaction_prob = fmt_prob(prob_ror_greater), # was sprintf('%.2f', prob_ror_greater)
         Subgroup = as.character(Subgroup)
       ) |>
       select(Subgroup, interaction_ci, interaction_prob)
@@ -125,6 +131,7 @@ table_subgroups_function <- function(data, loc_model, study_model) {
   # Combine Counts and Stats into Final gt Table
   final_df <- counts_df |>
     left_join(stats_df, by = "Subgroup") |>
+    mutate(across(c(or_1, or_1.2, rope), fmt_prob)) |>
     select(
       Category,
       Subgroup,
@@ -144,21 +151,20 @@ table_subgroups_function <- function(data, loc_model, study_model) {
       Subgroup = "Subgroup",
       Left = "Left Hemisphere",
       Right = "Right Hemisphere",
-      or_ci = "aOR (95% CI)",
-      or_1 = "Prob(aOR > 1)",
-      or_1.2 = "Prob(aOR > 1.2)",
-      rope = "ROPE",
-      interaction_ci = "Interaction ROR (95% CI)",
-      interaction_prob = "Prob(Subgroup aOR > Ref aOR)"
+      or_ci = "aOR (95% CrI)",
+      or_1 = "Probability of difference (aOR > 1)",
+      or_1.2 = "Probability of a substantial difference (aOR > 1.2)",
+      rope = "Percentage of posterior within ROPE",
+      interaction_ci = "Interaction ROR (95% CrI)",
+      interaction_prob = "Probability subgroup aOR exceeds reference aOR"
     ) |>
-    fmt_number(columns = c("or_1", "or_1.2", "rope"), decimals = 2) |>
-    cols_align(align = "left") |>
+    fmt(columns = c(or_1, or_1.2, rope), fns = fmt_prob) |>
     tab_style(
       style = cell_text(weight = "bold"),
       locations = cells_row_groups()
     ) |>
     tab_footnote(
-      footnote = "aOR = adjusted odds ratio, CI = 95% credible interval. Reference Category: Left Hemisphere Laterality",
+      footnote = "aOR = adjusted odds ratio, CrI = 95% credible interval. Reference Category: Left Hemisphere Laterality",
       locations = cells_column_labels(columns = "or_ci")
     ) |>
     tab_footnote(
@@ -225,6 +231,7 @@ table_2_atach_function <- function(
     get_stats(site_model, "ATACH-2 (Site Random Effect)")
   ) |>
     bind_cols(n_counts) |>
+    mutate(across(c(or_1, or_1.2, rope), fmt_prob)) |>
     select(Outcome, Left, Right, or_ci, or_1, or_1.2, rope)
 
   stats_df |>
@@ -233,23 +240,18 @@ table_2_atach_function <- function(
     cols_label(
       Left = "Left Hemisphere",
       Right = "Right Hemisphere",
-      or_ci = "aOR (95% CI)",
-      or_1 = "Prob(aOR > 1)",
-      or_1.2 = "Prob(aOR > 1.2)",
-      rope = "ROPE"
+      or_ci = "aOR (95% CrI)",
+      or_1 = "Probability of difference (aOR > 1)",
+      or_1.2 = "Probability of a substantial difference (aOR > 1.2)",
+      rope = "Percentage of posterior within ROPE"
     ) |>
-    fmt_number(columns = c("or_1", "or_1.2", "rope"), decimals = 2) |>
-    cols_align(align = "left") |>
+    fmt(columns = c(or_1, or_1.2, rope), fns = fmt_prob) |>
     tab_style(
       style = cell_text(weight = "bold"),
       locations = cells_stub(rows = everything())
     ) |>
     tab_footnote(
-      footnote = "aOR = adjusted odds ratio, CI = 95% credible interval.",
+      footnote = "aOR = adjusted odds ratio, CrI = 95% credible interval.",
       locations = cells_column_labels(columns = "or_ci")
     )
 }
-
-# | "While the posterior probability suggested a 70% chance that the laterality effect was larger in Lobar hemorrhages compared to the Basal Ganglia, the credible interval for the interaction term was wide (ROR 1.13, 95% CI 0.85–1.65), precluding definitive conclusions about regional heterogeneity."
-
-#| "In a sensitivity analysis restricted to the ATACH-2 cohort, we introduced a random intercept for clinical site to account for unmeasured, hospital-level practice variations. While adjusting for site-level clustering slightly attenuated the magnitude of the effect (Base aOR 2.13 vs. Adjusted aOR 1.88) and widened the credible intervals, the primary finding remained highly robust: right-hemisphere laterality was associated with significantly higher odds of neurosurgical evacuation (Prob aOR > 1 = 0.98)."

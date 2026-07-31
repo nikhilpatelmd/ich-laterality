@@ -170,7 +170,7 @@ Variables that lie downstream of ICH characteristics and on the causal pathway t
 
 ### Functional Outcomes
 
-We specified the following DAG when examining functional outcomes (e.g., modified Rankin Scale and EuroQOL measures):
+We specified the following DAG when examining functional outcomes (e.g., modified Rankin scale and EuroQOL measures):
 
 ```{r functional-outcome-dag}
 #| echo: false
@@ -515,12 +515,12 @@ main_diagnostics[["model_main_tracheostomy_neutral_adjusted"]]
 main_diagnostics[["model_main_days_mechanical_ventilation_neutral_adjusted"]]
 ```
 
-#### Comfort Care
+#### WLST
 
 ```{r posterior diagnostics comfort}
 #| echo: false
 #| fig-height: 10
-#| fig-cap: "Posterior diagnostic checks for Comfort Care"
+#| fig-cap: "Posterior diagnostic checks for WLST"
 main_diagnostics[["model_main_comfort_care_binary_neutral_adjusted"]]
 ```
 
@@ -547,7 +547,7 @@ main_diagnostics[["model_main_dnr_binary_neutral_adjusted"]]
 ```{r posterior diagnostics mrs}
 #| echo: false
 #| fig-height: 10
-#| fig-cap: "Posterior diagnostic checks for Modified Rankin Score at 90 Days"
+#| fig-cap: "Posterior diagnostic checks for Modified Rankin Scale at 90 Days"
 main_diagnostics[["model_main_mrs_90_neutral_adjusted"]]
 ```
 
@@ -639,11 +639,11 @@ main_pp_checks[["model_main_tracheostomy_neutral_adjusted"]]
 main_pp_checks[["model_main_days_mechanical_ventilation_neutral_adjusted"]]
 ```
 
-#### Comfort Care
+#### WLST
 
 ```{r posterior predictions comfort}
 #| echo: false
-#| fig-cap: "Posterior predictive checks for Comfort Care"
+#| fig-cap: "Posterior predictive checks for WLST"
 main_pp_checks[["model_main_comfort_care_binary_neutral_adjusted"]]
 ```
 
@@ -667,11 +667,11 @@ main_pp_checks[["model_main_dnr_binary_neutral_adjusted"]]
 
 ```{r posterior predictions mrs}
 #| echo: false
-#| fig-cap: "Posterior predictive checks for Modified Rankin Score at 90 Days"
+#| fig-cap: "Posterior predictive checks for Modified Rankin Scale at 90 Days"
 main_pp_checks[["model_main_mrs_90_neutral_adjusted"]]
 ```
 
-#### EuroQOL Moblity 90
+#### EuroQOL Mobility 90
 
 ```{r posterior predictions euro mobility}
 #| echo: false
@@ -703,7 +703,7 @@ main_pp_checks[["model_main_euro_usual_90_neutral_adjusted"]]
 main_pp_checks[["model_main_euro_pain_90_neutral_adjusted"]]
 ```
 
-#### EuroQOL Anxiety/Despression 90
+#### EuroQOL Anxiety/Depression 90
 
 ```{r posterior predictions euro anxiety}
 #| echo: false
@@ -805,14 +805,22 @@ with_dir(here(), tar_read(table_3_flat))
 
 ### Complete-Case Sensitivity Analysis
 
-The primary analysis used multiple imputation by chained equations (MICE) with 20 imputed datasets, as described in the main manuscript. As a sensitivity analysis, we repeated the primary models using a complete-case approach (excluding patients with missing outcomes) under the neutral prior with the adjusted covariate set. Three models were fitted to the complete-case data using the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin score at 90 days. All models were fitted using Markov Chain Monte Carlo (MCMC) with 4 chains and 5,000 iterations per chain (including a warmup period of 1,000 iterations).
+The primary analysis used multiple imputation by chained equations (MICE) with 20 imputed datasets, as described in the main manuscript. As a sensitivity analysis, we repeated the primary models using a complete-case approach (excluding patients with missing outcomes) under the neutral prior with the adjusted covariate set. Three models were fitted to the complete-case data using the following outcomes: neurosurgical intervention, external ventricular drain, and modified Rankin scale at 90 days. All models were fitted using Markov Chain Monte Carlo (MCMC) with 4 chains and 5,000 iterations per chain (including a warmup period of 1,000 iterations).
 
-```{r imputed}
+```{r complete-case-acute}
 #| echo: false
 #| tbl-cap: "Outcomes of Interest Using Complete-Case Analysis (Sensitivity)"
-#| label: "tbl-complete-case-sensitivity"
+#| label: "tbl-2-complete-case-sensitivity"
 #|
 with_dir(here(), tar_read(table_2_sens_neutral))
+```
+
+```{r complete-case-functional}
+#| echo: false
+#| tbl-cap: "Functional Outcomes of Interest Using Complete-Case Analysis (Sensitivity)"
+#| label: "tbl-4-complete-case-sensitivity"
+#|
+with_dir(here(), tar_read(table_4_sens_neutral))
 ```
 
 ### Site-Level Clustering Sensitivity Analysis

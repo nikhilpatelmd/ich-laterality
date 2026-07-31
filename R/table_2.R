@@ -163,7 +163,7 @@ table_2_function <- function(x, models) {
       or_ci = md("**aOR / IRR (95% CrI)**"),
       or_1 = md("**Probability of difference (Est > 1)**"),
       or_1.2 = md("**Probability of substantial difference (Est > 1.2)**"),
-      rope = md("**ROPE**")
+      rope = md("**Percentage of posterior within ROPE**")
     ) |>
     cols_width(Outcome ~ px(375), 2:3 ~ px(175), 4 ~ px(150), 5:7 ~ px(125)) |>
     # 1. Align all columns left explicitly

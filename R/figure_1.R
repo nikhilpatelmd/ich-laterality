@@ -468,7 +468,7 @@ make_prior_sensitivity_figure <- function(
       "Panel B: Overlaid posterior distributions of the absolute probability ",
       "difference (Right \u2212 Left hemisphere) across four prior specifications ",
       "(neutral, left-hemisphere, right-hemisphere, and diffuse). ",
-      "All four priors yield consistent findings, demonstrating robustness of ",
+      "All four priors yield consistent findings, supporting robustness of ",
       "the primary result to prior choice. ",
       covariate_caption,
       " ",
