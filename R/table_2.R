@@ -161,8 +161,10 @@ table_2_function <- function(x, models) {
       Left = md("**Left Hemisphere**"),
       Right = md("**Right Hemisphere**"),
       or_ci = md("**aOR / IRR (95% CrI)**"),
-      or_1 = md("**Probability of difference (Est > 1)**"),
-      or_1.2 = md("**Probability of substantial difference (Est > 1.2)**"),
+      or_1 = md("**Posterior Probability of difference (Est > 1)**"),
+      or_1.2 = md(
+        "**Posterior Probability of substantial difference (Est > 1.2)**"
+      ),
       rope = md("**Percentage of posterior within ROPE**")
     ) |>
     cols_width(Outcome ~ px(375), 2:3 ~ px(175), 4 ~ px(150), 5:7 ~ px(125)) |>
@@ -355,8 +357,10 @@ table_2_priors_function <- function(models) {
       Left = md("**Left Hemisphere (Prior expected)**"),
       Right = md("**Right Hemisphere (Prior expected)**"),
       or_ci = md("**Prior aOR / IRR (95% CrI)**"),
-      or_1 = md("**Probability of difference (aOR > 1)**"),
-      or_1.2 = md("**Probability of substantial difference (aOR > 1.2)**"),
+      or_1 = md("**Posterior Probability of difference (aOR > 1)**"),
+      or_1.2 = md(
+        "**Posterior Probability of substantial difference (aOR > 1.2)**"
+      ),
       rope = md("**Percentage of posterior within ROPE**")
     ) |>
     cols_width(Outcome ~ px(375), 2:3 ~ px(200), 4 ~ px(150), 5:7 ~ px(125)) |>

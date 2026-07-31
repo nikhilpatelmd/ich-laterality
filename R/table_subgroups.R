@@ -1,8 +1,42 @@
+# R/table_subgroups.R
+#
+# Supplemental tables:
+#   1. Subgroup interaction analysis (laterality x ICH location, laterality x study)
+#   2. ATACH-2 site-level clustering sensitivity analysis
+#
+# ---------------------------------------------------------------------------
+# FORMATTING NOTE (do not reintroduce gt::fmt() here)
+#
+# Probability columns are formatted to character *eagerly*, while the targets
+# pipeline builds the table -- the same pattern used in R/table_2.R and
+# R/table_3.R.
+#
+# gt::fmt() must NOT be used with fmt_prob(). fmt() does not format anything at
+# build time; it stores the formatting closure inside the gt_tbl object and
+# evaluates it lazily at print time. When the object is serialized by targets
+# and read back with tar_read() inside the Quarto render session, the closure's
+# enclosing environment resolves to that session's global environment, which has
+# never run tar_source("R/"). Rendering then fails with:
+#
+#   Error in `format_posterior_prob()`:
+#   ! could not find function "format_posterior_prob"
+#
+# Same rule applies to any other gt helper that takes a function argument
+# (fmt(), text_transform(), cols_merge() with a pattern-function, etc.).
+# ---------------------------------------------------------------------------
+
 fmt_prob <- function(x) {
+  # Idempotent guard: values that have already been formatted pass through
+  # untouched, so an accidental second application is harmless.
+  if (is.character(x)) {
+    return(x)
+  }
+
   vapply(
     x,
     function(p) if (is.na(p)) NA_character_ else format_posterior_prob(p),
-    character(1)
+    character(1),
+    USE.NAMES = FALSE
   )
 }
 
@@ -42,11 +76,12 @@ table_subgroups_function <- function(data, loc_model, study_model) {
       variables = "ich_laterality",
       by = by_var,
       newdata = safe_data,
-      comparison = "lnoravg" # Extract on Log-odds scale first to compute interaction
+      comparison = "lnoravg" # Extract on log-odds scale first to compute interaction
     ) |>
       marginaleffects::posterior_draws() |>
       rename(Subgroup = !!sym(by_var)) |>
-      # THE FIX: Create a guaranteed, stable iteration ID to prevent pivot crashes
+      # Stable iteration ID within subgroup so pivot_wider() below cannot
+      # collapse draws into list-columns.
       group_by(Subgroup) |>
       mutate(draw_iter = row_number()) |>
       ungroup()
@@ -72,30 +107,33 @@ table_subgroups_function <- function(data, loc_model, study_model) {
       )
 
     # 2. Bayesian Interaction Effects (Ratio of Odds Ratios vs Reference)
+    #    .data[[ref_level]] / all_of(ref_level) are used instead of !!sym()
+    #    because reference levels such as "ATACH-2" are non-syntactic names.
     interaction_stats <- draws |>
       select(draw_iter, Subgroup, draw) |>
       pivot_wider(names_from = Subgroup, values_from = draw) |>
       pivot_longer(
-        cols = -c(draw_iter, !!sym(ref_level)),
+        cols = !all_of(c("draw_iter", ref_level)),
         names_to = "Subgroup",
         values_to = "draw_sub"
       ) |>
       mutate(
-        ror = exp(draw_sub - !!sym(ref_level)) # Difference in LogOdds = Ratio of Odds Ratios
+        # Difference in log-odds = Ratio of Odds Ratios
+        ror = exp(draw_sub - .data[[ref_level]])
       ) |>
       group_by(Subgroup) |>
       summarize(
         ror_median = median(ror),
         ror_lower = quantile(ror, 0.025),
         ror_upper = quantile(ror, 0.975),
-        prob_ror_greater = sum(ror > 1) / n(), # Probability interaction term is > 1
+        prob_ror_greater = sum(ror > 1) / n(), # Posterior probability ROR > 1
         .groups = "drop"
       ) |>
       mutate(
         interaction_ci = as.character(glue::glue(
           "{sprintf('%.2f', ror_median)} ({sprintf('%.2f', ror_lower)} - {sprintf('%.2f', ror_upper)})"
         )),
-        interaction_prob = fmt_prob(prob_ror_greater), # was sprintf('%.2f', prob_ror_greater)
+        interaction_prob = fmt_prob(prob_ror_greater),
         Subgroup = as.character(Subgroup)
       ) |>
       select(Subgroup, interaction_ci, interaction_prob)
@@ -104,7 +142,7 @@ table_subgroups_function <- function(data, loc_model, study_model) {
     ref_df <- tibble(
       Subgroup = ref_level,
       interaction_ci = "Reference",
-      interaction_prob = "—"
+      interaction_prob = "\u2014"
     )
     interaction_stats <- bind_rows(interaction_stats, ref_df)
 
@@ -128,7 +166,9 @@ table_subgroups_function <- function(data, loc_model, study_model) {
   # Properly bind just the two subgroup stats
   stats_df <- bind_rows(loc_stats, study_stats)
 
-  # Combine Counts and Stats into Final gt Table
+  # Combine Counts and Stats into Final gt Table.
+  # fmt_prob() is applied HERE, at build time, so the gt object contains only
+  # plain character strings and carries no unevaluated closures.
   final_df <- counts_df |>
     left_join(stats_df, by = "Subgroup") |>
     mutate(across(c(or_1, or_1.2, rope), fmt_prob)) |>
@@ -152,13 +192,13 @@ table_subgroups_function <- function(data, loc_model, study_model) {
       Left = "Left Hemisphere",
       Right = "Right Hemisphere",
       or_ci = "aOR (95% CrI)",
-      or_1 = "Probability of difference (aOR > 1)",
-      or_1.2 = "Probability of a substantial difference (aOR > 1.2)",
+      or_1 = "Posterior Probability of difference (aOR > 1)",
+      or_1.2 = "Posterior Probability of a substantial difference (aOR > 1.2)",
       rope = "Percentage of posterior within ROPE",
       interaction_ci = "Interaction ROR (95% CrI)",
       interaction_prob = "Probability subgroup aOR exceeds reference aOR"
     ) |>
-    fmt(columns = c(or_1, or_1.2, rope), fns = fmt_prob) |>
+    sub_missing(missing_text = "\u2014") |>
     tab_style(
       style = cell_text(weight = "bold"),
       locations = cells_row_groups()
@@ -241,11 +281,11 @@ table_2_atach_function <- function(
       Left = "Left Hemisphere",
       Right = "Right Hemisphere",
       or_ci = "aOR (95% CrI)",
-      or_1 = "Probability of difference (aOR > 1)",
-      or_1.2 = "Probability of a substantial difference (aOR > 1.2)",
+      or_1 = "Posterior Probability of difference (aOR > 1)",
+      or_1.2 = "Posterior Probability of a substantial difference (aOR > 1.2)",
       rope = "Percentage of posterior within ROPE"
     ) |>
-    fmt(columns = c(or_1, or_1.2, rope), fns = fmt_prob) |>
+    sub_missing(missing_text = "\u2014") |>
     tab_style(
       style = cell_text(weight = "bold"),
       locations = cells_stub(rows = everything())

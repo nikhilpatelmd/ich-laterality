@@ -11,7 +11,7 @@ subset_models_for_table3 <- function(
     "euro_usual_90" = "EuroQOL - Usual Activities",
     "euro_pain_90" = "EuroQOL - Pain/Discomfort",
     "euro_anxiety_90" = "EuroQOL - Anxiety/Depression",
-    "euro_vas_90" = "Euro VAS"
+    "euro_vas_90" = "EQ-VAS"
   )
 
   suffix <- paste0("_", scenario, "_adjusted")
@@ -129,7 +129,7 @@ table_3_function <- function(x, models, is_prior = FALSE) {
     "EuroQOL - Anxiety/Depression"
   )
 
-  df_vas <- process_vas(models$"Euro VAS", "Euro VAS", data = x)
+  df_vas <- process_vas(models$"EQ-VAS", "EQ-VAS", data = x)
 
   # Dynamic labels based on whether it's a prior predictive check or posterior
   est_col_label <- ifelse(
@@ -140,12 +140,12 @@ table_3_function <- function(x, models, is_prior = FALSE) {
   prob_diff_label <- ifelse(
     is_prior,
     "Prior Prob. of any diff",
-    "Probability of any difference"
+    "Posterior Probability of any difference"
   )
   prob_sub_label <- ifelse(
     is_prior,
     "Prior Prob. of substantial diff",
-    "Probability of a substantial difference"
+    "Posterior Probability of a substantial difference"
   )
   prob_rope_label <- ifelse(
     is_prior,
@@ -156,8 +156,8 @@ table_3_function <- function(x, models, is_prior = FALSE) {
   # Consolidated Source Note perfectly matching the Style of Table 1 & 2
   source_note_text <- ifelse(
     is_prior,
-    "Values represent expected effects simulated purely from the prior distributions before encountering the data. Estimates are Prior Odds Ratios (aOR) for ordinal outcomes and Mean Differences for Euro VAS. ROPE indicates region of practical equivalence (0.95 to 1.05 for aOR; ± 2 points for Euro VAS).",
-    "Values represent Average Marginal Effects (Odds Ratios for ordinal outcomes; Mean Difference in points [0–100] for Euro VAS). Models are adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere. ROPE indicates region of practical equivalence (0.95 to 1.05 for ordinal; ± 2 points for Euro VAS). For Euro VAS, probability of difference is defined as Mean Difference < 0, and substantial difference as < -5 points. aOR indicates adjusted odds ratio; CrI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; and IVH, intraventricular hemorrhage."
+    "Values represent expected effects simulated purely from the prior distributions before encountering the data. Estimates are Prior Odds Ratios (aOR) for ordinal outcomes and Mean Differences for EQ-VAS. ROPE indicates region of practical equivalence (0.95 to 1.05 for aOR; ± 2 points for EQ-VAS).",
+    "Values represent Average Marginal Effects (Odds Ratios for ordinal outcomes; Mean Difference in points [0–100] for EQ-VAS). Models are adjusted for age, admission GCS, ICH location, ICH volume, IVH, and study (as random intercept); Reference Category: Left Hemisphere. ROPE indicates region of practical equivalence (0.95 to 1.05 for ordinal; ± 2 points for EQ-VAS). For EQ-VAS, probability of difference is defined as Mean Difference < 0, and substantial difference as < -5 points. aOR indicates adjusted odds ratio; CrI, credible interval; GCS, Glasgow Coma Scale; ICH, intracerebral hemorrhage; and IVH, intraventricular hemorrhage."
   )
 
   bind_rows(df_mrs, df_mob, df_self, df_act, df_pain, df_anx, df_vas) |>
